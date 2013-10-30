@@ -1,0 +1,239 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util
+END
+SortedSet.spec
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/SortedSet.spec
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/.cvsignore
+END
+Stack.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Stack.refines-spec
+END
+SortedMap.spec
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/SortedMap.spec
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Makefile
+END
+GregorianCalendar.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/GregorianCalendar.refines-spec
+END
+Hashtable.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Hashtable.refines-spec
+END
+Calendar.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Calendar.refines-spec
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/package.html
+END
+Locale.jml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Locale.jml
+END
+Arrays.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Arrays.refines-spec
+END
+ArrayList.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/ArrayList.refines-spec
+END
+LinkedList.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/LinkedList.refines-spec
+END
+AbstractCollection.jml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/AbstractCollection.jml
+END
+BitSet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/BitSet.refines-spec
+END
+Iterator.spec
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Iterator.spec
+END
+HashSet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/HashSet.refines-spec
+END
+ListIterator.spec
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/ListIterator.spec
+END
+compare-expected
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/compare-expected
+END
+Enumeration.spec
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Enumeration.spec
+END
+Date.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Date.refines-spec
+END
+HashMap.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/HashMap.refines-spec
+END
+Set.spec
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Set.spec
+END
+Collection.spec
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Collection.spec
+END
+ResourceBundle.jml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/ResourceBundle.jml
+END
+List.spec
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/List.spec
+END
+TreeSet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/TreeSet.refines-spec
+END
+Map.spec
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Map.spec
+END
+Observable.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Observable.refines-spec
+END
+Vector.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Vector.refines-spec
+END
+AbstractList.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/AbstractList.refines-spec
+END
+AbstractSet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/AbstractSet.refines-spec
+END
+AbstractSequentialList.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/AbstractSequentialList.refines-spec
+END
+TreeMap.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/TreeMap.refines-spec
+END
+Observer.spec
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Observer.spec
+END
+AbstractMap.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/AbstractMap.refines-spec
+END
+NoSuchElementException.jml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/NoSuchElementException.jml
+END
+Comparator.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Comparator.refines-spec
+END
+Dictionary.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/util/Dictionary.refines-spec
+END

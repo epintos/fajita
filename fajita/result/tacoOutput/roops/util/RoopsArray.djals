@@ -1,0 +1,59 @@
+//-------------- roops_util_RoopsArray --------------//
+module roops_util_RoopsArray
+sig roops_util_RoopsArray extends java_lang_Object {}
+{}
+program roops_util_RoopsArray::Constructor[
+  var thiz:roops_util_RoopsArray,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         skip;
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_util_RoopsArray::getLength[
+  var throw:java_lang_Throwable+null,
+  var return:JavaPrimitiveIntegerValue,
+  var a:java_lang_IntArray+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               if isEmptyOrNull[a]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  return:=a.java_lang_IntArray_length;
+               };
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+

@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu Oct 29 15:51:43 ARST 2009
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=dynalloy4.jar
+manifest.mergeall=true
+manifest.mainclass=ar.uba.dc.rfm.dynalloy.Main
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<jar|junit.jar>
+includes=<inc|dynalloy4/src>;<inc|dynalloy4/test>

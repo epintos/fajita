@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/org
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/org/.cvsignore
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/org/Makefile
+END

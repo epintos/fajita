@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet
+END
+ServletRequestEvent.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequestEvent.refines-spec
+END
+ServletContextEvent.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletContextEvent.refines-spec
+END
+GenericServlet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/GenericServlet.refines-spec
+END
+LocalStrings_ja.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/LocalStrings_ja.properties
+END
+ServletResponseWrapper.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletResponseWrapper.refines-spec
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/.cvsignore
+END
+ServletRequest.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequest.refines-spec
+END
+ServletException.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletException.refines-spec
+END
+ServletContext.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletContext.refines-spec
+END
+ServletRequestWrapper.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequestWrapper.refines-spec
+END
+FilterChain.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/FilterChain.refines-spec
+END
+ServletContextAttributeEvent.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletContextAttributeEvent.refines-spec
+END
+ServletRequestAttributeEvent.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequestAttributeEvent.refines-spec
+END
+ServletConfig.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletConfig.refines-spec
+END
+ServletResponse.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletResponse.refines-spec
+END
+LocalStrings.properties
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/LocalStrings.properties
+END
+ServletOutputStream.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletOutputStream.refines-spec
+END
+ServletContextAttributeListener.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletContextAttributeListener.refines-spec
+END
+ServletRequestAttributeListener.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequestAttributeListener.refines-spec
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/Makefile
+END
+ServletInputStream.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletInputStream.refines-spec
+END
+Servlet.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/Servlet.refines-spec
+END
+LocalStrings_fr.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/LocalStrings_fr.properties
+END
+UnavailableException.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/UnavailableException.refines-spec
+END
+ServletContextListener.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletContextListener.refines-spec
+END
+ServletRequestListener.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/ServletRequestListener.refines-spec
+END
+FilterConfig.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/FilterConfig.refines-spec
+END
+Filter.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/Filter.refines-spec
+END
+SingleThreadModel.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/SingleThreadModel.refines-spec
+END
+RequestDispatcher.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/javax/servlet/RequestDispatcher.refines-spec
+END

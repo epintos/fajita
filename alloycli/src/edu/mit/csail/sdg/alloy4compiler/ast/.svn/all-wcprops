@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast
+END
+ExprHasName.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprHasName.java
+END
+ExprBad.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprBad.java
+END
+ExprBadCall.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprBadCall.java
+END
+Module.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Module.java
+END
+Command.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Command.java
+END
+Decl.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Decl.java
+END
+CommandScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/CommandScope.java
+END
+ExprCustom.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprCustom.java
+END
+ExprLet.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprLet.java
+END
+ExprITE.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprITE.java
+END
+Func.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Func.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/package.html
+END
+VisitQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/VisitQuery.java
+END
+VisitReturn.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/VisitReturn.java
+END
+ExprBadJoin.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprBadJoin.java
+END
+Type.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Type.java
+END
+ExprUnary.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprUnary.java
+END
+ExprConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprConstant.java
+END
+ExprQt.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprQt.java
+END
+ExprBinary.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprBinary.java
+END
+ExprChoice.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprChoice.java
+END
+Expr.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Expr.java
+END
+Browsable.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Browsable.java
+END
+ExprList.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprList.java
+END
+ExprCall.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprCall.java
+END
+ExprVar.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/ExprVar.java
+END
+Attr.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Attr.java
+END
+Sig.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/ast/Sig.java
+END

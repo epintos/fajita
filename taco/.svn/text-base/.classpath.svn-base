@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="unittest"/>
+	<classpathentry kind="src" path="failtest"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/alloy4.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/antlr.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-configuration-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/dynalloy4.jar" sourcepath="/dynalloy4/src"/>
+	<classpathentry kind="lib" path="lib/edu.mit.csail.sdg.annotations_0.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/guava.jar"/>
+	<classpathentry kind="lib" path="lib/java-cup-11a.jar"/>
+	<classpathentry kind="lib" path="lib/jdynalloy.jar"/>
+	<classpathentry kind="lib" path="lib/jml-release.jar" sourcepath="/Users/marcelofrias/Documents/Becarios/ITBA/Grupos Trabajo Final/Giorgi-Magni-Samra-Williams/AJML-3"/>
+	<classpathentry kind="lib" path="lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/org.jmlspecs.annotation.jar"/>
+	<classpathentry kind="lib" path="lib/stryker/jml4c.jar"/>
+	<classpathentry kind="lib" path="lib/stryker/MuJavaPlus.jar"/>
+	<classpathentry kind="lib" path="lib/stryker/openjava2005.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

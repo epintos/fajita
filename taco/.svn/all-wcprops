@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/nrosner-rfm/!svn/ver/1308/src/taco
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/nrosner-rfm/!svn/ver/1239/src/taco/build.xml
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nrosner-rfm/!svn/ver/1269/src/taco/.project
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/nrosner-rfm/!svn/ver/493/src/taco/COPYING
+END
+mutation_log
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nrosner-rfm/!svn/ver/1269/src/taco/mutation_log
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/nrosner-rfm/!svn/ver/1269/src/taco/.classpath
+END

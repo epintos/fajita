@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/exception
+END
+exception.properties
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/exception/exception.properties
+END
+throwUsage.properties
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/exception/throwUsage.properties
+END

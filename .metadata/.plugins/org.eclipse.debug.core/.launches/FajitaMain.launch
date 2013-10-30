@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/fajita/src/ar/uba/dc/rfm/fajita/FajitaMain.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ar.uba.dc.rfm.fajita.FajitaMain"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-cp roops -cf config/roops_core_objects_LinkedList/addLastTest.fajita.config -tf config/taco.properties.template -rp result -gu true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="fajita"/>
+</launchConfiguration>

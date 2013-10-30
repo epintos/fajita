@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net
+END
+URL.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net/URL.refines-spec
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net/package.html
+END
+URI.refines-spec
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net/URI.refines-spec
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net/.cvsignore
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/nrosner-rfm/!svn/ver/492/src/taco/specs/java/net/Makefile
+END

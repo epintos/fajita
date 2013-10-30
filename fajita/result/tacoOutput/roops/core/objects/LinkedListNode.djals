@@ -1,0 +1,270 @@
+//-------------- roops_core_objects_LinkedListNode --------------//
+module roops_core_objects_LinkedListNode
+sig roops_core_objects_LinkedListNode extends java_lang_Object {}
+{}
+field roops_core_objects_LinkedListNode_previous:(roops_core_objects_LinkedListNode)->one(null+roops_core_objects_LinkedListNode) {}
+field roops_core_objects_LinkedListNode_next:(roops_core_objects_LinkedListNode)->one(null+roops_core_objects_LinkedListNode) {}
+field roops_core_objects_LinkedListNode_object_value:(roops_core_objects_LinkedListNode)->one(java_lang_Object+null) {}
+
+program roops_core_objects_LinkedListNode::getPreviousNode[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objects_LinkedListNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  return:=thiz.roops_core_objects_LinkedListNode_previous;
+               };
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::setPreviousNode[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var previous:null+roops_core_objects_LinkedListNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false){
+            if isEmptyOrNull[thiz]{
+               throw:=java_lang_NullPointerExceptionLit;
+            } else {
+               thiz.roops_core_objects_LinkedListNode_previous:=previous;
+            };
+         } else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::getNextNode[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objects_LinkedListNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  return:=thiz.roops_core_objects_LinkedListNode_next;
+               };
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::setValue[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var new_value:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false){
+            if isEmptyOrNull[thiz]{
+               throw:=java_lang_NullPointerExceptionLit;
+            } else {
+               thiz.roops_core_objects_LinkedListNode_object_value:=new_value;
+            };
+         } else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::getValue[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var return:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  return:=thiz.roops_core_objects_LinkedListNode_object_value;
+               };
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::setNextNode[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null,
+  var next:null+roops_core_objects_LinkedListNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false){
+            if isEmptyOrNull[thiz]{
+               throw:=java_lang_NullPointerExceptionLit;
+            } else {
+               thiz.roops_core_objects_LinkedListNode_next:=next;
+            };
+         } else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objects_LinkedListNode::Constructor[
+  var thiz:roops_core_objects_LinkedListNode,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  thiz.roops_core_objects_LinkedListNode_previous:=((null+roops_core_objects_LinkedListNode) & (null));
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  thiz.roops_core_objects_LinkedListNode_next:=((null+roops_core_objects_LinkedListNode) & (null));
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  thiz.roops_core_objects_LinkedListNode_object_value:=((java_lang_Object+null) & (null));
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+

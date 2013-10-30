@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason
+END
+clist.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason/clist.properties
+END
+slist.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason/slist.properties
+END
+alist.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason/alist.properties
+END
+avltree.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason/avltree.properties
+END
+treeset.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nrosner-rfm/!svn/ver/492/src/taco/config/jason/treeset.properties
+END
