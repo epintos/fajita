@@ -558,10 +558,45 @@ pred roops_core_objects_LinkedListCondition27[
 
 }
 
+pred postcondition_roops_core_objects_LinkedList_addLastTest_0[
+  roops_core_objects_LinkedListNode_next':univ->univ,
+  roops_core_objects_LinkedListNode_previous':univ->univ,
+  roops_core_objects_LinkedList_header':univ->univ,
+  roops_core_objects_LinkedList_size':univ->univ,
+  throw':univ
+]{
+   roops_core_objects_LinkedList_ensures[throw']
+   and 
+   (
+     not (
+       throw'=AssertionFailureLit)
+   )
+   and 
+   (
+     all objx':roops_core_objects_LinkedList | {
+       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next',
+                                                     roops_core_objects_LinkedListNode_previous',
+                                                     roops_core_objects_LinkedList_header',
+                                                     roops_core_objects_LinkedList_size',
+                                                     objx']
+     
+     }
+   )
+
+}
+
 pred roops_core_objects_LinkedListCondition18[
   nodeToInsert:univ
 ]{
    isEmptyOrNull[nodeToInsert]
+
+}
+
+pred roops_core_objects_LinkedListCondition19[
+  nodeToInsert:univ
+]{
+   not (
+     isEmptyOrNull[nodeToInsert])
 
 }
 
@@ -614,38 +649,26 @@ pred roops_core_objects_LinkedList_object_invariant[
 
 }
 
-pred roops_core_objects_LinkedListCondition19[
-  nodeToInsert:univ
+pred precondition_roops_core_objects_LinkedList_addLastTest_0[
+  roops_core_objects_LinkedListNode_next:univ->univ,
+  roops_core_objects_LinkedListNode_previous:univ->univ,
+  roops_core_objects_LinkedList_header:univ->univ,
+  roops_core_objects_LinkedList_size:univ->univ,
+  throw:univ
 ]{
-   not (
-     isEmptyOrNull[nodeToInsert])
-
-}
-
-pred postcondition_roops_core_objects_LinkedList_addLastTest_0[
-  roops_core_objects_LinkedListNode_next':univ->univ,
-  roops_core_objects_LinkedListNode_previous':univ->univ,
-  roops_core_objects_LinkedList_header':univ->univ,
-  roops_core_objects_LinkedList_size':univ->univ,
-  throw':univ
-]{
-   roops_core_objects_LinkedList_ensures[throw']
-   and 
    (
-     not (
-       throw'=AssertionFailureLit)
-   )
-   and 
-   (
-     all objx':roops_core_objects_LinkedList | {
-       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next',
-                                                     roops_core_objects_LinkedListNode_previous',
-                                                     roops_core_objects_LinkedList_header',
-                                                     roops_core_objects_LinkedList_size',
-                                                     objx']
+     all objx:roops_core_objects_LinkedList | {
+       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next,
+                                                     roops_core_objects_LinkedListNode_previous,
+                                                     roops_core_objects_LinkedList_header,
+                                                     roops_core_objects_LinkedList_size,
+                                                     objx]
      
      }
    )
+   and 
+   equ[throw,
+      null]
 
 }
 
@@ -735,29 +758,6 @@ pred roops_core_objects_LinkedListCondition20[
    isEmptyOrNull[nodeToInsert]
    or 
    isEmptyOrNull[insertBeforeNode]
-
-}
-
-pred precondition_roops_core_objects_LinkedList_addLastTest_0[
-  roops_core_objects_LinkedListNode_next:univ->univ,
-  roops_core_objects_LinkedListNode_previous:univ->univ,
-  roops_core_objects_LinkedList_header:univ->univ,
-  roops_core_objects_LinkedList_size:univ->univ,
-  throw:univ
-]{
-   equ[throw,
-      null]
-   and 
-   (
-     all objx:roops_core_objects_LinkedList | {
-       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next,
-                                                     roops_core_objects_LinkedListNode_previous,
-                                                     roops_core_objects_LinkedList_header,
-                                                     roops_core_objects_LinkedList_size,
-                                                     objx]
-     
-     }
-   )
 
 }
 
