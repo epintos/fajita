@@ -38,27 +38,19 @@ public class LinkedList extends java.lang.Object {
 
     if (t_3) {
       {
-        {
-          if (t_4) {
-            {
-              {
-                t_2 = true;
-              }
-            }
-          } else {
-            {
-              {
-                t_2 = false;
-              }
-            }
+        if (t_4) {
+          {
+            t_2 = true;
+          }
+        } else {
+          {
+            t_2 = false;
           }
         }
       }
     } else {
       {
-        {
-          t_2 = false;
-        }
+        t_2 = false;
       }
     }
     if (t_2) {
@@ -67,12 +59,10 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  boolean t_1;
+                boolean t_1;
 
-                  t_1 = list.addLast(o);
-                  boolean var_1_ret_val = t_1;
-                }
+                t_1 = list.addLast(o);
+                boolean var_1_ret_val = t_1;
               }
             }
           }
@@ -92,27 +82,19 @@ public class LinkedList extends java.lang.Object {
 
     if (t_7) {
       {
-        {
-          if (t_8) {
-            {
-              {
-                t_6 = true;
-              }
-            }
-          } else {
-            {
-              {
-                t_6 = false;
-              }
-            }
+        if (t_8) {
+          {
+            t_6 = true;
+          }
+        } else {
+          {
+            t_6 = false;
           }
         }
       }
     } else {
       {
-        {
-          t_6 = false;
-        }
+        t_6 = false;
       }
     }
     if (t_6) {
@@ -121,12 +103,10 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  boolean t_5;
+                boolean t_5;
 
-                  t_5 = list.contains(arg);
-                  boolean var_2_ret_val = t_5;
-                }
+                t_5 = list.contains(arg);
+                boolean var_2_ret_val = t_5;
               }
             }
           }
@@ -146,27 +126,19 @@ public class LinkedList extends java.lang.Object {
 
     if (t_11) {
       {
-        {
-          if (t_12) {
-            {
-              {
-                t_10 = true;
-              }
-            }
-          } else {
-            {
-              {
-                t_10 = false;
-              }
-            }
+        if (t_12) {
+          {
+            t_10 = true;
+          }
+        } else {
+          {
+            t_10 = false;
           }
         }
       }
     } else {
       {
-        {
-          t_10 = false;
-        }
+        t_10 = false;
       }
     }
     if (t_10) {
@@ -175,12 +147,10 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  java.lang.Object t_9;
+                java.lang.Object t_9;
 
-                  t_9 = list.removeIndex(index);
-                  java.lang.Object var_3_ret_val = t_9;
-                }
+                t_9 = list.removeIndex(index);
+                java.lang.Object var_3_ret_val = t_9;
               }
             }
           }
@@ -222,12 +192,10 @@ public class LinkedList extends java.lang.Object {
                 {
                   {
                     {
-                      {
-                        roops.core.objects.LinkedList.roops_goal_1 = true;
-                      }
-
-                      return var_4_i;
+                      roops.core.objects.LinkedList.roops_goal_1 = true;
                     }
+
+                    return var_4_i;
                   }
                 }
               }
@@ -292,9 +260,7 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  var_9_ret_val = true;
-                }
+                var_9_ret_val = true;
               }
             }
           }
@@ -306,37 +272,31 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  boolean t_20;
+                boolean t_20;
 
-                  t_20 = value1  ==  null;
-                  if (t_20) {
+                t_20 = value1  ==  null;
+                if (t_20) {
+                  {
                     {
                       {
                         {
                           {
-                            {
-                              {
-                                var_9_ret_val = false;
-                              }
-                            }
+                            var_9_ret_val = false;
                           }
                         }
                       }
                     }
-                  } else {
+                  }
+                } else {
+                  {
                     {
                       {
                         {
                           {
-                            {
-                              {
-                                boolean t_19;
+                            boolean t_19;
 
-                                t_19 = value1.equals(value2);
-                                var_9_ret_val = t_19;
-                              }
-                            }
+                            t_19 = value1.equals(value2);
+                            var_9_ret_val = t_19;
                           }
                         }
                       }
@@ -447,15 +407,13 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  java.lang.RuntimeException t_29;
+                java.lang.RuntimeException t_29;
 
-                  {
-                    roops.core.objects.LinkedList.roops_goal_0 = true;
-                  }
-                  t_29 = new java.lang.RuntimeException();
-                  throw t_29;
+                {
+                  roops.core.objects.LinkedList.roops_goal_0 = true;
                 }
+                t_29 = new java.lang.RuntimeException();
+                throw t_29;
               }
             }
           }
@@ -467,27 +425,19 @@ public class LinkedList extends java.lang.Object {
 
     if (t_33) {
       {
-        {
-          if (t_34) {
-            {
-              {
-                t_32 = true;
-              }
-            }
-          } else {
-            {
-              {
-                t_32 = false;
-              }
-            }
+        if (t_34) {
+          {
+            t_32 = true;
+          }
+        } else {
+          {
+            t_32 = false;
           }
         }
       }
     } else {
       {
-        {
-          t_32 = false;
-        }
+        t_32 = false;
       }
     }
 
@@ -497,15 +447,13 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  java.lang.RuntimeException t_31;
+                java.lang.RuntimeException t_31;
 
-                  {
-                    roops.core.objects.LinkedList.roops_goal_1 = true;
-                  }
-                  t_31 = new java.lang.RuntimeException();
-                  throw t_31;
+                {
+                  roops.core.objects.LinkedList.roops_goal_1 = true;
                 }
+                t_31 = new java.lang.RuntimeException();
+                throw t_31;
               }
             }
           }
@@ -520,15 +468,13 @@ public class LinkedList extends java.lang.Object {
           {
             {
               {
-                {
-                  java.lang.RuntimeException t_35;
+                java.lang.RuntimeException t_35;
 
-                  {
-                    roops.core.objects.LinkedList.roops_goal_2 = true;
-                  }
-                  t_35 = new java.lang.RuntimeException();
-                  throw t_35;
+                {
+                  roops.core.objects.LinkedList.roops_goal_2 = true;
                 }
+                t_35 = new java.lang.RuntimeException();
+                throw t_35;
               }
             }
           }
@@ -537,7 +483,7 @@ public class LinkedList extends java.lang.Object {
     }
     roops.core.objects.LinkedListNode var_13_node;
 
-    t_37 = this.roops_core_objects_LinkedList_size  >>  (byte)1;
+    t_37 = this.roops_core_objects_LinkedList_size / 2;
     int var_14_size_div_2 = t_37;
 
     t_40 = index  <  var_14_size_div_2;
@@ -549,24 +495,22 @@ public class LinkedList extends java.lang.Object {
             {
               {
                 {
-                  {
-                  }
-                  var_13_node = this.roops_core_objects_LinkedList_header.roops_core_objects_LinkedListNode_next;
-                  {
-                    int var_15_currentIndex = 0;
-                    boolean var_16_ws_2;
+                }
+                var_13_node = this.roops_core_objects_LinkedList_header.roops_core_objects_LinkedListNode_next;
+                {
+                  int var_15_currentIndex = 0;
+                  boolean var_16_ws_2;
 
-                    var_16_ws_2 = var_15_currentIndex  <  index;
-                    while (var_16_ws_2) {
-                      int t_38;
+                  var_16_ws_2 = var_15_currentIndex  <  index;
+                  while (var_16_ws_2) {
+                    int t_38;
 
-                      {
-                      }
-                      var_13_node = var_13_node.roops_core_objects_LinkedListNode_next;
-                      t_38 = var_15_currentIndex;
-                      var_15_currentIndex = var_15_currentIndex + (byte)1;
-                      var_16_ws_2 = var_15_currentIndex  <  index;
+                    {
                     }
+                    var_13_node = var_13_node.roops_core_objects_LinkedListNode_next;
+                    t_38 = var_15_currentIndex;
+                    var_15_currentIndex = var_15_currentIndex + (byte)1;
+                    var_16_ws_2 = var_15_currentIndex  <  index;
                   }
                 }
               }
@@ -581,24 +525,22 @@ public class LinkedList extends java.lang.Object {
             {
               {
                 {
-                  {
-                  }
-                  var_13_node = this.roops_core_objects_LinkedList_header;
-                  {
-                    int var_17_currentIndex = this.roops_core_objects_LinkedList_size;
-                    boolean var_18_ws_3;
+                }
+                var_13_node = this.roops_core_objects_LinkedList_header;
+                {
+                  int var_17_currentIndex = this.roops_core_objects_LinkedList_size;
+                  boolean var_18_ws_3;
 
-                    var_18_ws_3 = var_17_currentIndex  >  index;
-                    while (var_18_ws_3) {
-                      int t_39;
+                  var_18_ws_3 = var_17_currentIndex  >  index;
+                  while (var_18_ws_3) {
+                    int t_39;
 
-                      {
-                      }
-                      var_13_node = var_13_node.roops_core_objects_LinkedListNode_previous;
-                      t_39 = var_17_currentIndex;
-                      var_17_currentIndex = var_17_currentIndex + (byte)-1;
-                      var_18_ws_3 = var_17_currentIndex  >  index;
+                    {
                     }
+                    var_13_node = var_13_node.roops_core_objects_LinkedListNode_previous;
+                    t_39 = var_17_currentIndex;
+                    var_17_currentIndex = var_17_currentIndex + (byte)-1;
+                    var_18_ws_3 = var_17_currentIndex  >  index;
                   }
                 }
               }

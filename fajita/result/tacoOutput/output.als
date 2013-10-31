@@ -124,46 +124,46 @@ fun fun_set_sum[
 ]: Int {
   sum s 
 } 
-pred pred_empty_list[l: seq univ] { (no l) } 
+pred pred_empty_list[l: Int -> univ] { (no l) } 
 
 fun fun_list_add[
-  l: seq univ,
+  l: Int -> univ,
   e: univ
-]: seq univ {
-  sequniv/add[l,e] 
+]: Int -> univ {
+  l + (Int[#(l.univ)]->e)
 } 
 
 fun fun_list_get[
-  l: seq univ, 
+  l: Int -> univ, 
   index: Int
 ]: univ { 
   index.l 
 } 
 
 fun fun_list_contains[
-  l: seq univ, 
+  l: Int -> univ, 
   e: univ
 ]: boolean { 
   (e in Int.l) => true else false 
 } 
 
 fun fun_list_remove[
-  l: seq univ, 
+  l: Int -> univ, 
   index: Int
-]: seq univ { 
-  sequniv/delete[l,index] 
+]: Int -> univ { 
+  prevs[index]<:(l-(index->univ)) + next.(nexts[index]<:(l-(index->univ))) 
 } 
 
-fun fun_list_size[s: seq univ]: Int { #s } 
+fun fun_list_size[s: Int -> univ]: Int { #s } 
 
 fun fun_list_equals[
-  s1:seq univ, 
-  s2: seq univ
+  s1:Int -> univ, 
+  s2: Int -> univ
 ]: boolean { 
   (s1=s2) => true else false 
 } 
 
-fun fun_list_empty[s: seq univ]: boolean { (#s = 0) => true else false } 
+fun fun_list_empty[s: Int -> univ]: boolean { (#s = 0) => true else false } 
 
 pred pred_empty_map[map: univ -> univ] { (no map) } 
 
@@ -249,13 +249,13 @@ fun rel_override[
 } 
 
 fun Not[a: boolean]: boolean {
-    (a==true) => false else true 
+    (a=true) => false else true 
 }
 fun Or[a: boolean, b: boolean]: boolean {
-    (a==true or b==true) => true else false
+    (a=true or b=true) => true else false
 }
 fun And[a: boolean, b: boolean]: boolean {
-    (a==true and b==true) => true else false
+    (a=true and b=true) => true else false
 }
 fun Xor[a: boolean, b: boolean]: boolean {
     ((a==true and b==false) or (a==false and b==true)) => true else false
@@ -283,18 +283,15 @@ pred havocFieldPost[f0,f1: univ->univ, u:univ]{
   some u.f1  
 } 
 
-pred havocArrayContentsPost[array:  univ,
-                            domain: set univ,
-                            Object_Array_0: univ -> (seq univ),
-                            Object_Array_1: univ -> (seq univ)
-                           ] {
-  Object_Array_1 - (array->(domain->univ)) = Object_Array_0 - (array->(domain->univ))
-  (array.Object_Array_1).univ = (array.Object_Array_0).univ
-}
 pred havocFieldContentsPost[target: univ, 
                             field_0: univ -> univ, 
                             field_1: univ -> univ] { 
   field_1 - (target->univ) = field_0 - (target->univ) 
+}
+pred havocListSeqPost[target: univ,
+                            field_0: univ -> Int -> univ, 
+                            field_1: univ -> Int -> univ] { 
+  field_1 - (target->Int->univ) = field_0 - (target->Int->univ) 
 }
 pred pred_in[n: univ, t: set univ] { n in t } 
 
@@ -334,6 +331,9 @@ abstract sig java_lang_Exception extends java_lang_Throwable {}
 
 
 
+one
+sig java_lang_ExceptionLit extends java_lang_Exception {}
+{}
 
 //-------------- roops_core_objects_LinkedList--------------//
 sig roops_core_objects_LinkedList extends java_lang_Object {}
@@ -361,55 +361,6 @@ pred roops_core_objects_LinkedListCondition14[
   t_2:univ
 ]{
    t_2=true
-
-}
-
-pred roops_core_objects_LinkedList_object_invariant[
-  roops_core_objects_LinkedListNode_next:univ->univ,
-  roops_core_objects_LinkedListNode_previous:univ->univ,
-  roops_core_objects_LinkedList_header:univ->univ,
-  roops_core_objects_LinkedList_size:univ->univ,
-  thiz:univ
-]{
-   neq[thiz.roops_core_objects_LinkedList_header,
-      null]
-   and 
-   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_next,
-      null]
-   and 
-   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_previous,
-      null]
-   and 
-   equ[thiz.roops_core_objects_LinkedList_size,
-      fun_java_primitive_integer_value_sub[fun_java_primitive_integer_value_size_of[fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]],JavaPrimitiveIntegerLiteral1]]
-   and 
-   pred_java_primitive_integer_value_gte[thiz.roops_core_objects_LinkedList_size,
-                                        JavaPrimitiveIntegerLiteral0]
-   and 
-   (
-     all n:roops_core_objects_LinkedListNode | {
-       isSubset[n,
-               fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]]
-       implies 
-               (
-                 neq[n,
-                    null]
-                 and 
-                 neq[n.roops_core_objects_LinkedListNode_previous,
-                    null]
-                 and 
-                 equ[(n.roops_core_objects_LinkedListNode_previous).roops_core_objects_LinkedListNode_next,
-                    n]
-                 and 
-                 neq[n.roops_core_objects_LinkedListNode_next,
-                    null]
-                 and 
-                 equ[(n.roops_core_objects_LinkedListNode_next).roops_core_objects_LinkedListNode_previous,
-                    n]
-               )
-     
-     }
-   )
 
 }
 
@@ -530,6 +481,55 @@ pred roops_core_objects_LinkedListCondition18[
 
 }
 
+pred roops_core_objects_LinkedList_object_invariant[
+  roops_core_objects_LinkedListNode_next:univ->univ,
+  roops_core_objects_LinkedListNode_previous:univ->univ,
+  roops_core_objects_LinkedList_header:univ->univ,
+  roops_core_objects_LinkedList_size:univ->univ,
+  thiz:univ
+]{
+   neq[thiz.roops_core_objects_LinkedList_header,
+      null]
+   and 
+   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_next,
+      null]
+   and 
+   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_previous,
+      null]
+   and 
+   equ[thiz.roops_core_objects_LinkedList_size,
+      fun_java_primitive_integer_value_sub[fun_java_primitive_integer_value_size_of[fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]],JavaPrimitiveIntegerLiteral1]]
+   and 
+   pred_java_primitive_integer_value_gte[thiz.roops_core_objects_LinkedList_size,
+                                        JavaPrimitiveIntegerLiteral0]
+   and 
+   (
+     all n:roops_core_objects_LinkedListNode | {
+       isSubset[n,
+               fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]]
+       implies 
+               (
+                 neq[n,
+                    null]
+                 and 
+                 neq[n.roops_core_objects_LinkedListNode_previous,
+                    null]
+                 and 
+                 equ[(n.roops_core_objects_LinkedListNode_previous).roops_core_objects_LinkedListNode_next,
+                    n]
+                 and 
+                 neq[n.roops_core_objects_LinkedListNode_next,
+                    null]
+                 and 
+                 equ[(n.roops_core_objects_LinkedListNode_next).roops_core_objects_LinkedListNode_previous,
+                    n]
+               )
+     
+     }
+   )
+
+}
+
 pred roops_core_objects_LinkedListCondition19[
   nodeToInsert:univ
 ]{
@@ -644,6 +644,16 @@ pred roops_core_objects_LinkedList_ensures[
 
 }
 
+pred roops_core_objects_LinkedListCondition20[
+  insertBeforeNode:univ,
+  nodeToInsert:univ
+]{
+   isEmptyOrNull[nodeToInsert]
+   or 
+   isEmptyOrNull[insertBeforeNode]
+
+}
+
 pred precondition_roops_core_objects_LinkedList_addLastTest_0[
   roops_core_objects_LinkedListNode_next:univ->univ,
   roops_core_objects_LinkedListNode_previous:univ->univ,
@@ -667,16 +677,6 @@ pred precondition_roops_core_objects_LinkedList_addLastTest_0[
 
 }
 
-pred roops_core_objects_LinkedListCondition20[
-  insertBeforeNode:univ,
-  nodeToInsert:univ
-]{
-   isEmptyOrNull[nodeToInsert]
-   or 
-   isEmptyOrNull[insertBeforeNode]
-
-}
-
 pred roops_core_objects_LinkedListCondition21[
   insertBeforeNode:univ,
   nodeToInsert:univ
@@ -689,11 +689,14 @@ pred roops_core_objects_LinkedListCondition21[
 
 }
 //-------------- java_lang_Throwable--------------//
-abstract sig java_lang_Throwable {}
+abstract sig java_lang_Throwable extends java_lang_Object {}
 {}
 
 
 
+one
+sig java_lang_ThrowableLit extends java_lang_Throwable {}
+{}
 
 //-------------- java_lang_Object--------------//
 sig java_lang_Object {}
@@ -828,6 +831,8 @@ Authors: Pablo Abad and Marcelo Frias
 PREDICATES:
 pred_java_primitive_integer_value_abs
 pred_java_primitive_integer_value_decrement
+pred_java_primitive_integer_value_add
+pred_java_primitive_integer_value_sub
 pred_java_primitive_integer_value_div
 pred_java_primitive_integer_value_div_rem
 pred_java_primitive_integer_value_eq
@@ -2960,6 +2965,10 @@ pred pred_java_primitive_integer_value_abs[a: JavaPrimitiveIntegerValue, abs: Ja
   else pred_java_primitive_integer_value_eq[a, abs]
 }
 
+pred pred_java_primitive_integer_value_sub[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue, result: JavaPrimitiveIntegerValue, overflow: boolean] { 
+	pred_java_primitive_integer_value_add[result, b, a, overflow]
+}
+
 pred pred_java_primitive_integer_value_add[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue, result: JavaPrimitiveIntegerValue, overflow: boolean] { 
    let c_0 = false | 
    let s_0 = AdderSum[a.b00, b.b00, c_0] | 
@@ -3313,6 +3322,41 @@ pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
+pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=true 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
 fun fun_java_primitive_integer_value_literal_minus_1[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_minus_1[ret] }
 }
@@ -3397,6 +3441,19 @@ pred havocField[
 }
 
 
+pred havocListSeq[
+  target_0: univ,
+  field_0: univ -> Int -> univ,
+  field_1: univ -> Int -> univ
+]{
+  TruePred[]
+  and 
+  havocListSeqPost[target_0,
+                  field_0,
+                  field_1]
+}
+
+
 pred updateField[
   l_0: univ,
   f_0: univ -> univ,
@@ -3409,21 +3466,6 @@ pred updateField[
                  f_0,
                  l_0,
                  r_0]
-}
-
-
-pred havocArrayContents[
-  array_0: univ,
-  domain_0: set univ,
-  Object_Array_0: univ -> ( seq univ ),
-  Object_Array_1: univ -> ( seq univ )
-]{
-  TruePred[]
-  and 
-  havocArrayContentsPost[array_0,
-                        domain_0,
-                        Object_Array_0,
-                        Object_Array_1]
 }
 
 
@@ -6602,9 +6644,6 @@ assert check_roops_core_objects_LinkedList_addLastTest_0{
                                                            QF.roops_core_objects_LinkedList_size_1,
                                                            QF.throw_29]
 }
-fun fun_java_primitive_integer_value_literal_2[]: one JavaPrimitiveIntegerValue {
- { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_2[ret] }
-}
 fun fun_java_primitive_integer_value_literal_3[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_3[ret] }
 }
@@ -6622,40 +6661,6 @@ fun fun_java_primitive_integer_value_literal_7[]: one JavaPrimitiveIntegerValue 
 }
 fun fun_java_primitive_integer_value_size_of[s: set univ]: one JavaPrimitiveIntegerValue {
   { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_size_of[s,ret]} 
-}
-pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
- ret.b00=false 
- ret.b01=true 
- ret.b02=false 
- ret.b03=false 
- ret.b04=false 
- ret.b05=false 
- ret.b06=false 
- ret.b07=false 
- ret.b08=false 
- ret.b09=false 
- ret.b10=false 
- ret.b11=false 
- ret.b12=false 
- ret.b13=false 
- ret.b14=false 
- ret.b15=false 
- ret.b16=false 
- ret.b17=false 
- ret.b18=false 
- ret.b19=false 
- ret.b20=false 
- ret.b21=false 
- ret.b22=false 
- ret.b23=false 
- ret.b24=false 
- ret.b25=false 
- ret.b26=false 
- ret.b27=false 
- ret.b28=false 
- ret.b29=false 
- ret.b30=false 
- ret.b31=false 
 }
 pred pred_java_primitive_integer_value_literal_3[ret: JavaPrimitiveIntegerValue] {
  ret.b00=true 

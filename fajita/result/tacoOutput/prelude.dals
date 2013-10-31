@@ -117,46 +117,46 @@ fun fun_set_sum[
 ]: Int {
   sum s 
 } 
-pred pred_empty_list[l: seq univ] { (no l) } 
+pred pred_empty_list[l: Int -> univ] { (no l) } 
 
 fun fun_list_add[
-  l: seq univ,
+  l: Int -> univ,
   e: univ
-]: seq univ {
-  sequniv/add[l,e] 
+]: Int -> univ {
+  l + (Int[#(l.univ)]->e)
 } 
 
 fun fun_list_get[
-  l: seq univ, 
+  l: Int -> univ, 
   index: Int
 ]: univ { 
   index.l 
 } 
 
 fun fun_list_contains[
-  l: seq univ, 
+  l: Int -> univ, 
   e: univ
 ]: boolean { 
   (e in Int.l) => true else false 
 } 
 
 fun fun_list_remove[
-  l: seq univ, 
+  l: Int -> univ, 
   index: Int
-]: seq univ { 
-  sequniv/delete[l,index] 
+]: Int -> univ { 
+  prevs[index]<:(l-(index->univ)) + next.(nexts[index]<:(l-(index->univ))) 
 } 
 
-fun fun_list_size[s: seq univ]: Int { #s } 
+fun fun_list_size[s: Int -> univ]: Int { #s } 
 
 fun fun_list_equals[
-  s1:seq univ, 
-  s2: seq univ
+  s1:Int -> univ, 
+  s2: Int -> univ
 ]: boolean { 
   (s1=s2) => true else false 
 } 
 
-fun fun_list_empty[s: seq univ]: boolean { (#s = 0) => true else false } 
+fun fun_list_empty[s: Int -> univ]: boolean { (#s = 0) => true else false } 
 
 pred pred_empty_map[map: univ -> univ] { (no map) } 
 
@@ -242,13 +242,13 @@ fun rel_override[
 } 
 
 fun Not[a: boolean]: boolean {
-    (a==true) => false else true 
+    (a=true) => false else true 
 }
 fun Or[a: boolean, b: boolean]: boolean {
-    (a==true or b==true) => true else false
+    (a=true or b=true) => true else false
 }
 fun And[a: boolean, b: boolean]: boolean {
-    (a==true and b==true) => true else false
+    (a=true and b=true) => true else false
 }
 fun Xor[a: boolean, b: boolean]: boolean {
     ((a==true and b==false) or (a==false and b==true)) => true else false
@@ -286,27 +286,6 @@ pred havocFieldPost[f0,f1: univ->univ, u:univ]{
   some u.f1  
 } 
 
-pred havocArrayContentsPost[array:  univ,
-                            domain: set univ,
-                            Object_Array_0: univ -> (seq univ),
-                            Object_Array_1: univ -> (seq univ)
-                           ] {
-  Object_Array_1 - (array->(domain->univ)) = Object_Array_0 - (array->(domain->univ))
-  (array.Object_Array_1).univ = (array.Object_Array_0).univ
-}action havocArrayContents[
-                          array: univ,
-                          domain: set univ,
-                          Object_Array: univ -> (seq univ)
-                         ] {
-pre { TruePred[] }
-post { havocArrayContentsPost[
-                              array,
-                              domain,
-                              Object_Array,
-                              Object_Array'
-                             ]
-     }
-}
 pred havocFieldContentsPost[target: univ, 
                             field_0: univ -> univ, 
                             field_1: univ -> univ] { 
@@ -317,6 +296,18 @@ action havocFieldContents[target: univ,
                           field: univ->univ] {
   pre  { TruePred[] }
   post { havocFieldContentsPost[target,field,field'] }
+}
+
+pred havocListSeqPost[target: univ,
+                            field_0: univ -> Int -> univ, 
+                            field_1: univ -> Int -> univ] { 
+  field_1 - (target->Int->univ) = field_0 - (target->Int->univ) 
+}
+
+action havocListSeq[target: univ,
+                          field: univ->Int->univ] {
+  pre  { TruePred[] }
+  post { havocListSeqPost[target,field,field'] }
 }
 
 pred pred_in[n: univ, t: set univ] { n in t } 

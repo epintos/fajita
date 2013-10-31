@@ -2,7 +2,7 @@
 module org_jmlspecs_models_JMLObjectSequence
 abstract sig org_jmlspecs_models_JMLObjectSequence {}
 {}
-field JMLObjectSequence_contains:(org_jmlspecs_models_JMLObjectSequence)->(seq univ) {}
+field JMLObjectSequence_contains:(org_jmlspecs_models_JMLObjectSequence)->(seq(univ)) {}
 
 program org_jmlspecs_models_JMLObjectSequence::get[
   var thiz:org_jmlspecs_models_JMLObjectSequence,
