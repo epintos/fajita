@@ -6,4 +6,6 @@ field roops_core_objects_LinkedList_myRoopsArray:(ClassFields)->one(null+roops_u
 field roops_core_objects_LinkedList_roops_goal_1:(ClassFields)->one(boolean) {}
 field roops_core_objects_LinkedList_roops_goal_2:(ClassFields)->one(boolean) {}
 field roops_core_objects_LinkedList_roops_goal_0:(ClassFields)->one(boolean) {}
+field java_lang_Boolean_TRUE:(ClassFields)->one(java_lang_Boolean) {}
+field java_lang_Boolean_FALSE:(ClassFields)->one(java_lang_Boolean) {}
 

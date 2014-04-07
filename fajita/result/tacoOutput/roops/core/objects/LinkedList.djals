@@ -1513,32 +1513,67 @@ Implementation
                skip;
             };
             var var_13_node:null+roops_core_objects_LinkedListNode;
-            var SK_pred_java_primitive_integer_value_div_rem_ARG_left_0:JavaPrimitiveIntegerValue;
-            var SK_pred_java_primitive_integer_value_div_rem_ARG_right_0:JavaPrimitiveIntegerValue;
-            var SK_pred_java_primitive_integer_value_div_rem_ARG_result_0:JavaPrimitiveIntegerValue;
-            var SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0:JavaPrimitiveIntegerValue;
-            havoc SK_pred_java_primitive_integer_value_div_rem_ARG_left_0;
-            havoc SK_pred_java_primitive_integer_value_div_rem_ARG_right_0;
-            havoc SK_pred_java_primitive_integer_value_div_rem_ARG_result_0;
-            havoc SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0;
-            if isEmptyOrNull[thiz]{
-               throw:=java_lang_NullPointerExceptionLit;
-            } else {
-               assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,
-                  thiz.roops_core_objects_LinkedList_size];
-            };
-            assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_right_0,
+            var auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0:JavaPrimitiveIntegerValue;
+            havoc auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0;
+            assume equ[auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0,
                JavaPrimitiveIntegerLiteral2];
-            assume pred_java_primitive_integer_value_div_rem_marker[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,
-                                                            SK_pred_java_primitive_integer_value_div_rem_ARG_right_0,
-                                                            SK_pred_java_primitive_integer_value_div_rem_ARG_result_0,
-                                                            SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0];
+            var SK_pred_java_primitive_integer_value_div_rem_ARG_left_1:JavaPrimitiveIntegerValue;
+            var SK_pred_java_primitive_integer_value_div_rem_ARG_right_1:JavaPrimitiveIntegerValue;
+            var SK_pred_java_primitive_integer_value_div_rem_ARG_result_1:JavaPrimitiveIntegerValue;
+            var SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_1:JavaPrimitiveIntegerValue;
+            if pred_java_primitive_integer_value_eq[auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0,
+                                                JavaPrimitiveIntegerLiteral0]   {
+                  throw:=java_lang_ArithmeticExceptionLit;
+                  {
+                     havoc SK_pred_java_primitive_integer_value_div_rem_ARG_left_1;
+                     havoc auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0;
+                     havoc SK_pred_java_primitive_integer_value_div_rem_ARG_right_1;
+                     havoc SK_pred_java_primitive_integer_value_div_rem_ARG_result_1;
+                     havoc SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_1;
+                     if isEmptyOrNull[thiz]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_left_1,
+                           thiz.roops_core_objects_LinkedList_size];
+                     };
+                     assume equ[auxVarForArithmeticExceptionDivisionByZeroJavaPrimitiveIntegerValue_0,
+                        JavaPrimitiveIntegerLiteral2];
+                     assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_right_1,
+                        JavaPrimitiveIntegerLiteral1];
+                     assume pred_java_primitive_integer_value_div_rem_marker[SK_pred_java_primitive_integer_value_div_rem_ARG_left_1,
+                                                                     SK_pred_java_primitive_integer_value_div_rem_ARG_right_1,
+                                                                     SK_pred_java_primitive_integer_value_div_rem_ARG_result_1,
+                                                                     SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_1];
+                  
+                  }
+               
+               }
+             else    {
+                  havoc SK_pred_java_primitive_integer_value_div_rem_ARG_left_1;
+                  havoc SK_pred_java_primitive_integer_value_div_rem_ARG_right_1;
+                  havoc SK_pred_java_primitive_integer_value_div_rem_ARG_result_1;
+                  havoc SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_1;
+                  if isEmptyOrNull[thiz]{
+                     throw:=java_lang_NullPointerExceptionLit;
+                  } else {
+                     assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_left_1,
+                        thiz.roops_core_objects_LinkedList_size];
+                  };
+                  assume equ[SK_pred_java_primitive_integer_value_div_rem_ARG_right_1,
+                     JavaPrimitiveIntegerLiteral2];
+                  assume pred_java_primitive_integer_value_div_rem_marker[SK_pred_java_primitive_integer_value_div_rem_ARG_left_1,
+                                                                  SK_pred_java_primitive_integer_value_div_rem_ARG_right_1,
+                                                                  SK_pred_java_primitive_integer_value_div_rem_ARG_result_1,
+                                                                  SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_1];
+               
+               }
+            ;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_37:=SK_pred_java_primitive_integer_value_div_rem_ARG_result_0;
+               t_37:=SK_pred_java_primitive_integer_value_div_rem_ARG_result_1;
             } else {
                skip;
             };

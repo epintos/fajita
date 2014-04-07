@@ -530,6 +530,33 @@ pred roops_core_objects_LinkedListCondition16[
 
 }
 
+pred postcondition_roops_core_objects_LinkedList_addLastTest_0[
+  roops_core_objects_LinkedListNode_next':univ->univ,
+  roops_core_objects_LinkedListNode_previous':univ->univ,
+  roops_core_objects_LinkedList_header':univ->univ,
+  roops_core_objects_LinkedList_size':univ->univ,
+  throw':univ
+]{
+   roops_core_objects_LinkedList_ensures[throw']
+   and 
+   (
+     not (
+       throw'=AssertionFailureLit)
+   )
+   and 
+   (
+     all objx':roops_core_objects_LinkedList | {
+       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next',
+                                                     roops_core_objects_LinkedListNode_previous',
+                                                     roops_core_objects_LinkedList_header',
+                                                     roops_core_objects_LinkedList_size',
+                                                     objx']
+     
+     }
+   )
+
+}
+
 pred roops_core_objects_LinkedListCondition17[
   thiz:univ
 ]{
@@ -558,33 +585,6 @@ pred roops_core_objects_LinkedListCondition27[
 
 }
 
-pred postcondition_roops_core_objects_LinkedList_addLastTest_0[
-  roops_core_objects_LinkedListNode_next':univ->univ,
-  roops_core_objects_LinkedListNode_previous':univ->univ,
-  roops_core_objects_LinkedList_header':univ->univ,
-  roops_core_objects_LinkedList_size':univ->univ,
-  throw':univ
-]{
-   roops_core_objects_LinkedList_ensures[throw']
-   and 
-   (
-     not (
-       throw'=AssertionFailureLit)
-   )
-   and 
-   (
-     all objx':roops_core_objects_LinkedList | {
-       roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next',
-                                                     roops_core_objects_LinkedListNode_previous',
-                                                     roops_core_objects_LinkedList_header',
-                                                     roops_core_objects_LinkedList_size',
-                                                     objx']
-     
-     }
-   )
-
-}
-
 pred roops_core_objects_LinkedListCondition18[
   nodeToInsert:univ
 ]{
@@ -600,55 +600,6 @@ pred roops_core_objects_LinkedListCondition19[
 
 }
 
-pred roops_core_objects_LinkedList_object_invariant[
-  roops_core_objects_LinkedListNode_next:univ->univ,
-  roops_core_objects_LinkedListNode_previous:univ->univ,
-  roops_core_objects_LinkedList_header:univ->univ,
-  roops_core_objects_LinkedList_size:univ->univ,
-  thiz:univ
-]{
-   neq[thiz.roops_core_objects_LinkedList_header,
-      null]
-   and 
-   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_next,
-      null]
-   and 
-   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_previous,
-      null]
-   and 
-   equ[thiz.roops_core_objects_LinkedList_size,
-      fun_java_primitive_integer_value_sub[fun_java_primitive_integer_value_size_of[fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]],JavaPrimitiveIntegerLiteral1]]
-   and 
-   pred_java_primitive_integer_value_gte[thiz.roops_core_objects_LinkedList_size,
-                                        JavaPrimitiveIntegerLiteral0]
-   and 
-   (
-     all n:roops_core_objects_LinkedListNode | {
-       isSubset[n,
-               fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]]
-       implies 
-               (
-                 neq[n,
-                    null]
-                 and 
-                 neq[n.roops_core_objects_LinkedListNode_previous,
-                    null]
-                 and 
-                 equ[(n.roops_core_objects_LinkedListNode_previous).roops_core_objects_LinkedListNode_next,
-                    n]
-                 and 
-                 neq[n.roops_core_objects_LinkedListNode_next,
-                    null]
-                 and 
-                 equ[(n.roops_core_objects_LinkedListNode_next).roops_core_objects_LinkedListNode_previous,
-                    n]
-               )
-     
-     }
-   )
-
-}
-
 pred precondition_roops_core_objects_LinkedList_addLastTest_0[
   roops_core_objects_LinkedListNode_next:univ->univ,
   roops_core_objects_LinkedListNode_previous:univ->univ,
@@ -656,6 +607,9 @@ pred precondition_roops_core_objects_LinkedList_addLastTest_0[
   roops_core_objects_LinkedList_size:univ->univ,
   throw:univ
 ]{
+   equ[throw,
+      null]
+   and 
    (
      all objx:roops_core_objects_LinkedList | {
        roops_core_objects_LinkedList_object_invariant[roops_core_objects_LinkedListNode_next,
@@ -666,9 +620,6 @@ pred precondition_roops_core_objects_LinkedList_addLastTest_0[
      
      }
    )
-   and 
-   equ[throw,
-      null]
 
 }
 
@@ -758,6 +709,55 @@ pred roops_core_objects_LinkedListCondition20[
    isEmptyOrNull[nodeToInsert]
    or 
    isEmptyOrNull[insertBeforeNode]
+
+}
+
+pred roops_core_objects_LinkedList_object_invariant[
+  roops_core_objects_LinkedListNode_next:univ->univ,
+  roops_core_objects_LinkedListNode_previous:univ->univ,
+  roops_core_objects_LinkedList_header:univ->univ,
+  roops_core_objects_LinkedList_size:univ->univ,
+  thiz:univ
+]{
+   neq[thiz.roops_core_objects_LinkedList_header,
+      null]
+   and 
+   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_next,
+      null]
+   and 
+   neq[(thiz.roops_core_objects_LinkedList_header).roops_core_objects_LinkedListNode_previous,
+      null]
+   and 
+   equ[thiz.roops_core_objects_LinkedList_size,
+      fun_java_primitive_integer_value_sub[fun_java_primitive_integer_value_size_of[fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]],JavaPrimitiveIntegerLiteral1]]
+   and 
+   pred_java_primitive_integer_value_gte[thiz.roops_core_objects_LinkedList_size,
+                                        JavaPrimitiveIntegerLiteral0]
+   and 
+   (
+     all n:roops_core_objects_LinkedListNode | {
+       isSubset[n,
+               fun_set_difference[(thiz.roops_core_objects_LinkedList_header).(fun_reflexive_closure[roops_core_objects_LinkedListNode_next]),null]]
+       implies 
+               (
+                 neq[n,
+                    null]
+                 and 
+                 neq[n.roops_core_objects_LinkedListNode_previous,
+                    null]
+                 and 
+                 equ[(n.roops_core_objects_LinkedListNode_previous).roops_core_objects_LinkedListNode_next,
+                    n]
+                 and 
+                 neq[n.roops_core_objects_LinkedListNode_next,
+                    null]
+                 and 
+                 equ[(n.roops_core_objects_LinkedListNode_next).roops_core_objects_LinkedListNode_previous,
+                    n]
+               )
+     
+     }
+   )
 
 }
 
