@@ -1,11 +1,15 @@
 package ar.edu.taco.snapshot;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -67,11 +71,17 @@ public class SnapshotBuilder {
 
 	private Map<String, Object> instances = new HashMap<String, Object>();
 	
-	private ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	private ClassLoader loader = null;
+	
 	public void setLoader(ClassLoader loader) {
 		this.loader = loader;
 	}
 
+	public ClassLoader getLoader(){
+		return loader;
+	}
+	
+	
 	public SnapshotBuilder(RecoveredInformation recoveredInformation, TacoAnalysisResult tacoAnalysisResult) {
 		super();
 		this.tacoAnalysisResult = tacoAnalysisResult;		
@@ -143,16 +153,13 @@ public class SnapshotBuilder {
 		// build static fields
 		for (StaticFieldInformation staticFieldInfo : this.recoveredInformation.getStaticFields()) {
 			try {
-				Class clazz = Class.forName(staticFieldInfo.getClassName(), true, loader);
-				Field field = getField(clazz, staticFieldInfo.getFieldName());
+				Field field = getField(clazzToCheck, staticFieldInfo.getFieldName());
 				Object fieldValue = setFieldValueSupport(null, null, field);
 				if (fieldValue != null) {
 					setStaticFieldvalue(staticFieldInfo.getClassName(), staticFieldInfo.getFieldName(), fieldValue);
 				}
 
 			} catch (SecurityException e) {
-				throw new TacoException(e);
-			} catch (ClassNotFoundException e) {
 				throw new TacoException(e);
 			}
 
@@ -210,9 +217,20 @@ public class SnapshotBuilder {
 
 		Class<?> clazz;
 		try {
-			clazz = Class.forName(recoveredInformation.getClassToCheck(), true, loader);
+			String sourceClassToCheck = recoveredInformation.getClassToCheck();
+			String actualPathToInstrumentedClass = System.getProperty("user.dir") + 
+					System.getProperty("file.separator") + "result" + System.getProperty("file.separator") + 
+					"fajitaOut" + 
+					System.getProperty("file.separator"); 
+					//+ sourceClassToCheck.replace(".", System.getProperty("file.separator")).substring(0, sourceClassToCheck.lastIndexOf('.')+1); 
+			ClassLoader cl = ClassLoader.getSystemClassLoader();
+			loader = new URLClassLoader(new URL[]{new File(actualPathToInstrumentedClass).toURI().toURL()}, cl);
+			clazz = loader.loadClass(sourceClassToCheck);
+//			clazz = Class.forName(recoveredInformation.getClassToCheck(), true, loader);
 			return clazz;
 		} catch (ClassNotFoundException e) {
+			throw new TacoException("Snapshot error: " + e.getMessage(), e);
+		} catch (MalformedURLException e) {
 			throw new TacoException("Snapshot error: " + e.getMessage(), e);
 		}
 	}

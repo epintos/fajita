@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry excluding="roops/util/" kind="src" path="roops"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/alloycli"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
@@ -9,8 +8,8 @@
 	<classpathentry kind="lib" path="lib/recoder.jar"/>
 	<classpathentry kind="lib" path="lib/roops-0.1.49.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy42"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/JDynAlloy2"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/taco2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jdynalloy"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/taco"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

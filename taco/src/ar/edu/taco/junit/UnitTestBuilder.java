@@ -41,7 +41,7 @@ public class UnitTestBuilder {
 	private static final String PACKAGE_NAME = "ar.edu.generated.junit";
 
 	private RecoveredInformation recoveredInformation;
-	private ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	private ClassLoader loader = null;
 	private String outputPath = "";
 	private String staticFieldNameFilter = "";
 
@@ -77,7 +77,7 @@ public class UnitTestBuilder {
 
 		Class<?> clazz;
 		try {
-			clazz = Class.forName(recoveredInformation.getClassToCheck(), true, loader);
+			clazz = loader.loadClass(recoveredInformation.getClassToCheck());
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("DYNJALLOY ERROR! " + e.getMessage());
 		}

@@ -164,8 +164,12 @@ public class JmlParser {
 				sb.append(source).append(FILE_SEP).append(cu).append(ext);
 				String filename = sb.toString();
 //				System.out.println("looking for: "+filename);
-				if (new File(filename).exists())
+				if (new File(filename).exists()){
+//					System.out.println("File " + filename + " found");
 					return filename;
+				} else {
+//					System.out.println("File " + filename + " NOT found");
+				}
 			}
 		}
 

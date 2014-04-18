@@ -50,14 +50,23 @@ public class FajitaJavaCodeDecorator {
 		configuration.setDiscoveredGoals(0);
 		FajitaJavaCodeTranslator translator = new FajitaJavaCodeTranslator(configuration);
 		
+		String originalClassToCheck = configuration.getClassToCheck();
+		
+		String newRelevantClassNames = "";
+		
 		List<String> translatedFiles = new ArrayList<String>(relevantClasses.size());
 		for (String clazz : relevantClasses) {
+			configuration.setClassToCheck(getInstrumentedClassFullyQualifiedName(clazz));
+			newRelevantClassNames = newRelevantClassNames + getInstrumentedClassFullyQualifiedName(clazz) + ",";
 			String clazzDesFile = getDesFile(clazz);
 			translator.translate(getSrcFile(clazz), clazzDesFile);
 			translatedFiles.add(clazzDesFile);
 		}
+		newRelevantClassNames = newRelevantClassNames.substring(0, newRelevantClassNames.length() - 1);
+		configuration.setRelevantClasses(newRelevantClassNames);
 		
 		compile(translatedFiles);
+		configuration.setClassToCheck(getInstrumentedClassFullyQualifiedName(originalClassToCheck));
 		
 		configuration.setGoalTagFilter(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG + "_[0-9]+");
 		configuration.setCompiledClassToCheckPath(getDesDir());
@@ -107,7 +116,7 @@ public class FajitaJavaCodeDecorator {
 	private String getDesDir() {
 		return configuration.getResultPath() + separator +
 			FajitaConfiguration.FAJITA_OUT + separator +
-			configuration.getClassToCheck().replace(".", "_") + separator;
+			"sources" + separator;
 	}
 	
 	
@@ -115,7 +124,14 @@ public class FajitaJavaCodeDecorator {
 	 * This method returns the path to the translated file.
 	 */
 	private String getDesFile(String className) {
-		return getDesDir() + className.replace(".", separator) + ".java";
+		String instrumentedClassName = className.substring(0, className.lastIndexOf(".")) + "Instrumented" + className.substring(className.lastIndexOf("."));
+		return getDesDir() + instrumentedClassName.replace(".", separator) + ".java";
+	}
+	
+	
+	private String getInstrumentedClassFullyQualifiedName(String className) {
+		String instrumentedClassName = className.substring(0, className.lastIndexOf(".")) + "Instrumented" + className.substring(className.lastIndexOf("."));
+		return instrumentedClassName;
 	}
 	
 	
@@ -130,7 +146,8 @@ public class FajitaJavaCodeDecorator {
 	private void compile(List<String> files) {
 		String fileList = files.toString().substring(1).replaceAll("\\.java", "")
 			.replaceAll("\\.", separator).replaceAll("[,\\]]", ".java").trim();
-		String compileCommand = "javac -d " + getDesDir() + " " + fileList;
+		String desDir = "result" + separator + "fajitaOut";
+		String compileCommand = "javac -d " + desDir + " " + fileList;
 		
 		try {
 			int compileRetCode = Runtime.getRuntime().exec(compileCommand).waitFor();

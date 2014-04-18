@@ -1,7 +1,8 @@
 package roops.core.objects;
 
+import roops.core.objects.LinkedListNode;
 //Authors: Marcelo Frias
-import roops.util.RoopsArray; @roops.util.BenchmarkClass
+ @roops.util.BenchmarkClass
 /**
  * @Invariant 
  *		( this.header!=null ) &&

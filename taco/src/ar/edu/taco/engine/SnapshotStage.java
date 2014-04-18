@@ -24,9 +24,13 @@ public class SnapshotStage implements ITacoStage {
 	private RecoveredInformation recoveredInformation;
 	
 	private boolean noVerify = false;
-	private ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	private ClassLoader loader = null;
 	public void setLoader(ClassLoader loader) {
 		this.loader = loader;
+	}
+	
+	public ClassLoader getLoader(){
+		return loader;
 	}
 	public void setNoVerify(boolean value) {
 		this.noVerify = value;
@@ -94,8 +98,8 @@ public class SnapshotStage implements ITacoStage {
 				} else {			
 					SnapshotBuilder snapshotBuilder = new SnapshotBuilder(
 							recoveredInformation, this.tacoAnalysisResult);
-					snapshotBuilder.setLoader(loader);
-					snapshotBuilder.createSnapshot();				
+					snapshotBuilder.createSnapshot();	
+					loader = snapshotBuilder.getLoader();
 				}
 			}
 

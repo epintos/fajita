@@ -3,22 +3,40 @@ package ar.uba.dc.rfm.fajita.translation;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Properties;
 
+import javax.naming.Reference;
+
 import recoder.CrossReferenceServiceConfiguration;
+import recoder.ModelException;
 import recoder.ProgramFactory;
+import recoder.java.Comment;
 import recoder.java.CompilationUnit;
 import recoder.java.Identifier;
+import recoder.java.Import;
 import recoder.java.NonTerminalProgramElement;
+import recoder.java.PackageSpecification;
 import recoder.java.PrettyPrinter;
+import recoder.java.ProgramElement;
+import recoder.java.SourceElement;
+import recoder.java.SourceVisitor;
+import recoder.java.SourceElement.Position;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.declaration.TypeDeclarationContainer;
 import recoder.java.expression.literal.BooleanLiteral;
 import recoder.java.expression.operator.CopyAssignment;
+import recoder.java.reference.PackageReference;
+import recoder.java.reference.ReferencePrefix;
+import recoder.java.reference.ReferenceSuffix;
+import recoder.java.reference.TypeReference;
+import recoder.java.reference.TypeReferenceInfix;
 import recoder.java.reference.UncollatedReferenceQualifier;
 import recoder.kit.Transformation;
+import recoder.list.generic.ASTArrayList;
+import recoder.list.generic.ASTList;
 
 import ar.uba.dc.rfm.fajita.FajitaConfiguration;
 import ar.uba.dc.rfm.fajita.FajitaException;
@@ -92,6 +110,29 @@ public class FajitaJavaCodeTranslator {
 			
 			CompilationUnit compilationUnit =
 				recoder.getProgramFactory().parseCompilationUnit(contents);
+
+			
+			PackageReference pr = compilationUnit.getPackageSpecification().getPackageReference();
+			String prString = pr.getName() + "Instrumented";
+			pr.setIdentifier(new Identifier(prString));
+			
+			ASTList<Import> imports = compilationUnit.getImports();
+			ASTList<Import> newImports = new ASTArrayList<Import>();
+			
+			for (Import i : imports){
+				String[] relevantClasses = configuration.getRelevantClasses().split(",");
+				for (String s : relevantClasses){
+					TypeReference pref = i.getTypeReference();
+					String importString = pref.toString().substring(pref.toString().indexOf(' ')+1, pref.toString().length());
+				
+					if (s.equals(importString)){
+						TypeReference trr = i.getTypeReference();
+						UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier)trr.getReferencePrefix();
+						urq.setIdentifier(new Identifier(urq.getName() + "Instrumented"));
+					}
+				}
+			}
+//			compilationUnit.setImports(newImports);
 			
 			Transformation transformation;
 			
@@ -121,7 +162,7 @@ public class FajitaJavaCodeTranslator {
 			
 			transformation.execute();
 
-			FajitaPrettyPrinter.print(outFile, compilationUnit);
+		FajitaPrettyPrinter.print(outFile, compilationUnit);
 			
 		} catch (Exception e) {
 			throw new FajitaException(
@@ -159,7 +200,7 @@ public class FajitaJavaCodeTranslator {
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
-	//           COMMON FUNCGTIONS USED BY ALL THE TRANSFORMATIONS           //
+	//           COMMON FUNCTIONS USED BY ALL THE TRANSFORMATIONS           //
 	///////////////////////////////////////////////////////////////////////////
 	
 	

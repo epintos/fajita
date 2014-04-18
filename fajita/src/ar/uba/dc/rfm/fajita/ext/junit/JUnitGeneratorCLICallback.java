@@ -82,8 +82,8 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 			return;
 		
 		try {
-			URL url = new URL("file://" + configuration.getCompiledClassToCheckPath());
-			URLClassLoader loader = new URLClassLoader(new URL[] {url});
+//			URL url = new URL("file://" + configuration.getCompiledClassToCheckPath());
+			URLClassLoader loader = null;
 			
 			SnapshotStage snapshotStage = new SnapshotStage(
 				JmlParser.getInstance().getCompilationUnits(),
@@ -98,7 +98,7 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 
 			UnitTestBuilder unitTestBuilder = new UnitTestBuilder(
 				snapshotStage.getRecoveredInformation());
-			unitTestBuilder.setLoader(loader);
+			unitTestBuilder.setLoader(snapshotStage.getLoader());
 			unitTestBuilder.setOutputPath(configuration.getUserResultPath() + separator);
 			unitTestBuilder.setStaticFieldNameFilter(configuration.getGoalTagFilter());
 			unitTestBuilder.createUnitTest();
