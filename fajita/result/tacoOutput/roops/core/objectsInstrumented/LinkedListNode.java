@@ -10,7 +10,6 @@ public class LinkedListNode extends java.lang.Object {
   public /*@ nullable @*/ java.lang.Object roops_core_objectsInstrumented_LinkedListNode_object_value;
   public static boolean roops_goal_0;
   public static boolean roops_goal_1;
-  public static boolean roops_goal_2;
 
   public LinkedListNode() {
     this.roops_core_objectsInstrumented_LinkedListNode_previous = ((roops.core.objectsInstrumented.LinkedListNode)(null));
@@ -54,7 +53,6 @@ public class LinkedListNode extends java.lang.Object {
   public static void fajita_roopsGoal_initialization() {
     roops.core.objectsInstrumented.LinkedListNode.roops_goal_0 = false;
     roops.core.objectsInstrumented.LinkedListNode.roops_goal_1 = false;
-    roops.core.objectsInstrumented.LinkedListNode.roops_goal_2 = false;
   }
 
 }

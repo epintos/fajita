@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds
+END
+AvlTreeUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/AvlTreeUBoundTest.java
+END
+BinTreeUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/BinTreeUBoundTest.java
+END
+TreeSetUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/TreeSetUBoundTest.java
+END
+CListUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/CListUBoundTest.java
+END
+SListUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/SListUBoundTest.java
+END
+AListUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/AListUBoundTest.java
+END
+BHeapUBoundTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/nrosner-rfm/!svn/ver/853/src/taco/unittest/ar/edu/taco/regresion/bounds/BHeapUBoundTest.java
+END

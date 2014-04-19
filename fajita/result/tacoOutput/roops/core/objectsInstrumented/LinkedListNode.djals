@@ -304,19 +304,6 @@ Implementation
             } else {
                skip;
             };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedListNode_roops_goal_2:=false;
-               };
-            } else {
-               skip;
-            };
          
          }
       

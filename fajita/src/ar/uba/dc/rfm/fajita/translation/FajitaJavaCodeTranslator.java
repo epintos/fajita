@@ -153,6 +153,10 @@ public class FajitaJavaCodeTranslator {
 					transformation = new DualClassBranchTransformation(
 						configuration, recoder, compilationUnit);
 					break;
+				case ALL_DEF_USES:
+					transformation = new AllUsesTransformation(
+						configuration, recoder, compilationUnit);
+					break;
 				default:
 					throw new FajitaException(
 						"Java code translation not implemented for the coverage criteria: " +

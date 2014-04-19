@@ -24,19 +24,31 @@ public class LinkedList {
 	 */ static
      public void addLastTest (LinkedList list, Object o) {
         fajita_roopsGoal_initialization ();
-        if ( list != null && list.repOK () ) {
+        if ( list != null && list.repOK () )
+        {
+            roops_goal_0 = true;
+            int pipe = 1;
+            pipe = pipe - 3;
             boolean ret_val = list.addLast (o);
+        }
+        else
+        {
+            roops_goal_1 = true;
         }
     } static
      public void containsTest (LinkedList list, Object arg) {
         if ( list != null && list.repOK () ) {
             boolean ret_val = list.contains (arg);
         }
+        else
+        {}
     } static
      public void removeIndexTest (LinkedList list, int index) {
         if ( list != null && list.repOK () ) {
             Object ret_val = list.removeIndex (index);
         }
+        else
+        {}
     }
 
 
@@ -55,20 +67,16 @@ public class LinkedList {
     public int indexOf (Object new_value) {
         int i = 0;
         for ( LinkedListNode node = header.next; node != header; node = node.next ) {
-            {
-                roops_goal_0 = true;
-            }
+            {}
             if ( isEqualValue (node.object_value, new_value) ) {
-                {
-                    roops_goal_1 = true;
-                }
+                {}
                 return i;
             }
+            else
+            {}
             i ++;
         }
-        {
-            roops_goal_2 = true;
-        }
+        {}
         return (0 - 1);
     }
 
@@ -115,9 +123,7 @@ public class LinkedList {
     }
 
     public LinkedListNode createNode (Object new_object_value) {
-        {
-            roops_goal_0 = true;
-        }
+        {}
         LinkedListNode node = new LinkedListNode ();
         node.previous = node;
         node.next = node;
@@ -127,9 +133,7 @@ public class LinkedList {
 
     public void addNodeBefore (LinkedListNode node, Object new_object_value) {
         LinkedListNode newNode = createNode (new_object_value);
-        {
-            roops_goal_1 = true;
-        }
+        {}
 
         addNode (newNode, node);
     }
@@ -143,9 +147,7 @@ public class LinkedList {
         size ++;
         modCount ++;
 
-        {
-            roops_goal_2 = true;
-        }
+        {}
     }
 
     public void removeNode (LinkedListNode node) {
@@ -160,24 +162,24 @@ public class LinkedList {
              {
         // Check the index is within the bounds
         if ( index < 0 ) {
-            {
-                roops_goal_0 = true;
-            }
+            {}
             throw new RuntimeException ();
         }
+        else
+        {}
         if ( ! endMarkerAllowed && index == size ) {
-            {
-                roops_goal_1 = true;
-            }
+            {}
             throw new RuntimeException ();
         }
+        else
+        {}
         if ( index > size ) {
-            {
-                roops_goal_2 = true;
-            }
+            {}
             throw new RuntimeException ();
         }
         // Search the list and get the node
+        else
+        {}
         LinkedListNode node;
         int size_div_2 = size / 2;
 
@@ -221,12 +223,9 @@ public class LinkedList {
 
     public static boolean roops_goal_1;
 
-    public static boolean roops_goal_2;
-
     public static void fajita_roopsGoal_initialization () {
         roops_goal_0 = false;
         roops_goal_1 = false;
-        roops_goal_2 = false;
     }
 }
 /* end roops.core.objects */

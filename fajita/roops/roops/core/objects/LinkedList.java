@@ -24,6 +24,8 @@ public class LinkedList {
 	@roops.util.BenchmarkMethod static
 	public void addLastTest(LinkedList list, Object o) {
 		if (list!=null && list.repOK()) {
+		  int pipe = 1;
+		  pipe = pipe - 3;
 		  boolean ret_val = list.addLast(o);
 		}
 	}

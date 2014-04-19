@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/nrosner-rfm/!svn/ver/637/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator
+END
+BoundsComputer.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/BoundsComputer.java
+END
+A4SolutionReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4SolutionReader.java
+END
+ScopeComputer.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/ScopeComputer.java
+END
+PrintCNF.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/PrintCNF.java
+END
+A4TupleSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4TupleSet.java
+END
+A4Solution.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/nrosner-rfm/!svn/ver/434/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4Solution.java
+END
+A4Options.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/nrosner-rfm/!svn/ver/434/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4Options.java
+END
+TranslateKodkodToJava.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/TranslateKodkodToJava.java
+END
+ConvToConjunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/ConvToConjunction.java
+END
+Simplifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/Simplifier.java
+END
+GuignaSimplifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nrosner-rfm/!svn/ver/637/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/GuignaSimplifier.java
+END
+A4SolutionWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4SolutionWriter.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/package.html
+END
+WriteCNF.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/WriteCNF.java
+END
+instance.txt
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/instance.txt
+END
+TranslateAlloyToKodkod.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/TranslateAlloyToKodkod.java
+END
+A4Tuple.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/A4Tuple.java
+END
+BookExamples.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/nrosner-rfm/!svn/ver/214/src/alloycli/158/src/edu/mit/csail/sdg/alloy4compiler/translator/BookExamples.java
+END
