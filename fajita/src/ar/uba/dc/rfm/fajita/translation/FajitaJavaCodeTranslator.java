@@ -166,7 +166,7 @@ public class FajitaJavaCodeTranslator {
 			
 			transformation.execute();
 
-		FajitaPrettyPrinter.print(outFile, compilationUnit);
+			FajitaPrettyPrinter.print(outFile, compilationUnit);
 			
 		} catch (Exception e) {
 			throw new FajitaException(

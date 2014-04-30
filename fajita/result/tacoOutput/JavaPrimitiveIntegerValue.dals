@@ -2491,8 +2491,8 @@ pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
-pred pred_java_primitive_integer_value_literal_3[ret: JavaPrimitiveIntegerValue] {
- ret.b00=true 
+pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
  ret.b01=true 
  ret.b02=false 
  ret.b03=false 

@@ -23,9 +23,14 @@ public class LinkedList {
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod static
 	public void addLastTest(LinkedList list, Object o) {
+		int m = 1;
+		m += 2;
 		if (list!=null && list.repOK()) {
-		  int pipe = 1;
-		  pipe = pipe - 3;
+		  int i = 2;
+		  while(i-- > 0) {
+			  int pipe = i;
+			  pipe = pipe + i;
+		  }
 		  boolean ret_val = list.addLast(o);
 		}
 	}
@@ -208,10 +213,12 @@ public class LinkedList {
 
         public boolean repOK()
         {
-            if (header == null)
+            if (header == null) {
                 return false;
-            if (header.object_value != null)
+            }
+            if (header.object_value != null) {
                 return false;
+            }
 
             RoopsSet visited = new RoopsSet();
             visited.add(header);
@@ -220,19 +227,24 @@ public class LinkedList {
             while (true)
             {
                 LinkedListNode next = current.next;
-                if (next == null)
+                if (next == null) {
                     return false;
-                if (next.previous != current)
+                }
+                if (next.previous != current) {
                     return false;
+                }
                 current = next;
-                if (!visited.add(next))
+                if (!visited.add(next)) {
                     break;
+                }
             }
-            if (current != header)
+            if (current != header) {
                 return false;
+            }
 
-            if (visited.getSize() - 1 != size)
+            if (visited.getSize() - 1 != size) {
                 return false;
+            }
 
             return true;
         }
