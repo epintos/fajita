@@ -23,16 +23,21 @@ public class LinkedList {
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod static
 	public void addLastTest(LinkedList list, Object o) {
-		int m = 1;
-		m += 2;
+		int x = 5;
+		int b = 7;
+		x = 4;
+		if(b == 7) {
+			x = 3;
+        }
+		x = x + b + a(x);
+		x += x;
 		if (list!=null && list.repOK()) {
-		  int i = 2;
-		  while(i-- > 0) {
-			  int pipe = i;
-			  pipe = pipe + i;
-		  }
 		  boolean ret_val = list.addLast(o);
 		}
+	}
+	
+	public int a(int x) {
+		return 1;
 	}
 
 	@roops.util.NrOfGoals(3)

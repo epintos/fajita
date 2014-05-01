@@ -43,7 +43,7 @@ public abstract class FajitaOutputProcessor {
 		switch (configuration.getCoverageCriteria()) {
 			case GOAL_COVERAGE: processor = new GoalOutputProcessor(configuration); break;
 			case CLASS_COVERAGE: processor = new ClassOutputProcessor(configuration); break;
-			case ALL_DEF_USES:
+			case ALL_DEF_USES: processor = new AllUsesOutputProcessor(configuration); break;
 			case BRANCH_COVERAGE: processor = new BranchOutputProcessor(configuration); break;
 			case DUAL_CLASS_BRANCH_COVERAGE: processor = new DualClassBranchOutputPorcessor(configuration); break;
 		}
