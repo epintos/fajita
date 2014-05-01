@@ -12,9 +12,18 @@ public class RoopsArray {
 
     public static boolean roops_goal_2;
 
+    public static boolean roops_goal_3;
+
+    public static boolean roops_goal_4;
+
+    public static boolean roops_goal_5;
+
     public static void fajita_roopsGoal_initialization () {
         roops_goal_0 = false;
         roops_goal_1 = false;
         roops_goal_2 = false;
+        roops_goal_3 = false;
+        roops_goal_4 = false;
+        roops_goal_5 = false;
     }
 }

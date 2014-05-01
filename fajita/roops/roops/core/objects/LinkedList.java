@@ -25,7 +25,6 @@ public class LinkedList {
 	public void addLastTest(LinkedList list, Object o) {
 		int x = 5;
 		int b = 7;
-		x = 4;
 		if(b == 7) {
 			x = 3;
         }
