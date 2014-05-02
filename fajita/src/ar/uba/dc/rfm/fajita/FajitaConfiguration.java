@@ -5,6 +5,8 @@ import static ar.uba.dc.rfm.tools.FileSystemTools.separator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -106,6 +108,7 @@ public class FajitaConfiguration {
 	private int dualClassBranchIteration = 0;
 	private ASTList<Statement> dualInitializationStatements;
 	private int dualDiscoveredBranches;
+	private List<String> allUsesAuxVariables = new LinkedList<>();
 
 	
 	/**
@@ -334,5 +337,8 @@ public class FajitaConfiguration {
 	public void setDualDiscoveredBranches(int dualDiscoveredBranches) {
 		this.dualDiscoveredBranches = dualDiscoveredBranches;
 	}
+	public List<String> getAllUsesAuxVariables() {
+        return allUsesAuxVariables;
+    }
 
 }

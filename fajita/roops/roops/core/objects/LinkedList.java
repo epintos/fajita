@@ -23,13 +23,6 @@ public class LinkedList {
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod static
 	public void addLastTest(LinkedList list, Object o) {
-		int x = 5;
-		int b = 7;
-		if(b == 7) {
-			x = 3;
-        }
-		x = x + b + a(x);
-		x += x;
 		if (list!=null && list.repOK()) {
 		  boolean ret_val = list.addLast(o);
 		}

@@ -19,26 +19,9 @@ public class LinkedList {
      */
     static public void addLastTest(LinkedList list, Object o) {
         fajita_roopsGoal_initialization();
-        int x = 5;
-        my_variable_0 = true;
-        int b = 7;
-        my_variable_1 = true;
-        if (b == 7) {
-            x = 3;
-            my_variable_2 = true;
-            my_variable_0 = false;
-        }
-        x = x + b + a(x);
-        roops_goal_0 = my_variable_1;
-        roops_goal_1 = my_variable_0;
-        roops_goal_2 = my_variable_2;
-        my_variable_3 = true;
-        x += x;
-        roops_goal_3 = my_variable_3;
-        my_variable_4 = true;
         if (list != null && list.repOK()) {
             boolean ret_val = list.addLast(o);
-            my_variable_5 = true;
+            variable_definition_0 = true;
         }
     }
 
@@ -130,21 +113,21 @@ public class LinkedList {
         {
         }
         LinkedListNode node = new LinkedListNode();
-        my_variable_6 = true;
+        variable_definition_1 = true;
         node.previous = node;
-        roops_goal_4 = my_variable_6;
-        my_variable_7 = true;
+        roops_goal_0 = variable_definition_1;
+        variable_definition_2 = true;
         node.next = node;
-        roops_goal_5 = my_variable_6;
-        my_variable_8 = true;
+        roops_goal_1 = variable_definition_1;
+        variable_definition_3 = true;
         node.object_value = new_object_value;
-        my_variable_9 = true;
+        variable_definition_4 = true;
         return node;
     }
 
     public void addNodeBefore(LinkedListNode node, Object new_object_value) {
         LinkedListNode newNode = createNode(new_object_value);
-        my_variable_10 = true;
+        variable_definition_5 = true;
         {
         }
 
@@ -153,13 +136,13 @@ public class LinkedList {
 
     public void addNode(LinkedListNode nodeToInsert, LinkedListNode insertBeforeNode) {
         nodeToInsert.next = insertBeforeNode;
-        my_variable_11 = true;
+        variable_definition_6 = true;
         nodeToInsert.previous = insertBeforeNode.previous;
-        my_variable_12 = true;
+        variable_definition_7 = true;
         insertBeforeNode.previous.next = nodeToInsert;
-        my_variable_13 = true;
+        variable_definition_8 = true;
         insertBeforeNode.previous = nodeToInsert;
-        my_variable_14 = true;
+        variable_definition_9 = true;
         size++;
         modCount++;
 
@@ -241,21 +224,39 @@ public class LinkedList {
 
     public static boolean roops_goal_1;
 
-    public static boolean roops_goal_2;
+    public static boolean variable_definition_0;
 
-    public static boolean roops_goal_3;
+    public static boolean variable_definition_1;
 
-    public static boolean roops_goal_4;
+    public static boolean variable_definition_2;
 
-    public static boolean roops_goal_5;
+    public static boolean variable_definition_3;
+
+    public static boolean variable_definition_4;
+
+    public static boolean variable_definition_5;
+
+    public static boolean variable_definition_6;
+
+    public static boolean variable_definition_7;
+
+    public static boolean variable_definition_8;
+
+    public static boolean variable_definition_9;
 
     public static void fajita_roopsGoal_initialization() {
         roops_goal_0 = false;
         roops_goal_1 = false;
-        roops_goal_2 = false;
-        roops_goal_3 = false;
-        roops_goal_4 = false;
-        roops_goal_5 = false;
+        variable_definition_0 = false;
+        variable_definition_1 = false;
+        variable_definition_2 = false;
+        variable_definition_3 = false;
+        variable_definition_4 = false;
+        variable_definition_5 = false;
+        variable_definition_6 = false;
+        variable_definition_7 = false;
+        variable_definition_8 = false;
+        variable_definition_9 = false;
     }
 }
 /* end roops.core.objects */

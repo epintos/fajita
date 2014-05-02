@@ -7,6 +7,7 @@ import static ar.uba.dc.rfm.fajita.translation.FajitaJavaCodeTranslator.getConta
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -344,7 +345,6 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         transformation.replace(stb, new StatementBlock(toAdd));
                     } else if (st instanceof VariableDeclaration) {
                         VariableDeclaration vd = (VariableDeclaration) st;
-                        System.out.println();
                         CopyAssignment copyAssignment = createMyVariable(true);
                         backup.add(i++, copyAssignment);
                         getFromMap(((VariableSpecification)vd.getChildAt(1)).getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
@@ -398,10 +398,11 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 
         private CopyAssignment createMyVariable(boolean status) {
             ProgramFactory factory = transformation.getProgramFactory();
-            Identifier fajitaGoalId = factory.createIdentifier("my_variable" + "_" + myVariableIndex++);
+            Identifier fajitaGoalId = factory.createIdentifier("variable_definition" + "_" + myVariableIndex++);
             UncollatedReferenceQualifier fajitaGoal = factory.createUncollatedReferenceQualifier(fajitaGoalId);
             BooleanLiteral reachedLiteral = factory.createBooleanLiteral(status);
             CopyAssignment copyAssignment = factory.createCopyAssignment(fajitaGoal, reachedLiteral);
+            configuration.getAllUsesAuxVariables().add(fajitaGoal.getName());
             return copyAssignment;
         }
 
