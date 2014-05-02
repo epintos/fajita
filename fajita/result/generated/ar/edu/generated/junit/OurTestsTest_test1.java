@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import org.junit.Test;
 
-public class LinkedListTest_addLastTest {
+public class OurTestsTest_test1 {
 
     /**
      * Auxiliar function that embed awful reflection code
@@ -89,16 +89,17 @@ public class LinkedListTest_addLastTest {
     }
 
     @Test
-    public void testaddLastTest_0() {
-        roops.core.objectsInstrumented.LinkedList instance = new roops.core.objectsInstrumented.LinkedList();
+    public void testtest1_0() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
         
         // Parameter Initialization
-        java.lang.Object _Object_1 = null;
+        
+        java.lang.Object o_OurTests_1 = new java.lang.Object();
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "addLastTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
         try {
-            method.invoke(instance, instance, _Object_1);
+            method.invoke(instance, o_OurTests_1);
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -106,28 +107,15 @@ public class LinkedListTest_addLastTest {
     }
 
     @Test
-    public void testaddLastTest_1() {
-        roops.core.objectsInstrumented.LinkedList instance = new roops.core.objectsInstrumented.LinkedList();
+    public void testtest1_1() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
         
         // Parameter Initialization
         
-        roops.core.objectsInstrumented.LinkedList list_LinkedList_1 = new roops.core.objectsInstrumented.LinkedList();
-        // Fields Initialization for 'list_LinkedList_1'
-        
-        roops.core.objectsInstrumented.LinkedListNode _LinkedListNode_1 = new roops.core.objectsInstrumented.LinkedListNode();
-        // Fields Initialization for '_LinkedListNode_1'
-        updateValue(_LinkedListNode_1, "previous", _LinkedListNode_1);
-        updateValue(_LinkedListNode_1, "next", _LinkedListNode_1);
-        updateValue(_LinkedListNode_1, "object_value", null);
-        updateValue(list_LinkedList_1, "header", _LinkedListNode_1);
-        updateValue(list_LinkedList_1, "size", 0);
-        updateValue(list_LinkedList_1, "modCount", 0);
-        java.lang.Object _Object_1 = null;
-        
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "addLastTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
         try {
-            method.invoke(instance, list_LinkedList_1, _Object_1);
+            method.invoke(instance, instance);
         } catch (Exception e) {
             e.printStackTrace();
         } 

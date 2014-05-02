@@ -2,28 +2,16 @@
 module ClassFields
 one sig ClassFields {}
 {}
-field roops_core_objectsInstrumented_LinkedList_variable_definition_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_variable_definition_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_roops_goal_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_roops_goal_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_roops_goal_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_variable_definition_3:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_variable_definition_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedList_variable_definition_4:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_variable_definition_1:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_variable_definition_0:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_variable_definition_3:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_OurTests_variable_definition_2:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_variable_definition_1:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_variable_definition_0:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean) {}
-field roops_utilInstrumented_RoopsArray_roops_goal_2:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_variable_definition_3:(ClassFields)->one(boolean) {}
 field roops_utilInstrumented_RoopsArray_variable_definition_2:(ClassFields)->one(boolean) {}
-field roops_utilInstrumented_RoopsArray_variable_definition_4:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_variable_definition_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_variable_definition_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_roops_goal_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_roops_goal_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_roops_goal_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_variable_definition_3:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_variable_definition_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_LinkedListNode_variable_definition_4:(ClassFields)->one(boolean) {}
 
