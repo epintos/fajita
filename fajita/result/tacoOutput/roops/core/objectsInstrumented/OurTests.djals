@@ -24,7 +24,7 @@ Implementation
 program roops_core_objectsInstrumented_OurTests::test1[
   var thiz:roops_core_objectsInstrumented_OurTests,
   var throw:java_lang_Throwable+null,
-  var o:java_lang_Object+null] 
+  var o:JavaPrimitiveIntegerValue] 
 Specification 
 {
   SpecCase #0 {
@@ -58,7 +58,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               var_1_a:=JavaPrimitiveIntegerLiteral1;
+               var_1_a:=JavaPrimitiveIntegerLiteral7;
             } else {
                skip;
             };
@@ -75,36 +75,13 @@ Implementation
             } else {
                skip;
             };
-            var var_2_m:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_2_m:=JavaPrimitiveIntegerLiteral0;
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_1:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               t_1:=(neq[o,
-                  null]=>(true)else(false));
+               t_1:=(pred_java_primitive_integer_value_gt[var_1_a,
+                                                   JavaPrimitiveIntegerLiteral5]=>(true)else(false));
             } else {
                skip;
             };
@@ -114,12 +91,67 @@ Implementation
             (
               exit_stmt_reached=false){
                if t_1=true   {
+                     var var_2_q:JavaPrimitiveIntegerValue;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_1_a:=JavaPrimitiveIntegerLiteral7;
+                        var_2_q:=JavaPrimitiveIntegerLiteral0;
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_1:=true;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_1_a:=fun_java_primitive_integer_value_add[var_1_a,var_2_q];
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_1;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0;
+                        };
                      } else {
                         skip;
                      };
@@ -149,64 +181,77 @@ Implementation
                      } else {
                         skip;
                      };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_2_q:=var_1_a;
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_2:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_3:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_2;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_3:=true;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_1:=false;
+                        };
+                     } else {
+                        skip;
+                     };
                   
                   }
                 else {
                   skip;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false) lblpos if_1 {
-               var_2_m:=fun_java_primitive_integer_value_add[var_2_m,var_1_a];
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_2;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_3:=true;
                };
             } else {
                skip;
@@ -253,6 +298,32 @@ Implementation
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
                   ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_1:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_2:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_OurTests_roops_goal_3:=false;
                };
             } else {
                skip;

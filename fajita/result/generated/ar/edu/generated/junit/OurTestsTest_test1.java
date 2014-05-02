@@ -93,13 +93,12 @@ public class OurTestsTest_test1 {
         roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
         
         // Parameter Initialization
-        
-        java.lang.Object o_OurTests_1 = new java.lang.Object();
+        int _Integer_1 = 0;
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
         try {
-            method.invoke(instance, o_OurTests_1);
+            method.invoke(instance, _Integer_1);
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -111,11 +110,12 @@ public class OurTestsTest_test1 {
         roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
         
         // Parameter Initialization
+        int _Integer_1 = 0;
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
         try {
-            method.invoke(instance, instance);
+            method.invoke(instance, _Integer_1);
         } catch (Exception e) {
             e.printStackTrace();
         } 

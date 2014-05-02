@@ -175,7 +175,7 @@ public class UnitTestBuilder {
 		List<String> shortFieldNames = new ArrayList<String>();
 		String moduleName = getModuleName(clazz);
 		for (StaticFieldInformation staticField : staticFields) {
-			if (staticField.getFieldName().matches("(roops_goal|myRoopsArray).*")) // XXX: Hack in order to ignore goals added by fajita
+			if (staticField.getFieldName().matches("(roops_goal|myRoopsArray|variable_definition).*")) // XXX: Hack in order to ignore goals added by fajita
 				continue;
 			String shortFieldName = staticField.getFieldName().replace(moduleName + "_", "");
 			if (!shortFieldName.matches(staticFieldNameFilter))

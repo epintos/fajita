@@ -1,11 +1,10 @@
 /.svn
 /ar
-/edu
+/escj
 /examples
+/jason
 /org
 /roops
-/unittestconfig.properties
-/amelia
-/escj
-/jason
 /sos
+/amelia
+/edu

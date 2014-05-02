@@ -2,13 +2,13 @@ package roops.core.objects;
 
 public class OurTests {
     
-    public void test1(Object o) {
-        int a = 1;
-        int m = 0;
-        if (o != null) {
-            a = 7;
+    public void test1(int o) {
+        int a = 7;
+        if (a > 5){
+            int q = 0;
+            a = a + q;
+            q = a;
         }
-        m += a;
     }
 
 }

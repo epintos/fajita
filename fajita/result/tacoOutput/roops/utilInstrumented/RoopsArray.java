@@ -7,6 +7,8 @@ public class RoopsArray extends java.lang.Object {
 
   public static boolean roops_goal_0;
   public static boolean roops_goal_1;
+  public static boolean roops_goal_2;
+  public static boolean roops_goal_3;
   public static boolean variable_definition_0;
   public static boolean variable_definition_1;
   public static boolean variable_definition_2;
@@ -20,6 +22,8 @@ public class RoopsArray extends java.lang.Object {
   public static void fajita_roopsGoal_initialization() {
     roops.utilInstrumented.RoopsArray.roops_goal_0 = false;
     roops.utilInstrumented.RoopsArray.roops_goal_1 = false;
+    roops.utilInstrumented.RoopsArray.roops_goal_2 = false;
+    roops.utilInstrumented.RoopsArray.roops_goal_3 = false;
     roops.utilInstrumented.RoopsArray.variable_definition_0 = false;
     roops.utilInstrumented.RoopsArray.variable_definition_1 = false;
     roops.utilInstrumented.RoopsArray.variable_definition_2 = false;

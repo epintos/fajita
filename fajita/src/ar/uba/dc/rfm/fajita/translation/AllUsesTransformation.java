@@ -23,6 +23,7 @@ import recoder.java.ProgramElement;
 import recoder.java.SourceVisitor;
 import recoder.java.Statement;
 import recoder.java.StatementBlock;
+import recoder.java.declaration.DeclarationSpecifier;
 import recoder.java.declaration.LocalVariableDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.Modifier;
@@ -334,7 +335,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         handleFor(forr);
                     } else if (st instanceof VariableDeclaration) {
                         VariableDeclaration vd = (VariableDeclaration) st;
-                        handleVariableDeclaration(vd, backup, i++);
+                        i = handleVariableDeclaration(vd, backup, i++, isInsideBlock);
                     }
                     i++;
                 }
@@ -343,10 +344,21 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             return list;
         }
 
-        private void handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i) {
-            CopyAssignment copyAssignment = createMyVariable(true);
-            backup.add(i, copyAssignment);
-            getFromMap(((VariableSpecification)vd.getChildAt(1)).getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
+        private int handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i, boolean isInsideBlock) {
+            HashSet<String> uses = new HashSet<>();
+            List<UncollatedReferenceQualifier> lhs = getLeftHandSide(vd);
+            List<? extends VariableSpecification> decSp = vd.getVariables();
+            for (VariableSpecification each: decSp) {
+                recursiveHandler(each.getInitializer(), uses);
+            }
+            i = handleAllUses(uses, backup, i);
+            for (UncollatedReferenceQualifier each: lhs) {
+                if (!isInsideBlock) {
+                    clearDefinitionsFor(each.getName());
+                }
+                i = addNewDefinition(each, backup, i);
+            }
+            return i;
         }
 
         private void handleFor(For forr) {
@@ -407,7 +419,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
         private int addNewDefinition(UncollatedReferenceQualifier urq, ASTList<Statement> body, int index) {
             CopyAssignment copyAssignment = createMyVariable(true);
             body.add(index++, copyAssignment);
-            setAllOtherToFalse(urq.getName(), body, index);
+            index = setAllOtherToFalse(urq.getName(), body, index);
             getFromMap(urq.getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
             return index;
         }
@@ -429,10 +441,11 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             return copyAssignment;
         }
 
-        private void setAllOtherToFalse(String variable, ASTList<Statement> body, int index) {
+        private int setAllOtherToFalse(String variable, ASTList<Statement> body, int index) {
             for (UncollatedReferenceQualifier urq : getFromMap(variable)) {
                 body.add(index++, setMyVariableTo(urq, false));
             }
+            return index;
         }
 
         private CopyAssignment createFajitaGoalWithURQ(ProgramFactory factory, int goalId, UncollatedReferenceQualifier urq) {
@@ -453,6 +466,16 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 
         private UncollatedReferenceQualifier getLeftHandSide(Assignment ass) {
             return (UncollatedReferenceQualifier) ass.getChildAt(0);
+        }
+        
+        private List<UncollatedReferenceQualifier> getLeftHandSide(VariableDeclaration vd) {
+            List<UncollatedReferenceQualifier> retList = new ArrayList<>();
+            List<? extends VariableSpecification> decSp = vd.getVariables();
+            for (VariableSpecification each: decSp) {
+                Identifier id = new Identifier(each.getName());
+                retList.add(new UncollatedReferenceQualifier(id));
+            }
+            return retList;
         }
 
         private void recursiveHandler(ProgramElement pe, Set<String> identifiers) {
@@ -483,10 +506,6 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                     || (st instanceof ModuloAssignment) || (st instanceof PlusAssignment) || (st instanceof ShiftLeftAssignment)
                     || (st instanceof ShiftRightAssignment) || (st instanceof TimesAssignment)
                     || (st instanceof UnsignedShiftRightAssignment);
-        }
-
-        private boolean isDeclaration(Statement st) {
-            return st instanceof LocalVariableDeclaration;
         }
     }
 

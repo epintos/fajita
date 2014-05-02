@@ -58,7 +58,6 @@
 </sig>
 
 <sig label="this/roops_core_objectsInstrumented_OurTests" ID="17" parentID="18">
-   <atom label="roops_core_objectsInstrumented_OurTests$0"/>
 </sig>
 
 <sig label="this/java_lang_Object" ID="18" parentID="2">
@@ -69,8 +68,8 @@
    <atom label="JavaPrimitiveIntegerLiteral7$0"/>
 </sig>
 
-<sig label="this/JavaPrimitiveIntegerLiteral1" ID="21" parentID="20" one="yes">
-   <atom label="JavaPrimitiveIntegerLiteral1$0"/>
+<sig label="this/JavaPrimitiveIntegerLiteral5" ID="21" parentID="20" one="yes">
+   <atom label="JavaPrimitiveIntegerLiteral5$0"/>
 </sig>
 
 <sig label="this/JavaPrimitiveIntegerLiteral0" ID="22" parentID="20" one="yes">
@@ -82,224 +81,224 @@
 
 <field label="b00" ID="23" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="true$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="true$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="true$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b01" ID="24" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="true$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b02" ID="25" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="true$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="true$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b03" ID="26" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b04" ID="27" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b05" ID="28" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b06" ID="29" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b07" ID="30" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b08" ID="31" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b09" ID="32" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b10" ID="33" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b11" ID="34" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b12" ID="35" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b13" ID="36" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b14" ID="37" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b15" ID="38" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b16" ID="39" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b17" ID="40" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b18" ID="41" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b19" ID="42" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b20" ID="43" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b21" ID="44" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b22" ID="45" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b23" ID="46" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b24" ID="47" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b25" ID="48" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b26" ID="49" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b27" ID="50" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b28" ID="51" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b29" ID="52" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b30" ID="53" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
 
 <field label="b31" ID="54" parentID="20">
    <tuple> <atom label="JavaPrimitiveIntegerLiteral7$0"/> <atom label="false$0"/> </tuple>
-   <tuple> <atom label="JavaPrimitiveIntegerLiteral1$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="JavaPrimitiveIntegerLiteral5$0"/> <atom label="false$0"/> </tuple>
    <tuple> <atom label="JavaPrimitiveIntegerLiteral0$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="20"/> <type ID="6"/> </types>
 </field>
@@ -309,7 +308,7 @@
 </sig>
 
 <field label="BQ__0" ID="56" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
@@ -318,248 +317,317 @@
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
-<field label="l1_exit_stmt_reached_1" ID="58" parentID="55">
+<field label="BQ__2" ID="58" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
-<field label="l1_l0_exit_stmt_reached_1" ID="59" parentID="55">
+<field label="BQ__3" ID="59" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_exit_stmt_reached_1" ID="60" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
-<field label="l1_t_1_0" ID="60" parentID="55">
+<field label="l1_l0_exit_stmt_reached_1" ID="61" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_1_0" ID="62" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
-<field label="l1_t_1_1" ID="61" parentID="55">
+<field label="l1_t_1_1" ID="63" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="6"/> </types>
 </field>
 
-<field label="l1_var_1_a_0" ID="62" parentID="55">
+<field label="l1_var_1_a_0" ID="64" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral0$0"/> </tuple>
    <types> <type ID="55"/> <type ID="20"/> </types>
 </field>
 
-<field label="l1_var_1_a_1" ID="63" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral1$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="20"/> </types>
-</field>
-
-<field label="l1_var_1_a_2" ID="64" parentID="55">
+<field label="l1_var_1_a_1" ID="65" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral7$0"/> </tuple>
    <types> <type ID="55"/> <type ID="20"/> </types>
 </field>
 
-<field label="l1_var_2_m_0" ID="65" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral0$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="20"/> </types>
-</field>
-
-<field label="l1_var_2_m_1" ID="66" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral0$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="20"/> </types>
-</field>
-
-<field label="l1_var_2_m_2" ID="67" parentID="55">
+<field label="l1_var_1_a_2" ID="66" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral7$0"/> </tuple>
    <types> <type ID="55"/> <type ID="20"/> </types>
 </field>
 
-<field label="o_0" ID="68" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="roops_core_objectsInstrumented_OurTests$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="18"/> </types>
-   <types> <type ID="55"/> <type ID="4"/> </types>
+<field label="l1_var_2_q_0" ID="67" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral0$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="20"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_0" ID="69" parentID="55">
+<field label="l1_var_2_q_1" ID="68" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral0$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="20"/> </types>
+</field>
+
+<field label="l1_var_2_q_2" ID="69" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="JavaPrimitiveIntegerLiteral7$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="20"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_0" ID="70" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_1" ID="70" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_1" ID="71" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_2" ID="71" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_0_2" ID="72" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_0" ID="73" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_1" ID="74" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_0" ID="72" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_2" ID="75" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_1" ID="73" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_2_0" ID="76" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_2_1" ID="77" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_roops_goal_1_2" ID="74" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
-</field>
-
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_0" ID="75" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
-</field>
-
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_1" ID="76" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_2_2" ID="78" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_2" ID="77" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_3_0" ID="79" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_3" ID="78" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_3_1" ID="80" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_0" ID="79" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_roops_goal_3_2" ID="81" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_1" ID="80" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_0" ID="82" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_1" ID="83" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_2" ID="81" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_2" ID="84" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_0" ID="82" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
-</field>
-
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_1" ID="83" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_0_3" ID="85" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_2" ID="84" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_0" ID="86" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_0" ID="85" parentID="55">
-   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
-   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
-</field>
-
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_1" ID="86" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_1" ID="87" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_2" ID="87" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_2" ID="88" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
    <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
 </field>
 
-<field label="throw_0" ID="88" parentID="55">
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_1_3" ID="89" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_0" ID="90" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_1" ID="91" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_2_2" ID="92" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_0" ID="93" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_1" ID="94" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_OurTests_variable_definition_3_2" ID="95" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="throw_0" ID="96" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_1" ID="89" parentID="55">
+<field label="throw_1" ID="97" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_10" ID="90" parentID="55">
+<field label="throw_10" ID="98" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_11" ID="91" parentID="55">
+<field label="throw_11" ID="99" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_12" ID="92" parentID="55">
+<field label="throw_12" ID="100" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_13" ID="93" parentID="55">
+<field label="throw_13" ID="101" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_14" ID="94" parentID="55">
+<field label="throw_14" ID="102" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_15" ID="95" parentID="55">
+<field label="throw_15" ID="103" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_2" ID="96" parentID="55">
+<field label="throw_16" ID="104" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_3" ID="97" parentID="55">
+<field label="throw_17" ID="105" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_4" ID="98" parentID="55">
+<field label="throw_18" ID="106" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_5" ID="99" parentID="55">
+<field label="throw_19" ID="107" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_6" ID="100" parentID="55">
+<field label="throw_2" ID="108" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_7" ID="101" parentID="55">
+<field label="throw_20" ID="109" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_8" ID="102" parentID="55">
+<field label="throw_3" ID="110" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>
 </field>
 
-<field label="throw_9" ID="103" parentID="55">
+<field label="throw_4" ID="111" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="11"/> </types>
+   <types> <type ID="55"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_5" ID="112" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="11"/> </types>
+   <types> <type ID="55"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_6" ID="113" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="11"/> </types>
+   <types> <type ID="55"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_7" ID="114" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="11"/> </types>
+   <types> <type ID="55"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_8" ID="115" parentID="55">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="55"/> <type ID="11"/> </types>
+   <types> <type ID="55"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_9" ID="116" parentID="55">
    <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
    <types> <type ID="55"/> <type ID="11"/> </types>
    <types> <type ID="55"/> <type ID="4"/> </types>

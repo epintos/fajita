@@ -351,16 +351,36 @@ sig roops_core_objectsInstrumented_OurTests extends java_lang_Object {}
 
 
 
-pred roops_core_objectsInstrumented_OurTestsCondition0[
+pred roops_core_objectsInstrumented_OurTestsCondition3[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition2[
 ]{
    isEmptyOrNull[ClassFields]
 
 }
 
-pred roops_core_objectsInstrumented_OurTestsCondition1[
+pred roops_core_objectsInstrumented_OurTestsCondition0[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition7[
+  t_1:univ
 ]{
    not (
-     isEmptyOrNull[ClassFields])
+     t_1=true)
 
 }
 
@@ -374,34 +394,7 @@ pred roops_core_objectsInstrumented_OurTests_ensures[
 
 }
 
-pred roops_core_objectsInstrumented_OurTestsCondition2[
-  exit_stmt_reached:univ,
-  throw:univ
-]{
-   (
-     throw=null)
-   and 
-   (
-     exit_stmt_reached=false)
-
-}
-
-pred roops_core_objectsInstrumented_OurTestsCondition5[
-  t_1:univ
-]{
-   not (
-     t_1=true)
-
-}
-
-pred roops_core_objectsInstrumented_OurTestsCondition4[
-  t_1:univ
-]{
-   t_1=true
-
-}
-
-pred roops_core_objectsInstrumented_OurTestsCondition3[
+pred roops_core_objectsInstrumented_OurTestsCondition1[
   exit_stmt_reached:univ,
   throw:univ
 ]{
@@ -416,20 +409,9 @@ pred roops_core_objectsInstrumented_OurTestsCondition3[
 }
 
 pred roops_core_objectsInstrumented_OurTestsCondition6[
+  t_1:univ
 ]{
-   isEmptyOrNull[ClassFields]
-   or 
-   isEmptyOrNull[ClassFields]
-
-}
-
-pred roops_core_objectsInstrumented_OurTestsCondition7[
-]{
-   not (
-     isEmptyOrNull[ClassFields]
-     or 
-     isEmptyOrNull[ClassFields]
-   )
+   t_1=true
 
 }
 
@@ -441,6 +423,14 @@ pred precondition_roops_core_objectsInstrumented_OurTests_test1_0[
 
 }
 
+pred roops_core_objectsInstrumented_OurTestsCondition4[
+]{
+   isEmptyOrNull[ClassFields]
+   or 
+   isEmptyOrNull[ClassFields]
+
+}
+
 pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
   throw':univ
 ]{
@@ -449,6 +439,16 @@ pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
    (
      not (
        throw'=AssertionFailureLit)
+   )
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition5[
+]{
+   not (
+     isEmptyOrNull[ClassFields]
+     or 
+     isEmptyOrNull[ClassFields]
    )
 
 }
@@ -466,6 +466,15 @@ sig java_lang_Object {}
 
 
 
+//-------------- JavaPrimitiveIntegerLiteral5--------------//
+one
+sig JavaPrimitiveIntegerLiteral5 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_5[JavaPrimitiveIntegerLiteral5]
+}
+
+
+
+
 //-------------- java_lang_NullPointerException--------------//
 abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
 {}
@@ -475,15 +484,6 @@ abstract one sig java_lang_NullPointerException extends java_lang_RuntimeExcepti
 one
 sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
 {}
-
-//-------------- JavaPrimitiveIntegerLiteral1--------------//
-one
-sig JavaPrimitiveIntegerLiteral1 extends JavaPrimitiveIntegerValue {}
-{pred_java_primitive_integer_value_literal_1[JavaPrimitiveIntegerLiteral1]
-}
-
-
-
 
 //-------------- JavaPrimitiveIntegerLiteral0--------------//
 one
@@ -2953,10 +2953,45 @@ pred pred_java_primitive_integer_value_literal_minus_1[ret: JavaPrimitiveInteger
  ret.b31=true 
 }
 
-pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue] {
+pred pred_java_primitive_integer_value_literal_7[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=true 
+ ret.b02=true 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
+pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue] {
  ret.b00=true 
  ret.b01=false 
- ret.b02=false 
+ ret.b02=true 
  ret.b03=false 
  ret.b04=false 
  ret.b05=false 
@@ -2992,41 +3027,6 @@ pred pred_java_primitive_integer_value_literal_0[ret: JavaPrimitiveIntegerValue]
  ret.b00=false 
  ret.b01=false 
  ret.b02=false 
- ret.b03=false 
- ret.b04=false 
- ret.b05=false 
- ret.b06=false 
- ret.b07=false 
- ret.b08=false 
- ret.b09=false 
- ret.b10=false 
- ret.b11=false 
- ret.b12=false 
- ret.b13=false 
- ret.b14=false 
- ret.b15=false 
- ret.b16=false 
- ret.b17=false 
- ret.b18=false 
- ret.b19=false 
- ret.b20=false 
- ret.b21=false 
- ret.b22=false 
- ret.b23=false 
- ret.b24=false 
- ret.b25=false 
- ret.b26=false 
- ret.b27=false 
- ret.b28=false 
- ret.b29=false 
- ret.b30=false 
- ret.b31=false 
-}
-
-pred pred_java_primitive_integer_value_literal_7[ret: JavaPrimitiveIntegerValue] {
- ret.b00=true 
- ret.b01=true 
- ret.b02=true 
  ret.b03=false 
  ret.b04=false 
  ret.b05=false 
@@ -3172,6 +3172,442 @@ pred havocArrayContents[
 }
 
 
+pred roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  throw_6: java_lang_Throwable + null,
+  throw_7: java_lang_Throwable + null,
+  throw_8: java_lang_Throwable + null,
+  throw_9: java_lang_Throwable + null,
+  roops_core_objectsInstrumented_OurTests_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_0_1: ( ClassFields ) -> one ( boolean ),
+  exit_stmt_reached_1: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_2=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_0_0=roops_core_objectsInstrumented_OurTests_roops_goal_0_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_0_1=(roops_core_objectsInstrumented_OurTests_roops_goal_0_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_1=throw_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_roops_goal_0_0=roops_core_objectsInstrumented_OurTests_roops_goal_0_1)
+      and 
+      (
+        throw_1=throw_2)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_2]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_3=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_1_0=roops_core_objectsInstrumented_OurTests_roops_goal_1_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_1_1=(roops_core_objectsInstrumented_OurTests_roops_goal_1_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_2=throw_3)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_2]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_roops_goal_1_0=roops_core_objectsInstrumented_OurTests_roops_goal_1_1)
+      and 
+      (
+        throw_2=throw_3)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_3]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_4=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_2_0=roops_core_objectsInstrumented_OurTests_roops_goal_2_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_2_1=(roops_core_objectsInstrumented_OurTests_roops_goal_2_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_3=throw_4)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_3]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_roops_goal_2_0=roops_core_objectsInstrumented_OurTests_roops_goal_2_1)
+      and 
+      (
+        throw_3=throw_4)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_4]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_5=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_3_0=roops_core_objectsInstrumented_OurTests_roops_goal_3_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_3_1=(roops_core_objectsInstrumented_OurTests_roops_goal_3_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_4=throw_5)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_roops_goal_3_0=roops_core_objectsInstrumented_OurTests_roops_goal_3_1)
+      and 
+      (
+        throw_4=throw_5)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_5]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_6=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_0_0=roops_core_objectsInstrumented_OurTests_variable_definition_0_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_0_1=(roops_core_objectsInstrumented_OurTests_variable_definition_0_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_5=throw_6)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_5]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_0_0=roops_core_objectsInstrumented_OurTests_variable_definition_0_1)
+      and 
+      (
+        throw_5=throw_6)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_6]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_7=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_1_0=roops_core_objectsInstrumented_OurTests_variable_definition_1_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_1_1=(roops_core_objectsInstrumented_OurTests_variable_definition_1_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_6=throw_7)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_6]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_1_0=roops_core_objectsInstrumented_OurTests_variable_definition_1_1)
+      and 
+      (
+        throw_6=throw_7)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_7]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_8=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_2_0=roops_core_objectsInstrumented_OurTests_variable_definition_2_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_2_1=(roops_core_objectsInstrumented_OurTests_variable_definition_2_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_7=throw_8)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_7]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_2_0=roops_core_objectsInstrumented_OurTests_variable_definition_2_1)
+      and 
+      (
+        throw_7=throw_8)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_8]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_OurTestsCondition2[]
+          and 
+          (
+            throw_9=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_3_0=roops_core_objectsInstrumented_OurTests_variable_definition_3_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_OurTestsCondition2[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_3_1=(roops_core_objectsInstrumented_OurTests_variable_definition_3_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_8=throw_9)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_8]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_3_0=roops_core_objectsInstrumented_OurTests_variable_definition_3_1)
+      and 
+      (
+        throw_8=throw_9)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
 pred roops_core_objectsInstrumented_OurTests_test1_0[
   throw_1: java_lang_Throwable + null,
   throw_2: java_lang_Throwable + null,
@@ -3188,7 +3624,23 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   throw_13: java_lang_Throwable + null,
   throw_14: java_lang_Throwable + null,
   throw_15: java_lang_Throwable + null,
-  o_0: java_lang_Object + null,
+  throw_16: java_lang_Throwable + null,
+  throw_17: java_lang_Throwable + null,
+  throw_18: java_lang_Throwable + null,
+  throw_19: java_lang_Throwable + null,
+  throw_20: java_lang_Throwable + null,
+  roops_core_objectsInstrumented_OurTests_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_0_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_2: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_3_0: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_3_1: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_3_2: ( ClassFields ) -> one ( boolean ),
@@ -3198,25 +3650,20 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   roops_core_objectsInstrumented_OurTests_variable_definition_1_0: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_1_1: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_1_2: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_0_2: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_1_3: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_0: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_1: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_2: ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_3: ( ClassFields ) -> one ( boolean ),
+  var_2_q_0: JavaPrimitiveIntegerValue,
+  var_2_q_1: JavaPrimitiveIntegerValue,
+  var_2_q_2: JavaPrimitiveIntegerValue,
   exit_stmt_reached_1: boolean,
   t_1_0: boolean,
   t_1_1: boolean,
   var_1_a_0: JavaPrimitiveIntegerValue,
   var_1_a_1: JavaPrimitiveIntegerValue,
   var_1_a_2: JavaPrimitiveIntegerValue,
-  var_2_m_0: JavaPrimitiveIntegerValue,
-  var_2_m_1: JavaPrimitiveIntegerValue,
-  var_2_m_2: JavaPrimitiveIntegerValue,
   l0_exit_stmt_reached_1: boolean
 ]{
   TruePred[]
@@ -3238,16 +3685,22 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                                                                            throw_6,
                                                                            throw_7,
                                                                            throw_8,
+                                                                           throw_9,
+                                                                           throw_10,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_0_0,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_0_1,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_1_0,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_1_1,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_2_0,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_2_1,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_3_0,
+                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_3_1,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_3_0,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_3_1,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_2_0,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_2_1,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_1_0,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_1_1,
-                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_0_0,
-                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_0_1,
-                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_1_0,
-                                                                           roops_core_objectsInstrumented_OurTests_roops_goal_1_1,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_0_0,
                                                                            roops_core_objectsInstrumented_OurTests_variable_definition_0_1,
                                                                            l0_exit_stmt_reached_1]
@@ -3256,18 +3709,18 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   and 
   (
     (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_8]
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_10]
       and 
       (
-        var_1_a_1=JavaPrimitiveIntegerLiteral1)
+        var_1_a_1=JavaPrimitiveIntegerLiteral7)
     )
     or 
     (
       (
         not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_8]
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_10]
         )
       )
       and 
@@ -3280,15 +3733,15 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   and 
   (
     (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_8]
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_10]
       and 
       (
         (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
+          roops_core_objectsInstrumented_OurTestsCondition2[]
           and 
           (
-            throw_9=java_lang_NullPointerExceptionLit)
+            throw_11=java_lang_NullPointerExceptionLit)
           and 
           (
             roops_core_objectsInstrumented_OurTests_variable_definition_0_1=roops_core_objectsInstrumented_OurTests_variable_definition_0_2)
@@ -3297,14 +3750,14 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
         (
           (
             not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
+              roops_core_objectsInstrumented_OurTestsCondition2[])
           )
           and 
           (
             roops_core_objectsInstrumented_OurTests_variable_definition_0_2=(roops_core_objectsInstrumented_OurTests_variable_definition_0_1)++((ClassFields)->(true)))
           and 
           (
-            throw_8=throw_9)
+            throw_10=throw_11)
         )
       )
     )
@@ -3312,8 +3765,8 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
     (
       (
         not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_8]
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_10]
         )
       )
       and 
@@ -3323,101 +3776,26 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
         roops_core_objectsInstrumented_OurTests_variable_definition_0_1=roops_core_objectsInstrumented_OurTests_variable_definition_0_2)
       and 
       (
-        throw_8=throw_9)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_9]
-      and 
-      (
-        var_2_m_1=JavaPrimitiveIntegerLiteral0)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_9]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_2_m_0=var_2_m_1)
+        throw_10=throw_11)
     )
   )
   and 
   (
     (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_9]
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_11]
       and 
       (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_10=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_2)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_1_2=(roops_core_objectsInstrumented_OurTests_variable_definition_1_1)++((ClassFields)->(true)))
-          and 
-          (
-            throw_9=throw_10)
-        )
+        t_1_1=(pred_java_primitive_integer_value_gt[var_1_a_1,
+                                            JavaPrimitiveIntegerLiteral5]=>(true)else(false))
       )
     )
     or 
     (
       (
         not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_9]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_2)
-      and 
-      (
-        throw_9=throw_10)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_10]
-      and 
-      (
-        t_1_1=(neq[o_0,
-           null]=>(true)else(false))
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_10]
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_11]
         )
       )
       and 
@@ -3430,27 +3808,102 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   and 
   (
     (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_10]
+      roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                       throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_OurTestsCondition4[t_1_1]
+          roops_core_objectsInstrumented_OurTestsCondition6[t_1_1]
+          and 
+          TruePred[]
           and 
           (
             (
-              roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                               throw_10]
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_11]
               and 
               (
-                var_1_a_2=JavaPrimitiveIntegerLiteral7)
+                var_2_q_1=JavaPrimitiveIntegerLiteral0)
             )
             or 
             (
               (
                 not (
-                  roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                                   throw_10]
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                var_2_q_0=var_2_q_1)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_11]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition2[]
+                  and 
+                  (
+                    throw_12=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition2[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_1_2=(roops_core_objectsInstrumented_OurTests_variable_definition_1_1)++((ClassFields)->(true)))
+                  and 
+                  (
+                    throw_11=throw_12)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_2)
+              and 
+              (
+                throw_11=throw_12)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_12]
+              and 
+              (
+                var_1_a_2=fun_java_primitive_integer_value_add[var_1_a_1,var_2_q_1])
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_12]
                 )
               )
               and 
@@ -3463,15 +3916,113 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
           and 
           (
             (
-              roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                               throw_10]
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_12]
               and 
               (
                 (
-                  roops_core_objectsInstrumented_OurTestsCondition0[]
+                  roops_core_objectsInstrumented_OurTestsCondition4[]
                   and 
                   (
-                    throw_11=java_lang_NullPointerExceptionLit)
+                    throw_13=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_0_1=roops_core_objectsInstrumented_OurTests_roops_goal_0_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition4[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_0_2=(roops_core_objectsInstrumented_OurTests_roops_goal_0_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_1_2)))
+                  and 
+                  (
+                    throw_12=throw_13)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_12]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_roops_goal_0_1=roops_core_objectsInstrumented_OurTests_roops_goal_0_2)
+              and 
+              (
+                throw_12=throw_13)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_13]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition4[]
+                  and 
+                  (
+                    throw_14=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_1_1=roops_core_objectsInstrumented_OurTests_roops_goal_1_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition4[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_1_2=(roops_core_objectsInstrumented_OurTests_roops_goal_1_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0_2)))
+                  and 
+                  (
+                    throw_13=throw_14)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_13]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_roops_goal_1_1=roops_core_objectsInstrumented_OurTests_roops_goal_1_2)
+              and 
+              (
+                throw_13=throw_14)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_14]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition2[]
+                  and 
+                  (
+                    throw_15=java_lang_NullPointerExceptionLit)
                   and 
                   (
                     roops_core_objectsInstrumented_OurTests_variable_definition_2_1=roops_core_objectsInstrumented_OurTests_variable_definition_2_2)
@@ -3480,14 +4031,14 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 (
                   (
                     not (
-                      roops_core_objectsInstrumented_OurTestsCondition0[])
+                      roops_core_objectsInstrumented_OurTestsCondition2[])
                   )
                   and 
                   (
                     roops_core_objectsInstrumented_OurTests_variable_definition_2_2=(roops_core_objectsInstrumented_OurTests_variable_definition_2_1)++((ClassFields)->(true)))
                   and 
                   (
-                    throw_10=throw_11)
+                    throw_14=throw_15)
                 )
               )
             )
@@ -3495,8 +4046,8 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
             (
               (
                 not (
-                  roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                                   throw_10]
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_14]
                 )
               )
               and 
@@ -3506,21 +4057,21 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 roops_core_objectsInstrumented_OurTests_variable_definition_2_1=roops_core_objectsInstrumented_OurTests_variable_definition_2_2)
               and 
               (
-                throw_10=throw_11)
+                throw_14=throw_15)
             )
           )
           and 
           (
             (
-              roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                               throw_11]
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_15]
               and 
               (
                 (
-                  roops_core_objectsInstrumented_OurTestsCondition0[]
+                  roops_core_objectsInstrumented_OurTestsCondition2[]
                   and 
                   (
-                    throw_12=java_lang_NullPointerExceptionLit)
+                    throw_16=java_lang_NullPointerExceptionLit)
                   and 
                   (
                     roops_core_objectsInstrumented_OurTests_variable_definition_0_2=roops_core_objectsInstrumented_OurTests_variable_definition_0_3)
@@ -3529,14 +4080,14 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 (
                   (
                     not (
-                      roops_core_objectsInstrumented_OurTestsCondition0[])
+                      roops_core_objectsInstrumented_OurTestsCondition2[])
                   )
                   and 
                   (
                     roops_core_objectsInstrumented_OurTests_variable_definition_0_3=(roops_core_objectsInstrumented_OurTests_variable_definition_0_2)++((ClassFields)->(false)))
                   and 
                   (
-                    throw_11=throw_12)
+                    throw_15=throw_16)
                 )
               )
             )
@@ -3544,8 +4095,8 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
             (
               (
                 not (
-                  roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                                   throw_11]
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_15]
                 )
               )
               and 
@@ -3555,7 +4106,227 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 roops_core_objectsInstrumented_OurTests_variable_definition_0_2=roops_core_objectsInstrumented_OurTests_variable_definition_0_3)
               and 
               (
-                throw_11=throw_12)
+                throw_15=throw_16)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_16]
+              and 
+              (
+                var_2_q_2=var_1_a_2)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_16]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                var_2_q_1=var_2_q_2)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_16]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition4[]
+                  and 
+                  (
+                    throw_17=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_2_1=roops_core_objectsInstrumented_OurTests_roops_goal_2_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition4[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_2_2=(roops_core_objectsInstrumented_OurTests_roops_goal_2_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0_3)))
+                  and 
+                  (
+                    throw_16=throw_17)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_16]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_roops_goal_2_1=roops_core_objectsInstrumented_OurTests_roops_goal_2_2)
+              and 
+              (
+                throw_16=throw_17)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_17]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition4[]
+                  and 
+                  (
+                    throw_18=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_3_1=roops_core_objectsInstrumented_OurTests_roops_goal_3_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition4[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_roops_goal_3_2=(roops_core_objectsInstrumented_OurTests_roops_goal_3_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_2_2)))
+                  and 
+                  (
+                    throw_17=throw_18)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_17]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_roops_goal_3_1=roops_core_objectsInstrumented_OurTests_roops_goal_3_2)
+              and 
+              (
+                throw_17=throw_18)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_18]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition2[]
+                  and 
+                  (
+                    throw_19=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_3_1=roops_core_objectsInstrumented_OurTests_variable_definition_3_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition2[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_3_2=(roops_core_objectsInstrumented_OurTests_variable_definition_3_1)++((ClassFields)->(true)))
+                  and 
+                  (
+                    throw_18=throw_19)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_18]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_variable_definition_3_1=roops_core_objectsInstrumented_OurTests_variable_definition_3_2)
+              and 
+              (
+                throw_18=throw_19)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                               throw_19]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_OurTestsCondition2[]
+                  and 
+                  (
+                    throw_20=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_1_2=roops_core_objectsInstrumented_OurTests_variable_definition_1_3)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_OurTestsCondition2[])
+                  )
+                  and 
+                  (
+                    roops_core_objectsInstrumented_OurTests_variable_definition_1_3=(roops_core_objectsInstrumented_OurTests_variable_definition_1_2)++((ClassFields)->(false)))
+                  and 
+                  (
+                    throw_19=throw_20)
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                                   throw_19]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                roops_core_objectsInstrumented_OurTests_variable_definition_1_2=roops_core_objectsInstrumented_OurTests_variable_definition_1_3)
+              and 
+              (
+                throw_19=throw_20)
             )
           )
         )
@@ -3563,22 +4334,43 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
         (
           (
             not (
-              roops_core_objectsInstrumented_OurTestsCondition4[t_1_1])
+              roops_core_objectsInstrumented_OurTestsCondition6[t_1_1])
           )
           and 
           TruePred[]
           and 
           (
+            var_2_q_0=var_2_q_2)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_0_1=roops_core_objectsInstrumented_OurTests_roops_goal_0_2)
+          and 
+          (
+            var_1_a_1=var_1_a_2)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_1_1=roops_core_objectsInstrumented_OurTests_roops_goal_1_2)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_roops_goal_2_1=roops_core_objectsInstrumented_OurTests_roops_goal_2_2)
+          and 
+          (
+            roops_core_objectsInstrumented_OurTests_variable_definition_3_1=roops_core_objectsInstrumented_OurTests_variable_definition_3_2)
+          and 
+          (
+            throw_11=throw_20)
+          and 
+          (
             roops_core_objectsInstrumented_OurTests_variable_definition_2_1=roops_core_objectsInstrumented_OurTests_variable_definition_2_2)
           and 
           (
-            throw_10=throw_12)
+            roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_3)
           and 
           (
             roops_core_objectsInstrumented_OurTests_variable_definition_0_2=roops_core_objectsInstrumented_OurTests_variable_definition_0_3)
           and 
           (
-            var_1_a_1=var_1_a_2)
+            roops_core_objectsInstrumented_OurTests_roops_goal_3_1=roops_core_objectsInstrumented_OurTests_roops_goal_3_2)
         )
       )
     )
@@ -3586,195 +4378,45 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
     (
       (
         not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_10]
+          roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached_1,
+                                                           throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        roops_core_objectsInstrumented_OurTests_variable_definition_2_1=roops_core_objectsInstrumented_OurTests_variable_definition_2_2)
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_0_2=roops_core_objectsInstrumented_OurTests_variable_definition_0_3)
-      and 
-      (
-        var_1_a_1=var_1_a_2)
-      and 
-      (
-        throw_10=throw_12)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_12]
-      and 
-      (
-        var_2_m_2=fun_java_primitive_integer_value_add[var_2_m_1,var_1_a_2])
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_12]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_2_m_1=var_2_m_2)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_12]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition6[]
-          and 
-          (
-            throw_13=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_0_1=roops_core_objectsInstrumented_OurTests_roops_goal_0_2)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition6[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_0_2=(roops_core_objectsInstrumented_OurTests_roops_goal_0_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_0_3)))
-          and 
-          (
-            throw_12=throw_13)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_12]
-        )
-      )
-      and 
-      TruePred[]
+        var_2_q_0=var_2_q_2)
       and 
       (
         roops_core_objectsInstrumented_OurTests_roops_goal_0_1=roops_core_objectsInstrumented_OurTests_roops_goal_0_2)
       and 
       (
-        throw_12=throw_13)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_13]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition6[]
-          and 
-          (
-            throw_14=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_1_1=roops_core_objectsInstrumented_OurTests_roops_goal_1_2)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition6[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_1_2=(roops_core_objectsInstrumented_OurTests_roops_goal_1_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_OurTests_variable_definition_2_2)))
-          and 
-          (
-            throw_13=throw_14)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_13]
-        )
-      )
-      and 
-      TruePred[]
+        var_1_a_1=var_1_a_2)
       and 
       (
         roops_core_objectsInstrumented_OurTests_roops_goal_1_1=roops_core_objectsInstrumented_OurTests_roops_goal_1_2)
       and 
       (
-        throw_13=throw_14)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_14]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_15=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_3_1=roops_core_objectsInstrumented_OurTests_variable_definition_3_2)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_3_2=(roops_core_objectsInstrumented_OurTests_variable_definition_3_1)++((ClassFields)->(true)))
-          and 
-          (
-            throw_14=throw_15)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_14]
-        )
-      )
-      and 
-      TruePred[]
+        roops_core_objectsInstrumented_OurTests_roops_goal_2_1=roops_core_objectsInstrumented_OurTests_roops_goal_2_2)
       and 
       (
         roops_core_objectsInstrumented_OurTests_variable_definition_3_1=roops_core_objectsInstrumented_OurTests_variable_definition_3_2)
       and 
       (
-        throw_14=throw_15)
+        roops_core_objectsInstrumented_OurTests_variable_definition_2_1=roops_core_objectsInstrumented_OurTests_variable_definition_2_2)
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_1_1=roops_core_objectsInstrumented_OurTests_variable_definition_1_3)
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_variable_definition_0_2=roops_core_objectsInstrumented_OurTests_variable_definition_0_3)
+      and 
+      (
+        roops_core_objectsInstrumented_OurTests_roops_goal_3_1=roops_core_objectsInstrumented_OurTests_roops_goal_3_2)
+      and 
+      (
+        throw_11=throw_20)
     )
   )
   and 
@@ -3782,372 +4424,11 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
 
 }
 
-
-
-pred roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[
-  throw_1: java_lang_Throwable + null,
-  throw_2: java_lang_Throwable + null,
-  throw_3: java_lang_Throwable + null,
-  throw_4: java_lang_Throwable + null,
-  throw_5: java_lang_Throwable + null,
-  throw_6: java_lang_Throwable + null,
-  throw_7: java_lang_Throwable + null,
-  roops_core_objectsInstrumented_OurTests_variable_definition_3_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_3_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_2_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_2_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_1_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_1_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_0_0: ( ClassFields ) -> one ( boolean ),
-  roops_core_objectsInstrumented_OurTests_variable_definition_0_1: ( ClassFields ) -> one ( boolean ),
-  exit_stmt_reached_1: boolean
-]{
-  TruePred[]
-  and 
-  (
-    throw_1=null)
-  and 
-  TruePred[]
-  and 
-  (
-    exit_stmt_reached_1=false)
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_1]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_2=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_0_0=roops_core_objectsInstrumented_OurTests_roops_goal_0_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_0_1=(roops_core_objectsInstrumented_OurTests_roops_goal_0_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_1=throw_2)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_1]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_roops_goal_0_0=roops_core_objectsInstrumented_OurTests_roops_goal_0_1)
-      and 
-      (
-        throw_1=throw_2)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_2]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_3=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_1_0=roops_core_objectsInstrumented_OurTests_roops_goal_1_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_roops_goal_1_1=(roops_core_objectsInstrumented_OurTests_roops_goal_1_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_2=throw_3)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_roops_goal_1_0=roops_core_objectsInstrumented_OurTests_roops_goal_1_1)
-      and 
-      (
-        throw_2=throw_3)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_3]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_4=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_0_0=roops_core_objectsInstrumented_OurTests_variable_definition_0_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_0_1=(roops_core_objectsInstrumented_OurTests_variable_definition_0_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_3=throw_4)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_3]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_0_0=roops_core_objectsInstrumented_OurTests_variable_definition_0_1)
-      and 
-      (
-        throw_3=throw_4)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_4]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_5=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_1_0=roops_core_objectsInstrumented_OurTests_variable_definition_1_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_1_1=(roops_core_objectsInstrumented_OurTests_variable_definition_1_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_4=throw_5)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_4]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_1_0=roops_core_objectsInstrumented_OurTests_variable_definition_1_1)
-      and 
-      (
-        throw_4=throw_5)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_5]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_6=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_2_0=roops_core_objectsInstrumented_OurTests_variable_definition_2_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_2_1=(roops_core_objectsInstrumented_OurTests_variable_definition_2_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_5=throw_6)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_5]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_2_0=roops_core_objectsInstrumented_OurTests_variable_definition_2_1)
-      and 
-      (
-        throw_5=throw_6)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                       throw_6]
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_OurTestsCondition0[]
-          and 
-          (
-            throw_7=java_lang_NullPointerExceptionLit)
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_3_0=roops_core_objectsInstrumented_OurTests_variable_definition_3_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_OurTestsCondition0[])
-          )
-          and 
-          (
-            roops_core_objectsInstrumented_OurTests_variable_definition_3_1=(roops_core_objectsInstrumented_OurTests_variable_definition_3_0)++((ClassFields)->(false)))
-          and 
-          (
-            throw_6=throw_7)
-        )
-      )
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                           throw_6]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        roops_core_objectsInstrumented_OurTests_variable_definition_3_0=roops_core_objectsInstrumented_OurTests_variable_definition_3_1)
-      and 
-      (
-        throw_6=throw_7)
-    )
-  )
-  and 
-  TruePred[]
-
-}
-
-//-------------SMB sigs-------------// 
-//-----SMB: local_ordering()-----//
-//-----SMB: global_ordering()-----//
-fun globalNext[]: java_lang_Object -> lone java_lang_Object {
-none -> none
-}
-fun globalMin[s : set java_lang_Object] : lone java_lang_Object {
-s - s.^globalNext[] 
-}
-//-----SMB: define_min_parent()-----//
-//-----SMB: define_freach()-----//
-//-----SMB: order_root_nodes()-----//
-//-----SMB: root_is_minimum()-----//
-//-----SMB: order_same_min_parent()-----//
-//-----SMB: order_same_min_parent_type()-----//
-//-----SMB: order_diff_min_parent_type()-----//
-//-----SMB: avoid_holes()-----//
-/*
-type ordering:
-==============
-
-root nodes ordering:
-====================
-1) o:java_lang_Object+null
-
-recursive field ordering:
-=========================
-
-non-recursive field ordering:
-=============================
-*/
 one sig QF {
   BQ__0: boolean,
   BQ__1: boolean,
+  BQ__2: boolean,
+  BQ__3: boolean,
   l1_exit_stmt_reached_1:  boolean,
   l1_l0_exit_stmt_reached_1:  boolean,
   l1_t_1_0:  boolean,
@@ -4155,16 +4436,21 @@ one sig QF {
   l1_var_1_a_0:  JavaPrimitiveIntegerValue,
   l1_var_1_a_1:  JavaPrimitiveIntegerValue,
   l1_var_1_a_2:  JavaPrimitiveIntegerValue,
-  l1_var_2_m_0:  JavaPrimitiveIntegerValue,
-  l1_var_2_m_1:  JavaPrimitiveIntegerValue,
-  l1_var_2_m_2:  JavaPrimitiveIntegerValue,
-  o_0:  java_lang_Object + null,
+  l1_var_2_q_0:  JavaPrimitiveIntegerValue,
+  l1_var_2_q_1:  JavaPrimitiveIntegerValue,
+  l1_var_2_q_2:  JavaPrimitiveIntegerValue,
   roops_core_objectsInstrumented_OurTests_roops_goal_0_0:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_0_1:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_0_2:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_1_0:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_1_1:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_1_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3_2:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_0:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_1:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_0_2:  ( ClassFields ) -> one ( boolean ),
@@ -4172,6 +4458,7 @@ one sig QF {
   roops_core_objectsInstrumented_OurTests_variable_definition_1_0:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_1_1:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_1_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_OurTests_variable_definition_1_3:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_2_0:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_2_1:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_variable_definition_2_2:  ( ClassFields ) -> one ( boolean ),
@@ -4186,7 +4473,12 @@ one sig QF {
   throw_13:  java_lang_Throwable + null,
   throw_14:  java_lang_Throwable + null,
   throw_15:  java_lang_Throwable + null,
+  throw_16:  java_lang_Throwable + null,
+  throw_17:  java_lang_Throwable + null,
+  throw_18:  java_lang_Throwable + null,
+  throw_19:  java_lang_Throwable + null,
   throw_2:  java_lang_Throwable + null,
+  throw_20:  java_lang_Throwable + null,
   throw_3:  java_lang_Throwable + null,
   throw_4:  java_lang_Throwable + null,
   throw_5:  java_lang_Throwable + null,
@@ -4217,7 +4509,23 @@ fact {
                                                  QF.throw_13,
                                                  QF.throw_14,
                                                  QF.throw_15,
-                                                 QF.o_0,
+                                                 QF.throw_16,
+                                                 QF.throw_17,
+                                                 QF.throw_18,
+                                                 QF.throw_19,
+                                                 QF.throw_20,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_0,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_1,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_2,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_0,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_1,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_2,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_2_0,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_2_1,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_2_2,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_3_0,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_3_1,
+                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_3_2,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_3_0,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_3_1,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_3_2,
@@ -4227,31 +4535,29 @@ fact {
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_1_0,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_1_1,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_1_2,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_0,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_1,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_2,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_0,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_1,
-                                                 QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_2,
+                                                 QF.roops_core_objectsInstrumented_OurTests_variable_definition_1_3,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_0_0,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_0_1,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_0_2,
                                                  QF.roops_core_objectsInstrumented_OurTests_variable_definition_0_3,
+                                                 QF.l1_var_2_q_0,
+                                                 QF.l1_var_2_q_1,
+                                                 QF.l1_var_2_q_2,
                                                  QF.l1_exit_stmt_reached_1,
                                                  QF.l1_t_1_0,
                                                  QF.l1_t_1_1,
                                                  QF.l1_var_1_a_0,
                                                  QF.l1_var_1_a_1,
                                                  QF.l1_var_1_a_2,
-                                                 QF.l1_var_2_m_0,
-                                                 QF.l1_var_2_m_1,
-                                                 QF.l1_var_2_m_2,
                                                  QF.l1_l0_exit_stmt_reached_1]
 
 }
 
 assert check_roops_core_objectsInstrumented_OurTests_test1_0{
-  postcondition_roops_core_objectsInstrumented_OurTests_test1_0[QF.throw_15]}
+  postcondition_roops_core_objectsInstrumented_OurTests_test1_0[QF.throw_20]}
+fun fun_java_primitive_integer_value_literal_1[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_1[ret] }
+}
 fun fun_java_primitive_integer_value_literal_2[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_2[ret] }
 }
@@ -4261,14 +4567,45 @@ fun fun_java_primitive_integer_value_literal_3[]: one JavaPrimitiveIntegerValue 
 fun fun_java_primitive_integer_value_literal_4[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_4[ret] }
 }
-fun fun_java_primitive_integer_value_literal_5[]: one JavaPrimitiveIntegerValue {
- { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_5[ret] }
-}
 fun fun_java_primitive_integer_value_literal_6[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_6[ret] }
 }
 fun fun_java_primitive_integer_value_size_of[s: set univ]: one JavaPrimitiveIntegerValue {
   { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_size_of[s,ret]} 
+}
+pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=false 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
 }
 pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
  ret.b00=false 
@@ -4372,40 +4709,6 @@ pred pred_java_primitive_integer_value_literal_4[ret: JavaPrimitiveIntegerValue]
  ret.b30=false 
  ret.b31=false 
 }
-pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue] {
- ret.b00=true 
- ret.b01=false 
- ret.b02=true 
- ret.b03=false 
- ret.b04=false 
- ret.b05=false 
- ret.b06=false 
- ret.b07=false 
- ret.b08=false 
- ret.b09=false 
- ret.b10=false 
- ret.b11=false 
- ret.b12=false 
- ret.b13=false 
- ret.b14=false 
- ret.b15=false 
- ret.b16=false 
- ret.b17=false 
- ret.b18=false 
- ret.b19=false 
- ret.b20=false 
- ret.b21=false 
- ret.b22=false 
- ret.b23=false 
- ret.b24=false 
- ret.b25=false 
- ret.b26=false 
- ret.b27=false 
- ret.b28=false 
- ret.b29=false 
- ret.b30=false 
- ret.b31=false 
-}
 pred pred_java_primitive_integer_value_literal_6[ret: JavaPrimitiveIntegerValue] {
  ret.b00=false 
  ret.b01=true 
@@ -4454,4 +4757,6 @@ pred pred_java_primitive_integer_value_size_of[s: set univ, ret: JavaPrimitiveIn
 fact {
   QF.BQ__0=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_0_2)=true
   QF.BQ__1=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_2)=true
+  QF.BQ__2=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_2_2)=true
+  QF.BQ__3=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_3_2)=true
 }
