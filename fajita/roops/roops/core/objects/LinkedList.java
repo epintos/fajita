@@ -27,10 +27,6 @@ public class LinkedList {
 		  boolean ret_val = list.addLast(o);
 		}
 	}
-	
-	public int a(int x) {
-		return 1;
-	}
 
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod static
