@@ -2456,11 +2456,81 @@ pred pred_java_primitive_integer_value_literal_minus_1[ret: JavaPrimitiveInteger
  ret.b31=true 
 }
 
-pred pred_java_primitive_integer_value_literal_7[ret: JavaPrimitiveIntegerValue] {
- ret.b00=true 
- ret.b01=true 
- ret.b02=true 
+pred pred_java_primitive_integer_value_literal_8[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=false 
+ ret.b02=false 
+ ret.b03=true 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
+pred pred_java_primitive_integer_value_literal_0[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=false 
+ ret.b02=false 
  ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
+pred pred_java_primitive_integer_value_literal_9[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=false 
+ ret.b02=false 
+ ret.b03=true 
  ret.b04=false 
  ret.b05=false 
  ret.b06=false 
@@ -2526,8 +2596,43 @@ pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
-pred pred_java_primitive_integer_value_literal_0[ret: JavaPrimitiveIntegerValue] {
+pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
  ret.b00=false 
+ ret.b01=true 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
+pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
  ret.b01=false 
  ret.b02=false 
  ret.b03=false 
