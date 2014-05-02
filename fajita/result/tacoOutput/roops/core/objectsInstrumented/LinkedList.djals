@@ -64,14 +64,14 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_21:boolean;
-            var var_9_ret_val:boolean;
+            var t_18:boolean;
+            var var_10_ret_val:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_21:=(equ[value1,
+               t_18:=(equ[value1,
                   value2]=>(true)else(false));
             } else {
                skip;
@@ -81,24 +81,24 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_21=true{
+               if t_18=true{
                   if (
                     throw=null)
                   and 
                   (
                     exit_stmt_reached=false){
-                     var_9_ret_val:=true;
+                     var_10_ret_val:=true;
                   } else {
                      skip;
                   };
                } else    {
-                     var t_20:boolean;
+                     var t_17:boolean;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        t_20:=(equ[value1,
+                        t_17:=(equ[value1,
                            null]=>(true)else(false));
                      } else {
                         skip;
@@ -108,18 +108,18 @@ Implementation
                      and 
                      (
                        exit_stmt_reached=false){
-                        if t_20=true{
+                        if t_17=true{
                            if (
                              throw=null)
                            and 
                            (
                              exit_stmt_reached=false){
-                              var_9_ret_val:=false;
+                              var_10_ret_val:=false;
                            } else {
                               skip;
                            };
                         } else    {
-                              var t_19:boolean;
+                              var t_16:boolean;
                               if (
                                 throw=null)
                               and 
@@ -128,7 +128,7 @@ Implementation
                                  if isEmptyOrNull[value1]{
                                     throw:=java_lang_NullPointerExceptionLit;
                                  } else {
-                                    call equals[value1,throw,t_19,value2];
+                                    call equals[value1,throw,t_16,value2];
                                  };
                               } else {
                                  skip;
@@ -138,7 +138,7 @@ Implementation
                               and 
                               (
                                 exit_stmt_reached=false){
-                                 var_9_ret_val:=t_19;
+                                 var_10_ret_val:=t_16;
                               } else {
                                  skip;
                               };
@@ -159,7 +159,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=var_9_ret_val;
+                  return:=var_10_ret_val;
                   exit_stmt_reached:=true;
                
                }
@@ -190,19 +190,19 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
+            var t_27:boolean;
+            var t_29:boolean;
             var t_30:boolean;
-            var t_32:boolean;
+            var t_31:boolean;
             var t_33:boolean;
-            var t_34:boolean;
-            var t_36:boolean;
-            var t_37:JavaPrimitiveIntegerValue;
-            var t_40:boolean;
+            var t_34:JavaPrimitiveIntegerValue;
+            var t_37:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_30:=(pred_java_primitive_integer_value_lt[index,
+               t_27:=(pred_java_primitive_integer_value_lt[index,
                                                    JavaPrimitiveIntegerLiteral0]=>(true)else(false));
             } else {
                skip;
@@ -212,18 +212,18 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_30=true   {
-                     var t_29:java_lang_RuntimeException+null;
+               if t_27=true   {
+                     var t_26:java_lang_RuntimeException+null;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        t_29:=java_lang_RuntimeExceptionLit;
+                        t_26:=java_lang_RuntimeExceptionLit;
                      } else {
                         skip;
                      };
-                     throw:=t_29;
+                     throw:=t_26;
                      exit_stmt_reached:=true;
                   
                   }
@@ -238,7 +238,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_33:=Not[endMarkerAllowed];
+               t_30:=Not[endMarkerAllowed];
             } else {
                skip;
             };
@@ -247,7 +247,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_34:=(equ[index,
+               t_31:=(equ[index,
                   thiz.roops_core_objectsInstrumented_LinkedList_size]=>(true)else(false));
             } else {
                skip;
@@ -257,19 +257,19 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_33=true{
+               if t_30=true{
                   if (
                     throw=null)
                   and 
                   (
                     exit_stmt_reached=false){
-                     if t_34=true{
+                     if t_31=true{
                         if (
                           throw=null)
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_32:=true;
+                           t_29:=true;
                         } else {
                            skip;
                         };
@@ -279,7 +279,7 @@ Implementation
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_32:=false;
+                           t_29:=false;
                         } else {
                            skip;
                         };
@@ -293,7 +293,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     t_32:=false;
+                     t_29:=false;
                   } else {
                      skip;
                   };
@@ -306,18 +306,18 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_32=true   {
-                     var t_31:java_lang_RuntimeException+null;
+               if t_29=true   {
+                     var t_28:java_lang_RuntimeException+null;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        t_31:=java_lang_RuntimeExceptionLit;
+                        t_28:=java_lang_RuntimeExceptionLit;
                      } else {
                         skip;
                      };
-                     throw:=t_31;
+                     throw:=t_28;
                      exit_stmt_reached:=true;
                   
                   }
@@ -332,7 +332,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_36:=(pred_java_primitive_integer_value_gt[index,
+               t_33:=(pred_java_primitive_integer_value_gt[index,
                                                    thiz.roops_core_objectsInstrumented_LinkedList_size]=>(true)else(false));
             } else {
                skip;
@@ -342,18 +342,18 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_36=true   {
-                     var t_35:java_lang_RuntimeException+null;
+               if t_33=true   {
+                     var t_32:java_lang_RuntimeException+null;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        t_35:=java_lang_RuntimeExceptionLit;
+                        t_32:=java_lang_RuntimeExceptionLit;
                      } else {
                         skip;
                      };
-                     throw:=t_35;
+                     throw:=t_32;
                      exit_stmt_reached:=true;
                   
                   }
@@ -363,7 +363,7 @@ Implementation
             } else {
                skip;
             };
-            var var_13_node:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_14_node:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
@@ -372,18 +372,18 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  t_37:=fun_java_primitive_integer_value_sshr[thiz.roops_core_objectsInstrumented_LinkedList_size];
+                  t_34:=fun_java_primitive_integer_value_sshr[thiz.roops_core_objectsInstrumented_LinkedList_size];
                };
             } else {
                skip;
             };
-            var var_14_size_div_2:JavaPrimitiveIntegerValue;
+            var var_15_size_div_2:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_14_size_div_2:=t_37;
+               var_15_size_div_2:=t_34;
             } else {
                skip;
             };
@@ -392,8 +392,8 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_40:=(pred_java_primitive_integer_value_lt[index,
-                                                   var_14_size_div_2]=>(true)else(false));
+               t_37:=(pred_java_primitive_integer_value_lt[index,
+                                                   var_15_size_div_2]=>(true)else(false));
             } else {
                skip;
             };
@@ -402,7 +402,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_40=true   {
+               if t_37=true   {
                      if (
                        throw=null)
                      and 
@@ -414,33 +414,33 @@ Implementation
                         {
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           var_13_node:=(thiz.roops_core_objectsInstrumented_LinkedList_header).roops_core_objectsInstrumented_LinkedListNode_next;
+                           var_14_node:=(thiz.roops_core_objectsInstrumented_LinkedList_header).roops_core_objectsInstrumented_LinkedListNode_next;
                         };
                      } else {
                         skip;
                      };
-                     var var_15_currentIndex:JavaPrimitiveIntegerValue;
+                     var var_16_currentIndex:JavaPrimitiveIntegerValue;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_15_currentIndex:=JavaPrimitiveIntegerLiteral0;
+                        var_16_currentIndex:=JavaPrimitiveIntegerLiteral0;
                      } else {
                         skip;
                      };
-                     var var_16_ws_2:boolean;
+                     var var_17_ws_2:boolean;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_16_ws_2:=(pred_java_primitive_integer_value_lt[var_15_currentIndex,
+                        var_17_ws_2:=(pred_java_primitive_integer_value_lt[var_16_currentIndex,
                                                             index]=>(true)else(false));
                      } else {
                         skip;
                      };
-                     while liftExpression[var_16_ws_2]
+                     while liftExpression[var_17_ws_2]
                      and 
                      (
                        throw=null)
@@ -449,16 +449,16 @@ Implementation
                        exit_stmt_reached=false)
                      
                         {
-                           var t_38:JavaPrimitiveIntegerValue;
+                           var t_35:JavaPrimitiveIntegerValue;
                            if (
                              throw=null)
                            and 
                            (
                              exit_stmt_reached=false){
-                              if isEmptyOrNull[var_13_node]{
+                              if isEmptyOrNull[var_14_node]{
                                  throw:=java_lang_NullPointerExceptionLit;
                               } else {
-                                 var_13_node:=var_13_node.roops_core_objectsInstrumented_LinkedListNode_next;
+                                 var_14_node:=var_14_node.roops_core_objectsInstrumented_LinkedListNode_next;
                               };
                            } else {
                               skip;
@@ -468,7 +468,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              t_38:=var_15_currentIndex;
+                              t_35:=var_16_currentIndex;
                            } else {
                               skip;
                            };
@@ -477,7 +477,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              var_15_currentIndex:=fun_java_primitive_integer_value_add[var_15_currentIndex,JavaPrimitiveIntegerLiteral1];
+                              var_16_currentIndex:=fun_java_primitive_integer_value_add[var_16_currentIndex,JavaPrimitiveIntegerLiteral1];
                            } else {
                               skip;
                            };
@@ -486,7 +486,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              var_16_ws_2:=(pred_java_primitive_integer_value_lt[var_15_currentIndex,
+                              var_17_ws_2:=(pred_java_primitive_integer_value_lt[var_16_currentIndex,
                                                                   index]=>(true)else(false));
                            } else {
                               skip;
@@ -505,12 +505,12 @@ Implementation
                         if isEmptyOrNull[thiz]{
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           var_13_node:=thiz.roops_core_objectsInstrumented_LinkedList_header;
+                           var_14_node:=thiz.roops_core_objectsInstrumented_LinkedList_header;
                         };
                      } else {
                         skip;
                      };
-                     var var_17_currentIndex:JavaPrimitiveIntegerValue;
+                     var var_18_currentIndex:JavaPrimitiveIntegerValue;
                      if (
                        throw=null)
                      and 
@@ -519,23 +519,23 @@ Implementation
                         if isEmptyOrNull[thiz]{
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           var_17_currentIndex:=thiz.roops_core_objectsInstrumented_LinkedList_size;
+                           var_18_currentIndex:=thiz.roops_core_objectsInstrumented_LinkedList_size;
                         };
                      } else {
                         skip;
                      };
-                     var var_18_ws_3:boolean;
+                     var var_19_ws_3:boolean;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_18_ws_3:=(pred_java_primitive_integer_value_gt[var_17_currentIndex,
+                        var_19_ws_3:=(pred_java_primitive_integer_value_gt[var_18_currentIndex,
                                                             index]=>(true)else(false));
                      } else {
                         skip;
                      };
-                     while liftExpression[var_18_ws_3]
+                     while liftExpression[var_19_ws_3]
                      and 
                      (
                        throw=null)
@@ -544,16 +544,16 @@ Implementation
                        exit_stmt_reached=false)
                      
                         {
-                           var t_39:JavaPrimitiveIntegerValue;
+                           var t_36:JavaPrimitiveIntegerValue;
                            if (
                              throw=null)
                            and 
                            (
                              exit_stmt_reached=false){
-                              if isEmptyOrNull[var_13_node]{
+                              if isEmptyOrNull[var_14_node]{
                                  throw:=java_lang_NullPointerExceptionLit;
                               } else {
-                                 var_13_node:=var_13_node.roops_core_objectsInstrumented_LinkedListNode_previous;
+                                 var_14_node:=var_14_node.roops_core_objectsInstrumented_LinkedListNode_previous;
                               };
                            } else {
                               skip;
@@ -563,7 +563,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              t_39:=var_17_currentIndex;
+                              t_36:=var_18_currentIndex;
                            } else {
                               skip;
                            };
@@ -572,7 +572,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              var_17_currentIndex:=fun_java_primitive_integer_value_add[var_17_currentIndex,JavaPrimitiveIntegerLiteralMinus1];
+                              var_18_currentIndex:=fun_java_primitive_integer_value_add[var_18_currentIndex,JavaPrimitiveIntegerLiteralMinus1];
                            } else {
                               skip;
                            };
@@ -581,7 +581,7 @@ Implementation
                            and 
                            (
                              exit_stmt_reached=false){
-                              var_18_ws_3:=(pred_java_primitive_integer_value_gt[var_17_currentIndex,
+                              var_19_ws_3:=(pred_java_primitive_integer_value_gt[var_18_currentIndex,
                                                                   index]=>(true)else(false));
                            } else {
                               skip;
@@ -600,7 +600,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=var_13_node;
+                  return:=var_14_node;
                   exit_stmt_reached:=true;
                
                }
@@ -629,30 +629,30 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_22:null+roops_core_objectsInstrumented_LinkedListNode;
+            var t_19:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false)   {
-                  createObject<roops_core_objectsInstrumented_LinkedListNode>[t_22];
-                  if isEmptyOrNull[t_22]{
+                  createObject<roops_core_objectsInstrumented_LinkedListNode>[t_19];
+                  if isEmptyOrNull[t_19]{
                      throw:=java_lang_NullPointerExceptionLit;
                   } else {
-                     call Constructor[t_22,throw];
+                     call Constructor[t_19,throw];
                   };
                
                }
              else {
                skip;
             };
-            var var_10_linkedListNode:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_11_linkedListNode:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_10_linkedListNode:=t_22;
+               var_11_linkedListNode:=t_19;
             } else {
                skip;
             };
@@ -661,10 +661,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[var_10_linkedListNode]{
+               if isEmptyOrNull[var_11_linkedListNode]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  var_10_linkedListNode.roops_core_objectsInstrumented_LinkedListNode_next:=var_10_linkedListNode;
+                  var_11_linkedListNode.roops_core_objectsInstrumented_LinkedListNode_next:=var_11_linkedListNode;
                };
             } else {
                skip;
@@ -674,10 +674,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[var_10_linkedListNode]{
+               if isEmptyOrNull[var_11_linkedListNode]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  var_10_linkedListNode.roops_core_objectsInstrumented_LinkedListNode_previous:=var_10_linkedListNode;
+                  var_11_linkedListNode.roops_core_objectsInstrumented_LinkedListNode_previous:=var_11_linkedListNode;
                };
             } else {
                skip;
@@ -687,7 +687,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=var_10_linkedListNode;
+                  return:=var_11_linkedListNode;
                   exit_stmt_reached:=true;
                
                }
@@ -748,8 +748,8 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_25:JavaPrimitiveIntegerValue;
-            var t_26:JavaPrimitiveIntegerValue;
+            var t_22:JavaPrimitiveIntegerValue;
+            var t_23:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
@@ -759,19 +759,6 @@ Implementation
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
                   nodeToInsert.roops_core_objectsInstrumented_LinkedListNode_next:=insertBeforeNode;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_6:=true;
                };
             } else {
                skip;
@@ -797,19 +784,6 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_7:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
                if isEmptyOrNull[insertBeforeNode.roops_core_objectsInstrumented_LinkedListNode_previous]
                or 
                isEmptyOrNull[insertBeforeNode]
@@ -817,19 +791,6 @@ Implementation
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
                   (insertBeforeNode.roops_core_objectsInstrumented_LinkedListNode_previous).roops_core_objectsInstrumented_LinkedListNode_next:=nodeToInsert;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_8:=true;
                };
             } else {
                skip;
@@ -852,23 +813,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_9:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  t_25:=thiz.roops_core_objectsInstrumented_LinkedList_size;
+                  t_22:=thiz.roops_core_objectsInstrumented_LinkedList_size;
                };
             } else {
                skip;
@@ -897,7 +845,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  t_26:=thiz.roops_core_objectsInstrumented_LinkedList_modCount;
+                  t_23:=thiz.roops_core_objectsInstrumented_LinkedList_modCount;
                };
             } else {
                skip;
@@ -927,38 +875,6 @@ Implementation
    }
 
 
-program roops_core_objectsInstrumented_LinkedList::a[
-  var thiz:roops_core_objectsInstrumented_LinkedList,
-  var throw:java_lang_Throwable+null,
-  var return:JavaPrimitiveIntegerValue,
-  var x:JavaPrimitiveIntegerValue] 
-Implementation 
-
-   {
-      skip;
-      {
-         throw:=null;
-         var exit_stmt_reached:boolean;
-         exit_stmt_reached:=false;
-         if (
-           throw=null)
-         and 
-         (
-           exit_stmt_reached=false)   {
-               return:=JavaPrimitiveIntegerLiteral1;
-               exit_stmt_reached:=true;
-            
-            }
-          else {
-            skip;
-         };
-      
-      }
-      skip;
-   
-   }
-
-
 program roops_core_objectsInstrumented_LinkedList::removeIndex[
   var thiz:roops_core_objectsInstrumented_LinkedList,
   var throw:java_lang_Throwable+null,
@@ -973,7 +889,7 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_18:null+roops_core_objectsInstrumented_LinkedListNode;
+            var t_15:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
@@ -982,31 +898,31 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call getNode[thiz,throw,t_18,index,false];
+                  call getNode[thiz,throw,t_15,index,false];
                };
             } else {
                skip;
             };
-            var var_7_node:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_8_node:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_7_node:=t_18;
+               var_8_node:=t_15;
             } else {
                skip;
             };
-            var var_8_oldValue:java_lang_Object+null;
+            var var_9_oldValue:java_lang_Object+null;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[var_7_node]{
+               if isEmptyOrNull[var_8_node]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  var_8_oldValue:=var_7_node.roops_core_objectsInstrumented_LinkedListNode_object_value;
+                  var_9_oldValue:=var_8_node.roops_core_objectsInstrumented_LinkedListNode_object_value;
                };
             } else {
                skip;
@@ -1014,14 +930,14 @@ Implementation
             if isEmptyOrNull[thiz]{
                throw:=java_lang_NullPointerExceptionLit;
             } else {
-               call removeNode[thiz,throw,var_7_node];
+               call removeNode[thiz,throw,var_8_node];
             };
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=var_8_oldValue;
+                  return:=var_9_oldValue;
                   exit_stmt_reached:=true;
                
                }
@@ -1051,17 +967,17 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var var_4_i:JavaPrimitiveIntegerValue;
+            var var_5_i:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_4_i:=JavaPrimitiveIntegerLiteral0;
+               var_5_i:=JavaPrimitiveIntegerLiteral0;
             } else {
                skip;
             };
-            var var_5_node:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_6_node:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
@@ -1073,23 +989,23 @@ Implementation
                {
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  var_5_node:=(thiz.roops_core_objectsInstrumented_LinkedList_header).roops_core_objectsInstrumented_LinkedListNode_next;
+                  var_6_node:=(thiz.roops_core_objectsInstrumented_LinkedList_header).roops_core_objectsInstrumented_LinkedListNode_next;
                };
             } else {
                skip;
             };
-            var var_6_ws_1:boolean;
+            var var_7_ws_1:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_6_ws_1:=(neq[var_5_node,
+               var_7_ws_1:=(neq[var_6_node,
                   thiz.roops_core_objectsInstrumented_LinkedList_header]=>(true)else(false));
             } else {
                skip;
             };
-            while liftExpression[var_6_ws_1]
+            while liftExpression[var_7_ws_1]
             and 
             (
               throw=null)
@@ -1098,20 +1014,20 @@ Implementation
               exit_stmt_reached=false)
             
                {
-                  var t_14:boolean;
-                  var t_15:JavaPrimitiveIntegerValue;
+                  var t_11:boolean;
+                  var t_12:JavaPrimitiveIntegerValue;
                   if (
                     throw=null)
                   and 
                   (
                     exit_stmt_reached=false){
-                     if isEmptyOrNull[var_5_node]
+                     if isEmptyOrNull[var_6_node]
                      or 
                      isEmptyOrNull[thiz]
                      {
                         throw:=java_lang_NullPointerExceptionLit;
                      } else {
-                        call isEqualValue[thiz,throw,t_14,var_5_node.roops_core_objectsInstrumented_LinkedListNode_object_value,new_value];
+                        call isEqualValue[thiz,throw,t_11,var_6_node.roops_core_objectsInstrumented_LinkedListNode_object_value,new_value];
                      };
                   } else {
                      skip;
@@ -1121,13 +1037,13 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     if t_14=true{
+                     if t_11=true{
                         if (
                           throw=null)
                         and 
                         (
                           exit_stmt_reached=false)   {
-                              return:=var_4_i;
+                              return:=var_5_i;
                               exit_stmt_reached:=true;
                            
                            }
@@ -1145,7 +1061,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     t_15:=var_4_i;
+                     t_12:=var_5_i;
                   } else {
                      skip;
                   };
@@ -1154,7 +1070,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     var_4_i:=fun_java_primitive_integer_value_add[var_4_i,JavaPrimitiveIntegerLiteral1];
+                     var_5_i:=fun_java_primitive_integer_value_add[var_5_i,JavaPrimitiveIntegerLiteral1];
                   } else {
                      skip;
                   };
@@ -1163,10 +1079,10 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     if isEmptyOrNull[var_5_node]{
+                     if isEmptyOrNull[var_6_node]{
                         throw:=java_lang_NullPointerExceptionLit;
                      } else {
-                        var_5_node:=var_5_node.roops_core_objectsInstrumented_LinkedListNode_next;
+                        var_6_node:=var_6_node.roops_core_objectsInstrumented_LinkedListNode_next;
                      };
                   } else {
                      skip;
@@ -1176,7 +1092,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     var_6_ws_1:=(neq[var_5_node,
+                     var_7_ws_1:=(neq[var_6_node,
                         thiz.roops_core_objectsInstrumented_LinkedList_header]=>(true)else(false));
                   } else {
                      skip;
@@ -1315,6 +1231,19 @@ Implementation
                if isEmptyOrNull[ClassFields]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_2:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
                   ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0:=false;
                };
             } else {
@@ -1372,71 +1301,6 @@ Implementation
             } else {
                skip;
             };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_5:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_6:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_7:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_8:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_9:=false;
-               };
-            } else {
-               skip;
-            };
          
          }
       
@@ -1460,7 +1324,7 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_24:null+roops_core_objectsInstrumented_LinkedListNode;
+            var t_21:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
@@ -1469,38 +1333,25 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call createNode[thiz,throw,t_24,new_object_value];
+                  call createNode[thiz,throw,t_21,new_object_value];
                };
             } else {
                skip;
             };
-            var var_12_newNode:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_13_newNode:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_12_newNode:=t_24;
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_5:=true;
-               };
+               var_13_newNode:=t_21;
             } else {
                skip;
             };
             if isEmptyOrNull[thiz]{
                throw:=java_lang_NullPointerExceptionLit;
             } else {
-               call addNode[thiz,throw,var_12_newNode,node];
+               call addNode[thiz,throw,var_13_newNode,node];
             };
          
          }
@@ -1525,30 +1376,30 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_23:null+roops_core_objectsInstrumented_LinkedListNode;
+            var t_20:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false)   {
-                  createObject<roops_core_objectsInstrumented_LinkedListNode>[t_23];
-                  if isEmptyOrNull[t_23]{
+                  createObject<roops_core_objectsInstrumented_LinkedListNode>[t_20];
+                  if isEmptyOrNull[t_20]{
                      throw:=java_lang_NullPointerExceptionLit;
                   } else {
-                     call Constructor[t_23,throw];
+                     call Constructor[t_20,throw];
                   };
                
                }
              else {
                skip;
             };
-            var var_11_node:null+roops_core_objectsInstrumented_LinkedListNode;
+            var var_12_node:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_11_node:=t_23;
+               var_12_node:=t_20;
             } else {
                skip;
             };
@@ -1557,10 +1408,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
+               if isEmptyOrNull[var_12_node]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_1:=true;
+                  var_12_node.roops_core_objectsInstrumented_LinkedListNode_previous:=var_12_node;
                };
             } else {
                skip;
@@ -1570,10 +1421,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[var_11_node]{
+               if isEmptyOrNull[var_12_node]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  var_11_node.roops_core_objectsInstrumented_LinkedListNode_previous:=var_11_node;
+                  var_12_node.roops_core_objectsInstrumented_LinkedListNode_next:=var_12_node;
                };
             } else {
                skip;
@@ -1583,94 +1434,10 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
+               if isEmptyOrNull[var_12_node]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_1;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_2:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[var_11_node]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  var_11_node.roops_core_objectsInstrumented_LinkedListNode_next:=var_11_node;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_1;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_3:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[var_11_node]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  var_11_node.roops_core_objectsInstrumented_LinkedListNode_object_value:=new_object_value;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_4:=true;
+                  var_12_node.roops_core_objectsInstrumented_LinkedListNode_object_value:=new_object_value;
                };
             } else {
                skip;
@@ -1680,7 +1447,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=var_11_node;
+                  return:=var_12_node;
                   exit_stmt_reached:=true;
                
                }
@@ -1710,8 +1477,8 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_16:JavaPrimitiveIntegerValue;
-            var t_17:boolean;
+            var t_13:JavaPrimitiveIntegerValue;
+            var t_14:boolean;
             if (
               throw=null)
             and 
@@ -1720,7 +1487,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call indexOf[thiz,throw,t_16,arg];
+                  call indexOf[thiz,throw,t_13,arg];
                };
             } else {
                skip;
@@ -1730,7 +1497,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_17:=(neq[t_16,
+               t_14:=(neq[t_13,
                   JavaPrimitiveIntegerLiteralMinus1]=>(true)else(false));
             } else {
                skip;
@@ -1740,7 +1507,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false)   {
-                  return:=t_17;
+                  return:=t_14;
                   exit_stmt_reached:=true;
                
                }
@@ -1768,7 +1535,7 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_13:null+roops_core_objectsInstrumented_LinkedListNode;
+            var t_10:null+roops_core_objectsInstrumented_LinkedListNode;
             if (
               throw=null)
             and 
@@ -1777,7 +1544,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call createHeaderNode[thiz,throw,t_13];
+                  call createHeaderNode[thiz,throw,t_10];
                };
             } else {
                skip;
@@ -1790,7 +1557,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  thiz.roops_core_objectsInstrumented_LinkedList_header:=t_13;
+                  thiz.roops_core_objectsInstrumented_LinkedList_header:=t_10;
                };
             } else {
                skip;
@@ -1817,15 +1584,15 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_6:boolean;
-            var t_7:boolean;
-            var t_8:boolean;
+            var t_3:boolean;
+            var t_4:boolean;
+            var t_5:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_7:=(neq[list,
+               t_4:=(neq[list,
                   null]=>(true)else(false));
             } else {
                skip;
@@ -1838,7 +1605,7 @@ Implementation
                if isEmptyOrNull[list]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call repOK[list,throw,t_8];
+                  call repOK[list,throw,t_5];
                };
             } else {
                skip;
@@ -1848,19 +1615,19 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_7=true{
+               if t_4=true{
                   if (
                     throw=null)
                   and 
                   (
                     exit_stmt_reached=false){
-                     if t_8=true{
+                     if t_5=true{
                         if (
                           throw=null)
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_6:=true;
+                           t_3:=true;
                         } else {
                            skip;
                         };
@@ -1870,7 +1637,7 @@ Implementation
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_6:=false;
+                           t_3:=false;
                         } else {
                            skip;
                         };
@@ -1884,7 +1651,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     t_6:=false;
+                     t_3:=false;
                   } else {
                      skip;
                   };
@@ -1897,8 +1664,8 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_6=true   {
-                     var t_5:boolean;
+               if t_3=true   {
+                     var t_2:boolean;
                      if (
                        throw=null)
                      and 
@@ -1907,18 +1674,18 @@ Implementation
                         if isEmptyOrNull[list]{
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           call contains[list,throw,t_5,arg];
+                           call contains[list,throw,t_2,arg];
                         };
                      } else {
                         skip;
                      };
-                     var var_2_ret_val:boolean;
+                     var var_3_ret_val:boolean;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_2_ret_val:=t_5;
+                        var_3_ret_val:=t_2;
                      } else {
                         skip;
                      };
@@ -1968,16 +1735,60 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_2:boolean;
-            var t_3:boolean;
-            var t_4:boolean;
+            var t_1:boolean;
             call roops_core_objectsInstrumented_LinkedList_fajita_roopsGoal_initialization[throw];
+            var var_1_a:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_3:=(neq[list,
+               var_1_a:=JavaPrimitiveIntegerLiteral1;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0:=true;
+               };
+            } else {
+               skip;
+            };
+            var var_2_m:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_2_m:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_1:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_1:=(neq[o,
                   null]=>(true)else(false));
             } else {
                skip;
@@ -1987,90 +1798,13 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[list]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  call repOK[list,throw,t_4];
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if t_3=true{
-                  if (
-                    throw=null)
-                  and 
-                  (
-                    exit_stmt_reached=false){
-                     if t_4=true{
-                        if (
-                          throw=null)
-                        and 
-                        (
-                          exit_stmt_reached=false){
-                           t_2:=true;
-                        } else {
-                           skip;
-                        };
-                     } else {
-                        if (
-                          throw=null)
-                        and 
-                        (
-                          exit_stmt_reached=false){
-                           t_2:=false;
-                        } else {
-                           skip;
-                        };
-                     };
-                  } else {
-                     skip;
-                  };
-               } else {
-                  if (
-                    throw=null)
-                  and 
-                  (
-                    exit_stmt_reached=false){
-                     t_2:=false;
-                  } else {
-                     skip;
-                  };
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if t_2=true   {
-                     var t_1:boolean;
+               if t_1=true   {
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        if isEmptyOrNull[list]{
-                           throw:=java_lang_NullPointerExceptionLit;
-                        } else {
-                           call addLast[list,throw,t_1,o];
-                        };
-                     } else {
-                        skip;
-                     };
-                     var var_1_ret_val:boolean;
-                     if (
-                       throw=null)
-                     and 
-                     (
-                       exit_stmt_reached=false){
-                        var_1_ret_val:=t_1;
+                        var_1_a:=JavaPrimitiveIntegerLiteral7;
                      } else {
                         skip;
                      };
@@ -2082,15 +1816,147 @@ Implementation
                         if isEmptyOrNull[ClassFields]{
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0:=true;
+                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_2:=true;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0:=false;
                         };
                      } else {
                         skip;
                      };
                   
                   }
-                else {
-                  skip;
+                else    {
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_1_a:=JavaPrimitiveIntegerLiteral4;
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_3:=true;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0:=false;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_2:=false;
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+               ;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false) lblpos if_1 {
+               var_2_m:=fun_java_primitive_integer_value_add[var_2_m,var_1_a];
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_0;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_2;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_roops_goal_2:=ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_3;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_LinkedList_variable_definition_4:=true;
                };
             } else {
                skip;
@@ -2160,15 +2026,15 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_10:boolean;
-            var t_11:boolean;
-            var t_12:boolean;
+            var t_7:boolean;
+            var t_8:boolean;
+            var t_9:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               t_11:=(neq[list,
+               t_8:=(neq[list,
                   null]=>(true)else(false));
             } else {
                skip;
@@ -2181,7 +2047,7 @@ Implementation
                if isEmptyOrNull[list]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  call repOK[list,throw,t_12];
+                  call repOK[list,throw,t_9];
                };
             } else {
                skip;
@@ -2191,19 +2057,19 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_11=true{
+               if t_8=true{
                   if (
                     throw=null)
                   and 
                   (
                     exit_stmt_reached=false){
-                     if t_12=true{
+                     if t_9=true{
                         if (
                           throw=null)
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_10:=true;
+                           t_7:=true;
                         } else {
                            skip;
                         };
@@ -2213,7 +2079,7 @@ Implementation
                         and 
                         (
                           exit_stmt_reached=false){
-                           t_10:=false;
+                           t_7:=false;
                         } else {
                            skip;
                         };
@@ -2227,7 +2093,7 @@ Implementation
                   and 
                   (
                     exit_stmt_reached=false){
-                     t_10:=false;
+                     t_7:=false;
                   } else {
                      skip;
                   };
@@ -2240,8 +2106,8 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if t_10=true   {
-                     var t_9:java_lang_Object+null;
+               if t_7=true   {
+                     var t_6:java_lang_Object+null;
                      if (
                        throw=null)
                      and 
@@ -2250,18 +2116,18 @@ Implementation
                         if isEmptyOrNull[list]{
                            throw:=java_lang_NullPointerExceptionLit;
                         } else {
-                           call removeIndex[list,throw,t_9,index];
+                           call removeIndex[list,throw,t_6,index];
                         };
                      } else {
                         skip;
                      };
-                     var var_3_ret_val:java_lang_Object+null;
+                     var var_4_ret_val:java_lang_Object+null;
                      if (
                        throw=null)
                      and 
                      (
                        exit_stmt_reached=false){
-                        var_3_ret_val:=t_9;
+                        var_4_ret_val:=t_6;
                      } else {
                         skip;
                      };
@@ -2295,8 +2161,8 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_27:JavaPrimitiveIntegerValue;
-            var t_28:JavaPrimitiveIntegerValue;
+            var t_24:JavaPrimitiveIntegerValue;
+            var t_25:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
@@ -2343,7 +2209,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  t_27:=thiz.roops_core_objectsInstrumented_LinkedList_size;
+                  t_24:=thiz.roops_core_objectsInstrumented_LinkedList_size;
                };
             } else {
                skip;
@@ -2372,7 +2238,7 @@ Implementation
                if isEmptyOrNull[thiz]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  t_28:=thiz.roops_core_objectsInstrumented_LinkedList_modCount;
+                  t_25:=thiz.roops_core_objectsInstrumented_LinkedList_modCount;
                };
             } else {
                skip;

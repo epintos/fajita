@@ -325,29 +325,16 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         i = handleAssignment((Assignment) st, backup, i, isInsideBlock);
                     } else if (st instanceof If) {
                         If iff = (If) st;
-                        StatementBlock stb = (StatementBlock) iff.getThen().getBody();
-                        ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
-                        transformation.replace(stb, new StatementBlock(toAdd));
-                        if (iff.getElse() != null) {
-                            stb = (StatementBlock) iff.getElse().getBody();
-                            toAdd = analyzeList(stb.getBody(), true);
-                            transformation.replace(stb, new StatementBlock(toAdd));
-                        }
+                        handleIf(iff);
                     } else if (st instanceof While) {
                         While whilee = (While) st;
-                        StatementBlock stb = (StatementBlock) whilee.getBody();
-                        ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
-                        transformation.replace(stb, new StatementBlock(toAdd));
+                        handleWhile(whilee);
                     } else if (st instanceof For) {
                         For forr = (For) st;
-                        StatementBlock stb = (StatementBlock) forr.getBody();
-                        ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
-                        transformation.replace(stb, new StatementBlock(toAdd));
+                        handleFor(forr);
                     } else if (st instanceof VariableDeclaration) {
                         VariableDeclaration vd = (VariableDeclaration) st;
-                        CopyAssignment copyAssignment = createMyVariable(true);
-                        backup.add(i++, copyAssignment);
-                        getFromMap(((VariableSpecification)vd.getChildAt(1)).getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
+                        handleVariableDeclaration(vd, backup, i++);
                     }
                     i++;
                 }
@@ -356,6 +343,35 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             return list;
         }
 
+        private void handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i) {
+            CopyAssignment copyAssignment = createMyVariable(true);
+            backup.add(i, copyAssignment);
+            getFromMap(((VariableSpecification)vd.getChildAt(1)).getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
+        }
+
+        private void handleFor(For forr) {
+            StatementBlock stb = (StatementBlock) forr.getBody();
+            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
+            transformation.replace(stb, new StatementBlock(toAdd));
+        }
+
+        private void handleWhile(While whilee) {
+            StatementBlock stb = (StatementBlock) whilee.getBody();
+            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
+            transformation.replace(stb, new StatementBlock(toAdd));            
+        }
+
+        private void handleIf(If iff) {
+            StatementBlock stb = (StatementBlock) iff.getThen().getBody();
+            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
+            transformation.replace(stb, new StatementBlock(toAdd));
+            if (iff.getElse() != null) {
+                stb = (StatementBlock) iff.getElse().getBody();
+                toAdd = analyzeList(stb.getBody(), true);
+                transformation.replace(stb, new StatementBlock(toAdd));
+            }
+        }
+        
         private int handleAssignment(Assignment ass, ASTList<Statement> body, int index, boolean isInsideBlock) {
             HashSet<String> uses = new HashSet<>();
             UncollatedReferenceQualifier lhs = getLeftHandSide(ass);
