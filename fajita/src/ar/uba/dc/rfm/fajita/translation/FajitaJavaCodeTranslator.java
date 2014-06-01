@@ -157,6 +157,9 @@ public class FajitaJavaCodeTranslator {
 					transformation = new AllUsesTransformation(
 						configuration, recoder, compilationUnit);
 					break;
+				case MCDC:
+				    transformation = new ModifiedConditionDecisionTransformation(configuration, recoder, compilationUnit);
+				    break;
 				default:
 					throw new FajitaException(
 						"Java code translation not implemented for the coverage criteria: " +

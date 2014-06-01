@@ -15,25 +15,22 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.ProgramFactory;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
+import recoder.java.Expression;
 import recoder.java.Identifier;
-import recoder.java.JavaNonTerminalProgramElement;
 import recoder.java.PackageSpecification;
-import recoder.java.ProgramElement;
 import recoder.java.SourceVisitor;
 import recoder.java.Statement;
 import recoder.java.StatementBlock;
 import recoder.java.declaration.MethodDeclaration;
-import recoder.java.declaration.Modifier;
 import recoder.java.declaration.VariableDeclaration;
-import recoder.java.declaration.VariableSpecification;
-import recoder.java.expression.Assignment;
-import recoder.java.expression.Literal;
-import recoder.java.expression.literal.BooleanLiteral;
+import recoder.java.expression.ParenthesizedExpression;
 import recoder.java.expression.operator.BinaryAndAssignment;
 import recoder.java.expression.operator.BinaryOrAssignment;
 import recoder.java.expression.operator.BinaryXOrAssignment;
 import recoder.java.expression.operator.CopyAssignment;
 import recoder.java.expression.operator.DivideAssignment;
+import recoder.java.expression.operator.LogicalAnd;
+import recoder.java.expression.operator.LogicalOr;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
 import recoder.java.expression.operator.PlusAssignment;
@@ -43,7 +40,6 @@ import recoder.java.expression.operator.TimesAssignment;
 import recoder.java.expression.operator.UnsignedShiftRightAssignment;
 import recoder.java.reference.MethodReference;
 import recoder.java.reference.UncollatedReferenceQualifier;
-import recoder.java.statement.EmptyStatement;
 import recoder.java.statement.For;
 import recoder.java.statement.If;
 import recoder.java.statement.While;
@@ -58,7 +54,7 @@ import ar.uba.dc.rfm.fajita.FajitaConfiguration;
  * transform the input AST removing the roops goal syntax and adding the
  * necessary constructions to perform branch coverage using Taco.
  */
-public class AllUsesTransformation extends FajitaSourceTransformation {
+public class ModifiedConditionDecisionTransformation extends FajitaSourceTransformation {
 
     /**
      * Constructor for a <code>BranchTransformation</code>.
@@ -76,7 +72,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
      *            execution.
      * 
      */
-    public AllUsesTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
+    public ModifiedConditionDecisionTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
             CompilationUnit compilationUnit) {
         super(configuration, recoder, compilationUnit);
     }
@@ -96,7 +92,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
         while (treeWalker.next())
             treeWalker.getProgramElement().accept(eraserVisitor);
 
-        return execute(new FajitaSourceTransformVisitor<AllUsesTransformation>(configuration, this));
+        return execute(new FajitaSourceTransformVisitor<ModifiedConditionDecisionTransformation>(configuration, this));
     }
 
     /** Returns a set with the names of the methods in the class to check. */
@@ -245,7 +241,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
         private final FajitaConfiguration configuration;
 
         /** The transformation class invoking this source visitor. */
-        private final AllUsesTransformation transformation;
+        private final ModifiedConditionDecisionTransformation transformation;
 
         /** The set of methods reachable from the method under test. */
         private final Set<String> reachableMethods;
@@ -255,10 +251,6 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 
         /** The file package name if any. */
         private String packagePrefix = "";
-
-        private int myVariableIndex = 0;
-
-        private Map<String, List<UncollatedReferenceQualifier>> definitions = new HashMap<>();
 
         /**
          * Constructor for a <code>FajitaBranchDiscoveryVisitor</code>.
@@ -276,7 +268,7 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
          *            method under test.
          * 
          */
-        public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration, AllUsesTransformation transformation,
+        public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration, ModifiedConditionDecisionTransformation transformation,
                 Set<String> reachableMethods) {
             this.configuration = configuration;
             this.transformation = transformation;
@@ -302,7 +294,6 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
         public void visitMethodDeclaration(MethodDeclaration x) {
             visitingReachableMethod = reachableMethods.contains(x.getName())
                     && configuration.getClassToCheck().equals(packagePrefix + getContainingClass(x));
-            definitions.clear();
             StatementBlock block = (StatementBlock) x.getBody();
             StatementBlock replacement = analyzeStamentBlock(block);
             transformation.replace(block, replacement);
@@ -310,30 +301,32 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 
         private StatementBlock analyzeStamentBlock(StatementBlock block) {
             ASTList<Statement> list = block.getBody();
-            ASTList<Statement> backup = analyzeList(list, false);
+            ASTList<Statement> backup = analyzeList(list);
             return new StatementBlock(backup);
         }
 
-        private ASTList<Statement> analyzeList(ASTList<Statement> list, boolean isInsideBlock) {
+        private ASTList<Statement> analyzeList(ASTList<Statement> list) {
             if (visitingReachableMethod) {
                 ASTList<Statement> backup = new ASTArrayList<>(list);
-                int i = 1;
+                int i = 0;
+                List<Expression> expressions = new ArrayList<>();
                 for (Statement st : list) {
                     if (isAssignment(st)) {
-                        i = handleAssignment((Assignment) st, backup, i, isInsideBlock);
+                        // not interested for the moment
                     } else if (st instanceof If) {
                         If iff = (If) st;
-                        handleIf(iff);
+                        handleIf(iff, expressions);
                     } else if (st instanceof While) {
                         While whilee = (While) st;
-                        handleWhile(whilee);
+                        handleWhile(whilee, expressions);
                     } else if (st instanceof For) {
                         For forr = (For) st;
-                        handleFor(forr);
+                        handleFor(forr, expressions);
                     } else if (st instanceof VariableDeclaration) {
-                        VariableDeclaration vd = (VariableDeclaration) st;
-                        i = handleVariableDeclaration(vd, backup, i++, isInsideBlock);
+                     // not interested for the moment
                     }
+                    i = addNewGoals(expressions, i, backup);
+                    expressions.clear();
                     i++;
                 }
                 return backup;
@@ -341,159 +334,61 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             return list;
         }
 
-        private int handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i, boolean isInsideBlock) {
-            HashSet<String> uses = new HashSet<>();
-            List<UncollatedReferenceQualifier> lhs = getLeftHandSide(vd);
-            List<? extends VariableSpecification> decSp = vd.getVariables();
-            for (VariableSpecification each: decSp) {
-                recursiveHandler(each.getInitializer(), uses);
-            }
-            i = handleAllUses(uses, backup, i);
-            for (UncollatedReferenceQualifier each: lhs) {
-                if (!isInsideBlock) {
-                    clearDefinitionsFor(each.getName());
+        private int addNewGoals(List<Expression> expressions, int i, ASTList<Statement> backup) {
+            for (Expression exp: expressions) {
+                int goalId = configuration.getDiscoveredGoals();
+                configuration.setDiscoveredGoals(goalId+1);
+                if (!configuration.getCoveredGoals().contains(goalId)) {
+                    ProgramFactory programFactory = transformation.getProgramFactory();
+                    Identifier fajitaGoalId = programFactory.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG + "_" + goalId);
+                    UncollatedReferenceQualifier fajitaGoal = programFactory.createUncollatedReferenceQualifier(fajitaGoalId);
+                    CopyAssignment copyAssignment = programFactory.createCopyAssignment(fajitaGoal, exp);
+                    backup.add(i++, copyAssignment);
                 }
-                i = addNewDefinition(each, backup, i);
             }
             return i;
         }
 
-        private void handleFor(For forr) {
+        private void handleFor(For forr, List<Expression> expressions) {
             StatementBlock stb = (StatementBlock) forr.getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
+            ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));
         }
 
-        private void handleWhile(While whilee) {
+        private void handleWhile(While whilee, List<Expression> expressions) {
             StatementBlock stb = (StatementBlock) whilee.getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
-            transformation.replace(stb, new StatementBlock(toAdd));            
+            ASTList<Statement> toAdd = analyzeList(stb.getBody());
+            transformation.replace(stb, new StatementBlock(toAdd));
         }
 
-        private void handleIf(If iff) {
+        private void handleIf(If iff, List<Expression> expressions) {
+            Expression ex = iff.getExpression();
+            recursiveExpressionExplorer(ex, expressions);
             StatementBlock stb = (StatementBlock) iff.getThen().getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true);
+            ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));
             if (iff.getElse() != null) {
                 stb = (StatementBlock) iff.getElse().getBody();
-                toAdd = analyzeList(stb.getBody(), true);
+                toAdd = analyzeList(stb.getBody());
                 transformation.replace(stb, new StatementBlock(toAdd));
             }
         }
         
-        private int handleAssignment(Assignment ass, ASTList<Statement> body, int index, boolean isInsideBlock) {
-            HashSet<String> uses = new HashSet<>();
-            UncollatedReferenceQualifier lhs = getLeftHandSide(ass);
-            recursiveHandler(ass.getChildAt(1), uses);
-            index = handleAllUses(uses, body, index);
-            if (!isInsideBlock) {
-                clearDefinitionsFor(lhs.getName());
+        private void recursiveExpressionExplorer(Expression ex, List<Expression> expressions) {
+            if (!(ex instanceof ParenthesizedExpression)) {
+                expressions.add(ex);
             }
-            index = addNewDefinition(lhs, body, index);
-            return index;
-        }
-
-        private void clearDefinitionsFor(String name) {
-            definitions.put(name, new ArrayList<UncollatedReferenceQualifier>());
-        }
-
-        private int handleAllUses(HashSet<String> uses, ASTList<Statement> body, int index) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            for (String use : uses) {
-                for (UncollatedReferenceQualifier urq : getFromMap(use)) {
-                    int goalId = configuration.getDiscoveredGoals();
-                    configuration.setDiscoveredGoals(goalId + 1);
-
-                    if (!configuration.getCoveredGoals().contains(goalId)) {
-                        CopyAssignment ca = createFajitaGoalWithURQ(factory, goalId, urq);
-                        body.add(index++, ca);
-                    }
-                }
-            }
-            return index;
-        }
-
-        private int addNewDefinition(UncollatedReferenceQualifier urq, ASTList<Statement> body, int index) {
-            CopyAssignment copyAssignment = createMyVariable(true);
-            body.add(index++, copyAssignment);
-            index = setAllOtherToFalse(urq.getName(), body, index);
-            getFromMap(urq.getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
-            return index;
-        }
-
-        private CopyAssignment createMyVariable(boolean status) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            Identifier fajitaGoalId = factory.createIdentifier("variable_definition" + "_" + myVariableIndex++);
-            UncollatedReferenceQualifier fajitaGoal = factory.createUncollatedReferenceQualifier(fajitaGoalId);
-            BooleanLiteral reachedLiteral = factory.createBooleanLiteral(status);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(fajitaGoal, reachedLiteral);
-            configuration.getAllUsesAuxVariables().add(fajitaGoal.getName());
-            return copyAssignment;
-        }
-
-        private CopyAssignment setMyVariableTo(UncollatedReferenceQualifier urq, boolean status) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            BooleanLiteral reachedLiteral = factory.createBooleanLiteral(status);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(urq, reachedLiteral);
-            return copyAssignment;
-        }
-
-        private int setAllOtherToFalse(String variable, ASTList<Statement> body, int index) {
-            for (UncollatedReferenceQualifier urq : getFromMap(variable)) {
-                body.add(index++, setMyVariableTo(urq, false));
-            }
-            return index;
-        }
-
-        private CopyAssignment createFajitaGoalWithURQ(ProgramFactory factory, int goalId, UncollatedReferenceQualifier urq) {
-            Identifier fajitaGoalId = factory.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG + "_" + goalId);
-            UncollatedReferenceQualifier fajitaGoal = factory.createUncollatedReferenceQualifier(fajitaGoalId);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(fajitaGoal, urq);
-            return copyAssignment;
-        }
-
-        private List<UncollatedReferenceQualifier> getFromMap(String name) {
-            List<UncollatedReferenceQualifier> list = definitions.get(name);
-            if (list == null) {
-                list = new ArrayList<>();
-                definitions.put(name, list);
-            }
-            return list;
-        }
-
-        private UncollatedReferenceQualifier getLeftHandSide(Assignment ass) {
-            return (UncollatedReferenceQualifier) ass.getChildAt(0);
-        }
-        
-        private List<UncollatedReferenceQualifier> getLeftHandSide(VariableDeclaration vd) {
-            List<UncollatedReferenceQualifier> retList = new ArrayList<>();
-            List<? extends VariableSpecification> decSp = vd.getVariables();
-            for (VariableSpecification each: decSp) {
-                Identifier id = new Identifier(each.getName());
-                retList.add(new UncollatedReferenceQualifier(id));
-            }
-            return retList;
-        }
-
-        private void recursiveHandler(ProgramElement pe, Set<String> identifiers) {
-            if (pe instanceof Modifier) {
-                // do nothing
-            } else if (pe instanceof EmptyStatement) {
-                // do nothing
-            } else if (pe instanceof Identifier) {
-                Identifier id = (Identifier) pe;
-                if (id.getParent() instanceof UncollatedReferenceQualifier) {
-                    identifiers.add(id.getText());
-                }
-            } else if (pe instanceof Literal) {
-                // do nothing, again
-            } else {
-                JavaNonTerminalProgramElement ntpe = (JavaNonTerminalProgramElement) pe;
-                int childCount = ntpe.getChildCount();
-                for (int i = 0; i < childCount; i++) {
-                    ProgramElement child = ntpe.getChildAt(i);
-                    recursiveHandler(child, identifiers);
-                }
+            if (ex instanceof LogicalAnd) {
+                LogicalAnd and = (LogicalAnd) ex;
+                recursiveExpressionExplorer(and.getExpressionAt(0), expressions);
+                recursiveExpressionExplorer(and.getExpressionAt(1), expressions);
+            } else if (ex instanceof LogicalOr) {
+                LogicalOr or = (LogicalOr) ex;
+                recursiveExpressionExplorer(or.getExpressionAt(0), expressions);
+                recursiveExpressionExplorer(or.getExpressionAt(1), expressions);
+            } else if (ex instanceof ParenthesizedExpression) {
+                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
+                recursiveExpressionExplorer(pe.getExpressionAt(0), expressions);
             }
         }
 

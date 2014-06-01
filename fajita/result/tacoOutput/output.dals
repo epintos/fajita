@@ -441,16 +441,35 @@ sig roops_core_objectsInstrumented_OurTests extends java_lang_Object {}
 
 
 
-pred roops_core_objectsInstrumented_OurTestsCondition3[
+pred roops_core_objectsInstrumented_OurTestsCondition2[
+  SK_pred_java_primitive_integer_value_div_rem_ARG_left_0:univ,
+  o:univ
 ]{
-   not (
-     isEmptyOrNull[ClassFields])
+   equ[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,
+      o]
 
 }
 
-pred roops_core_objectsInstrumented_OurTestsCondition2[
+pred roops_core_objectsInstrumented_OurTestsCondition43[
+  t_20:univ
 ]{
-   isEmptyOrNull[ClassFields]
+   not (
+     t_20=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition42[
+  t_20:univ
+]{
+   t_20=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition40[
+  t_17:univ
+]{
+   not (
+     t_17=true)
 
 }
 
@@ -490,26 +509,294 @@ pred roops_core_objectsInstrumented_OurTestsCondition1[
 
 }
 
-pred roops_core_objectsInstrumented_OurTestsCondition5[
-  t_1:univ
-]{
-   not (
-     t_1=true)
-
-}
-
-pred roops_core_objectsInstrumented_OurTestsCondition4[
-  t_1:univ
-]{
-   t_1=true
-
-}
-
 pred precondition_roops_core_objectsInstrumented_OurTests_test1_0[
   throw:univ
 ]{
    equ[throw,
       null]
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition25[
+  t_22:univ
+]{
+   t_22=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition26[
+  t_22:univ
+]{
+   not (
+     t_22=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition17[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition18[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition3[
+  SK_pred_java_primitive_integer_value_div_rem_ARG_right_0:univ
+]{
+   equ[SK_pred_java_primitive_integer_value_div_rem_ARG_right_0,
+      JavaPrimitiveIntegerLiteral2]
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition13[
+  t_6:univ
+]{
+   t_6=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition15[
+  t_4:univ
+]{
+   t_4=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition9[
+  t_8:univ
+]{
+   t_8=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition10[
+  t_8:univ
+]{
+   not (
+     t_8=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition6[
+  var_3_b:univ
+]{
+   not (
+     var_3_b=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition5[
+  var_3_b:univ
+]{
+   var_3_b=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition8[
+  t_5:univ
+]{
+   not (
+     t_5=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition7[
+  t_5:univ
+]{
+   t_5=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition12[
+  t_7:univ
+]{
+   not (
+     t_7=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition11[
+  t_7:univ
+]{
+   t_7=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition14[
+  t_6:univ
+]{
+   not (
+     t_6=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition16[
+  t_4:univ
+]{
+   not (
+     t_4=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition30[
+  t_24:univ
+]{
+   not (
+     t_24=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition19[
+  t_10:univ
+]{
+   t_10=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition34[
+  t_21:univ
+]{
+   not (
+     t_21=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition32[
+  t_23:univ
+]{
+   not (
+     t_23=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition31[
+  t_23:univ
+]{
+   t_23=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition33[
+  t_21:univ
+]{
+   t_21=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition36[
+  t_16:univ
+]{
+   not (
+     t_16=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition35[
+  t_16:univ
+]{
+   t_16=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition41[
+  exit_stmt_reached:univ,
+  throw:univ,
+  var_4_ws_1:univ
+]{
+   liftExpression[var_4_ws_1]
+   and 
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition21[
+  t_13:univ
+]{
+   t_13=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition22[
+  t_13:univ
+]{
+   not (
+     t_13=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition20[
+  t_10:univ
+]{
+   not (
+     t_10=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition29[
+  t_24:univ
+]{
+   t_24=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition27[
+  t_25:univ
+]{
+   t_25=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition24[
+  t_12:univ
+]{
+   not (
+     t_12=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition28[
+  t_25:univ
+]{
+   not (
+     t_25=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition23[
+  t_12:univ
+]{
+   t_12=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition37[
+  t_18:univ
+]{
+   t_18=true
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition38[
+  t_18:univ
+]{
+   not (
+     t_18=true)
+
+}
+
+pred roops_core_objectsInstrumented_OurTestsCondition39[
+  t_17:univ
+]{
+   t_17=true
 
 }
 
@@ -525,49 +812,16 @@ pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
 
 }
 
-program roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[
-  throw:java_lang_Throwable+null,
-  roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
-  usedObjects:set (java_lang_Object)
-] var [
-  exit_stmt_reached:boolean
+pred roops_core_objectsInstrumented_OurTestsCondition4[
+  SK_pred_java_primitive_integer_value_div_rem_ARG_left_0:univ,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0:univ,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_result_0:univ,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_right_0:univ
 ]{
-   skip;
-   throw:=null;
-   skip;
-   exit_stmt_reached:=false;
-   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_OurTestsCondition2[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_OurTests_roops_goal_0:=(roops_core_objectsInstrumented_OurTests_roops_goal_0)++((ClassFields)->(false))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_OurTestsCondition2[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_OurTests_roops_goal_1:=(roops_core_objectsInstrumented_OurTests_roops_goal_1)++((ClassFields)->(false))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip
+   pred_java_primitive_integer_value_div_rem_marker[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,
+                                                   SK_pred_java_primitive_integer_value_div_rem_ARG_right_0,
+                                                   SK_pred_java_primitive_integer_value_div_rem_ARG_result_0,
+                                                   SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0]
 
 }
 
@@ -575,23 +829,87 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
   thiz:roops_core_objectsInstrumented_OurTests,
   throw:java_lang_Throwable+null,
   o:JavaPrimitiveIntegerValue,
+  roops_utilInstrumented_RoopsArray_roops_goal_9:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_8:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_7:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_6:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_5:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_9:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_8:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_4:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_2:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_3:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_4:(ClassFields)->one(boolean),
   usedObjects:set (java_lang_Object)
 ] var [
-  exit_stmt_reached:boolean,
-  t_1:boolean,
+  t_15:boolean,
+  t_16:boolean,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0:JavaPrimitiveIntegerValue,
+  t_13:boolean,
+  t_14:JavaPrimitiveIntegerValue,
   var_1_a:JavaPrimitiveIntegerValue,
-  var_2_m:JavaPrimitiveIntegerValue
+  t_11:boolean,
+  var_2_m:JavaPrimitiveIntegerValue,
+  t_12:boolean,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_right_0:JavaPrimitiveIntegerValue,
+  t_10:boolean,
+  t_19:JavaPrimitiveIntegerValue,
+  t_18:boolean,
+  t_17:boolean,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_left_0:JavaPrimitiveIntegerValue,
+  t_24:boolean,
+  t_25:boolean,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_result_0:JavaPrimitiveIntegerValue,
+  var_4_ws_1:boolean,
+  t_20:boolean,
+  t_21:boolean,
+  t_22:boolean,
+  t_23:boolean,
+  t_2:boolean,
+  t_3:boolean,
+  exit_stmt_reached:boolean,
+  t_1:JavaPrimitiveIntegerValue,
+  var_3_b:boolean,
+  t_8:boolean,
+  t_9:boolean,
+  t_6:boolean,
+  t_7:boolean,
+  t_4:boolean,
+  t_5:boolean
 ]{
    skip;
    throw:=null;
    skip;
    exit_stmt_reached:=false;
    skip;
-   call roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_roops_goal_1,usedObjects];
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   call roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[throw,roops_utilInstrumented_RoopsArray_roops_goal_9,roops_utilInstrumented_RoopsArray_roops_goal_8,roops_utilInstrumented_RoopsArray_roops_goal_7,roops_utilInstrumented_RoopsArray_roops_goal_6,roops_utilInstrumented_RoopsArray_roops_goal_5,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_core_objectsInstrumented_OurTests_roops_goal_2,roops_core_objectsInstrumented_OurTests_roops_goal_3,roops_core_objectsInstrumented_OurTests_roops_goal_9,roops_core_objectsInstrumented_OurTests_roops_goal_8,roops_core_objectsInstrumented_OurTests_roops_goal_7,roops_core_objectsInstrumented_OurTests_roops_goal_6,roops_core_objectsInstrumented_OurTests_roops_goal_5,roops_core_objectsInstrumented_OurTests_roops_goal_4,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_3,roops_utilInstrumented_RoopsArray_roops_goal_4,usedObjects];
    skip;
    if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
       var_1_a:=JavaPrimitiveIntegerLiteral8
@@ -610,8 +928,19 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
    
    }
    ;
+   skip;
+   skip;
+   skip;
+   skip;
+   havocVariable[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0];
+   havocVariable[SK_pred_java_primitive_integer_value_div_rem_ARG_right_0];
+   havocVariable[SK_pred_java_primitive_integer_value_div_rem_ARG_result_0];
+   havocVariable[SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0];
+   assume roops_core_objectsInstrumented_OurTestsCondition2[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,o];
+   assume roops_core_objectsInstrumented_OurTestsCondition3[SK_pred_java_primitive_integer_value_div_rem_ARG_right_0];
+   assume roops_core_objectsInstrumented_OurTestsCondition4[SK_pred_java_primitive_integer_value_div_rem_ARG_left_0,SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0,SK_pred_java_primitive_integer_value_div_rem_ARG_result_0,SK_pred_java_primitive_integer_value_div_rem_ARG_right_0];
    if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-      t_1:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral9]=>(true)else(false))
+      t_1:=SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0
    
    } else {
       skip
@@ -619,23 +948,52 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
    }
    ;
    if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_OurTestsCondition4[t_1]  {
+      t_2:=(equ[t_1,JavaPrimitiveIntegerLiteral0]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      var_3_b:=t_2
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_5:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral9]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition7[t_5]  {
          if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_OurTestsCondition2[]  {
-               throw:=java_lang_NullPointerExceptionLit
+            if roops_core_objectsInstrumented_OurTestsCondition5[var_3_b]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_4:=true
+               
+               } else {
+                  skip
+               
+               }
             
             } else {
-               roops_core_objectsInstrumented_OurTests_roops_goal_0:=(roops_core_objectsInstrumented_OurTests_roops_goal_0)++((ClassFields)->(true))
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_4:=false
+               
+               } else {
+                  skip
+               
+               }
             
             }
-         
-         } else {
-            skip
-         
-         }
-         ;
-         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-            var_2_m:=var_1_a
          
          } else {
             skip
@@ -644,11 +1002,109 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
       
       } else {
          if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_OurTestsCondition2[]  {
-               throw:=java_lang_NullPointerExceptionLit
+            t_4:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_7:=(pred_java_primitive_integer_value_lt[o,JavaPrimitiveIntegerLiteralMinus1]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_8:=Not[var_3_b]
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition11[t_7]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition9[t_8]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_6:=true
+               
+               } else {
+                  skip
+               
+               }
             
             } else {
-               roops_core_objectsInstrumented_OurTests_roops_goal_1:=(roops_core_objectsInstrumented_OurTests_roops_goal_1)++((ClassFields)->(true))
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_6:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_6:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition15[t_4]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_3:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition13[t_6]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_3:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_3:=false
+               
+               } else {
+                  skip
+               
+               }
             
             }
          
@@ -664,30 +1120,854 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
    
    }
    ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_3:=(roops_core_objectsInstrumented_OurTests_roops_goal_3)++((ClassFields)->(t_3))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_10:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral9]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition19[t_10]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition5[var_3_b]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_9:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_9:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_9:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_4:=(roops_core_objectsInstrumented_OurTests_roops_goal_4)++((ClassFields)->(t_9))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_5:=(roops_core_objectsInstrumented_OurTests_roops_goal_5)++((ClassFields)->((pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral9]=>(true)else(false))))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_6:=(roops_core_objectsInstrumented_OurTests_roops_goal_6)++((ClassFields)->(var_3_b))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_12:=(pred_java_primitive_integer_value_lt[o,JavaPrimitiveIntegerLiteralMinus1]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_13:=Not[var_3_b]
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition23[t_12]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition21[t_13]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_11:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_11:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_11:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_7:=(roops_core_objectsInstrumented_OurTests_roops_goal_7)++((ClassFields)->(t_11))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_8:=(roops_core_objectsInstrumented_OurTests_roops_goal_8)++((ClassFields)->((pred_java_primitive_integer_value_lt[o,JavaPrimitiveIntegerLiteralMinus1]=>(true)else(false))))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_9:=(roops_core_objectsInstrumented_OurTests_roops_goal_9)++((ClassFields)->(Not[var_3_b]))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_22:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral9]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition25[t_22]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition5[var_3_b]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_21:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_21:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_21:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_24:=(pred_java_primitive_integer_value_lt[o,JavaPrimitiveIntegerLiteralMinus1]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      t_25:=Not[var_3_b]
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition29[t_24]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition27[t_25]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_23:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_23:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_23:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition33[t_21]  {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_20:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_OurTestsCondition31[t_23]  {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_20:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                  t_20:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition42[t_20]  {
+         skip;
+         skip;
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            t_14:=var_1_a
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            var_1_a:=fun_java_primitive_integer_value_add[var_1_a,JavaPrimitiveIntegerLiteralMinus1]
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            var_4_ws_1:=(pred_java_primitive_integer_value_gt[t_14,JavaPrimitiveIntegerLiteral0]=>(true)else(false))
+         
+         } else {
+            skip
+         
+         }
+         ;
+         while roops_core_objectsInstrumented_OurTestsCondition41[exit_stmt_reached,throw,var_4_ws_1]do {
+            skip;
+            skip;
+            skip;
+            skip;
+            skip;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               t_16:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral15]=>(true)else(false))
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition35[t_16]  {
+                  if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                     t_15:=true
+                  
+                  } else {
+                     skip
+                  
+                  }
+               
+               } else {
+                  if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                     if roops_core_objectsInstrumented_OurTestsCondition5[var_3_b]  {
+                        if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                           t_15:=true
+                        
+                        } else {
+                           skip
+                        
+                        }
+                     
+                     } else {
+                        if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                           t_15:=false
+                        
+                        } else {
+                           skip
+                        
+                        }
+                     
+                     }
+                  
+                  } else {
+                     skip
+                  
+                  }
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_OurTests_roops_goal_0:=(roops_core_objectsInstrumented_OurTests_roops_goal_0)++((ClassFields)->(t_15))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_OurTests_roops_goal_1:=(roops_core_objectsInstrumented_OurTests_roops_goal_1)++((ClassFields)->((pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral15]=>(true)else(false))))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_OurTests_roops_goal_2:=(roops_core_objectsInstrumented_OurTests_roops_goal_2)++((ClassFields)->(var_3_b))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               t_18:=(pred_java_primitive_integer_value_gt[o,JavaPrimitiveIntegerLiteral15]=>(true)else(false))
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition37[t_18]  {
+                  if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                     t_17:=true
+                  
+                  } else {
+                     skip
+                  
+                  }
+               
+               } else {
+                  if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                     if roops_core_objectsInstrumented_OurTestsCondition5[var_3_b]  {
+                        if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                           t_17:=true
+                        
+                        } else {
+                           skip
+                        
+                        }
+                     
+                     } else {
+                        if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+                           t_17:=false
+                        
+                        } else {
+                           skip
+                        
+                        }
+                     
+                     }
+                  
+                  } else {
+                     skip
+                  
+                  }
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_OurTestsCondition39[t_17]  {
+                  skip
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               t_19:=var_1_a
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               var_1_a:=fun_java_primitive_integer_value_add[var_1_a,JavaPrimitiveIntegerLiteralMinus1]
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+               var_4_ws_1:=(pred_java_primitive_integer_value_gt[t_19,JavaPrimitiveIntegerLiteral0]=>(true)else(false))
+            
+            } else {
+               skip
+            
+            }
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+            var_2_m:=var_1_a
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[
+  throw:java_lang_Throwable+null,
+  roops_utilInstrumented_RoopsArray_roops_goal_9:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_8:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_7:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_6:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_9:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_8:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_4:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_2:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_3:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_4:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_0:=(roops_core_objectsInstrumented_OurTests_roops_goal_0)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_1:=(roops_core_objectsInstrumented_OurTests_roops_goal_1)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_2:=(roops_core_objectsInstrumented_OurTests_roops_goal_2)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_3:=(roops_core_objectsInstrumented_OurTests_roops_goal_3)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_4:=(roops_core_objectsInstrumented_OurTests_roops_goal_4)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_5:=(roops_core_objectsInstrumented_OurTests_roops_goal_5)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_6:=(roops_core_objectsInstrumented_OurTests_roops_goal_6)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_7:=(roops_core_objectsInstrumented_OurTests_roops_goal_7)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_8:=(roops_core_objectsInstrumented_OurTests_roops_goal_8)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_OurTestsCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_OurTestsCondition17[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_OurTests_roops_goal_9:=(roops_core_objectsInstrumented_OurTests_roops_goal_9)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
    skip
 
 }
 
 assertCorrectness check_roops_core_objectsInstrumented_OurTests_test1_0[
+  SK_pred_java_primitive_integer_value_div_rem_ARG_left_0:JavaPrimitiveIntegerValue,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_remainder_0:JavaPrimitiveIntegerValue,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_result_0:JavaPrimitiveIntegerValue,
+  SK_pred_java_primitive_integer_value_div_rem_ARG_right_0:JavaPrimitiveIntegerValue,
   exit_stmt_reached:boolean,
   o:JavaPrimitiveIntegerValue,
   roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_8:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_OurTests_roops_goal_9:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
-  t_1:boolean,
+  roops_utilInstrumented_RoopsArray_roops_goal_2:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_3:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_4:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_5:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_6:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_7:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_8:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_9:(ClassFields)->one(boolean),
+  t_1:JavaPrimitiveIntegerValue,
+  t_10:boolean,
+  t_11:boolean,
+  t_12:boolean,
+  t_13:boolean,
+  t_14:JavaPrimitiveIntegerValue,
+  t_15:boolean,
+  t_16:boolean,
+  t_17:boolean,
+  t_18:boolean,
+  t_19:JavaPrimitiveIntegerValue,
+  t_2:boolean,
+  t_20:boolean,
+  t_21:boolean,
+  t_22:boolean,
+  t_23:boolean,
+  t_24:boolean,
+  t_25:boolean,
+  t_3:boolean,
+  t_4:boolean,
+  t_5:boolean,
+  t_6:boolean,
+  t_7:boolean,
+  t_8:boolean,
+  t_9:boolean,
   thiz:roops_core_objectsInstrumented_OurTests,
   throw:java_lang_Throwable+null,
   usedObjects:set (java_lang_Object),
   var_1_a:JavaPrimitiveIntegerValue,
-  var_2_m:JavaPrimitiveIntegerValue
+  var_2_m:JavaPrimitiveIntegerValue,
+  var_3_b:boolean,
+  var_4_ws_1:boolean
 ]{
 pre={
    precondition_roops_core_objectsInstrumented_OurTests_test1_0[throw]
 
 }
 program={
-   call roops_core_objectsInstrumented_OurTests_test1_0[thiz,throw,o,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_roops_goal_1,usedObjects]
+   call roops_core_objectsInstrumented_OurTests_test1_0[thiz,throw,o,roops_utilInstrumented_RoopsArray_roops_goal_9,roops_utilInstrumented_RoopsArray_roops_goal_8,roops_utilInstrumented_RoopsArray_roops_goal_7,roops_utilInstrumented_RoopsArray_roops_goal_6,roops_utilInstrumented_RoopsArray_roops_goal_5,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_core_objectsInstrumented_OurTests_roops_goal_2,roops_core_objectsInstrumented_OurTests_roops_goal_3,roops_core_objectsInstrumented_OurTests_roops_goal_9,roops_core_objectsInstrumented_OurTests_roops_goal_8,roops_core_objectsInstrumented_OurTests_roops_goal_7,roops_core_objectsInstrumented_OurTests_roops_goal_6,roops_core_objectsInstrumented_OurTests_roops_goal_5,roops_core_objectsInstrumented_OurTests_roops_goal_4,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_3,roops_utilInstrumented_RoopsArray_roops_goal_4,usedObjects]
 
 }
 post={
@@ -727,9 +2007,33 @@ abstract one sig java_lang_NullPointerException extends java_lang_RuntimeExcepti
 one sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
 {}
 
+//-------------- JavaPrimitiveIntegerLiteral2--------------//
+one sig JavaPrimitiveIntegerLiteral2 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_2[JavaPrimitiveIntegerLiteral2]
+}
+
+
+
+
 //-------------- JavaPrimitiveIntegerLiteral0--------------//
 one sig JavaPrimitiveIntegerLiteral0 extends JavaPrimitiveIntegerValue {}
 {pred_java_primitive_integer_value_literal_0[JavaPrimitiveIntegerLiteral0]
+}
+
+
+
+
+//-------------- JavaPrimitiveIntegerLiteralMinus1--------------//
+one sig JavaPrimitiveIntegerLiteralMinus1 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_minus_1[JavaPrimitiveIntegerLiteralMinus1]
+}
+
+
+
+
+//-------------- JavaPrimitiveIntegerLiteral15--------------//
+one sig JavaPrimitiveIntegerLiteral15 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_15[JavaPrimitiveIntegerLiteral15]
 }
 
 
@@ -3264,6 +4568,41 @@ pred pred_java_primitive_integer_value_literal_0[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
+pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=true 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+
 pred pred_java_primitive_integer_value_literal_9[ret: JavaPrimitiveIntegerValue] {
  ret.b00=true 
  ret.b01=false 
@@ -3299,11 +4638,11 @@ pred pred_java_primitive_integer_value_literal_9[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
-pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue] {
+pred pred_java_primitive_integer_value_literal_15[ret: JavaPrimitiveIntegerValue] {
  ret.b00=true 
- ret.b01=false 
+ ret.b01=true 
  ret.b02=true 
- ret.b03=false 
+ ret.b03=true 
  ret.b04=false 
  ret.b05=false 
  ret.b06=false 
@@ -3334,10 +4673,10 @@ pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue]
  ret.b31=false 
 }
 
-pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
- ret.b00=false 
- ret.b01=true 
- ret.b02=false 
+pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=false 
+ ret.b02=true 
  ret.b03=false 
  ret.b04=false 
  ret.b05=false 

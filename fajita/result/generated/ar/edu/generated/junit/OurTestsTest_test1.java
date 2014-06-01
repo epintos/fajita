@@ -93,61 +93,7 @@ public class OurTestsTest_test1 {
         roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
         
         // Parameter Initialization
-        int o_Integer_1 = 5;
-        int j_Integer_2 = 0;
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
-        try {
-            method.invoke(instance, o_Integer_1, j_Integer_2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testtest1_1() {
-        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
-        
-        // Parameter Initialization
-        int o_Integer_1 = 5;
-        int j_Integer_2 = 0;
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
-        try {
-            method.invoke(instance, o_Integer_1, j_Integer_2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testtest1_2() {
-        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
-        
-        // Parameter Initialization
-        int o_Integer_1 = 5;
-        int j_Integer_2 = 0;
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
-        try {
-            method.invoke(instance, o_Integer_1, j_Integer_2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testtest1_3() {
-        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
-        
-        // Parameter Initialization
-        int o_Integer_1 = 9;
+        int o_Integer_1 = 0;
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
