@@ -23,7 +23,7 @@
 	<classpathentry kind="lib" path="lib/stryker/jml4c.jar"/>
 	<classpathentry kind="lib" path="lib/stryker/MuJavaPlus.jar"/>
 	<classpathentry kind="lib" path="lib/stryker/openjava2005.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy4"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jdynalloy"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy4-nuevo"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jdynalloy-nuevo"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -67,4 +67,6 @@ To import the projects to `Eclipse` and include the respectives projects depende
 
 * tip: classpath and (config_file or (class_to_check and method_to_check)) are mandatory arguments.
 
-* Example: -cp roops -cf config/roops_core_objects_LinkedList/addLastTest.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j
+* Examples:
+	* Branch Coverage: -cp roops -cf config/roops_core_objects_LinkedList/addLastTest.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j
+	* All Users Coverage: -cp roops -cf config/roops_core_objects_OurTests/allDef.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j -r uses -m test2
