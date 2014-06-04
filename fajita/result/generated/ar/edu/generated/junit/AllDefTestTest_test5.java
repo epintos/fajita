@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import org.junit.Test;
 
-public class AllDefTestTest_test4 {
+public class AllDefTestTest_test5 {
 
     /**
      * Auxiliar function that embed awful reflection code
@@ -89,17 +89,16 @@ public class AllDefTestTest_test4 {
     }
 
     @Test
-    public void testtest4_0() {
+    public void testtest5_0() {
         roops.core.objectsInstrumented.AllDefTest instance = new roops.core.objectsInstrumented.AllDefTest();
         
         // Parameter Initialization
         int a_Integer_1 = 0;
-        int f_Integer_2 = 3;
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.AllDefTest", "test4", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.AllDefTest", "test5", true);
         try {
-            method.invoke(instance, a_Integer_1, f_Integer_2, a_Integer_1);
+            method.invoke(instance, a_Integer_1, a_Integer_1, a_Integer_1);
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -107,17 +106,35 @@ public class AllDefTestTest_test4 {
     }
 
     @Test
-    public void testtest4_1() {
+    public void testtest5_1() {
         roops.core.objectsInstrumented.AllDefTest instance = new roops.core.objectsInstrumented.AllDefTest();
         
         // Parameter Initialization
         int a_Integer_1 = 0;
-        int f_Integer_2 = 3;
+        int b_Integer_2 = 2;
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.AllDefTest", "test4", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.AllDefTest", "test5", true);
         try {
-            method.invoke(instance, a_Integer_1, f_Integer_2, a_Integer_1);
+            method.invoke(instance, a_Integer_1, b_Integer_2, b_Integer_2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest5_2() {
+        roops.core.objectsInstrumented.AllDefTest instance = new roops.core.objectsInstrumented.AllDefTest();
+        
+        // Parameter Initialization
+        int a_Integer_1 = 0;
+        int b_Integer_2 = 2;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.AllDefTest", "test5", true);
+        try {
+            method.invoke(instance, a_Integer_1, b_Integer_2, a_Integer_1);
         } catch (Exception e) {
             e.printStackTrace();
         } 

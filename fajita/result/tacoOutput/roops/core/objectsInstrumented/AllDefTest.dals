@@ -39,31 +39,26 @@ pred roops_core_objectsInstrumented_AllDefTestCondition2[
 
 }
 
-pred precondition_roops_core_objectsInstrumented_AllDefTest_test4_0[
-  throw:univ
-]{
-   equ[throw,
-      null]
-
-}
-
-pred postcondition_roops_core_objectsInstrumented_AllDefTest_test4_0[
-  throw':univ
-]{
-   roops_core_objectsInstrumented_AllDefTest_ensures[throw']
-   and 
-   (
-     not (
-       throw'=AssertionFailureLit)
-   )
-
-}
-
 pred roops_core_objectsInstrumented_AllDefTestCondition4[
 ]{
    isEmptyOrNull[ClassFields]
    or 
    isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_AllDefTestCondition6[
+  exit_stmt_reached:univ,
+  throw:univ,
+  var_15_ws_1:univ
+]{
+   liftExpression[var_15_ws_1]
+   and 
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
 
 }
 
@@ -91,219 +86,34 @@ pred roops_core_objectsInstrumented_AllDefTestCondition3[
 
 }
 
-program roops_core_objectsInstrumented_AllDefTest_test4_0[
-  thiz:roops_core_objectsInstrumented_AllDefTest,
-  throw:java_lang_Throwable+null,
-  a:JavaPrimitiveIntegerValue,
-  f:JavaPrimitiveIntegerValue,
-  p:JavaPrimitiveIntegerValue,
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_5:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_4:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_roops_goal_1:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_3:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_roops_goal_0:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_2:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_1:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_3:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_2:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_1:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_5:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_4:(ClassFields)->one(boolean),
-  usedObjects:set (java_lang_Object)
-] var [
-  t_3:JavaPrimitiveIntegerValue,
-  exit_stmt_reached:boolean,
-  var_9_b:JavaPrimitiveIntegerValue,
-  var_10_c:JavaPrimitiveIntegerValue,
-  t_4:JavaPrimitiveIntegerValue
+pred postcondition_roops_core_objectsInstrumented_AllDefTest_test6_0[
+  throw':univ
 ]{
-   skip;
-   throw:=null;
-   skip;
-   exit_stmt_reached:=false;
-   skip;
-   skip;
-   call roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_AllDefTest_variable_definition_5,roops_core_objectsInstrumented_AllDefTest_variable_definition_4,roops_core_objectsInstrumented_AllDefTest_roops_goal_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_3,roops_core_objectsInstrumented_AllDefTest_roops_goal_0,roops_core_objectsInstrumented_AllDefTest_variable_definition_2,roops_core_objectsInstrumented_AllDefTest_variable_definition_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_0,roops_utilInstrumented_RoopsArray_variable_definition_3,roops_utilInstrumented_RoopsArray_variable_definition_2,roops_utilInstrumented_RoopsArray_variable_definition_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_variable_definition_0,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_variable_definition_5,roops_utilInstrumented_RoopsArray_variable_definition_4,usedObjects];
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_0:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_0)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_1:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_1)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_2:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_2)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      t_3:=fun_java_primitive_integer_value_add[JavaPrimitiveIntegerLiteral0,f]
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      var_9_b:=t_3
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition4[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_roops_goal_0:=(roops_core_objectsInstrumented_AllDefTest_roops_goal_0)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_1))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_3:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_3)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      a:=JavaPrimitiveIntegerLiteral5
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_4:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_4)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      t_4:=fun_java_primitive_integer_value_add[p,JavaPrimitiveIntegerLiteral3]
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      var_10_c:=t_4
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition4[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_roops_goal_1:=(roops_core_objectsInstrumented_AllDefTest_roops_goal_1)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_2))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_5:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_5)++((ClassFields)->(true))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip
+   roops_core_objectsInstrumented_AllDefTest_ensures[throw']
+   and 
+   (
+     not (
+       throw'=AssertionFailureLit)
+   )
+
+}
+
+pred precondition_roops_core_objectsInstrumented_AllDefTest_test6_0[
+  throw:univ
+]{
+   equ[throw,
+      null]
 
 }
 
 program roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initialization_0[
   throw:java_lang_Throwable+null,
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_5:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_4:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_roops_goal_1:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_3:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_AllDefTest_roops_goal_0:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_2:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_AllDefTest_variable_definition_1:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_AllDefTest_variable_definition_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_3:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_2:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_variable_definition_1:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_variable_definition_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_5:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_4:(ClassFields)->one(boolean),
   usedObjects:set (java_lang_Object)
 ] var [
   exit_stmt_reached:boolean
@@ -318,20 +128,6 @@ program roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initializatio
       
       } else {
          roops_core_objectsInstrumented_AllDefTest_roops_goal_0:=(roops_core_objectsInstrumented_AllDefTest_roops_goal_0)++((ClassFields)->(false))
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_roops_goal_1:=(roops_core_objectsInstrumented_AllDefTest_roops_goal_1)++((ClassFields)->(false))
       
       }
    
@@ -368,12 +164,36 @@ program roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initializatio
    
    }
    ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_AllDefTest_test6_0[
+  thiz:roops_core_objectsInstrumented_AllDefTest,
+  throw:java_lang_Throwable+null,
+  a:JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_AllDefTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_AllDefTest_variable_definition_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_AllDefTest_variable_definition_0:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_variable_definition_1:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
+  roops_utilInstrumented_RoopsArray_variable_definition_0:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean,
+  var_15_ws_1:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   call roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_AllDefTest_roops_goal_0,roops_core_objectsInstrumented_AllDefTest_variable_definition_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_0,roops_utilInstrumented_RoopsArray_variable_definition_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_variable_definition_0,usedObjects];
    if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
       if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
          throw:=java_lang_NullPointerExceptionLit
       
       } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_2:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_2)++((ClassFields)->(false))
+         roops_core_objectsInstrumented_AllDefTest_variable_definition_0:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_0)++((ClassFields)->(true))
       
       }
    
@@ -382,45 +202,73 @@ program roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initializatio
    
    }
    ;
+   skip;
    if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
-      
-      } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_3:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_3)++((ClassFields)->(false))
-      
-      }
+      var_15_ws_1:=(pred_java_primitive_integer_value_lt[a,JavaPrimitiveIntegerLiteral3]=>(true)else(false))
    
    } else {
       skip
    
    }
    ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
+   while roops_core_objectsInstrumented_AllDefTestCondition6[exit_stmt_reached,throw,var_15_ws_1]do {
+      if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
+         a:=fun_java_primitive_integer_value_add[a,JavaPrimitiveIntegerLiteral1]
       
       } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_4:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_4)++((ClassFields)->(false))
+         skip
       
       }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
-         throw:=java_lang_NullPointerExceptionLit
+      ;
+      if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
+         if roops_core_objectsInstrumented_AllDefTestCondition4[]  {
+            throw:=java_lang_NullPointerExceptionLit
+         
+         } else {
+            roops_core_objectsInstrumented_AllDefTest_roops_goal_0:=(roops_core_objectsInstrumented_AllDefTest_roops_goal_0)++((ClassFields)->(ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_0))
+         
+         }
       
       } else {
-         roops_core_objectsInstrumented_AllDefTest_variable_definition_5:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_5)++((ClassFields)->(false))
+         skip
       
       }
-   
-   } else {
-      skip
+      ;
+      if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
+         if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
+            throw:=java_lang_NullPointerExceptionLit
+         
+         } else {
+            roops_core_objectsInstrumented_AllDefTest_variable_definition_1:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_1)++((ClassFields)->(true))
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
+         if roops_core_objectsInstrumented_AllDefTestCondition0[]  {
+            throw:=java_lang_NullPointerExceptionLit
+         
+         } else {
+            roops_core_objectsInstrumented_AllDefTest_variable_definition_0:=(roops_core_objectsInstrumented_AllDefTest_variable_definition_0)++((ClassFields)->(false))
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_AllDefTestCondition2[exit_stmt_reached,throw]  {
+         var_15_ws_1:=(pred_java_primitive_integer_value_lt[a,JavaPrimitiveIntegerLiteral3]=>(true)else(false))
+      
+      } else {
+         skip
+      
+      }
    
    }
    ;
@@ -428,45 +276,30 @@ program roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initializatio
 
 }
 
-assertCorrectness check_roops_core_objectsInstrumented_AllDefTest_test4_0[
+assertCorrectness check_roops_core_objectsInstrumented_AllDefTest_test6_0[
   a:JavaPrimitiveIntegerValue,
   exit_stmt_reached:boolean,
-  f:JavaPrimitiveIntegerValue,
-  p:JavaPrimitiveIntegerValue,
   roops_core_objectsInstrumented_AllDefTest_roops_goal_0:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_roops_goal_1:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_AllDefTest_variable_definition_0:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_AllDefTest_variable_definition_1:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_2:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_3:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_4:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_AllDefTest_variable_definition_5:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_roops_goal_0:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_roops_goal_1:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_variable_definition_0:(ClassFields)->one(boolean),
   roops_utilInstrumented_RoopsArray_variable_definition_1:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_2:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_3:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_4:(ClassFields)->one(boolean),
-  roops_utilInstrumented_RoopsArray_variable_definition_5:(ClassFields)->one(boolean),
-  t_3:JavaPrimitiveIntegerValue,
-  t_4:JavaPrimitiveIntegerValue,
   thiz:roops_core_objectsInstrumented_AllDefTest,
   throw:java_lang_Throwable+null,
   usedObjects:set (java_lang_Object),
-  var_10_c:JavaPrimitiveIntegerValue,
-  var_9_b:JavaPrimitiveIntegerValue
+  var_15_ws_1:boolean
 ]{
 pre={
-   precondition_roops_core_objectsInstrumented_AllDefTest_test4_0[throw]
+   precondition_roops_core_objectsInstrumented_AllDefTest_test6_0[throw]
 
 }
 program={
-   call roops_core_objectsInstrumented_AllDefTest_test4_0[thiz,throw,a,f,p,roops_core_objectsInstrumented_AllDefTest_variable_definition_5,roops_core_objectsInstrumented_AllDefTest_variable_definition_4,roops_core_objectsInstrumented_AllDefTest_roops_goal_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_3,roops_core_objectsInstrumented_AllDefTest_roops_goal_0,roops_core_objectsInstrumented_AllDefTest_variable_definition_2,roops_core_objectsInstrumented_AllDefTest_variable_definition_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_0,roops_utilInstrumented_RoopsArray_variable_definition_3,roops_utilInstrumented_RoopsArray_variable_definition_2,roops_utilInstrumented_RoopsArray_variable_definition_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_variable_definition_0,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_variable_definition_5,roops_utilInstrumented_RoopsArray_variable_definition_4,usedObjects]
+   call roops_core_objectsInstrumented_AllDefTest_test6_0[thiz,throw,a,roops_core_objectsInstrumented_AllDefTest_roops_goal_0,roops_core_objectsInstrumented_AllDefTest_variable_definition_1,roops_core_objectsInstrumented_AllDefTest_variable_definition_0,roops_utilInstrumented_RoopsArray_variable_definition_1,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_utilInstrumented_RoopsArray_variable_definition_0,usedObjects]
 
 }
 post={
-   postcondition_roops_core_objectsInstrumented_AllDefTest_test4_0[throw']
+   postcondition_roops_core_objectsInstrumented_AllDefTest_test6_0[throw']
 
 }
 }

@@ -34,19 +34,6 @@ Implementation
                if isEmptyOrNull[ClassFields]{
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_roops_goal_1:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
                   ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_0:=false;
                };
             } else {
@@ -61,58 +48,6 @@ Implementation
                   throw:=java_lang_NullPointerExceptionLit;
                } else {
                   ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_1:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_2:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_3:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_4:=false;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_5:=false;
                };
             } else {
                skip;
@@ -211,6 +146,16 @@ Implementation
             } else {
                skip;
             };
+            var var_4_j:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_4_j:=var_1_a;
+            } else {
+               skip;
+            };
          
          }
       
@@ -251,23 +196,23 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var var_4_a:JavaPrimitiveIntegerValue;
+            var var_5_a:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_4_a:=JavaPrimitiveIntegerLiteral2;
+               var_5_a:=JavaPrimitiveIntegerLiteral2;
             } else {
                skip;
             };
-            var var_5_b:JavaPrimitiveIntegerValue;
+            var var_6_b:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_5_b:=JavaPrimitiveIntegerLiteral5;
+               var_6_b:=JavaPrimitiveIntegerLiteral5;
             } else {
                skip;
             };
@@ -276,7 +221,7 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               var_4_a:=fun_java_primitive_integer_value_add[JavaPrimitiveIntegerLiteral2,var_5_b];
+               var_5_a:=fun_java_primitive_integer_value_add[JavaPrimitiveIntegerLiteral2,var_6_b];
             } else {
                skip;
             };
@@ -302,32 +247,23 @@ Implementation
          exit_stmt_reached:=false;
          {
             var t_2:JavaPrimitiveIntegerValue;
-            var var_6_a:JavaPrimitiveIntegerValue;
+            var var_7_a:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_6_a:=JavaPrimitiveIntegerLiteral2;
+               var_7_a:=JavaPrimitiveIntegerLiteral2;
             } else {
                skip;
             };
-            var var_7_b:JavaPrimitiveIntegerValue;
+            var var_8_b:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_7_b:=JavaPrimitiveIntegerLiteral5;
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               var_6_a:=fun_java_primitive_integer_value_add[JavaPrimitiveIntegerLiteral2,var_7_b];
+               var_8_b:=JavaPrimitiveIntegerLiteral5;
             } else {
                skip;
             };
@@ -336,17 +272,26 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               t_2:=fun_java_primitive_integer_value_add[var_7_b,var_6_a];
+               var_7_a:=fun_java_primitive_integer_value_add[JavaPrimitiveIntegerLiteral2,var_8_b];
             } else {
                skip;
             };
-            var var_8_c:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_8_c:=t_2;
+               t_2:=fun_java_primitive_integer_value_add[var_8_b,var_7_a];
+            } else {
+               skip;
+            };
+            var var_9_c:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_9_c:=t_2;
             } else {
                skip;
             };
@@ -359,12 +304,10 @@ Implementation
    }
 
 
-program roops_core_objectsInstrumented_AllDefTest::test4[
+program roops_core_objectsInstrumented_AllDefTest::test6[
   var thiz:roops_core_objectsInstrumented_AllDefTest,
   var throw:java_lang_Throwable+null,
-  var a:JavaPrimitiveIntegerValue,
-  var f:JavaPrimitiveIntegerValue,
-  var p:JavaPrimitiveIntegerValue] 
+  var a:JavaPrimitiveIntegerValue] 
 Specification 
 {
   SpecCase #0 {
@@ -390,8 +333,6 @@ Implementation
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
          {
-            var t_3:JavaPrimitiveIntegerValue;
-            var t_4:JavaPrimitiveIntegerValue;
             call roops_core_objectsInstrumented_AllDefTest_fajita_roopsGoal_initialization[throw];
             if (
               throw=null)
@@ -406,16 +347,132 @@ Implementation
             } else {
                skip;
             };
+            var var_15_ws_1:boolean;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_1:=true;
-               };
+               var_15_ws_1:=(pred_java_primitive_integer_value_lt[a,
+                                                   JavaPrimitiveIntegerLiteral3]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_15_ws_1]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     a:=fun_java_primitive_integer_value_add[a,JavaPrimitiveIntegerLiteral1];
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[ClassFields]
+                     or 
+                     isEmptyOrNull[ClassFields]
+                     {
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        ClassFields.roops_core_objectsInstrumented_AllDefTest_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_0;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[ClassFields]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_1:=true;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[ClassFields]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_0:=false;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_15_ws_1:=(pred_java_primitive_integer_value_lt[a,
+                                                         JavaPrimitiveIntegerLiteral3]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AllDefTest::test5[
+  var thiz:roops_core_objectsInstrumented_AllDefTest,
+  var throw:java_lang_Throwable+null,
+  var a:JavaPrimitiveIntegerValue,
+  var b:JavaPrimitiveIntegerValue,
+  var c:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_5:JavaPrimitiveIntegerValue;
+            var t_6:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_5:=fun_java_primitive_integer_value_add[a,b];
+            } else {
+               skip;
+            };
+            var var_12_d:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_12_d:=t_5;
             } else {
                skip;
             };
@@ -424,14 +481,99 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_2:=true;
-               };
+               b:=fun_java_primitive_integer_value_sub[b,a];
             } else {
                skip;
             };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_6:=(pred_java_primitive_integer_value_gte[c,
+                                                    JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_6=true   {
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        b:=JavaPrimitiveIntegerLiteral2;
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        a:=fun_java_primitive_integer_value_add[b,c];
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else    {
+                     var var_13_f:JavaPrimitiveIntegerValue;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_13_f:=c;
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+               ;
+            } else {
+               skip;
+            };
+            var var_14_e:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_14_e:=c;
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AllDefTest::test4[
+  var thiz:roops_core_objectsInstrumented_AllDefTest,
+  var throw:java_lang_Throwable+null,
+  var a:JavaPrimitiveIntegerValue,
+  var f:JavaPrimitiveIntegerValue,
+  var p:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_3:JavaPrimitiveIntegerValue;
+            var t_4:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
@@ -441,42 +583,13 @@ Implementation
             } else {
                skip;
             };
-            var var_9_b:JavaPrimitiveIntegerValue;
+            var var_10_b:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_9_b:=t_3;
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_1;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_3:=true;
-               };
+               var_10_b:=t_3;
             } else {
                skip;
             };
@@ -494,59 +607,17 @@ Implementation
             and 
             (
               exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_4:=true;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
                t_4:=fun_java_primitive_integer_value_add[p,JavaPrimitiveIntegerLiteral3];
             } else {
                skip;
             };
-            var var_10_c:JavaPrimitiveIntegerValue;
+            var var_11_c:JavaPrimitiveIntegerValue;
             if (
               throw=null)
             and 
             (
               exit_stmt_reached=false){
-               var_10_c:=t_4;
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]
-               or 
-               isEmptyOrNull[ClassFields]
-               {
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_2;
-               };
-            } else {
-               skip;
-            };
-            if (
-              throw=null)
-            and 
-            (
-              exit_stmt_reached=false){
-               if isEmptyOrNull[ClassFields]{
-                  throw:=java_lang_NullPointerExceptionLit;
-               } else {
-                  ClassFields.roops_core_objectsInstrumented_AllDefTest_variable_definition_5:=true;
-               };
+               var_11_c:=t_4;
             } else {
                skip;
             };

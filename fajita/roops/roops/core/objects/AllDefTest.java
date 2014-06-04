@@ -10,6 +10,7 @@ public class AllDefTest {
 			int c = 20;
 			a = c + a;
 		}
+		int j = a;
 	}
 
 	public void test2() {
@@ -29,6 +30,24 @@ public class AllDefTest {
 		int b = 0 + f;
 		a = 5;
 		int c = p + 3;
+	}
+	
+	public void test5(int a, int b, int c) {
+		int d = a + b;
+		b = b - a;
+		if(c >= 5) {
+			b = 2;
+			a = b + c;
+		} else {
+			int f = c;
+		}
+		int e = c;
+	}
+	
+	public void test6(int a){
+		while(a < 3) {
+			a = a + 1;
+		}
 	}
 
 }

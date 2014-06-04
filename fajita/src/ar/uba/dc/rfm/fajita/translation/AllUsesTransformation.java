@@ -334,18 +334,19 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 				boolean isInsideBlock, MethodDeclaration x) {
 			if (visitingReachableMethod) {
 				ASTList<Statement> backup = new ASTArrayList<>(list);
-				int i = 0;
-				int paramsIndex = 0;
-				if (x.getParameterDeclarationCount() == 0){
-					i = 1;
-				}
+				int i = 1;
 				
-				for (VariableDeclaration vc : x.getParameters()) {
-					i = handleVariableDeclaration(vc, backup, i++,
-							isInsideBlock);
-					paramsIndex++;
-					if (x.getParameterDeclarationCount() == paramsIndex){
-						i++;
+				//if there are parameters statements should be placed before the first code line
+				if (x != null && x.getParameterDeclarationCount() > 0){
+					int paramsIndex = 0;
+					i = 0;
+					for (VariableDeclaration vc : x.getParameters()) {
+						i = handleVariableDeclaration(vc, backup, i++,
+								isInsideBlock);
+						paramsIndex++;
+						if (x.getParameterDeclarationCount() == paramsIndex){
+							i++;
+						}
 					}
 				}
 				
@@ -355,13 +356,13 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 								isInsideBlock);
 					} else if (st instanceof If) {
 						If iff = (If) st;
-						handleIf(iff, x);
+						handleIf(iff, null);
 					} else if (st instanceof While) {
 						While whilee = (While) st;
-						handleWhile(whilee, x);
+						handleWhile(whilee, null);
 					} else if (st instanceof For) {
 						For forr = (For) st;
-						handleFor(forr, x);
+						handleFor(forr, null);
 					} else if (st instanceof VariableDeclaration) {
 						VariableDeclaration vd = (VariableDeclaration) st;
 						i = handleVariableDeclaration(vd, backup, i++,
