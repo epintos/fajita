@@ -403,6 +403,29 @@ post {
 }
 }
 
+//-------------- ClassFields--------------//
+one sig ClassFields {}
+{}
+
+
+
+
+//-------------- java_lang_RuntimeException--------------//
+abstract sig java_lang_RuntimeException extends java_lang_Exception {}
+{}
+
+
+
+one sig java_lang_RuntimeExceptionLit extends java_lang_RuntimeException {}
+{}
+
+//-------------- java_lang_Exception--------------//
+abstract sig java_lang_Exception extends java_lang_Throwable {}
+{}
+
+
+
+
 //-------------- java_lang_Throwable--------------//
 abstract sig java_lang_Throwable {}
 {}
@@ -417,20 +440,21 @@ sig java_lang_Object {}
 
 
 
+//-------------- java_lang_NullPointerException--------------//
+abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
+{}
+
+
+
+one sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
+{}
+
 //-------------- roops_core_objectsInstrumented_MCCTest--------------//
 sig roops_core_objectsInstrumented_MCCTest extends java_lang_Object {}
 {}
 
 
 
-
-pred roops_core_objectsInstrumented_MCCTestCondition3[
-  var_12_b:univ
-]{
-   not (
-     var_12_b=true)
-
-}
 
 pred roops_core_objectsInstrumented_MCCTestCondition1[
   exit_stmt_reached:univ,
@@ -446,6 +470,14 @@ pred roops_core_objectsInstrumented_MCCTestCondition1[
 
 }
 
+pred roops_core_objectsInstrumented_MCCTestCondition29[
+  t_38:univ
+]{
+   not (
+     t_38=true)
+
+}
+
 pred roops_core_objectsInstrumented_MCCTestCondition0[
   exit_stmt_reached:univ,
   throw:univ
@@ -458,44 +490,66 @@ pred roops_core_objectsInstrumented_MCCTestCondition0[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition2[
-  var_12_b:univ
+pred roops_core_objectsInstrumented_MCCTestCondition28[
+  t_38:univ
 ]{
-   var_12_b=true
+   t_38=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition12[
+  c:univ
+]{
+   c=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition23[
+  t_41:univ
+]{
+   not (
+     t_41=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition13[
+  c:univ
+]{
+   not (
+     c=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition25[
+  t_40:univ
+]{
+   not (
+     t_40=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition22[
+  t_41:univ
+]{
+   t_41=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition24[
-  exit_stmt_reached:univ,
-  throw:univ,
-  var_16_ws_1:univ
+  t_40:univ
 ]{
-   liftExpression[var_16_ws_1]
-   and 
-   (
-     throw=null)
-   and 
-   (
-     exit_stmt_reached=false)
+   t_40=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition17[
-  t_10:univ
+pred roops_core_objectsInstrumented_MCCTestCondition26[
+  t_39:univ
 ]{
-   not (
-     t_10=true)
+   t_39=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition16[
-  t_10:univ
-]{
-   t_10=true
-
-}
-
-pred postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[
+pred postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw':univ
 ]{
    roops_core_objectsInstrumented_MCCTest_ensures[throw']
@@ -507,112 +561,95 @@ pred postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition11[
-  t_12:univ
-]{
-   not (
-     t_12=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition10[
-  t_12:univ
-]{
-   t_12=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition13[
-  t_11:univ
-]{
-   not (
-     t_11=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition12[
-  t_11:univ
-]{
-   t_11=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition15[
-  var_15_e:univ
-]{
-   not (
-     var_15_e=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition14[
-  var_15_e:univ
-]{
-   var_15_e=true
-
-}
-
 pred roops_core_objectsInstrumented_MCCTestCondition19[
-  t_16:univ
 ]{
    not (
-     t_16=true)
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition5[
+  a:univ
+]{
+   not (
+     a=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition2[
+  b:univ
+]{
+   b=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition18[
-  t_16:univ
 ]{
-   t_16=true
+   isEmptyOrNull[ClassFields]
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition21[
-  t_15:univ
+pred roops_core_objectsInstrumented_MCCTestCondition3[
+  b:univ
 ]{
    not (
-     t_15=true)
+     b=true)
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition23[
-  t_14:univ
+pred roops_core_objectsInstrumented_MCCTestCondition4[
+  a:univ
 ]{
-   not (
-     t_14=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition22[
-  t_14:univ
-]{
-   t_14=true
+   a=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition6[
-  var_14_d:univ
+  e:univ
 ]{
-   var_14_d=true
+   e=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition20[
-  t_15:univ
+pred roops_core_objectsInstrumented_MCCTestCondition8[
+  d:univ
 ]{
-   t_15=true
+   d=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition9[
+  d:univ
+]{
+   not (
+     d=true)
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition7[
-  var_14_d:univ
+  e:univ
 ]{
    not (
-     var_14_d=true)
+     e=true)
 
 }
 
-pred precondition_roops_core_objectsInstrumented_MCCTest_test3_0[
+pred roops_core_objectsInstrumented_MCCTestCondition20[
+  t_36:univ
+]{
+   t_36=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition21[
+  t_36:univ
+]{
+   not (
+     t_36=true)
+
+}
+
+pred precondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw:univ
 ]{
    equ[throw,
@@ -630,493 +667,70 @@ pred roops_core_objectsInstrumented_MCCTest_ensures[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition4[
-  var_11_a:univ
+pred roops_core_objectsInstrumented_MCCTestCondition10[
+  t_33:univ
 ]{
-   var_11_a=true
+   t_33=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition5[
-  var_11_a:univ
+pred roops_core_objectsInstrumented_MCCTestCondition27[
+  t_39:univ
 ]{
    not (
-     var_11_a=true)
+     t_39=true)
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition8[
-  var_13_c:univ
-]{
-   var_13_c=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition9[
-  var_13_c:univ
+pred roops_core_objectsInstrumented_MCCTestCondition11[
+  t_33:univ
 ]{
    not (
-     var_13_c=true)
+     t_33=true)
 
 }
 
-program roops_core_objectsInstrumented_MCCTest_test3_0[
-  thiz:roops_core_objectsInstrumented_MCCTest,
-  throw:java_lang_Throwable+null,
-  usedObjects:set (java_lang_Object)
-] var [
-  var_16_ws_1:boolean,
-  var_15_e:boolean,
-  var_14_d:boolean,
-  var_11_a:boolean,
-  var_13_c:boolean,
-  t_15:boolean,
-  t_16:boolean,
-  t_13:boolean,
-  t_14:boolean,
-  t_11:boolean,
-  t_12:boolean,
-  t_10:boolean,
-  exit_stmt_reached:boolean,
-  t_9:boolean,
-  var_12_b:boolean
+pred roops_core_objectsInstrumented_MCCTestCondition16[
+  t_31:univ
 ]{
-   skip;
-   throw:=null;
-   skip;
-   exit_stmt_reached:=false;
-   skip;
-   skip;
-   skip;
-   skip;
-   call roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[throw,usedObjects];
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_11_a:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_12_b:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_13_c:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_14_d:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_15_e:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_MCCTestCondition4[var_11_a]  {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            t_11:=true
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_MCCTestCondition2[var_12_b]  {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_11:=true
-               
-               } else {
-                  skip
-               
-               }
-            
-            } else {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_11:=false
-               
-               } else {
-                  skip
-               
-               }
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_MCCTestCondition8[var_13_c]  {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            t_12:=true
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_MCCTestCondition6[var_14_d]  {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_12:=true
-               
-               } else {
-                  skip
-               
-               }
-            
-            } else {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_12:=false
-               
-               } else {
-                  skip
-               
-               }
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_MCCTestCondition12[t_11]  {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_MCCTestCondition10[t_12]  {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_10:=true
-               
-               } else {
-                  skip
-               
-               }
-            
-            } else {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_10:=false
-               
-               } else {
-                  skip
-               
-               }
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            t_10:=false
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_MCCTestCondition16[t_10]  {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_MCCTestCondition14[var_15_e]  {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_9:=true
-               
-               } else {
-                  skip
-               
-               }
-            
-            } else {
-               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                  t_9:=false
-               
-               } else {
-                  skip
-               
-               }
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-            t_9:=false
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-      var_16_ws_1:=t_9
-   
-   } else {
-      skip
-   
-   }
-   ;
-   while roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached,throw,var_16_ws_1]do {
-      skip;
-      skip;
-      skip;
-      skip;
-      if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_MCCTestCondition4[var_11_a]  {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               t_15:=true
-            
-            } else {
-               skip
-            
-            }
-         
-         } else {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_MCCTestCondition2[var_12_b]  {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_15:=true
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               } else {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_15:=false
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_MCCTestCondition8[var_13_c]  {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               t_16:=true
-            
-            } else {
-               skip
-            
-            }
-         
-         } else {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_MCCTestCondition6[var_14_d]  {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_16:=true
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               } else {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_16:=false
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_MCCTestCondition20[t_15]  {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_MCCTestCondition18[t_16]  {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_14:=true
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               } else {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_14:=false
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-         
-         } else {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               t_14:=false
-            
-            } else {
-               skip
-            
-            }
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_MCCTestCondition22[t_14]  {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_MCCTestCondition14[var_15_e]  {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_13:=true
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               } else {
-                  if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-                     t_13:=false
-                  
-                  } else {
-                     skip
-                  
-                  }
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-         
-         } else {
-            if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-               t_13:=false
-            
-            } else {
-               skip
-            
-            }
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
-         var_16_ws_1:=t_13
-      
-      } else {
-         skip
-      
-      }
-   
-   }
-   ;
-   skip
+   t_31=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition17[
+  t_31:univ
+]{
+   not (
+     t_31=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition14[
+  t_32:univ
+]{
+   t_32=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition15[
+  t_32:univ
+]{
+   not (
+     t_32=true)
 
 }
 
 program roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[
   throw:java_lang_Throwable+null,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
   usedObjects:set (java_lang_Object)
 ] var [
   exit_stmt_reached:boolean
@@ -1125,41 +739,900 @@ program roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0
    throw:=null;
    skip;
    exit_stmt_reached:=false;
-   skip;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_0:=(roops_core_objectsInstrumented_MCCTest_roops_goal_0)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_1:=(roops_core_objectsInstrumented_MCCTest_roops_goal_1)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_2:=(roops_core_objectsInstrumented_MCCTest_roops_goal_2)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_3:=(roops_core_objectsInstrumented_MCCTest_roops_goal_3)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_4:=(roops_core_objectsInstrumented_MCCTest_roops_goal_4)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_5:=(roops_core_objectsInstrumented_MCCTest_roops_goal_5)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_6:=(roops_core_objectsInstrumented_MCCTest_roops_goal_6)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_7:=(roops_core_objectsInstrumented_MCCTest_roops_goal_7)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_8:=(roops_core_objectsInstrumented_MCCTest_roops_goal_8)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
    skip
 
 }
 
-assertCorrectness check_roops_core_objectsInstrumented_MCCTest_test3_0[
-  exit_stmt_reached:boolean,
-  t_10:boolean,
-  t_11:boolean,
-  t_12:boolean,
-  t_13:boolean,
-  t_14:boolean,
-  t_15:boolean,
-  t_16:boolean,
-  t_9:boolean,
+program roops_core_objectsInstrumented_MCCTest_test9_0[
   thiz:roops_core_objectsInstrumented_MCCTest,
   throw:java_lang_Throwable+null,
-  usedObjects:set (java_lang_Object),
-  var_11_a:boolean,
-  var_12_b:boolean,
-  var_13_c:boolean,
-  var_14_d:boolean,
-  var_15_e:boolean,
-  var_16_ws_1:boolean
+  a:boolean,
+  b:boolean,
+  c:boolean,
+  d:boolean,
+  e:boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  t_36:boolean,
+  t_35:boolean,
+  t_38:boolean,
+  exit_stmt_reached:boolean,
+  t_37:boolean,
+  t_32:boolean,
+  t_31:boolean,
+  t_34:boolean,
+  t_33:boolean,
+  t_41:boolean,
+  t_40:boolean,
+  t_30:boolean,
+  t_39:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   call roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_MCCTest_roops_goal_6,roops_core_objectsInstrumented_MCCTest_roops_goal_7,roops_core_objectsInstrumented_MCCTest_roops_goal_4,roops_core_objectsInstrumented_MCCTest_roops_goal_5,roops_core_objectsInstrumented_MCCTest_roops_goal_2,roops_core_objectsInstrumented_MCCTest_roops_goal_3,roops_core_objectsInstrumented_MCCTest_roops_goal_0,roops_core_objectsInstrumented_MCCTest_roops_goal_1,roops_core_objectsInstrumented_MCCTest_roops_goal_8,usedObjects];
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_31:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_31:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_31:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_33:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_33:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_33:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_32:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition10[t_33]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_32:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_32:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition16[t_31]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition14[t_32]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_30:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_30:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_30:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_0:=(roops_core_objectsInstrumented_MCCTest_roops_goal_0)++((ClassFields)->(t_30))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_34:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_34:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_34:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_1:=(roops_core_objectsInstrumented_MCCTest_roops_goal_1)++((ClassFields)->(t_34))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_2:=(roops_core_objectsInstrumented_MCCTest_roops_goal_2)++((ClassFields)->(a))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_3:=(roops_core_objectsInstrumented_MCCTest_roops_goal_3)++((ClassFields)->(b))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_36:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_36:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_36:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_35:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition20[t_36]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_35:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_35:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_4:=(roops_core_objectsInstrumented_MCCTest_roops_goal_4)++((ClassFields)->(t_35))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_5:=(roops_core_objectsInstrumented_MCCTest_roops_goal_5)++((ClassFields)->(c))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_37:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_37:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_37:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_6:=(roops_core_objectsInstrumented_MCCTest_roops_goal_6)++((ClassFields)->(t_37))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_7:=(roops_core_objectsInstrumented_MCCTest_roops_goal_7)++((ClassFields)->(d))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_8:=(roops_core_objectsInstrumented_MCCTest_roops_goal_8)++((ClassFields)->(e))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_39:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_39:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_39:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_41:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_41:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_41:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_40:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition22[t_41]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_40:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_40:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition26[t_39]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition24[t_40]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_38:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_38:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_38:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition28[t_38]  {
+         skip
+      
+      } else {
+         skip
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+assertCorrectness check_roops_core_objectsInstrumented_MCCTest_test9_0[
+  a:boolean,
+  b:boolean,
+  c:boolean,
+  d:boolean,
+  e:boolean,
+  exit_stmt_reached:boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
+  t_30:boolean,
+  t_31:boolean,
+  t_32:boolean,
+  t_33:boolean,
+  t_34:boolean,
+  t_35:boolean,
+  t_36:boolean,
+  t_37:boolean,
+  t_38:boolean,
+  t_39:boolean,
+  t_40:boolean,
+  t_41:boolean,
+  thiz:roops_core_objectsInstrumented_MCCTest,
+  throw:java_lang_Throwable+null,
+  usedObjects:set (java_lang_Object)
 ]{
 pre={
-   precondition_roops_core_objectsInstrumented_MCCTest_test3_0[throw]
+   precondition_roops_core_objectsInstrumented_MCCTest_test9_0[throw]
 
 }
 program={
-   call roops_core_objectsInstrumented_MCCTest_test3_0[thiz,throw,usedObjects]
+   call roops_core_objectsInstrumented_MCCTest_test9_0[thiz,throw,a,b,c,d,e,roops_core_objectsInstrumented_MCCTest_roops_goal_6,roops_core_objectsInstrumented_MCCTest_roops_goal_7,roops_core_objectsInstrumented_MCCTest_roops_goal_4,roops_core_objectsInstrumented_MCCTest_roops_goal_5,roops_core_objectsInstrumented_MCCTest_roops_goal_2,roops_core_objectsInstrumented_MCCTest_roops_goal_3,roops_core_objectsInstrumented_MCCTest_roops_goal_0,roops_core_objectsInstrumented_MCCTest_roops_goal_1,roops_core_objectsInstrumented_MCCTest_roops_goal_8,usedObjects]
 
 }
 post={
-   postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[throw']
+   postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[throw']
 
 }
 }

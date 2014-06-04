@@ -305,6 +305,139 @@ Implementation
    }
 
 
+program roops_core_objectsInstrumented_MCCTest::test6[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var var_31_a:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_31_a:=false;
+            } else {
+               skip;
+            };
+            var var_32_b:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_32_b:=false;
+            } else {
+               skip;
+            };
+            var var_33_c:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_33_c:=false;
+            } else {
+               skip;
+            };
+            var var_34_d:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_34_d:=false;
+            } else {
+               skip;
+            };
+            var var_35_e:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_35_e:=false;
+            } else {
+               skip;
+            };
+            var var_36_i:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_36_i:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            var var_37_ws_4:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_37_ws_4:=(pred_java_primitive_integer_value_lt[var_36_i,
+                                                   JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_37_ws_4]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_27:JavaPrimitiveIntegerValue;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_27:=var_36_i;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_36_i:=fun_java_primitive_integer_value_add[var_36_i,JavaPrimitiveIntegerLiteral1];
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_37_ws_4:=(pred_java_primitive_integer_value_lt[var_36_i,
+                                                         JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
 program roops_core_objectsInstrumented_MCCTest::test2[
   var thiz:roops_core_objectsInstrumented_MCCTest,
   var throw:java_lang_Throwable+null] 
@@ -599,7 +732,666 @@ Implementation
          throw:=null;
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
-         skip;
+         {
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_0:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_1:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_2:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_3:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_4:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_5:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_6:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_7:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_8:=false;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_MCCTest::test4[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var var_17_a:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_17_a:=false;
+            } else {
+               skip;
+            };
+            var var_18_b:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_18_b:=false;
+            } else {
+               skip;
+            };
+            var var_19_c:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_19_c:=false;
+            } else {
+               skip;
+            };
+            var var_20_d:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_20_d:=false;
+            } else {
+               skip;
+            };
+            var var_21_e:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_21_e:=false;
+            } else {
+               skip;
+            };
+            var var_22_i:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_22_i:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            var t_17:boolean;
+            var t_18:boolean;
+            var t_19:boolean;
+            var t_20:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_22_i:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            var var_23_ws_2:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if var_17_a=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_19:=true;
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if var_18_b=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_19:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_19:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if var_19_c=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_20:=true;
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if var_20_d=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_20:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_20:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_19=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_20=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_18:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_18:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_18:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_18=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if var_21_e=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_17:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_17:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_17:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_23_ws_2:=t_17;
+            } else {
+               skip;
+            };
+            while liftExpression[var_23_ws_2]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_21:JavaPrimitiveIntegerValue;
+                  var t_22:boolean;
+                  var t_23:boolean;
+                  var t_24:boolean;
+                  var t_25:boolean;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_21:=var_22_i;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_22_i:=fun_java_primitive_integer_value_add[var_22_i,JavaPrimitiveIntegerLiteral1];
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if var_17_a=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_24:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if var_18_b=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_24:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_24:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if var_19_c=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_25:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if var_20_d=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_25:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_25:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_24=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if t_25=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_23:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_23:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_23:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_23=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if var_21_e=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_22:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_22:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_22:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_23_ws_2:=t_22;
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+         
+         }
       
       }
       skip;
@@ -610,22 +1402,6 @@ Implementation
 program roops_core_objectsInstrumented_MCCTest::test3[
   var thiz:roops_core_objectsInstrumented_MCCTest,
   var throw:java_lang_Throwable+null] 
-Specification 
-{
-  SpecCase #0 {
-   ensures {
-      liftExpression[false]
-   }
-   
-   ensures {
-      equ[throw',
-         null]
-   }
-   
-   modifies {
-   EVERYTHING}
-  }
-}
 Implementation 
 
    {
@@ -639,7 +1415,6 @@ Implementation
             var t_10:boolean;
             var t_11:boolean;
             var t_12:boolean;
-            call roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization[throw];
             var var_11_a:boolean;
             if (
               throw=null)
@@ -1111,6 +1886,1022 @@ Implementation
                   (
                     exit_stmt_reached=false){
                      var_16_ws_1:=t_13;
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_MCCTest::test8[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null,
+  var i:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_29:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_29:=(pred_java_primitive_integer_value_lt[i,
+                                                   JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_29=true{
+                  skip;
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_MCCTest::test9[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null,
+  var a:boolean,
+  var b:boolean,
+  var c:boolean,
+  var d:boolean,
+  var e:boolean] 
+Specification 
+{
+  SpecCase #0 {
+   ensures {
+      liftExpression[false]
+   }
+   
+   ensures {
+      equ[throw',
+         null]
+   }
+   
+   modifies {
+   EVERYTHING}
+  }
+}
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_30:boolean;
+            var t_31:boolean;
+            var t_32:boolean;
+            var t_33:boolean;
+            var t_34:boolean;
+            var t_35:boolean;
+            var t_36:boolean;
+            var t_37:boolean;
+            var t_38:boolean;
+            var t_39:boolean;
+            var t_40:boolean;
+            var t_41:boolean;
+            call roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization[throw];
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if a=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if b=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_31:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_31:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_31:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if d=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if e=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_33:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_33:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_33:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if c=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_32:=true;
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_33=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_32:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_32:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_31=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_32=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_30:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_30:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_30:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_0:=t_30;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if a=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if b=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_34:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_34:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_34:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_1:=t_34;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_2:=a;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_3:=b;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if d=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if e=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_36:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_36:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_36:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if c=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_35:=true;
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_36=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_35:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_35:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_4:=t_35;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_5:=c;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if d=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if e=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_37:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_37:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_37:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_6:=t_37;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_7:=d;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_MCCTest_roops_goal_8:=e;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if a=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if b=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_39:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_39:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_39:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if d=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if e=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_41:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_41:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_41:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if c=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_40:=true;
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_41=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_40:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_40:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_39=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_40=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_38:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_38:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_38:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_38=true{
+                  skip;
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_MCCTest::test7[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_28:boolean;
+            var var_38_i:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_38_i:=JavaPrimitiveIntegerLiteral3;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_28:=(pred_java_primitive_integer_value_lt[var_38_i,
+                                                   JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_28=true{
+                  skip;
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_MCCTest::test5[
+  var thiz:roops_core_objectsInstrumented_MCCTest,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var var_24_a:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_24_a:=false;
+            } else {
+               skip;
+            };
+            var var_25_b:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_25_b:=false;
+            } else {
+               skip;
+            };
+            var var_26_c:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_26_c:=false;
+            } else {
+               skip;
+            };
+            var var_27_d:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_27_d:=false;
+            } else {
+               skip;
+            };
+            var var_28_e:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_28_e:=false;
+            } else {
+               skip;
+            };
+            var var_29_i:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_29_i:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_29_i:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            var var_30_ws_3:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_30_ws_3:=(pred_java_primitive_integer_value_lt[var_29_i,
+                                                   JavaPrimitiveIntegerLiteral5]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_30_ws_3]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_26:JavaPrimitiveIntegerValue;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_26:=var_29_i;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_29_i:=fun_java_primitive_integer_value_add[var_29_i,JavaPrimitiveIntegerLiteral1];
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_30_ws_3:=(pred_java_primitive_integer_value_lt[var_29_i,
+                                                         JavaPrimitiveIntegerLiteral5]=>(true)else(false));
                   } else {
                      skip;
                   };

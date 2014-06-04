@@ -350,12 +350,16 @@ public class MultipleConditionTransformation extends FajitaSourceTransformation 
         }
 
         private void handleFor(For forr, List<Expression> expressions) {
+        	Expression ex = forr.getExpressionAt(0);
+            recursiveExpressionExplorer(ex, expressions);
             StatementBlock stb = (StatementBlock) forr.getBody();
             ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));
         }
 
         private void handleWhile(While whilee, List<Expression> expressions) {
+        	Expression ex = whilee.getExpressionAt(0);
+            recursiveExpressionExplorer(ex, expressions);
             StatementBlock stb = (StatementBlock) whilee.getBody();
             ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));

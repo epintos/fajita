@@ -1,0 +1,537 @@
+<alloy builddate="2009/03/19 02:02 EDT">
+
+<instance bitwidth="4" maxseq="7" command="Check check_roops_core_objectsInstrumented_MCCTest_test9_0 for 3 but 4 int, 7 seq" filename="">
+
+<sig label="seq/Int" ID="0" parentID="1" builtin="yes">
+</sig>
+
+<sig label="Int" ID="1" parentID="2" builtin="yes">
+</sig>
+
+<sig label="String" ID="3" parentID="2" builtin="yes">
+</sig>
+
+<sig label="this/null" ID="4" parentID="2" one="yes">
+   <atom label="null$0"/>
+</sig>
+
+<sig label="this/true" ID="5" parentID="6" one="yes">
+   <atom label="true$0"/>
+</sig>
+
+<sig label="this/false" ID="7" parentID="6" one="yes">
+   <atom label="false$0"/>
+</sig>
+
+<sig label="this/boolean" ID="6" parentID="2" abstract="yes">
+</sig>
+
+<sig label="this/char" ID="8" parentID="2" abstract="yes">
+</sig>
+
+<sig label="this/ClassFields" ID="9" parentID="2" one="yes">
+   <atom label="ClassFields$0"/>
+</sig>
+
+<sig label="this/AssertionFailureLit" ID="10" parentID="11" one="yes">
+   <atom label="AssertionFailureLit$0"/>
+</sig>
+
+<sig label="this/java_lang_RuntimeExceptionLit" ID="12" parentID="13" one="yes">
+   <atom label="java_lang_RuntimeExceptionLit$0"/>
+</sig>
+
+<sig label="this/java_lang_NullPointerExceptionLit" ID="14" parentID="15" one="yes">
+   <atom label="java_lang_NullPointerExceptionLit$0"/>
+</sig>
+
+<sig label="this/java_lang_NullPointerException" ID="15" parentID="13" abstract="yes" one="yes">
+</sig>
+
+<sig label="this/java_lang_RuntimeException" ID="13" parentID="16" abstract="yes">
+</sig>
+
+<sig label="this/java_lang_Exception" ID="16" parentID="11" abstract="yes">
+</sig>
+
+<sig label="this/java_lang_Throwable" ID="11" parentID="2" abstract="yes">
+</sig>
+
+<sig label="this/roops_core_objectsInstrumented_MCCTest" ID="17" parentID="18">
+</sig>
+
+<sig label="this/java_lang_Object" ID="18" parentID="2">
+   <atom label="java_lang_Object$0"/>
+</sig>
+
+<sig label="this/QF" ID="19" parentID="2" one="yes">
+   <atom label="QF$0"/>
+</sig>
+
+<field label="BQ__0" ID="20" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__1" ID="21" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__2" ID="22" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__3" ID="23" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__4" ID="24" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__5" ID="25" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__6" ID="26" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__7" ID="27" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="BQ__8" ID="28" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="a_0" ID="29" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="b_0" ID="30" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="c_0" ID="31" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="d_0" ID="32" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="e_0" ID="33" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_exit_stmt_reached_1" ID="34" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_l0_exit_stmt_reached_1" ID="35" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_30_0" ID="36" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_30_1" ID="37" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_31_0" ID="38" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_31_1" ID="39" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_32_0" ID="40" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_32_1" ID="41" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_33_0" ID="42" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_33_1" ID="43" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_34_0" ID="44" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_34_1" ID="45" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_35_0" ID="46" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_35_1" ID="47" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_36_0" ID="48" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_36_1" ID="49" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_37_0" ID="50" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_37_1" ID="51" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_38_0" ID="52" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_38_1" ID="53" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_39_0" ID="54" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_39_1" ID="55" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_40_0" ID="56" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_40_1" ID="57" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_41_0" ID="58" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="l1_t_41_1" ID="59" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_0_0" ID="60" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_0_1" ID="61" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_0_2" ID="62" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_1_0" ID="63" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_1_1" ID="64" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_1_2" ID="65" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_2_0" ID="66" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_2_1" ID="67" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_2_2" ID="68" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_3_0" ID="69" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_3_1" ID="70" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_3_2" ID="71" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_4_0" ID="72" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_4_1" ID="73" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_4_2" ID="74" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_5_0" ID="75" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_5_1" ID="76" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_5_2" ID="77" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_6_0" ID="78" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_6_1" ID="79" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_6_2" ID="80" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_7_0" ID="81" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_7_1" ID="82" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_7_2" ID="83" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_8_0" ID="84" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="true$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_8_1" ID="85" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="roops_core_objectsInstrumented_MCCTest_roops_goal_8_2" ID="86" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="ClassFields$0"/> <atom label="false$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="9"/> <type ID="6"/> </types>
+</field>
+
+<field label="throw_0" ID="87" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_1" ID="88" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_10" ID="89" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_11" ID="90" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_12" ID="91" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_13" ID="92" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_14" ID="93" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_15" ID="94" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_16" ID="95" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_17" ID="96" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_18" ID="97" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_19" ID="98" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_2" ID="99" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_20" ID="100" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_3" ID="101" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_4" ID="102" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_5" ID="103" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_6" ID="104" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_7" ID="105" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_8" ID="106" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<field label="throw_9" ID="107" parentID="19">
+   <tuple> <atom label="QF$0"/> <atom label="null$0"/> </tuple>
+   <types> <type ID="19"/> <type ID="11"/> </types>
+   <types> <type ID="19"/> <type ID="4"/> </types>
+</field>
+
+<sig label="univ" ID="2" builtin="yes">
+</sig>
+
+</instance>
+
+</alloy>

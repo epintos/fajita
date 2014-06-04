@@ -1,7 +1,7 @@
 /* 
  * DynAlloy translator options 
  * --------------------------- 
- * assertionId= check_roops_core_objectsInstrumented_MCCTest_test3_0
+ * assertionId= check_roops_core_objectsInstrumented_MCCTest_test9_0
  * loopUnroll= 3
  * removeQuantifiers= true
  * strictUnrolling= false
@@ -310,6 +310,31 @@ pred getUnusedObjectPost[
   n1 !in usedObjects0 
   usedObjects1 = usedObjects0 + (n1)
 }
+//-------------- ClassFields--------------//
+one
+sig ClassFields {}
+{}
+
+
+
+
+//-------------- java_lang_RuntimeException--------------//
+abstract sig java_lang_RuntimeException extends java_lang_Exception {}
+{}
+
+
+
+one
+sig java_lang_RuntimeExceptionLit extends java_lang_RuntimeException {}
+{}
+
+//-------------- java_lang_Exception--------------//
+abstract sig java_lang_Exception extends java_lang_Throwable {}
+{}
+
+
+
+
 //-------------- java_lang_Throwable--------------//
 abstract sig java_lang_Throwable {}
 {}
@@ -324,20 +349,22 @@ sig java_lang_Object {}
 
 
 
+//-------------- java_lang_NullPointerException--------------//
+abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
+{}
+
+
+
+one
+sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
+{}
+
 //-------------- roops_core_objectsInstrumented_MCCTest--------------//
 sig roops_core_objectsInstrumented_MCCTest extends java_lang_Object {}
 {}
 
 
 
-
-pred roops_core_objectsInstrumented_MCCTestCondition3[
-  var_12_b:univ
-]{
-   not (
-     var_12_b=true)
-
-}
 
 pred roops_core_objectsInstrumented_MCCTestCondition1[
   exit_stmt_reached:univ,
@@ -353,6 +380,14 @@ pred roops_core_objectsInstrumented_MCCTestCondition1[
 
 }
 
+pred roops_core_objectsInstrumented_MCCTestCondition29[
+  t_38:univ
+]{
+   not (
+     t_38=true)
+
+}
+
 pred roops_core_objectsInstrumented_MCCTestCondition0[
   exit_stmt_reached:univ,
   throw:univ
@@ -365,44 +400,66 @@ pred roops_core_objectsInstrumented_MCCTestCondition0[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition2[
-  var_12_b:univ
+pred roops_core_objectsInstrumented_MCCTestCondition28[
+  t_38:univ
 ]{
-   var_12_b=true
+   t_38=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition12[
+  c:univ
+]{
+   c=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition23[
+  t_41:univ
+]{
+   not (
+     t_41=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition13[
+  c:univ
+]{
+   not (
+     c=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition25[
+  t_40:univ
+]{
+   not (
+     t_40=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition22[
+  t_41:univ
+]{
+   t_41=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition24[
-  exit_stmt_reached:univ,
-  throw:univ,
-  var_16_ws_1:univ
+  t_40:univ
 ]{
-   liftExpression[var_16_ws_1]
-   and 
-   (
-     throw=null)
-   and 
-   (
-     exit_stmt_reached=false)
+   t_40=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition17[
-  t_10:univ
+pred roops_core_objectsInstrumented_MCCTestCondition26[
+  t_39:univ
 ]{
-   not (
-     t_10=true)
+   t_39=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition16[
-  t_10:univ
-]{
-   t_10=true
-
-}
-
-pred postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[
+pred postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw':univ
 ]{
    roops_core_objectsInstrumented_MCCTest_ensures[throw']
@@ -414,112 +471,95 @@ pred postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition11[
-  t_12:univ
-]{
-   not (
-     t_12=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition10[
-  t_12:univ
-]{
-   t_12=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition13[
-  t_11:univ
-]{
-   not (
-     t_11=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition12[
-  t_11:univ
-]{
-   t_11=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition15[
-  var_15_e:univ
-]{
-   not (
-     var_15_e=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition14[
-  var_15_e:univ
-]{
-   var_15_e=true
-
-}
-
 pred roops_core_objectsInstrumented_MCCTestCondition19[
-  t_16:univ
 ]{
    not (
-     t_16=true)
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition5[
+  a:univ
+]{
+   not (
+     a=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition2[
+  b:univ
+]{
+   b=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition18[
-  t_16:univ
 ]{
-   t_16=true
+   isEmptyOrNull[ClassFields]
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition21[
-  t_15:univ
+pred roops_core_objectsInstrumented_MCCTestCondition3[
+  b:univ
 ]{
    not (
-     t_15=true)
+     b=true)
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition23[
-  t_14:univ
+pred roops_core_objectsInstrumented_MCCTestCondition4[
+  a:univ
 ]{
-   not (
-     t_14=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition22[
-  t_14:univ
-]{
-   t_14=true
+   a=true
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition6[
-  var_14_d:univ
+  e:univ
 ]{
-   var_14_d=true
+   e=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition20[
-  t_15:univ
+pred roops_core_objectsInstrumented_MCCTestCondition8[
+  d:univ
 ]{
-   t_15=true
+   d=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition9[
+  d:univ
+]{
+   not (
+     d=true)
 
 }
 
 pred roops_core_objectsInstrumented_MCCTestCondition7[
-  var_14_d:univ
+  e:univ
 ]{
    not (
-     var_14_d=true)
+     e=true)
 
 }
 
-pred precondition_roops_core_objectsInstrumented_MCCTest_test3_0[
+pred roops_core_objectsInstrumented_MCCTestCondition20[
+  t_36:univ
+]{
+   t_36=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition21[
+  t_36:univ
+]{
+   not (
+     t_36=true)
+
+}
+
+pred precondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw:univ
 ]{
    equ[throw,
@@ -537,36 +577,59 @@ pred roops_core_objectsInstrumented_MCCTest_ensures[
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition4[
-  var_11_a:univ
+pred roops_core_objectsInstrumented_MCCTestCondition10[
+  t_33:univ
 ]{
-   var_11_a=true
+   t_33=true
 
 }
 
-pred roops_core_objectsInstrumented_MCCTestCondition5[
-  var_11_a:univ
-]{
-   not (
-     var_11_a=true)
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition8[
-  var_13_c:univ
-]{
-   var_13_c=true
-
-}
-
-pred roops_core_objectsInstrumented_MCCTestCondition9[
-  var_13_c:univ
+pred roops_core_objectsInstrumented_MCCTestCondition27[
+  t_39:univ
 ]{
    not (
-     var_13_c=true)
+     t_39=true)
 
 }
-check check_roops_core_objectsInstrumented_MCCTest_test3_0 for 3 but 4 int, 7 seq
+
+pred roops_core_objectsInstrumented_MCCTestCondition11[
+  t_33:univ
+]{
+   not (
+     t_33=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition16[
+  t_31:univ
+]{
+   t_31=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition17[
+  t_31:univ
+]{
+   not (
+     t_31=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition14[
+  t_32:univ
+]{
+   t_32=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition15[
+  t_32:univ
+]{
+   not (
+     t_32=true)
+
+}
+check check_roops_core_objectsInstrumented_MCCTest_test9_0 for 3 but 4 int, 7 seq
 
 
 
@@ -677,71 +740,84 @@ pred havocArrayContents[
 }
 
 
-pred roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[
-  throw_1: java_lang_Throwable + null,
-  exit_stmt_reached_1: boolean
-]{
-  TruePred[]
-  and 
-  (
-    throw_1=null)
-  and 
-  TruePred[]
-  and 
-  (
-    exit_stmt_reached_1=false)
-  and 
-  TruePred[]
-  and 
-  TruePred[]
-
-}
-
-
-
-pred roops_core_objectsInstrumented_MCCTest_test3_0[
+pred roops_core_objectsInstrumented_MCCTest_test9_0[
   throw_1: java_lang_Throwable + null,
   throw_2: java_lang_Throwable + null,
-  var_16_ws_1_0: boolean,
-  var_16_ws_1_1: boolean,
-  var_16_ws_1_2: boolean,
-  var_16_ws_1_3: boolean,
-  var_16_ws_1_4: boolean,
-  var_15_e_0: boolean,
-  var_15_e_1: boolean,
-  var_14_d_0: boolean,
-  var_14_d_1: boolean,
-  var_11_a_0: boolean,
-  var_11_a_1: boolean,
-  var_13_c_0: boolean,
-  var_13_c_1: boolean,
-  t_15_0: boolean,
-  t_15_1: boolean,
-  t_15_2: boolean,
-  t_15_3: boolean,
-  t_16_0: boolean,
-  t_16_1: boolean,
-  t_16_2: boolean,
-  t_16_3: boolean,
-  t_13_0: boolean,
-  t_13_1: boolean,
-  t_13_2: boolean,
-  t_13_3: boolean,
-  t_14_0: boolean,
-  t_14_1: boolean,
-  t_14_2: boolean,
-  t_14_3: boolean,
-  t_11_0: boolean,
-  t_11_1: boolean,
-  t_12_0: boolean,
-  t_12_1: boolean,
-  t_10_0: boolean,
-  t_10_1: boolean,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  throw_6: java_lang_Throwable + null,
+  throw_7: java_lang_Throwable + null,
+  throw_8: java_lang_Throwable + null,
+  throw_9: java_lang_Throwable + null,
+  throw_10: java_lang_Throwable + null,
+  throw_11: java_lang_Throwable + null,
+  throw_12: java_lang_Throwable + null,
+  throw_13: java_lang_Throwable + null,
+  throw_14: java_lang_Throwable + null,
+  throw_15: java_lang_Throwable + null,
+  throw_16: java_lang_Throwable + null,
+  throw_17: java_lang_Throwable + null,
+  throw_18: java_lang_Throwable + null,
+  throw_19: java_lang_Throwable + null,
+  throw_20: java_lang_Throwable + null,
+  a_0: boolean,
+  b_0: boolean,
+  c_0: boolean,
+  d_0: boolean,
+  e_0: boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_2: ( ClassFields ) -> one ( boolean ),
+  t_36_0: boolean,
+  t_36_1: boolean,
+  t_35_0: boolean,
+  t_35_1: boolean,
+  t_38_0: boolean,
+  t_38_1: boolean,
   exit_stmt_reached_1: boolean,
-  t_9_0: boolean,
-  t_9_1: boolean,
-  var_12_b_0: boolean,
-  var_12_b_1: boolean,
+  t_37_0: boolean,
+  t_37_1: boolean,
+  t_32_0: boolean,
+  t_32_1: boolean,
+  t_31_0: boolean,
+  t_31_1: boolean,
+  t_34_0: boolean,
+  t_34_1: boolean,
+  t_33_0: boolean,
+  t_33_1: boolean,
+  t_41_0: boolean,
+  t_41_1: boolean,
+  t_40_0: boolean,
+  t_40_1: boolean,
+  t_30_0: boolean,
+  t_30_1: boolean,
+  t_39_0: boolean,
+  t_39_1: boolean,
   l0_exit_stmt_reached_1: boolean
 ]{
   TruePred[]
@@ -762,171 +838,140 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
   and 
   TruePred[]
   and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
   roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[throw_2,
+                                                                          throw_3,
+                                                                          throw_4,
+                                                                          throw_5,
+                                                                          throw_6,
+                                                                          throw_7,
+                                                                          throw_8,
+                                                                          throw_9,
+                                                                          throw_10,
+                                                                          throw_11,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_6_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_6_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_7_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_7_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_4_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_4_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_5_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_5_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_2_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_2_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_3_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_3_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_0_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_0_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_1_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_1_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_8_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_8_1,
                                                                           l0_exit_stmt_reached_1]
   and 
-  TruePred[]
-  and 
   (
     (
       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_11_a_1=false)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_11_a_0=var_11_a_1)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_12_b_1=false)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_12_b_0=var_12_b_1)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_13_c_1=false)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_13_c_0=var_13_c_1)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_14_d_1=false)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_14_d_0=var_14_d_1)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_15_e_1=false)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_15_e_0=var_15_e_1)
-    )
-  )
-  and 
-  TruePred[]
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
+                                                      throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1]
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
-                t_11_1=true)
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_31_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_31_0=t_31_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_31_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_31_0=t_31_1)
+                    )
+                  )
+                )
+              )
             )
             or 
             (
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_11_0=t_11_1)
+                t_31_0=t_31_1)
             )
           )
         )
@@ -934,88 +979,30 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
         (
           (
             not (
-              roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1])
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
           )
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_11_1=true)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_11_0=t_11_1)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_11_1=false)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_11_0=t_11_1)
-                    )
-                  )
-                )
-              )
+                t_31_1=false)
             )
             or 
             (
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_11_0=t_11_1)
+                t_31_0=t_31_1)
             )
           )
         )
@@ -1026,87 +1013,56 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
       (
         not (
           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
+                                                          throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        t_11_0=t_11_1)
+        t_31_0=t_31_1)
     )
   )
   and 
   (
     (
       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
+                                                      throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1]
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                t_12_1=true)
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_12_0=t_12_1)
-            )
-          )
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1])
-          )
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
                 (
-                  roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1]
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
                   and 
                   (
                     (
                       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
+                                                                      throw_11]
                       and 
                       (
-                        t_12_1=true)
+                        t_33_1=true)
                     )
                     or 
                     (
                       (
                         not (
                           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
+                                                                          throw_11]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
-                        t_12_0=t_12_1)
+                        t_33_0=t_33_1)
                     )
                   )
                 )
@@ -1114,30 +1070,30 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
                 (
                   (
                     not (
-                      roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1])
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
                   )
                   and 
                   (
                     (
                       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
+                                                                      throw_11]
                       and 
                       (
-                        t_12_1=false)
+                        t_33_1=false)
                     )
                     or 
                     (
                       (
                         not (
                           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
+                                                                          throw_11]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
-                        t_12_0=t_12_1)
+                        t_33_0=t_33_1)
                     )
                   )
                 )
@@ -1148,14 +1104,45 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_12_0=t_12_1)
+                t_33_0=t_33_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                t_33_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_33_0=t_33_1)
             )
           )
         )
@@ -1166,105 +1153,47 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
       (
         not (
           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
+                                                          throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        t_12_0=t_12_1)
+        t_33_0=t_33_1)
     )
   )
   and 
   (
     (
       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
+                                                      throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_MCCTestCondition12[t_11_1]
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition10[t_12_1]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_10_1=true)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_10_0=t_10_1)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition10[t_12_1])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_10_1=false)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_10_0=t_10_1)
-                    )
-                  )
-                )
-              )
+                t_32_1=true)
             )
             or 
             (
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_10_0=t_10_1)
+                t_32_0=t_32_1)
             )
           )
         )
@@ -1272,30 +1201,88 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
         (
           (
             not (
-              roops_core_objectsInstrumented_MCCTestCondition12[t_11_1])
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
           )
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
-                t_10_1=false)
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition10[t_33_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_32_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_32_0=t_32_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition10[t_33_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_32_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_32_0=t_32_1)
+                    )
+                  )
+                )
+              )
             )
             or 
             (
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_10_0=t_10_1)
+                t_32_0=t_32_1)
             )
           )
         )
@@ -1306,56 +1293,56 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
       (
         not (
           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
+                                                          throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        t_10_0=t_10_1)
+        t_32_0=t_32_1)
     )
   )
   and 
   (
     (
       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
+                                                      throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_MCCTestCondition16[t_10_1]
+          roops_core_objectsInstrumented_MCCTestCondition16[t_31_1]
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
                 (
-                  roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1]
+                  roops_core_objectsInstrumented_MCCTestCondition14[t_32_1]
                   and 
                   (
                     (
                       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
+                                                                      throw_11]
                       and 
                       (
-                        t_9_1=true)
+                        t_30_1=true)
                     )
                     or 
                     (
                       (
                         not (
                           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
+                                                                          throw_11]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
-                        t_9_0=t_9_1)
+                        t_30_0=t_30_1)
                     )
                   )
                 )
@@ -1363,30 +1350,30 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
                 (
                   (
                     not (
-                      roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1])
+                      roops_core_objectsInstrumented_MCCTestCondition14[t_32_1])
                   )
                   and 
                   (
                     (
                       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
+                                                                      throw_11]
                       and 
                       (
-                        t_9_1=false)
+                        t_30_1=false)
                     )
                     or 
                     (
                       (
                         not (
                           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
+                                                                          throw_11]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
-                        t_9_0=t_9_1)
+                        t_30_0=t_30_1)
                     )
                   )
                 )
@@ -1397,14 +1384,14 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_9_0=t_9_1)
+                t_30_0=t_30_1)
             )
           )
         )
@@ -1412,30 +1399,30 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
         (
           (
             not (
-              roops_core_objectsInstrumented_MCCTestCondition16[t_10_1])
+              roops_core_objectsInstrumented_MCCTestCondition16[t_31_1])
           )
           and 
           (
             (
               roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
+                                                              throw_11]
               and 
               (
-                t_9_1=false)
+                t_30_1=false)
             )
             or 
             (
               (
                 not (
                   roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
+                                                                  throw_11]
                 )
               )
               and 
               TruePred[]
               and 
               (
-                t_9_0=t_9_1)
+                t_30_0=t_30_1)
             )
           )
         )
@@ -1446,1892 +1433,44 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
       (
         not (
           roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
+                                                          throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        t_9_0=t_9_1)
+        t_30_0=t_30_1)
     )
   )
   and 
   (
     (
       roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                      throw_2]
-      and 
-      (
-        var_16_ws_1_1=t_9_1)
-    )
-    or 
-    (
-      (
-        not (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-        )
-      )
-      and 
-      TruePred[]
-      and 
-      (
-        var_16_ws_1_0=var_16_ws_1_1)
-    )
-  )
-  and 
-  (
-    (
-      roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                       throw_2,
-                                                       var_16_ws_1_1]
-      and 
-      TruePred[]
-      and 
-      TruePred[]
-      and 
-      TruePred[]
-      and 
-      TruePred[]
+                                                      throw_11]
       and 
       (
         (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
+          roops_core_objectsInstrumented_MCCTestCondition18[]
           and 
           (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    t_15_1=true)
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_15_0=t_15_1)
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1])
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_15_1=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_15_0=t_15_1)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_15_1=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_15_0=t_15_1)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_15_0=t_15_1)
-                )
-              )
-            )
-          )
+            throw_12=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)
         )
         or 
         (
           (
             not (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            t_15_0=t_15_1)
-        )
-      )
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    t_16_1=true)
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_16_0=t_16_1)
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1])
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_16_1=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_16_0=t_16_1)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_16_1=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_16_0=t_16_1)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_16_0=t_16_1)
-                )
-              )
-            )
-          )
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            t_16_0=t_16_1)
-        )
-      )
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition20[t_15_1]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition18[t_16_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_14_1=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_14_0=t_14_1)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition18[t_16_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_14_1=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_14_0=t_14_1)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_14_0=t_14_1)
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition20[t_15_1])
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    t_14_1=false)
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_14_0=t_14_1)
-                )
-              )
-            )
-          )
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            t_14_0=t_14_1)
-        )
-      )
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition22[t_14_1]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_13_1=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_13_0=t_13_1)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_13_1=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_13_0=t_13_1)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_13_0=t_13_1)
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition22[t_14_1])
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    t_13_1=false)
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_13_0=t_13_1)
-                )
-              )
-            )
-          )
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            t_13_0=t_13_1)
-        )
-      )
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                          throw_2]
-          and 
-          (
-            var_16_ws_1_2=t_13_1)
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            var_16_ws_1_1=var_16_ws_1_2)
-        )
-      )
-      and 
-      (
-        (
-          roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                           throw_2,
-                                                           var_16_ws_1_2]
-          and 
-          TruePred[]
-          and 
-          TruePred[]
-          and 
-          TruePred[]
-          and 
-          TruePred[]
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_15_2=true)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_15_1=t_15_2)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_15_2=true)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_15_1=t_15_2)
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1])
-                          )
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_15_2=false)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_15_1=t_15_2)
-                            )
-                          )
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_15_1=t_15_2)
-                    )
-                  )
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_15_1=t_15_2)
-            )
+              roops_core_objectsInstrumented_MCCTestCondition18[])
           )
           and 
           (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_16_2=true)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_16_1=t_16_2)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_16_2=true)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_16_1=t_16_2)
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1])
-                          )
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_16_2=false)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_16_1=t_16_2)
-                            )
-                          )
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_16_1=t_16_2)
-                    )
-                  )
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_16_1=t_16_2)
-            )
-          )
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)++((ClassFields)->(t_30_1)))
           and 
           (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition20[t_15_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition18[t_16_2]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_14_2=true)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_14_1=t_14_2)
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition18[t_16_2])
-                          )
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_14_2=false)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_14_1=t_14_2)
-                            )
-                          )
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_14_1=t_14_2)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition20[t_15_2])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_14_2=false)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_14_1=t_14_2)
-                    )
-                  )
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_14_1=t_14_2)
-            )
-          )
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition22[t_14_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_13_2=true)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_13_1=t_13_2)
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1])
-                          )
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                              and 
-                              (
-                                t_13_2=false)
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                )
-                              )
-                              and 
-                              TruePred[]
-                              and 
-                              (
-                                t_13_1=t_13_2)
-                            )
-                          )
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_13_1=t_13_2)
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition22[t_14_2])
-                  )
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                      and 
-                      (
-                        t_13_2=false)
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                        )
-                      )
-                      and 
-                      TruePred[]
-                      and 
-                      (
-                        t_13_1=t_13_2)
-                    )
-                  )
-                )
-              )
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_13_1=t_13_2)
-            )
-          )
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                              throw_2]
-              and 
-              (
-                var_16_ws_1_3=t_13_2)
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                var_16_ws_1_2=var_16_ws_1_3)
-            )
-          )
-          and 
-          (
-            (
-              roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                               throw_2,
-                                                               var_16_ws_1_3]
-              and 
-              TruePred[]
-              and 
-              TruePred[]
-              and 
-              TruePred[]
-              and 
-              TruePred[]
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_15_3=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_15_2=t_15_3)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition4[var_11_a_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1]
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_15_3=true)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_15_2=t_15_3)
-                                )
-                              )
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition2[var_12_b_1])
-                              )
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_15_3=false)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_15_2=t_15_3)
-                                )
-                              )
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_15_2=t_15_3)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_15_2=t_15_3)
-                )
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_16_3=true)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_16_2=t_16_3)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition8[var_13_c_1])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1]
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_16_3=true)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_16_2=t_16_3)
-                                )
-                              )
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition6[var_14_d_1])
-                              )
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_16_3=false)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_16_2=t_16_3)
-                                )
-                              )
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_16_2=t_16_3)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_16_2=t_16_3)
-                )
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition20[t_15_3]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition18[t_16_3]
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_14_3=true)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_14_2=t_14_3)
-                                )
-                              )
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition18[t_16_3])
-                              )
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_14_3=false)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_14_2=t_14_3)
-                                )
-                              )
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_14_2=t_14_3)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition20[t_15_3])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_14_3=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_14_2=t_14_3)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_14_2=t_14_3)
-                )
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    (
-                      roops_core_objectsInstrumented_MCCTestCondition22[t_14_3]
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            (
-                              roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1]
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_13_3=true)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_13_2=t_13_3)
-                                )
-                              )
-                            )
-                            or 
-                            (
-                              (
-                                not (
-                                  roops_core_objectsInstrumented_MCCTestCondition14[var_15_e_1])
-                              )
-                              and 
-                              (
-                                (
-                                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                  throw_2]
-                                  and 
-                                  (
-                                    t_13_3=false)
-                                )
-                                or 
-                                (
-                                  (
-                                    not (
-                                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                                      throw_2]
-                                    )
-                                  )
-                                  and 
-                                  TruePred[]
-                                  and 
-                                  (
-                                    t_13_2=t_13_3)
-                                )
-                              )
-                            )
-                          )
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_13_2=t_13_3)
-                        )
-                      )
-                    )
-                    or 
-                    (
-                      (
-                        not (
-                          roops_core_objectsInstrumented_MCCTestCondition22[t_14_3])
-                      )
-                      and 
-                      (
-                        (
-                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                          throw_2]
-                          and 
-                          (
-                            t_13_3=false)
-                        )
-                        or 
-                        (
-                          (
-                            not (
-                              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                              throw_2]
-                            )
-                          )
-                          and 
-                          TruePred[]
-                          and 
-                          (
-                            t_13_2=t_13_3)
-                        )
-                      )
-                    )
-                  )
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    t_13_2=t_13_3)
-                )
-              )
-              and 
-              (
-                (
-                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                  throw_2]
-                  and 
-                  (
-                    var_16_ws_1_4=t_13_3)
-                )
-                or 
-                (
-                  (
-                    not (
-                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
-                                                                      throw_2]
-                    )
-                  )
-                  and 
-                  TruePred[]
-                  and 
-                  (
-                    var_16_ws_1_3=var_16_ws_1_4)
-                )
-              )
-              and 
-              TruePred[]
-            )
-            or 
-            (
-              (
-                not (
-                  roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                                   throw_2,
-                                                                   var_16_ws_1_3]
-                )
-              )
-              and 
-              TruePred[]
-              and 
-              (
-                t_14_2=t_14_3)
-              and 
-              (
-                t_15_2=t_15_3)
-              and 
-              (
-                t_13_2=t_13_3)
-              and 
-              (
-                t_16_2=t_16_3)
-              and 
-              (
-                var_16_ws_1_3=var_16_ws_1_4)
-            )
-          )
-        )
-        or 
-        (
-          (
-            not (
-              roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                               throw_2,
-                                                               var_16_ws_1_2]
-            )
-          )
-          and 
-          TruePred[]
-          and 
-          (
-            t_14_1=t_14_3)
-          and 
-          (
-            t_15_1=t_15_3)
-          and 
-          (
-            t_13_1=t_13_3)
-          and 
-          (
-            t_16_1=t_16_3)
-          and 
-          (
-            var_16_ws_1_2=var_16_ws_1_4)
+            throw_11=throw_12)
         )
       )
     )
@@ -3339,36 +1478,1565 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
     (
       (
         not (
-          roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                           throw_2,
-                                                           var_16_ws_1_1]
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
         )
       )
       and 
       TruePred[]
       and 
       (
-        t_14_0=t_14_3)
+        roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)
       and 
       (
-        t_15_0=t_15_3)
-      and 
-      (
-        t_13_0=t_13_3)
-      and 
-      (
-        t_16_0=t_16_3)
-      and 
-      (
-        var_16_ws_1_1=var_16_ws_1_4)
+        throw_11=throw_12)
     )
   )
   and 
   (
-    not (
-      roops_core_objectsInstrumented_MCCTestCondition24[exit_stmt_reached_1,
-                                                       throw_2,
-                                                       var_16_ws_1_4]
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_12]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_12]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_12]
+                      and 
+                      (
+                        t_34_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_12]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_34_0=t_34_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_12]
+                      and 
+                      (
+                        t_34_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_12]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_34_0=t_34_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_12]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_34_0=t_34_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_12]
+              and 
+              (
+                t_34_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_12]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_34_0=t_34_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_12]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_34_0=t_34_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_12]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_13=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)++((ClassFields)->(t_34_1)))
+          and 
+          (
+            throw_12=throw_13)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_12]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)
+      and 
+      (
+        throw_12=throw_13)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_13]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_14=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)++((ClassFields)->(a_0)))
+          and 
+          (
+            throw_13=throw_14)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_13]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)
+      and 
+      (
+        throw_13=throw_14)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_14]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_15=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)++((ClassFields)->(b_0)))
+          and 
+          (
+            throw_14=throw_15)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_14]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)
+      and 
+      (
+        throw_14=throw_15)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_36_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_36_0=t_36_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_36_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_36_0=t_36_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_36_0=t_36_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                t_36_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_36_0=t_36_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_36_0=t_36_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                t_35_1=true)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_35_0=t_35_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition20[t_36_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_35_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_35_0=t_35_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition20[t_36_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_35_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_35_0=t_35_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_35_0=t_35_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_35_0=t_35_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_16=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)++((ClassFields)->(t_35_1)))
+          and 
+          (
+            throw_15=throw_16)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)
+      and 
+      (
+        throw_15=throw_16)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_16]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_17=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)++((ClassFields)->(c_0)))
+          and 
+          (
+            throw_16=throw_17)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_16]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)
+      and 
+      (
+        throw_16=throw_17)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_17]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_17]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_17]
+                      and 
+                      (
+                        t_37_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_17]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_37_0=t_37_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_17]
+                      and 
+                      (
+                        t_37_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_17]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_37_0=t_37_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_17]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_37_0=t_37_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_17]
+              and 
+              (
+                t_37_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_17]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_37_0=t_37_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_17]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_37_0=t_37_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_17]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_18=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)++((ClassFields)->(t_37_1)))
+          and 
+          (
+            throw_17=throw_18)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_17]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)
+      and 
+      (
+        throw_17=throw_18)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_18]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_19=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)++((ClassFields)->(d_0)))
+          and 
+          (
+            throw_18=throw_19)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_18]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)
+      and 
+      (
+        throw_18=throw_19)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_19]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_20=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)++((ClassFields)->(e_0)))
+          and 
+          (
+            throw_19=throw_20)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_19]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)
+      and 
+      (
+        throw_19=throw_20)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_39_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_39_0=t_39_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_39_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_39_0=t_39_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_39_0=t_39_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_39_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_39_0=t_39_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_39_0=t_39_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_41_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_41_0=t_41_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_41_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_41_0=t_41_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_41_0=t_41_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_41_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_41_0=t_41_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_41_0=t_41_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_40_1=true)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_40_0=t_40_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition22[t_41_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_40_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_40_0=t_40_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition22[t_41_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_40_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_40_0=t_40_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_40_0=t_40_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_40_0=t_40_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition26[t_39_1]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition24[t_40_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_38_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_38_0=t_38_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition24[t_40_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_38_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_38_0=t_38_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_38_0=t_38_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition26[t_39_1])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_38_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_38_0=t_38_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_38_0=t_38_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition28[t_38_1]
+          and 
+          TruePred[]
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition28[t_38_1])
+          )
+          and 
+          TruePred[]
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
     )
   )
   and 
@@ -3376,106 +3044,717 @@ pred roops_core_objectsInstrumented_MCCTest_test3_0[
 
 }
 
+
+
+pred roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  throw_6: java_lang_Throwable + null,
+  throw_7: java_lang_Throwable + null,
+  throw_8: java_lang_Throwable + null,
+  throw_9: java_lang_Throwable + null,
+  throw_10: java_lang_Throwable + null,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1: ( ClassFields ) -> one ( boolean ),
+  exit_stmt_reached_1: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_2=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_0=roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_0_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_1=throw_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_0_0=roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)
+      and 
+      (
+        throw_1=throw_2)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_2]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_3=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_0=roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_1_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_2=throw_3)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_2]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_1_0=roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)
+      and 
+      (
+        throw_2=throw_3)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_3]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_4=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_0=roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_2_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_3=throw_4)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_3]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_2_0=roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)
+      and 
+      (
+        throw_3=throw_4)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_4]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_5=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_0=roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_3_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_4=throw_5)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_3_0=roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)
+      and 
+      (
+        throw_4=throw_5)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_5]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_6=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_0=roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_4_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_5=throw_6)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_5]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_4_0=roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)
+      and 
+      (
+        throw_5=throw_6)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_6]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_7=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_0=roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_5_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_6=throw_7)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_6]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_5_0=roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)
+      and 
+      (
+        throw_6=throw_7)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_7]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_8=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_0=roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_6_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_7=throw_8)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_7]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_6_0=roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)
+      and 
+      (
+        throw_7=throw_8)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_8]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_9=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_0=roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_7_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_8=throw_9)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_8]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_7_0=roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)
+      and 
+      (
+        throw_8=throw_9)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_9]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_10=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_0=roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_8_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_9=throw_10)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_9]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_8_0=roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)
+      and 
+      (
+        throw_9=throw_10)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+//-------------SMB sigs-------------// 
+//-----SMB: local_ordering()-----//
+//-----SMB: global_ordering()-----//
+fun globalNext[]: java_lang_Object -> lone java_lang_Object {
+none -> none
+}
+fun globalMin[s : set java_lang_Object] : lone java_lang_Object {
+s - s.^globalNext[] 
+}
+//-----SMB: define_min_parent()-----//
+//-----SMB: define_freach()-----//
+//-----SMB: order_root_nodes()-----//
+//-----SMB: root_is_minimum()-----//
+//-----SMB: order_same_min_parent()-----//
+//-----SMB: order_same_min_parent_type()-----//
+//-----SMB: order_diff_min_parent_type()-----//
+//-----SMB: avoid_holes()-----//
+/*
+type ordering:
+==============
+
+root nodes ordering:
+====================
+1) a:boolean
+2) b:boolean
+3) c:boolean
+4) d:boolean
+5) e:boolean
+
+recursive field ordering:
+=========================
+
+non-recursive field ordering:
+=============================
+*/
 one sig QF {
+  BQ__0: boolean,
+  BQ__1: boolean,
+  BQ__2: boolean,
+  BQ__3: boolean,
+  BQ__4: boolean,
+  BQ__5: boolean,
+  BQ__6: boolean,
+  BQ__7: boolean,
+  BQ__8: boolean,
+  a_0:  boolean,
+  b_0:  boolean,
+  c_0:  boolean,
+  d_0:  boolean,
+  e_0:  boolean,
   l1_exit_stmt_reached_1:  boolean,
   l1_l0_exit_stmt_reached_1:  boolean,
-  l1_t_10_0:  boolean,
-  l1_t_10_1:  boolean,
-  l1_t_11_0:  boolean,
-  l1_t_11_1:  boolean,
-  l1_t_12_0:  boolean,
-  l1_t_12_1:  boolean,
-  l1_t_13_0:  boolean,
-  l1_t_13_1:  boolean,
-  l1_t_13_2:  boolean,
-  l1_t_13_3:  boolean,
-  l1_t_14_0:  boolean,
-  l1_t_14_1:  boolean,
-  l1_t_14_2:  boolean,
-  l1_t_14_3:  boolean,
-  l1_t_15_0:  boolean,
-  l1_t_15_1:  boolean,
-  l1_t_15_2:  boolean,
-  l1_t_15_3:  boolean,
-  l1_t_16_0:  boolean,
-  l1_t_16_1:  boolean,
-  l1_t_16_2:  boolean,
-  l1_t_16_3:  boolean,
-  l1_t_9_0:  boolean,
-  l1_t_9_1:  boolean,
-  l1_var_11_a_0:  boolean,
-  l1_var_11_a_1:  boolean,
-  l1_var_12_b_0:  boolean,
-  l1_var_12_b_1:  boolean,
-  l1_var_13_c_0:  boolean,
-  l1_var_13_c_1:  boolean,
-  l1_var_14_d_0:  boolean,
-  l1_var_14_d_1:  boolean,
-  l1_var_15_e_0:  boolean,
-  l1_var_15_e_1:  boolean,
-  l1_var_16_ws_1_0:  boolean,
-  l1_var_16_ws_1_1:  boolean,
-  l1_var_16_ws_1_2:  boolean,
-  l1_var_16_ws_1_3:  boolean,
-  l1_var_16_ws_1_4:  boolean,
+  l1_t_30_0:  boolean,
+  l1_t_30_1:  boolean,
+  l1_t_31_0:  boolean,
+  l1_t_31_1:  boolean,
+  l1_t_32_0:  boolean,
+  l1_t_32_1:  boolean,
+  l1_t_33_0:  boolean,
+  l1_t_33_1:  boolean,
+  l1_t_34_0:  boolean,
+  l1_t_34_1:  boolean,
+  l1_t_35_0:  boolean,
+  l1_t_35_1:  boolean,
+  l1_t_36_0:  boolean,
+  l1_t_36_1:  boolean,
+  l1_t_37_0:  boolean,
+  l1_t_37_1:  boolean,
+  l1_t_38_0:  boolean,
+  l1_t_38_1:  boolean,
+  l1_t_39_0:  boolean,
+  l1_t_39_1:  boolean,
+  l1_t_40_0:  boolean,
+  l1_t_40_1:  boolean,
+  l1_t_41_0:  boolean,
+  l1_t_41_1:  boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_2:  ( ClassFields ) -> one ( boolean ),
   throw_0:  java_lang_Throwable + null,
   throw_1:  java_lang_Throwable + null,
-  throw_2:  java_lang_Throwable + null
+  throw_10:  java_lang_Throwable + null,
+  throw_11:  java_lang_Throwable + null,
+  throw_12:  java_lang_Throwable + null,
+  throw_13:  java_lang_Throwable + null,
+  throw_14:  java_lang_Throwable + null,
+  throw_15:  java_lang_Throwable + null,
+  throw_16:  java_lang_Throwable + null,
+  throw_17:  java_lang_Throwable + null,
+  throw_18:  java_lang_Throwable + null,
+  throw_19:  java_lang_Throwable + null,
+  throw_2:  java_lang_Throwable + null,
+  throw_20:  java_lang_Throwable + null,
+  throw_3:  java_lang_Throwable + null,
+  throw_4:  java_lang_Throwable + null,
+  throw_5:  java_lang_Throwable + null,
+  throw_6:  java_lang_Throwable + null,
+  throw_7:  java_lang_Throwable + null,
+  throw_8:  java_lang_Throwable + null,
+  throw_9:  java_lang_Throwable + null
 }
 
 
 fact {
-  precondition_roops_core_objectsInstrumented_MCCTest_test3_0[QF.throw_0]
+  precondition_roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_0]
 }
 
 fact {
-  roops_core_objectsInstrumented_MCCTest_test3_0[QF.throw_1,
+  roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_1,
                                                 QF.throw_2,
-                                                QF.l1_var_16_ws_1_0,
-                                                QF.l1_var_16_ws_1_1,
-                                                QF.l1_var_16_ws_1_2,
-                                                QF.l1_var_16_ws_1_3,
-                                                QF.l1_var_16_ws_1_4,
-                                                QF.l1_var_15_e_0,
-                                                QF.l1_var_15_e_1,
-                                                QF.l1_var_14_d_0,
-                                                QF.l1_var_14_d_1,
-                                                QF.l1_var_11_a_0,
-                                                QF.l1_var_11_a_1,
-                                                QF.l1_var_13_c_0,
-                                                QF.l1_var_13_c_1,
-                                                QF.l1_t_15_0,
-                                                QF.l1_t_15_1,
-                                                QF.l1_t_15_2,
-                                                QF.l1_t_15_3,
-                                                QF.l1_t_16_0,
-                                                QF.l1_t_16_1,
-                                                QF.l1_t_16_2,
-                                                QF.l1_t_16_3,
-                                                QF.l1_t_13_0,
-                                                QF.l1_t_13_1,
-                                                QF.l1_t_13_2,
-                                                QF.l1_t_13_3,
-                                                QF.l1_t_14_0,
-                                                QF.l1_t_14_1,
-                                                QF.l1_t_14_2,
-                                                QF.l1_t_14_3,
-                                                QF.l1_t_11_0,
-                                                QF.l1_t_11_1,
-                                                QF.l1_t_12_0,
-                                                QF.l1_t_12_1,
-                                                QF.l1_t_10_0,
-                                                QF.l1_t_10_1,
+                                                QF.throw_3,
+                                                QF.throw_4,
+                                                QF.throw_5,
+                                                QF.throw_6,
+                                                QF.throw_7,
+                                                QF.throw_8,
+                                                QF.throw_9,
+                                                QF.throw_10,
+                                                QF.throw_11,
+                                                QF.throw_12,
+                                                QF.throw_13,
+                                                QF.throw_14,
+                                                QF.throw_15,
+                                                QF.throw_16,
+                                                QF.throw_17,
+                                                QF.throw_18,
+                                                QF.throw_19,
+                                                QF.throw_20,
+                                                QF.a_0,
+                                                QF.b_0,
+                                                QF.c_0,
+                                                QF.d_0,
+                                                QF.e_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_2,
+                                                QF.l1_t_36_0,
+                                                QF.l1_t_36_1,
+                                                QF.l1_t_35_0,
+                                                QF.l1_t_35_1,
+                                                QF.l1_t_38_0,
+                                                QF.l1_t_38_1,
                                                 QF.l1_exit_stmt_reached_1,
-                                                QF.l1_t_9_0,
-                                                QF.l1_t_9_1,
-                                                QF.l1_var_12_b_0,
-                                                QF.l1_var_12_b_1,
+                                                QF.l1_t_37_0,
+                                                QF.l1_t_37_1,
+                                                QF.l1_t_32_0,
+                                                QF.l1_t_32_1,
+                                                QF.l1_t_31_0,
+                                                QF.l1_t_31_1,
+                                                QF.l1_t_34_0,
+                                                QF.l1_t_34_1,
+                                                QF.l1_t_33_0,
+                                                QF.l1_t_33_1,
+                                                QF.l1_t_41_0,
+                                                QF.l1_t_41_1,
+                                                QF.l1_t_40_0,
+                                                QF.l1_t_40_1,
+                                                QF.l1_t_30_0,
+                                                QF.l1_t_30_1,
+                                                QF.l1_t_39_0,
+                                                QF.l1_t_39_1,
                                                 QF.l1_l0_exit_stmt_reached_1]
 
 }
 
-assert check_roops_core_objectsInstrumented_MCCTest_test3_0{
-  postcondition_roops_core_objectsInstrumented_MCCTest_test3_0[QF.throw_2]}
+assert check_roops_core_objectsInstrumented_MCCTest_test9_0{
+  postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_20]}
 fact {
+  QF.BQ__0=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)=true
+  QF.BQ__1=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)=true
+  QF.BQ__2=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)=true
+  QF.BQ__3=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)=true
+  QF.BQ__4=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)=true
+  QF.BQ__5=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)=true
+  QF.BQ__6=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)=true
+  QF.BQ__7=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)=true
+  QF.BQ__8=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)=true
 }
