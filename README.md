@@ -69,4 +69,5 @@ To import the projects to `Eclipse` and include the respectives projects depende
 
 * Examples:
 	* Branch Coverage: -cp roops -cf config/roops_core_objects_LinkedList/addLastTest.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j
-	* All Users Coverage: -cp roops -cf config/roops_core_objects_OurTests/allDef.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j -r uses -m test2
+	* All Uses Coverage: -cp roops -cf config/roops_core_objects_OurTests/allDef.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j -r uses -m test2
+	* MCC Coverage: -cp roops -cf config/roops_core_objects_OurTests/MCC.fajita.config -tf config/taco.properties.template -rp result -gu true -cs sat4j -r mcc -m test1
