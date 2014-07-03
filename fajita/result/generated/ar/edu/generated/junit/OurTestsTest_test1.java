@@ -104,4 +104,361 @@ public class OurTestsTest_test1 {
         } 
 
     }
+
+    @Test
+    public void testtest1_1() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_2() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_3() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_4() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_5() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_6() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_7() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_8() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_9() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_10() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_11() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_12() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_13() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_14() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 4;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_15() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 5;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_16() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 4;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_17() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 1450704623;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_18() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_19() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_20() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testtest1_21() {
+        roops.core.objectsInstrumented.OurTests instance = new roops.core.objectsInstrumented.OurTests();
+        
+        // Parameter Initialization
+        int m_Integer_1 = 0;
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.OurTests", "test1", true);
+        try {
+            method.invoke(instance, m_Integer_1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
 }

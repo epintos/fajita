@@ -149,4 +149,32 @@ public final class Translation {
 		return log;
 	}
 	
+	public Relation getRelation(String name){
+        for (Relation r : this.primaryVarUsage.keySet()){
+            if (r.name().equals(name)){
+                return r;
+            }
+        }
+        return null;
+    }
+	
+	public Relation getLastRelationWithName(String name) {
+	    Relation last = null;
+	    for (Relation r: this.primaryVarUsage.keySet()) {
+	        if (r.name().contains(name) && isTheLastOne(r, last)) {
+	            last = r;
+	        }
+	    }
+	    return last;
+	}
+
+    private boolean isTheLastOne(Relation r, Relation last) {
+        return last == null || getVariableNr(r) > getVariableNr(last);
+    }
+    
+    private int getVariableNr(Relation r) {
+        String[] str = r.name().split("_");
+        return Integer.parseInt(str[str.length - 1]);
+    }
+	
 }

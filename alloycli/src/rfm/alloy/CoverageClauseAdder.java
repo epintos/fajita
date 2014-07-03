@@ -1,8 +1,10 @@
 package rfm.alloy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -149,6 +151,26 @@ public class CoverageClauseAdder {
 
 		Map<Integer, Boolean> bq_valuation = create_boolean_query_valuation(
 				translation, sat_solver, solution);
+//		Iterator<Relation> rel_iterator = Relation.booleanQueries();
+//		
+//		List<Integer> clause = new ArrayList<>();
+//		while (rel_iterator.hasNext()) {
+//            Relation boolean_query = (Relation) rel_iterator.next();
+//
+//            IntSet boolean_query_primary_vars = translation
+//                    .primaryVariables(boolean_query);
+//            
+//            int varnum = boolean_query_primary_vars.min();
+//            boolean value = bq_valuation.get(varnum);
+//            if (value == true) {
+//                clause.add(-varnum);
+//            }
+//        }
+//		sat_solver.addClause(buildIntArray(clause));
+		
+//		Relation r = translation.getLastRelationWithName("terminatesInTime");
+//		IntSet set = translation.primaryVariables(r);
+//		sat_solver.addClause(new int[]{-set.min()});
 		
 		if (!bq_valuation.isEmpty()) {
 
@@ -170,7 +192,15 @@ public class CoverageClauseAdder {
 		
 	}
 	
-	private abstract class ClauseBuilder {
+	private int[] buildIntArray(List<Integer> list) {
+        int[] ret = new int[list.size()];
+        for(int i = 0; i < list.size(); i++) {
+            ret[i] = list.get(i);
+        }
+        return ret;
+    }
+
+    private abstract class ClauseBuilder {
 		public abstract int[] create_clause(Map<Integer, Boolean> valuation);
 	}
 

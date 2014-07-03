@@ -2,27 +2,12 @@ package roops.core.objects;
 
 public class OurTests {
     
-    public void test() {
-        int a = 1;
-        int c = 1;
-        while(a < 10) {
-            int b = 5;
-            while(b < 10) {
-                b++;
+    public void test1 (int m) {
+        while(m > 0) {
+            m--;
+            if (m == 3) {
+                m = 7;
             }
-            a++;
-        }
-        
-        while(c < 10) {
-            c ++;
         }
     }
-    
-    public void test2() {
-        int a = 9;
-        while(a < 10) {
-            a++;
-        }
-    }
-
 }

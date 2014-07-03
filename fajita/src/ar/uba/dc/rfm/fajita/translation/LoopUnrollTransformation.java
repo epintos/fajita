@@ -89,6 +89,8 @@ public class LoopUnrollTransformation extends Transformation {
         private int unroll = 0;
 
         private boolean declaredTerminatesInTime = false;
+        
+        private boolean shouldExamine = false;
 
         private final LoopUnrollTransformation transformation;
 
@@ -99,6 +101,9 @@ public class LoopUnrollTransformation extends Transformation {
         
         @Override
         protected void visitVariableDeclaration(VariableDeclaration x) {
+            if(!shouldExamine) {
+                return;
+            }
             super.visitVariableDeclaration(x);
             if (x.getVariables().get(0).getName() == "terminatesInTime") {
                 declaredTerminatesInTime = true;
@@ -109,14 +114,21 @@ public class LoopUnrollTransformation extends Transformation {
         public void visitMethodDeclaration(MethodDeclaration x) {
             super.visitMethodDeclaration(x);
             declaredTerminatesInTime = false;
+            String methodName = x.getIdentifier().getText();
+            shouldExamine = !methodName.startsWith("repOk");
         }
 
         @Override
         public void visitWhile(While x) {
+            if(!shouldExamine) {
+                return;
+            }
             If iff = new If(x.getGuard(), new Then(x.getBody()));
             LocalVariableDeclaration terminatesInTimeDeclaration = buildTerminatesInTimeDeclaration();
-            CopyAssignment terminatesInTime = setTerminatesInTime(true);
-            If finalIf = new If(x.getGuard(), new Then(terminatesInTime));
+            CopyAssignment terminatesInTime = setTerminatesInTime(false);
+            ASTList<Statement> finalIfBody = new ASTArrayList<Statement>();
+            finalIfBody.add(terminatesInTime);
+            If finalIf = new If(x.getGuard(), new Then(new StatementBlock(finalIfBody)));
 
             ASTList<Statement> replacement = new ASTArrayList<>();
             StatementBlock parent = (StatementBlock) x.getASTParent();
@@ -151,7 +163,7 @@ public class LoopUnrollTransformation extends Transformation {
             Identifier booleanId = factory.createIdentifier("boolean");
             TypeReference booleanReference = factory.createTypeReference(booleanId);
             LocalVariableDeclaration lvd = new LocalVariableDeclaration(initializationSpecifiers, booleanReference,
-                    new VariableSpecification(fajitaGoalId, new BooleanLiteral(false)));
+                    new VariableSpecification(fajitaGoalId, new BooleanLiteral(true)));
             return lvd;
         }
     }
