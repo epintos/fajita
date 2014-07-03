@@ -157,8 +157,8 @@ public class FajitaJavaCodeTranslator {
 					transformation = new AllUsesTransformation(
 						configuration, recoder, compilationUnit);
 					break;
-				case MCDC:
-				    transformation = new ModifiedConditionDecisionTransformation(configuration, recoder, compilationUnit);
+				case MCC:
+				    transformation = new MultipleConditionTransformation(configuration, recoder, compilationUnit);
 				    break;
 				default:
 					throw new FajitaException(

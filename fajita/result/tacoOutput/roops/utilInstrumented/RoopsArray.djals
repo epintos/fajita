@@ -66,6 +66,7 @@ Implementation
          throw:=null;
          var exit_stmt_reached:boolean;
          exit_stmt_reached:=false;
+<<<<<<< HEAD
          {
             if (
               throw=null)
@@ -121,6 +122,9 @@ Implementation
             };
          
          }
+=======
+         skip;
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
       
       }
       skip;

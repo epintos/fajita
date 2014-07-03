@@ -1,8 +1,13 @@
 /* 
  * DynAlloy translator options 
  * --------------------------- 
+<<<<<<< HEAD
  * assertionId= check_roops_core_objectsInstrumented_OurTests_test1_0
  * loopUnroll= 6
+=======
+ * assertionId= check_roops_core_objectsInstrumented_MCCTest_test9_0
+ * loopUnroll= 3
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
  * removeQuantifiers= true
  * strictUnrolling= false
  * build_dynalloy_trace= false
@@ -344,26 +349,44 @@ abstract sig java_lang_Exception extends java_lang_Throwable {}
 
 
 
+<<<<<<< HEAD
 //-------------- roops_core_objectsInstrumented_OurTests--------------//
 sig roops_core_objectsInstrumented_OurTests extends java_lang_Object {}
+=======
+//-------------- java_lang_Throwable--------------//
+abstract sig java_lang_Throwable {}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 {}
 
 
 
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition0[
 ]{
    isEmptyOrNull[ClassFields]
+=======
+//-------------- java_lang_Object--------------//
+sig java_lang_Object {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition1[
 ]{
    not (
      isEmptyOrNull[ClassFields])
+=======
 
-}
 
+//-------------- java_lang_NullPointerException--------------//
+abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+
+
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTests_ensures[
   throw':univ
 ]{
@@ -371,9 +394,14 @@ pred roops_core_objectsInstrumented_OurTests_ensures[
    and 
    equ[throw',
       null]
+=======
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
+one
+sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
+{}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition2[
   exit_stmt_reached:univ,
   throw:univ
@@ -383,10 +411,20 @@ pred roops_core_objectsInstrumented_OurTestsCondition2[
    and 
    (
      exit_stmt_reached=false)
+=======
+//-------------- roops_core_objectsInstrumented_MCCTest--------------//
+sig roops_core_objectsInstrumented_MCCTest extends java_lang_Object {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition3[
+=======
+
+
+pred roops_core_objectsInstrumented_MCCTestCondition1[
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   exit_stmt_reached:univ,
   throw:univ
 ]{
@@ -400,14 +438,15 @@ pred roops_core_objectsInstrumented_OurTestsCondition3[
 
 }
 
-pred precondition_roops_core_objectsInstrumented_OurTests_test1_0[
-  throw:univ
+pred roops_core_objectsInstrumented_MCCTestCondition29[
+  t_38:univ
 ]{
-   equ[throw,
-      null]
+   not (
+     t_38=true)
 
 }
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition8[
   t_3:univ
 ]{
@@ -436,12 +475,82 @@ pred roops_core_objectsInstrumented_OurTestsCondition4[
 ]{
    t_2=true
 
+=======
+pred roops_core_objectsInstrumented_MCCTestCondition0[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
 }
 
-pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
+pred roops_core_objectsInstrumented_MCCTestCondition28[
+  t_38:univ
+]{
+   t_38=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition12[
+  c:univ
+]{
+   c=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition23[
+  t_41:univ
+]{
+   not (
+     t_41=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition13[
+  c:univ
+]{
+   not (
+     c=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition25[
+  t_40:univ
+]{
+   not (
+     t_40=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition22[
+  t_41:univ
+]{
+   t_41=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition24[
+  t_40:univ
+]{
+   t_40=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition26[
+  t_39:univ
+]{
+   t_39=true
+
+}
+
+pred postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw':univ
 ]{
-   roops_core_objectsInstrumented_OurTests_ensures[throw']
+   roops_core_objectsInstrumented_MCCTest_ensures[throw']
    and 
    (
      not (
@@ -450,6 +559,194 @@ pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
 
 }
 
+pred roops_core_objectsInstrumented_MCCTestCondition19[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition5[
+  a:univ
+]{
+   not (
+     a=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition2[
+  b:univ
+]{
+   b=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition18[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition3[
+  b:univ
+]{
+   not (
+     b=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition4[
+  a:univ
+]{
+   a=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition6[
+  e:univ
+]{
+   e=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition8[
+  d:univ
+]{
+   d=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition9[
+  d:univ
+]{
+   not (
+     d=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition7[
+  e:univ
+]{
+   not (
+     e=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition20[
+  t_36:univ
+]{
+   t_36=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition21[
+  t_36:univ
+]{
+   not (
+     t_36=true)
+
+}
+
+pred precondition_roops_core_objectsInstrumented_MCCTest_test9_0[
+  throw:univ
+]{
+   equ[throw,
+      null]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTest_ensures[
+  throw':univ
+]{
+   liftExpression[false]
+   and 
+   equ[throw',
+      null]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition10[
+  t_33:univ
+]{
+   t_33=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition27[
+  t_39:univ
+]{
+   not (
+     t_39=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition11[
+  t_33:univ
+]{
+   not (
+     t_33=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition16[
+  t_31:univ
+]{
+   t_31=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition17[
+  t_31:univ
+]{
+   not (
+     t_31=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition14[
+  t_32:univ
+]{
+   t_32=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition15[
+  t_32:univ
+]{
+   not (
+     t_32=true)
+
+}
+check check_roops_core_objectsInstrumented_MCCTest_test9_0 for 3 but 4 int, 7 seq
+
+
+
+pred updateVariable[
+  l_1: univ,
+  r_0: univ
+]{
+  TruePred[]
+  and 
+  equ[l_1,
+     r_0]
+}
+
+
+pred getUnusedObject[
+  n_1: java_lang_Object + null,
+  usedObjects_0: set java_lang_Object,
+  usedObjects_1: set java_lang_Object
+]{
+  TruePred[]
+  and 
+  getUnusedObjectPost[usedObjects_1,
+                     usedObjects_0,
+                     n_1]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+}
+
+
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition6[
   exit_stmt_reached:univ,
   throw:univ,
@@ -492,27 +789,49 @@ sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
 one
 sig JavaPrimitiveIntegerLiteral3 extends JavaPrimitiveIntegerValue {}
 {pred_java_primitive_integer_value_literal_3[JavaPrimitiveIntegerLiteral3]
+=======
+pred havocVariable[
+  v_1: univ
+]{
+  TruePred[]
+  and 
+  havocVarPost[v_1]
 }
 
 
-
-
-//-------------- JavaPrimitiveIntegerLiteral0--------------//
-one
-sig JavaPrimitiveIntegerLiteral0 extends JavaPrimitiveIntegerValue {}
-{pred_java_primitive_integer_value_literal_0[JavaPrimitiveIntegerLiteral0]
+pred havocFieldContents[
+  target_0: univ,
+  field_0: univ -> univ,
+  field_1: univ -> univ
+]{
+  TruePred[]
+  and 
+  havocFieldContentsPost[target_0,
+                        field_0,
+                        field_1]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 }
 
 
-
-
-//-------------- JavaPrimitiveIntegerLiteralMinus1--------------//
-one
-sig JavaPrimitiveIntegerLiteralMinus1 extends JavaPrimitiveIntegerValue {}
-{pred_java_primitive_integer_value_literal_minus_1[JavaPrimitiveIntegerLiteralMinus1]
+pred havocVariable3[
+  u_1: univ -> ( seq univ )
+]{
+  TruePred[]
+  and 
+  havocVariable3Post[u_1]
 }
 
 
+pred havocVariable2[
+  u_1: univ -> univ
+]{
+  TruePred[]
+  and 
+  havocVariable2Post[u_1]
+}
+
+
+<<<<<<< HEAD
 
 
 //-------------- JavaPrimitiveIntegerValue--------------//
@@ -625,45 +944,52 @@ pred pred_java_primitive_integer_value_sshr[a: JavaPrimitiveIntegerValue,
  a.b03= ret.b02 
  a.b02= ret.b01 
  a.b01= ret.b00 
+=======
+pred havocField[
+  f_0: univ -> univ,
+  f_1: univ -> univ,
+  u_0: univ
+]{
+  TruePred[]
+  and 
+  havocFieldPost[f_0,
+                f_1,
+                u_0]
 }
 
 
-pred pred_java_primitive_integer_value_negate[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue] { 
-   a.b00 in b.b00 
-   a.b01 in Xor [ Not[b.b01]  , And[Not[b.b00], Xor[Not[b.b00], a.b00]]] 
-   a.b02 in Xor [ Not[b.b02]  , And[Not[b.b01], Xor[Not[b.b01], a.b01]]] 
-   a.b03 in Xor [ Not[b.b03]  , And[Not[b.b02], Xor[Not[b.b02], a.b02]]] 
-   a.b04 in Xor [ Not[b.b04]  , And[Not[b.b03], Xor[Not[b.b03], a.b03]]] 
-   a.b05 in Xor [ Not[b.b05]  , And[Not[b.b04], Xor[Not[b.b04], a.b04]]] 
-   a.b06 in Xor [ Not[b.b06]  , And[Not[b.b05], Xor[Not[b.b05], a.b05]]] 
-   a.b07 in Xor [ Not[b.b07]  , And[Not[b.b06], Xor[Not[b.b06], a.b06]]] 
-   a.b08 in Xor [ Not[b.b08]  , And[Not[b.b07], Xor[Not[b.b07], a.b07]]] 
-   a.b09 in Xor [ Not[b.b09]  , And[Not[b.b08], Xor[Not[b.b08], a.b08]]] 
-   a.b10 in Xor [ Not[b.b10]  , And[Not[b.b09], Xor[Not[b.b09], a.b09]]] 
-   a.b11 in Xor [ Not[b.b11]  , And[Not[b.b10], Xor[Not[b.b10], a.b10]]] 
-   a.b12 in Xor [ Not[b.b12]  , And[Not[b.b11], Xor[Not[b.b11], a.b11]]] 
-   a.b13 in Xor [ Not[b.b13]  , And[Not[b.b12], Xor[Not[b.b12], a.b12]]] 
-   a.b14 in Xor [ Not[b.b14]  , And[Not[b.b13], Xor[Not[b.b13], a.b13]]] 
-   a.b15 in Xor [ Not[b.b15]  , And[Not[b.b14], Xor[Not[b.b14], a.b14]]] 
-   a.b16 in Xor [ Not[b.b16]  , And[Not[b.b15], Xor[Not[b.b15], a.b15]]] 
-   a.b17 in Xor [ Not[b.b17]  , And[Not[b.b16], Xor[Not[b.b16], a.b16]]] 
-   a.b18 in Xor [ Not[b.b18]  , And[Not[b.b17], Xor[Not[b.b17], a.b17]]] 
-   a.b19 in Xor [ Not[b.b19]  , And[Not[b.b18], Xor[Not[b.b18], a.b18]]] 
-   a.b20 in Xor [ Not[b.b20]  , And[Not[b.b19], Xor[Not[b.b19], a.b19]]] 
-   a.b21 in Xor [ Not[b.b21]  , And[Not[b.b20], Xor[Not[b.b20], a.b20]]] 
-   a.b22 in Xor [ Not[b.b22]  , And[Not[b.b21], Xor[Not[b.b21], a.b21]]] 
-   a.b23 in Xor [ Not[b.b23]  , And[Not[b.b22], Xor[Not[b.b22], a.b22]]] 
-   a.b24 in Xor [ Not[b.b24]  , And[Not[b.b23], Xor[Not[b.b23], a.b23]]] 
-   a.b25 in Xor [ Not[b.b25]  , And[Not[b.b24], Xor[Not[b.b24], a.b24]]] 
-   a.b26 in Xor [ Not[b.b26]  , And[Not[b.b25], Xor[Not[b.b25], a.b25]]] 
-   a.b27 in Xor [ Not[b.b27]  , And[Not[b.b26], Xor[Not[b.b26], a.b26]]] 
-   a.b28 in Xor [ Not[b.b28]  , And[Not[b.b27], Xor[Not[b.b27], a.b27]]] 
-   a.b29 in Xor [ Not[b.b29]  , And[Not[b.b28], Xor[Not[b.b28], a.b28]]] 
-   a.b30 in Xor [ Not[b.b30]  , And[Not[b.b29], Xor[Not[b.b29], a.b29]]] 
-   a.b31 in Xor [ Not[b.b31]  , And[Not[b.b30], Xor[Not[b.b30], a.b30]]] 
+pred updateField[
+  l_0: univ,
+  f_0: univ -> univ,
+  f_1: univ -> univ,
+  r_0: univ
+]{
+  TruePred[]
+  and 
+  updateFieldPost[f_1,
+                 f_0,
+                 l_0,
+                 r_0]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 }
 
 
+pred havocArrayContents[
+  array_0: univ,
+  domain_0: set univ,
+  Object_Array_0: univ -> ( seq univ ),
+  Object_Array_1: univ -> ( seq univ )
+]{
+  TruePred[]
+  and 
+  havocArrayContentsPost[array_0,
+                        domain_0,
+                        Object_Array_0,
+                        Object_Array_1]
+}
+
+
+<<<<<<< HEAD
 pred pred_java_primitive_integer_value_mul[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue, result: JavaPrimitiveIntegerValue, overflow: boolean] {
 some 
    a_c00, a_c01, a_c02, a_c03, a_c04, a_c05, a_c06, a_c07, a_c08, a_c09, a_c10, a_c11, a_c12, a_c13, a_c14, a_c15, a_c16, a_c17, a_c18, a_c19, a_c20, a_c21, a_c22, a_c23, a_c24, a_c25, a_c26, a_c27, a_c28, a_c29, a_c30, 
@@ -3422,6 +3748,9 @@ pred roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[
 
 
 pred roops_core_objectsInstrumented_OurTests_test1_0[
+=======
+pred roops_core_objectsInstrumented_MCCTest_test9_0[
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   throw_1: java_lang_Throwable + null,
   throw_2: java_lang_Throwable + null,
   throw_3: java_lang_Throwable + null,
@@ -3441,6 +3770,7 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   throw_17: java_lang_Throwable + null,
   throw_18: java_lang_Throwable + null,
   throw_19: java_lang_Throwable + null,
+<<<<<<< HEAD
   m_0: JavaPrimitiveIntegerValue,
   m_1: JavaPrimitiveIntegerValue,
   m_2: JavaPrimitiveIntegerValue,
@@ -3514,6 +3844,66 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   var_2_ws_1_5: boolean,
   var_2_ws_1_6: boolean,
   var_2_ws_1_7: boolean,
+=======
+  throw_20: java_lang_Throwable + null,
+  a_0: boolean,
+  b_0: boolean,
+  c_0: boolean,
+  d_0: boolean,
+  e_0: boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_2: ( ClassFields ) -> one ( boolean ),
+  t_36_0: boolean,
+  t_36_1: boolean,
+  t_35_0: boolean,
+  t_35_1: boolean,
+  t_38_0: boolean,
+  t_38_1: boolean,
+  exit_stmt_reached_1: boolean,
+  t_37_0: boolean,
+  t_37_1: boolean,
+  t_32_0: boolean,
+  t_32_1: boolean,
+  t_31_0: boolean,
+  t_31_1: boolean,
+  t_34_0: boolean,
+  t_34_1: boolean,
+  t_33_0: boolean,
+  t_33_1: boolean,
+  t_41_0: boolean,
+  t_41_1: boolean,
+  t_40_0: boolean,
+  t_40_1: boolean,
+  t_30_0: boolean,
+  t_30_1: boolean,
+  t_39_0: boolean,
+  t_39_1: boolean,
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   l0_exit_stmt_reached_1: boolean
 ]{
   TruePred[]
@@ -3526,6 +3916,7 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   (
     exit_stmt_reached_1=false)
   and 
+<<<<<<< HEAD
   roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[throw_2,
                                                                            throw_3,
                                                                            throw_4,
@@ -3540,11 +3931,15 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                                                                            roops_core_objectsInstrumented_OurTests_roops_goal_3_0,
                                                                            roops_core_objectsInstrumented_OurTests_roops_goal_3_1,
                                                                            l0_exit_stmt_reached_1]
+=======
+  TruePred[]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   and 
   TruePred[]
   and 
   TruePred[]
   and 
+<<<<<<< HEAD
   (
     (
       roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
@@ -4450,15 +4845,109 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                   (
                     t_2_3=(equ[m_5,
                        JavaPrimitiveIntegerLiteral3]=>(true)else(false))
+=======
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[throw_2,
+                                                                          throw_3,
+                                                                          throw_4,
+                                                                          throw_5,
+                                                                          throw_6,
+                                                                          throw_7,
+                                                                          throw_8,
+                                                                          throw_9,
+                                                                          throw_10,
+                                                                          throw_11,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_6_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_6_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_7_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_7_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_4_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_4_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_5_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_5_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_2_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_2_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_3_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_3_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_0_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_0_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_1_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_1_1,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_8_0,
+                                                                          roops_core_objectsInstrumented_MCCTest_roops_goal_8_1,
+                                                                          l0_exit_stmt_reached_1]
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_11]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_31_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_31_0=t_31_1)
+                    )
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                   )
                 )
                 or 
                 (
                   (
                     not (
+<<<<<<< HEAD
                       roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                        throw_11]
                     )
+=======
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                   )
                   and 
                   TruePred[]
@@ -4475,6 +4964,7 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                   and 
                   (
                     (
+<<<<<<< HEAD
                       roops_core_objectsInstrumented_OurTestsCondition4[t_2_3]
                       and 
                       (
@@ -4523,10 +5013,25 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                           and 
                           (
                             throw_11=throw_12)
+=======
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_31_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                         )
                       )
                       and 
                       (
+<<<<<<< HEAD
                         (
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_12]
@@ -4639,10 +5144,56 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                   and 
                   (
                     throw_11=throw_12)
+=======
+                        t_31_0=t_31_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_31_0=t_31_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                t_31_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                 )
               )
               and 
               (
+<<<<<<< HEAD
                 (
                   roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                    throw_12]
@@ -4685,24 +5236,83 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                       and 
                       (
                         var_1_fajita_cicle_0_5=true)
+=======
+                t_31_0=t_31_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_31_0=t_31_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_11]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_33_1=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                     or 
                     (
                       (
                         not (
+<<<<<<< HEAD
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_12]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+<<<<<<< HEAD
                         var_1_fajita_cicle_0_4=var_1_fajita_cicle_0_5)
+=======
+                        t_33_0=t_33_1)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                   )
                   and 
                   (
+<<<<<<< HEAD
                     (
                       roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                        throw_12]
@@ -4749,28 +5359,46 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                       (
                         throw_12=throw_13)
                     )
+=======
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                   )
                   and 
                   (
                     (
+<<<<<<< HEAD
                       roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                        throw_13]
                       and 
                       (
                         t_1_4=m_6)
+=======
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_33_1=false)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                     or 
                     (
                       (
                         not (
+<<<<<<< HEAD
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_13]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+<<<<<<< HEAD
                         t_1_3=t_1_4)
                     )
                   )
@@ -4782,19 +5410,154 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                       and 
                       (
                         m_7=fun_java_primitive_integer_value_add[m_6,JavaPrimitiveIntegerLiteralMinus1])
+=======
+                        t_33_0=t_33_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_33_0=t_33_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                t_33_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_33_0=t_33_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_33_0=t_33_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_11]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                t_32_1=true)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_32_0=t_32_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition10[t_33_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_32_1=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                     or 
                     (
                       (
                         not (
+<<<<<<< HEAD
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_13]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+<<<<<<< HEAD
                         m_6=m_7)
                     )
                   )
@@ -4808,19 +5571,45 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                         t_2_4=(equ[m_7,
                            JavaPrimitiveIntegerLiteral3]=>(true)else(false))
                       )
+=======
+                        t_32_0=t_32_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition10[t_33_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_32_1=false)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                     or 
                     (
                       (
                         not (
+<<<<<<< HEAD
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_13]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+<<<<<<< HEAD
                         t_2_3=t_2_4)
                     )
                   )
@@ -4973,19 +5762,281 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                             m_7=m_8)
                         )
                       )
+=======
+                        t_32_0=t_32_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_32_0=t_32_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_32_0=t_32_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_11]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition16[t_31_1]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition14[t_32_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_30_1=true)
                     )
                     or 
                     (
                       (
                         not (
-                          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
-                                                                           throw_13]
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+                        t_30_0=t_30_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition14[t_32_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_11]
+                      and 
+                      (
+                        t_30_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_11]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_30_0=t_30_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_30_0=t_30_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition16[t_31_1])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_11]
+              and 
+              (
+                t_30_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_11]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_30_0=t_30_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_30_0=t_30_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_11]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_12=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)++((ClassFields)->(t_30_1)))
+          and 
+          (
+            throw_11=throw_12)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_11]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)
+      and 
+      (
+        throw_11=throw_12)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_12]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_12]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_12]
+                      and 
+                      (
+                        t_34_1=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+                    )
+                    or 
+                    (
+                      (
+                        not (
+<<<<<<< HEAD
+                          roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
+                                                                           throw_13]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_12]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+<<<<<<< HEAD
                         roops_core_objectsInstrumented_OurTests_roops_goal_3_4=roops_core_objectsInstrumented_OurTests_roops_goal_3_5)
                       and 
                       (
@@ -5056,10 +6107,296 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                           and 
                           (
                             var_1_fajita_cicle_0_5=var_1_fajita_cicle_0_6)
+=======
+                        t_34_0=t_34_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_12]
+                      and 
+                      (
+                        t_34_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_12]
                         )
                       )
                       and 
+                      TruePred[]
+                      and 
                       (
+                        t_34_0=t_34_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_12]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_34_0=t_34_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_12]
+              and 
+              (
+                t_34_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_12]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_34_0=t_34_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_12]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_34_0=t_34_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_12]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_13=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)++((ClassFields)->(t_34_1)))
+          and 
+          (
+            throw_12=throw_13)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_12]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)
+      and 
+      (
+        throw_12=throw_13)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_13]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_14=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)++((ClassFields)->(a_0)))
+          and 
+          (
+            throw_13=throw_14)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_13]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)
+      and 
+      (
+        throw_13=throw_14)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_14]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_15=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)++((ClassFields)->(b_0)))
+          and 
+          (
+            throw_14=throw_15)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_14]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)
+      and 
+      (
+        throw_14=throw_15)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_36_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+<<<<<<< HEAD
                         (
                           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                                            throw_14]
@@ -5781,20 +7118,1100 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                             var_2_ws_1_6=var_2_ws_1_7)
                         )
                       )
+=======
+                        t_36_0=t_36_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_36_1=false)
                     )
                     or 
                     (
                       (
                         not (
-                          roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
-                                                                           throw_14,
-                                                                           var_2_ws_1_5]
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
                         )
                       )
                       and 
                       TruePred[]
                       and 
                       (
+                        t_36_0=t_36_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_36_0=t_36_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                t_36_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_36_0=t_36_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_36_0=t_36_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                t_35_1=true)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_35_0=t_35_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_15]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition20[t_36_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_35_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_35_0=t_35_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition20[t_36_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_15]
+                      and 
+                      (
+                        t_35_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_15]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_35_0=t_35_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_15]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_35_0=t_35_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_35_0=t_35_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_15]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_16=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)++((ClassFields)->(t_35_1)))
+          and 
+          (
+            throw_15=throw_16)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_15]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)
+      and 
+      (
+        throw_15=throw_16)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_16]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_17=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)++((ClassFields)->(c_0)))
+          and 
+          (
+            throw_16=throw_17)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_16]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)
+      and 
+      (
+        throw_16=throw_17)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_17]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_17]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_17]
+                      and 
+                      (
+                        t_37_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_17]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_37_0=t_37_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_17]
+                      and 
+                      (
+                        t_37_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_17]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_37_0=t_37_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_17]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_37_0=t_37_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_17]
+              and 
+              (
+                t_37_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_17]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_37_0=t_37_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_17]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_37_0=t_37_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_17]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_18=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)++((ClassFields)->(t_37_1)))
+          and 
+          (
+            throw_17=throw_18)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_17]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)
+      and 
+      (
+        throw_17=throw_18)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_18]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_19=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)++((ClassFields)->(d_0)))
+          and 
+          (
+            throw_18=throw_19)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_18]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)
+      and 
+      (
+        throw_18=throw_19)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_19]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_20=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_2=(roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)++((ClassFields)->(e_0)))
+          and 
+          (
+            throw_19=throw_20)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_19]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)
+      and 
+      (
+        throw_19=throw_20)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition4[a_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition2[b_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_39_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_39_0=t_39_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition2[b_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_39_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_39_0=t_39_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_39_0=t_39_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition4[a_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_39_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_39_0=t_39_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_39_0=t_39_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition8[d_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition6[e_0]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_41_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_41_0=t_41_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition6[e_0])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_41_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_41_0=t_41_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_41_0=t_41_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition8[d_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_41_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_41_0=t_41_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_41_0=t_41_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition12[c_0]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_40_1=true)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_40_0=t_40_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition12[c_0])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition22[t_41_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_40_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_40_0=t_40_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_MCCTestCondition22[t_41_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_40_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_40_0=t_40_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_40_0=t_40_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_40_0=t_40_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition26[t_39_1]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_MCCTestCondition24[t_40_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_38_1=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+                    )
+                    or 
+                    (
+                      (
+                        not (
+<<<<<<< HEAD
+                          roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
+                                                                           throw_14,
+                                                                           var_2_ws_1_5]
+=======
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+<<<<<<< HEAD
                         t_1_4=t_1_6)
                       and 
                       (
@@ -5820,6 +8237,9 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                       and 
                       (
                         var_2_ws_1_5=var_2_ws_1_7)
+=======
+                        t_38_0=t_38_1)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                     )
                   )
                 )
@@ -5827,6 +8247,7 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 (
                   (
                     not (
+<<<<<<< HEAD
                       roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
                                                                        throw_12,
                                                                        var_2_ws_1_4]
@@ -5861,6 +8282,34 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                   and 
                   (
                     var_2_ws_1_4=var_2_ws_1_7)
+=======
+                      roops_core_objectsInstrumented_MCCTestCondition24[t_40_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                      throw_20]
+                      and 
+                      (
+                        t_38_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                          throw_20]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_38_0=t_38_1)
+                    )
+                  )
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                 )
               )
             )
@@ -5868,15 +8317,21 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
             (
               (
                 not (
+<<<<<<< HEAD
                   roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
                                                                    throw_10,
                                                                    var_2_ws_1_3]
+=======
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                 )
               )
               and 
               TruePred[]
               and 
               (
+<<<<<<< HEAD
                 t_1_2=t_1_6)
               and 
               (
@@ -5904,11 +8359,310 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
                 var_2_ws_1_3=var_2_ws_1_7)
             )
           )
+=======
+                t_38_0=t_38_1)
+            )
+          )
         )
         or 
         (
           (
             not (
+              roops_core_objectsInstrumented_MCCTestCondition26[t_39_1])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                              throw_20]
+              and 
+              (
+                t_38_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                                  throw_20]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_38_0=t_38_1)
+            )
+          )
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_38_0=t_38_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_20]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition28[t_38_1]
+          and 
+          TruePred[]
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition28[t_38_1])
+          )
+          and 
+          TruePred[]
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_20]
+        )
+      )
+      and 
+      TruePred[]
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
+pred roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  throw_6: java_lang_Throwable + null,
+  throw_7: java_lang_Throwable + null,
+  throw_8: java_lang_Throwable + null,
+  throw_9: java_lang_Throwable + null,
+  throw_10: java_lang_Throwable + null,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1: ( ClassFields ) -> one ( boolean ),
+  exit_stmt_reached_1: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_2=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_0=roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_0_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_0_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_1=throw_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_0_0=roops_core_objectsInstrumented_MCCTest_roops_goal_0_1)
+      and 
+      (
+        throw_1=throw_2)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_2]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_3=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_0=roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_1_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_1_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_2=throw_3)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_2]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_1_0=roops_core_objectsInstrumented_MCCTest_roops_goal_1_1)
+      and 
+      (
+        throw_2=throw_3)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_3]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_4=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_0=roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_2_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_2_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_3=throw_4)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_3]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_2_0=roops_core_objectsInstrumented_MCCTest_roops_goal_2_1)
+      and 
+      (
+        throw_3=throw_4)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_4]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_5=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_0=roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+        )
+        or 
+        (
+          (
+            not (
+<<<<<<< HEAD
               roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
                                                                throw_8,
                                                                var_2_ws_1_2]
@@ -5919,11 +8673,52 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
           and 
           (
             t_1_1=t_1_6)
+=======
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_3_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_3_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_4=throw_5)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_3_0=roops_core_objectsInstrumented_MCCTest_roops_goal_3_1)
+      and 
+      (
+        throw_4=throw_5)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_5]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
           and 
           (
             t_2_1=t_2_6)
           and 
           (
+<<<<<<< HEAD
             var_1_fajita_cicle_0_2=var_1_fajita_cicle_0_7)
           and 
           (
@@ -5931,15 +8726,75 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
           and 
           (
             roops_core_objectsInstrumented_OurTests_roops_goal_0_2=roops_core_objectsInstrumented_OurTests_roops_goal_0_7)
+=======
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_0=roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_4_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_4_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_5=throw_6)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_5]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_4_0=roops_core_objectsInstrumented_MCCTest_roops_goal_4_1)
+      and 
+      (
+        throw_5=throw_6)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_6]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
           and 
           (
             roops_core_objectsInstrumented_OurTests_roops_goal_2_2=roops_core_objectsInstrumented_OurTests_roops_goal_2_7)
           and 
           (
+<<<<<<< HEAD
             m_2=m_12)
           and 
           (
             throw_8=throw_18)
+=======
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_0=roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_5_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_5_0)++((ClassFields)->(false)))
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
           and 
           (
             var_2_ws_1_2=var_2_ws_1_7)
@@ -5950,15 +8805,21 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
     (
       (
         not (
+<<<<<<< HEAD
           roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached_1,
                                                            throw_6,
                                                            var_2_ws_1_1]
+=======
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_6]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
         )
       )
       and 
       TruePred[]
       and 
       (
+<<<<<<< HEAD
         t_1_0=t_1_6)
       and 
       (
@@ -5975,12 +8836,112 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
       and 
       (
         roops_core_objectsInstrumented_OurTests_roops_goal_2_1=roops_core_objectsInstrumented_OurTests_roops_goal_2_7)
+=======
+        roops_core_objectsInstrumented_MCCTest_roops_goal_5_0=roops_core_objectsInstrumented_MCCTest_roops_goal_5_1)
+      and 
+      (
+        throw_6=throw_7)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_7]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_8=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_0=roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_6_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_6_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_7=throw_8)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_7]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_MCCTest_roops_goal_6_0=roops_core_objectsInstrumented_MCCTest_roops_goal_6_1)
+      and 
+      (
+        throw_7=throw_8)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_8]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_9=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_0=roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_7_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_7_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_8=throw_9)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_8]
+        )
+      )
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
       and 
       (
         m_0=m_12)
       and 
       (
+<<<<<<< HEAD
         throw_6=throw_18)
+=======
+        roops_core_objectsInstrumented_MCCTest_roops_goal_7_0=roops_core_objectsInstrumented_MCCTest_roops_goal_7_1)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
       and 
       (
         var_2_ws_1_1=var_2_ws_1_7)
@@ -5997,24 +8958,60 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
   and 
   (
     (
+<<<<<<< HEAD
       roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                        throw_18]
       and 
       (
         t_3_1=Not[var_1_fajita_cicle_0_7])
+=======
+      roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                      throw_9]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_MCCTestCondition18[]
+          and 
+          (
+            throw_10=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_0=roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_MCCTestCondition18[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_MCCTest_roops_goal_8_1=(roops_core_objectsInstrumented_MCCTest_roops_goal_8_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_9=throw_10)
+        )
+      )
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
     )
     or 
     (
       (
         not (
+<<<<<<< HEAD
           roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached_1,
                                                            throw_18]
+=======
+          roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached_1,
+                                                          throw_9]
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
         )
       )
       and 
       TruePred[]
       and 
       (
+<<<<<<< HEAD
         t_3_0=t_3_1)
     )
   )
@@ -6113,6 +9110,15 @@ pred roops_core_objectsInstrumented_OurTests_test1_0[
     )
   )
   and 
+=======
+        roops_core_objectsInstrumented_MCCTest_roops_goal_8_0=roops_core_objectsInstrumented_MCCTest_roops_goal_8_1)
+      and 
+      (
+        throw_9=throw_10)
+    )
+  )
+  and 
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   TruePred[]
 
 }
@@ -6140,7 +9146,15 @@ type ordering:
 
 root nodes ordering:
 ====================
+<<<<<<< HEAD
 1) m:JavaPrimitiveIntegerValue
+=======
+1) a:boolean
+2) b:boolean
+3) c:boolean
+4) d:boolean
+5) e:boolean
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
 recursive field ordering:
 =========================
@@ -6153,6 +9167,7 @@ one sig QF {
   BQ__1: boolean,
   BQ__2: boolean,
   BQ__3: boolean,
+<<<<<<< HEAD
   l1_exit_stmt_reached_1:  boolean,
   l1_l0_exit_stmt_reached_1:  boolean,
   l1_t_1_0:  JavaPrimitiveIntegerValue,
@@ -6227,6 +9242,71 @@ one sig QF {
   roops_core_objectsInstrumented_OurTests_roops_goal_3_5:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_3_6:  ( ClassFields ) -> one ( boolean ),
   roops_core_objectsInstrumented_OurTests_roops_goal_3_7:  ( ClassFields ) -> one ( boolean ),
+=======
+  BQ__4: boolean,
+  BQ__5: boolean,
+  BQ__6: boolean,
+  BQ__7: boolean,
+  BQ__8: boolean,
+  a_0:  boolean,
+  b_0:  boolean,
+  c_0:  boolean,
+  d_0:  boolean,
+  e_0:  boolean,
+  l1_exit_stmt_reached_1:  boolean,
+  l1_l0_exit_stmt_reached_1:  boolean,
+  l1_t_30_0:  boolean,
+  l1_t_30_1:  boolean,
+  l1_t_31_0:  boolean,
+  l1_t_31_1:  boolean,
+  l1_t_32_0:  boolean,
+  l1_t_32_1:  boolean,
+  l1_t_33_0:  boolean,
+  l1_t_33_1:  boolean,
+  l1_t_34_0:  boolean,
+  l1_t_34_1:  boolean,
+  l1_t_35_0:  boolean,
+  l1_t_35_1:  boolean,
+  l1_t_36_0:  boolean,
+  l1_t_36_1:  boolean,
+  l1_t_37_0:  boolean,
+  l1_t_37_1:  boolean,
+  l1_t_38_0:  boolean,
+  l1_t_38_1:  boolean,
+  l1_t_39_0:  boolean,
+  l1_t_39_1:  boolean,
+  l1_t_40_0:  boolean,
+  l1_t_40_1:  boolean,
+  l1_t_41_0:  boolean,
+  l1_t_41_1:  boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8_2:  ( ClassFields ) -> one ( boolean ),
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   throw_0:  java_lang_Throwable + null,
   throw_1:  java_lang_Throwable + null,
   throw_10:  java_lang_Throwable + null,
@@ -6240,6 +9320,10 @@ one sig QF {
   throw_18:  java_lang_Throwable + null,
   throw_19:  java_lang_Throwable + null,
   throw_2:  java_lang_Throwable + null,
+<<<<<<< HEAD
+=======
+  throw_20:  java_lang_Throwable + null,
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   throw_3:  java_lang_Throwable + null,
   throw_4:  java_lang_Throwable + null,
   throw_5:  java_lang_Throwable + null,
@@ -6251,6 +9335,7 @@ one sig QF {
 
 
 fact {
+<<<<<<< HEAD
   precondition_roops_core_objectsInstrumented_OurTests_test1_0[QF.throw_0]
 }
 
@@ -6557,4 +9642,103 @@ fact {
   QF.BQ__1=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_1_2)=true
   QF.BQ__2=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_2_7)=true
   QF.BQ__3=true iff ClassFields.(QF.roops_core_objectsInstrumented_OurTests_roops_goal_3_7)=true
+=======
+  precondition_roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_0]
+}
+
+fact {
+  roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_1,
+                                                QF.throw_2,
+                                                QF.throw_3,
+                                                QF.throw_4,
+                                                QF.throw_5,
+                                                QF.throw_6,
+                                                QF.throw_7,
+                                                QF.throw_8,
+                                                QF.throw_9,
+                                                QF.throw_10,
+                                                QF.throw_11,
+                                                QF.throw_12,
+                                                QF.throw_13,
+                                                QF.throw_14,
+                                                QF.throw_15,
+                                                QF.throw_16,
+                                                QF.throw_17,
+                                                QF.throw_18,
+                                                QF.throw_19,
+                                                QF.throw_20,
+                                                QF.a_0,
+                                                QF.b_0,
+                                                QF.c_0,
+                                                QF.d_0,
+                                                QF.e_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_2,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_0,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_1,
+                                                QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_2,
+                                                QF.l1_t_36_0,
+                                                QF.l1_t_36_1,
+                                                QF.l1_t_35_0,
+                                                QF.l1_t_35_1,
+                                                QF.l1_t_38_0,
+                                                QF.l1_t_38_1,
+                                                QF.l1_exit_stmt_reached_1,
+                                                QF.l1_t_37_0,
+                                                QF.l1_t_37_1,
+                                                QF.l1_t_32_0,
+                                                QF.l1_t_32_1,
+                                                QF.l1_t_31_0,
+                                                QF.l1_t_31_1,
+                                                QF.l1_t_34_0,
+                                                QF.l1_t_34_1,
+                                                QF.l1_t_33_0,
+                                                QF.l1_t_33_1,
+                                                QF.l1_t_41_0,
+                                                QF.l1_t_41_1,
+                                                QF.l1_t_40_0,
+                                                QF.l1_t_40_1,
+                                                QF.l1_t_30_0,
+                                                QF.l1_t_30_1,
+                                                QF.l1_t_39_0,
+                                                QF.l1_t_39_1,
+                                                QF.l1_l0_exit_stmt_reached_1]
+
+}
+
+assert check_roops_core_objectsInstrumented_MCCTest_test9_0{
+  postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[QF.throw_20]}
+fact {
+  QF.BQ__0=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_0_2)=true
+  QF.BQ__1=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_1_2)=true
+  QF.BQ__2=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_2_2)=true
+  QF.BQ__3=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_3_2)=true
+  QF.BQ__4=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_4_2)=true
+  QF.BQ__5=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_5_2)=true
+  QF.BQ__6=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_6_2)=true
+  QF.BQ__7=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_7_2)=true
+  QF.BQ__8=true iff ClassFields.(QF.roops_core_objectsInstrumented_MCCTest_roops_goal_8_2)=true
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 }

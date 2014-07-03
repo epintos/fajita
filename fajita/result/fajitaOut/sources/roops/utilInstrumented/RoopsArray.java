@@ -6,6 +6,7 @@ public class RoopsArray {
         return a.length;
     }
 
+<<<<<<< HEAD
     public static boolean roops_goal_0;
 
     public static boolean roops_goal_1;
@@ -20,4 +21,7 @@ public class RoopsArray {
         roops_goal_2 = false;
         roops_goal_3 = false;
     }
+=======
+    public static void fajita_roopsGoal_initialization () {}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 }

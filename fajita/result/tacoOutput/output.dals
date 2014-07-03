@@ -434,26 +434,44 @@ abstract sig java_lang_Exception extends java_lang_Throwable {}
 
 
 
+<<<<<<< HEAD
 //-------------- roops_core_objectsInstrumented_OurTests--------------//
 sig roops_core_objectsInstrumented_OurTests extends java_lang_Object {}
+=======
+//-------------- java_lang_Throwable--------------//
+abstract sig java_lang_Throwable {}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 {}
 
 
 
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition0[
 ]{
    isEmptyOrNull[ClassFields]
+=======
+//-------------- java_lang_Object--------------//
+sig java_lang_Object {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition1[
 ]{
    not (
      isEmptyOrNull[ClassFields])
+=======
 
-}
 
+//-------------- java_lang_NullPointerException--------------//
+abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+
+
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTests_ensures[
   throw':univ
 ]{
@@ -461,9 +479,13 @@ pred roops_core_objectsInstrumented_OurTests_ensures[
    and 
    equ[throw',
       null]
+=======
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
+one sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
+{}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition2[
   exit_stmt_reached:univ,
   throw:univ
@@ -473,10 +495,20 @@ pred roops_core_objectsInstrumented_OurTestsCondition2[
    and 
    (
      exit_stmt_reached=false)
+=======
+//-------------- roops_core_objectsInstrumented_MCCTest--------------//
+sig roops_core_objectsInstrumented_MCCTest extends java_lang_Object {}
+{}
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
-}
 
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition3[
+=======
+
+
+pred roops_core_objectsInstrumented_MCCTestCondition1[
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
   exit_stmt_reached:univ,
   throw:univ
 ]{
@@ -490,6 +522,7 @@ pred roops_core_objectsInstrumented_OurTestsCondition3[
 
 }
 
+<<<<<<< HEAD
 pred precondition_roops_core_objectsInstrumented_OurTests_test1_0[
   throw:univ
 ]{
@@ -525,13 +558,90 @@ pred roops_core_objectsInstrumented_OurTestsCondition4[
   t_2:univ
 ]{
    t_2=true
+=======
+pred roops_core_objectsInstrumented_MCCTestCondition29[
+  t_38:univ
+]{
+   not (
+     t_38=true)
 
 }
 
-pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
+pred roops_core_objectsInstrumented_MCCTestCondition0[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition28[
+  t_38:univ
+]{
+   t_38=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition12[
+  c:univ
+]{
+   c=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition23[
+  t_41:univ
+]{
+   not (
+     t_41=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition13[
+  c:univ
+]{
+   not (
+     c=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition25[
+  t_40:univ
+]{
+   not (
+     t_40=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition22[
+  t_41:univ
+]{
+   t_41=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition24[
+  t_40:univ
+]{
+   t_40=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition26[
+  t_39:univ
+]{
+   t_39=true
+
+}
+
+pred postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[
   throw':univ
 ]{
-   roops_core_objectsInstrumented_OurTests_ensures[throw']
+   roops_core_objectsInstrumented_MCCTest_ensures[throw']
    and 
    (
      not (
@@ -540,6 +650,159 @@ pred postcondition_roops_core_objectsInstrumented_OurTests_test1_0[
 
 }
 
+pred roops_core_objectsInstrumented_MCCTestCondition19[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition5[
+  a:univ
+]{
+   not (
+     a=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition2[
+  b:univ
+]{
+   b=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition18[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition3[
+  b:univ
+]{
+   not (
+     b=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition4[
+  a:univ
+]{
+   a=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition6[
+  e:univ
+]{
+   e=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition8[
+  d:univ
+]{
+   d=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition9[
+  d:univ
+]{
+   not (
+     d=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition7[
+  e:univ
+]{
+   not (
+     e=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition20[
+  t_36:univ
+]{
+   t_36=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition21[
+  t_36:univ
+]{
+   not (
+     t_36=true)
+
+}
+
+pred precondition_roops_core_objectsInstrumented_MCCTest_test9_0[
+  throw:univ
+]{
+   equ[throw,
+      null]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTest_ensures[
+  throw':univ
+]{
+   liftExpression[false]
+   and 
+   equ[throw',
+      null]
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition10[
+  t_33:univ
+]{
+   t_33=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition27[
+  t_39:univ
+]{
+   not (
+     t_39=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition11[
+  t_33:univ
+]{
+   not (
+     t_33=true)
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition16[
+  t_31:univ
+]{
+   t_31=true
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition17[
+  t_31:univ
+]{
+   not (
+     t_31=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+
+}
+
+pred roops_core_objectsInstrumented_MCCTestCondition14[
+  t_32:univ
+]{
+   t_32=true
+
+}
+
+<<<<<<< HEAD
 pred roops_core_objectsInstrumented_OurTestsCondition6[
   exit_stmt_reached:univ,
   throw:univ,
@@ -552,12 +815,19 @@ pred roops_core_objectsInstrumented_OurTestsCondition6[
    and 
    (
      exit_stmt_reached=false)
+=======
+pred roops_core_objectsInstrumented_MCCTestCondition15[
+  t_32:univ
+]{
+   not (
+     t_32=true)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 
 }
 
-program roops_core_objectsInstrumented_OurTests_test1_0[
-  thiz:roops_core_objectsInstrumented_OurTests,
+program roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[
   throw:java_lang_Throwable+null,
+<<<<<<< HEAD
   m:JavaPrimitiveIntegerValue,
   roops_core_objectsInstrumented_OurTests_roops_goal_0:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_OurTests_roops_goal_1:(ClassFields)->one(boolean),
@@ -575,31 +845,152 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
   t_1:JavaPrimitiveIntegerValue,
   var_1_fajita_cicle_0:boolean,
   var_2_ws_1:boolean
+=======
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 ]{
    skip;
    throw:=null;
    skip;
    exit_stmt_reached:=false;
+<<<<<<< HEAD
    call roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_core_objectsInstrumented_OurTests_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_3,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_3,usedObjects];
    skip;
    skip;
    if roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached,throw]  {
       var_1_fajita_cicle_0:=false
+=======
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_0:=(roops_core_objectsInstrumented_MCCTest_roops_goal_0)++((ClassFields)->(false))
+      
+      }
    
    } else {
       skip
    
    }
    ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_1:=(roops_core_objectsInstrumented_MCCTest_roops_goal_1)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_2:=(roops_core_objectsInstrumented_MCCTest_roops_goal_2)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_3:=(roops_core_objectsInstrumented_MCCTest_roops_goal_3)++((ClassFields)->(false))
+      
+      }
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+   
+   } else {
+      skip
+   
+   }
+   ;
+<<<<<<< HEAD
    skip;
    if roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached,throw]  {
       var_2_ws_1:=(pred_java_primitive_integer_value_gt[m,JavaPrimitiveIntegerLiteral0]=>(true)else(false))
+=======
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_4:=(roops_core_objectsInstrumented_MCCTest_roops_goal_4)++((ClassFields)->(false))
+      
+      }
    
    } else {
       skip
    
    }
    ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_5:=(roops_core_objectsInstrumented_MCCTest_roops_goal_5)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_6:=(roops_core_objectsInstrumented_MCCTest_roops_goal_6)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_7:=(roops_core_objectsInstrumented_MCCTest_roops_goal_7)++((ClassFields)->(false))
+      
+      }
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+   
+   } else {
+      skip
+   
+   }
+   ;
+<<<<<<< HEAD
    while roops_core_objectsInstrumented_OurTestsCondition6[exit_stmt_reached,throw,var_2_ws_1]do {
       skip;
       skip;
@@ -614,6 +1005,490 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
       if roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached,throw]  {
          if roops_core_objectsInstrumented_OurTestsCondition0[]  {
             throw:=java_lang_NullPointerExceptionLit
+=======
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_8:=(roops_core_objectsInstrumented_MCCTest_roops_goal_8)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_MCCTest_test9_0[
+  thiz:roops_core_objectsInstrumented_MCCTest,
+  throw:java_lang_Throwable+null,
+  a:boolean,
+  b:boolean,
+  c:boolean,
+  d:boolean,
+  e:boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  t_36:boolean,
+  t_35:boolean,
+  t_38:boolean,
+  exit_stmt_reached:boolean,
+  t_37:boolean,
+  t_32:boolean,
+  t_31:boolean,
+  t_34:boolean,
+  t_33:boolean,
+  t_41:boolean,
+  t_40:boolean,
+  t_30:boolean,
+  t_39:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   skip;
+   call roops_core_objectsInstrumented_MCCTest_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_MCCTest_roops_goal_6,roops_core_objectsInstrumented_MCCTest_roops_goal_7,roops_core_objectsInstrumented_MCCTest_roops_goal_4,roops_core_objectsInstrumented_MCCTest_roops_goal_5,roops_core_objectsInstrumented_MCCTest_roops_goal_2,roops_core_objectsInstrumented_MCCTest_roops_goal_3,roops_core_objectsInstrumented_MCCTest_roops_goal_0,roops_core_objectsInstrumented_MCCTest_roops_goal_1,roops_core_objectsInstrumented_MCCTest_roops_goal_8,usedObjects];
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_31:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_31:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_31:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_33:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_33:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_33:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_32:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition10[t_33]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_32:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_32:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition16[t_31]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition14[t_32]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_30:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_30:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_30:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_0:=(roops_core_objectsInstrumented_MCCTest_roops_goal_0)++((ClassFields)->(t_30))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_34:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_34:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_34:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_1:=(roops_core_objectsInstrumented_MCCTest_roops_goal_1)++((ClassFields)->(t_34))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_2:=(roops_core_objectsInstrumented_MCCTest_roops_goal_2)++((ClassFields)->(a))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_3:=(roops_core_objectsInstrumented_MCCTest_roops_goal_3)++((ClassFields)->(b))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_36:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_36:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_36:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_35:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition20[t_36]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_35:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_35:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_4:=(roops_core_objectsInstrumented_MCCTest_roops_goal_4)++((ClassFields)->(t_35))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_5:=(roops_core_objectsInstrumented_MCCTest_roops_goal_5)++((ClassFields)->(c))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_37:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_37:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
          
          } else {
             roops_core_objectsInstrumented_OurTests_roops_goal_0:=(roops_core_objectsInstrumented_OurTests_roops_goal_0)++((ClassFields)->(true))
@@ -621,6 +1496,7 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
          }
       
       } else {
+<<<<<<< HEAD
          skip
       
       }
@@ -654,12 +1530,219 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
             if roops_core_objectsInstrumented_OurTestsCondition2[exit_stmt_reached,throw]  {
                if roops_core_objectsInstrumented_OurTestsCondition0[]  {
                   throw:=java_lang_NullPointerExceptionLit
+=======
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_37:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_6:=(roops_core_objectsInstrumented_MCCTest_roops_goal_6)++((ClassFields)->(t_37))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_7:=(roops_core_objectsInstrumented_MCCTest_roops_goal_7)++((ClassFields)->(d))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition18[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_MCCTest_roops_goal_8:=(roops_core_objectsInstrumented_MCCTest_roops_goal_8)++((ClassFields)->(e))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition4[a]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition2[b]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_39:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_39:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_39:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition8[d]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition6[e]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_41:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_41:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_41:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition12[c]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_40:=true
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition22[t_41]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_40:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_40:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition26[t_39]  {
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_MCCTestCondition24[t_40]  {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_38:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+                  t_38:=false
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
                
                } else {
                   roops_core_objectsInstrumented_OurTests_roops_goal_2:=(roops_core_objectsInstrumented_OurTests_roops_goal_2)++((ClassFields)->(true))
                
                }
             
+<<<<<<< HEAD
             } else {
                skip
             
@@ -722,6 +1805,8 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
             } else {
                roops_core_objectsInstrumented_OurTests_roops_goal_1:=(roops_core_objectsInstrumented_OurTests_roops_goal_1)++((ClassFields)->(true))
             
+=======
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
             }
          
          } else {
@@ -730,6 +1815,7 @@ program roops_core_objectsInstrumented_OurTests_test1_0[
          }
       
       } else {
+<<<<<<< HEAD
          skip
       
       }
@@ -809,6 +1895,15 @@ program roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_
       
       } else {
          roops_core_objectsInstrumented_OurTests_roops_goal_3:=(roops_core_objectsInstrumented_OurTests_roops_goal_3)++((ClassFields)->(false))
+=======
+         if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+            t_38:=false
+         
+         } else {
+            skip
+         
+         }
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
       
       }
    
@@ -817,10 +1912,28 @@ program roops_core_objectsInstrumented_OurTests_fajita_roopsGoal_initialization_
    
    }
    ;
+<<<<<<< HEAD
+=======
+   if roops_core_objectsInstrumented_MCCTestCondition0[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_MCCTestCondition28[t_38]  {
+         skip
+      
+      } else {
+         skip
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
    skip
 
 }
 
+<<<<<<< HEAD
 assertCorrectness check_roops_core_objectsInstrumented_OurTests_test1_0[
   exit_stmt_reached:boolean,
   m:JavaPrimitiveIntegerValue,
@@ -840,12 +1953,46 @@ assertCorrectness check_roops_core_objectsInstrumented_OurTests_test1_0[
   usedObjects:set (java_lang_Object),
   var_1_fajita_cicle_0:boolean,
   var_2_ws_1:boolean
+=======
+assertCorrectness check_roops_core_objectsInstrumented_MCCTest_test9_0[
+  a:boolean,
+  b:boolean,
+  c:boolean,
+  d:boolean,
+  e:boolean,
+  exit_stmt_reached:boolean,
+  roops_core_objectsInstrumented_MCCTest_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_MCCTest_roops_goal_8:(ClassFields)->one(boolean),
+  t_30:boolean,
+  t_31:boolean,
+  t_32:boolean,
+  t_33:boolean,
+  t_34:boolean,
+  t_35:boolean,
+  t_36:boolean,
+  t_37:boolean,
+  t_38:boolean,
+  t_39:boolean,
+  t_40:boolean,
+  t_41:boolean,
+  thiz:roops_core_objectsInstrumented_MCCTest,
+  throw:java_lang_Throwable+null,
+  usedObjects:set (java_lang_Object)
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
 ]{
 pre={
-   precondition_roops_core_objectsInstrumented_OurTests_test1_0[throw]
+   precondition_roops_core_objectsInstrumented_MCCTest_test9_0[throw]
 
 }
 program={
+<<<<<<< HEAD
    call roops_core_objectsInstrumented_OurTests_test1_0[thiz,throw,m,roops_core_objectsInstrumented_OurTests_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_1,roops_core_objectsInstrumented_OurTests_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_0,roops_core_objectsInstrumented_OurTests_roops_goal_3,roops_utilInstrumented_RoopsArray_roops_goal_1,roops_utilInstrumented_RoopsArray_roops_goal_2,roops_utilInstrumented_RoopsArray_roops_goal_3,usedObjects]
 
 }
@@ -1012,44 +2159,18 @@ pred pred_java_primitive_integer_value_sshr[a: JavaPrimitiveIntegerValue,
  a.b03= ret.b02 
  a.b02= ret.b01 
  a.b01= ret.b00 
+=======
+   call roops_core_objectsInstrumented_MCCTest_test9_0[thiz,throw,a,b,c,d,e,roops_core_objectsInstrumented_MCCTest_roops_goal_6,roops_core_objectsInstrumented_MCCTest_roops_goal_7,roops_core_objectsInstrumented_MCCTest_roops_goal_4,roops_core_objectsInstrumented_MCCTest_roops_goal_5,roops_core_objectsInstrumented_MCCTest_roops_goal_2,roops_core_objectsInstrumented_MCCTest_roops_goal_3,roops_core_objectsInstrumented_MCCTest_roops_goal_0,roops_core_objectsInstrumented_MCCTest_roops_goal_1,roops_core_objectsInstrumented_MCCTest_roops_goal_8,usedObjects]
+
+}
+post={
+   postcondition_roops_core_objectsInstrumented_MCCTest_test9_0[throw']
+
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102
+}
 }
 
-
-pred pred_java_primitive_integer_value_negate[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue] { 
-   a.b00 in b.b00 
-   a.b01 in Xor [ Not[b.b01]  , And[Not[b.b00], Xor[Not[b.b00], a.b00]]] 
-   a.b02 in Xor [ Not[b.b02]  , And[Not[b.b01], Xor[Not[b.b01], a.b01]]] 
-   a.b03 in Xor [ Not[b.b03]  , And[Not[b.b02], Xor[Not[b.b02], a.b02]]] 
-   a.b04 in Xor [ Not[b.b04]  , And[Not[b.b03], Xor[Not[b.b03], a.b03]]] 
-   a.b05 in Xor [ Not[b.b05]  , And[Not[b.b04], Xor[Not[b.b04], a.b04]]] 
-   a.b06 in Xor [ Not[b.b06]  , And[Not[b.b05], Xor[Not[b.b05], a.b05]]] 
-   a.b07 in Xor [ Not[b.b07]  , And[Not[b.b06], Xor[Not[b.b06], a.b06]]] 
-   a.b08 in Xor [ Not[b.b08]  , And[Not[b.b07], Xor[Not[b.b07], a.b07]]] 
-   a.b09 in Xor [ Not[b.b09]  , And[Not[b.b08], Xor[Not[b.b08], a.b08]]] 
-   a.b10 in Xor [ Not[b.b10]  , And[Not[b.b09], Xor[Not[b.b09], a.b09]]] 
-   a.b11 in Xor [ Not[b.b11]  , And[Not[b.b10], Xor[Not[b.b10], a.b10]]] 
-   a.b12 in Xor [ Not[b.b12]  , And[Not[b.b11], Xor[Not[b.b11], a.b11]]] 
-   a.b13 in Xor [ Not[b.b13]  , And[Not[b.b12], Xor[Not[b.b12], a.b12]]] 
-   a.b14 in Xor [ Not[b.b14]  , And[Not[b.b13], Xor[Not[b.b13], a.b13]]] 
-   a.b15 in Xor [ Not[b.b15]  , And[Not[b.b14], Xor[Not[b.b14], a.b14]]] 
-   a.b16 in Xor [ Not[b.b16]  , And[Not[b.b15], Xor[Not[b.b15], a.b15]]] 
-   a.b17 in Xor [ Not[b.b17]  , And[Not[b.b16], Xor[Not[b.b16], a.b16]]] 
-   a.b18 in Xor [ Not[b.b18]  , And[Not[b.b17], Xor[Not[b.b17], a.b17]]] 
-   a.b19 in Xor [ Not[b.b19]  , And[Not[b.b18], Xor[Not[b.b18], a.b18]]] 
-   a.b20 in Xor [ Not[b.b20]  , And[Not[b.b19], Xor[Not[b.b19], a.b19]]] 
-   a.b21 in Xor [ Not[b.b21]  , And[Not[b.b20], Xor[Not[b.b20], a.b20]]] 
-   a.b22 in Xor [ Not[b.b22]  , And[Not[b.b21], Xor[Not[b.b21], a.b21]]] 
-   a.b23 in Xor [ Not[b.b23]  , And[Not[b.b22], Xor[Not[b.b22], a.b22]]] 
-   a.b24 in Xor [ Not[b.b24]  , And[Not[b.b23], Xor[Not[b.b23], a.b23]]] 
-   a.b25 in Xor [ Not[b.b25]  , And[Not[b.b24], Xor[Not[b.b24], a.b24]]] 
-   a.b26 in Xor [ Not[b.b26]  , And[Not[b.b25], Xor[Not[b.b25], a.b25]]] 
-   a.b27 in Xor [ Not[b.b27]  , And[Not[b.b26], Xor[Not[b.b26], a.b26]]] 
-   a.b28 in Xor [ Not[b.b28]  , And[Not[b.b27], Xor[Not[b.b27], a.b27]]] 
-   a.b29 in Xor [ Not[b.b29]  , And[Not[b.b28], Xor[Not[b.b28], a.b28]]] 
-   a.b30 in Xor [ Not[b.b30]  , And[Not[b.b29], Xor[Not[b.b29], a.b29]]] 
-   a.b31 in Xor [ Not[b.b31]  , And[Not[b.b30], Xor[Not[b.b30], a.b30]]] 
-}
-
+<<<<<<< HEAD
 
 pred pred_java_primitive_integer_value_mul[a: JavaPrimitiveIntegerValue, b: JavaPrimitiveIntegerValue, result: JavaPrimitiveIntegerValue, overflow: boolean] {
 some 
@@ -3474,3 +4595,5 @@ fun fun_java_primitive_integer_value_literal_minus_1[]: one JavaPrimitiveInteger
 
 
 
+=======
+>>>>>>> 64114f45d8f697ae7f3f7dbf07d8a5c91d0a5102

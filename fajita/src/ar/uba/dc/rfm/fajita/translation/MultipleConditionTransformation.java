@@ -54,7 +54,7 @@ import ar.uba.dc.rfm.fajita.FajitaConfiguration;
  * transform the input AST removing the roops goal syntax and adding the
  * necessary constructions to perform branch coverage using Taco.
  */
-public class ModifiedConditionDecisionTransformation extends FajitaSourceTransformation {
+public class MultipleConditionTransformation extends FajitaSourceTransformation {
 
     /**
      * Constructor for a <code>BranchTransformation</code>.
@@ -72,7 +72,7 @@ public class ModifiedConditionDecisionTransformation extends FajitaSourceTransfo
      *            execution.
      * 
      */
-    public ModifiedConditionDecisionTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
+    public MultipleConditionTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
             CompilationUnit compilationUnit) {
         super(configuration, recoder, compilationUnit);
     }
@@ -92,7 +92,7 @@ public class ModifiedConditionDecisionTransformation extends FajitaSourceTransfo
         while (treeWalker.next())
             treeWalker.getProgramElement().accept(eraserVisitor);
 
-        return execute(new FajitaSourceTransformVisitor<ModifiedConditionDecisionTransformation>(configuration, this));
+        return execute(new FajitaSourceTransformVisitor<MultipleConditionTransformation>(configuration, this));
     }
 
     /** Returns a set with the names of the methods in the class to check. */
@@ -241,7 +241,7 @@ public class ModifiedConditionDecisionTransformation extends FajitaSourceTransfo
         private final FajitaConfiguration configuration;
 
         /** The transformation class invoking this source visitor. */
-        private final ModifiedConditionDecisionTransformation transformation;
+        private final MultipleConditionTransformation transformation;
 
         /** The set of methods reachable from the method under test. */
         private final Set<String> reachableMethods;
@@ -268,7 +268,7 @@ public class ModifiedConditionDecisionTransformation extends FajitaSourceTransfo
          *            method under test.
          * 
          */
-        public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration, ModifiedConditionDecisionTransformation transformation,
+        public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration, MultipleConditionTransformation transformation,
                 Set<String> reachableMethods) {
             this.configuration = configuration;
             this.transformation = transformation;
@@ -350,12 +350,16 @@ public class ModifiedConditionDecisionTransformation extends FajitaSourceTransfo
         }
 
         private void handleFor(For forr, List<Expression> expressions) {
+        	Expression ex = forr.getExpressionAt(0);
+            recursiveExpressionExplorer(ex, expressions);
             StatementBlock stb = (StatementBlock) forr.getBody();
             ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));
         }
 
         private void handleWhile(While whilee, List<Expression> expressions) {
+        	Expression ex = whilee.getExpressionAt(0);
+            recursiveExpressionExplorer(ex, expressions);
             StatementBlock stb = (StatementBlock) whilee.getBody();
             ASTList<Statement> toAdd = analyzeList(stb.getBody());
             transformation.replace(stb, new StatementBlock(toAdd));
