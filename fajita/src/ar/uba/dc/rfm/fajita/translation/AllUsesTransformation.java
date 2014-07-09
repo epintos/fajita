@@ -47,6 +47,7 @@ import recoder.java.expression.operator.ShiftRightAssignment;
 import recoder.java.expression.operator.TimesAssignment;
 import recoder.java.expression.operator.UnsignedShiftRightAssignment;
 import recoder.java.reference.MethodReference;
+import recoder.java.reference.ThisReference;
 import recoder.java.reference.UncollatedReferenceQualifier;
 import recoder.java.statement.EmptyStatement;
 import recoder.java.statement.For;
@@ -545,7 +546,15 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
         }
 
         private UncollatedReferenceQualifier getLeftHandSide(Assignment ass) {
-            return (UncollatedReferenceQualifier) ass.getChildAt(0);
+            UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass.getChildAt(0);
+            while (urq.getReferencePrefix() != null) {
+                if (urq.getReferencePrefix() instanceof ThisReference) {
+                    return (UncollatedReferenceQualifier) ass.getChildAt(0);
+                } else {
+                    urq = (UncollatedReferenceQualifier) urq.getReferencePrefix();
+                }
+            }
+            return urq;
         }
 
         private List<UncollatedReferenceQualifier> getLeftHandSide(VariableDeclaration vd) {
