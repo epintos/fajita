@@ -11,7 +11,7 @@ public class SinglyLinkedList {
 	
 	@roops.util.NrOfGoals(7)
 	@roops.util.BenchmarkMethod static
-	public void containsTest(roops.core.objects.SinglyLinkedList list, Object value_param) {
+	public void containsTest(SinglyLinkedList list, Object value_param) {
 		boolean ret_val;
 		if (list!=null && list.repOK()) {
 		  ret_val = list.contains(value_param);
@@ -46,34 +46,27 @@ public class SinglyLinkedList {
 		current = this.header;
 		result = false;
 		while (result == false && current != null) {
-			{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
 			
 			boolean equalVal;
 
 			if (value_param == null && current.value == null){
-				{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
 				equalVal = true;
 			} else if (value_param != null) {
 
 				if (value_param == current.value) { 
-					{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}
 					equalVal = true;
 				} else {
-					{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}
 					equalVal = false;
 				}
 			} else {
-				{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}
 				equalVal = false;
 			}
 
 			if (equalVal == true) {
-				{roops.util.Goals.reached(5, roops.util.Verdict.REACHABLE);}
 				result = true;
 			}
 			current = current.next;
 		}
-		{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}
 		return result;
 	}
 
@@ -84,7 +77,6 @@ public class SinglyLinkedList {
 	public void remove(int index) {
 		
 		if (index<0) {
-			{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
 			throw new RuntimeException();
 		}
 		
@@ -98,13 +90,10 @@ public class SinglyLinkedList {
 		boolean found = false;
 		
 		while (found==false && current != null) {
-			{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
 			
 			if (index == current_index) {
-				{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}
 				found = true;
 			} else {
-				{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}
 				current_index = current_index + 1;
 				previous = current;
 				current = current.next;
@@ -112,15 +101,12 @@ public class SinglyLinkedList {
 		}
 		
 		if (found==false) {
-			{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}			
 			throw new RuntimeException();
 		}
 		
 		if (previous == null){
-			{roops.util.Goals.reached(5, roops.util.Verdict.REACHABLE);}			
 			this.header = current.next;
 	    } else {
-	    	{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}
 			previous.next = current.next;
 	    }
 	}
@@ -133,19 +119,15 @@ public class SinglyLinkedList {
 		freshNode.next = null;
 
 		if (this.header == null) {
-			{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
 			this.header = freshNode;
 		} else {
-			{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
 			SinglyLinkedListNode current;
 			current = this.header;
 			while (current.next != null) {
-				{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}
 				current = current.next;
 			}
 			current.next = freshNode;
 		}
-		{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}
 	}
 	
 	public SinglyLinkedList() {}

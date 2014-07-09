@@ -15,6 +15,7 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.ProgramFactory;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
+import recoder.java.Expression;
 import recoder.java.Identifier;
 import recoder.java.JavaNonTerminalProgramElement;
 import recoder.java.PackageSpecification;
@@ -29,12 +30,15 @@ import recoder.java.declaration.VariableDeclaration;
 import recoder.java.declaration.VariableSpecification;
 import recoder.java.expression.Assignment;
 import recoder.java.expression.Literal;
+import recoder.java.expression.ParenthesizedExpression;
 import recoder.java.expression.literal.BooleanLiteral;
 import recoder.java.expression.operator.BinaryAndAssignment;
 import recoder.java.expression.operator.BinaryOrAssignment;
 import recoder.java.expression.operator.BinaryXOrAssignment;
 import recoder.java.expression.operator.CopyAssignment;
 import recoder.java.expression.operator.DivideAssignment;
+import recoder.java.expression.operator.LogicalAnd;
+import recoder.java.expression.operator.LogicalOr;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
 import recoder.java.expression.operator.PlusAssignment;
@@ -356,9 +360,11 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 								isInsideBlock);
 					} else if (st instanceof If) {
 						If iff = (If) st;
+						recursiveExpressionExplorer(iff.getExpression(), backup, i, isInsideBlock);
 						handleIf(iff, null);
 					} else if (st instanceof While) {
 						While whilee = (While) st;
+						recursiveExpressionExplorer(whilee.getExpressionAt(0), backup, i, isInsideBlock);
 						handleWhile(whilee, null);
 					} else if (st instanceof For) {
 						For forr = (For) st;
@@ -412,11 +418,33 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
 			ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
 			transformation.replace(stb, new StatementBlock(toAdd));
 			if (iff.getElse() != null) {
-				stb = (StatementBlock) iff.getElse().getBody();
-				toAdd = analyzeList(stb.getBody(), true, x);
-				transformation.replace(stb, new StatementBlock(toAdd));
+			    if (iff.getElse().getBody() instanceof If) {
+			        handleIf((If) iff.getElse().getBody(), x);
+			    } else {
+    				stb = (StatementBlock) iff.getElse().getBody();
+    				toAdd = analyzeList(stb.getBody(), true, x);
+    				transformation.replace(stb, new StatementBlock(toAdd));
+			    }
 			}
 		}
+		
+		private int recursiveExpressionExplorer(Expression ex, ASTList<Statement> expressions, int index, boolean isInsideBlock) {
+		    if (ex instanceof Assignment) {
+		        handleAssignment((Assignment) ex, expressions, index, isInsideBlock);
+		    } else if (ex instanceof LogicalAnd) {
+                LogicalAnd and = (LogicalAnd) ex;
+                index = recursiveExpressionExplorer(and.getExpressionAt(0), expressions, index, isInsideBlock);
+                index = recursiveExpressionExplorer(and.getExpressionAt(1), expressions, index, isInsideBlock);
+            } else if (ex instanceof LogicalOr) {
+                LogicalOr or = (LogicalOr) ex;
+                recursiveExpressionExplorer(or.getExpressionAt(0), expressions, index, isInsideBlock);
+                recursiveExpressionExplorer(or.getExpressionAt(1), expressions, index, isInsideBlock);
+            } else if (ex instanceof ParenthesizedExpression) {
+                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
+                recursiveExpressionExplorer(pe.getExpressionAt(0), expressions, index, isInsideBlock);
+            }
+		    return index;
+        }
 
 		private int handleAssignment(Assignment ass, ASTList<Statement> body,
 				int index, boolean isInsideBlock) {
