@@ -15,6 +15,7 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.ProgramFactory;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
+import recoder.java.Expression;
 import recoder.java.Identifier;
 import recoder.java.JavaNonTerminalProgramElement;
 import recoder.java.PackageSpecification;
@@ -37,6 +38,10 @@ import recoder.java.expression.operator.DivideAssignment;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
 import recoder.java.expression.operator.PlusAssignment;
+import recoder.java.expression.operator.PostDecrement;
+import recoder.java.expression.operator.PostIncrement;
+import recoder.java.expression.operator.PreDecrement;
+import recoder.java.expression.operator.PreIncrement;
 import recoder.java.expression.operator.ShiftLeftAssignment;
 import recoder.java.expression.operator.ShiftRightAssignment;
 import recoder.java.expression.operator.TimesAssignment;
@@ -352,10 +357,32 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         i = handleVariableDeclaration(vd, backup, i++, isInsideBlock);
                     } else if (st instanceof MethodReference) {
                         MethodReference mr = (MethodReference)st;
+                        HashSet<String> set = new HashSet<>();
+                        ASTList<Expression> arguments = mr.getArguments();
+                        if (arguments != null) {
+                            for(Expression ex: arguments) {
+                                recursiveHandler(ex, set);
+                            }
+                        }
                         while (mr.getReferencePrefix() instanceof MethodReference) {
                             mr = (MethodReference) mr.getReferencePrefix();
+                            arguments = mr.getArguments();
+                            if (arguments != null) {
+                                for(Expression ex: arguments) {
+                                    recursiveHandler(ex, set);
+                                }
+                            }
                         }
+                        i = handleAllUses(set, backup, i);
+                        set.clear();
                         UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) mr.getReferencePrefix();
+                        if (urq != null) {
+                            set.add(urq.getName());
+                            i = handleAllUses(set, backup, i);
+                        }
+                    } else if (isIncrOrDecr(st)) {
+                        Assignment ass = (Assignment) st;
+                        UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass.getExpressionAt(0);
                         HashSet<String> set = new HashSet<>();
                         set.add(urq.getName());
                         i = handleAllUses(set, backup, i);
@@ -365,6 +392,10 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                 return backup;
             }
             return list;
+        }
+
+        private boolean isIncrOrDecr(Statement st) {
+            return (st instanceof PostIncrement) || (st instanceof PostDecrement) || (st instanceof PreDecrement) || (st instanceof PreIncrement);
         }
 
         private int handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i, boolean isInsideBlock) {
