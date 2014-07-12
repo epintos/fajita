@@ -29,12 +29,15 @@ import recoder.java.declaration.VariableDeclaration;
 import recoder.java.declaration.VariableSpecification;
 import recoder.java.expression.Assignment;
 import recoder.java.expression.Literal;
+import recoder.java.expression.ParenthesizedExpression;
 import recoder.java.expression.literal.BooleanLiteral;
 import recoder.java.expression.operator.BinaryAndAssignment;
 import recoder.java.expression.operator.BinaryOrAssignment;
 import recoder.java.expression.operator.BinaryXOrAssignment;
 import recoder.java.expression.operator.CopyAssignment;
 import recoder.java.expression.operator.DivideAssignment;
+import recoder.java.expression.operator.LogicalAnd;
+import recoder.java.expression.operator.LogicalOr;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
 import recoder.java.expression.operator.PlusAssignment;
@@ -52,6 +55,7 @@ import recoder.java.reference.UncollatedReferenceQualifier;
 import recoder.java.statement.EmptyStatement;
 import recoder.java.statement.For;
 import recoder.java.statement.If;
+import recoder.java.statement.Return;
 import recoder.java.statement.While;
 import recoder.kit.ProblemReport;
 import recoder.list.generic.ASTArrayList;
@@ -358,41 +362,50 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         i = handleVariableDeclaration(vd, backup, i++, isInsideBlock);
                     } else if (st instanceof MethodReference) {
                         MethodReference mr = (MethodReference)st;
-                        HashSet<String> set = new HashSet<>();
-                        ASTList<Expression> arguments = mr.getArguments();
-                        if (arguments != null) {
-                            for(Expression ex: arguments) {
-                                recursiveHandler(ex, set);
-                            }
-                        }
-                        while (mr.getReferencePrefix() instanceof MethodReference) {
-                            mr = (MethodReference) mr.getReferencePrefix();
-                            arguments = mr.getArguments();
-                            if (arguments != null) {
-                                for(Expression ex: arguments) {
-                                    recursiveHandler(ex, set);
-                                }
-                            }
-                        }
-                        i = handleAllUses(set, backup, i);
-                        set.clear();
-                        UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) mr.getReferencePrefix();
-                        if (urq != null) {
-                            set.add(urq.getName());
-                            i = handleAllUses(set, backup, i);
-                        }
+                        i = handleMethodReference(mr, backup, i);
                     } else if (isIncrOrDecr(st)) {
                         Assignment ass = (Assignment) st;
                         UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass.getExpressionAt(0);
                         HashSet<String> set = new HashSet<>();
                         set.add(urq.getName());
                         i = handleAllUses(set, backup, i);
+                    } else if (st instanceof Return) {
+                        ASTList<Statement> expressions = new ASTArrayList<>();
+                        recursiveExpressionExplorer(((Return) st).getExpression(), expressions, 0, isInsideBlock);
+                        backup.addAll(i - 1, expressions);
                     }
                     i++;
                 }
                 return backup;
             }
             return list;
+        }
+        
+        private int handleMethodReference(MethodReference mr, ASTList<Statement> backup, int i) {
+            HashSet<String> set = new HashSet<>();
+            ASTList<Expression> arguments = mr.getArguments();
+            if (arguments != null) {
+                for(Expression ex: arguments) {
+                    recursiveHandler(ex, set);
+                }
+            }
+            while (mr.getReferencePrefix() instanceof MethodReference) {
+                mr = (MethodReference) mr.getReferencePrefix();
+                arguments = mr.getArguments();
+                if (arguments != null) {
+                    for(Expression ex: arguments) {
+                        recursiveHandler(ex, set);
+                    }
+                }
+            }
+            i = handleAllUses(set, backup, i);
+            set.clear();
+            UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) mr.getReferencePrefix();
+            if (urq != null) {
+                set.add(urq.getName());
+                i = handleAllUses(set, backup, i);
+            }
+            return i;
         }
 
         private boolean isIncrOrDecr(Statement st) {
@@ -445,25 +458,31 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             }
         }
 
-//        private int recursiveExpressionExplorer(Expression ex, ASTList<Statement> expressions, int index, boolean isInsideBlock) {
-//            if (isAssignment(ex)) {
-//                handleAssignment((Assignment) ex, expressions, index, isInsideBlock);
-//            } else if (ex instanceof UncollatedReferenceQualifier) {
-//
-//            } else if (ex instanceof LogicalAnd) {
-//                LogicalAnd and = (LogicalAnd) ex;
-//                index = recursiveExpressionExplorer(and.getExpressionAt(0), expressions, index, isInsideBlock);
-//                index = recursiveExpressionExplorer(and.getExpressionAt(1), expressions, index, isInsideBlock);
-//            } else if (ex instanceof LogicalOr) {
-//                LogicalOr or = (LogicalOr) ex;
-//                recursiveExpressionExplorer(or.getExpressionAt(0), expressions, index, isInsideBlock);
-//                recursiveExpressionExplorer(or.getExpressionAt(1), expressions, index, isInsideBlock);
-//            } else if (ex instanceof ParenthesizedExpression) {
-//                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
-//                recursiveExpressionExplorer(pe.getExpressionAt(0), expressions, index, isInsideBlock);
-//            }
-//            return index;
-//        }
+        private int recursiveExpressionExplorer(Expression ex, ASTList<Statement> expressions, int index, boolean isInsideBlock) {
+            if (ex instanceof LogicalAnd) {
+                LogicalAnd and = (LogicalAnd) ex;
+                index = recursiveExpressionExplorer(and.getExpressionAt(0), expressions, index, isInsideBlock);
+                index = recursiveExpressionExplorer(and.getExpressionAt(1), expressions, index, isInsideBlock);
+            } else if (ex instanceof LogicalOr) {
+                LogicalOr or = (LogicalOr) ex;
+                index = recursiveExpressionExplorer(or.getExpressionAt(0), expressions, index, isInsideBlock);
+                index = recursiveExpressionExplorer(or.getExpressionAt(1), expressions, index, isInsideBlock);
+            } else if (ex instanceof ParenthesizedExpression) {
+                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
+                index = recursiveExpressionExplorer(pe.getExpressionAt(0), expressions, index, isInsideBlock);
+            } else if (ex instanceof UncollatedReferenceQualifier) {
+                HashSet<String> uses = new HashSet<>();
+                UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ex;
+                uses.add(urq.getName());
+                index = handleAllUses(uses, expressions, index);
+            } else if (ex instanceof MethodReference) {
+                ASTList<Statement> list = new ASTArrayList<>();
+                int i = handleMethodReference((MethodReference)ex, list, 0);
+                index += i;
+                expressions.addAll(list);
+            }
+            return index;
+        }
 
         private int handleAssignment(Assignment ass, ASTList<Statement> body, int index, boolean isInsideBlock) {
             HashSet<String> uses = new HashSet<>();
