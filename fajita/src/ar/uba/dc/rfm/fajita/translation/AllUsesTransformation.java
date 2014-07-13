@@ -364,6 +364,10 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         handleWhile(whilee, null);
                     } else if (st instanceof For) {
                         For forr = (For) st;
+                        ASTList<Statement> expressions = new ASTArrayList<>();
+                        recursiveExpressionExplorer(forr.getGuard(), expressions, 0, isInsideBlock);
+                        backup.addAll(i - 1, expressions);
+                        i += expressions.size();
                         handleFor(forr, null);
                     } else if (st instanceof VariableDeclaration) {
                         VariableDeclaration vd = (VariableDeclaration) st;
