@@ -36,10 +36,12 @@ import recoder.java.expression.operator.BinaryOrAssignment;
 import recoder.java.expression.operator.BinaryXOrAssignment;
 import recoder.java.expression.operator.CopyAssignment;
 import recoder.java.expression.operator.DivideAssignment;
+import recoder.java.expression.operator.Equals;
 import recoder.java.expression.operator.LogicalAnd;
 import recoder.java.expression.operator.LogicalOr;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
+import recoder.java.expression.operator.NotEquals;
 import recoder.java.expression.operator.PlusAssignment;
 import recoder.java.expression.operator.PostDecrement;
 import recoder.java.expression.operator.PostIncrement;
@@ -348,11 +350,17 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                         i = handleAssignment((Assignment) st, backup, i, isInsideBlock);
                     } else if (st instanceof If) {
                         If iff = (If) st;
-//                        recursiveExpressionExplorer(iff.getExpression(), backup, i, isInsideBlock);
+                        ASTList<Statement> expressions = new ASTArrayList<>();
+                        recursiveExpressionExplorer(iff.getExpression(), expressions, 0, isInsideBlock);
+                        backup.addAll(i - 1, expressions);
+                        i += expressions.size();
                         handleIf(iff, null);
                     } else if (st instanceof While) {
                         While whilee = (While) st;
-//                        recursiveExpressionExplorer(whilee.getExpressionAt(0), backup, i, isInsideBlock);
+                        ASTList<Statement> expressions = new ASTArrayList<>();
+                        recursiveExpressionExplorer(whilee.getExpressionAt(0), expressions, 0, isInsideBlock);
+                        backup.addAll(i - 1, expressions);
+                        i += expressions.size();
                         handleWhile(whilee, null);
                     } else if (st instanceof For) {
                         For forr = (For) st;
@@ -470,9 +478,18 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
             } else if (ex instanceof ParenthesizedExpression) {
                 ParenthesizedExpression pe = (ParenthesizedExpression) ex;
                 index = recursiveExpressionExplorer(pe.getExpressionAt(0), expressions, index, isInsideBlock);
+            } else if (ex instanceof Equals) {
+                Equals equals = (Equals) ex;
+                index = recursiveExpressionExplorer(equals.getExpressionAt(0), expressions, index, isInsideBlock);
+                index = recursiveExpressionExplorer(equals.getExpressionAt(1), expressions, index, isInsideBlock);
+            } else if (ex instanceof NotEquals) {
+                NotEquals equals = (NotEquals) ex;
+                index = recursiveExpressionExplorer(equals.getExpressionAt(0), expressions, index, isInsideBlock);
+                index = recursiveExpressionExplorer(equals.getExpressionAt(1), expressions, index, isInsideBlock);
             } else if (ex instanceof UncollatedReferenceQualifier) {
                 HashSet<String> uses = new HashSet<>();
                 UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ex;
+                urq = getLeftmostURQ(urq);
                 uses.add(urq.getName());
                 index = handleAllUses(uses, expressions, index);
             } else if (ex instanceof MethodReference) {
@@ -482,6 +499,18 @@ public class AllUsesTransformation extends FajitaSourceTransformation {
                 expressions.addAll(list);
             }
             return index;
+        }
+        
+        private UncollatedReferenceQualifier getLeftmostURQ(UncollatedReferenceQualifier urq) {
+            boolean done = false;
+            while(!done && urq.getReferencePrefix() != null) {
+                if (urq.getReferencePrefix() instanceof ThisReference) {
+                    done = true;
+                } else {
+                    urq = (UncollatedReferenceQualifier) urq.getReferencePrefix();
+                }
+            }
+            return urq;
         }
 
         private int handleAssignment(Assignment ass, ASTList<Statement> body, int index, boolean isInsideBlock) {
