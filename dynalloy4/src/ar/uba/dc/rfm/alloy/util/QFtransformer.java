@@ -13,24 +13,24 @@ import ar.uba.dc.rfm.alloy.ast.expressions.ExpressionVisitor;
 
 public class QFtransformer extends ExpressionMutator {
 
-    private HashSet<AlloyVariable> varsToPrefix = new HashSet<AlloyVariable>();
-    
+	private HashSet<AlloyVariable> varsToPrefix = new HashSet<AlloyVariable>();
+	
 
-    
-    public QFtransformer(HashSet<AlloyVariable> varsToPrefix){
-        this.varsToPrefix = varsToPrefix;
-    }
-    
-    
-    public Object visit(ExprVariable ev){
-        for (AlloyVariable av : this.varsToPrefix){
-            if (ev.getVariable().equals(av)){
-                ExprConstant ec = new ExprConstant(null, "QF");
-                return new ExprJoin(ec, ev);
-            }   
-        }
-        return ev;
-            
-    }
+	
+	public QFtransformer(HashSet<AlloyVariable> varsToPrefix){
+		this.varsToPrefix = varsToPrefix;
+	}
+	
+	
+	public Object visit(ExprVariable ev){
+		for (AlloyVariable av : this.varsToPrefix){
+			if (ev.getVariable().equals(av)){
+				ExprConstant ec = new ExprConstant(null, "QF");
+				return new ExprJoin(ec, ev);
+			}	
+		}
+		return ev;
+			
+	}
 
 }

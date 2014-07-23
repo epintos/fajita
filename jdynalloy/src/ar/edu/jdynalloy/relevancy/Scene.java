@@ -21,30 +21,41 @@ package ar.edu.jdynalloy.relevancy;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JField;
 import ar.edu.jdynalloy.ast.JProgramDeclaration;
+import ar.edu.jdynalloy.xlator.JType;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 
 public class Scene {
 
 	private List<JProgramDeclaration> programs;
 	private List<JDynAlloyModule> modules;
 	private List<JField> fields;
-	
+//	private HashMap<ExprVariable, JType> varsEncodingValueOfArithmeticOperationsInContracts;
+//	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInContracts;
+
 
 	public Scene() {
 		programs = new ArrayList<JProgramDeclaration>();
 		modules = new ArrayList<JDynAlloyModule>();
 		fields = new ArrayList<JField>();
+//		varsEncodingValueOfArithmeticOperationsInContracts = new HashMap<ExprVariable, JType>();
+//		predsEncodingValueOfArithmeticOperationsInContracts = new ArrayList<AlloyFormula>();
+
 	}
 
 	public Scene(Scene scene) {
 		this.programs = new ArrayList<JProgramDeclaration>(scene.programs);
 		this.modules = new ArrayList<JDynAlloyModule>(scene.modules);
 		this.fields = new ArrayList<JField>(scene.fields);
+//		this.varsEncodingValueOfArithmeticOperationsInContracts = new HashMap<ExprVariable, JType>(scene.varsEncodingValueOfArithmeticOperationsInContracts);
+//		this.predsEncodingValueOfArithmeticOperationsInContracts = new ArrayList<AlloyFormula>(scene.predsEncodingValueOfArithmeticOperationsInContracts);
 	}
 
 	/**
@@ -67,6 +78,17 @@ public class Scene {
 	public List<JField> getFields() {
 		return Collections.unmodifiableList(this.fields);
 	}
+	
+	
+//	public HashMap<ExprVariable, JType> getVarsEncodingValueOfArithmeticOperationsInContracts(){
+//		return this.varsEncodingValueOfArithmeticOperationsInContracts;
+//	}
+//	
+//	public List<AlloyFormula> getPredsEncodingValueOfArithmeticOperationsInContracts(){
+//		return this.predsEncodingValueOfArithmeticOperationsInContracts;
+//	}
+	
+	
 	
 	public void addModule(JDynAlloyModule module) {
 		if (module == null) {

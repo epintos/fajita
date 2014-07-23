@@ -95,7 +95,7 @@ public final class JDynAlloyTranslator {
 		
 		String[] splitMethodToCheck = programToCheck.split("_");
 		programToCheck = "";
-		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
+		for (int idx = 0; idx < splitMethodToCheck.length - 5; idx++){
 			programToCheck += splitMethodToCheck[idx] + "_";
 		}
 		if (splitMethodToCheck.length >= 4){

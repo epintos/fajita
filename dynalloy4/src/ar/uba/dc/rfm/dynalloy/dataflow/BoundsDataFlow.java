@@ -129,16 +129,17 @@ public class BoundsDataFlow extends ForwardFlowAnalysis<BoundedVariable> {
 //		}
 //	}
 	
-	public Set<BoundedVariable> getFinalAlloyBounds(boolean shouldIncludeInitialBounds) {		
+	public Set<BoundedVariable> getFinalAlloyBounds() {		
 		Set<BoundedVariable> finalBounds = new LinkedHashSet<BoundedVariable>();
-		for (BoundedVariable bv : getTailsMergedFinalFlow())
+		for (BoundedVariable bv : getTailsMergedFinalFlow()) {
 			finalBounds.add(bv);
+		}
 		
-		if  (!shouldIncludeInitialBounds)
-			//Remove the initial bounds from the final bounds returned, so they are not added twice to
-			//the .als file with the alloy bounds calculated by JPG
-			for (BoundedVariable bv : initialBounds)
-				finalBounds.remove(bv);
+		//Remove the initial bounds from the final bounds returned, so they are not added twice to
+		//the .als file with the alloy bounds calculated by JPG
+		for (BoundedVariable bv : initialBounds) {
+			finalBounds.remove(bv);
+		}
 		
 		return finalBounds;
 	}

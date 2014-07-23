@@ -1,10 +1,8 @@
 package rfm.alloy;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -15,6 +13,7 @@ import kodkod.engine.fol2sat.Translation;
 import kodkod.engine.satlab.SATSolver;
 import kodkod.instance.Tuple;
 import kodkod.instance.TupleSet;
+import kodkod.util.ints.IntIterator;
 import kodkod.util.ints.IntSet;
 
 public class CoverageClauseAdder {
@@ -104,8 +103,9 @@ public class CoverageClauseAdder {
 			assert boolean_query_primary_vars != null;
 			assert boolean_query_primary_vars.size() == 2;
 
-			int primary_var_0 = boolean_query_primary_vars.iterator().next();
-			int primary_var_1 = boolean_query_primary_vars.iterator().next();
+			IntIterator it = boolean_query_primary_vars.iterator();
+			int primary_var_0 = it.next();
+			int primary_var_1 = it.next();
 
 			boolean primary_var_0_value = sat_solver.valueOf(primary_var_0);
 			boolean primary_var_1_value = sat_solver.valueOf(primary_var_1);
@@ -114,13 +114,14 @@ public class CoverageClauseAdder {
 					|| (primary_var_0_value == true && primary_var_1_value == false);
 
 			int primary_var = primary_var_0_value ? primary_var_0 : primary_var_1;
-			boolean_query_primary_variables.add(primary_var);
-			bq_valuation.put(primary_var, boolean_query_evaluation);
+			boolean_query_primary_variables.add(primary_var_0);
+			bq_valuation.put(primary_var_0, primary_var_0_value);
 			bqVariablesToPrimaryVariables.put(nameBQ(boolean_query_relation.name()), primary_var);
 
 		}
 		return bq_valuation;
 	}
+
 	
 
 	private static void print(Translation translation) {
@@ -151,26 +152,6 @@ public class CoverageClauseAdder {
 
 		Map<Integer, Boolean> bq_valuation = create_boolean_query_valuation(
 				translation, sat_solver, solution);
-//		Iterator<Relation> rel_iterator = Relation.booleanQueries();
-//		
-//		List<Integer> clause = new ArrayList<>();
-//		while (rel_iterator.hasNext()) {
-//            Relation boolean_query = (Relation) rel_iterator.next();
-//
-//            IntSet boolean_query_primary_vars = translation
-//                    .primaryVariables(boolean_query);
-//            
-//            int varnum = boolean_query_primary_vars.min();
-//            boolean value = bq_valuation.get(varnum);
-//            if (value == true) {
-//                clause.add(-varnum);
-//            }
-//        }
-//		sat_solver.addClause(buildIntArray(clause));
-		
-//		Relation r = translation.getLastRelationWithName("terminatesInTime");
-//		IntSet set = translation.primaryVariables(r);
-//		sat_solver.addClause(new int[]{-set.min()});
 		
 		if (!bq_valuation.isEmpty()) {
 
@@ -192,15 +173,7 @@ public class CoverageClauseAdder {
 		
 	}
 	
-	private int[] buildIntArray(List<Integer> list) {
-        int[] ret = new int[list.size()];
-        for(int i = 0; i < list.size(); i++) {
-            ret[i] = list.get(i);
-        }
-        return ret;
-    }
-
-    private abstract class ClauseBuilder {
+	private abstract class ClauseBuilder {
 		public abstract int[] create_clause(Map<Integer, Boolean> valuation);
 	}
 

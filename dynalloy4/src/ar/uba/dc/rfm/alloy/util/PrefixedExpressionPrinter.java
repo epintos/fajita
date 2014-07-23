@@ -41,7 +41,6 @@ public class PrefixedExpressionPrinter extends ExpressionPrinter {
 					+ variable.getVariableId().getString(), variable.getIndex());
 			return ExprVariable.buildExprVariable(prefix_variable);
 		}
-
 	}
 
 	private String variablePrefix = "QF.";

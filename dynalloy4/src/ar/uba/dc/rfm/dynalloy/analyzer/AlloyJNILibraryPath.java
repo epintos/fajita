@@ -20,7 +20,11 @@
 package ar.uba.dc.rfm.dynalloy.analyzer;
 
 import java.io.File;
+import java.net.URLClassLoader;
+import java.util.Arrays;
 import java.util.Locale;
+
+import ar.uba.dc.rfm.dynalloy.Main;
 
 import edu.mit.csail.sdg.alloy4.Err;
 import edu.mit.csail.sdg.alloy4.Util;
@@ -96,25 +100,31 @@ public final class AlloyJNILibraryPath {
 			os = "mac";
 		else if (os.startsWith("windows-"))
 			os = "windows";
+		else if (os.startsWith("linux"))
+			os = "linux";
 		String arch = System.getProperty("os.arch").toLowerCase(Locale.US).replace(' ', '-');
 		if (arch.equals("powerpc"))
 			arch = "ppc-" + os;
 		else
 			arch = arch.replaceAll("\\Ai[3456]86\\z", "x86") + "-" + os;
 		if (os.equals("mac"))
-			arch = "x86-mac"; // our pre-compiled binaries are all universal
-								// binaries
+			arch = "x86-mac"; // our pre-compiled binaries are all universal binaries
+//nrosner june 25 2013, removed code prevented amd64 architecture from being correctly determined
+//		else if (os.equals("linux"))
+//			arch = "x86-linux";
+				
 		// Find out the appropriate Alloy directory
 		final String platformBinary = alloyHome() + fs + "binary";
 		// Write a few test files
-		try {
-			(new File(platformBinary)).mkdirs();
-			Util.writeAll(platformBinary + fs + "tmp.cnf", "p cnf 3 1\n1 0\n");
-		} catch (Err er) {
-			// The error will be caught later by the "berkmin" or "spear" test
-		}
+//		try {
+//			(new File(platformBinary)).mkdirs();
+//			Util.writeAll(platformBinary + fs + "tmp.cnf", "p cnf 3 1\n1 0\n");
+//		} catch (Err er) {
+//			// The error will be caught later by the "berkmin" or "spear" test
+//		}
 		// Copy the platform-dependent binaries
-		Util.copy(true, false, platformBinary, arch + "/libminisat.so", arch + "/libminisatx1.so", arch + "/libminisat.jnilib", arch + "/libminisatprover.so",
+
+		Util.copy(true, false, platformBinary, arch + "/libminisat.so", arch + "/libminisatx1.so", arch + "/libminisat220.jnilib", arch + "/libminisat220.so", arch + "/libminisat.jnilib", arch + "/libminisatprover.so",
 				arch + "/libminisatproverx1.so", arch + "/libminisatprover.jnilib", arch + "/libzchaff.so", arch + "/libzchaffx1.so", arch
 						+ "/libzchaff.jnilib", arch + "/berkmin", arch + "/spear");
 		Util.copy(false, false, platformBinary, arch + "/minisat.dll", arch + "/minisatprover.dll", arch + "/zchaff.dll", arch + "/berkmin.exe", arch

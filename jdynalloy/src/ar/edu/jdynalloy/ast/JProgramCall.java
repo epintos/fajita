@@ -133,7 +133,7 @@ public final class JProgramCall extends JStatement implements IProgramCall {
 
 	public AlloyExpression getReceiver() {
 		if (this.isStatic())
-			throw new IllegalStateException("cannot return receiver in a static program call");
+			throw new IllegalStateException("cannot return receiver in a call to a static program");
 		return this.arguments.get(0);
 	}
 

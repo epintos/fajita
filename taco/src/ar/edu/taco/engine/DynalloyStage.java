@@ -21,12 +21,17 @@
 package ar.edu.taco.engine;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
+import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.dynalloy.DynalloyToAlloyManager;
 import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.xlator.SpecContext;
 
@@ -42,6 +47,10 @@ public class DynalloyStage implements ITacoStage {
 	
 	private DynalloyToAlloyManager dynalloyToAlloyManager;
 	
+//	private AlloyTyping varsEncodingValueOfArithmeticOperationsInContracts;
+	
+//	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInContracts;
+	
 	/**
 	 * This method returns the SpecContext used by the last stage execution
 	 * or null if the stage has never been executed.
@@ -50,8 +59,10 @@ public class DynalloyStage implements ITacoStage {
 		return specContext;
 	}
 
-	public DynalloyStage(List<String> inputDynalloyModulesFileNames) {
+	public DynalloyStage(List<String> inputDynalloyModulesFileNames/*, AlloyTyping vars, List<AlloyFormula> preds*/) {
 		this.inputDynalloyModulesFileNames = inputDynalloyModulesFileNames;
+//		this.varsEncodingValueOfArithmeticOperationsInContracts = vars;
+//		this.predsEncodingValueOfArithmeticOperationsInContracts = preds;
 	}
 
 	@Override
@@ -66,11 +77,22 @@ public class DynalloyStage implements ITacoStage {
 			JavaClassNameNormalizer classToCheckNormalizer = new JavaClassNameNormalizer(TacoConfigurator.getInstance().getString(
 					TacoConfigurator.CLASS_TO_CHECK_FIELD));
 
-			String assertion_id = "check_" + classToCheckNormalizer.getQualifiedClassName() + "_"
+			String className = classToCheckNormalizer.getQualifiedClassName();
+			String[] splitClassName = className.split("_");
+			className = "";
+			for (int idx = 0; idx < splitClassName.length - 2; idx++){
+				className += splitClassName[idx] + "_";
+			}
+			if (splitClassName.length > 1){
+				className += splitClassName[splitClassName.length-2] + "Instrumented_";
+			}
+			className += splitClassName[splitClassName.length-1];
+			
+			String assertion_id = "check_" + className + "_"
 					+ TacoConfigurator.getInstance().getString(TacoConfigurator.METHOD_TO_CHECK_FIELD);
 
 			dynalloyToAlloyManager.setSourceJDynAlloyModules(this.src_jdynalloy_modules);
-			specContext = dynalloyToAlloyManager.process_dynalloy_module(dynalloy_filename , alloy_filename, assertion_id);
+			specContext = dynalloyToAlloyManager.process_dynalloy_module(dynalloy_filename , alloy_filename, assertion_id/*, this.varsEncodingValueOfArithmeticOperationsInContracts, this.predsEncodingValueOfArithmeticOperationsInContracts*/);
 	}
 
 	public String get_alloy_filename() {

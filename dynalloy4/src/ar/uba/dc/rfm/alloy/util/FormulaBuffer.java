@@ -65,6 +65,12 @@ public class FormulaBuffer {
 		replaceMap = new HashMap<AlloyVariable, AlloyVariable>();
 		f = _f;
 	}
+	
+//	public void removeIdx(VariableId varId){
+//		int currIdx = Integer.decode((varId.getString().substring(varId.getString().lastIndexOf("_")+1, varId.getString().length())));
+//		String varIdWithoutIndex = varId.getString().substring(0,varId.getString().lastIndexOf("_"));
+//		replaceMap.put(new AlloyVariable(varIdWithoutIndex, currIdx), new AlloyVariable(varIdWithoutIndex,currIdx));
+//	}
 
 	public void cojoinEquals(VariableId varId, int i1, int i2) {
 		eqs.add(buildEqualsFormula(varId, i1, i2));

@@ -32,17 +32,21 @@ import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
  */
 public abstract class VarSubstitutor extends ExpressionMutator {
 
-	
+
 	public Object visit(ExprVariable n) {
 		AlloyVariable variable = n.getVariable();
 		AlloyExpression expr = getExpr(variable);
-		if (expr != null) {
+		if (expr != null && variable.isMutable()) {
 			ExpressionCloner cloner = new ExpressionCloner();
 			AlloyExpression cloned_expr = (AlloyExpression) expr.accept(cloner);
 			return cloned_expr;
 		} else {
-			doWhenVarNotFound(n);
-			return new ExprVariable(n.getVariable());
+			if (expr == null){
+				doWhenVarNotFound(n);
+				return new ExprVariable(n.getVariable());
+			} else {
+				return n;
+			}
 		}
 	}
 

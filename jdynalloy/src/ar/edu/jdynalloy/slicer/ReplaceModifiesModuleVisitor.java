@@ -46,127 +46,127 @@ import ar.edu.jdynalloy.ast.JWhile;
 
 class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 
-    @Override
-    public Object visit(JSpecCase node) {
-        return node;
-    }
+	@Override
+	public Object visit(JSpecCase node) {
+		return node;
+	}
 
 
-    @Override
-    public Object visit(JHavoc n) {
-        return n;
-    }
+	@Override
+	public Object visit(JHavoc n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JAssert n) {
-        return n;
-    }
+	@Override
+	public Object visit(JAssert n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JAssignment n) {
-        return n;
-    }
+	@Override
+	public Object visit(JAssignment n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JBlock n) {
-        return n;
-    }
+	@Override
+	public Object visit(JBlock n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JIfThenElse n) {
-        return n;
-    }
+	@Override
+	public Object visit(JIfThenElse n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JSkip n) {
-        return n;
-    }
+	@Override
+	public Object visit(JSkip n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JWhile n) {
-        return n;
-    }
+	@Override
+	public Object visit(JWhile n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JCreateObject n) {
-        return n;
-    }
+	@Override
+	public Object visit(JCreateObject n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JVariableDeclaration n) {
-        return n;
-    }
+	@Override
+	public Object visit(JVariableDeclaration n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JDynAlloyModule node) {
-        return node;
-    }
+	@Override
+	public Object visit(JDynAlloyModule node) {
+		return node;
+	}
 
-    @Override
-    public Object visit(JProgramCall n) {
-        return n;
-    }
+	@Override
+	public Object visit(JProgramCall n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JProgramDeclaration node) {
+	@Override
+	public Object visit(JProgramDeclaration node) {
 
-        String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
-        String qualifiedMethodName = node.getSignatureId() + "_" + node.getProgramId() + "_";
-        if (methodToCheck.startsWith(qualifiedMethodName)) {
+		String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
+		String qualifiedMethodName = node.getSignatureId() + "_" + node.getProgramId() + "_";
+		if (methodToCheck.startsWith(qualifiedMethodName)) {
 
-            // dynJAlloyBinding.
-            return new JProgramDeclaration(node.isVirtual(), node.getSignatureId(), node.getProgramId(), 
-                    node.getParameters(), node.getSpecCases(), node.getBody(), null, null);
-        } else {
-            return node;
-        }
+			// dynJAlloyBinding.
+			return new JProgramDeclaration(node.isVirtual(), node.getSignatureId(), node.getProgramId(), 
+					node.getParameters(), node.getSpecCases(), node.getBody(), null, null);
+		} else {
+			return node;
+		}
 
-    }
+	}
 
-    @Override
-    public Object visit(JSignature node) {
-        return node;
-    }
+	@Override
+	public Object visit(JSignature node) {
+		return node;
+	}
 
-    @Override
-    public Object visit(JField node) {
-        return node;
-    }
+	@Override
+	public Object visit(JField node) {
+		return node;
+	}
 
-    @Override
-    public Object visit(JAssume n) {
-        return n;
-    }
+	@Override
+	public Object visit(JAssume n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JLoopInvariant n) {
-        return n;
-    }
+	@Override
+	public Object visit(JLoopInvariant n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JObjectInvariant n) {
-        return n;
-    }
+	@Override
+	public Object visit(JObjectInvariant n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JObjectConstraint n) {
-        return n;
-    }
+	@Override
+	public Object visit(JObjectConstraint n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JRepresents n) {
-        return n;
-    }
+	@Override
+	public Object visit(JRepresents n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JPostcondition n) {
-        return n;
-    }
+	@Override
+	public Object visit(JPostcondition n) {
+		return n;
+	}
 
-    @Override
-    public Object visit(JPrecondition n) {
-        return n;
-    }
+	@Override
+	public Object visit(JPrecondition n) {
+		return n;
+	}
 
 
 }

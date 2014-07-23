@@ -34,6 +34,12 @@ public class ExprVariable extends AlloyExpression {
 		return new ExprVariable(new AlloyVariable(variableId));
 	}
 	
+	public static ExprVariable buildNonMutableExprVariable(String variableId) {
+		AlloyVariable av = AlloyVariable.buildNonMutableAlloyVariable(variableId);
+		return new ExprVariable(av);
+	}
+	
+	
 	public static ExprVariable buildExprVariable(AlloyVariable v) {
 		return new ExprVariable(v);
 	}
@@ -43,8 +49,19 @@ public class ExprVariable extends AlloyExpression {
         return v.visit(this);
     }
 
+	
     private final AlloyVariable var;
 
+    private boolean comesFromContract = false;
+    
+    public boolean isVariableFromContract(){
+    	return var.isVariableFromContract();
+    }
+    
+    public void setIsVariableFromContract(){
+    	var.setIsVariableFromContract();
+    }
+    
     public ExprVariable(AlloyVariable _var) {
         var = _var;
     }

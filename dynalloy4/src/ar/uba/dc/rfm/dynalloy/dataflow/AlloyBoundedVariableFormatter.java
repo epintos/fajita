@@ -29,10 +29,6 @@ public class AlloyBoundedVariableFormatter extends BoundedVariableFormatter {
 	
 	@Override
 	public void output(Set<BoundedVariable> bounds) {
-		System.out.println(getOutput(bounds));
-	}
-	
-	protected String getOutput(Set<BoundedVariable> bounds) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("//Dataflow analysis bounds:\n\n");
 		
@@ -41,7 +37,7 @@ public class AlloyBoundedVariableFormatter extends BoundedVariableFormatter {
 			builder.append("\n\n");
 		}
 		
-		return builder.toString();
+		System.out.println(builder.toString());
 	}
 	
 	private String toAlloyFormat(BoundedVariable bv) {

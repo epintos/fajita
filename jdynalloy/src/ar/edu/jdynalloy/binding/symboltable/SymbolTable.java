@@ -97,7 +97,7 @@ public class SymbolTable implements Cloneable {
 					return this.fieldsBinding.get(fd);
 			}
 			
-			throw new JDynAlloySemanticException("Field doesn't exists: " + moduleName + "." + fieldName);
+			throw new JDynAlloySemanticException("Field doesn't exist: " + moduleName + "." + fieldName);
 		}
 		return this.fieldsBinding.get(fieldDescriptor);		
 	}

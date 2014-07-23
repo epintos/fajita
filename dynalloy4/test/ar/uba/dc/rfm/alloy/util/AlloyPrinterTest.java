@@ -22,17 +22,12 @@ package ar.uba.dc.rfm.alloy.util;
 import static org.junit.Assert.*;
 
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.org.apache.xml.internal.serializer.EmptySerializer;
-
-import ar.uba.dc.rfm.alloy.AlloyCheckCommand;
 import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.AlloyAssertion;

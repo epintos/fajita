@@ -121,30 +121,30 @@ public class JDynAlloyParserManager {
 	}
 
 	public static InputStreamReader createReaderFromResource(
-            String resourceName) {
-        InputStreamReader inputStreamReader;
+			String resourceName) {
+		InputStreamReader inputStreamReader;
 
-        String resourceNameWithSlashes = resourceName;
-        int lastDot = resourceNameWithSlashes.lastIndexOf('.');
-        if (lastDot >= 0) {
-            String extension = resourceNameWithSlashes.substring(lastDot + 1);
-            resourceNameWithSlashes = resourceNameWithSlashes.substring(0,
-                    lastDot);
-            resourceNameWithSlashes.replace('.', '/');
-            resourceNameWithSlashes = resourceNameWithSlashes + "." + extension;
-        } else {
-            resourceNameWithSlashes.replace('.', '/');
-        }
+		String resourceNameWithSlashes = resourceName;
+		int lastDot = resourceNameWithSlashes.lastIndexOf('.');
+		if (lastDot >= 0) {
+			String extension = resourceNameWithSlashes.substring(lastDot + 1);
+			resourceNameWithSlashes = resourceNameWithSlashes.substring(0,
+					lastDot);
+			resourceNameWithSlashes.replace('.', '/');
+			resourceNameWithSlashes = resourceNameWithSlashes + "." + extension;
+		} else {
+			resourceNameWithSlashes.replace('.', '/');
+		}
 
-        InputStream inputStream = JDynAlloyParserManager.class.getClassLoader()
-                .getResourceAsStream(resourceName);
-        if (inputStream == null) {
-            throw new JDynAlloyParsingException("Resource not found: "
-                    + resourceName);
-        }
-        inputStreamReader = new InputStreamReader(inputStream);
-        return inputStreamReader;
-    }
+		InputStream inputStream = JDynAlloyParserManager.class.getClassLoader()
+				.getResourceAsStream(resourceName);
+		if (inputStream == null) {
+			throw new JDynAlloyParsingException("Resource not found: "
+					+ resourceName);
+		}
+		inputStreamReader = new InputStreamReader(inputStream);
+		return inputStreamReader;
+	}
 
 	private static JDynAlloyParser createParser(Reader reader) {
 		JDynAlloyParser parser;

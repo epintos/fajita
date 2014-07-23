@@ -1,5 +1,7 @@
 package ar.edu.jdynalloy.ast;
 
+import static ar.uba.dc.rfm.alloy.ast.expressions.ExprFunction.buildExprFunction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,10 @@ import ar.edu.jdynalloy.factory.JSignatureFactory;
 import ar.edu.jdynalloy.xlator.JType;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprJoin;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprFunction;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.edu.jdynalloy.factory.DynalloyFactory;
+
 
 public class JavaPrimitiveIntValueArrayFactory {
 
@@ -16,21 +21,44 @@ public class JavaPrimitiveIntValueArrayFactory {
 			AlloyExpression array) {
 
 		if (array_type.equals(JSignatureFactory.INT_ARRAY_TYPE)) {
-			return ExprJoin.join(array, JExpressionFactory.INT_ARRAY_LENGTH);
+			return buildExprFunction("arrayLength", array, DynalloyFactory.INT_ARRAY_LENGTH_FIELD_EXPRESSION);
 		} else if (array_type.equals(JSignatureFactory.OBJECT_ARRAY_TYPE)) {
-			return ExprJoin.join(array, JExpressionFactory.OBJECT_ARRAY_LENGTH);
+			return buildExprFunction("arrayLength", array, DynalloyFactory.OBJECT_ARRAY_LENGTH_FIELD_EXPRESSION);
 		} else
 			throw new RuntimeException("Unsupported array type length");
 	}
 
+
+	public static AlloyExpression primed_array_length(JType array_type,
+			AlloyExpression array) {
+
+		if (array_type.equals(JSignatureFactory.INT_ARRAY_TYPE)) {
+			return buildExprFunction("arrayLength", array, DynalloyFactory.PRIMED_INT_ARRAY_LENGTH_FIELD_EXPRESSION);
+		} else if (array_type.equals(JSignatureFactory.OBJECT_ARRAY_TYPE)) {
+			return buildExprFunction("arrayLength", array, DynalloyFactory.PRIMED_OBJECT_ARRAY_LENGTH_FIELD_EXPRESSION);
+		} else
+			throw new RuntimeException("Unsupported array type length");
+	}
+
+	
 	public static AlloyExpression array_access(JType array_type,
 			AlloyExpression array, AlloyExpression index) {
 		if (array_type.equals(JSignatureFactory.INT_ARRAY_TYPE)) {
-			return ExprJoin.join(index, ExprJoin.join(array,
-					JExpressionFactory.INT_ARRAY_CONTENTS_EXPRESSION));
+			return buildExprFunction("arrayAccess", array, DynalloyFactory.INT_ARRAY_CONTENTS_FIELD_EXPRESSION, index);
 		} else if (array_type.equals(JSignatureFactory.OBJECT_ARRAY_TYPE)) {
-			return ExprJoin.join(index, ExprJoin.join(array,
-					JExpressionFactory.OBJECT_ARRAY_CONTENTS_EXPRESSION));
+			return buildExprFunction("arrayAccess", array, DynalloyFactory.OBJECT_ARRAY_CONTENTS_FIELD_EXPRESSION, index);
+		} else
+			throw new RuntimeException("Unsupported read array type :"
+					+ array_type);
+	}
+
+	
+	public static AlloyExpression primed_array_access(JType array_type,
+			AlloyExpression array, AlloyExpression index) {
+		if (array_type.equals(JSignatureFactory.INT_ARRAY_TYPE)) {
+			return buildExprFunction("arrayAccess", array, DynalloyFactory.PRIMED_INT_ARRAY_CONTENTS_FIELD_EXPRESSION, index);
+		} else if (array_type.equals(JSignatureFactory.OBJECT_ARRAY_TYPE)) {
+			return buildExprFunction("arrayAccess", array, DynalloyFactory.PRIMED_OBJECT_ARRAY_CONTENTS_FIELD_EXPRESSION, index);
 		} else
 			throw new RuntimeException("Unsupported read array type :"
 					+ array_type);
@@ -120,23 +148,26 @@ public class JavaPrimitiveIntValueArrayFactory {
 
 	}
 
-	private static ExprVariable getArrayContents(AlloyExpression array_access) {
-		ExprJoin index_join = (ExprJoin) array_access;
-		ExprJoin array_join = (ExprJoin) index_join.getRight();
-		ExprVariable array_contents = (ExprVariable) array_join.getRight();
-		return array_contents;
-	}
 
 	private static AlloyExpression getArrayExpression(
 			AlloyExpression array_access) {
-		ExprJoin index_join = (ExprJoin) array_access;
-		ExprJoin array_join = (ExprJoin) index_join.getRight();
-		return array_join.getLeft();
+		ExprFunction access_function = (ExprFunction) array_access;
+		AlloyExpression array_object = access_function.getParameters().get(0);
+		return array_object;
+	}
+	
+	
+	private static ExprVariable getArrayContents(AlloyExpression array_access) {
+		ExprFunction access_function = (ExprFunction) array_access;
+		ExprVariable array_contents = (ExprVariable) access_function.getParameters().get(1);
+		return array_contents;
 	}
 
+
 	private static AlloyExpression getArrayIndex(AlloyExpression array_access) {
-		ExprJoin index_join = (ExprJoin) array_access;
-		return index_join.getLeft();
+		ExprFunction access_function = (ExprFunction) array_access;
+		AlloyExpression array_index = access_function.getParameters().get(2); 
+		return array_index;
 	}
 
 }

@@ -81,14 +81,14 @@ public final class Reporter extends A4Reporter {
 
     @Override
     public void resultSAT(Object command, long solvingTime, Object solution) {
-        reportDatum("Outcome", "SAT");
+        reportDatum("Outcome", "SAT: A failure has been detected.");
         reportDatum("Solving time", solvingTime);
 
     }
 
     @Override
     public void resultUNSAT(Object command, long solvingTime, Object solution) {
-        reportDatum("Outcome", "UNSAT");
+        reportDatum("Outcome", "UNSAT: No failures were detected within the given scopes.");
         reportDatum("Solving time", solvingTime);
 
     }

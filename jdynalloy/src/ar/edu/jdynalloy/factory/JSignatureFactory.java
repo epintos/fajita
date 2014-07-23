@@ -35,6 +35,9 @@ public abstract class JSignatureFactory {
 	public static final JType ALLOY_INT = JType.parse("Int");
 	
 	public static final JType JAVA_PRIMITIVE_INTEGER_VALUE = JType.parse("JavaPrimitiveIntegerValue");
+	
+	public static final JSignature ALLOY_SEQ = JSignatureFactory
+			.buildPrimitive("Int -> univ");
 
 	public static final JType JAVA_PRIMITIVE_LONG_VALUE = JType.parse("JavaPrimitiveLongValue");
 
@@ -42,11 +45,15 @@ public abstract class JSignatureFactory {
 
 	public static final JType OBJECT_ARRAY_TYPE = JType.parse("java_lang_ObjectArray+null");
 
+//	public static final JType SYSTEM_ARRAY_TYPE = JType.parse("java_lang_SystemArray+null");
+
 	public static final JType JAVA_LANG_OBJECT_TYPE = JType.parse("java_lang_Object+null");
 
 	public static final JType JAVA_PRIMITIVE_FLOAT_VALUE = JType.parse("JavaPrimitiveFloatValue");
 
 	public static final JType BOOLEAN_TYPE = JType.parse("boolean");
+	
+	public static final JType JAVA_UTIL_SET_TYPE = JType.parse("java_util_Set");
 
 	public static JSignature buildClass(String className, String superClassName) {
 		return buildClass(false, className, new JDynAlloyTyping(),

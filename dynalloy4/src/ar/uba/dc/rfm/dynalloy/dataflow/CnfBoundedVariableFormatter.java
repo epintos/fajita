@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import sun.rmi.server.Activation.DefaultExecPolicy;
 
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
 import ar.uba.dc.rfm.dynalloy.ast.ProgramDeclaration;

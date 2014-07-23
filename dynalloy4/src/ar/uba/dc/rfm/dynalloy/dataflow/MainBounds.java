@@ -65,8 +65,7 @@ public class MainBounds {
 			}
 		}
 					
-		boolean shouldIncludeInitialBounds = cnfOutput;
-		Set<BoundedVariable> finalBounds = getDataflowBounds(dynalloyProgramId, dynalloyFile, boundsFile, boundsSpecFile, shouldIncludeInitialBounds);
+		Set<BoundedVariable> finalBounds = getDataflowBounds(dynalloyProgramId, dynalloyFile, boundsFile, boundsSpecFile);
 		
 		BoundedVariableFormatter formatter;
 		if (cnfOutput)
@@ -78,7 +77,7 @@ public class MainBounds {
 		formatter.output(formatter.format(finalBounds));
 	}
 	
-	private static Set<BoundedVariable> getDataflowBounds(String programId, String dynalloyFilePath, String initialBoundsFilePath, String initialBoundsSpecFilePath, boolean shouldIncludeInitialBounds) throws RecognitionException, TokenStreamException, IOException, AssertionNotFound {		
+	private static Set<BoundedVariable> getDataflowBounds(String programId, String dynalloyFilePath, String initialBoundsFilePath, String initialBoundsSpecFilePath) throws RecognitionException, TokenStreamException, IOException, AssertionNotFound {		
 		ctx = MainCommon.translateModule(dynalloyFilePath);
 		
 		mainProgram = ctx.getProgram(null, programId);
@@ -96,26 +95,26 @@ public class MainBounds {
 		CfgVarCollector varCollector = new CfgVarCollector(cfg, ctx.getMapping());
 		defaultBounds = new DefaultBoundsCalculator(parser, varCollector);
 		
-		Set<BoundedVariable> calculatedBounds = analysis.getFinalAlloyBounds(shouldIncludeInitialBounds);
+		Set<BoundedVariable> calculatedBounds = analysis.getFinalAlloyBounds();
 		
-//		int removedPrimaryVars = 0;
-//		int exceptions = 0;
-//		HashMap<ExprVariable, String> varTypes = defaultBounds.getVarTypes();
-//		for (BoundedVariable bv : calculatedBounds) {
-//			String type = varTypes.get(bv.getVariable());
-//			if (type.contains("Throwable") || type.contains("Exception"))
-//				exceptions++;
-//			int original = parser.getDefaultBoundsForType(type).size();
-//			removedPrimaryVars += original - bv.getBounds().size();
-//		}
-//		System.out.println(String.format("//Removed primary vars: %d (%d exceptions)", removedPrimaryVars, exceptions));
+		int removedPrimaryVars = 0;
+		int exceptions = 0;
+		HashMap<ExprVariable, String> varTypes = defaultBounds.getVarTypes();
+		for (BoundedVariable bv : calculatedBounds) {
+			String type = varTypes.get(bv.getVariable());
+			if (type.contains("Throwable") || type.contains("Exception"))
+				exceptions++;
+			int original = parser.getDefaultBoundsForType(type).size();
+			removedPrimaryVars += original - bv.getBounds().size();
+		}
+		System.out.println(String.format("//Removed primary vars: %d (%d exceptions)", removedPrimaryVars, exceptions));
 		
 		return calculatedBounds;
 	}
 	
 	//For the tests...
 	public static Set<BoundedVariable> getAlloyDataflowBounds(String programId, String dynalloyFilePath, String initialBoundsFilePath, String initialBoundsSpecFilePath) throws RecognitionException, TokenStreamException, IOException, AssertionNotFound {
-		Set<BoundedVariable> bounds = getDataflowBounds(programId, dynalloyFilePath, initialBoundsFilePath, initialBoundsSpecFilePath, false);
+		Set<BoundedVariable> bounds = getDataflowBounds(programId, dynalloyFilePath, initialBoundsFilePath, initialBoundsSpecFilePath);
 		BoundedVariableFormatter formatter = new AlloyBoundedVariableFormatter(ctx, mainProgram, defaultBounds);
 		Set<BoundedVariable> formattedBounds = formatter.format(bounds); 
 		return formattedBounds;

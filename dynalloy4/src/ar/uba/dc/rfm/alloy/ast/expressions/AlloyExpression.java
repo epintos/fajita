@@ -23,7 +23,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ar.uba.dc.rfm.alloy.AlloyVariable;
-import static ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable.buildExprVariable;
 
 /**
  * @author jgaleotti

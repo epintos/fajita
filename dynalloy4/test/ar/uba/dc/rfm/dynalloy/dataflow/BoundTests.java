@@ -6,12 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.LinkedBlockingDeque;
-
 import org.junit.Test;
-
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class BoundTests {
 

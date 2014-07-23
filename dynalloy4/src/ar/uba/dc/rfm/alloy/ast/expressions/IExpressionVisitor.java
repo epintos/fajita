@@ -19,6 +19,8 @@
  */
 package ar.uba.dc.rfm.alloy.ast.expressions;
 
+import edu.mit.csail.sdg.alloy4compiler.ast.ExprBinary;
+
 /**
  * @author jgaleotti
  *

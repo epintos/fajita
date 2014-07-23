@@ -66,7 +66,7 @@ public class JFormulaMutator extends FormulaMutator implements
 		List<String> names = new LinkedList<String>();
 		List<AlloyExpression> exprs = new LinkedList<AlloyExpression>();
 		for (String name : n.getNames()) {
-			AlloyVariable v = new AlloyVariable(name);
+			AlloyVariable v = AlloyVariable.buildNonMutableAlloyVariable(name);
 			boundVariables.peek().add(v);
 			AlloyExpression setOf = n.getSetOf(name);
 			AlloyExpression expr = (AlloyExpression) setOf.accept(this

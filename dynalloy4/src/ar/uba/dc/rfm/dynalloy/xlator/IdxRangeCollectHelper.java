@@ -34,7 +34,7 @@ class IdxRangeCollectHelper {
 		for (AlloyVariable v : visitor.getVariables()) {
 			VariableId varId = v.getVariableId();
 			int idx = v.getIndex();
-			if (ranges.contains(varId)) {
+			if (ranges.contains(varId) && v.isMutable()) {
 				int begin = ranges.getIdxRange(varId).getBegin();
 				int end = ranges.getIdxRange(varId).getEnd();
 				if (idx < begin) {
@@ -43,7 +43,8 @@ class IdxRangeCollectHelper {
 					ranges.addIdxRange(varId, begin, idx);
 				}
 			} else {
-				ranges.addIdxRange(varId, idx, idx);
+				if (v.isMutable())
+					ranges.addIdxRange(varId, idx, idx);
 			}
 		} 
 		return ranges;

@@ -124,6 +124,8 @@ public class PredicateCallCollectorVisitor extends JFormulaVisitor {
 	    this.symbolTable.insertLocal(new VariableId(aName), jType);
 	}
 	Vector<Object> resultValue = (Vector<Object>) super.visit(node);
+	
+	//Bug: scope closed, but pending arithmetic predicate calls exist that will fall outside the scope.
 	this.symbolTable.endScope();
 	return resultValue;
     }

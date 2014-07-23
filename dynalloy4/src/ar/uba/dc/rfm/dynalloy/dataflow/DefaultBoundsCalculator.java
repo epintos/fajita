@@ -50,12 +50,7 @@ public class DefaultBoundsCalculator {
 		BoundedVariable bvComplement = new BoundedVariable(bv.getVariable());
 		HashMap<ExprVariable, String> varTypes = getVarTypes();
 		String bvType = varTypes.get(bv.getVariable());
-		Set<Bound> allBounds;
-		if (bvType != null)
-			allBounds = parser.getDefaultBoundsForType(bvType);
-		else
-			allBounds = parser.getDefaultBoundsForType("Object");
-		
+		Set<Bound> allBounds = parser.getDefaultBoundsForType(bvType);
 		for (Bound bound : allBounds)
 			if (!bv.getBounds().contains(bound))
 				bvComplement.getBounds().add(bound);

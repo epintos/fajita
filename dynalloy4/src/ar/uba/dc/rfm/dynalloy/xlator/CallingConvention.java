@@ -65,6 +65,8 @@ class CallingConvention {
 		@Override
 		protected AlloyExpression getExpr(AlloyVariable variable) {
 			AlloyVariable v;
+			if (variable.getVariableId().getString().contains("SK"))
+				System.out.println("STOPCallingConvention");
 			if (variable.isPreStateVar()) {
 				v = new AlloyVariable(variable.getVariableId(),
 						IdxRange.SUBINDEX_0);
@@ -79,12 +81,12 @@ class CallingConvention {
 	}
 
 	public List<AlloyExpression> instantiate(List<AlloyExpression> actualParams) {
-		CallingConventionResult result = instantiate(actualParams, null);
+;		CallingConventionResult result = instantiate(actualParams, null);
 		return result.getParameters();
 	}
 
 	public CallingConventionResult instantiate(
-			List<AlloyExpression> actualParams, String tempPrefix) {
+		List<AlloyExpression> actualParams, String tempPrefix) {
 		List<AlloyExpression> parameterList = new LinkedList<AlloyExpression>();
 		AlloyTyping locals = new AlloyTyping();
 
@@ -93,11 +95,13 @@ class CallingConvention {
 			AlloyExpression e = actualParams.get(i);
 			VariableId f = formalParameters.get(i);
 			IdxRange r = ranges.getIdxRange(f);
+			
 			if (r != null) {
 				int low = r.getBegin();
 				int high = r.getEnd();
+//mfrias-mffrias 12-04-2013: bug left side of update must be a variable			
 				for (int j = low; j <= high; j++) {
-					if (j != 0 && !(e instanceof ExprVariable))
+					if (j != low && !(e instanceof ExprVariable))
 						throw new RuntimeException(
 								"The left-hand side of an update must be variable");
 
@@ -109,7 +113,7 @@ class CallingConvention {
 							.accept(indexAppender);
 					parameterList.add(x);
 				}
-			}
+			}	
 		}
 		// locals
 		for (int i = 0; i < localVariables.size(); i++) {

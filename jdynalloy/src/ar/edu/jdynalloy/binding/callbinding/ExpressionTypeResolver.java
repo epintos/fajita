@@ -91,16 +91,23 @@ public class ExpressionTypeResolver extends ExpressionVisitor {
 		Set<String> integerAlloyFunctionsSet = new HashSet<String>();
 		Collections.addAll(integerAlloyFunctionsSet, "add", "sub", "mul",
 				"div", "rem", "negate", "fun_list_size", "arrayLength",
-				"fun_map_size", "fun_set_size","sshr");
+				"fun_map_size", "fun_set_size","sshr", 
+				"fun_alloy_int_java_util_set_size");
 
 		Set<String> booleanAlloyFunctionsSet = new HashSet<String>();
 		Collections.addAll(booleanAlloyFunctionsSet, "fun_list_empty",
 				"fun_set_contains", "fun_map_is_empty", "fun_map_contains_key",
-				"fun_not_empty_set", "fun_set_is_empty", "fun_map_clear");
+				"fun_not_empty_set", "fun_set_is_empty", "fun_map_clear", 
+				"fun_java_util_set_contains");
 
 		Set<String> univAlloyFunctionsSet = new HashSet<String>();
 		Collections.addAll(univAlloyFunctionsSet, "fun_list_get",
-				"fun_set_get", "fun_map_remove", "fun_map_put", "fun_map_get");
+				"fun_set_get", "fun_map_remove", "fun_map_put", "fun_map_get"
+				);
+		
+		Set<String> seqFunctionsSet = new HashSet<String>();
+		Collections.addAll(seqFunctionsSet,
+				 "fun_list_add", "fun_list_remove");
 
 		Set<String> javaPrimitiveIntegerValueFunctionsSet = new HashSet<String>();
 		Collections.addAll(javaPrimitiveIntegerValueFunctionsSet,
@@ -111,7 +118,8 @@ public class ExpressionTypeResolver extends ExpressionVisitor {
 				"fun_java_primitive_integer_value_mul",
 				"fun_java_primitive_integer_value_rem",
 				"fun_java_primitive_integer_value_size_of",
-				"fun_java_primitive_integer_value_sshr");
+				"fun_java_primitive_integer_value_sshr",
+				"fun_java_primitive_integer_value_java_util_set_size");
 
 		Set<String> javaPrimitiveLongValueFunctionsSet = new HashSet<String>();
 		Collections.addAll(javaPrimitiveIntegerValueFunctionsSet,
@@ -133,6 +141,8 @@ public class ExpressionTypeResolver extends ExpressionVisitor {
 			return JSignatureFactory.INT.getType();
 		} else if (booleanAlloyFunctionsSet.contains(n.getFunctionId())) {
 			return JSignatureFactory.BOOLEAN.getType();
+		} else if (seqFunctionsSet.contains(n.getFunctionId())){	
+			return JSignatureFactory.ALLOY_SEQ.getType();
 		} else if (univAlloyFunctionsSet.contains(n.getFunctionId())) {
 			return new JType("java_lang_Object");
 		} else if (n.getFunctionId().equalsIgnoreCase(
@@ -168,6 +178,8 @@ public class ExpressionTypeResolver extends ExpressionVisitor {
 			return JSignatureFactory.BOOLEAN.getType();			
 		} else if (n.getFunctionId().equalsIgnoreCase("And")) {
 			return JSignatureFactory.BOOLEAN.getType();			
+		} else if (n.getFunctionId().equalsIgnoreCase("fun_java_lang_float_isNaN")) {
+			return JSignatureFactory.BOOLEAN.getType();
 		} else {
 			// other functions aren't implemented
 			throw new JDynAlloyNotImplementedYetException(

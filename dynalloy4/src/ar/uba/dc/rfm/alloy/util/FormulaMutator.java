@@ -132,13 +132,14 @@ public class FormulaMutator extends FormulaVisitor {
 		return newFormula;
 	}
 
-	public Object visit(QuantifiedFormula qf) {
+	
+	public Object visit(QuantifiedFormula qf){
 		AlloyFormula af = qf.getFormula();
-		AlloyFormula result = (AlloyFormula) af.accept(this);
-		return new QuantifiedFormula(qf.getOperator(), qf.getNames(),
-				qf.getSets(), result);
+		AlloyFormula result = (AlloyFormula)af.accept(this);
+		return new QuantifiedFormula(qf.getOperator(), qf.getNames(), qf.getSets(), result);
 	}
-
+	
+	
 	public ExpressionMutator getExpressionMutator() {
 		return exprMutator;
 	}

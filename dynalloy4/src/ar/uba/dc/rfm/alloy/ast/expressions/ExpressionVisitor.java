@@ -23,6 +23,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
+import edu.mit.csail.sdg.alloy4compiler.ast.ExprBinary;
+
 import ar.uba.dc.rfm.alloy.ast.formulas.FormulaVisitor;
 import ar.uba.dc.rfm.alloy.ast.formulas.IFormulaVisitor;
 
@@ -166,5 +168,7 @@ public class ExpressionVisitor implements IExpressionVisitor {
 		result.add(result_expression);
 		return result;
 	}
+	
+	
 
 }
