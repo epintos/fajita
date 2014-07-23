@@ -55,7 +55,8 @@ public class FajitaConfiguration {
 		BRANCH_COVERAGE("branch"),
 		DUAL_CLASS_BRANCH_COVERAGE("dual"),
 		ALL_DEF_USES("uses"),
-		MCC("mcc");
+		MCC("mcc"),
+		PATH("path");
 		
 		private String value;
 

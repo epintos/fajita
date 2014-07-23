@@ -38,6 +38,7 @@ class PruneVisitor extends JDynAlloyMutator {
 		Set<JObjectConstraint> object_constraints = module
 				.getObjectConstraints();
 		Set<JRepresents> represents = module.getRepresents();
+		
 
 		/*
 		 * prune programs
@@ -54,7 +55,8 @@ class PruneVisitor extends JDynAlloyMutator {
 		JDynAlloyModule pruned_module = new JDynAlloyModule(moduleId, signature,
 				class_singleton, literal_singleton, fields, class_invariants,
 				class_constraints, object_invariants, object_constraints,
-				represents, programs);
+				represents, programs, node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
+				node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
 
 		return pruned_module;
 	}

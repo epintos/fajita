@@ -69,9 +69,10 @@ public class BindingManager {
 		ProgramDeclarationCollectorVisitor programDeclarationCollectorVisitor = new ProgramDeclarationCollectorVisitor();
 		SemanticCheckVisitor semanticCheckVisitor = new SemanticCheckVisitor(symbolTable);
 		FieldCollectorVisitor fieldCollectorVisitor = new FieldCollectorVisitor(symbolTable);
-		//ProgramDeclarationCollectorVisitor and fieldCollectorVisitor hasn't inter-dependences.
-		//They are can run together. But semanticCheckVisitor visitor needs the Fields collected by fieldCollectorVisitor.
-		//fieldCollectorVisitor must be run before semanticCheckVisitor
+
+		//ProgramDeclarationCollectorVisitor and fieldCollectorVisitor don't have inter-dependences.
+		//They are run together. But semanticCheckVisitor visitor needs the Fields collected by fieldCollectorVisitor.
+		//fieldCollectorVisitor must be run BEFORE semanticCheckVisitor
 		for (JDynAlloyModule dynJAlloyModule : modules) {
 			dynJAlloyModule.accept(programDeclarationCollectorVisitor);
 			dynJAlloyModule.accept(fieldCollectorVisitor);

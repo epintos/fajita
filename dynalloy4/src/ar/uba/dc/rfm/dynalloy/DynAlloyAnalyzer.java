@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import antlr.RecognitionException;
@@ -15,6 +16,8 @@ import edu.mit.csail.sdg.alloy4compiler.ast.Command;
 import edu.mit.csail.sdg.alloy4compiler.ast.Module;
 import edu.mit.csail.sdg.alloy4compiler.parser.CompUtil;
 
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalysisException;
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalysisResult;
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalyzer;
@@ -54,7 +57,8 @@ public final class DynAlloyAnalyzer {
 		try {
 			controller.compile(dalsFile.getAbsolutePath(),
 					dalsFileToAlsPath(dalsFile),
-					DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS);
+					DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+					new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 		} catch (RecognitionException e) {
 			throw new DynalloyVisualizerException(e);
 		} catch (TokenStreamException e) {
@@ -94,7 +98,8 @@ public final class DynAlloyAnalyzer {
 				output_filename = options.getOutputFilename();
 			
 			compiler.compile(dalsFile.getAbsolutePath(),
-					output_filename, options);
+					output_filename, options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+					new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 		} catch (RecognitionException e) {
 			throw new DynalloyVisualizerException(e);

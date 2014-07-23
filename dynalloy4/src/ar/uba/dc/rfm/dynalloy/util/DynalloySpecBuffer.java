@@ -19,11 +19,14 @@
  */
 package ar.uba.dc.rfm.dynalloy.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.ast.ActionDeclaration;
 import ar.uba.dc.rfm.dynalloy.ast.AssertionDeclaration;
 import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
@@ -95,7 +98,10 @@ public class DynalloySpecBuffer {
 		return new DynalloyModule(moduleId,
 				imports,
 				compilableA4Spec.toString(),
-				new HashSet<ActionDeclaration>(actions.values()), new HashSet<ProgramDeclaration>(programs.values()), new HashSet<AssertionDeclaration>(assertions.values()));
+				new HashSet<ActionDeclaration>(actions.values()), 
+				new HashSet<ProgramDeclaration>(programs.values()), 
+				new HashSet<AssertionDeclaration>(assertions.values()),
+				new AlloyTyping(), new ArrayList<AlloyFormula>());
 	}
 
 	public void putProgram(String programId, ProgramDeclaration program) {

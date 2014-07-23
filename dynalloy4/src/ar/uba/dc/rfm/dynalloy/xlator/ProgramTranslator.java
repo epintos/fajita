@@ -20,6 +20,7 @@
 package ar.uba.dc.rfm.dynalloy.xlator;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -194,7 +195,8 @@ class ProgramTranslator extends DfsProgramVisitor {
 			String contextModuleId = context.getCurrentModuleId();
 			context.switchToAlias(aliasModuleId);
 			String programPredicate = (String) programDeclaration
-					.accept(new DynalloyXlatorVisitor(context, null));
+					.accept(new DynalloyXlatorVisitor(context, null, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+							new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>()));
 			context.switchToModule(contextModuleId);
 		}
 		AlloyFormulaWithLocals formulaWithLocals = context.invokeProgram(

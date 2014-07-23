@@ -1,5 +1,6 @@
 package ar.edu.jdynalloy.ast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import ar.edu.jdynalloy.xlator.JDynAlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaMutator;
@@ -123,7 +125,8 @@ public class JDynAlloyMutator extends JDynAlloyVisitor {
 	public Object visit(JDynAlloyModule node) {
 		JDynAlloyModuleVisitResult v = (JDynAlloyModuleVisitResult) super
 				.visit(node);
-
+	
+		
 		JSignature signature = (JSignature) v.signature_result;
 
 		JSignature class_singleton;
@@ -183,7 +186,9 @@ public class JDynAlloyMutator extends JDynAlloyVisitor {
 		JDynAlloyModule module = new JDynAlloyModule(node.getModuleId(),
 				signature, class_singleton, literal_singleton, fields,
 				class_invariants, class_constraints, object_invariants,
-				object_constraints, represents, programs);
+				object_constraints, represents, programs, 
+				node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
+				node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
 
 		return module;
 	}
@@ -214,7 +219,7 @@ public class JDynAlloyMutator extends JDynAlloyVisitor {
 
 		return new JProgramDeclaration(node.isVirtual(), node.getSignatureId(),
 				node.getProgramId(), new LinkedList<JVariableDeclaration>(
-						varResults), specCases, body);
+						varResults), specCases, body, node.getVarsResultOfArithmeticOperationsInContracts(), node.getPredsEncodingValueOfArithmeticOperationsInContracts());
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package ar.uba.dc.rfm.dynalloy.dataflow;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.VariableId;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.ast.ProgramDeclaration;
 import ar.uba.dc.rfm.dynalloy.ast.programs.DynalloyProgram;
 import ar.uba.dc.rfm.dynalloy.xlator.SpecContext;
@@ -96,6 +98,6 @@ public class ControlFlowGraph {
 	}
 	
 	private static ProgramDeclaration createDummyProgramDeclaration(DynalloyProgram program) {
-		return new ProgramDeclaration("", new LinkedList<VariableId>(), new LinkedList<VariableId>(), program, new AlloyTyping());
+		return new ProgramDeclaration("", new LinkedList<VariableId>(), new LinkedList<VariableId>(), program, new AlloyTyping(), new ArrayList<AlloyFormula>(), new AlloyTyping());
 	}
 }

@@ -19,6 +19,7 @@
  */
 package ar.uba.dc.rfm.da2a.qremover;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,6 +46,29 @@ public class QuantifierRemover {
 				.accept(new FormulaBreaker());
 		return prepareGlobalSigSpec(assertion, assertionFormulas);
 	}
+	
+	
+	public QuantifierRemoverResult removeFactQuantifiers(AlloyAssertion fact) {
+		AlloyFormula gf = attachGlobalSigToVariables(fact.getFormula(),
+				QF_SIGNATURE_ID);
+//		List<AlloyFormula> assertionFormulas = (List<AlloyFormula>) gf
+//				.accept(new FormulaBreaker());
+		return prepareFactGlobalSigSpec(new AlloyAssertion(fact.getAssertionId(),fact.getQuantifiedVariables(),gf));
+	}
+	
+	
+	
+	private QuantifierRemoverResult prepareFactGlobalSigSpec(AlloyAssertion assertion) {
+
+		AlloySig qfSignature = new AlloySig(false, true, QF_SIGNATURE_ID,
+				assertion.getQuantifiedVariables(), null);
+
+		String assertionId = assertion.getAssertionId();
+		AlloyAssertion qfAssertion = new AlloyAssertion(assertionId, new AlloyTyping(), assertion.getFormula());
+		
+		return new QuantifierRemoverResult(qfSignature, new ArrayList<AlloyFact>(), qfAssertion);
+	}
+
 
 	private QuantifierRemoverResult prepareGlobalSigSpec(AlloyAssertion assertion,
 			List<AlloyFormula> assertionFormulas) {
@@ -63,6 +87,9 @@ public class QuantifierRemover {
 		return new QuantifierRemoverResult(qfSignature, facts, qfAssertion);
 	}
 
+	
+	
+	
 	public static class QuantifierRemoverResult {
 		public QuantifierRemoverResult(AlloySig qfSignature,
 				List<AlloyFact> qfFacts, AlloyAssertion qfAssertion) {

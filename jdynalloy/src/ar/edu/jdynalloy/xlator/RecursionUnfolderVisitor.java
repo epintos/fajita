@@ -50,7 +50,7 @@ class RecursionUnfolderVisitor extends JDynAlloyMutator {
 		String programId = n.getProgramId();
 		if (callGraph.childrenOf(programId).contains(programId)) {
 			
-			for (int i=0; i<unroll; i++) {
+			for (int i=0; i<=unroll; i++) {
 				// create n-program declarations
 
 				boolean isAbstract = n.isAbstract();
@@ -67,8 +67,8 @@ class RecursionUnfolderVisitor extends JDynAlloyMutator {
 											signatureId,
 											unfolded_programId,
 											parameters,
-                        								specCases, 
-											body);
+                        					specCases, 
+											body, null, null);
 
 				unfolded_programs.add(unfolded_program);
 			}
@@ -82,7 +82,8 @@ class RecursionUnfolderVisitor extends JDynAlloyMutator {
                                                                             n.getProgramId(),
                                                                             n.getParameters(),
                                                                             n.getSpecCases(), 
-                                                                            updated_body);
+                                                                            updated_body, 
+                                                                            n.getVarsResultOfArithmeticOperationsInContracts(), n.getPredsEncodingValueOfArithmeticOperationsInContracts());
 
 			unfold_index = -1;
 			unfold_programId = null;

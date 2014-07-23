@@ -1,11 +1,17 @@
 package ar.edu.jdynalloy.ast;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import ar.edu.jdynalloy.factory.JExpressionFactory;
+import ar.edu.jdynalloy.xlator.JType;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 
 public final class JProgramDeclaration implements JDynAlloyASTNode {
 
@@ -63,20 +69,30 @@ public final class JProgramDeclaration implements JDynAlloyASTNode {
 
 	private final String programId;
 
-	private final List<JVariableDeclaration> parameters;
+	private List<JVariableDeclaration> parameters;
 
-	private final JStatement body;
+	private JStatement body;
 
 	private final String signatureId;
 
 	private final boolean isAbstract;
 
 	private List<JSpecCase> specCases;
+	
+	private AlloyTyping varsResultOfArithmeticOperationsInContracts = new AlloyTyping();
+	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInContracts = new ArrayList<AlloyFormula>();
+
+	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInObjectInvariants;
+
+	private AlloyTyping varsResultOfArithmeticOperationsInObjectInvariants;
+
 
 	public static JProgramDeclaration buildJProgramDeclaration(
 			boolean isAbstract, String signatureId, String programId,
 			List<JVariableDeclaration> parameters, Set<JPrecondition> requires,
-			Set<JModifies> modifies, Set<JPostcondition> ensures, JStatement body) {
+			Set<JModifies> modifies, Set<JPostcondition> ensures, JStatement body, 
+			AlloyTyping varsResultOfArithmeticOperationsInRequiresAndEnsures,
+			List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInRequiresAndEnsures) {
 
 		List<JSpecCase> specCasesList;
 		if (requires.isEmpty() && ensures.isEmpty()) {
@@ -89,13 +105,24 @@ public final class JProgramDeclaration implements JDynAlloyASTNode {
 			specCasesList = Collections.singletonList(specCase);
 		}
 		return new JProgramDeclaration(isAbstract, signatureId, programId,
-				parameters, specCasesList, body);
+				parameters, specCasesList, body, varsResultOfArithmeticOperationsInRequiresAndEnsures, 
+				predsEncodingValueOfArithmeticOperationsInRequiresAndEnsures
+//				varsResultOfArithmeticOperationsInObjectInvariants, 
+//				predsEncodingValueOfArithmeticOperationsInObjectInvariants
+				);
 
 	}
 
-	public JProgramDeclaration(boolean isAbstract, String signatureId,
-			String programId, List<JVariableDeclaration> parameters,
-			List<JSpecCase> specCases, JStatement body) {
+	public JProgramDeclaration(
+			boolean isAbstract, 
+			String signatureId,
+			String programId, 
+			List<JVariableDeclaration> parameters,
+			List<JSpecCase> specCases, 
+			JStatement body,
+			AlloyTyping varsResultOfArithmeticOperationsInContracts,
+			List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInContracts
+		) {
 		super();
 		this.isAbstract = isAbstract;
 		this.signatureId = signatureId;
@@ -103,8 +130,35 @@ public final class JProgramDeclaration implements JDynAlloyASTNode {
 		this.parameters = parameters;
 		this.specCases = specCases;
 		this.body = body;
+		this.varsResultOfArithmeticOperationsInContracts = varsResultOfArithmeticOperationsInContracts;
+		this.predsEncodingValueOfArithmeticOperationsInContracts = predsEncodingValueOfArithmeticOperationsInContracts;
+//		this.varsResultOfArithmeticOperationsInObjectInvariants = varsResultOfArithmeticOperationsInObjectInvariants;
+//		this.predsEncodingValueOfArithmeticOperationsInObjectInvariants = predsEncodingValueOfArithmeticOperationsInObjectsInvariants;
 	}
 
+	public AlloyTyping getVarsResultOfArithmeticOperationsInContracts(){
+		return varsResultOfArithmeticOperationsInContracts;
+	}
+	
+	public List<AlloyFormula> getPredsEncodingValueOfArithmeticOperationsInContracts(){
+		return predsEncodingValueOfArithmeticOperationsInContracts;
+	}
+	
+	public void setPredsEncodingValueOfArithmeticOperationsInContracts(List<AlloyFormula> newPreds){
+		this.predsEncodingValueOfArithmeticOperationsInContracts = newPreds;
+	}
+
+
+	public List<AlloyFormula> getPredsEncodingValueOfArithmeticOperationsInObjectInvariants(){
+		return predsEncodingValueOfArithmeticOperationsInObjectInvariants;
+	}
+	
+	public AlloyTyping getVarsResultOfArithmeticOperationsInObjectInvariants(){
+		return varsResultOfArithmeticOperationsInObjectInvariants;
+	}
+	
+
+	
 	public String getProgramId() {
 		return programId;
 	}
@@ -112,11 +166,19 @@ public final class JProgramDeclaration implements JDynAlloyASTNode {
 	public List<JVariableDeclaration> getParameters() {
 		return parameters;
 	}
+	
+	public void setParameters(List<JVariableDeclaration> newParameters){
+		this.parameters = newParameters;
+	}
 
 	public JStatement getBody() {
 		return body;
 	}
 
+	public void setBody(JStatement newBody){
+		this.body = newBody;
+	}
+	
 	public Object accept(IJDynAlloyVisitor visitor) {
 		return visitor.visit(this);
 	}
@@ -136,7 +198,8 @@ public final class JProgramDeclaration implements JDynAlloyASTNode {
 	}
 
 	public boolean isStatic() {
-	    if (this.parameters.get(0).getVariable().equals(JExpressionFactory.THROW_VARIABLE)) {
+	    if (this.parameters.get(0).getVariable().equals(JExpressionFactory.THROW_VARIABLE) ||
+	    		this.parameters.get(0).getVariable().equals(JExpressionFactory.ARG_THROW_VARIABLE)) {
 		return true;
 	    }
 	    return false;

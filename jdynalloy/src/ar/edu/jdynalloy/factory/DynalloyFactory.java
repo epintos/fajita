@@ -42,6 +42,40 @@ public abstract class DynalloyFactory {
 	public static final AlloyVariable OBJECT_ARRAY_VARIABLE = new AlloyVariable("Object_Array");
 	public static final AlloyVariable PRIMED_OBJECT_ARRAY_VARIABLE = new AlloyVariable("Object_Array", true);
 	
+	public static final AlloyVariable OBJECT_ARRAY_CONTENTS_FIELD_VARIABLE = new AlloyVariable("java_lang_ObjectArray_contents", false);
+	public static final AlloyVariable PRIMED_OBJECT_ARRAY_CONTENTS_FIELD_VARIABLE = new AlloyVariable("java_lang_ObjectArray_contents", true);
+	
+	public static final AlloyVariable INT_ARRAY_CONTENTS_FIELD_VARIABLE = new AlloyVariable("java_lang_IntArray_contents", false);
+	public static final AlloyVariable PRIMED_INT_ARRAY_CONTENTS_FIELD_VARIABLE = new AlloyVariable("java_lang_IntArray_contents", true);
+
+	public static final ExprVariable OBJECT_ARRAY_CONTENTS_FIELD_EXPRESSION = buildExprVariable(OBJECT_ARRAY_CONTENTS_FIELD_VARIABLE);
+	public static final ExprVariable PRIMED_OBJECT_ARRAY_CONTENTS_FIELD_EXPRESSION = buildExprVariable(PRIMED_OBJECT_ARRAY_CONTENTS_FIELD_VARIABLE);
+
+	public static final ExprVariable INT_ARRAY_CONTENTS_FIELD_EXPRESSION = buildExprVariable(INT_ARRAY_CONTENTS_FIELD_VARIABLE);
+	public static final ExprVariable PRIMED_INT_ARRAY_CONTENTS_FIELD_EXPRESSION = buildExprVariable(PRIMED_INT_ARRAY_CONTENTS_FIELD_VARIABLE);
+
+//mfrias 16-03-2013: adding java_util_set support in specs
+	public static final AlloyVariable JAVA_UTIL_SET_ELEMS_FIELD_VARIABLE = new AlloyVariable("java_util_Set_elems", false);
+	public static final AlloyVariable PRIMED_JAVA_UTIL_SET_ELEMS_FIELD_VARIABLE = new AlloyVariable("java_util_Set_elems", true);
+	
+	public static final ExprVariable JAVA_UTIL_SET_ELEMS_FIELD_EXPRESSION = buildExprVariable(JAVA_UTIL_SET_ELEMS_FIELD_VARIABLE);
+	public static final ExprVariable PRIMED_JAVA_UTIL_SET_ELEMS_FIELD_EXPRESSION = buildExprVariable(PRIMED_JAVA_UTIL_SET_ELEMS_FIELD_VARIABLE);
+
+	
+	public static final AlloyVariable OBJECT_ARRAY_LENGTH_FIELD_VARIABLE = new AlloyVariable("java_lang_ObjectArray_length", false);
+	public static final AlloyVariable PRIMED_OBJECT_ARRAY_LENGTH_FIELD_VARIABLE = new AlloyVariable("java_lang_ObjectArray_length", true);
+	
+	public static final ExprVariable OBJECT_ARRAY_LENGTH_FIELD_EXPRESSION = buildExprVariable(OBJECT_ARRAY_LENGTH_FIELD_VARIABLE);
+	public static final ExprVariable PRIMED_OBJECT_ARRAY_LENGTH_FIELD_EXPRESSION = buildExprVariable(PRIMED_OBJECT_ARRAY_LENGTH_FIELD_VARIABLE);
+	
+	
+	public static final AlloyVariable INT_ARRAY_LENGTH_FIELD_VARIABLE = new AlloyVariable("java_lang_IntArray_length", false);
+	public static final AlloyVariable PRIMED_INT_ARRAY_LENGTH_FIELD_VARIABLE = new AlloyVariable("java_lang_IntArray_length", true);
+	
+	public static final ExprVariable INT_ARRAY_LENGTH_FIELD_EXPRESSION = buildExprVariable(INT_ARRAY_LENGTH_FIELD_VARIABLE);
+	public static final ExprVariable PRIMED_INT_ARRAY_LENGTH_FIELD_EXPRESSION = buildExprVariable(PRIMED_INT_ARRAY_LENGTH_FIELD_VARIABLE);
+	
+	
 	public static final ExprVariable OBJECT_ARRAY_EXPRESSION = buildExprVariable(OBJECT_ARRAY_VARIABLE);
 	public static final ExprVariable PRIMED_OBJECT_ARRAY_EXPRESSION = buildExprVariable(PRIMED_OBJECT_ARRAY_VARIABLE);
 
@@ -56,6 +90,8 @@ public abstract class DynalloyFactory {
 	private static final String HAVOC_VARIABLE_ID = "havocVariable";
 
 	private static final String HAVOC_FIELD_ID = "havocField";
+	
+	private static final String HAVOC_LIST_SEQ_ID = "havocListSeq";
 	
 	private static final String HAVOC_ARRAY_CONTENTS_ID = "havocArrayContents";
 
@@ -72,6 +108,7 @@ public abstract class DynalloyFactory {
 	private static final String HAVOC_VARIABLE_3_ID = "havocVariable3";
 
 	private static final String HAVOC_FIELD_CONTENTS_ID = "havocFieldContents";
+	
 	
 	public static InvokeAction getUnusedObject(AlloyVariable v) {
 		return buildInvokeAction(null, GET_UNUSED_OBJECT_ID,
@@ -97,6 +134,19 @@ public abstract class DynalloyFactory {
 			throw new IllegalArgumentException();
 
 	}
+	
+
+	public static InvokeAction havocListSeq(ExprJoin lvalue) {
+		if (lvalue.getRight().getClass().equals(ExprVariable.class)) {
+			ExprVariable field = (ExprVariable) lvalue.getRight();
+			AlloyExpression from = lvalue.getLeft();
+
+			return buildInvokeAction(null, HAVOC_LIST_SEQ_ID, from, field);
+		} else
+			throw new IllegalArgumentException();
+
+	}
+
 	
 	public static InvokeAction havocArray(ExprVariable arrayVariable) {
 		return buildInvokeAction(null, HAVOC_ARRAY_CONTENTS_ID, null);

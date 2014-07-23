@@ -65,6 +65,9 @@ public class FajitaRunner implements Runnable {
 				FajitaRunner.printStep("FAJITA: Translating Java -> Alloy");
 				runTaco();
 				
+				if (configuration.isIncrementalLoopUnroll())
+					configuration.setInfiniteScope(true);
+					
 				if (configuration.isOnlyTranslateToAlloy()) {
 					System.out.println("Translation to Alloy completed."); 
 					return;

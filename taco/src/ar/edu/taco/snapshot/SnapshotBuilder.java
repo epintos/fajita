@@ -1,15 +1,11 @@
 package ar.edu.taco.snapshot;
 
-import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.math.BigInteger;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -53,8 +49,8 @@ import edu.mit.csail.sdg.alloy4compiler.translator.A4TupleSet;
 
 public class SnapshotBuilder {
 
-	private static final ExprConstant UNIV = ExprConstant.buildExprConstant("univ");
-	private static final String OBJECT_ARRAY_VAR = "Object_Array";
+//	private static final ExprConstant UNIV = ExprConstant.buildExprConstant("univ");
+//	private static final String OBJECT_ARRAY_VAR = "Object_Array";
 	private static final String LIST_CONTAINS_VAR = "List_contains";
 	private static final String SET_CONTAINS_VAR = "java_util_Set_elems";
 	private static final String MAP_CONTAINS_VAR = "java_util_Map_entries";
@@ -71,17 +67,11 @@ public class SnapshotBuilder {
 
 	private Map<String, Object> instances = new HashMap<String, Object>();
 	
-	private ClassLoader loader = null;
-	
+	private ClassLoader loader = Thread.currentThread().getContextClassLoader();
 	public void setLoader(ClassLoader loader) {
 		this.loader = loader;
 	}
 
-	public ClassLoader getLoader(){
-		return loader;
-	}
-	
-	
 	public SnapshotBuilder(RecoveredInformation recoveredInformation, TacoAnalysisResult tacoAnalysisResult) {
 		super();
 		this.tacoAnalysisResult = tacoAnalysisResult;		
@@ -119,8 +109,8 @@ public class SnapshotBuilder {
 
 		A4Solution a4Solution = tacoAnalysisResult.get_alloy_analysis_result().getAlloy_solution();
 
-		// add atoms to "world". They seems to be missing.
-		// Code borrwed from: edu.mit.csail.sdg.alloy4whole.SimpleGUI, Computer
+		// add atoms to "world". They seem to be missing.
+		// Code borrowed from: edu.mit.csail.sdg.alloy4whole.SimpleGUI, Computer
 		// anonymous class implementation
 		// (it's part of Alloy GUI evaluator)
 		for (ExprVar a : a4Solution.getAllAtoms()) {
@@ -153,13 +143,16 @@ public class SnapshotBuilder {
 		// build static fields
 		for (StaticFieldInformation staticFieldInfo : this.recoveredInformation.getStaticFields()) {
 			try {
-				Field field = getField(clazzToCheck, staticFieldInfo.getFieldName());
+				Class<?> clazz = Class.forName(staticFieldInfo.getClassName(), true, loader);
+				Field field = getField(clazz, staticFieldInfo.getFieldName());
 				Object fieldValue = setFieldValueSupport(null, null, field);
 				if (fieldValue != null) {
 					setStaticFieldvalue(staticFieldInfo.getClassName(), staticFieldInfo.getFieldName(), fieldValue);
 				}
 
 			} catch (SecurityException e) {
+				throw new TacoException(e);
+			} catch (ClassNotFoundException e) {
 				throw new TacoException(e);
 			}
 
@@ -179,7 +172,7 @@ public class SnapshotBuilder {
 
 	}
 
-	private Field getField(Class clazz, String fieldName) {
+	private Field getField(@SuppressWarnings("rawtypes") Class clazz, String fieldName) {
 		Set<Field> set = collectAllFieldSet(clazz);
 		Field aField = null;
 		for (Field field : set) {
@@ -212,25 +205,14 @@ public class SnapshotBuilder {
 	}
 
 	private Class<?> obtainClassToCheckClass() {
-		String className = recoveredInformation.getClassToCheck().substring(recoveredInformation.getClassToCheck().lastIndexOf(".") + 1) + "Test";
-		String methodName = recoveredInformation.getMethodToCheck();
+//		String className = recoveredInformation.getClassToCheck().substring(recoveredInformation.getClassToCheck().lastIndexOf(".") + 1) + "Test";
+//		String methodName = recoveredInformation.getMethodToCheck();
 
 		Class<?> clazz;
 		try {
-			String sourceClassToCheck = recoveredInformation.getClassToCheck();
-			String actualPathToInstrumentedClass = System.getProperty("user.dir") + 
-					System.getProperty("file.separator") + "result" + System.getProperty("file.separator") + 
-					"fajitaOut" + 
-					System.getProperty("file.separator"); 
-					//+ sourceClassToCheck.replace(".", System.getProperty("file.separator")).substring(0, sourceClassToCheck.lastIndexOf('.')+1); 
-			ClassLoader cl = ClassLoader.getSystemClassLoader();
-			loader = new URLClassLoader(new URL[]{new File(actualPathToInstrumentedClass).toURI().toURL()}, cl);
-			clazz = loader.loadClass(sourceClassToCheck);
-//			clazz = Class.forName(recoveredInformation.getClassToCheck(), true, loader);
+			clazz = loader.loadClass(recoveredInformation.getClassToCheck());
 			return clazz;
 		} catch (ClassNotFoundException e) {
-			throw new TacoException("Snapshot error: " + e.getMessage(), e);
-		} catch (MalformedURLException e) {
 			throw new TacoException("Snapshot error: " + e.getMessage(), e);
 		}
 	}
@@ -242,7 +224,7 @@ public class SnapshotBuilder {
 		methodToCheck = methodToCheck.substring(classToCheck.length() + 1);
 		int postion = methodToCheck.lastIndexOf("_");
 		String methodToCheckJavaName = methodToCheck.substring(0, postion);
-		int methodToCheckIndex = Integer.valueOf(methodToCheck.substring(postion + 1, methodToCheck.length()));
+//		int methodToCheckIndex = Integer.valueOf(methodToCheck.substring(postion + 1, methodToCheck.length()));
 		Method[] methods = collectAllMethods(clazz);
 
 		int i = 0;
@@ -320,13 +302,14 @@ public class SnapshotBuilder {
 		return new ExprJoin(prefixExpression, exprVariable);
 	}
 
+	@SuppressWarnings("unchecked")
 	private Object instantiate(String instanceName, AlloyExpression instanceExpr, Type javaType) {
 
 		Object returnValue;
 		// String valueAsString = evaluate(expression);
 
 		if (javaType instanceof Class<?>) {
-			// create or obtain isntance
+			// create or obtain instance
 			Class<?> clazz = (Class<?>) javaType;
 			Class<?> componentType = clazz.getComponentType();
 			if (instanceName.equals(NULL0)) {
@@ -365,6 +348,7 @@ public class SnapshotBuilder {
 			} else if (Set.class.isAssignableFrom(clazz)) {
 
 				returnValue = createNewInstance(IdentityHashSet.class);
+				@SuppressWarnings("rawtypes")
 				Set m = (Set) returnValue;
 				instances.put(instanceName, returnValue);
 
@@ -379,6 +363,7 @@ public class SnapshotBuilder {
 
 				returnValue = createNewInstance(IdentityHashMap.class);
 
+				@SuppressWarnings("rawtypes")
 				Map m = (Map) returnValue;
 				instances.put(instanceName, returnValue);
 
@@ -417,8 +402,9 @@ public class SnapshotBuilder {
 		AlloyExpression arrayLengthExpr;
 		int arrayLength;
 
-		arrayLengthExpr = ExprFunction.buildExprFunction("arrayLength", prefixExprVariable("Object_Array"), instanceExpr);
-		if (isPruned(OBJECT_ARRAY_VAR)) {
+//		arrayLengthExpr = ExprFunction.buildExprFunction("arrayLength", prefixExprVariable("Object_Array"), instanceExpr);
+		arrayLengthExpr = ExprFunction.buildExprFunction("arrayLength", instanceExpr, prefixExprVariable("java_lang_ObjectArray_length"));//mfrias
+		if (isPruned("java_lang_ObjectArray_length")) {
 			arrayLength = 0;
 		} else {
 			arrayLength = (Integer) evaluate(arrayLengthExpr, int.class);
@@ -429,18 +415,49 @@ public class SnapshotBuilder {
 
 		returnValue = Array.newInstance(componentType, arrayLength);
 		instances.put(instanceName, returnValue);
-
-		for (int x = 0; x < arrayLength; x++) {
-			AlloyExpression arrayAccess;
-			arrayAccess = ExprFunction.buildExprFunction("arrayAccess", prefixExprVariable("Object_Array"), instanceExpr, new ExprIntLiteral(x));
-			Class<?> infieredType = inferTypeOfExpression(arrayAccess);
-			Object value = evaluate(arrayAccess, infieredType);
-
-			if (infieredType != null && componentType.isAssignableFrom(infieredType)) {
-				updateArrayValue(returnValue, infieredType, x, value);
+        if (this.tacoAnalysisResult.get_alloy_analysis_result().getAlloy_solution().toString().contains("java_lang_ObjectArray_contents")) {
+			for (int x = 0; x < arrayLength; x++) {
+				AlloyExpression arrayAccess;
+				arrayAccess = ExprFunction.buildExprFunction("arrayAccess", instanceExpr, prefixExprVariable("java_lang_ObjectArray_contents"), new ExprIntLiteral(x));//mfrias
+				Class<?> infieredType = inferTypeOfExpression(arrayAccess);
+				Object value = evaluate(arrayAccess, infieredType);
+	
+				if (infieredType != null && componentType.isAssignableFrom(infieredType)) {
+					updateArrayValue(returnValue, infieredType, x, value);
+				}
+	
 			}
-
-		}
+        } else {
+        	for (int x = 0; x < arrayLength; x++) {
+        		if (componentType.isPrimitive()){
+    				String typeSimpleName = componentType.getSimpleName();
+    				if (typeSimpleName.equals("boolean")) {
+    					updateArrayValue(returnValue, componentType, x, false);
+    				} else if (typeSimpleName.endsWith("byte")) {
+    					byte val = 0;
+    					updateArrayValue(returnValue, componentType, x, val);
+    				} else if (typeSimpleName.endsWith("char")) {
+    					updateArrayValue(returnValue, componentType, x, '\u0000');
+    				} else if (typeSimpleName.endsWith("double")) {
+    					updateArrayValue(returnValue, componentType, x, 0.0d);
+    				} else if (typeSimpleName.endsWith("float")) {
+    					updateArrayValue(returnValue, componentType, x, 0.0f);
+    				} else if (typeSimpleName.endsWith("int")) {
+    					updateArrayValue(returnValue, componentType, x, 0);
+    				} else if (typeSimpleName.endsWith("long")) {
+    					updateArrayValue(returnValue, componentType, x, 0L);
+    				} else if (typeSimpleName.endsWith("short")) {
+    					updateArrayValue(returnValue, componentType, x, 0);
+    				} else {
+    					throw new TacoNotImplementedYetException();
+    				}
+        		} else {
+        			updateArrayValue(returnValue, componentType, x, null);
+        		}
+        	}
+        }
+        	
+        	
 		return returnValue;
 	}
 
@@ -523,15 +540,10 @@ public class SnapshotBuilder {
 				return Object.class;
 			} else if (className.equals("org_jmlspecs_models_JMLObjectSequence")) {
 				return Object.class;
-			} else if (className.equals("java_lang_SystemArray")) {
-				return Object[].class;
-
 			} else if (className.equals("java_lang_ObjectArray")) {
 				return Object[].class;
-
 			} else if (className.equals("java_lang_IntArray")) {
 				return int[].class;
-				
 			} else if (className.equals("java_util_Iterator")) {
 				return ArrayListIterator.class;
 			}
@@ -690,7 +702,7 @@ public class SnapshotBuilder {
 		return module + "_" + aField.getName();
 	}
 
-	private Object createNewInstance(Class clazz) {
+	private Object createNewInstance(@SuppressWarnings("rawtypes") Class clazz) {
 		try {
 			Object o = Class.forName(clazz.getName(), true, loader).newInstance();
 			log.debug("created: " + o.getClass() );
@@ -711,6 +723,7 @@ public class SnapshotBuilder {
 
 	}
 	private boolean isPruned(String fieldName) {
+		@SuppressWarnings("unused")
 		Object evlResult = null;
 		try {
 			AlloyExpression fieldExpr = prefixExprVariable(fieldName);
@@ -721,6 +734,7 @@ public class SnapshotBuilder {
 		return false;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Map evaluateAlloyMap(AlloyExpression expression) {
 		Object evlResult = null;
 		try {
@@ -754,6 +768,7 @@ public class SnapshotBuilder {
 		}
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Set evaluateAlloySet(AlloyExpression expression) {
 		Object evlResult = null;
 		try {
@@ -822,7 +837,7 @@ public class SnapshotBuilder {
 				throw new IllegalArgumentException();
 			}
 
-			Object retutrnValue;
+			Object returnValue;
 			// convert String to Type instance
 			if (clazz.isPrimitive() || isAutoboxingClass(clazz)) {
 				String typeSimpleName = clazz.getSimpleName();
@@ -840,16 +855,16 @@ public class SnapshotBuilder {
 					} else {
 						throw new TacoException("Invalid value: " + value);
 					}
-					retutrnValue = b;
+					returnValue = b;
 				} else if (typeSimpleName.endsWith("byte") || typeSimpleName.endsWith("Byte")) {
 					Byte b = Byte.valueOf((String) value);
-					retutrnValue = b;
+					returnValue = b;
 				} else if (typeSimpleName.endsWith("char") || typeSimpleName.endsWith("Character")) {
 					Character c = Character.valueOf(((String) value).charAt(0));
-					retutrnValue = c;
+					returnValue = c;
 				} else if (typeSimpleName.endsWith("double") || typeSimpleName.endsWith("Double")) {
 					Double d = Double.valueOf((String) value);
-					retutrnValue = d;
+					returnValue = d;
 				} else if (typeSimpleName.endsWith("float") || typeSimpleName.endsWith("Float")) {
 					Float f;
 					if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
@@ -857,7 +872,7 @@ public class SnapshotBuilder {
 					} else {
 						f = Float.valueOf((String) value);
 					}
-					retutrnValue = f;
+					returnValue = f;
 				} else if (typeSimpleName.endsWith("int") || typeSimpleName.endsWith("Integer")) {
 					Integer i;
 					if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
@@ -865,7 +880,7 @@ public class SnapshotBuilder {
 					} else {
 						i = Integer.valueOf((String) value);
 					}
-					retutrnValue = i;
+					returnValue = i;
 				} else if (typeSimpleName.endsWith("long") || typeSimpleName.endsWith("Long")) {
 					Long l;
 					if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
@@ -873,19 +888,19 @@ public class SnapshotBuilder {
 					} else {
 						l = Long.valueOf((String) value);
 					}
-					retutrnValue = l;
+					returnValue = l;
 				} else if (typeSimpleName.endsWith("short") || typeSimpleName.endsWith("Short")) {
 					Short s = Short.valueOf((String) value);
-					retutrnValue = s;
+					returnValue = s;
 				} else {
 					throw new TacoNotImplementedYetException();
 				}
 			} else {
 				Class<?> instanceClass = inferTypeOfExpression(value);
-				retutrnValue = instantiate(value, expression, instanceClass);
+				returnValue = instantiate(value, expression, instanceClass);
 			}
 
-			return retutrnValue;
+			return returnValue;
 		} else {
 			throw new TacoNotImplementedYetException();
 		}
@@ -979,7 +994,7 @@ public class SnapshotBuilder {
 			boolean accessibleOld = aField.isAccessible();
 			aField.setAccessible(true);
 
-			Class<?> type = aField.getType();
+//			Class<?> type = aField.getType();
 
 			if (aField.getType().isPrimitive()) {
 				String typeSimpleName = aField.getType().getSimpleName();
@@ -1182,5 +1197,9 @@ public class SnapshotBuilder {
 
 		return returnValue;
 	}
+	
+	public ClassLoader getLoader() {
+        return loader;
+    }
 
 }

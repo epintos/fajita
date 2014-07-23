@@ -31,6 +31,8 @@ public interface IJDynAlloyConfig {
     public boolean getQuantifierIncludesNull();
 
     public boolean getCheckNullDereference();
+    
+    public boolean getCheckDivisionByZero();
 
     public boolean getAbstractSignatureObject();
 
@@ -72,7 +74,7 @@ public interface IJDynAlloyConfig {
 
     public boolean getGenerateRun(); 
     
-    public boolean getSystemArrayIsInt();
+    public boolean getArrayIsInt();
     
     public boolean getModularReasoning();
 

@@ -2,11 +2,15 @@ package regr.new_grammar;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 import org.junit.Test;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.DynAlloyOptions;
 import ar.uba.dc.rfm.dynalloy.parser.AssertionNotFound;
@@ -24,7 +28,9 @@ public class While_GrammarTest {
 		options.setRunAlloyAnalyzer(false);
 		options.setBuildDynAlloyTrace(false);
 
-		c.compile("test/regr/new_grammar/while_grammar.dals", "test/regr/new_grammar/while_grammar.als", options);
+		c.compile("test/regr/new_grammar/while_grammar.dals", "test/regr/new_grammar/while_grammar.als", options, 
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 

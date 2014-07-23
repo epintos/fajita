@@ -17,8 +17,21 @@ public final class ListAccess {
 			}
 		}
 		return false;
+	} 
+
+	public static boolean isListAsSeqAccess(AlloyExpression expr) {
+		if (expr instanceof ExprJoin) {
+			ExprJoin exprJoin = (ExprJoin) expr;
+			if (exprJoin.getRight() instanceof ExprVariable) {
+				ExprVariable field = (ExprVariable) exprJoin.getRight();
+				return field.getVariable().equals(
+						new AlloyVariable("java_util_List_seq"));
+			}
+		}
+		return false;
 	}
 
+	
 	public static AlloyExpression getList(AlloyExpression e) {
 		if (!isListAccess(e))
 			throw new IllegalArgumentException(e.toString()

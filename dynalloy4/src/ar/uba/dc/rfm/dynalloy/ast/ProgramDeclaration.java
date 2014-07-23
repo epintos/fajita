@@ -19,11 +19,13 @@
  */
 package ar.uba.dc.rfm.dynalloy.ast;
 
+import java.util.HashSet;
 import java.util.List;
 
 import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.VariableId;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
 import ar.uba.dc.rfm.dynalloy.ast.programs.DynalloyProgram;
 
@@ -44,19 +46,35 @@ public final class ProgramDeclaration {
 	private final AlloyTyping typing;
 	
 	private final List<VariableId> localVariables;
+	
+	private final List<AlloyFormula> predsFromArithInContracts;
+	
+	private final AlloyTyping varsFromArithInContracts;
+	
+	public List<AlloyFormula> getPredsFromArithInContracts(){
+		return this.predsFromArithInContracts;
+	}
+	
 
+	public AlloyTyping getVarsFromArithInContracts(){
+		return this.varsFromArithInContracts;
+	}
+	
 	public AlloyTyping getParameterTyping() {
 		return typing;
 	}
 	
 	public ProgramDeclaration(String _programId, List<VariableId> _formalParameters,
-			List<VariableId> _localVariables, DynalloyProgram _program, AlloyTyping _typing) {
+			List<VariableId> _localVariables, DynalloyProgram _program, AlloyTyping _typing, List<AlloyFormula> preds,
+			AlloyTyping alloyTyping) {
 		super();
 		this.programId = _programId;
 		this.parameters = _formalParameters;
 		this.body = _program;
 		this.typing = _typing;
 		this.localVariables = _localVariables;
+		this.predsFromArithInContracts = preds;
+		this.varsFromArithInContracts = alloyTyping;
 	}
 
 	public boolean equals(Object o) {

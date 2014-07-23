@@ -5,6 +5,6 @@
 	<classpathentry kind="lib" path="lib/antlr.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy4-nuevo"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dynalloy4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

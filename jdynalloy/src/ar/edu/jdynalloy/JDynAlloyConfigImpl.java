@@ -144,9 +144,9 @@ public abstract class JDynAlloyConfigImpl implements IJDynAlloyConfig {
 
 	private static final boolean DEFAULT_GENERATE_RUN = false;
 
-	private static final String SYSTEM_ARRAY_IS_INT = "systemArrayIsInt";
+	private static final String ARRAY_IS_INT = "arrayIsInt";
 
-	private static final boolean DEFAULT_SYSTEM_ARRAY_IS_INT = false;
+	private static final boolean DEFAULT_ARRAY_IS_INT = false;
 
 	private static final String MODULAR_REASONING = "modular_reasoning";
 
@@ -230,7 +230,7 @@ public abstract class JDynAlloyConfigImpl implements IJDynAlloyConfig {
 
 	private boolean generateRun;
 
-	private final boolean systemArrayIsInt;
+	private final boolean arrayIsInt;
 
 	private final boolean modularReasoning;
 
@@ -387,8 +387,8 @@ public abstract class JDynAlloyConfigImpl implements IJDynAlloyConfig {
 		generateRun = optionalBoolean(entries.get(GENERATE_RUN),
 				DEFAULT_GENERATE_RUN);
 
-		systemArrayIsInt = optionalBoolean(entries.get(SYSTEM_ARRAY_IS_INT),
-				DEFAULT_SYSTEM_ARRAY_IS_INT);
+		arrayIsInt = optionalBoolean(entries.get(ARRAY_IS_INT),
+				DEFAULT_ARRAY_IS_INT);
 
 		modularReasoning = optionalBoolean(entries.get(MODULAR_REASONING),
 				DEFAULT_MODULAR_REASONING);
@@ -579,8 +579,8 @@ public abstract class JDynAlloyConfigImpl implements IJDynAlloyConfig {
 	}
 
 	@Override
-	public boolean getSystemArrayIsInt() {
-		return systemArrayIsInt;
+	public boolean getArrayIsInt() {
+		return arrayIsInt;
 	}
 
 	@Override

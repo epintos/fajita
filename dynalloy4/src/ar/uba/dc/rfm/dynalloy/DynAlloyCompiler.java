@@ -24,13 +24,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
 
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.ast.AlloyModule;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.util.AlloyPrinter;
 import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
 import ar.uba.dc.rfm.dynalloy.parser.AssertionNotFound;
@@ -80,7 +86,11 @@ public class DynAlloyCompiler {
 		return buff.toString();
 	}
 
-	public void compile(String inputFilename, String outputFilename, DynAlloyOptions options) throws RecognitionException, TokenStreamException, IOException,
+	public void compile(String inputFilename, String outputFilename, DynAlloyOptions options,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInObjectInvariantsByModule,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInContractsByProgram) throws RecognitionException, TokenStreamException, IOException,
 			AssertionNotFound {
 
 		// Read DynAlloy file
@@ -98,7 +108,11 @@ public class DynAlloyCompiler {
 
 		// Translate AST
 		DynAlloyTranslator dynalloyToAlloyXlator = new DynAlloyTranslator();
-		AlloyModule alloyAST = dynalloyToAlloyXlator.translateDynAlloyAST(dynalloyAST, options);
+		AlloyModule alloyAST = dynalloyToAlloyXlator.translateDynAlloyAST(dynalloyAST, options, 
+				varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram, 
+				predsComingFromArithmeticConstraintsInContractsByProgram,
+				varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+				predsComingFromArithmeticConstraintsInObjectInvariantsByModule);
 		this.specContext = dynalloyToAlloyXlator.getSpecContext();
 		
 		// Apply AlloyAST plugins
@@ -112,11 +126,14 @@ public class DynAlloyCompiler {
 		String alloyStr = (String) alloyAST.accept(printer);
 		String alloyStrWithHeader = optionsHeader + "\n" + alloyStr;
 		
+//		System.out.println(alloyStrWithHeader);
+		
 		// Apply AlloyString plugins
 		for (AlloyStringPlugin string_plugin: this.alloy_string_plugins) {
 			alloyStrWithHeader = string_plugin.transform(alloyStrWithHeader);
 		}
 		
+//		System.out.println(alloyStrWithHeader);
 		// Write Alloy file
 		writeFile(outputFilename, alloyStrWithHeader);
 

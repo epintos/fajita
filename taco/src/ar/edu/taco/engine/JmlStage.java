@@ -43,8 +43,9 @@ import ar.edu.taco.utils.FileUtils;
 public class JmlStage implements ITacoStage {
 
 	static final private String OUTPUT_SIMPLIFIED_JAVA_EXTENSION = ".java";
-	static final private String FILE_SEPARATOR = File.separator;
+//	static final private String FILE_SEPARATOR = File.separator;
 
+	@SuppressWarnings("unused")
 	private List<JmlTypeDeclaration> asts;
 
 	private List<JCompilationUnitType> compilation_units;

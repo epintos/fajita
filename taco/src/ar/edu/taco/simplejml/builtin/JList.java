@@ -94,7 +94,7 @@ public class JList implements IBuiltInModule {
 				classSignature, null, Collections.<JField> singletonList(containsField),
 				Collections.<JClassInvariant> emptySet(), Collections.<JClassConstraint> emptySet(), 
 				Collections.<JObjectInvariant> emptySet(), Collections.<JObjectConstraint> emptySet(), Collections
-						.<JRepresents> emptySet(), programs);
+						.<JRepresents> emptySet(), programs, null, null);
 
 	}
 
@@ -119,7 +119,7 @@ public class JList implements IBuiltInModule {
 				.initializeThrow(), new JAssume(JPredicateFactory
 				.emptyList(this_contains)));
 
-		JProgramDeclaration hashSetCtor = new JProgramDeclaration(false, "java_util_LinkedList", "Constructor", ps, Collections.<JSpecCase> emptyList(), body);
+		JProgramDeclaration hashSetCtor = new JProgramDeclaration(false, "java_util_LinkedList", "Constructor", ps, Collections.<JSpecCase> emptyList(), body, null, null);
 
 		return hashSetCtor;
 
@@ -144,7 +144,7 @@ public class JList implements IBuiltInModule {
 				JExpressionFactory.listAdd(this_contains, new ExprVariable(
 						eVariable))));
 
-		JProgramDeclaration setAdd = new JProgramDeclaration(false, "java_util_List", "add", ps, Collections.<JSpecCase> emptyList(), body);
+		JProgramDeclaration setAdd = new JProgramDeclaration(false, "java_util_List", "add", ps, Collections.<JSpecCase> emptyList(), body, null, null);
 
 		return setAdd;
 	}
@@ -173,7 +173,7 @@ public class JList implements IBuiltInModule {
 						.listContains(this_contains,
 								new ExprVariable(eVariable))));
 
-		JProgramDeclaration setRemove = new JProgramDeclaration(false, "java_util_List", "contains", ps, Collections.<JSpecCase> emptyList(), body);
+		JProgramDeclaration setRemove = new JProgramDeclaration(false, "java_util_List", "contains", ps, Collections.<JSpecCase> emptyList(), body, null, null);
 
 		return setRemove;
 	}
@@ -197,7 +197,7 @@ public class JList implements IBuiltInModule {
 				JExpressionFactory.listRemove(this_contains, new ExprVariable(
 						indexVar))));
 
-		JProgramDeclaration setRemove = new JProgramDeclaration(false, "java_util_List", "remove", ps, Collections.<JSpecCase> emptyList(), body);
+		JProgramDeclaration setRemove = new JProgramDeclaration(false, "java_util_List", "remove", ps, Collections.<JSpecCase> emptyList(), body, null, null);
 
 		return setRemove;
 	}
@@ -237,7 +237,7 @@ public class JList implements IBuiltInModule {
 				JExpressionFactory.RETURN_EXPRESSION, JExpressionFactory
 						.listGet(this_entries, indexExpr)));
 
-		JProgramDeclaration mapGet = new JProgramDeclaration(false, "java_util_List", "get", ps, Collections.<JSpecCase> emptyList(), body);
+		JProgramDeclaration mapGet = new JProgramDeclaration(false, "java_util_List", "get", ps, Collections.<JSpecCase> emptyList(), body, null, null);
 
 		return mapGet;
 	}

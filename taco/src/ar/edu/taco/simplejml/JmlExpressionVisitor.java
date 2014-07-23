@@ -60,16 +60,22 @@ import org.jmlspecs.checker.JmlTypeExpression;
 import org.multijava.mjc.CClassType;
 import org.multijava.mjc.CField;
 import org.multijava.mjc.CType;
+import org.multijava.mjc.Constants;
+import org.multijava.mjc.JAddExpression;
 import org.multijava.mjc.JArrayAccessExpression;
 import org.multijava.mjc.JArrayLengthExpression;
 import org.multijava.mjc.JClassFieldExpression;
+import org.multijava.mjc.JDivideExpression;
 import org.multijava.mjc.JEqualityExpression;
 import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JLocalVariableExpression;
 import org.multijava.mjc.JMethodCallExpression;
+import org.multijava.mjc.JMinusExpression;
+import org.multijava.mjc.JModuloExpression;
+import org.multijava.mjc.JMultExpression;
 import org.multijava.mjc.JNameExpression;
+import org.multijava.mjc.JOrdinalLiteral;
 import org.multijava.mjc.JThisExpression;
-import org.multijava.mjc.JUnaryExpression;
 import org.multijava.mjc.JVariableDefinition;
 
 import ar.edu.jdynalloy.JDynAlloyConfig;
@@ -80,17 +86,29 @@ import ar.edu.jdynalloy.ast.JPrecondition;
 import ar.edu.jdynalloy.ast.JSpecCase;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.factory.JPredicateFactory;
+import ar.edu.jdynalloy.factory.JSignatureFactory;
 import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.jdynalloy.xlator.JTypeHelper;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.taco.TacoNotImplementedYetException;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory.JMLAddAuxiliaryConstants;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory.JMLDivAuxiliaryConstants;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory.JMLMinusAuxiliaryConstants;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory.JMLModuloAuxiliaryConstants;
+import ar.edu.taco.simplejml.builtin.JMLAuxiliaryConstantsFactory.JMLMultAuxiliaryConstants;
+import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
+import ar.edu.taco.simplejml.builtin.JavaPrimitiveLongValue;
 import ar.edu.taco.simplejml.helpers.CTypeAdapter;
+import ar.edu.taco.simplejml.helpers.ExpressionSolver;
 import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
 import ar.edu.taco.simplejml.helpers.JmlExpressionSolver;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprIntLiteral;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprJoin;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprSum;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
@@ -116,6 +134,12 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 	private boolean hasAssignableClause;
 
 	private List<AlloyFormula> ensuresRedundantly = new ArrayList<AlloyFormula>();
+		
+	private AlloyTyping varsAndTheirTypeFromMathOperations = new AlloyTyping();
+	
+	private List<AlloyFormula> predsFromMathOperations = new ArrayList<AlloyFormula>();
+	
+	
 
 	public JmlExpressionVisitor() {
 		this(Instant.PRE_INSTANT);
@@ -145,16 +169,19 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 		AlloyExpression variableReference = this.getAlloyExpression();
 
 		jArrayAccessExpression.accessor().accept(this);
+		
+		CType prefix_ctype = jArrayAccessExpression.prefix().getType();
+		JType array_type = new CTypeAdapter().translate(prefix_ctype);
 
 		AlloyExpression arrayIndex = this.getAlloyExpression();
 
 		if (this.getInstant() == Instant.PRE_INSTANT) {
 			super.getStack().push(
-					AlloyIntArrayFactory.arrayAccess(variableReference,
+					AlloyIntArrayFactory.arrayAccess(array_type, variableReference,
 							arrayIndex));
 		} else {
 			super.getStack().push(
-					AlloyIntArrayFactory.primedArrayAccess(variableReference,
+					AlloyIntArrayFactory.primedArrayAccess(array_type, variableReference,
 							arrayIndex));
 		}
 
@@ -163,14 +190,24 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 	@Override
 	public void visitArrayLengthExpression(
 			JArrayLengthExpression jArrayLengthExpression) {
+		jArrayLengthExpression.accept(prettyPrint);
+		log.debug("Visiting: " + jArrayLengthExpression.getClass().getName());
+		log.debug("Statement: " + prettyPrint.getPrettyPrint());
+
 		jArrayLengthExpression.prefix().accept(this);
-		AlloyExpression alloyExpression = this.getAlloyExpression();
+		AlloyExpression variableReference = this.getAlloyExpression();
+		
+		CType prefix_ctype = jArrayLengthExpression.prefix().getType();
+		JType array_type = new CTypeAdapter().translate(prefix_ctype);
+
 		if (this.getInstant() == Instant.PRE_INSTANT) {
 			super.getStack().push(
-					AlloyIntArrayFactory.arrayLength(alloyExpression));
+					AlloyIntArrayFactory.arrayLength(array_type, 
+							variableReference));
 		} else {
 			super.getStack().push(
-					AlloyIntArrayFactory.primedArrayLength(alloyExpression));
+					AlloyIntArrayFactory.primedArrayLength(array_type, 
+							variableReference));
 		}
 	}
 
@@ -178,7 +215,7 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 	public void visitEqualityExpression(JEqualityExpression jEqualityExpression) {
 		JExpression left = jEqualityExpression.left();
 		JExpression right = jEqualityExpression.right();
-
+		
 		Instant oldInstant = this.getInstant();
 
 		if (right instanceof JmlOldExpression
@@ -196,6 +233,388 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 		this.setInstant(oldInstant);
 	}
 
+	
+	
+	
+	//mfrias 23/07/2013
+	@Override
+	public void visitAddExpression(JAddExpression jAddExpression) {
+
+		AlloyExpression rvalue = null;
+		
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			jAddExpression.left().accept(this);
+			AlloyExpression left_add_expr = this.getAlloyExpression();
+			//recover new left subexpression
+
+			jAddExpression.right().accept(this);
+			AlloyExpression right_add_expr = this.getAlloyExpression();
+			//recover new right subexpression
+
+			CType left_type = jAddExpression.left().getType();
+			CType right_type = jAddExpression.right().getType();
+
+			CTypeAdapter type_Adapter = new CTypeAdapter();
+			JType left_alloy_type = type_Adapter.translate(left_type);
+			JType right_alloy_type = type_Adapter.translate(right_type);
+
+			if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))) {
+
+				JMLAddAuxiliaryConstants addAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_integer_add_auxiliary_constants(left_add_expr, right_add_expr);
+				rvalue = addAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(addAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))) {
+
+				JMLAddAuxiliaryConstants addAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_long_add_auxiliary_constants(left_add_expr, right_add_expr);
+				//assemble new expression
+				
+				rvalue = addAuxiliaryConstants.result_variable;
+				//assemble new expression
+				
+				this.predsFromMathOperations.add(addAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))) {
+
+				JMLAddAuxiliaryConstants addAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_float_add_auxiliary_constants(left_add_expr, right_add_expr);
+				//assemble new expression
+
+				rvalue = addAuxiliaryConstants.result_variable;
+				//assemble new expression
+
+				this.predsFromMathOperations.add(addAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(addAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+				
+
+			} else {
+				throw new TacoException("Cannot add elements from types " + left_alloy_type + " and " + right_alloy_type);
+			}
+
+		} else {
+
+			Object binaryExpression;
+			binaryExpression = ExpressionSolver.getBinaryExpression(this, jAddExpression, Constants.OPE_PLUS);
+			rvalue = (AlloyExpression) binaryExpression;
+			
+		}
+
+		this.getStack().push(rvalue);
+
+	}
+	
+	
+	
+	@Override
+	public void visitMinusExpression(JMinusExpression jMinusExpression) {
+		
+		AlloyExpression rvalue = null;
+		
+		
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			jMinusExpression.left().accept(this);
+			AlloyExpression left_minus_expr = this.getAlloyExpression();
+			//recover new left subexpression
+
+			jMinusExpression.right().accept(this);
+			AlloyExpression right_minus_expr = this.getAlloyExpression();
+			//recover new right subexpression
+
+			CType left_type = jMinusExpression.left().getType();
+			CType right_type = jMinusExpression.right().getType();
+
+			CTypeAdapter type_Adapter = new CTypeAdapter();
+			JType left_alloy_type = type_Adapter.translate(left_type);
+			JType right_alloy_type = type_Adapter.translate(right_type);
+
+			if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))) {
+
+				JMLMinusAuxiliaryConstants minusAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_integer_minus_auxiliary_constants(left_minus_expr, right_minus_expr);
+				rvalue = minusAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(minusAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))) {
+
+				JMLMinusAuxiliaryConstants minusAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_long_minus_auxiliary_constants(left_minus_expr, right_minus_expr);
+				//assemble new expression
+				
+				rvalue = minusAuxiliaryConstants.result_variable;
+				//assemble new expression
+				
+				this.predsFromMathOperations.add(minusAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))) {
+
+				JMLMinusAuxiliaryConstants minusAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_float_minus_auxiliary_constants(left_minus_expr, right_minus_expr);
+				//assemble new expression
+				
+				rvalue = minusAuxiliaryConstants.result_variable;
+				//assemble new expression
+				
+				this.predsFromMathOperations.add(minusAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(minusAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+								
+			} else {
+				throw new TacoException("Cannot add elements from types " + left_alloy_type + " and " + right_alloy_type);
+			}
+
+		} else {
+
+			Object binaryExpression;
+			binaryExpression = ExpressionSolver.getBinaryExpression(this, jMinusExpression, Constants.OPE_MINUS);
+			rvalue = (AlloyExpression) binaryExpression;
+			
+		}
+
+		this.getStack().push(rvalue);
+
+	}
+	
+	
+	
+	
+	//mfrias 23/07/2013
+	@Override
+	public void visitMultExpression(JMultExpression jMultExpression) {
+		
+		AlloyExpression rvalue = null;
+		
+		
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			jMultExpression.left().accept(this);
+			AlloyExpression left_mul_expr = this.getAlloyExpression();
+			//recover new left subexpression
+
+			jMultExpression.right().accept(this);
+			AlloyExpression right_mul_expr = this.getAlloyExpression();
+			//recover new right subexpression
+
+			CType left_type = jMultExpression.left().getType();
+			CType right_type = jMultExpression.right().getType();
+
+			CTypeAdapter type_Adapter = new CTypeAdapter();
+			JType left_alloy_type = type_Adapter.translate(left_type);
+			JType right_alloy_type = type_Adapter.translate(right_type);
+
+			if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))) {
+
+				JMLMultAuxiliaryConstants mulAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_integer_mult_auxiliary_constants(left_mul_expr, right_mul_expr);
+				rvalue = mulAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(mulAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))) {
+
+				JMLMultAuxiliaryConstants mulAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_long_mult_auxiliary_constants(left_mul_expr, right_mul_expr);
+				rvalue = mulAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(mulAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))) {
+
+				JMLMultAuxiliaryConstants mulAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_float_mult_auxiliary_constants(left_mul_expr, right_mul_expr);
+				rvalue = mulAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(mulAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(mulAuxiliaryConstants.overflow_or_compatibility_variable.getVariable(), JSignatureFactory.BOOLEAN_TYPE.toString());
+								
+			} else {
+				throw new TacoException("Cannot multiply elements from types " + left_alloy_type + " and " + right_alloy_type);
+			}
+
+		} else {
+
+			Object binaryExpression;
+			binaryExpression = ExpressionSolver.getBinaryExpression(this, jMultExpression, Constants.OPE_STAR);
+			rvalue = (AlloyExpression) binaryExpression;
+
+		}
+
+		this.getStack().push(rvalue);
+
+	}
+
+	
+	
+	
+	
+	//mfrias 31/07/2013
+	@Override
+	public void visitDivideExpression(JDivideExpression jDivideExpression) {
+		
+		AlloyExpression rvalue = null;
+		
+		
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			jDivideExpression.left().accept(this);
+			AlloyExpression left_div_expr = this.getAlloyExpression();
+			//recover new left subexpression
+
+			jDivideExpression.right().accept(this);
+			AlloyExpression right_div_expr = this.getAlloyExpression();
+			//recover new right subexpression
+
+			CType left_type = jDivideExpression.left().getType();
+			CType right_type = jDivideExpression.right().getType();
+
+			CTypeAdapter type_Adapter = new CTypeAdapter();
+			JType left_alloy_type = type_Adapter.translate(left_type);
+			JType right_alloy_type = type_Adapter.translate(right_type);
+
+			if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))) {
+
+				JMLDivAuxiliaryConstants divAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_integer_divide_auxiliary_constants(left_div_expr, right_div_expr);
+				rvalue = divAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(divAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.remainder.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))) {
+
+				JMLDivAuxiliaryConstants divAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_long_divide_auxiliary_constants(left_div_expr, right_div_expr);
+				rvalue = divAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(divAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.remainder.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))) {
+
+				JMLDivAuxiliaryConstants divAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_float_divide_auxiliary_constants(left_div_expr, right_div_expr);
+				rvalue = divAuxiliaryConstants.result_variable;
+
+				this.predsFromMathOperations.add(divAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(divAuxiliaryConstants.remainder.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE.toString());
+								
+			} else {
+				throw new TacoException("Cannot divide elements from types " + left_alloy_type + " and " + right_alloy_type);
+			}
+
+		} else {
+
+			Object binaryExpression;
+			binaryExpression = ExpressionSolver.getBinaryExpression(this, jDivideExpression, Constants.OPE_SLASH);
+			rvalue = (AlloyExpression) binaryExpression;
+
+		}
+
+		this.getStack().push(rvalue);
+
+	}
+
+	
+	
+	
+	//mfrias 31/07/2013
+	@Override
+	public void visitModuloExpression(JModuloExpression jModuloExpression) {
+		
+		AlloyExpression rvalue = null;
+		
+		
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			jModuloExpression.left().accept(this);
+			AlloyExpression left_mod_expr = this.getAlloyExpression();
+			//recover new left subexpression
+
+			jModuloExpression.right().accept(this);
+			AlloyExpression right_mod_expr = this.getAlloyExpression();
+			//recover new right subexpression
+
+			CType left_type = jModuloExpression.left().getType();
+			CType right_type = jModuloExpression.right().getType();
+
+			CTypeAdapter type_Adapter = new CTypeAdapter();
+			JType left_alloy_type = type_Adapter.translate(left_type);
+			JType right_alloy_type = type_Adapter.translate(right_type);
+
+			if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE))) {
+
+				JMLModuloAuxiliaryConstants modAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_integer_modulo_auxiliary_constants(left_mod_expr, right_mod_expr);
+				rvalue = modAuxiliaryConstants.remainder;
+
+				this.predsFromMathOperations.add(modAuxiliaryConstants.pred);
+				this.varsAndTheirTypeFromMathOperations.put(modAuxiliaryConstants.result_variable.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+				this.varsAndTheirTypeFromMathOperations.put(modAuxiliaryConstants.remainder.getVariable(), JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE.toString());
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))) {
+
+				JMLMultAuxiliaryConstants mulAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_long_mult_auxiliary_constants(left_mod_expr, right_mod_expr);
+				//assemble new expression
+				
+				rvalue = mulAuxiliaryConstants.result_variable;
+				//assemble new expression
+
+			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))
+					&& (right_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_FLOAT_VALUE))) {
+
+				JMLMultAuxiliaryConstants mulAuxiliaryConstants = JMLAuxiliaryConstantsFactory.build_float_mult_auxiliary_constants(left_mod_expr, right_mod_expr);
+				//assemble new expression
+
+				rvalue = mulAuxiliaryConstants.result_variable;
+				//assemble new expression
+								
+			} else {
+				throw new TacoException("Cannot take remainder of elements from types " + left_alloy_type + " and " + right_alloy_type);
+			}
+
+		} else {
+
+			Object binaryExpression;
+			binaryExpression = ExpressionSolver.getBinaryExpression(this, jModuloExpression, Constants.OPE_PERCENT);
+			rvalue = (AlloyExpression) binaryExpression;
+
+		}
+
+		this.getStack().push(rvalue);
+
+	}
+
+
+
+	
+	
+	
+	
+	
 	@Override
 	public void visitFieldExpression(JClassFieldExpression jClassFieldExpression) {
 		jClassFieldExpression.prefix().accept(this);
@@ -443,6 +862,13 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 		JmlExpressionVisitor jmlExpressionVisitor = new JmlExpressionVisitor(
 				Instant.POST_INSTANT);
 		jmlEnsuresClause.predOrNot().accept(jmlExpressionVisitor);
+		
+		this.predsFromMathOperations.addAll(jmlExpressionVisitor.predsFromMathOperations);
+		for (AlloyVariable av : jmlExpressionVisitor.varsAndTheirTypeFromMathOperations.varSet()){
+			this.varsAndTheirTypeFromMathOperations.put(av, jmlExpressionVisitor.varsAndTheirTypeFromMathOperations.get(av));
+		}
+
+		
 		AlloyFormula ensuresFormula = jmlExpressionVisitor.getAlloyFormula();
 
 		if (this.isNormalBehavior()) {
@@ -768,10 +1194,10 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 
 		AlloyExpression reachExpression;
 		if (JDynAlloyConfig.getInstance().getJMLObjectSetToAlloySet()) {
-			reachExpression = JExpressionFactory.reach(head, typeConstant,
+			reachExpression = JExpressionFactory.reach(head, typeConstant, //mfrias-mffrias-24-09-2012-aca puede estar el problema de la coma entre fields
 					fieldVariables);
 		} else {
-			reachExpression = JExpressionFactory.reach_JMLObjectSet(head,
+			reachExpression = JExpressionFactory.reach_JMLObjectSet(head, //mfrias-mffrias-24-09-2012-aca puede estar el problema de la coma entre fields
 					typeConstant, fieldVariables);
 		}
 
@@ -854,6 +1280,10 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 		// finalFormula = new AndFormula(throwFormula, requireFormula);
 		// }
 
+		this.predsFromMathOperations.addAll(jmlExpressionVisitor.predsFromMathOperations);
+		for (AlloyVariable av : jmlExpressionVisitor.varsAndTheirTypeFromMathOperations.varSet()){
+			this.varsAndTheirTypeFromMathOperations.put(av, jmlExpressionVisitor.varsAndTheirTypeFromMathOperations.get(av));
+		}
 		super.getStack().push(requireFormula);
 
 	}
@@ -1107,13 +1537,15 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 
 			} else
 				throw new TacoException(
-						"method calls within annotations not supported");
+						"method call within annotations not supported");
 
 		} else if (jMethodCall.ident().equals("int_size")) {
 			if (qualified_name.startsWith("org.jmlspecs.models.JMLObjectSet")) {
-
-				fun_expr = JExpressionFactory.setSize(prefix_expression);
-
+				if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true ){
+					fun_expr = JExpressionFactory.setSizeReturnsJavaPrimitiveIntegerValue(prefix_expression);
+				} else {	
+					fun_expr = JExpressionFactory.setSize(prefix_expression);
+				}
 			} else if (qualified_name
 					.startsWith("org.jmlspecs.models.JMLObjectSequence")) {
 
@@ -1121,7 +1553,7 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 
 			} else
 				throw new TacoException(
-						"method calls within annotations not supported");
+						"method call within annotations not supported");
 
 		} else if (jMethodCall.ident().equals("has")) {
 
@@ -1133,9 +1565,54 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 			fun_expr = JExpressionFactory.listGet(prefix_expression,
 					args_expression.get(0));
 
+		} else if (jMethodCall.ident().equals("contains")) {
+			if (qualified_name.startsWith("java.util.Set") || qualified_name.startsWith("java.util.HashSet")) {
+				if (this.instant == Instant.PRE_INSTANT){
+					fun_expr = JExpressionFactory.javaUtilSetContains(prefix_expression, args_expression.get(0), JExpressionFactory.JAVA_UTIL_SET_ELEMS_EXPRESSION);
+				} else {
+					fun_expr = JExpressionFactory.javaUtilSetContains(prefix_expression, args_expression.get(0), JExpressionFactory.PRIMED_JAVA_UTIL_SET_ELEMS_EXPRESSION);
+				}
+			} else {
+				throw new TacoException(
+						"method call within annotations not supported");
+			}
+			
+		} else if (jMethodCall.ident().equals("size")) {	
+			if (qualified_name.startsWith("java.util.Set") || qualified_name.startsWith("java.util.HashSet")) {
+				if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true ){
+					if (this.instant == Instant.PRE_INSTANT){
+						fun_expr = JExpressionFactory.javaUtilSetSizeReturnsJavaPrimitiveIntegerValue(prefix_expression, JExpressionFactory.JAVA_UTIL_SET_ELEMS_EXPRESSION);
+					} else {
+						fun_expr = JExpressionFactory.javaUtilSetSizeReturnsJavaPrimitiveIntegerValue(prefix_expression, JExpressionFactory.PRIMED_JAVA_UTIL_SET_ELEMS_EXPRESSION);
+					}
+				} else {
+					if (this.instant == Instant.PRE_INSTANT){
+						fun_expr = JExpressionFactory.javaUtilSetSizeReturnsAlloyInt(prefix_expression, JExpressionFactory.JAVA_UTIL_SET_ELEMS_EXPRESSION);
+					} else {
+						fun_expr = JExpressionFactory.javaUtilSetSizeReturnsAlloyInt(prefix_expression, JExpressionFactory.PRIMED_JAVA_UTIL_SET_ELEMS_EXPRESSION);
+					}
+				}	
+			} else {
+				throw new TacoException(
+						"method call within annotations not supported");
+			}
+				
+		} else if (jMethodCall.ident().equals("isNaN")){
+			if (qualified_name.startsWith("java.lang.Float")) {
+				if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true ){
+					fun_expr = JExpressionFactory.floatIsNaN(args_expression.get(0));
+				} else {
+					throw new TacoException(
+							"Function isNaN not allowed unless JavaArithmetic is enabled.");
+				}
+			} else {
+				throw new TacoException(
+							"Function isNaN not called on type Float.");
+			}
+
 		} else
 			throw new TacoException(
-					"method calls within annotations not supported");
+					"method cal within annotations not supported");
 
 		super.getStack().push(fun_expr);
 
@@ -1173,15 +1650,90 @@ public class JmlExpressionVisitor extends JmlBaseExpressionVisitor {
 		}
 	}
 
+
+	
+	public AlloyTyping getVarsAndTheirTypeFromMathOperations(){
+		return this.varsAndTheirTypeFromMathOperations;
+	}
+	
+	public List<AlloyFormula> getPredsFromMathOperations(){
+		return predsFromMathOperations;
+	}
+	
+	
+	
+	public void setPredsFromMathOperations(List<AlloyFormula> l){
+		this.predsFromMathOperations = l; 
+	}
+	
+	
+	public void setVarsAndTheirTypeFromMathOperations(AlloyTyping at){
+		this.varsAndTheirTypeFromMathOperations = at; 
+	}
+	
+	
+	
 	@Override
-	public void visitUnaryExpression(JUnaryExpression jUnaryExpression) {
-		if (jUnaryExpression.expr() instanceof JMethodCallExpression) {
+	public void visitOrdinalLiteral(JOrdinalLiteral jOrdinalLiteral) {
 
-			throw new TacoException(
-					"Method calls within annotations not supported");
+		if (jOrdinalLiteral.isLiteral()) {
 
+			CType ctype = jOrdinalLiteral.getType();
+			CTypeAdapter type_adapter = new CTypeAdapter();
+			JType alloy_type = type_adapter.translate(ctype);
+
+			AlloyExpression literalAlloyExpression;
+
+			if (alloy_type
+					.equals(JSignatureFactory.JAVA_PRIMITIVE_INTEGER_VALUE)) {
+
+				int int_value = jOrdinalLiteral.numberValue().intValue();
+
+				literalAlloyExpression = JavaPrimitiveIntegerValue
+						.getInstance().toJavaPrimitiveIntegerLiteral(int_value);
+
+			} else if (alloy_type
+					.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE)) {
+
+				long long_value = jOrdinalLiteral.numberValue().longValue();
+
+				literalAlloyExpression = JavaPrimitiveLongValue.getInstance()
+						.toJavaPrimitiveLongLiteral(long_value);
+
+			} else if (alloy_type.equals(JSignatureFactory.ALLOY_INT)) {
+
+				int literalValue = jOrdinalLiteral.numberValue().intValue();
+
+				if (literalValue < 0) {
+
+					literalAlloyExpression = JExpressionFactory
+							.alloy_int_negate(new ExprIntLiteral(Math
+									.abs(literalValue)));
+				} else {
+					literalAlloyExpression = new ExprIntLiteral(literalValue);
+				}
+
+			} else {
+				throw new TacoException("unsupported ordinal type "
+						+ alloy_type.toString());
+			}
+
+			super.getStack().push(literalAlloyExpression);
+
+		} else if (jOrdinalLiteral.isBooleanLiteral()) {
+			jOrdinalLiteral.getBooleanLiteral().accept(this);
+		} else if (jOrdinalLiteral.isStringLiteral()) {
+			jOrdinalLiteral.getStringLiteral().accept(this);
 		} else {
-			super.visitUnaryExpression(jUnaryExpression);
+			throw new TacoNotImplementedYetException(
+					"Please verify the type of the JOrdinalLiteral and code the corresponding solution");
 		}
 	}
+
+	
+	
+	
+	
+	
+	
 }

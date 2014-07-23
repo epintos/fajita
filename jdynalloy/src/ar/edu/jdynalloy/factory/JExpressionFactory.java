@@ -5,7 +5,9 @@ import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprFunction;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprJoin;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprUnion;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import static ar.uba.dc.rfm.alloy.ast.expressions.ExprFunction.buildExprFunction;
 import static ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant.buildExprConstant;
 import static ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable.buildExprVariable;
@@ -81,6 +83,9 @@ public abstract class JExpressionFactory {
 	public static final AlloyVariable THROW_VARIABLE = new AlloyVariable(
 			"throw");
 
+	public static final AlloyVariable ARG_THROW_VARIABLE = new AlloyVariable(
+			"arg_throw");
+
 	public static final AlloyVariable PRIMED_THROW_VARIABLE = new AlloyVariable(
 			"throw", true);
 
@@ -103,6 +108,13 @@ public abstract class JExpressionFactory {
 
 	public static final ExprVariable OBJECT_ARRAY_CONTENTS_EXPRESSION = buildExprVariable(OBJECT_ARRAY_CONTENTS);
 
+	public static final AlloyVariable JAVA_UTIL_SET_ELEMS_VARIABLE = new AlloyVariable("java_util_Set_elems", false);
+	public static final AlloyVariable PRIMED_JAVA_UTIL_SET_ELEMS_VARIABLE = new AlloyVariable("java_util_Set_elems", true);
+
+	public static final ExprVariable JAVA_UTIL_SET_ELEMS_EXPRESSION = buildExprVariable(JAVA_UTIL_SET_ELEMS_VARIABLE);
+	public static final ExprVariable PRIMED_JAVA_UTIL_SET_ELEMS_EXPRESSION = buildExprVariable(PRIMED_JAVA_UTIL_SET_ELEMS_VARIABLE);
+
+	
 	public static final ExprConstant NULL_EXPRESSION = buildExprConstant(JSignatureFactory.NULL
 			.getSignatureId());
 
@@ -292,32 +304,23 @@ public abstract class JExpressionFactory {
 				new AlloyExpression[] { list, index });
 	}
 
-	/**FIXME: Marcelo Frias estupró este método
-	 * 
-	 * @param head
-	 * @param typeConstant
-	 * @param fieldVariable
-	 * @return
-	 */
 	public static AlloyExpression reach(AlloyExpression head,
-			ExprConstant typeConstant, ExprVariable[] fieldVariable) {
-		return ExprFunction.buildExprFunction("fun_reach", head, typeConstant,
-				fieldVariable[0]);
+			ExprConstant typeConstant, ExprVariable[] fieldVariables) {
+		if (fieldVariables.length>1){
+			return ExprFunction.buildExprFunction("fun_reach", head, typeConstant,
+				ExprUnion.buildExprUnion(fieldVariables)); //mfrias-mffrias-25-09-2012-Cambiado para poder pasar suma de campos
+		} else {
+			return ExprFunction.buildExprFunction("fun_reach", head, typeConstant,
+					fieldVariables[0]); 
+		}
+		
 	}
 
-	
-	/**FIXME: Marcelo Frias estupró este método
-	 * 
-	 * @param head
-	 * @param typeConstant
-	 * @param fieldVariable
-	 * @return
-	 */
 	public static AlloyExpression reach_JMLObjectSet(AlloyExpression head,
-			ExprConstant typeConstant, ExprVariable[] fieldVariable) {
+			ExprConstant typeConstant, ExprVariable[] fieldVariables) {
 		JPreludeFactory.register_reach_JMLObjectSet();
 		return ExprFunction.buildExprFunction(FUN_REACH_JMLOBJECT_SET, head,
-				typeConstant, fieldVariable[0], JML_OBJECT_SET_CONTAINS);
+				typeConstant, ExprUnion.buildExprUnion(fieldVariables), JML_OBJECT_SET_CONTAINS);
 	}
 
 	public static final AlloyVariable NULL_DEREF_VAR = new AlloyVariable(
@@ -340,7 +343,40 @@ public abstract class JExpressionFactory {
 	public static AlloyExpression setSize(AlloyExpression expr) {
 		return ExprFunction.buildExprFunction("fun_set_size", expr);
 	}
+	
+/*mfrias: functions added for set_size returning a JavaPrimitiveIntegerValue*/
+	public static AlloyExpression setSizeReturnsJavaPrimitiveIntegerValue(AlloyExpression expr) {
+		return ExprFunction.buildExprFunction("fun_java_primitive_integer_value_size_of", expr);
+	}
+	
 
+/*mfrias functions added for size of java_util_set*/	
+	public static AlloyExpression javaUtilSetSizeReturnsJavaPrimitiveIntegerValue(AlloyExpression expr, AlloyExpression fieldExpr) {
+		return ExprFunction.buildExprFunction("fun_java_primitive_integer_value_java_util_set_size", 
+				new AlloyExpression[]{expr,fieldExpr});
+	}
+	
+	public static AlloyExpression javaUtilSetSizeReturnsAlloyInt(AlloyExpression expr, AlloyExpression fieldExpr) {
+		return ExprFunction.buildExprFunction("fun_alloy_int_java_util_set_size", 
+				new AlloyExpression[]{expr,fieldExpr});
+	}
+
+/*mfrias functions added for contains of java_util_set*/	
+	
+	public static AlloyExpression javaUtilSetContains(AlloyExpression expr, AlloyExpression arg, AlloyExpression fieldExpr) {
+		return ExprFunction.buildExprFunction("fun_java_util_set_contains", 
+				new AlloyExpression[]{expr,arg,fieldExpr});
+	}
+	
+	
+	
+	public static AlloyExpression floatIsNaN(AlloyExpression arg) {
+		return ExprFunction.buildExprFunction("fun_java_lang_float_isNaN", 
+				new AlloyExpression[]{arg});
+	}
+
+	
+	
 	public static AlloyExpression setSum(AlloyExpression expr) {
 		return ExprFunction.buildExprFunction("fun_set_sum", expr);
 	}
@@ -474,9 +510,11 @@ public abstract class JExpressionFactory {
 		return unroll(FUN_JAVA_PRIMITIVE_LONG_VALUE_SUB, es);
 	}
 
+	
 	public static ExprFunction not(AlloyExpression es) {
 		return ExprFunction.buildExprFunction(NOT, es);
-
 	}
+	
+
 
 }

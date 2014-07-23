@@ -37,7 +37,8 @@ class DynAlloyAppendCommandPlugin implements DynAlloyASTPlugin {
 			}
 		}
 
-		return new DynalloyModule(input.getModuleId(), input.getImports(), sb.toString(), input.getActions(), input.getPrograms(), input.getAssertions());
+		return new DynalloyModule(input.getModuleId(), input.getImports(), sb.toString(), 
+				input.getActions(), input.getPrograms(), input.getAssertions(), null, null);
 	}
 
 }

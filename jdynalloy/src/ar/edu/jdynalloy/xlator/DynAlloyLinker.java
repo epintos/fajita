@@ -2,6 +2,8 @@ package ar.edu.jdynalloy.xlator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.Vector;
 
 import ar.edu.jdynalloy.factory.JPreludeFactory;
@@ -14,7 +16,9 @@ public class DynAlloyLinker {
 	public Map<String, String> link(Vector<DynalloyModule> ms) {
 		Map<String, String> result = new HashMap<String, String>();
 
-		DynalloyModule preludeModule = JPreludeFactory.buildPreludeModule();
+		HashSet<String> moduleIds = getModuleIds(ms);
+		
+		DynalloyModule preludeModule = JPreludeFactory.buildPreludeModule(moduleIds);
 		
 		DynalloyModule[] precompiledModules = new DynalloyModule[] { preludeModule };
 		for (DynalloyModule m : precompiledModules) {
@@ -36,6 +40,16 @@ public class DynAlloyLinker {
 		return result;
 	}
 
+	private HashSet<String> getModuleIds(Vector<DynalloyModule> ms){
+		HashSet<String> result = new HashSet<String>();
+		
+		for (DynalloyModule m : ms) {
+			result.add(m.getModuleId());
+		}
+		
+		return result;
+	}
+	
 	public String linkAll(Vector<DynalloyModule> ms) {
 		StringBuffer result = new StringBuffer();
 		Map<String, String> modules = link(ms);

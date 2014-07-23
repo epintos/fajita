@@ -4,13 +4,13 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mujava.api.Mutant;
 
 import org.apache.log4j.Logger;
 import org.multijava.mjc.JCompilationUnitType;
 
-import ar.edu.taco.junit.RecoveredInformation;
 import ar.edu.taco.stryker.StrykerInitialStage;
 import ar.edu.taco.stryker.exceptions.FatalStrykerStageException;
 
@@ -35,17 +35,21 @@ public class StrykerStage implements ITacoStage {
 	// The method under analysis in which a bug was found.
 	private String methodToCheck;
 
+	@SuppressWarnings("unused")
 	private List<JCompilationUnitType> asts;
 
-	private RecoveredInformation recoveredInformation;
 
-	private String junitFile;
+	public static Class<?>[] junitInputs;
+	public static int indexToLastJUnitInput = 0;
+	public static int fileSuffix = 0;
 
 	private String configFile;
 
 	private Properties overridingProperties;
 	
 	private int maxMethodsInFile;
+	
+	public static AtomicInteger generationsWanted = new AtomicInteger(10);
 
 	/**
 	 * Creates a new Stryker stage with the information given.
@@ -65,7 +69,7 @@ public class StrykerStage implements ITacoStage {
 	// TODO agregar los parametros necesarios para las otras partes
 	public StrykerStage(List<JCompilationUnitType> asts, String sourceRootDir,
 			String classToCheck, String methodToCheck, String configFile,
-			Properties overridingProperties, String junitFile, int maxMethodsInFile) {
+			Properties overridingProperties, int maxMethodsInFile) {
 		this.asts = asts;
 		this.overridingProperties = overridingProperties;
 		int lastDotIndex = classToCheck.lastIndexOf(".");
@@ -81,7 +85,6 @@ public class StrykerStage implements ITacoStage {
 		this.methodToCheck = methodToCheck.substring(0,
 				methodToCheck.lastIndexOf("_"));
 		this.configFile = configFile;
-		this.junitFile = junitFile;
 		this.maxMethodsInFile = maxMethodsInFile;
 
 		// things to obtain input
@@ -129,55 +132,55 @@ public class StrykerStage implements ITacoStage {
 		// for(Mutant m : Mutant.values()) {
 		// mutOps.add(m);
 		// }
-//		mutOps.add(Mutant.EAM);
-//		mutOps.add(Mutant.EMM);
-//		mutOps.add(Mutant.EOA);
-//		mutOps.add(Mutant.EOC);
-//		mutOps.add(Mutant.AMC);
-//		mutOps.add(Mutant.IHD);
-//		mutOps.add(Mutant.IHI);
-//		mutOps.add(Mutant.IOD);
-//		mutOps.add(Mutant.IOP);
-//		mutOps.add(Mutant.IOR);
-//		mutOps.add(Mutant.IPC);
-//		mutOps.add(Mutant.ISD);
-//		mutOps.add(Mutant.ISI);
-//		mutOps.add(Mutant.ISK);
-//		mutOps.add(Mutant.JTD);
-//		mutOps.add(Mutant.JDC);
-//		mutOps.add(Mutant.JID);
-//		mutOps.add(Mutant.JSD);
-//		mutOps.add(Mutant.JSI);
-//		mutOps.add(Mutant.JTI);
-//		mutOps.add(Mutant.OAN);
-//		mutOps.add(Mutant.OMD);
-//		mutOps.add(Mutant.OMR);
-//		mutOps.add(Mutant.PCC);
-//		mutOps.add(Mutant.PCI);
-//		mutOps.add(Mutant.PMD);
-//		mutOps.add(Mutant.PNC);
-//		mutOps.add(Mutant.PPD);
-//		mutOps.add(Mutant.PRV);
-//		mutOps.add(Mutant.PRVO);
-//		mutOps.add(Mutant.PRVV);		
-//		mutOps.add(Mutant.AODS);
-//		mutOps.add(Mutant.AODU);
-//		mutOps.add(Mutant.AOIS);
-//		mutOps.add(Mutant.AOIU);
-		mutOps.add(Mutant.AORB);
-//		mutOps.add(Mutant.AORS);
-//		mutOps.add(Mutant.AORU);
-//		mutOps.add(Mutant.ASRS);
-//		mutOps.add(Mutant.COD);
-//		mutOps.add(Mutant.COI);
-//		mutOps.add(Mutant.COR);
-//		mutOps.add(Mutant.LOD);
-//		mutOps.add(Mutant.LOI);
-//		mutOps.add(Mutant.LOR);
-		mutOps.add(Mutant.ROR);
-//		mutOps.add(Mutant.SOR);
 		
-		int generationsWanted = 100;
+		mutOps.add(Mutant.ROR);
+		mutOps.add(Mutant.PRVO);
+		mutOps.add(Mutant.PRVV);		
+		mutOps.add(Mutant.AORB);
+		mutOps.add(Mutant.EAM);
+		mutOps.add(Mutant.EMM);
+		mutOps.add(Mutant.EOA);
+		mutOps.add(Mutant.EOC);
+		mutOps.add(Mutant.AMC);
+		mutOps.add(Mutant.IHD);
+		mutOps.add(Mutant.IHI);
+		mutOps.add(Mutant.IOD);
+		mutOps.add(Mutant.IOP);
+		mutOps.add(Mutant.IOR);
+		mutOps.add(Mutant.IPC);
+		mutOps.add(Mutant.ISD);
+		mutOps.add(Mutant.ISI);
+		mutOps.add(Mutant.ISK);
+		mutOps.add(Mutant.JTD);
+		mutOps.add(Mutant.JDC);
+		mutOps.add(Mutant.JID);
+		mutOps.add(Mutant.JSD);
+		mutOps.add(Mutant.JSI);
+		mutOps.add(Mutant.JTI);
+		mutOps.add(Mutant.OAN);
+		mutOps.add(Mutant.OMD);
+		mutOps.add(Mutant.OMR);
+		mutOps.add(Mutant.PCC);
+		mutOps.add(Mutant.PCI);
+		mutOps.add(Mutant.PMD);
+		mutOps.add(Mutant.PNC);
+		mutOps.add(Mutant.PPD);
+		mutOps.add(Mutant.AODS);
+		mutOps.add(Mutant.AODU);
+		mutOps.add(Mutant.AOIS);
+		mutOps.add(Mutant.AOIU);
+		mutOps.add(Mutant.AORS);
+		mutOps.add(Mutant.AORU);
+		mutOps.add(Mutant.ASRS);
+		mutOps.add(Mutant.COD);
+		mutOps.add(Mutant.COI);
+		mutOps.add(Mutant.COR);
+		mutOps.add(Mutant.LOD);
+		mutOps.add(Mutant.LOI);
+		mutOps.add(Mutant.LOR);
+		mutOps.add(Mutant.SOR);
+		
+		
 
 		// TODO: CHANGE THIS TO STRYKERINITIALSTAGE
 		// IStrykerStage mutantsGenerationStage = new
@@ -194,9 +197,9 @@ public class StrykerStage implements ITacoStage {
 		// log.info("---- Finish: Mutants Generation Stage ----");
 		// // TODO el resto de los stages
 
-		StrykerInitialStage stage = new StrykerInitialStage(junitFile,
-				classToCheckFile, classToCheck, methodToCheck, mutOps,
-				generationsWanted, configFile, overridingProperties, maxMethodsInFile);
+		StrykerInitialStage stage = new StrykerInitialStage(classToCheckFile, classToCheck, 
+				methodToCheck, junitInputs, mutOps, generationsWanted, configFile, overridingProperties, 
+				maxMethodsInFile);
 		log.info("---- START:Stryker Stage ----");
 		try {
 			stage.execute();

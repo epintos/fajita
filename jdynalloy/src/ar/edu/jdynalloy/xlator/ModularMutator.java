@@ -221,7 +221,7 @@ class ModularMutator extends JDynAlloyMutator {
 
 		JProgramDeclaration spec_program = new JProgramDeclaration(false,
 				signatureId, programId, parameters, spec_cases,
-				spec_program_body);
+				spec_program_body, null, null);
 
 		return spec_program;
 	}

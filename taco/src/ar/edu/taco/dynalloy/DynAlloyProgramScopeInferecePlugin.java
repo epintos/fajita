@@ -1,9 +1,11 @@
 package ar.edu.taco.dynalloy;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
 
 import ar.edu.taco.TacoConfigurator;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.da2a.prepare.ClosureRemover;
 import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
 import ar.uba.dc.rfm.dynalloy.ast.ProgramDeclaration;
@@ -40,15 +42,27 @@ public class DynAlloyProgramScopeInferecePlugin implements DynAlloyASTPlugin {
 		ProgramInliner program_inliner = new ProgramInliner(dynalloy_module);
 
 		String method_to_check = TacoConfigurator.getInstance().getMethodToCheck();
-
+		String[] splitMethodToCheck = method_to_check.split("_");
+		method_to_check = "";
+		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
+			method_to_check += splitMethodToCheck[idx] + "_";
+		}
+		if (splitMethodToCheck.length > 3){
+			method_to_check += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+		}
+		method_to_check += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+		method_to_check += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+		method_to_check += splitMethodToCheck[splitMethodToCheck.length - 1];
+		
 		ProgramDeclaration program_decl = dynalloy_module.getProgram(method_to_check);
 		DynalloyProgram inlined_program = (DynalloyProgram) program_decl.getBody().accept(program_inliner);
 
 		ProgramDeclaration inlined_program_decl = new ProgramDeclaration(program_decl.getProgramId(), program_decl.getParameters(),
-				program_decl.getLocalVariables(), inlined_program, program_decl.getParameterTyping());
+				program_decl.getLocalVariables(), inlined_program, program_decl.getParameterTyping(), program_decl.getPredsFromArithInContracts(), program_decl.getVarsFromArithInContracts());
 
 		DynalloyModule result = new DynalloyModule(dynalloy_module.getModuleId(), dynalloy_module.getImports(), dynalloy_module.getAlloyStr(),
-				dynalloy_module.getActions(), Collections.singleton(inlined_program_decl), dynalloy_module.getAssertions());
+				dynalloy_module.getActions(), Collections.singleton(inlined_program_decl), 
+				dynalloy_module.getAssertions(), new AlloyTyping(), new ArrayList<AlloyFormula>());
 
 		return result;
 	}

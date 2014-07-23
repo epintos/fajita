@@ -21,6 +21,7 @@ package ar.uba.dc.rfm.dynalloy.xlator;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ import ar.uba.dc.rfm.alloy.VariableId;
 import ar.uba.dc.rfm.alloy.ast.AlloyModule;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.ImpliesFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
@@ -163,7 +165,8 @@ public class DynalloyToAlloyTranslatorTest {
 		// perform test
 		SpecContext specContext = new SpecContext(dynalloyAST);
 		specContext.setFields(new AlloyTyping());
-		DynalloyXlatorVisitor translator = new DynalloyXlatorVisitor(specContext, DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS);
+		DynalloyXlatorVisitor translator = new DynalloyXlatorVisitor(specContext, DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 		AlloyModule actual = (AlloyModule) dynalloyAST.accept(translator);
 
 		// check result
@@ -203,7 +206,8 @@ public class DynalloyToAlloyTranslatorTest {
 		// perform test
 		SpecContext specContext = new SpecContext(dynalloyAST);
 		specContext.setFields(new AlloyTyping());
-		DynalloyXlatorVisitor translator = new DynalloyXlatorVisitor(specContext, DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS);
+		DynalloyXlatorVisitor translator = new DynalloyXlatorVisitor(specContext, DynAlloyOptions.DEFAULT_DYNALLOY_OPTIONS, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 		AlloyModule actual = (AlloyModule) dynalloyAST.accept(translator);
 
 

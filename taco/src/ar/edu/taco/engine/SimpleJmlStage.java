@@ -3,24 +3,20 @@
  */
 package ar.edu.taco.engine;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.jmlspecs.checker.JmlMethodDeclaration;
-import org.jmlspecs.checker.JmlTypeDeclaration;
 import org.multijava.mjc.JCompilationUnitType;
 
-import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JClassConstraint;
 import ar.edu.jdynalloy.ast.JClassInvariant;
+import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JField;
 import ar.edu.jdynalloy.ast.JObjectConstraint;
 import ar.edu.jdynalloy.ast.JObjectInvariant;
@@ -29,13 +25,12 @@ import ar.edu.jdynalloy.ast.JRepresents;
 import ar.edu.jdynalloy.ast.JSignature;
 import ar.edu.jdynalloy.factory.JSignatureFactory;
 import ar.edu.taco.TacoConfigurator;
-import ar.edu.taco.simplejml.ExpressionVisitor;
 import ar.edu.taco.simplejml.JavaToJDynAlloyManager;
 import ar.edu.taco.simplejml.SimpleJmlToJDynAlloyContext;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveFloatValue;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveLongValue;
-import ar.edu.taco.utils.FileUtils;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
@@ -52,7 +47,17 @@ public class SimpleJmlStage implements ITacoStage {
 	private List<JCompilationUnitType> compilation_units;
 	private List<JDynAlloyModule> modules;
 	private SimpleJmlToJDynAlloyContext simpleJmlToJDynAlloyContext = null;
-
+	private AlloyTyping varsEncodingValueOfArithmeticOperationsInInvariants = new AlloyTyping();
+	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInInvariants = new ArrayList<AlloyFormula>();
+	
+	public AlloyTyping getVarsEncodingValueOfArithmeticOperationsInInvariants(){
+		return varsEncodingValueOfArithmeticOperationsInInvariants;
+	}
+	
+	public List<AlloyFormula> getPredsEncodingValueOfArithmeticOperationsInInvariants(){
+		return predsEncodingValueOfArithmeticOperationsInInvariants;
+	}
+	
 	public SimpleJmlStage(List<JCompilationUnitType> compilation_units) {
 		this.compilation_units = compilation_units;
 		this.modules = new ArrayList<JDynAlloyModule>();
@@ -69,6 +74,11 @@ public class SimpleJmlStage implements ITacoStage {
 		JavaToJDynAlloyManager aJavaToDynJAlloyManager = new JavaToJDynAlloyManager();
 		for (JCompilationUnitType unit : this.compilation_units) {
 			List<JDynAlloyModule> result = aJavaToDynJAlloyManager.processCompilationUnit(unit);
+//			for (AlloyVariable av : packed.getVars()){
+//				this.varsEncodingValueOfArithmeticOperationsInInvariants.put(av, packed.getVars().get(av));
+//			}	
+//			this.predsEncodingValueOfArithmeticOperationsInInvariants.addAll(packed.getPreds());
+//			List<JDynAlloyModule> result = packed.getModules();
 			for (JDynAlloyModule aDynJAlloyModule : result) {
 				this.modules.add(aDynJAlloyModule);
 			}
@@ -108,7 +118,7 @@ public class SimpleJmlStage implements ITacoStage {
 			JSignature interfaceSignatureId = JSignatureFactory.buildInterface(aInterface, Collections.<String> emptySet(), Collections.singleton(fact));
 			JDynAlloyModule interfaceModule = new JDynAlloyModule(aInterface, interfaceSignatureId, null, null, Collections.<JField> emptyList(), Collections
 					.<JClassInvariant> emptySet(), Collections.<JClassConstraint> emptySet(), Collections.<JObjectInvariant> emptySet(), Collections
-					.<JObjectConstraint> emptySet(), Collections.<JRepresents> emptySet(), Collections.<JProgramDeclaration> emptySet());
+					.<JObjectConstraint> emptySet(), Collections.<JRepresents> emptySet(), Collections.<JProgramDeclaration> emptySet(), null, null);
 
 			this.modules.add(interfaceModule);
 

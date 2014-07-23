@@ -19,9 +19,11 @@
  */
 package ar.uba.dc.rfm.dynalloy.ast;
 
+import java.util.List;
 import java.util.Set;
 
 import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.util.DynalloyPrinter;
 
 public final class DynalloyModule {
@@ -43,10 +45,23 @@ public final class DynalloyModule {
 	private final Set<AssertionDeclaration> assertions;
 
 	private AlloyTyping dynalloyFields;
+	
+	private AlloyTyping varsComingFromArithmeticConstraintsInObjectInvariants;
+	
+	public AlloyTyping getVarsComingFromArithmeticConstraintsInObjectInvariants(){
+		return this.varsComingFromArithmeticConstraintsInObjectInvariants;
+	}
+	
+	private List<AlloyFormula> predsComingFromArithmeticConstraintsInObjectInvariants;
 
+	public List<AlloyFormula> getPredsComingFromArithmeticConstraintsInObjectInvariants(){
+		return this.predsComingFromArithmeticConstraintsInObjectInvariants;
+	}
+	
 	public DynalloyModule(String _moduleId, Set<OpenDeclaration> _imports,
-			String _alloyStr,
-			Set<ActionDeclaration> _actions, Set<ProgramDeclaration> _programs, Set<AssertionDeclaration> _assertions) {
+			String _alloyStr, Set<ActionDeclaration> _actions, Set<ProgramDeclaration> _programs, 
+			Set<AssertionDeclaration> _assertions, AlloyTyping varsFromArithInObjInvs,
+			List<AlloyFormula> predsFromArithInObjInvs) {
 		super();
 		this.moduleId = _moduleId;
 		this.openDeclarations = _imports;
@@ -54,6 +69,8 @@ public final class DynalloyModule {
 		this.actions = _actions;
 		this.programs = _programs;
 		this.assertions = _assertions;
+		this.varsComingFromArithmeticConstraintsInObjectInvariants = varsFromArithInObjInvs;
+		this.predsComingFromArithmeticConstraintsInObjectInvariants = predsFromArithInObjInvs;
 	}
 
 	public ActionDeclaration getAction(String actionId) {

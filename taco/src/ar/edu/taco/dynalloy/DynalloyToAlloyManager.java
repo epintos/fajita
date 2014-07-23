@@ -21,21 +21,27 @@
 package ar.edu.taco.dynalloy;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
 
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
+import ar.edu.jdynalloy.ast.JProgramDeclaration;
+import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.taco.alloy.CardinalSizeOfPlugin;
 import ar.edu.taco.alloy.bound.UBoundPlugin;
 import ar.edu.taco.alloy.sbp.SymmBreakPredPlugin;
 import ar.edu.taco.alloy.sk.SkolemizejavaArithPlugin;
-import ar.edu.taco.infer.InferredScope;
-import ar.edu.taco.infer.ScopeInference;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.DynAlloyOptions;
 import ar.uba.dc.rfm.dynalloy.parser.AssertionNotFound;
@@ -105,8 +111,32 @@ public class DynalloyToAlloyManager {
 			options.setRunAlloyAnalyzer(false);
 			options.setBuildDynAlloyTrace(false);
 			options.setRemoveExitWhileGuard(removeExitWhileGuard);
+			
+			
+			
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram = new HashMap<String, AlloyTyping>();
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInContractsByProgram = new HashMap<String, List<AlloyFormula>>();
+			
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule = new HashMap<String,AlloyTyping>();
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInObjectInvariantsByModule = new HashMap<String, List<AlloyFormula>> ();
 
-			compiler.compile(inputFilename, outputFilename, options);
+			for (Iterator<JDynAlloyModule> itMods = this.src_jdynalloy_modules.iterator(); itMods.hasNext(); ){
+				JDynAlloyModule jdam = itMods.next();
+				String modName = jdam.getModuleId();
+				varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule.put(modName, jdam.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants());
+				predsComingFromArithmeticConstraintsInObjectInvariantsByModule.put(modName, jdam.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
+				Set<JProgramDeclaration> progs = jdam.getPrograms();
+				for (Iterator<JProgramDeclaration> itProgs = progs.iterator(); itProgs.hasNext(); ){
+					JProgramDeclaration prog = itProgs.next();
+					varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram.put(modName + "_" + prog.getProgramId(), prog.getVarsResultOfArithmeticOperationsInContracts());
+					predsComingFromArithmeticConstraintsInContractsByProgram.put(modName + "_" + prog.getProgramId(), prog.getPredsEncodingValueOfArithmeticOperationsInContracts());
+				}
+			}
+			compiler.compile(inputFilename, outputFilename, options, 
+					varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram, 
+					predsComingFromArithmeticConstraintsInContractsByProgram,
+					varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+					predsComingFromArithmeticConstraintsInObjectInvariantsByModule);
 
 			result = compiler.getSpecContext();
 

@@ -19,6 +19,8 @@ public class RecoveredInformation {
 	public Map<String, Map<String, Object>> getStaticFieldsValues() {
 		return staticFieldsValues;
 	}
+	
+	private int fileNameSuffix = 0;
 
 	public void setStaticFieldsValues(
 			Map<String, Map<String, Object>> staticFieldsValues) {
@@ -182,5 +184,15 @@ public class RecoveredInformation {
 		}
 		return staticFields;
 	}		
+	
+	
+	public int getFileNameSuffix (){
+		return fileNameSuffix;
+	}
+	
+	
+	public void setFileNameSuffix (int i){
+		this.fileNameSuffix = i;
+	}
 
 }

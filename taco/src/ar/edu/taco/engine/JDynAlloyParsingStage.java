@@ -26,8 +26,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import antlr.RecognitionException;
-import antlr.TokenStreamException;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
@@ -88,8 +86,9 @@ public class JDynAlloyParsingStage implements ITacoStage {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private void makeParserPass(List<JDynAlloyModule> resultModules, JDynAlloyProgramParseContext ctx) throws JDynAlloyParsingException, FileNotFoundException {
-		List<String> sourceFiles = TacoConfigurator.getInstance().getList(TacoConfigurator.JDYNALLOY_PARSER_INPUT_FILES, new ArrayList<String>());
+		List<String> sourceFiles = (List<String>)TacoConfigurator.getInstance().getList(TacoConfigurator.JDYNALLOY_PARSER_INPUT_FILES, new ArrayList<String>());
 		for (String jDynalloySourceFile : sourceFiles) {
 			List<JDynAlloyModule> parsedModules = JDynAlloyParserManager.parseModulesFile(jDynalloySourceFile, ctx);
 			resultModules.addAll(parsedModules);

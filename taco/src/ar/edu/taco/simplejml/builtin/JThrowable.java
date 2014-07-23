@@ -20,10 +20,14 @@
 package ar.edu.taco.simplejml.builtin;
 
 import static ar.edu.jdynalloy.factory.JSignatureFactory.buildClass;
+import static ar.edu.jdynalloy.factory.JSignatureFactory.buildLiteralSingleton;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import ar.edu.jdynalloy.JDynAlloyConfig;
+import ar.edu.jdynalloy.ast.JAssume;
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JClassConstraint;
 import ar.edu.jdynalloy.ast.JClassInvariant;
@@ -33,12 +37,22 @@ import ar.edu.jdynalloy.ast.JObjectInvariant;
 import ar.edu.jdynalloy.ast.JProgramDeclaration;
 import ar.edu.jdynalloy.ast.JRepresents;
 import ar.edu.jdynalloy.ast.JSignature;
+import ar.edu.jdynalloy.ast.JSkip;
+import ar.edu.jdynalloy.xlator.JDynAlloyTyping;
+import ar.edu.jdynalloy.ast.JSpecCase;
 import ar.edu.jdynalloy.ast.JVariableDeclaration;
 import ar.edu.jdynalloy.factory.JDynAlloyFactory;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
-import ar.edu.jdynalloy.xlator.JDynAlloyTyping;
 import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.simplejml.helpers.ArgEncoder;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
+import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
+import ar.uba.dc.rfm.alloy.ast.formulas.EqualsFormula;
+import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
+
 
 public class JThrowable implements IBuiltInModule {
 
@@ -57,37 +71,57 @@ public class JThrowable implements IBuiltInModule {
 //	private final Map<JBindingKey, JProgramDeclaration> bindings;
 
 	private JThrowable() {
-		JSignature signature = buildClass(true, "java_lang_Throwable",
-				new JDynAlloyTyping(), null, Collections
+		final boolean signatureIsAbstract;
+		if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
+			signatureIsAbstract = true;
+		} else
+			signatureIsAbstract = false;
+
+		JSignature signature = buildClass(signatureIsAbstract, "java_lang_Throwable",
+				new JDynAlloyTyping(), "java_lang_Object", Collections
 						.<String> emptySet());
 
+		
 		JSignature classSignature;
 		//if (DynJAlloyConfig.getInstance().getUseClassSingletons() == true)
 		//	classSignature = new JSignature(true, false, "ThrowableClass",
 		//			new DynJAlloyTyping(), false, "Class", null, Collections
 		//					.<String> emptySet());
 		//else
-			classSignature = null;
+		classSignature = null;
 
 		JVariableDeclaration thisDeclaration = new JVariableDeclaration(
-				JExpressionFactory.THIS_VARIABLE, JType.parse("java_lang_Throwable"));
+				JExpressionFactory.THIS_VARIABLE, JType
+						.parse("java_lang_Throwable"));
 
 		ArgEncoder encoder = new ArgEncoder(false, true, false, 0);
 		List<JVariableDeclaration> parameters = encoder.encode(thisDeclaration,
 				JDynAlloyFactory.THROW_DECLARATION, null, Collections
 						.<JVariableDeclaration> emptyList());
 
-//		JProgramDeclaration constructor = new JProgramDeclaration(false,
-//				"java_lang_Throwable", "Constructor", parameters, Collections
-//						.<JSpecCase> emptyList(), new JSkip());
+		List<AlloyVariable> varList = new ArrayList<AlloyVariable>(); 
+		varList.add(JExpressionFactory.THIS_VARIABLE);
+//		AlloyExpression var = AlloyExpression.asAlloyExpression(varList).get(0);
+		
+//		AlloyExpression nullExpr = ExprConstant.buildExprConstant("null");
+		
+//		JAssume ass = new JAssume(new NotFormula(new EqualsFormula(var, nullExpr)));
+		
+		JProgramDeclaration constructor = new JProgramDeclaration(false,
+				"java_lang_Throwable", "Constructor", parameters, Collections
+				.<JSpecCase> emptyList(), new JSkip(), new AlloyTyping(), new ArrayList<AlloyFormula>());
 
-		this.module = new JDynAlloyModule("java_lang_Throwable", signature,
-				classSignature, null, Collections.<JField> emptyList(), Collections.<JClassInvariant> emptySet(), Collections.<JClassConstraint> emptySet(), 
-				Collections.<JObjectInvariant> emptySet(), Collections.<JObjectConstraint> emptySet(), Collections
-						.<JRepresents> emptySet(), Collections
-						.<JProgramDeclaration> emptySet());
-						//.<JProgramDeclaration> singleton(constructor));
+		this.module = new JDynAlloyModule("java_lang_Throwable", 
+				signature, classSignature, null, Collections.<JField> emptyList(), 
+				Collections.<JClassInvariant> emptySet(), Collections.<JClassConstraint> emptySet(), 
+				Collections.<JObjectInvariant> emptySet(), Collections.<JObjectConstraint> emptySet(), 
+				Collections.<JRepresents> emptySet(), Collections
+						.<JProgramDeclaration> singleton(constructor), new AlloyTyping(), new ArrayList<AlloyFormula>());
 						
+		if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
+			JSignature literalSingleton = buildLiteralSingleton("java_lang_Throwable");
+			module.setLiteralSingleton(literalSingleton);
+		}
 
 //		this.bindings = new HashMap<JBindingKey, JProgramDeclaration>();
 //		this.bindings.put(THROWABLE_CONSTRUCTOR_KEY, constructor);

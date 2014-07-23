@@ -39,6 +39,17 @@ public final class AlloyVariable {
 	private static final int PRIME_INDEX = -2;
 	
 	private static final int PRE_STATE_INDEX = -3;
+	
+	private boolean comesFromContract = false;
+	
+    public boolean isVariableFromContract(){
+    	return comesFromContract;
+    }
+    
+    public void setIsVariableFromContract(){
+    	comesFromContract = true;
+    }
+
 
 	public static AlloyVariable buildAlloyVariable(String _variableId) {
 		return new AlloyVariable(_variableId);
@@ -52,6 +63,12 @@ public final class AlloyVariable {
 		return result;
 	}
 		
+	public static AlloyVariable buildNonMutableAlloyVariable(String _variableId){
+		AlloyVariable av = new AlloyVariable(_variableId);
+		av.setMutable(false);
+		return av;
+		
+	}
 	
 	public AlloyVariable(String _variableId) {
 		this(_variableId, PLAIN_INDEX);

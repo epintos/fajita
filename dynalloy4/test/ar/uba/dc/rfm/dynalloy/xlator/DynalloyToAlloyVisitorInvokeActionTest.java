@@ -86,11 +86,12 @@ public class DynalloyToAlloyVisitorInvokeActionTest {
 				.<OpenDeclaration> emptySet(), "...",
 				new HashSet<ActionDeclaration>(map.values()), Collections
 						.<ProgramDeclaration> emptySet(), Collections
-						.<AssertionDeclaration> emptySet());
+						.<AssertionDeclaration> emptySet(), null, null);
 		SpecContext result = new SpecContext( dynalloyAST );
 		result.setFields(typing);
 		result.switchToModule("moduleId");
-		body.accept(new DynalloyXlatorVisitor(result, null));
+		body.accept(new DynalloyXlatorVisitor(result, null, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>()));
 		return result;
 	}
 

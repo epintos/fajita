@@ -33,12 +33,12 @@ import openjava.ptree.ParseTreeException;
 
 import org.apache.log4j.Logger;
 
+import ar.edu.taco.engine.StrykerStage;
 import ar.edu.taco.stryker.api.impl.input.MuJavaInput;
 import ar.edu.taco.stryker.api.impl.input.OpenJMLInput;
 import ar.edu.taco.stryker.api.impl.input.OpenJMLInputWrapper;
 import ar.edu.taco.stryker.exceptions.FatalStrykerStageException;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.io.Files;
@@ -55,11 +55,13 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 	
 	private static MuJavaController instance;
 	
-	private int i = 0;
+	private int privateI = 0;
 
 	private static Logger log = Logger.getLogger(MuJavaController.class);
 	
 	public static AtomicInteger mutantCount = new AtomicInteger(0);
+	
+	public int[] mutantsPerLevel = new int[StrykerStage.generationsWanted.get()];
 	
 	public synchronized static MuJavaController getInstance() {
 		if (instance == null) {
@@ -79,13 +81,35 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 			@Override
 			public void run() {
 				try {
+					mutantsPerLevel[0] = 1;
+					
 					MuJavaInput input = queue.take();
+					
 					while (!willShutdown.get() || !queue.isEmpty()) {
+//						log.warn(StrykerStage.generationsWanted.get() - input.getQtyOfGenerations().get());
+//						log.warn(StrykerStage.generationsWanted.get());
+//						log.warn(input.getQtyOfGenerations().get());
+						mutantsPerLevel[StrykerStage.generationsWanted.get() - input.getQtyOfGenerations().get()]--;
 						log.debug("Executing input: "+input);
-						log.warn("Actual size: "+queue.size());
+						log.debug("Actual size: "+queue.size());
 						List<MuJavaInput> inputs = execute(input);
-						log.debug("Adding new inputs: "+inputs.size());
-						queue.addAll(inputs);
+						mutantsPerLevel[StrykerStage.generationsWanted.get() - input.getQtyOfGenerations().get() + 1] = mutantsPerLevel[StrykerStage.generationsWanted.get() - input.getQtyOfGenerations().get() + 1] + inputs.size();
+						String mutsPerLevel = getMutsPerLevel(mutantsPerLevel);
+						log.warn("Mutants per level: " + mutsPerLevel);
+						log.debug("Adding new inputs: "+ inputs.size());
+						try {
+							queue.addAll(inputs);
+						} catch (UnsupportedOperationException e) {
+							System.out.println(e.getStackTrace());
+						} catch (ClassCastException e) {
+							System.out.println(e.getStackTrace());
+						} catch (NullPointerException e) {
+							System.out.println(e.getStackTrace());
+						} catch (IllegalArgumentException e) {
+							System.out.println(e.getStackTrace());
+						} catch (IllegalStateException e) {
+							System.out.println(e.getStackTrace());
+						}
 						input = queue.poll();
 						
 						if (input == null) {
@@ -165,7 +189,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 			methodToCheck = input.getMethod();
 			mutOps = Sets.newHashSet(input.getMutantsToApply());
 			classToMutate = obtainClassNameFromFileName(input.getFilename());
-			generationsLeft = input.getQtyOfGenerations();
+			generationsLeft = input.getQtyOfGenerations().get();
 			muJavaInput = input;
 	
 			final File tmpDir = createWorkingDirectory();
@@ -174,20 +198,21 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 			MutantsInformationHolder genMutants = generateMutants(fileToMutate,
 					methodToCheck, mutOps, classToMutate);
 			
-			log.warn("MutantCount: " + mutantCount.addAndGet(genMutants.getMutantsIdentifiers().size()));
+			
+//			log.warn("MutantCount: " + mutantCount.addAndGet(genMutants.getMutantsIdentifiers().size()));
 	
-			log.info("Generation finished. Generated mutants: "+genMutants.getMutantsIdentifiers().size());
+			log.debug("Generation finished. Generated mutants: "+genMutants.getMutantsIdentifiers().size());
 			List<MuJavaInput> nextGenerationInputs = new ArrayList<MuJavaInput>(
 					genMutants.getMutantsIdentifiers().size());
 	
-			OpenJMLController outputController = OpenJMLController.getInstance();
+//			OpenJMLController outputController = OpenJMLController.getInstance();
 	
 			log.debug("Creating files for mutants");
 			for (MutantIdentifier mutantIdentifier : genMutants
 					.getMutantsIdentifiers()) {
 				log.debug("Check that mutant is unique: "+ mutantIdentifier);
 				String dirString = tmpDir.toString();
-				File tempFile = createTempFile(classToMutate, generationsLeft, i++, fileToMutate
+				File tempFile = createTempFile(classToMutate, generationsLeft, privateI++, fileToMutate
 						.getName().substring(0, 8), tmpDir, "a"+dirString.substring(dirString.lastIndexOf(FILE_SEP)+1).replaceAll("-", ""));
 				DigestOutputStream digestOutputStream = getDigestOutputStream(tempFile);
 				int mutatedLine = writeMutant(genMutants.getCompUnit(),
@@ -224,7 +249,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 					// We have to delete this new mutant since it will be a
 					// duplicate
 					log.debug("Duplicated file");
-					mutantCount.decrementAndGet();
+//					mutantCount.decrementAndGet();
 					if (!tempFile.delete()) {
 						log.error("Couldn't remove file " + tempFile.getName());
 					}
@@ -242,17 +267,19 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 					filesHash.put(msgDigest, tempFile.getAbsolutePath());
 					filenameToMutatedLine.put(tempFile.getAbsolutePath(), mutatedLine);
 					OpenJMLInput output = new OpenJMLInput(tempFile.getAbsolutePath(),
-							muJavaInput.getJunitFile(), muJavaInput.getMethod(),
+							muJavaInput.getJunitInputs(), muJavaInput.getMethod(),
 							muJavaInput.getConfigurationFile(),
 							muJavaInput.getOverridingProperties(),
 							muJavaInput.getOriginalFilename());
 					log.debug("Adding task to the list");
 					jmlInputs.add(output);
 					if ((generationsLeft - 1) > 0) {
+						int newNumberOfGenerations = generationsLeft - 1;
+//						log.warn("nuevo mutante: "+newNumberOfGenerations);
 						MuJavaInput mji = new MuJavaInput(tempFile.getAbsolutePath(),
-								muJavaInput.getMethod(), muJavaInput.getJunitFile(),
+								muJavaInput.getMethod(), muJavaInput.getJunitInputs(),
 								muJavaInput.getMutantsToApply(),
-								muJavaInput.getQtyOfGenerations() - 1,
+								new AtomicInteger(newNumberOfGenerations),
 								muJavaInput.getConfigurationFile(),
 								muJavaInput.getOverridingProperties(),
 								muJavaInput.getOriginalFilename(), output);
@@ -276,16 +303,17 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 
 	private OpenJMLInputWrapper createJMLInputWrapper(
 			List<OpenJMLInput> jmlInputs, String classToMutate) {
+		log.debug("jmlInputs: " + jmlInputs.toString());
 		if( jmlInputs.isEmpty() ){
 			throw new IllegalArgumentException("You must provide at least one OpenJMLInput.");
 		}
 		OpenJMLInput oji = jmlInputs.remove(0);
 		
-		String originalFilename = oji.getOriginalFilename();
+//		String originalFilename = oji.getOriginalFilename();
 		String originalMethod = oji.getMethod();
 		File newDir = createWorkingDirectory();
 		String dirString = newDir.getAbsolutePath();
-		String newPath = "a"+dirString.substring(dirString.lastIndexOf(FILE_SEP)+1).replaceAll("-", "")+(FILE_SEP+"aOpenJMLInWrap" + i);
+		String newPath = "a"+dirString.substring(dirString.lastIndexOf(FILE_SEP)+1).replaceAll("-", "")+(FILE_SEP+"aOpenJMLInWrap" + privateI);
 		File newDir2 = new File(newDir, newPath);
 		
 		Map<String,OpenJMLInput> map = new HashMap<String, OpenJMLInput>();
@@ -299,22 +327,23 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 			File from = new File(oji.getFilename());
 			String methodName = oji.getMethod();
 			index++;
-			OpenJMLInput newInput = new OpenJMLInput(oji.getFilename(), oji.getJunitFile(), methodName, oji.getConfigurationFile(), oji.getOverridingProperties(), oji.getOriginalFilename());
+			OpenJMLInput newInput = new OpenJMLInput(oji.getFilename(), oji.getJunitInputs(), methodName, oji.getConfigurationFile(), oji.getOverridingProperties(), oji.getOriginalFilename());
 			map.put(methodName, newInput);
 			Files.copy(from, newFile);
-			for(OpenJMLInput input: jmlInputs) {
+			for (OpenJMLInput input: jmlInputs) {
 				try {
 					methodName = input.getMethod() + (index++);
-	//				System.out.println(newFile.getAbsolutePath());
 					String codeToAdd = getMethod(input.getFilename(), input.getMethod());
+					log.debug("Code to add: " + codeToAdd);
 					insertNewMethod(input.getMethod(), methodName, newFile.getAbsolutePath(), codeToAdd);
-					newInput = new OpenJMLInput(input.getFilename(), input.getJunitFile(), methodName, input.getConfigurationFile(), input.getOverridingProperties(), input.getOriginalFilename());
+					newInput = new OpenJMLInput(input.getFilename(), input.getJunitInputs(), methodName, input.getConfigurationFile(), input.getOverridingProperties(), input.getOriginalFilename());
 					map.put(methodName, newInput);
 				} catch (NoSuchElementException e) {
 					
 				}
 			}
-			OpenJMLInputWrapper ojiw = new OpenJMLInputWrapper(newFile.getPath(), oji.getJunitFile(), oji.getConfigurationFile(), oji.getOverridingProperties(), originalMethod, map);
+			OpenJMLInputWrapper ojiw = new OpenJMLInputWrapper(newFile.getPath(), oji.getJunitInputs(), 
+					oji.getConfigurationFile(), oji.getOverridingProperties(), originalMethod, map);
 			return ojiw;
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
@@ -328,7 +357,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 		boolean methodFound = false;
 		boolean canBreak = true;
 		int balance = -1;
-		int j = 0;
+//		int j = 0;
 		while(scan.hasNext()){
 			String str = scan.next();
 			if(methodFound) {
@@ -336,7 +365,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 						str.contains("this.modCount = this.modCount + 1;") ||
 						str.contains("if (this.cacheSize < this.maximumCacheSize) {") ||
 						str.contains("this.cacheSize = this.cacheSize + 1;")) {
-					j++;
+//					j++;
 				}
 				
 			}
@@ -369,7 +398,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 				}
 			}
 		}
-		
+		scan.close();
 		if(builder.length() == 0) {
 			throw new NoSuchElementException("The method name was not found in this file");
 		}
@@ -406,6 +435,7 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 			fos.write((scan.next() + "\n").getBytes(Charset.forName("UTF-8")));
 		}
 		fos.close();
+		scan.close();
 		File originalFile = new File(filename);
 		originalFile.delete();
 
@@ -569,6 +599,15 @@ public class MuJavaController extends AbstractBaseController<MuJavaInput> {
 				return false;
 			return true;
 		}
+	}
+	
+	private String getMutsPerLevel(int[] values){
+		String result = "";
+		for (int i = 0; i < values.length; i++){
+			result = result + " | " + values[i];
+		}
+		result = result + " |";
+		return result;
 	}
 
 }

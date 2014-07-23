@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mujava.api.Mutant;
 
@@ -27,8 +28,8 @@ public interface StrykerAPI {
 	 * @param overridingProperties The overriding properties
 	 * @return The filenames with the bug fixed or empty if a fix could not be found.
 	 */
-	List<String> fixBug(String junitFile, File classToMutate, String classNameToMutate,
-			String methodToMutate, HashSet<Mutant> mutOps, int generationsWanted, String configFile, Properties overridingProperties,
-			int maxMethodsInFile);
+	List<String> fixBug(File classToMutate, String classNameToMutate, String methodToMutate, 
+			Class<?>[] junitInputs, HashSet<Mutant> mutOps, AtomicInteger generationsWanted, String configFile, 
+			Properties overridingProperties, int maxMethodsInFile);
 	
 }

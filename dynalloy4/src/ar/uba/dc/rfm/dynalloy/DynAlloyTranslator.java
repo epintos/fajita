@@ -1,6 +1,7 @@
 package ar.uba.dc.rfm.dynalloy;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +14,8 @@ import ar.uba.dc.rfm.alloy.ast.AlloyAssertion;
 import ar.uba.dc.rfm.alloy.ast.AlloyFact;
 import ar.uba.dc.rfm.alloy.ast.AlloyModule;
 import ar.uba.dc.rfm.alloy.ast.AlloySig;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.util.AlloyPrinter;
 import ar.uba.dc.rfm.da2a.prepare.ClosureRemover;
 import ar.uba.dc.rfm.da2a.qremover.QuantifierRemover;
@@ -46,15 +49,27 @@ public class DynAlloyTranslator {
 		return noClosureSpec;
 	}
 
-	private AlloyModule translateUnrolledDynAlloyAST(DynalloyModule dynalloyAST, DynAlloyOptions options) throws RecognitionException, TokenStreamException,
+	private AlloyModule translateUnrolledDynAlloyAST(DynalloyModule dynalloyAST, DynAlloyOptions options,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInContractsByProgram,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInObjectInvariantsByModule) throws RecognitionException, TokenStreamException,
 			IOException, AssertionNotFound {
 
-		DynalloyXlatorVisitor visitor = new DynalloyXlatorVisitor(this.specContext, options);
+		DynalloyXlatorVisitor visitor = new DynalloyXlatorVisitor(this.specContext, options, 
+				varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram, 
+				predsComingFromArithmeticConstraintsInContractsByProgram,
+				varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+				predsComingFromArithmeticConstraintsInObjectInvariantsByModule);
 		AlloyModule alloyAST = (AlloyModule) dynalloyAST.accept(visitor);
 		return alloyAST;
 	}
 
-	public AlloyModule translateDynAlloyAST(DynalloyModule dynalloyModuleAST, DynAlloyOptions options) throws RecognitionException, TokenStreamException,
+	public AlloyModule translateDynAlloyAST(DynalloyModule dynalloyModuleAST, DynAlloyOptions options,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInContractsByProgram,
+			HashMap<String, AlloyTyping> varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+			HashMap<String, List<AlloyFormula>> predsComingFromArithmeticConstraintsInObjectInvariantsByModule) throws RecognitionException, TokenStreamException,
 			IOException, AssertionNotFound {
 		DynAlloyAlloyMapping mapping = new DynAlloyAlloyMapping();
 		DynalloyModule unrolledAST = null;
@@ -65,7 +80,11 @@ public class DynAlloyTranslator {
 		specContext.setFields(dynalloyModuleAST.getDynalloyFields());
 		specContext.setMapping(mapping);
 
-		AlloyModule alloyAST = translateUnrolledDynAlloyAST(unrolledAST, options);
+		AlloyModule alloyAST = translateUnrolledDynAlloyAST(unrolledAST, options, 
+				varsAndTheirTypesComingFromArithmeticConstraintsInContractsByProgram, 
+				predsComingFromArithmeticConstraintsInContractsByProgram,
+				varsAndTheirTypesComingFromArithmeticConstraintsInObjectInvariantsByModule,
+				predsComingFromArithmeticConstraintsInObjectInvariantsByModule);
 		return alloyAST;
 	}
 

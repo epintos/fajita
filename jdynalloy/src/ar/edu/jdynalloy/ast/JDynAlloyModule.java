@@ -1,7 +1,17 @@
 package ar.edu.jdynalloy.ast;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import ar.edu.jdynalloy.xlator.JType;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
+import ar.uba.dc.rfm.alloy.util.ArgAppenderExpressionMutator;
+import ar.uba.dc.rfm.alloy.util.FormulaMutator;
 
 public final class JDynAlloyModule implements JDynAlloyASTNode {
 
@@ -117,6 +127,8 @@ public final class JDynAlloyModule implements JDynAlloyASTNode {
 
 	private JSignature classSingleton;
 	private JSignature literalSingleton;
+	private AlloyTyping varsEncodingValueOfArithmeticOperationsInObjectInvariants = new AlloyTyping();
+	private List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInObjectInvariants = new ArrayList<AlloyFormula>();
 
 	public JDynAlloyModule(String moduleId, 
 			JSignature signature,
@@ -128,7 +140,9 @@ public final class JDynAlloyModule implements JDynAlloyASTNode {
 			Set<JObjectInvariant> object_invariants,
 			Set<JObjectConstraint> object_constraints,
 			Set<JRepresents> represents, 
-			Set<JProgramDeclaration> programs) {
+			Set<JProgramDeclaration> programs,
+			AlloyTyping varsEncodingValueOfArithmeticOperationsInObjectInvariants,
+			List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInObjectInvariants) {
 		super();
 		this.moduleId = moduleId;
 		this.signature = signature;
@@ -141,6 +155,8 @@ public final class JDynAlloyModule implements JDynAlloyASTNode {
 		this.object_constraints = object_constraints;
 		this.represents = represents;
 		this.programs = programs;
+		this.predsEncodingValueOfArithmeticOperationsInObjectInvariants = predsEncodingValueOfArithmeticOperationsInObjectInvariants;
+		this.varsEncodingValueOfArithmeticOperationsInObjectInvariants = varsEncodingValueOfArithmeticOperationsInObjectInvariants;
 	}
 
 	public String getModuleId() {
@@ -182,5 +198,101 @@ public final class JDynAlloyModule implements JDynAlloyASTNode {
 	public Set<JClassConstraint> getClassConstraints() {
 		return class_constraints;
 	}
+	
+	
 
+
+	public AlloyTyping getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() {
+		return this.varsEncodingValueOfArithmeticOperationsInObjectInvariants;
+	}
+	
+	public List<AlloyFormula> getPredsEncodingValueOfArithmeticOperationsInObjectInvariants() {
+		return this.predsEncodingValueOfArithmeticOperationsInObjectInvariants;
+	}
+
+
+	public void setVarsEncodingValueOfArithmeticOperationsInObjectInvariants(AlloyTyping at) {
+		this.varsEncodingValueOfArithmeticOperationsInObjectInvariants = at;
+	}
+	
+	public void setPredsEncodingValueOfArithmeticOperationsInObjectInvariants(List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInObjectInvariants2) {
+		this.predsEncodingValueOfArithmeticOperationsInObjectInvariants = predsEncodingValueOfArithmeticOperationsInObjectInvariants2;
+	}
+
+	public void prefixArgs() {
+		Set<JProgramDeclaration> modPrograms = this.programs;
+		for (JProgramDeclaration jpd : modPrograms){
+			JStatement[] newSentences = null;
+			List<JVariableDeclaration> params = jpd.getParameters();
+			List<JVariableDeclaration> newParams = new ArrayList<JVariableDeclaration>();
+			int offset;
+			newParams.add(params.get(0));
+			if (jpd.isStatic()){
+				newSentences = new JStatement[2*(params.size() - 1)+1];
+				offset = 1;
+			} else {
+				newSentences = new JStatement[2*(params.size() - 2)+1];
+				offset = 2;
+				newParams.add(params.get(1));
+			}
+			JStatement oldBody = jpd.getBody();
+			HashSet<AlloyVariable> varsToPrefix = new HashSet<AlloyVariable>();
+			int index = 0;
+			while (index+offset < params.size()){
+				JVariableDeclaration jvd = params.get(index+offset);
+				varsToPrefix.add(jvd.getVariable());
+				JType argType = jvd.getType();
+				AlloyVariable av = jvd.getVariable();
+				String varName = av.getVariableId().getString();
+				
+				JVariableDeclaration newJVD = new JVariableDeclaration(new AlloyVariable("arg_"+varName), argType);
+				newParams.add(newJVD);
+				
+				JAssignment newJAss = new JAssignment(new ExprVariable(jvd.getVariable()), new ExprVariable(newJVD.getVariable()));
+				newSentences[2*index] = jvd;
+				newSentences[2*index+1] = newJAss;
+				index = index + 1;
+			}
+			newSentences[2*(params.size()-offset)] = oldBody;
+			JStatement newBody = new JBlock(newSentences);
+			jpd.setParameters(newParams);
+			jpd.setBody(newBody);
+			
+			// Fix specifications so that they refer to the new parameters.
+			List<JSpecCase> specs = jpd.getSpecCases();
+
+			ArgAppenderExpressionMutator argAppenderEM = new ArgAppenderExpressionMutator(varsToPrefix);
+			FormulaMutator argAppenderFM = new FormulaMutator(argAppenderEM);
+
+			for (JSpecCase jsc : specs){
+
+				List<JPrecondition> precs = jsc.getRequires();
+				for (JPrecondition jp : precs){
+//					HashSet<JVariableDeclaration> varsToPrefix  = new HashSet<JVariableDeclaration>();
+//					for (int ind = offset; ind < params.size(); ind++){
+//						varsToPrefix.add(params.get(ind));
+//					}
+					
+					jp.setFormula((AlloyFormula)jp.getFormula().accept(argAppenderFM));
+				}
+				
+				List<JPostcondition> posts = jsc.getEnsures();
+				for (JPostcondition jp : posts){
+//					HashSet<JVariableDeclaration> varsToPrefix  = new HashSet<JVariableDeclaration>();
+//					for (int ind = offset; ind < params.size(); ind++){
+//						varsToPrefix.add(params.get(ind));
+//					}
+					
+					jp.setFormula((AlloyFormula)jp.getFormula().accept(argAppenderFM));
+				}
+
+			}
+			
+			List<AlloyFormula> newPreds = new ArrayList<AlloyFormula>();
+			for (AlloyFormula af : jpd.getPredsEncodingValueOfArithmeticOperationsInContracts()){
+				newPreds.add((AlloyFormula)af.accept(argAppenderFM));
+			}
+			jpd.setPredsEncodingValueOfArithmeticOperationsInContracts(newPreds);
+		}
+	}
 }

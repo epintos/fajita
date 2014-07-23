@@ -30,7 +30,7 @@ public class AlloyTyping implements Iterable<AlloyVariable>{
 	public boolean isEmpty() {
 		return typing.isEmpty();
 	}
-	
+
 	private final Map<AlloyVariable, String> typing;
 
 	public AlloyTyping(Map<AlloyVariable, String> typing) {
@@ -49,6 +49,11 @@ public class AlloyTyping implements Iterable<AlloyVariable>{
 		typing.put(v, t);
 	}
 
+
+	public Set<AlloyVariable> getVarsInTyping(){
+		return this.typing.keySet();
+	}
+
 	public String get(AlloyVariable v) {
 		return typing.get(v);
 	}
@@ -56,7 +61,12 @@ public class AlloyTyping implements Iterable<AlloyVariable>{
 	public boolean contains(AlloyVariable v) {
 		return typing.containsKey(v);
 	}
-	
+
+
+	public void remove(AlloyVariable v){
+		typing.remove(v);
+	}
+
 	@Override
 	public boolean equals(Object arg0) {
 		if (arg0 != null && arg0.getClass().equals(AlloyTyping.class)) {
@@ -91,8 +101,11 @@ public class AlloyTyping implements Iterable<AlloyVariable>{
 		for (AlloyVariable v : this) {
 			merged.put(v, this.get(v));
 		}
-		for (AlloyVariable v : that) {
-			merged.put(v, that.get(v));
+		
+		if (that != null){
+			for (AlloyVariable v : that) {
+				merged.put(v, that.get(v));
+			}
 		}
 		return merged;
 	}

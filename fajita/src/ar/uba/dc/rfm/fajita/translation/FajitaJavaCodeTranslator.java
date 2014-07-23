@@ -132,7 +132,6 @@ public class FajitaJavaCodeTranslator {
 					}
 				}
 			}
-//			compilationUnit.setImports(newImports);
 			
 			Transformation transformation;
 			
@@ -153,13 +152,6 @@ public class FajitaJavaCodeTranslator {
 					transformation = new DualClassBranchTransformation(
 						configuration, recoder, compilationUnit);
 					break;
-				case ALL_DEF_USES:
-					transformation = new AllUsesTransformation(
-						configuration, recoder, compilationUnit);
-					break;
-				case MCC:
-				    transformation = new MultipleConditionTransformation(configuration, recoder, compilationUnit);
-				    break;
 				default:
 					throw new FajitaException(
 						"Java code translation not implemented for the coverage criteria: " +
@@ -169,7 +161,7 @@ public class FajitaJavaCodeTranslator {
 			
 			transformation.execute();
 
-			FajitaPrettyPrinter.print(outFile, compilationUnit);
+		FajitaPrettyPrinter.print(outFile, compilationUnit);
 			
 		} catch (Exception e) {
 			throw new FajitaException(
@@ -182,7 +174,7 @@ public class FajitaJavaCodeTranslator {
 	
 	public static class FajitaPrettyPrinter extends PrettyPrinter {
 
-		protected FajitaPrettyPrinter(FileWriter writer, Properties properties) {
+		public FajitaPrettyPrinter(FileWriter writer, Properties properties) {
 			super(writer, properties);
 		}
 		
@@ -207,7 +199,7 @@ public class FajitaJavaCodeTranslator {
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
-	//           COMMON FUNCTIONS USED BY ALL THE TRANSFORMATIONS           //
+	//           COMMON FUNCGTIONS USED BY ALL THE TRANSFORMATIONS           //
 	///////////////////////////////////////////////////////////////////////////
 	
 	

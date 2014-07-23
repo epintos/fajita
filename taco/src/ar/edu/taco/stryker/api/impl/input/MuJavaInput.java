@@ -2,6 +2,7 @@ package ar.edu.taco.stryker.api.impl.input;
 
 import java.util.Collection;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mujava.api.Mutant;
 
@@ -12,11 +13,11 @@ public class MuJavaInput {
 	
 	private String method;
 	
-	private String junitFile;
+	private Class<?>[] junitInputs;
 	
 	private Collection<Mutant> mutantsToApply;
 	
-	private int qtyOfGenerations;
+	private AtomicInteger qtyOfGenerations;
 	
 	private String configFile;
 	
@@ -38,13 +39,13 @@ public class MuJavaInput {
 	 * @param overridingProperties The TACO overriding properties
 	 * @param originalFilename The original filename with the bug to solve
 	 */
-	public MuJavaInput(String filename, String method, String junitFile,
-			Collection<Mutant> mutantsToApply, int qtyOfGenerations, String configFile, 
+	public MuJavaInput(String filename, String method, Class<?>[] junitInputs,
+			Collection<Mutant> mutantsToApply, AtomicInteger qtyOfGenerations, String configFile, 
 			Properties overridingProperties, String originalFilename, Object syncObject) {
 		super();
 		this.filename = filename;
 		this.method = method;
-		this.junitFile = junitFile;
+		this.junitInputs = junitInputs;
 		this.mutantsToApply = mutantsToApply;
 		this.qtyOfGenerations = qtyOfGenerations;
 		this.configFile = configFile;
@@ -70,8 +71,8 @@ public class MuJavaInput {
 	/**
 	 * @return The file that contains all the statements that will make the class fail.
 	 */
-	public String getJunitFile() {
-		return junitFile;
+	public Class<?>[] getJunitInputs() {
+		return junitInputs;
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class MuJavaInput {
 	/**
 	 * @return The quantity of generations to create
 	 */
-	public int getQtyOfGenerations() {
+	public AtomicInteger getQtyOfGenerations() {
 		return qtyOfGenerations;
 	}
 

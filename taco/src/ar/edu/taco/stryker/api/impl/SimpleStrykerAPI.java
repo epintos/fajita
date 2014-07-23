@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mujava.api.Mutant;
 import ar.edu.taco.stryker.api.StrykerAPI;
@@ -27,12 +28,13 @@ public class SimpleStrykerAPI implements StrykerAPI {
 	}
 
 	@Override
-	public List<String> fixBug(String junitFile, File classToMutate, String classNameToMutate,
-			String methodToMutate, HashSet<Mutant> mutOps, int generationsWanted, String configFile, Properties overridingProperties,
-			int maxMethodsInFile) {
+	public List<String> fixBug(File classToMutate, String classNameToMutate, String methodToMutate, 
+			Class<?>[] junitInputs, HashSet<Mutant> mutOps, AtomicInteger generationsWanted, String configFile, 
+			Properties overridingProperties, int maxMethodsInFile) {
 		mujavaController.setMaxMethodsInFile(maxMethodsInFile);
 		mujavaController.enqueueTask(new MuJavaInput(classToMutate.getAbsolutePath(), methodToMutate, 
-				junitFile, mutOps, generationsWanted, configFile, overridingProperties, classToMutate.getAbsolutePath(), new Object()));
+				junitInputs, mutOps, generationsWanted, configFile, overridingProperties, classToMutate.getAbsolutePath(), 
+				new Object()));
 		while(!darwinistController.willShutdown.get());
 		return darwinistController.getResolvedBugs();
 	}

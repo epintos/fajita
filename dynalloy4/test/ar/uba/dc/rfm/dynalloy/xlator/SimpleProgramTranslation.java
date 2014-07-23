@@ -76,7 +76,8 @@ public class SimpleProgramTranslation {
 
 	private SpecContext buildEmptyContext() {
 		final DynalloyModule dynalloyAST = new DynalloyModule("moduleId", Collections.<OpenDeclaration> emptySet(), "...", Collections
-				.<ActionDeclaration> emptySet(), Collections.<ProgramDeclaration> emptySet(), Collections.<AssertionDeclaration> emptySet());
+				.<ActionDeclaration> emptySet(), Collections.<ProgramDeclaration> emptySet(), Collections.<AssertionDeclaration> emptySet(),
+				null, null);
 		SpecContext context = new SpecContext(dynalloyAST);
 		context.switchToModule("moduleId");
 		return context;
@@ -231,12 +232,13 @@ public class SimpleProgramTranslation {
 
 		actions.put(a1Body.getActionId(), a1Body);
 		DynalloyModule dynalloyAST = new DynalloyModule("moduleId", Collections.<OpenDeclaration> emptySet(), "...", new HashSet<ActionDeclaration>(actions
-				.values()), Collections.<ProgramDeclaration> emptySet(), Collections.<AssertionDeclaration> emptySet());
+				.values()), Collections.<ProgramDeclaration> emptySet(), Collections.<AssertionDeclaration> emptySet(), null, null);
 
 		SpecContext context = new SpecContext(dynalloyAST);
 		context.setFields(new AlloyTyping());
 		context.switchToModule("moduleId");
-		a1Body.accept(new DynalloyXlatorVisitor(context, null));
+		a1Body.accept(new DynalloyXlatorVisitor(context, null, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>()));
 		return context;
 	}
 

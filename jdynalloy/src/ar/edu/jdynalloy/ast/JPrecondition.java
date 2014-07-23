@@ -4,19 +4,22 @@ import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 
 public class JPrecondition {
 
-	public JPrecondition(AlloyFormula formula) {
-		super();
-		this.formula = formula;
-	}
+    public JPrecondition(AlloyFormula formula) {
+        super();
+        this.formula = formula;
+    }
 
-	private final AlloyFormula formula;
+    private AlloyFormula formula;
 
-	public AlloyFormula getFormula() {
-		return formula;
-	}
+    public AlloyFormula getFormula() {
+        return formula;
+    }
 
-	public Object accept(IJDynAlloyVisitor visitor) {
-		return visitor.visit(this);
-	}
-	
+    public void setFormula(AlloyFormula f){
+        this.formula = f;
+    }
+    public Object accept(IJDynAlloyVisitor visitor) {
+        return visitor.visit(this);
+    }
+    
 }

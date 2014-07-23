@@ -2,11 +2,15 @@ package regr.new_grammar;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 import org.junit.Test;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.DynAlloyOptions;
 import ar.uba.dc.rfm.dynalloy.parser.AssertionNotFound;
@@ -26,7 +30,8 @@ public class New_GrammarTest {
 		options.setBuildDynAlloyTrace(false);
 
 		c.compile("test/regr/new_grammar/grammar_ext.dals",
-				"test/regr/new_grammar/grammar_ext.als", options);
+				"test/regr/new_grammar/grammar_ext.als", options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 
@@ -44,7 +49,8 @@ public class New_GrammarTest {
 		options.setBuildDynAlloyTrace(false);
 		
 		c.compile("test/regr/new_grammar/new_grammar.dals",
-				"test/regr/new_grammar/new_grammar.als", options);
+				"test/regr/new_grammar/new_grammar.als", options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 
@@ -62,7 +68,8 @@ public class New_GrammarTest {
 		
 				
 		c.compile("test/regr/new_grammar/old_grammar.dals",
-				"test/regr/new_grammar/old_grammar.als", options);
+				"test/regr/new_grammar/old_grammar.als", options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 

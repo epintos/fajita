@@ -1,0 +1,1501 @@
+//-------------- roops_core_objectsInstrumented_SinglyLinkedList --------------//
+module roops_core_objectsInstrumented_SinglyLinkedList
+sig roops_core_objectsInstrumented_SinglyLinkedList extends java_lang_Object {}
+{}
+field roops_core_objectsInstrumented_SinglyLinkedList_header:(roops_core_objectsInstrumented_SinglyLinkedList)->one(null+roops_core_objectsInstrumented_SinglyLinkedListNode) {}
+
+object_invariant
+   not (
+     thiz.roops_core_objectsInstrumented_SinglyLinkedList_header=null)
+
+object_invariant
+   all n:roops_core_objectsInstrumented_SinglyLinkedListNode | {
+     isSubset[n,
+             fun_set_difference[(thiz.roops_core_objectsInstrumented_SinglyLinkedList_header).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+     implies 
+             isNotSubset[n,
+                        fun_set_difference[(n.roops_core_objectsInstrumented_SinglyLinkedListNode_next).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+   
+   }
+
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::removeTest[
+  var throw:java_lang_Throwable+null,
+  var list:null+roops_core_objectsInstrumented_SinglyLinkedList,
+  var index:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_8:boolean;
+            var t_9:boolean;
+            var t_10:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_9:=(neq[list,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[list]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call repOK[list,throw,t_10];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_9=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_10=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_8:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_8:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_8:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_8=true{
+                  if isEmptyOrNull[list]{
+                     throw:=java_lang_NullPointerExceptionLit;
+                  } else {
+                     call remove[list,throw,index];
+                  };
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::insertBackTest[
+  var throw:java_lang_Throwable+null,
+  var list:null+roops_core_objectsInstrumented_SinglyLinkedList,
+  var arg:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_5:boolean;
+            var t_6:boolean;
+            var t_7:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_6:=(neq[list,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[list]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call repOK[list,throw,t_7];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_6=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_7=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_5:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_5:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_5:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_5=true{
+                  if isEmptyOrNull[list]{
+                     throw:=java_lang_NullPointerExceptionLit;
+                  } else {
+                     call insertBack[list,throw,arg];
+                  };
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::contains[
+  var thiz:roops_core_objectsInstrumented_SinglyLinkedList,
+  var throw:java_lang_Throwable+null,
+  var return:boolean,
+  var value_param:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_11:boolean;
+            var t_12:boolean;
+            var t_13:boolean;
+            var var_2_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+            var var_3_result:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  var_2_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_3_result:=false;
+            } else {
+               skip;
+            };
+            var var_4_ws_1:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_12:=(equ[var_3_result,
+                  false]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_13:=(neq[var_2_current,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_12=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_13=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_11:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_11:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_11:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_4_ws_1:=t_11;
+            } else {
+               skip;
+            };
+            while liftExpression[var_4_ws_1]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_16:boolean;
+                  var t_17:boolean;
+                  var t_18:boolean;
+                  var t_19:boolean;
+                  var t_20:boolean;
+                  var t_21:boolean;
+                  var t_22:boolean;
+                  var var_5_equalVal:boolean;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_17:=(equ[value_param,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_18:=(equ[var_2_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_17=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if t_18=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_16:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_16:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_16:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_16=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           var_5_equalVal:=true;
+                        } else {
+                           skip;
+                        };
+                     } else    {
+                           var t_15:boolean;
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_15:=(neq[value_param,
+                                 null]=>(true)else(false));
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if t_15=true   {
+                                    var t_14:boolean;
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       t_14:=(equ[value_param,
+                                          var_2_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false));
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if t_14=true{
+                                          if (
+                                            throw=null)
+                                          and 
+                                          (
+                                            exit_stmt_reached=false){
+                                             var_5_equalVal:=true;
+                                          } else {
+                                             skip;
+                                          };
+                                       } else {
+                                          if (
+                                            throw=null)
+                                          and 
+                                          (
+                                            exit_stmt_reached=false){
+                                             var_5_equalVal:=false;
+                                          } else {
+                                             skip;
+                                          };
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                 
+                                 }
+                               else {
+                                 if (
+                                   throw=null)
+                                 and 
+                                 (
+                                   exit_stmt_reached=false){
+                                    var_5_equalVal:=false;
+                                 } else {
+                                    skip;
+                                 };
+                              };
+                           } else {
+                              skip;
+                           };
+                        
+                        }
+                     ;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_19:=(equ[var_5_equalVal,
+                        true]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_19=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           var_3_result:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        skip;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[var_2_current]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        var_2_current:=var_2_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_21:=(equ[var_3_result,
+                        false]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_22:=(neq[var_2_current,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_21=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if t_22=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_20:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_20:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_20:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_4_ws_1:=t_20;
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=var_3_result;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::repOK[
+  var thiz:roops_core_objectsInstrumented_SinglyLinkedList,
+  var throw:java_lang_Throwable+null,
+  var return:boolean] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               return:=true;
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::remove[
+  var thiz:roops_core_objectsInstrumented_SinglyLinkedList,
+  var throw:java_lang_Throwable+null,
+  var index:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_24:boolean;
+            var t_25:boolean;
+            var t_26:boolean;
+            var t_27:boolean;
+            var t_33:boolean;
+            var t_34:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_24:=(pred_java_primitive_integer_value_lt[index,
+                                                   JavaPrimitiveIntegerLiteral0]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_24=true   {
+                     var t_23:java_lang_RuntimeException+null;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        t_23:=java_lang_RuntimeExceptionLit;
+                     } else {
+                        skip;
+                     };
+                     throw:=t_23;
+                     exit_stmt_reached:=true;
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+            var var_6_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  var_6_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header;
+               };
+            } else {
+               skip;
+            };
+            var var_7_previous:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_7_previous:=((null+roops_core_objectsInstrumented_SinglyLinkedListNode) & (null));
+            } else {
+               skip;
+            };
+            var var_8_current_index:JavaPrimitiveIntegerValue;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_8_current_index:=JavaPrimitiveIntegerLiteral0;
+            } else {
+               skip;
+            };
+            var var_9_found:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_9_found:=false;
+            } else {
+               skip;
+            };
+            var var_10_ws_2:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_26:=(equ[var_9_found,
+                  false]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_27:=(neq[var_6_current,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_26=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_27=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_25:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_25:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_25:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_10_ws_2:=t_25;
+            } else {
+               skip;
+            };
+            while liftExpression[var_10_ws_2]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_28:boolean;
+                  var t_29:boolean;
+                  var t_30:boolean;
+                  var t_31:boolean;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_28:=(equ[index,
+                        var_8_current_index]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_28=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           var_9_found:=true;
+                        } else {
+                           skip;
+                        };
+                     } else    {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              var_8_current_index:=fun_java_primitive_integer_value_add[var_8_current_index,JavaPrimitiveIntegerLiteral1];
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              var_7_previous:=var_6_current;
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[var_6_current]{
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 var_6_current:=var_6_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                              };
+                           } else {
+                              skip;
+                           };
+                        
+                        }
+                     ;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_30:=(equ[var_9_found,
+                        false]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_31:=(neq[var_6_current,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_30=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           if t_31=true{
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_29:=true;
+                              } else {
+                                 skip;
+                              };
+                           } else {
+                              if (
+                                throw=null)
+                              and 
+                              (
+                                exit_stmt_reached=false){
+                                 t_29:=false;
+                              } else {
+                                 skip;
+                              };
+                           };
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_29:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_10_ws_2:=t_29;
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_33:=(equ[var_9_found,
+                  false]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_33=true   {
+                     var t_32:java_lang_RuntimeException+null;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        t_32:=java_lang_RuntimeExceptionLit;
+                     } else {
+                        skip;
+                     };
+                     throw:=t_32;
+                     exit_stmt_reached:=true;
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_34:=(equ[var_7_previous,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_34=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[thiz]
+                     or 
+                     isEmptyOrNull[var_6_current]
+                     {
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        thiz.roops_core_objectsInstrumented_SinglyLinkedList_header:=var_6_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[var_7_previous]
+                     or 
+                     isEmptyOrNull[var_6_current]
+                     {
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        var_7_previous.roops_core_objectsInstrumented_SinglyLinkedListNode_next:=var_6_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                     };
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::Constructor[
+  var thiz:roops_core_objectsInstrumented_SinglyLinkedList,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         skip;
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::insertBack[
+  var thiz:roops_core_objectsInstrumented_SinglyLinkedList,
+  var throw:java_lang_Throwable+null,
+  var arg:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_35:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+            var t_36:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  createObject<roops_core_objectsInstrumented_SinglyLinkedListNode>[t_35];
+                  if isEmptyOrNull[t_35]{
+                     throw:=java_lang_NullPointerExceptionLit;
+                  } else {
+                     call Constructor[t_35,throw];
+                  };
+               
+               }
+             else {
+               skip;
+            };
+            var var_11_freshNode:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_11_freshNode:=t_35;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[var_11_freshNode]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  var_11_freshNode.roops_core_objectsInstrumented_SinglyLinkedListNode_value:=arg;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[var_11_freshNode]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  var_11_freshNode.roops_core_objectsInstrumented_SinglyLinkedListNode_next:=((null+roops_core_objectsInstrumented_SinglyLinkedListNode) & (null));
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_36:=(equ[thiz.roops_core_objectsInstrumented_SinglyLinkedList_header,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_36=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[thiz]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        thiz.roops_core_objectsInstrumented_SinglyLinkedList_header:=var_11_freshNode;
+                     };
+                  } else {
+                     skip;
+                  };
+               } else    {
+                     var var_12_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[thiz]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           var_12_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header;
+                        };
+                     } else {
+                        skip;
+                     };
+                     var var_13_ws_3:boolean;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_13_ws_3:=(neq[var_12_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next,
+                           null]=>(true)else(false));
+                     } else {
+                        skip;
+                     };
+                     while liftExpression[var_13_ws_3]
+                     and 
+                     (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false)
+                     
+                        {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[var_12_current]{
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 var_12_current:=var_12_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                              };
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              var_13_ws_3:=(neq[var_12_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next,
+                                 null]=>(true)else(false));
+                           } else {
+                              skip;
+                           };
+                        
+                        }
+                     ;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[var_12_current]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           var_12_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next:=var_11_freshNode;
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+               ;
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_SinglyLinkedList::containsTest[
+  var throw:java_lang_Throwable+null,
+  var list:null+roops_core_objectsInstrumented_SinglyLinkedList,
+  var value_param:java_lang_Object+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_2:boolean;
+            var t_3:boolean;
+            var t_4:boolean;
+            var var_1_ret_val:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_3:=(neq[list,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[list]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call repOK[list,throw,t_4];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_3=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_4=true{
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_2:=true;
+                        } else {
+                           skip;
+                        };
+                     } else {
+                        if (
+                          throw=null)
+                        and 
+                        (
+                          exit_stmt_reached=false){
+                           t_2:=false;
+                        } else {
+                           skip;
+                        };
+                     };
+                  } else {
+                     skip;
+                  };
+               } else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_2:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_2=true   {
+                     var t_1:boolean;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[list]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call contains[list,throw,t_1,value_param];
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        var_1_ret_val:=t_1;
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+

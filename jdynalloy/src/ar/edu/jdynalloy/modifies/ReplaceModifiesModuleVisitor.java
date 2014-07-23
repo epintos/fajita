@@ -134,7 +134,7 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 			for (FieldDescriptor fieldDescriptor : fieldsSet) {
 				AlloyFormula thisIterationFormula = null;
 				if (modifiesNothing || !modificablesFieldSet.contains(fieldDescriptor.getFieldName())) {
-					thisIterationFormula = unmodificableFieldSupport(fieldDescriptor);
+					thisIterationFormula = unmodifiableFieldSupport(fieldDescriptor);
 				}
 				
 				if (thisIterationFormula != null) {
@@ -177,7 +177,7 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 		// }
 	}
 
-	private AlloyFormula unmodificableFieldSupport(FieldDescriptor fieldDescriptor) {
+	private AlloyFormula unmodifiableFieldSupport(FieldDescriptor fieldDescriptor) {
 		AlloyFormula thisIterationFormula;
 		thisIterationFormula = ModifiesUtils.createFormulaFieldValueEqualsToOldFieldValue("thiz", fieldDescriptor.getFieldName());
 		return thisIterationFormula;
@@ -243,7 +243,8 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 
 		JDynAlloyModule module = new JDynAlloyModule(node.getModuleId(), node.getSignature(), node.getClassSingleton(), node.getLiteralSingleton(), 
 													node.getFields(), node.getClassInvariants(), node.getClassConstraints(), 
-													node.getObjectInvariants(), node.getObjectConstraints(), node.getRepresents(), programs);
+													node.getObjectInvariants(), node.getObjectConstraints(), node.getRepresents(), programs, 
+													node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
 
 		if (node.getClassSingleton() != null) {
 			module.setLiteralSingleton(node.getClassSingleton());
@@ -254,6 +255,7 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 		}
 
 		symbolTable.endScope();
+		
 		return module;
 	}
 
@@ -277,7 +279,7 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 				// started to be analized
 				// We need to skip "thiz" analysis to avoid redeclare variable
 				// (only
-				// forn non-static methods)
+				// for non-static methods)
 				if (!node.isStatic() && firstParameter) {
 					assert (variableDeclaration.getVariable().equals(JExpressionFactory.THIS_EXPRESSION.getVariable()));
 					firstParameter = false;
@@ -298,7 +300,9 @@ public class ReplaceModifiesModuleVisitor extends JDynAlloyVisitor {
 			symbolTable.endScope();
 
 			// dynJAlloyBinding.
-			return new JProgramDeclaration(node.isVirtual(), node.getSignatureId(), node.getProgramId(), node.getParameters(), specCasesResult, node.getBody());
+			return new JProgramDeclaration(node.isVirtual(), node.getSignatureId(), node.getProgramId(), node.getParameters(), specCasesResult, 
+					node.getBody(), node.getVarsResultOfArithmeticOperationsInContracts(), 
+					node.getPredsEncodingValueOfArithmeticOperationsInContracts());
 		} else {
 			return node;
 		}

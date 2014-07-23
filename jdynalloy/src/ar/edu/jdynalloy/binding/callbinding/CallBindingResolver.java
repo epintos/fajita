@@ -47,7 +47,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 	private IdentityHashMap<IProgramCall, JBindingKey> callBindings;
 	private JDynAlloyContext dynJAlloyContext;
 	private SortedSet<String> bindingsErrors = new TreeSet<String>();
-	private boolean stopOnFirstBindingError = false; // FALSE is EXPERIMENTAL. TRUE is a stable choice
+	private boolean stopOnFirstBindingError = true; // FALSE is EXPERIMENTAL. TRUE is a stable choice
 	/**
 	 * The result of binding resolver will be put in this map
 	 */
@@ -90,7 +90,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		for (Entry<IProgramCall, JBindingKey> entry : callBindings.entrySet()) {
 			try {
 				JBindingKey bindingKey = entry.getValue();
-				Set<JBindingKey> potencialPrograms = generatePotencialCandidatesSet(bindingKey);
+				Set<JBindingKey> potencialPrograms = generatePotentialCandidatesSet(bindingKey);
 				JBindingKey selectedBinding = resolveOverloading(bindingKey, potencialPrograms);
 				JProgramDeclaration selectedProgramDeclaration = programBindings.get(selectedBinding);
 				if (selectedProgramDeclaration == null) {
@@ -121,7 +121,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 
 	}
 
-	private Set<JBindingKey> generatePotencialCandidatesSet(JBindingKey bindingKey) {
+	private Set<JBindingKey> generatePotentialCandidatesSet(JBindingKey bindingKey) {
 		String moduleId = bindingKey.getModuleId();
 		String programId = bindingKey.getProgramId();
 
@@ -129,21 +129,23 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		boolean moduleOrCompatibleHasMethodWithSameProgramId = false;
 		boolean moduleOrCompatibleHasMethodWithSameProgramIdAndSameArgumentCount = false;
 		
-		//primero separo todos los bindings key que tienen el mismo moduleId.
-		//Esto es para simplificar el debug.
+		//We first separate all the bindings key that have the same moduleId.
+		//This simplifies debugging.
 		HashSet<JBindingKey> bindingKeysOfSameModule = new HashSet<JBindingKey>();
-		for (JBindingKey potencialCandidate : programBindings.keySet()) {			
 
-			if ((moduleId == null && potencialCandidate.getModuleId() == null)
-					|| ((moduleId != null && potencialCandidate.getModuleId() != null) &&
-							(isAssignable(bindingKey.getArguments().get(0), potencialCandidate.getArguments().get(0)))
+		for (JBindingKey potentialCandidate : programBindings.keySet()) {
+			if ((moduleId == null && potentialCandidate.getModuleId() == null)
+					|| ((moduleId != null && potentialCandidate.getModuleId() != null) &&
+							(isAssignable(bindingKey.getArguments().get(0), potentialCandidate.getArguments().get(0)))
 						)
 						 
 				){
 					moduleOrCompatibleHasMethods = true;
-					bindingKeysOfSameModule.add(potencialCandidate);
+					bindingKeysOfSameModule.add(potentialCandidate);
 			}
 		}
+		
+
 		
 		Set<JBindingKey> potencialCandidates = new HashSet<JBindingKey>();
 		for (JBindingKey potencialCandidate : bindingKeysOfSameModule) {
@@ -161,7 +163,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		}
 		
 		if (!moduleOrCompatibleHasMethods) {			
-			String bindingErrorMsg = "Binding error 5001. Module don't have programs: " + bindingKey + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) don't declare any program";
+			String bindingErrorMsg = "Binding error. Module doesn't have programs: " + bindingKey + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) don't declare any program";
 			log.error("Binding error: " + bindingErrorMsg);
 			if (stopOnFirstBindingError) {				
 				throw new JDynAlloySemanticException(bindingErrorMsg);
@@ -172,7 +174,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		} 
 		
 		if (!moduleOrCompatibleHasMethodWithSameProgramId) {
-			String bindingErrorMsg = "Binding error 5002. Program doesn't found " + ( bindingKey.getModuleId() != null ? bindingKey.getModuleId() + "::" : "") + bindingKey.getProgramId() + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) don't declare any program called " + bindingKey.getProgramId() +". Program call binding: " + bindingKey;;
+			String bindingErrorMsg = "Program not found " + ( bindingKey.getModuleId() != null ? bindingKey.getModuleId() + "::" : "") + bindingKey.getProgramId() + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) does not declare any program called " + bindingKey.getProgramId() +". Program call binding: " + bindingKey;;
 			log.error("Binding error: " + bindingErrorMsg);
 			if (stopOnFirstBindingError) {				
 				throw new JDynAlloySemanticException(bindingErrorMsg);
@@ -183,7 +185,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		} 	
 		
 		if (!moduleOrCompatibleHasMethodWithSameProgramIdAndSameArgumentCount) {
-			String bindingErrorMsg = "Binding error 5003. Program overload doesn't found  " + ( bindingKey.getModuleId() != null ? bindingKey.getModuleId() + "::" : "") + bindingKey.getProgramId() + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) don't declare any program called " + bindingKey.getProgramId() + " with " + bindingKey.getArguments().size()+ " arguments" +". Program call binding: " + bindingKey;;
+			String bindingErrorMsg = "Program overload not found  " + ( bindingKey.getModuleId() != null ? bindingKey.getModuleId() + "::" : "") + bindingKey.getProgramId() + ". Explanation: The module " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + " or compatible module (parent) don't declare any program called " + bindingKey.getProgramId() + " with " + bindingKey.getArguments().size()+ " arguments" +". Program call binding: " + bindingKey;;
 			log.error("Binding error: " + bindingErrorMsg);
 			if (stopOnFirstBindingError) {				
 				throw new JDynAlloySemanticException(bindingErrorMsg);
@@ -207,7 +209,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 		
 		JBindingKey selectedBinding;
 		if (potencialPrograms.isEmpty()) {
-			String bindingErrorMsg = "Binding error 5020. Binding not found (Couldn't bind this function): " + bindingKey + ". Explanation: Programs of " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + "(or compatible) module with called" + bindingKey.getProgramId() + " don't have compatible arguments.";
+			String bindingErrorMsg = "Binding error. Binding not found. Couldn't bind function: " + bindingKey + ". Explanation: Programs of " + (bindingKey.getModuleId() == null ? " STATIC " : bindingKey.getModuleId()) + "(or compatible) module with called" + bindingKey.getProgramId() + " don't have compatible arguments.";
 			log.error("Binding error: " + bindingErrorMsg);
 //			if (stopOnFirstBindingError) {				
 			throw new JDynAlloySemanticException(bindingErrorMsg);
@@ -241,7 +243,7 @@ public class CallBindingResolver extends JDynAlloyVisitor {
 			}
 	
 			if (potencialPrograms.isEmpty()) {
-				String bindingErrorMsg = "Binding error 5030. Ambygous call: " + bindingKey + ". potencial bindings: " + originalPotencialPrograms + ". Explanation: Most specific method can't be chosen";
+				String bindingErrorMsg = "Binding error. Ambiguous call: " + bindingKey + ". potencial bindings: " + originalPotencialPrograms + ". Explanation: Most specific method can't be chosen";
 				log.error("Ambygous call: " + bindingErrorMsg);
 				if (stopOnFirstBindingError) {				
 					throw new JDynAlloySemanticException(bindingErrorMsg);

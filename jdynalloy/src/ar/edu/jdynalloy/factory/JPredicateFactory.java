@@ -1,13 +1,20 @@
 package ar.edu.jdynalloy.factory;
 
 import static ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula.buildPredicate;
+import ar.edu.taco.simplejml.builtin.JavaPrimitiveFloatValue;
+import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
+import ar.edu.taco.simplejml.builtin.JavaPrimitiveLongValue;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprIntLiteral;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
+
 
 public abstract class JPredicateFactory {
 
@@ -18,12 +25,22 @@ public abstract class JPredicateFactory {
 	private static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_GT = "pred_java_primitive_integer_value_gt";
 
 	private static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_GTE = "pred_java_primitive_integer_value_gte";
+	
+	private static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_EQ = "pred_java_primitive_integer_value_eq";
 
 	public static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_MUL = "pred_java_primitive_integer_value_mul";
+	
+	public static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_ADD = "pred_java_primitive_integer_value_add";
+	
+	public static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_SUB = "pred_java_primitive_integer_value_sub";
 
 	public static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_MUL_MARKER = "pred_java_primitive_integer_value_mul_marker";
 
 	public static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_MUL = "pred_java_primitive_long_value_mul";
+	
+	public static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_ADD = "pred_java_primitive_long_value_add";
+	
+	public static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_SUB = "pred_java_primitive_long_value_sub";
 
 	public static final String PRED_JAVA_PRIMITIVE_INTEGER_VALUE_DIV_REM = "pred_java_primitive_integer_value_div_rem";
 
@@ -34,6 +51,8 @@ public abstract class JPredicateFactory {
 	public static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_LT = "pred_java_primitive_long_value_lt";
 
 	private static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_LTE = "pred_java_primitive_long_value_lte";
+
+	private static final String PRED_JAVA_PRIMITIVE_LONG_VALUE_EQ = "pred_java_primitive_long_value_eq";
 
 	public static final String INT_LT_PRED_ID = "lt";
 
@@ -350,5 +369,30 @@ public abstract class JPredicateFactory {
 			throw new IllegalArgumentException("cannot create float gte with "
 					+ es.length + " operands");
 		return buildPredicate(PRED_JAVA_PRIMITIVE_FLOAT_VALUE_GTE, es);
+	}
+	
+	public static PredicateFormula equZero(AlloyExpression e, String typeName){
+		
+		if (typeName.equals("Int")){
+			AlloyExpression[] pars = new AlloyExpression[]{e,new ExprIntLiteral(0)};
+			return buildPredicate(EQU_PRED_ID, pars);
+		}
+		if (typeName.equals("JavaPrimitiveIntegerValue")) {
+			String varName = ((ExprVariable)e).getVariable().getVariableId().getString();
+			int index = Integer.valueOf(varName.substring(varName.lastIndexOf("_")+1, varName.length()));
+			AlloyExpression new_e = new ExprVariable(new AlloyVariable(varName));
+			
+			AlloyExpression[] pars = new AlloyExpression[]{new_e, JavaPrimitiveIntegerValue.getInstance().toJavaPrimitiveIntegerLiteral(0)};
+			return buildPredicate(PRED_JAVA_PRIMITIVE_INTEGER_VALUE_EQ, pars);
+		}
+		if (typeName.equals("JavaPrimitiveLongValue")) {
+			AlloyExpression[] pars = new AlloyExpression[]{e, JavaPrimitiveLongValue.getInstance().toJavaPrimitiveLongLiteral(0)};
+			return buildPredicate(PRED_JAVA_PRIMITIVE_LONG_VALUE_EQ, pars);
+		}
+		if (typeName.equals("JavaPrimitiveFloatValue")) {
+			AlloyExpression[] pars = new AlloyExpression[]{e, JavaPrimitiveFloatValue.getInstance().toJavaPrimitiveFloatLiteral(0)};
+			return buildPredicate(PRED_JAVA_PRIMITIVE_FLOAT_VALUE_EQ, pars);
+		}
+		throw new RuntimeException("Method PredicateFormula.equZero called with expression of type " + typeName);
 	}
 }

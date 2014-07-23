@@ -43,7 +43,7 @@ class VAlloyVisitor extends JDynAlloyMutator {
 		}
 		
 		return new JProgramDeclaration(false, null, programId, pd
-				.getParameters(), pd.getSpecCases(), body);
+				.getParameters(), pd.getSpecCases(), body, node.getVarsResultOfArithmeticOperationsInContracts(), node.getPredsEncodingValueOfArithmeticOperationsInContracts());
 	}
 
 	private JStatement buildDispatcherBody(JProgramDeclaration node,

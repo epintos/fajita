@@ -268,7 +268,7 @@ public class DynJMLAlloyModuleBuffer {
 		}
 
 		return new JDynAlloyModule(moduleId, signature, classSig, null /* literal_signature */, fields, staticInvariants, staticConstraints, invariants,
-				constraints, represents, new HashSet<JProgramDeclaration>(this.programs));
+				constraints, represents, new HashSet<JProgramDeclaration>(this.programs), null, null);
 	}
 
 	protected void processFields(JSignature signature, List<JField> field_list) {

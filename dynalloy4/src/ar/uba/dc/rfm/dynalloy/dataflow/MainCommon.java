@@ -3,9 +3,13 @@ package ar.uba.dc.rfm.dynalloy.dataflow;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyOptions;
 import ar.uba.dc.rfm.dynalloy.DynAlloyTranslator;
 import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
@@ -43,7 +47,8 @@ public class MainCommon {
 		options.setRunAlloyAnalyzer(false);
 		options.setBuildDynAlloyTrace(false);
 		
-		translator.translateDynAlloyAST(module, options);
+		translator.translateDynAlloyAST(module, options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 		return translator.getSpecContext();
 	}
 	

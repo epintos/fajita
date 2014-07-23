@@ -4,12 +4,15 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyAnalyzer;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.DynAlloyOptions;
@@ -33,7 +36,8 @@ public class OldExprGammarTest {
 		options.setBuildDynAlloyTrace(false);
 		
 		c.compile("test/regr/new_grammar/old_expr_grammar.dals",
-				"test/regr/new_grammar/old_expr_grammar.als", options);
+				"test/regr/new_grammar/old_expr_grammar.als", options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 
@@ -81,7 +85,8 @@ public class OldExprGammarTest {
 		options.setBuildDynAlloyTrace(false);
 
 		c.compile("test/regr/new_grammar/old_expr_in_assume.dals",
-				"test/regr/new_grammar/old_expr_in_assume.als", options);
+				"test/regr/new_grammar/old_expr_in_assume.als", options, new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>(),
+				new HashMap<String, AlloyTyping>(), new HashMap<String, List<AlloyFormula>>());
 
 	}
 

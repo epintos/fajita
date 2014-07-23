@@ -57,7 +57,7 @@ public abstract class JDynAlloyConfig {
 
 		Class configurationManagerImplementationClass;
 		try {
-			configurationManagerImplementationClass = (Class) Class.forName(configurationManagerImplementationClassName);
+			configurationManagerImplementationClass = (Class<?>) Class.forName(configurationManagerImplementationClassName);
 		} catch (ClassNotFoundException e) {
 			throw new IllegalConfigurationException("Problem instantiating DynJAlloyConfig", e);
 		}

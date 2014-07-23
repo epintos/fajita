@@ -2,6 +2,7 @@ package ar.edu.jdynalloy.xlator;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -18,12 +19,16 @@ import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaMutator;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaPrinter;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaVisitor;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
-import ar.uba.dc.rfm.alloy.util.ExpressionMutator;
+import ar.uba.dc.rfm.alloy.util.FormulaMutator;
+import ar.uba.dc.rfm.alloy.util.QFtransformer;
 import ar.uba.dc.rfm.alloy.util.VarCollector;
 import ar.uba.dc.rfm.alloy.util.VarSubstitutor;
 
 final class FormulaWrapper {
 
+	private HashSet<AlloyVariable> varsToPrefix;
+
+	
 	static class RenamePreStateVariableMutator extends VarSubstitutor {
 
 		@Override
@@ -45,6 +50,7 @@ final class FormulaWrapper {
 		private final AlloyTyping typing;
 
 		private final AlloyFormula formula;
+		
 
 		public PredicateDeclaration(String predicateId,
 				List<AlloyVariable> signature, AlloyTyping t, AlloyFormula body) {
@@ -157,10 +163,11 @@ final class FormulaWrapper {
 	private JDynAlloyTyping parameterVariables = null;
 	private JDynAlloyTyping localVariables = null;
 
-	public FormulaWrapper(String modulePrefix, JDynAlloyTyping fieldsTyping) {
+	public FormulaWrapper(String modulePrefix, JDynAlloyTyping fieldsTyping, HashSet<AlloyVariable> varsToPrefix) {
 		super();
 		this.fieldsTyping = fieldsTyping;
 		this.modulePrefix = modulePrefix;
+		this.varsToPrefix = varsToPrefix;
 	}
 
 	public void bindParameterVariables(JDynAlloyTyping _variableTyping) {
@@ -184,17 +191,12 @@ final class FormulaWrapper {
 
 	public final static String UNIV_TO_UNIV_TO_UNIV = "univ->univ->univ";
 
-	public final static String SEQ_UNIV = "seq univ";
+	public final static String SEQ_UNIV = "Int -> univ";
 
-	private static final String UNIV_TO_SEQ_UNIV = "univ->(seq univ)";
+	private static final String UNIV_TO_SEQ_UNIV = "univ -> (Int -> univ)";
 
 	private String modulePrefix;
 
-	public PredicateFormula wrapFormula(String formulaId, AlloyFormula formula) {
-		Predicate predicate = buildPredicate(formulaId, formula);
-		newPredicates.put(formulaId, predicate.declaration);
-		return predicate.formula;
-	}
 
 	private static class Predicate {
 		public Predicate(PredicateDeclaration declaration,
@@ -208,7 +210,22 @@ final class FormulaWrapper {
 		public final PredicateFormula formula;
 	}
 
+	
+	
+	public PredicateFormula wrapFormula(String formulaId, AlloyFormula formula) {
+		QFtransformer qfprefixer = new QFtransformer(varsToPrefix);
+		FormulaMutator fm = new FormulaMutator(qfprefixer);
+		formula = (AlloyFormula)formula.accept(fm);
+		Predicate predicate = buildPredicate(formulaId, formula);
+		newPredicates.put(formulaId, predicate.declaration);
+		return predicate.formula;
+	}
+
+	
 	public PredicateFormula wrapCondition(AlloyFormula f) {
+		QFtransformer qfprefixer = new QFtransformer(varsToPrefix);
+		FormulaMutator fm = new FormulaMutator(qfprefixer);
+		f = (AlloyFormula)f.accept(fm);
 		if (!cache.containsKey(f)) {
 			String predicateId = generateConditionId();
 			Predicate predicate = buildPredicate(predicateId, f);
@@ -299,24 +316,67 @@ final class FormulaWrapper {
 
 			if (jType == null) {
 				if (v.equals(JExpressionFactory.THIS_VARIABLE)) {
-					t
-							.put(JExpressionFactory.THIS_VARIABLE,
+					t.put(JExpressionFactory.THIS_VARIABLE,
 									FormulaWrapper.UNIV);
 				}
 			}
 
-			if (jType != null) {
-				if (jType.isTernaryRelation())
-					t.put(v, FormulaWrapper.UNIV_TO_UNIV_TO_UNIV);
-				else if (jType.isBinRelWithSeq())
-					t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
-				else if (jType.isBinaryRelation())
-					t.put(v, FormulaWrapper.UNIV_TO_UNIV);
-				else {
-					if (jType.isSequence())
-						t.put(v, FormulaWrapper.SEQ_UNIV);
-					else
+			if (jType != null && jType.isSpecialType()){
+					switch (jType.getSpecialType()) {
+					case UNIV_TO_UNIV:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV);
+						break;
+					case ALLOCATED_OBJECT:
 						t.put(v, FormulaWrapper.UNIV);
+						break;
+//					case SYSTEM_ARRAY://mfrias: no hay mas system array
+//						sb.append("(" + javaLangPackage() + "SystemArray)->(seq univ)");
+//						break;
+					case SET_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV);
+						break;
+					case MAP_ENTRIES:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV_TO_UNIV);
+						break;
+					case ALLOY_LIST_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
+						break;
+					case JML_OBJECTSET_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV);
+						break;
+					case JML_OBJECTSEQUENCE_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
+						break;
+					case ITERATOR_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV);
+						break;
+					case INT_ARRAY_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV_TO_UNIV);
+						break;
+					case OBJECT_ARRAY_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV_TO_UNIV);
+						break;
+					case ALLOY_INT_ARRAY_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
+						break;
+					case ALLOY_OBJECT_ARRAY_CONTAINS:
+						t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
+						break;
+					}
+			} else {
+				if (jType != null) {
+					if (jType.isTernaryRelation())
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV_TO_UNIV);
+					else if (jType.isBinRelWithSeq())
+						t.put(v, FormulaWrapper.UNIV_TO_SEQ_UNIV);
+					else if (jType.isBinaryRelation())
+						t.put(v, FormulaWrapper.UNIV_TO_UNIV);
+					else {
+						if (jType.isSequence())
+							t.put(v, FormulaWrapper.SEQ_UNIV);
+						else
+							t.put(v, FormulaWrapper.UNIV);
+					}
 				}
 			}
 		}

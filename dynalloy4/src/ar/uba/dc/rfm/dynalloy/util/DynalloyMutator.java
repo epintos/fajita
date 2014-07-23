@@ -1,11 +1,15 @@
 package ar.uba.dc.rfm.dynalloy.util;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.VariableId;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
 import ar.uba.dc.rfm.dynalloy.ast.ActionDeclaration;
 import ar.uba.dc.rfm.dynalloy.ast.AssertionDeclaration;
@@ -74,7 +78,7 @@ public class DynalloyMutator extends DynalloyVisitor {
 				throw new IllegalArgumentException("Unknown child class:" + child.getClass().getName());
 		}
 		DynalloyModule dynalloyModule = new DynalloyModule(n.getModuleId(), imports, n.getAlloyStr(),
-				actions, programs, assertions);
+				actions, programs, assertions, new AlloyTyping(), new ArrayList<AlloyFormula>());
 		dynalloyModule.setDynalloyFields(n.getDynalloyFields());
 		return dynalloyModule;
 	}
@@ -85,7 +89,7 @@ public class DynalloyMutator extends DynalloyVisitor {
 		DynalloyProgram p = (DynalloyProgram) v.get(0);
 		return new ProgramDeclaration(n.getProgramId(),
 				new LinkedList<VariableId>(n.getParameters()), n.getLocalVariables(), p, n
-								.getParameterTyping());
+								.getParameterTyping(), n.getPredsFromArithInContracts(), n.getVarsFromArithInContracts());
 	}
 
 	@Override

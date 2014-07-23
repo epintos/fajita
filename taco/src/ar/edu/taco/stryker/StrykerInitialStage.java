@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mujava.api.Mutant;
 
@@ -32,13 +33,13 @@ public class StrykerInitialStage implements IStrykerStage {
 	// The method to be mutated
 	private String methodToMutate;
 
+	private Class<?>[] junitInputs;
+	
 	// The mutant operators to use
 	private HashSet<Mutant> mutOps;
 
 	// The amount of generations wanted
-	private int generationsWanted;
-
-	private String junitFile;
+	private AtomicInteger generationsWanted;
 	
 	private String configFile;
 	
@@ -46,15 +47,15 @@ public class StrykerInitialStage implements IStrykerStage {
 	
 	private int maxMethodsInFile;
 	
-	public StrykerInitialStage(String junitFile, File classToMutate, String classNameToMutate,
-			String methodToMutate, HashSet<Mutant> mutOps, int generationsWanted, String configFile, Properties overridingProperties, int maxMethodsInFile) {
+	public StrykerInitialStage(File classToMutate, String classNameToMutate,
+			String methodToMutate, Class<?>[] junitInputs, HashSet<Mutant> mutOps, AtomicInteger generationsWanted, String configFile, Properties overridingProperties, int maxMethodsInFile) {
 		this.classToMutate = classToMutate;
 		this.classNameToMutate = classNameToMutate;
 		this.methodToMutate = methodToMutate;
+		this.junitInputs = junitInputs;
 		this.mutOps = mutOps;
 		this.generationsWanted = generationsWanted;
 		this.configFile = configFile;
-		this.junitFile = junitFile;
 		this.overridingProperties = overridingProperties;
 		this.maxMethodsInFile = maxMethodsInFile;
 	}
@@ -64,9 +65,11 @@ public class StrykerInitialStage implements IStrykerStage {
 		StrykerAPI api = new SimpleStrykerAPI();
 		log.info("***** Starting Stryker Controllers *****");
 		api.start();
-		List<String> result = api.fixBug(junitFile, classToMutate, classNameToMutate, methodToMutate, mutOps, generationsWanted, configFile, overridingProperties, maxMethodsInFile);
-		if(result == null || result.isEmpty()) {
-			log.warn("****** No fix was found ******");
+		List<String> result = api.fixBug(classToMutate, classNameToMutate, methodToMutate, junitInputs, mutOps, generationsWanted, configFile, overridingProperties, maxMethodsInFile);
+		if(result == null) {
+			log.warn("****** No fix was found: result = null ******");
+		} else if (result.isEmpty()) {
+			log.warn("****** No fix was found: result = empty ******");
 		} else {
 			log.warn(String.format("****** FIX FOUND!!! Look for file %s ******", result));
 		}

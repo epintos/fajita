@@ -20,15 +20,26 @@
 package ar.edu.taco;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.jar.Attributes;
 import java.util.jar.Attributes.Name;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
+
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -45,6 +56,7 @@ import org.multijava.mjc.JCompilationUnitType;
 import ar.edu.jdynalloy.JDynAlloyConfig;
 import ar.edu.jdynalloy.MethodToCheckNotFoundException;
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
+import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.engine.AlloyStage;
 import ar.edu.taco.engine.DynalloyStage;
 import ar.edu.taco.engine.JDynAlloyParsingStage;
@@ -62,11 +74,32 @@ import ar.edu.taco.jml.JmlToSimpleJmlContext;
 import ar.edu.taco.jml.parser.JmlParser;
 import ar.edu.taco.junit.RecoveredInformation;
 import ar.edu.taco.simplejml.SimpleJmlToJDynAlloyContext;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
+import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.dynalloy.DynAlloyCompiler;
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalysisResult;
-import ar.uba.dc.rfm.dynalloy.trace.DynAlloySolution;
-import ar.uba.dc.rfm.dynalloy.trace.TraceStep;
 
+/**
+ * <p>Runs the TACO analysis.</p>
+ * <p>The configuration options must be stated through the configuration file
+ * whose name expects the methods <code>ar.edu.taco.TacoMain.run</code>.
+ * Those configurations can be overridden by the sencond argument of 
+ * <code>ar.edu.taco.TacoMain.run(String, Properties)</code>.</p>
+ * <h3>Integers</h3>
+ * <p>TACO can analyse code using Alloy integers or Java-like Integers.
+ * In either case, the meaning of the bitwidth value is the same: a bound 
+ * in the count of numbers TACO will deal with. In particular, it states that 
+ * the range of integers used in the analysis include from -2^{bitwidth-1} 
+ * to 2^{bitwidth-1}-1.</p>
+ * <p>Besides that, TACO can try to infer the value of the scopes to be used
+ * for the analysis. If the bitwidth is setted to a non positive integer 
+ * <b>and</b> the scope inferring feature is activated, the bitwidth is also 
+ * inferred. Otherwise, the bitwidth value setted is used.</p>
+ * 
+ * @author unknown (jgaleotti?)
+ *
+ */
 public class TacoMain {
 
 	private static Logger log = Logger.getLogger(TacoMain.class);
@@ -74,13 +107,16 @@ public class TacoMain {
 	private static final String CMD = "Taco";
 	private static final String HEADER = "Taco static analysis tool.";
 	private static final String FOOTER = "For questions and comments please write to jgaleotti AT dc DOT uba DOT ar";
+	public static final String PATH_SEP = System.getProperty("path.separator");
+	public static final String FILE_SEP = System.getProperty("file.separator");
 
 	/**
 	 * @param args
 	 */
-	@SuppressWarnings({ "static-access", "unchecked" })
+	@SuppressWarnings({ "static-access" })
 	public static void main(String[] args) {
-		int loopUnrooling = 3;
+		@SuppressWarnings("unused")
+		int loopUnrolling = 3;
 
 		String tacoVersion = getManifestAttribute(Attributes.Name.IMPLEMENTATION_VERSION);
 		String tacoCreatedBy = getManifestAttribute(new Name("Created-By"));
@@ -202,7 +238,7 @@ public class TacoMain {
 
 			// Loop unrolling
 			if (line.hasOption(loopsOptions.getOpt())) {
-				loopUnrooling = Integer.parseInt(line.getOptionValue(loopsOptions.getOpt()));
+				loopUnrolling = Integer.parseInt(line.getOptionValue(loopsOptions.getOpt()));
 			}
 
 			// Int bitwidth
@@ -289,13 +325,23 @@ public class TacoMain {
 	 */
 
 	public TacoAnalysisResult run(String configFile, Properties overridingProperties) throws IllegalArgumentException {
+		
+		AlloyTyping varsEncodingValueOfArithmeticOperationsInObjectInvariants = new AlloyTyping();
+		List<AlloyFormula> predsEncodingValueOfArithmeticOperationsInObjectInvariants = new ArrayList<AlloyFormula>();
+
+		
+		
 		if (configFile == null) {
 			throw new IllegalArgumentException("Config file not found, please verify option -cf");
 		}
 
+				
 		List<JCompilationUnitType> compilation_units = null;
 		String classToCheck = null;
 		String methodToCheck = null;
+		
+		
+		
 
 		// Start configurator
 		JDynAlloyConfig.reset();
@@ -313,10 +359,33 @@ public class TacoMain {
 				throw new TacoException("Config key 'CLASS_TO_CHECK_FIELD' is mandatory. Please check your config file or add the -c parameter");
 			}
 			List<String> files = new ArrayList<String>(Arrays.asList(JDynAlloyConfig.getInstance().getClasses()));
+			
+			
 			classToCheck = TacoConfigurator.getInstance().getString(TacoConfigurator.CLASS_TO_CHECK_FIELD);
+			String[] splitName = classToCheck.split("_");
+			classToCheck = "";
+			for (int idx = 0; idx < splitName.length-2; idx++){
+				classToCheck += splitName[idx] + "_";
+			}
+			
+			if (splitName.length >= 2)
+				classToCheck += splitName[splitName.length-2] + "Instrumented_";
+			classToCheck += splitName[splitName.length-1];
+			
+
 			if (!files.contains(classToCheck)) {
 				files.add(classToCheck);
 			}
+
+			List<String> processedFileNames = new ArrayList<String>();
+			for (String file : files){
+				String begin = file.substring(0, file.lastIndexOf('.'));
+				String end = file.substring(file.lastIndexOf('.'), file.length());
+				processedFileNames.add(begin + "Instrumented" + end);
+			}
+
+			files = processedFileNames;
+			
 
 			JmlParser.getInstance().initialize(sourceRootDir, System.getProperty("user.dir") + System.getProperty("file.separator") + "bin" /* Unused */,
 					files);
@@ -335,16 +404,20 @@ public class TacoMain {
 			aJavaToDynJAlloyTranslator.execute();
 			// END JAVA TO JDYNALLOY TRANSLATION
 			simpleJmlToJDynAlloyContext = aJavaToDynJAlloyTranslator.getSimpleJmlToJDynAlloyContext();
+			varsEncodingValueOfArithmeticOperationsInObjectInvariants = aJavaToDynJAlloyTranslator.getVarsEncodingValueOfArithmeticOperationsInInvariants();
+			predsEncodingValueOfArithmeticOperationsInObjectInvariants = aJavaToDynJAlloyTranslator.getPredsEncodingValueOfArithmeticOperationsInInvariants();
 
 			// JFSL TO JDYNALLOY TRANSLATION
 			JfslStage aJfslToDynJAlloyTranslator = new JfslStage(simplified_compilation_units, aJavaToDynJAlloyTranslator.getModules(), jmlToSimpleJmlContext,
 					simpleJmlToJDynAlloyContext);
 			aJfslToDynJAlloyTranslator.execute();
+/**/		aJfslToDynJAlloyTranslator = null;			
 			// END JFSL TO JDYNALLOY TRANSLATION
 
 			// PRINT JDYNALLOY
 			JDynAlloyPrinterStage printerStage = new JDynAlloyPrinterStage(aJavaToDynJAlloyTranslator.getModules());
 			printerStage.execute();
+/**/		printerStage = null;
 			// END PRINT JDYNALLOY
 
 			jdynalloy_modules.addAll(aJavaToDynJAlloyTranslator.getModules());
@@ -356,12 +429,13 @@ public class TacoMain {
 		// JDYNALLOY BUILT-IN MODULES
 		PrecompiledModules precompiledModules = new PrecompiledModules();
 		precompiledModules.execute();
-		jdynalloy_modules.addAll(precompiledModules.getModules());
+		jdynalloy_modules.addAll(precompiledModules.getModules());		
 		// END JDYNALLOY BUILT-IN MODULES
 
 		// JDYNALLOY STATIC FIELDS CLASS
 		JDynAlloyModule staticFieldsModule = precompiledModules.generateStaticFieldsModule();
 		jdynalloy_modules.add(staticFieldsModule);
+/**/	staticFieldsModule = null;	
 		// END JDYNALLOY STATIC FIELDS CLASS
 
 		// JDYNALLOY PARSING
@@ -370,6 +444,7 @@ public class TacoMain {
 			JDynAlloyParsingStage jDynAlloyParser = new JDynAlloyParsingStage(jdynalloy_modules);
 			jDynAlloyParser.execute();
 			jdynalloy_modules.addAll(jDynAlloyParser.getParsedModules());
+/**/		jDynAlloyParser = null;	
 			log.info("****** END: Parsing JDynAlloy files ****** ");
 		} else {
 			log.info("****** INFO: Parsing JDynAlloy is disabled (hint enablet it using 'jdynalloy.parser.enabled') ****** ");
@@ -378,6 +453,7 @@ public class TacoMain {
 
 		// JDYNALLOY TO DYNALLOY TRANSLATION
 		JDynAlloyStage dynJAlloyToDynAlloyTranslator = new JDynAlloyStage(jdynalloy_modules);
+/**/	jdynalloy_modules = null;
 		dynJAlloyToDynAlloyTranslator.execute();
 		// BEGIN JDYNALLOY TO DYNALLOY TRANSLATION
 
@@ -389,6 +465,7 @@ public class TacoMain {
 
 			dynalloyToAlloy = new DynalloyStage(dynJAlloyToDynAlloyTranslator.getOutputFileNames());
 			dynalloyToAlloy.setSourceJDynAlloy(dynJAlloyToDynAlloyTranslator.getPrunedModules());
+/**/		dynJAlloyToDynAlloyTranslator = null;
 			dynalloyToAlloy.execute();
 			// DYNALLOY TO ALLOY TRANSLATION
 
@@ -398,13 +475,23 @@ public class TacoMain {
 				// Starts dynalloy to alloy tranlation and alloy verification
 
 				AlloyStage alloy_stage = new AlloyStage(dynalloyToAlloy.get_alloy_filename());
-
+/**/			dynalloyToAlloy = null;
+				
 				alloy_stage.execute();
+
 				alloy_analysis_result = alloy_stage.get_analysis_result();
+/**/			alloy_stage = null;
 			}
 		}
-
+		
+		
+	
+		
 		TacoAnalysisResult tacoAnalysisResult = new TacoAnalysisResult(alloy_analysis_result);
+				
+				
+				
+				
 		String junitFile = null;
 		
 		if (TacoConfigurator.getInstance().getGenerateUnitTestCase() || TacoConfigurator.getInstance().getAttemptToCorrectBug()) {
@@ -415,28 +502,29 @@ public class TacoMain {
 			snapshotStage.execute();
 
 			RecoveredInformation recoveredInformation = snapshotStage.getRecoveredInformation();
-
+			recoveredInformation.setFileNameSuffix(StrykerStage.fileSuffix);
 			JUnitStage jUnitStage = new JUnitStage(recoveredInformation);
 			jUnitStage.execute();
 			junitFile = jUnitStage.getJunitFileName();
-
+//			StrykerStage.fileSuffix++;
 			// End JUNIT Generation Stage
 		} else {
-			log.info("****** JUnit with counterejample values will not be generated. ******* ");
+			log.info("****** JUnit with counterexample values will not be generated. ******* ");
 			if (!TacoConfigurator.getInstance().getGenerateUnitTestCase()) {
 				log.info("****** generateUnitTestCase=false ******* ");
 			}
 
 		}
-
+				
+				
 		if (TacoConfigurator.getInstance().getBuildJavaTrace()) {
 			if (tacoAnalysisResult.get_alloy_analysis_result().isSAT()) {
 				log.info("****** START: Java Trace Generation ****** ");
 				DynAlloyCompiler compiler = dynalloyToAlloy.getDynAlloyCompiler();
 				JavaTraceStage javaTraceStage = new JavaTraceStage(compiler.getSpecContext(), alloy_analysis_result, false);
 				javaTraceStage.execute();
-				DynAlloySolution dynAlloySolution = javaTraceStage.getDynAlloySolution();
-				List<TraceStep> trace = dynAlloySolution.getTrace();
+//				DynAlloySolution dynAlloySolution = javaTraceStage.getDynAlloySolution();
+//				List<TraceStep> trace = dynAlloySolution.getTrace();
 				
 				log.info("****** FINISH: Java Trace Generation ****** ");
 			}
@@ -452,8 +540,74 @@ public class TacoMain {
 				methodToCheck = overridingProperties.getProperty(TacoConfigurator.METHOD_TO_CHECK_FIELD);
 				String sourceRootDir = TacoConfigurator.getInstance().getString(
 						TacoConfigurator.JMLPARSER_SOURCE_PATH_STR);
-				StrykerStage strykerStage = new StrykerStage(compilation_units, sourceRootDir, classToCheck, methodToCheck, configFile, overridingProperties, junitFile, TacoConfigurator.getInstance().getMaxStrykerMethodsForFile());
+				StrykerStage strykerStage = new StrykerStage(compilation_units, sourceRootDir, classToCheck, 
+						methodToCheck, configFile, overridingProperties, 
+						TacoConfigurator.getInstance().getMaxStrykerMethodsForFile());
+				StrykerStage.junitInputs = new Class<?>[50];
+				
+
+				try {
+					String currentJunit = null;
+					
+					String tempFilename = junitFile.substring(0, junitFile.lastIndexOf(FILE_SEP)+1) /*+ FILE_SEP*/;	
+					String packageToWrite = "ar.edu.output.junit";
+					String fileClasspath = tempFilename.substring(0, tempFilename.lastIndexOf(new String("ar.edu.generated.junit").replaceAll("\\.", FILE_SEP)));
+					fileClasspath = fileClasspath.replaceFirst("generated", "output");
+//					String currentClasspath = System.getProperty("java.class.path")+PATH_SEP+fileClasspath/*+PATH_SEP+System.getProperty("user.dir")+FILE_SEP+"generated"*/;
+					currentJunit = editTestFileToCompile(junitFile, classToCheck, packageToWrite, methodToCheck);
+
+					File[] file1 = new File[]{new File(currentJunit)};
+					JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
+					StandardJavaFileManager fileManager = javaCompiler.getStandardFileManager(null, null, null);
+					Iterable<? extends JavaFileObject> compilationUnit1 =
+					           fileManager.getJavaFileObjectsFromFiles(Arrays.asList(file1));
+					javaCompiler.getTask(null, fileManager, null, null, null, compilationUnit1).call();
+					fileManager.close();
+					javaCompiler = null;
+					file1 = null;
+					fileManager = null;
+					
+					
+					
+					
+					
+///*mfrias*/		int compilationResult =	javaCompiler.run(null, null, null /*new NullOutputStream()*/, new String[]{"-classpath", currentClasspath, currentJunit});
+///**/				javaCompiler = null;
+//					if(compilationResult == 0) {
+					log.warn("junit counterexample compilation succeded");
+					ClassLoader cl = ClassLoader.getSystemClassLoader();
+					@SuppressWarnings("resource")
+					ClassLoader cl2 = new URLClassLoader(new URL[]{new File(fileClasspath).toURI().toURL()}, cl);
+//						ClassLoaderTools.addFile(fileClasspath);
+					Class<?> clazz = cl2.loadClass(packageToWrite+"."+obtainClassNameFromFileName(junitFile));
+//						Method[] meth = clazz.getMethods();
+//						log.info("preparing to add a class containing a test input to the pool... "+packageToWrite+"."+MuJavaController.obtainClassNameFromFileName(junitFile));
+//						Result result = null;
+//						final Object oToRun = clazz.newInstance();
+					StrykerStage.junitInputs[StrykerStage.indexToLastJUnitInput] = clazz;
+					StrykerStage.indexToLastJUnitInput++;
+					cl = null;
+					cl2 = null;
+
+//					
+//					} else {
+//						log.warn("compilation failed");
+//					}
+//							File originalFile = new File(tempFilename);
+//							originalFile.delete();
+
+				} catch (ClassNotFoundException e) {
+//							e.printStackTrace();
+				} catch (IOException e) {
+//							e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+//							e.printStackTrace();
+				} catch (Exception e) {
+//							e.printStackTrace();
+				}
+				
 				strykerStage.execute();
+				
 				log.info("****** FINISH: Stryker ****** ");
 			}
 		} else {
@@ -477,9 +631,164 @@ public class TacoMain {
 
 			Attributes mainAttributes = manifest.getMainAttributes();
 			manifestAttributeValue = mainAttributes.getValue(name);
+			jar.close();
 		} catch (IOException e) {
 		}
 
 		return manifestAttributeValue;
 	}
+	
+	
+	
+	public static String editTestFileToCompile(String junitFile, String sourceClassName, String classPackage, String methodName) {
+		String tmpDir = junitFile.substring(0, junitFile.lastIndexOf(FILE_SEP));
+		tmpDir = tmpDir.replaceAll("generated", "output");
+		File destFile = new File(tmpDir,obtainClassNameFromFileName(junitFile)+ /*"_temp" +*/ ".java");
+		String packageSentence = "package "+classPackage+";\n";
+		int posLastUnderscore = methodName.lastIndexOf("_");
+		methodName = methodName.substring(0, posLastUnderscore);
+		try {
+			destFile.createNewFile();
+			FileOutputStream fos = new FileOutputStream(destFile);
+			boolean packageAlreadyWritten = false;
+			Scanner scan = new Scanner(new File(junitFile));
+			scan.useDelimiter("\n");
+			boolean nextToTest = false;
+			String str = null;
+			while(scan.hasNext()){
+				str = scan.next();
+				if( nextToTest ) {
+					str = str.replace("()","(String fileClasspath, String className, String methodName) throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, InstantiationException, MalformedURLException");
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					nextToTest = false;
+//				} else if (str.contains("public class")){
+//					int posOpeningBrace = str.indexOf("{");
+//					str = str.substring(0, posOpeningBrace-1);
+//					str = str + "_temp {";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if( str.contains("package") && !packageAlreadyWritten){
+					fos.write(packageSentence.getBytes(Charset.forName("UTF-8")));
+					str = "           import java.net.URL;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           import java.net.URLClassLoader;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           import java.net.MalformedURLException;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           import java.io.File;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           import java.lang.reflect.InvocationTargetException;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					packageAlreadyWritten = true;
+				} else if (str.contains("import") && !packageAlreadyWritten) {
+					fos.write(packageSentence.getBytes(Charset.forName("UTF-8")));
+					fos.write((scan.next() + "\n").getBytes(Charset.forName("UTF-8")));
+					packageAlreadyWritten = true;
+				} else if (str.contains("new " + sourceClassName+"(")){
+//					str = "        try {";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           ClassLoader cl = ClassLoader.getSystemClassLoader();";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           ClassLoader cl2 = new URLClassLoader(new URL[]{new File(fileClasspath).toURI().toURL()}, cl);";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+//					str = "           ClassLoaderTools.addFile(fileClasspath);";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           Class<?> clazz = cl2.loadClass(className);";					
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           Object instance = clazz.newInstance();";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           cl2 = null;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+
+				} else if (str.contains("Class<?> clazz;")) {	
+				} else if (str.contains("} catch (ClassNotFoundException e) {")) {
+					str = str.replace("ClassNotFoundException", "Exception");
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if( str.matches(".*(?i)[\\.a-z0-9\\_]*"+sourceClassName+"(?=[^a-z0-9\\_\\.]).*")){
+					str = str.replaceAll("(?i)[\\.a-z0-9\\_]*"+sourceClassName+"(?=[^a-z0-9\\_\\.])", /*classPackage+"."+*/sourceClassName);
+					str = str.replace("\""+methodName+"\"", "methodName");
+					str = str.replace("\""+sourceClassName+"\"", "clazz");
+//					str = str.replace("(", "(fileClasspath, ");
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if (str.contains("e.printStackTrace();")) {
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					fos.write(("           throw(new java.lang.RuntimeException(e));" + "\n").getBytes(Charset.forName("UTF-8")));
+//					fos.write(("throw e;" + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if (str.contains("private Method getAccessibleMethod")) {
+					str = str.replace("(String className, ", "(Class<?> clazz, ");
+//					str = str.replace(") {", ") throws MalformedURLException {");
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if (str.contains("method.invoke(instance,")) {
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           instance = null;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+					str = "           method = null;";
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+
+				} else if (str.contains("methodToCheck = clazz.getDeclaredMethod(methodName, parameterTypes);")) {
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else if (str.contains("clazz = Class.forName(className);")) {
+//					str = "           ClassLoader cl = ClassLoader.getSystemClassLoader();";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+//					str = "           final ClassLoader cl2 = new URLClassLoader(new URL[]{new File(fileClasspath).toURI().toURL()}, cl);";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+//					str = "           clazz = cl2.loadClass(className);";					
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+//					str = "           System.out.println(\"actual class inside method: \"+clazz.getName());";
+//					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				} else {
+					if (str.contains("@Test")) {
+						nextToTest = true;
+					}
+//					if (!scan.hasNext()){
+//						String s = "        } catch (ClassNotFoundException e){";
+//						fos.write((s + "\n").getBytes(Charset.forName("UTF-8")));
+//						s = "        } catch (InstantiationException e){}";
+//						fos.write((s + "\n").getBytes(Charset.forName("UTF-8")));
+//					}
+					fos.write((str + "\n").getBytes(Charset.forName("UTF-8")));
+				}
+			}
+			fos.close();
+			scan.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return destFile.toString();
+		
+	}
+	
+	private static final int NOT_PRESENT = -1;
+
+	
+	public static String obtainClassNameFromFileName(String fileName) {
+		int lastBackslash = fileName.lastIndexOf("/");
+		int lastDot = fileName.lastIndexOf(".");
+
+		if (lastBackslash == NOT_PRESENT) {
+			lastBackslash = 0;
+		} else {
+			lastBackslash += 1;
+		}
+		if (lastDot == NOT_PRESENT) {
+			lastDot = fileName.length();
+		}
+
+		return fileName.substring(lastBackslash, lastDot);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	
 }
+
+

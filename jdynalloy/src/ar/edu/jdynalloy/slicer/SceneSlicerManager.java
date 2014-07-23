@@ -20,6 +20,8 @@ public class SceneSlicerManager {
 			List<String> relevantClassesList, Scene scene) {
 
 		List<JDynAlloyModule> result = new ArrayList<JDynAlloyModule>();
+		
+		boolean useJavaPrimitiveIntegerValue = relevantClassesList.contains("JavaPrimitiveIntegerValue");
 
 		for (JDynAlloyModule module : modules) {
 			if (relevantClassesList.contains(module.getModuleId())) {
@@ -37,9 +39,12 @@ public class SceneSlicerManager {
 		}
 
 		if (!relevantClassesList.contains("java_lang_SystemArray")) {
-			JPreludeFactory.unregister_java_lang_SystemArray();
-		} else
-			JPreludeFactory.register_java_lang_SystemArray();
+			JPreludeFactory.unregister_int_java_lang_SystemArray();
+		} else if (useJavaPrimitiveIntegerValue == true){
+			JPreludeFactory.register_JavaPrimitiveIntegerValue_java_lang_SystemArray();
+		} else {
+			JPreludeFactory.register_int_java_lang_SystemArray();
+		}
 
 		if (!result.contains("java_util_Map")) {
 			JPreludeFactory.unregister_java_util_Map();
@@ -96,7 +101,7 @@ public class SceneSlicerManager {
 								.getClassConstraints(), module
 								.getObjectInvariants(), module
 								.getObjectConstraints(),
-						module.getRepresents(), to_add);
+						module.getRepresents(), to_add, module.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), module.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
 				
 				pruned_program_modules.add(pruned_module);
 

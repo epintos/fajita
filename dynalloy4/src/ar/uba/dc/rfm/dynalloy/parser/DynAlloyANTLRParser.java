@@ -17,6 +17,7 @@ import ar.uba.dc.rfm.dynalloy.TestPredicateLabel;
 import java.io.StringReader;
 import java.util.Collections;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.HashSet;
@@ -814,7 +815,7 @@ public DynAlloyANTLRParser(ParserSharedInputState state) {
 				r = new ProgramDeclaration(programId.getText(),
 					 formalParams.getParameters(),
 					 localVariables == null ? Collections.<VariableId>emptyList() : localVariables.getParameters(),
-					 prog, typing);
+					 prog, typing, new ArrayList<AlloyFormula>(), new AlloyTyping());
 			
 		dynalloyProgram_AST = (ar.uba.dc.rfm.dynalloy.parser.DynalloyAST)currentAST.root;
 		returnAST = dynalloyProgram_AST;

@@ -7,4 +7,8 @@ public class SinglyLinkedListNode {
 	public /*@ nullable @*/ Object value;
 	
 	public SinglyLinkedListNode() {}
+	
+	public SinglyLinkedListNode getNext() {
+	    return next;
+	}
 }

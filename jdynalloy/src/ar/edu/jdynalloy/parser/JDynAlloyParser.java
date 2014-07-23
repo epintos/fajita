@@ -22,6 +22,7 @@
 	
 package ar.edu.jdynalloy.parser;
 
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
@@ -32,13 +33,6 @@ import ar.uba.dc.rfm.alloy.ast.expressions.ExprOverride;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprProduct;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprUnion;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
-import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.EqualsFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.ImpliesFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.*;
 import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula.Operator;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprIntersection;
@@ -631,7 +625,7 @@ public JDynAlloyParser(ParserSharedInputState state) {
 		
 			signatureId = moduleName.getText();
 			programId = programName.getText();
-			r = new JProgramDeclaration(isAbstract, signatureId, programId, parameters, specCases, body);
+			r = new JProgramDeclaration(isAbstract, signatureId, programId, parameters, specCases, body, new AlloyTyping(), new ArrayList<AlloyFormula>());
 		
 		return r;
 	}
