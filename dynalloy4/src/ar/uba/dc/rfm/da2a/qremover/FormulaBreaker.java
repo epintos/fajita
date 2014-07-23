@@ -30,6 +30,8 @@ import ar.uba.dc.rfm.alloy.ast.formulas.ImpliesFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
+import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula;
+import ar.uba.dc.rfm.dynalloy.visualization.DynalloyVisualizerException;
 
 class FormulaBreaker implements IFormulaVisitor {
 
@@ -98,6 +100,10 @@ class FormulaBreaker implements IFormulaVisitor {
 			throw new UnsupportedOperationException();
 
 		return buildSingleton(n);
+	}
+	
+	public Object visit(QuantifiedFormula n) {
+		throw new DynalloyVisualizerException();
 	}
 	
 }

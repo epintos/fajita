@@ -33,7 +33,7 @@ public class JBindingKey implements Comparable<JBindingKey> {
 	private List<JType> arguments;
 
 	public JBindingKey(JProgramDeclaration programDeclaration) {
-		// this cosntructor need to be changed to a method in someplace, maybe
+		// this constructor need to be changed to a method in someplace, maybe
 		// an static method here.)
 		this(extractSignatureId(programDeclaration), extractProgramId(programDeclaration), extracParameterTypesList(programDeclaration));
 	}
@@ -62,24 +62,31 @@ public class JBindingKey implements Comparable<JBindingKey> {
 		super();
 		this.moduleId = moduleId;
 		this.programId = programId;
-		this.arguments = removeThrowArgument(arguments);
+		this.arguments = removeExceptionResultThrowArgument(arguments);
 	}
 
-	private List<JType> removeThrowArgument(List<JType> arguments) {
-	    List<JType> argumentsWithoutThrow = new ArrayList<JType>();
-	    for (JType type : arguments) {
-		if (!type.dpdTypeNameExtract().equals("java_lang_Throwable")) {
-		    argumentsWithoutThrow.add(type);
+
+	/* Method removeExceptionResultThrowArgument strongly assumes that the receiver object 
+	 * is the first argument.
+	 */
+	private List<JType> removeExceptionResultThrowArgument(List<JType> arguments) {
+		List<JType> argumentsWithoutThrow = new ArrayList<JType>();
+		boolean isFirstArgument = true;
+		for (JType type : arguments) {
+			if (isFirstArgument || !type.dpdTypeNameExtract().equals("java_lang_Throwable")) {
+				argumentsWithoutThrow.add(type);
+				isFirstArgument = false;
+			}
 		}
-	    }
-	    
-	    return argumentsWithoutThrow;
+
+		return argumentsWithoutThrow;
 	}
 
 	private static List<JType> extracParameterTypesList(JProgramDeclaration programDeclaration) {
 		List<JType> parametersTypes = new ArrayList<JType>();
 		for (JVariableDeclaration variableDeclaration : programDeclaration.getParameters()) {
-			parametersTypes.add(variableDeclaration.getType());
+//			if (!programDeclaration.getVarsResultOfArithmeticOperationsInContracts().contains(variableDeclaration.getVariable()))
+					parametersTypes.add(variableDeclaration.getType());
 		}
 		return parametersTypes;
 	}
@@ -210,12 +217,12 @@ public class JBindingKey implements Comparable<JBindingKey> {
 			}
 			//if not, continue
 		}
-		
+
 		int programCompare = this.getProgramId().compareTo(otherBindingKey.getProgramId());
 		if (programCompare!=0) {
 			return programCompare;
 		}
-		
+
 		int argumentTypeCompare = this.getArguments().toString().compareTo(otherBindingKey.getArguments().toString());
 		if (argumentTypeCompare!=0) {
 			return argumentTypeCompare;

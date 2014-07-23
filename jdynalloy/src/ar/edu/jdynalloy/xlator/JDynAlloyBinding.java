@@ -20,6 +20,8 @@ public class JDynAlloyBinding {
 		implementors.putAll(_implementors);
 	}
 
+	public int unfoldScopeForRecursiveCode;
+	
 	public JProgramDeclaration resolve(IProgramCall call) {
 		return binding.get(call);
 	}

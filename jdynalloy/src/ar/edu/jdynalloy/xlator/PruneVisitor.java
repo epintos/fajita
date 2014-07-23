@@ -23,58 +23,58 @@ import ar.edu.jdynalloy.ast.JSignature;
  */
 class PruneVisitor extends JDynAlloyMutator {
 
-	@Override
-	public Object visit(JDynAlloyModule node) {
-		JDynAlloyModule module = (JDynAlloyModule) super.visit(node);
+    @Override
+    public Object visit(JDynAlloyModule node) {
+        JDynAlloyModule module = (JDynAlloyModule) super.visit(node);
 
-		String moduleId = module.getModuleId();
-		JSignature signature = module.getSignature();
-		JSignature class_singleton = module.getClassSingleton();
-		JSignature literal_singleton = module.getLiteralSingleton();
-		List<JField> fields = module.getFields();
-		Set<JClassInvariant> class_invariants = module.getClassInvariants();
-		Set<JClassConstraint> class_constraints = module.getClassConstraints();
-		Set<JObjectInvariant> object_invariants = module.getObjectInvariants();
-		Set<JObjectConstraint> object_constraints = module
-				.getObjectConstraints();
-		Set<JRepresents> represents = module.getRepresents();
-		
+        String moduleId = module.getModuleId();
+        JSignature signature = module.getSignature();
+        JSignature class_singleton = module.getClassSingleton();
+        JSignature literal_singleton = module.getLiteralSingleton();
+        List<JField> fields = module.getFields();
+        Set<JClassInvariant> class_invariants = module.getClassInvariants();
+        Set<JClassConstraint> class_constraints = module.getClassConstraints();
+        Set<JObjectInvariant> object_invariants = module.getObjectInvariants();
+        Set<JObjectConstraint> object_constraints = module
+                .getObjectConstraints();
+        Set<JRepresents> represents = module.getRepresents();
+        
 
-		/*
-		 * prune programs
-		 */
-		Set<JProgramDeclaration> programs = new HashSet<JProgramDeclaration>();
-		for (JProgramDeclaration decl : module.getPrograms()) {
-			if (decl != null)
-				programs.add(decl);
-		}
-		
-		/*
-		 * build fresh module
-		 */
-		JDynAlloyModule pruned_module = new JDynAlloyModule(moduleId, signature,
-				class_singleton, literal_singleton, fields, class_invariants,
-				class_constraints, object_invariants, object_constraints,
-				represents, programs, node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
-				node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
+        /*
+         * prune programs
+         */
+        Set<JProgramDeclaration> programs = new HashSet<JProgramDeclaration>();
+        for (JProgramDeclaration decl : module.getPrograms()) {
+            if (decl != null)
+                programs.add(decl);
+        }
+        
+        /*
+         * build fresh module
+         */
+        JDynAlloyModule pruned_module = new JDynAlloyModule(moduleId, signature,
+                class_singleton, literal_singleton, fields, class_invariants,
+                class_constraints, object_invariants, object_constraints,
+                represents, programs, node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
+                node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
 
-		return pruned_module;
-	}
+        return pruned_module;
+    }
 
-	public PruneVisitor(Graph<String> callGraph, String programToCheck) {
-		super();
-		this.reachedPrograms = callGraph.descendentsOf(programToCheck);
-		this.reachedPrograms.add(programToCheck);
-	}
+    public PruneVisitor(Graph<String> callGraph, String programToCheck) {
+        super();
+        this.reachedPrograms = callGraph.descendentsOf(programToCheck);
+        this.reachedPrograms.add(programToCheck);
+    }
 
-	private final Set<String> reachedPrograms;
+    private final Set<String> reachedPrograms;
 
-	@Override
-	public Object visit(JProgramDeclaration node) {
-		if (reachedPrograms.contains(node.getProgramId())) {
-			return super.visit(node);
-		} else
-			return null;
-	}
+    @Override
+    public Object visit(JProgramDeclaration node) {
+        if (reachedPrograms.contains(node.getProgramId())) {
+            return super.visit(node);
+        } else
+            return null;
+    }
 
 }

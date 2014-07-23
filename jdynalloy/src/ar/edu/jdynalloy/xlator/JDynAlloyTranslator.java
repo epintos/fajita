@@ -3,6 +3,7 @@ package ar.edu.jdynalloy.xlator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Vector;
 import ar.edu.jdynalloy.JDynAlloyConfig;
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JDynAlloyPrinter;
+import ar.edu.jdynalloy.ast.JProgramDeclaration;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.dynalloy.ast.DynalloyModule;
 
@@ -90,6 +92,19 @@ public final class JDynAlloyTranslator {
 
 		// prune unused methods
 		String programToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
+		
+		String[] splitMethodToCheck = programToCheck.split("_");
+		programToCheck = "";
+		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
+			programToCheck += splitMethodToCheck[idx] + "_";
+		}
+		if (splitMethodToCheck.length >= 4){
+			programToCheck += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+		}
+		programToCheck += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+		programToCheck += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+		programToCheck += splitMethodToCheck[splitMethodToCheck.length - 1];
+
 		PruneVisitor pruneVisitor = new PruneVisitor(callGraph, programToCheck);
 		Vector<JDynAlloyModule> prunedModules = new Vector<JDynAlloyModule>();
 		for (JDynAlloyModule module : ms) {
@@ -101,8 +116,8 @@ public final class JDynAlloyTranslator {
 
 		// Unfold recursion
 		Vector<JDynAlloyModule> non_recursive_modules = new Vector<JDynAlloyModule>();
-		int loop_unroll = 10;
-		RecursionUnfolderVisitor recursionUnfolderVisitor = new RecursionUnfolderVisitor(callGraph, loop_unroll);
+		int recursion_unfold = this.binding.unfoldScopeForRecursiveCode;
+		RecursionUnfolderVisitor recursionUnfolderVisitor = new RecursionUnfolderVisitor(callGraph, recursion_unfold);
 		for (JDynAlloyModule module : prunedModules) {
 			JDynAlloyModule non_recursive_module = (JDynAlloyModule) module.accept(recursionUnfolderVisitor);
 			non_recursive_modules.add(non_recursive_module);
@@ -138,12 +153,26 @@ public final class JDynAlloyTranslator {
 	private Vector<DynalloyModule> translateAll(JDynAlloyContext context, Vector<JDynAlloyModule> modules) {
 
 		Vector<DynalloyModule> ms = new Vector<DynalloyModule>();
-
+		
 		// start by translating relevant modules
 		for (JDynAlloyModule m : modules) {
 			String signatureId = m.getSignature().getSignatureId();
+
+			//Collect vars per module. These vars come from arithmetic constraints and 
+			//should be constrained outside the program. That requires to prefix them 
+			//with a "QF.".
+			HashSet<AlloyVariable> sav = new HashSet<AlloyVariable>();
+			if (m.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() != null)
+					sav.addAll(m.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants().getVarsInTyping());
+			
+			for (JProgramDeclaration jpd : m.getPrograms()){
+				if (jpd.getVarsResultOfArithmeticOperationsInContracts() != null)
+					sav.addAll(jpd.getVarsResultOfArithmeticOperationsInContracts().getVarsInTyping());
+			}
+			
+
 			if (containsModule(context.getRelevantModules(), signatureId)) {
-				JDynAlloyXlatorVisitor visitor = new JDynAlloyXlatorVisitor(context);
+				JDynAlloyXlatorVisitor visitor = new JDynAlloyXlatorVisitor(context, sav);
 				DynalloyModule dynalloyModule = (DynalloyModule) m.accept(visitor);
 				ms.add(dynalloyModule);
 			}
@@ -152,8 +181,17 @@ public final class JDynAlloyTranslator {
 		// continue with the rest of the modules
 		for (JDynAlloyModule m : modules) {
 			String signatureId = m.getSignature().getSignatureId();
+			HashSet<AlloyVariable> sav = new HashSet<AlloyVariable>();
+			if (m.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() != null)
+					sav.addAll(m.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants().getVarsInTyping());
+			
+			for (JProgramDeclaration jpd : m.getPrograms()){
+				if (jpd.getVarsResultOfArithmeticOperationsInContracts() != null)
+					sav.addAll(jpd.getVarsResultOfArithmeticOperationsInContracts().getVarsInTyping());
+			}
+
 			if (!containsModule(context.getRelevantModules(), signatureId)) {
-				JDynAlloyXlatorVisitor visitor = new JDynAlloyXlatorVisitor(context);
+				JDynAlloyXlatorVisitor visitor = new JDynAlloyXlatorVisitor(context, sav);
 				DynalloyModule dynalloyModule = (DynalloyModule) m.accept(visitor);
 				ms.add(dynalloyModule);
 			}

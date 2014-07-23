@@ -70,6 +70,10 @@ public final class QuantifiedFormula extends AlloyFormula {
 	private final List<String> names;
 
 	private final List<AlloyExpression> sets;
+	
+	public List<AlloyExpression> getSets(){
+		return sets;
+	}
 
 	private final Operator operator;
 
@@ -77,15 +81,16 @@ public final class QuantifiedFormula extends AlloyFormula {
 
 	@Override
 	public Object accept(IFormulaVisitor visitor) {
-		if (!(visitor instanceof IJDynAlloyFormulaVisitor))
-			throw new IllegalArgumentException(
-					this.getClass().getName()
-							+ " is not supposed to be called using this kind of visitor: "
-							+ visitor.getClass().getName());
-		else {
-			IJDynAlloyFormulaVisitor dynjalloyFormulaVisitor = (IJDynAlloyFormulaVisitor) visitor;
-			return dynjalloyFormulaVisitor.visit(this);
-		}
+//		if (!(visitor instanceof IJDynAlloyFormulaVisitor))
+//			throw new IllegalArgumentException(
+//					this.getClass().getName()
+//							+ " is not supposed to be called using this kind of visitor: "
+//							+ visitor.getClass().getName());
+//		else {
+//			IJDynAlloyFormulaVisitor dynjalloyFormulaVisitor = (IJDynAlloyFormulaVisitor) visitor;
+//			return dynjalloyFormulaVisitor.visit(this);
+//		}
+		return visitor.visit(this);
 	}
 
 	public AlloyFormula getFormula() {

@@ -79,7 +79,32 @@ public class RelevancyAnalysisUtils {
 		JProgramDeclaration methodToCheckDeclaration = null;
 
 		String classToCheck = JDynAlloyConfig.getInstance().getClassToCheck();
+		
+		String[] splitClassToCheck = classToCheck.split("_");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+			classToCheck += splitClassToCheck[idx] + "_";
+		}
+		if (splitClassToCheck.length > 1){
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented_";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+		
+		
 		String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
+		String[] splitMethodToCheck = methodToCheck.split("_");
+		methodToCheck = "";
+		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
+			methodToCheck += splitMethodToCheck[idx] + "_";
+		}
+		if (splitMethodToCheck.length >= 4){
+			methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+		}
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 1];
+		
+		
 
 		for (JDynAlloyModule dynJAlloyModule : modules) {
 			if (dynJAlloyModule.getModuleId().equals(classToCheck)) {
@@ -102,7 +127,7 @@ public class RelevancyAnalysisUtils {
 					+ ". methodToCheck: "
 					+ JDynAlloyConfig.getInstance().getMethodToCheck();
 			throw new JDynAlloyException(
-					"The method to checked wasn't found. Please source files and check the configurations keys 'classToCheck' and 'methodToCheck'. "
+					"The method to check wasn't found. Please source files and check the configurations keys 'classToCheck' and 'methodToCheck'. "
 							+ moreInfo);
 		}
 		return methodToCheckDeclaration;
@@ -159,6 +184,61 @@ public class RelevancyAnalysisUtils {
 		
 		
 	}
+	
+	
+	
+	
+	public static void analyzeObjectInvariant(Scene scene, AlloyFormula objectInvariant,
+			RelevancyAnalysisSymbolTable symbolTable,
+			JDynAlloyBinding dynJAlloyBinding, List<JDynAlloyModule> modules) {
+
+		PredicateCallCollectorVisitor visitor = new PredicateCallCollectorVisitor(symbolTable);
+
+		RelevantAnalysisExpressionTypeResolver expressionTypeResolver = new RelevantAnalysisExpressionTypeResolver(
+				visitor, symbolTable);
+		visitor.setExpressionVisitor(expressionTypeResolver);
+
+		symbolTable.setEnableRelevantAnalysis(true);
+		symbolTable.setRelevantTypes(new HashSet<JType>());
+
+		objectInvariant.accept(visitor);
+
+		symbolTable.setEnableRelevantAnalysis(false);
+		// For each c in MethodCall in P (*)
+		// 		scene.Add( c.Method )
+		// End For each
+		retriveBindingsTypeSupport(scene, visitor, dynJAlloyBinding);
+
+		// For each f in FieldExpression in P (*)
+		// 		Scene.Add( f.Prefix.Type )
+		// 		scene.Add( f.Field )
+		// End For each
+		// For each v in Quantified Variable in P (*)
+		// 		scene.Add( v.Type )
+		// End For each
+
+		for (JType type : symbolTable.getRelevantTypes()) {
+			RelevancyAnalysisUtils.findModuleAndToScene(scene, type, modules);
+		}
+
+		// For each constant C in P (*)
+		//   scene.Add (C.Type)
+		// End For
+		for (JType type : expressionTypeResolver.getRelevantTypes()) {
+			String module_id = type.dpdTypeNameExtract();
+
+			JDynAlloyModule module = RelevancyAnalysisUtils.findModuleByName(
+					module_id, modules);
+
+			if (module != null) {
+				RelevancyAnalysisUtils.findModuleAndToScene(scene, type,
+						modules);
+			}
+		}
+		
+		
+	}
+	
 
 	private static void retriveBindingsTypeSupport(Scene scene,
 			PredicateCallCollectorVisitor visitor,

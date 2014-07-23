@@ -95,6 +95,17 @@ public class FormulaVisitor implements IFormulaVisitor {
 		}
 		return result;
 	}
+	
+	
+	public Object visit(QuantifiedFormula n){
+		Vector<Object> result = new Vector<Object>();
+		result.add(n.getOperator());
+		result.add(n.getNames());
+		result.add(n.getSets());
+		AlloyFormula af = (AlloyFormula)n.getFormula().accept(this);
+		result.add(af);
+		return result;
+	}
 
 	public ExpressionVisitor getDfsExprVisitor() {
 		return dfsExprVisitor;

@@ -45,7 +45,33 @@ public class ModifiesSolverManager {
 		boolean checkedMethodFound = false;
 		
 		String classToCheck = JDynAlloyConfig.getInstance().getClassToCheck();
+		
+		String[] splitClassToCheck = classToCheck.split("_");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+			classToCheck += splitClassToCheck[idx] + "_";
+		}
+		if (splitClassToCheck.length > 1){
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented_";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+		
+		
 		String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
+		String[] splitMethodToCheck = methodToCheck.split("_");
+		methodToCheck = "";
+		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
+			methodToCheck += splitMethodToCheck[idx] + "_";
+		}
+		if (splitMethodToCheck.length >= 4){
+			methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+		}
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 1];
+
+		
+		
 		
 		log.debug("Resolving JDynAlloy modifies: ");
 		List<JDynAlloyModule> modulesWithoutModifies = new ArrayList<JDynAlloyModule>();

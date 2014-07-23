@@ -44,7 +44,12 @@ import ar.edu.jdynalloy.factory.JSignatureFactory;
 import ar.edu.jdynalloy.factory.JTypeFactory;
 import ar.edu.jdynalloy.xlator.JDynAlloyBinding;
 import ar.edu.jdynalloy.xlator.JType;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
+import ar.uba.dc.rfm.alloy.VariableId;
+import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
+import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
 
 public class RelevancyAnalysisManager {
 	private static Logger log = Logger
@@ -72,6 +77,18 @@ public class RelevancyAnalysisManager {
 		
 	
 		String moduleName = JDynAlloyConfig.getInstance().getClassToCheck();
+		String[] splitModuleName = moduleName.split("_");
+		moduleName = "";
+		for (int idx = 0; idx < splitModuleName.length - 2; idx++){
+			moduleName += splitModuleName[idx] + "_";
+		}
+		if (splitModuleName.length > 1){
+			moduleName += splitModuleName[splitModuleName.length - 2] + "Instrumented_";
+		}
+		moduleName += splitModuleName[splitModuleName.length - 1];
+		
+		
+		
 		JDynAlloyModule moduleToCheck = RelevancyAnalysisUtils
 				.findModuleByName(moduleName, modules);
 		scene.addModule(moduleToCheck);
@@ -143,20 +160,32 @@ public class RelevancyAnalysisManager {
 			JProgramDeclaration program) {
 
 		this.symbolTable.beginScope();
+		
 		for (JVariableDeclaration varDeclaration : program.getParameters()) {
 			this.symbolTable.insertLocal(varDeclaration.getVariable()
 					.getVariableId(), varDeclaration.getType());
 		}
-		// If X is Program
 
-		// For each P in X.Parameters
-		// scene.add( p.Type)
-		// End For each
 		for (JVariableDeclaration varDeclaration : program.getParameters()) {
 			JType type = varDeclaration.getType();
 			RelevancyAnalysisUtils.findModuleAndToScene(scene, type,
 					this.modules);
 		}
+		
+		
+		//Add those variables arising from arithmetic operations in contracts and invariants.
+		for (AlloyVariable av : program.getVarsResultOfArithmeticOperationsInContracts().varSet()) {
+			this.symbolTable.insertLocal(av.getVariableId(), 
+					JType.parse(program.getVarsResultOfArithmeticOperationsInContracts().get(av)));
+		}
+
+		//Check the types of variables coming from contracts are indeed considered relevant.
+		for (AlloyVariable av : program.getVarsResultOfArithmeticOperationsInContracts().varSet()) {
+			JType type = JType.parse(program.getVarsResultOfArithmeticOperationsInContracts().get(av));
+			RelevancyAnalysisUtils.findModuleAndToScene(scene, type,
+					this.modules);
+		}
+
 
 		// For each C in X.SpecCase
 		// AnalyzeFormula( scene, C.Precondition )
@@ -171,6 +200,11 @@ public class RelevancyAnalysisManager {
 			for (JPostcondition posPostcondition : specCase.getEnsures()) {
 				RelevancyAnalysisUtils.analyzeFormula(scene, posPostcondition
 						.getFormula(), this.symbolTable, this.dynJAlloyBinding,
+						this.modules);
+			}
+			for (AlloyFormula af : program.getPredsEncodingValueOfArithmeticOperationsInContracts()) {
+				RelevancyAnalysisUtils.analyzeFormula(scene, af,
+						this.symbolTable, this.dynJAlloyBinding,
 						this.modules);
 			}
 		}
@@ -242,9 +276,18 @@ public class RelevancyAnalysisManager {
 		// End For each
 		// End If
 		for (JObjectInvariant invariant : module.getObjectInvariants()) {
-			RelevancyAnalysisUtils.analyzeFormula(scene,
+			RelevancyAnalysisUtils.analyzeObjectInvariant(scene,
 					invariant.getFormula(), this.symbolTable,
 					this.dynJAlloyBinding, this.modules);
+		}
+		
+		if (module.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants() != null){
+			for (AlloyFormula af : module.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants()){
+				RelevancyAnalysisUtils.analyzeFormula(scene,
+						af, this.symbolTable,
+						this.dynJAlloyBinding, this.modules);
+
+			}
 		}
 
 		for (JClassInvariant invariant : module.getClassInvariants()) {
@@ -299,13 +342,19 @@ public class RelevancyAnalysisManager {
 		RelevancyAnalysisSymbolTable symbolTable = new RelevancyAnalysisSymbolTable();
 		FieldCollectorVisitor fieldCollectorVisitor = new FieldCollectorVisitor(
 				symbolTable);
-		// ProgramDeclarationCollectorVisitor and fieldCollectorVisitor hasn't
-		// inter-dependences.
-		// They are can run together. But semanticCheckVisitor visitor needs the
+		// ProgramDeclarationCollectorVisitor and fieldCollectorVisitor do not have
+		// interdependences.
+		// They can run together. But semanticCheckVisitor visitor needs the
 		// Fields collected by fieldCollectorVisitor.
 		// fieldCollectorVisitor must be run before semanticCheckVisitor
 		for (JDynAlloyModule dynJAlloyModule : modules) {
 			dynJAlloyModule.accept(fieldCollectorVisitor);
+			if (dynJAlloyModule.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() != null){
+				for (AlloyVariable av : dynJAlloyModule.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants().varSet()){
+					fieldCollectorVisitor.getSymbolTable().insertField(dynJAlloyModule.getModuleId(), av.getVariableId().getString(), new JType(dynJAlloyModule.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants().get(av)));
+				}
+			}	
+			
 		}
 		return symbolTable;
 	}

@@ -27,4 +27,5 @@ public interface IFormulaVisitor {
 	Object visit(ImpliesFormula n);
 	Object visit(NotFormula n);
 	Object visit(PredicateFormula n);
+	Object visit(QuantifiedFormula n);
 }
