@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ar.edu.jdynalloy.xlator.JType;
+import ar.edu.jdynalloy.xlator.JType.SpecialType;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
@@ -19,6 +21,7 @@ import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaMutator;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaPrinter;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaVisitor;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
+import ar.uba.dc.rfm.alloy.util.ExpressionMutator;
 import ar.uba.dc.rfm.alloy.util.FormulaMutator;
 import ar.uba.dc.rfm.alloy.util.QFtransformer;
 import ar.uba.dc.rfm.alloy.util.VarCollector;

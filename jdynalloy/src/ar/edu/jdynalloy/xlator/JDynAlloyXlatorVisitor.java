@@ -95,1225 +95,1225 @@ import ar.uba.dc.rfm.dynalloy.util.ProgramCloner;
 
 final class JDynAlloyXlatorVisitor extends JDynAlloyVisitor {
 
-    @Override
-    public Object visit(JModifies node) {
-        return node.getLocation();
-    }
+	@Override
+	public Object visit(JModifies node) {
+		return node.getLocation();
+	}
 
-    @Override
-    public Object visit(JSpecCase node) {
-        Vector<Object> v = (Vector<Object>) super.visit(node);
-        Vector<AlloyFormula> requires = (Vector<AlloyFormula>) v.get(0);
-        for (int index = 0; index < requires.size() && requires.get(index) != null; index++){
-            requires.set(index, (AlloyFormula)requires.get(index));
-        }
+	@Override
+	public Object visit(JSpecCase node) {
+		Vector<Object> v = (Vector<Object>) super.visit(node);
+		Vector<AlloyFormula> requires = (Vector<AlloyFormula>) v.get(0);
+		for (int index = 0; index < requires.size() && requires.get(index) != null; index++){
+			requires.set(index, (AlloyFormula)requires.get(index));
+		}
 
-        Vector<AlloyFormula> ensures = (Vector<AlloyFormula>) v.get(1);
-        for (int index = 0; index < ensures.size() && ensures.get(index) != null; index++){
-            ensures.set(index, (AlloyFormula)ensures.get(index));
+		Vector<AlloyFormula> ensures = (Vector<AlloyFormula>) v.get(1);
+		for (int index = 0; index < ensures.size() && ensures.get(index) != null; index++){
+			ensures.set(index, (AlloyFormula)ensures.get(index));
 
-        }
+		}
 
-        Vector<AlloyExpression> modifies = (Vector<AlloyExpression>) v.get(2);
+		Vector<AlloyExpression> modifies = (Vector<AlloyExpression>) v.get(2);
 
-        Vector<Object> result = new Vector<Object>();
-        result.add(requires);
-        result.add(ensures);
-        result.add(modifies);
+		Vector<Object> result = new Vector<Object>();
+		result.add(requires);
+		result.add(ensures);
+		result.add(modifies);
 
-        return result;
-    }
+		return result;
+	}
 
-    private FormulaWrapper formulaWrapper = null;
+	private FormulaWrapper formulaWrapper = null;
 
-    private JDynAlloyTyping localVariables;
+	private JDynAlloyTyping localVariables;
 
-    private JDynAlloyTyping parameterVariables;
+	private JDynAlloyTyping parameterVariables;
 
-    private final JDynAlloyContext context;
+	private final JDynAlloyContext context;
 
-    private final Stack<String> escapedDynalloy = new Stack<String>();
+	private final Stack<String> escapedDynalloy = new Stack<String>();
 
-    private final Stack<JDynAlloyModule> currentModule = new Stack<JDynAlloyModule>();
+	private final Stack<JDynAlloyModule> currentModule = new Stack<JDynAlloyModule>();
 
-    private Vector<AlloyFormula> invariants;
-    private Vector<AlloyFormula> constraints;
-    private Vector<AlloyFormula> represents;
-    private HashSet<AlloyVariable> varsToPrefix;
+	private Vector<AlloyFormula> invariants;
+	private Vector<AlloyFormula> constraints;
+	private Vector<AlloyFormula> represents;
+	private HashSet<AlloyVariable> varsToPrefix;
 
 
 
-    public HashSet<AlloyVariable> getVarsToPrefix(){
-        return this.varsToPrefix;
-    }
+	public HashSet<AlloyVariable> getVarsToPrefix(){
+		return this.varsToPrefix;
+	}
 
-    public JDynAlloyXlatorVisitor(JDynAlloyContext _context, HashSet<AlloyVariable> sav) {
-        super();
-        this.context = _context;
-        this.varsToPrefix = sav;
-    }
-
+	public JDynAlloyXlatorVisitor(JDynAlloyContext _context, HashSet<AlloyVariable> sav) {
+		super();
+		this.context = _context;
+		this.varsToPrefix = sav;
+	}
+
 
-    public JDynAlloyXlatorVisitor(JDynAlloyContext _context) {
-        super();
-        this.context = _context;
-    }
+	public JDynAlloyXlatorVisitor(JDynAlloyContext _context) {
+		super();
+		this.context = _context;
+	}
 
-    public Set<PredicateDeclaration> getPredicateDeclarations() {
-        return new HashSet<PredicateDeclaration>(formulaWrapper.getWrapperPredicates().values());
-    }
+	public Set<PredicateDeclaration> getPredicateDeclarations() {
+		return new HashSet<PredicateDeclaration>(formulaWrapper.getWrapperPredicates().values());
+	}
 
-    public JDynAlloyTyping getTyping() {
-        return this.parameterVariables;
-    }
+	public JDynAlloyTyping getTyping() {
+		return this.parameterVariables;
+	}
 
-    public Object visit(JAssignment n) {
-        AlloyExpression lvalue = n.getLvalue();
-        AlloyExpression rvalue = n.getRvalue();
-
-        if (lvalue.getClass().equals(ExprVariable.class))
-            return DynalloyFactory.updateVariable((ExprVariable) lvalue, rvalue);
-        else if (isArrayAccess(lvalue)) {
-            return DynalloyFactory.updateArray(getArrayContents(lvalue), getArrayIndex(lvalue), rvalue);
-        } else if (MapAccess.isMapAccess(lvalue)) {
-            return DynalloyFactory.updateMap(MapAccess.getMap(lvalue), rvalue);
-        } else if (ListAccess.isListAccess(lvalue)) {
-            return DynalloyFactory.updateList(ListAccess.getList(lvalue), rvalue);
-        } else if (lvalue.getClass().equals(ExprJoin.class))
-            return DynalloyFactory.updateField((ExprJoin) lvalue, rvalue);
-
-        else
-            throw new IllegalArgumentException();
-
-    }
-
-    public Object visit(JAssert n) {
-
-        TestPredicate ifCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
-        Composition ifProgram = new Composition(ifCondition, new Skip());
+	public Object visit(JAssignment n) {
+		AlloyExpression lvalue = n.getLvalue();
+		AlloyExpression rvalue = n.getRvalue();
+
+		if (lvalue.getClass().equals(ExprVariable.class))
+			return DynalloyFactory.updateVariable((ExprVariable) lvalue, rvalue);
+		else if (isArrayAccess(lvalue)) {
+			return DynalloyFactory.updateArray(getArrayContents(lvalue), getArrayIndex(lvalue), rvalue);
+		} else if (MapAccess.isMapAccess(lvalue)) {
+			return DynalloyFactory.updateMap(MapAccess.getMap(lvalue), rvalue);
+		} else if (ListAccess.isListAccess(lvalue)) {
+			return DynalloyFactory.updateList(ListAccess.getList(lvalue), rvalue);
+		} else if (lvalue.getClass().equals(ExprJoin.class))
+			return DynalloyFactory.updateField((ExprJoin) lvalue, rvalue);
+
+		else
+			throw new IllegalArgumentException();
+
+	}
+
+	public Object visit(JAssert n) {
+
+		TestPredicate ifCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
+		Composition ifProgram = new Composition(ifCondition, new Skip());
 
-        TestPredicate elseCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()), false);
-
-        Assigment updateVariable = DynalloyFactory.updateVariable(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION);
-        Composition elseProgram = new Composition(elseCondition, updateVariable);
-
-        return new Choice(ifProgram, elseProgram);
-    }
-
-    public Object visit(JCreateObject n) {
-
-        ExprVariable exprLValue = new ExprVariable(n.getLvalue());
-        String signatureId = n.getSignatureId();
-
-        PredicateFormula typeCondition;
-        if (JDynAlloyConfig.getInstance().getUseClassSingletons() == true) {
-            AlloyExpression classOf = JExpressionFactory.classOf(exprLValue);
-            ExprConstant classConstant = new ExprConstant(null, signatureId);
-            typeCondition = JPredicateFactory.eq(classOf, classConstant);
-        } else {
-            typeCondition = JPredicateFactory.instanceOf(exprLValue, signatureId);
-        }
-
-        return buildComposition(DynalloyFactory.getUnusedObject(n.getLvalue()), new TestPredicate(typeCondition));
-    }
-
-    public Object visit(JIfThenElse n) {
-        Vector<DynalloyProgram> r = (Vector<DynalloyProgram>) super.visit(n);
-
-        // ifProgram
-        TestPredicate ifCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
-        Composition ifProgram = new Composition(ifCondition, r.get(0));
-        // elseProgram
-        TestPredicate elseCondition = new TestPredicate(formulaWrapper.wrapCondition(new NotFormula(n.getCondition())));
-        Composition elseProgram = new Composition(elseCondition, r.get(1));
-
-        // add labels
-        if (n.getBranchId() != null) {
-            TestPredicateLabel lblpos = new TestPredicateLabel(true, n.getBranchId());
-            TestPredicateLabel lblneg = new TestPredicateLabel(false, n.getBranchId());
-            ifCondition.setLabel(lblpos);
-            elseCondition.setLabel(lblneg);
-        }
-
-        // if+else
-        return new Choice(ifProgram, elseProgram);
-    }
-
-    public Object visit(JBlock n) {
-        Vector<DynalloyProgram> ss = (Vector<DynalloyProgram>) super.visit(n);
-        if (ss.size() == 1) {
-            return ss.get(0);
-        } else if (ss.size() > 1) {
-            Composition result = new Composition(ss.get(0), ss.get(1));
-            for (int i = 2; i < ss.size(); i++) {
-                result.add(ss.get(i));
-            }
-            return result;
-        } else
-            throw new IllegalArgumentException();
-    }
-
-    public Object visit(JWhile n) {
-        Vector<DynalloyProgram> r = (Vector<DynalloyProgram>) super.visit(n);
-
-        // closure part
-        PredicateFormula condition = formulaWrapper.wrapCondition(n.getCondition());
-        TestPredicate entryCondition = new TestPredicate(condition);
-
-        // body
-        DynalloyProgram body = r.get(1);
-
-        DynalloyProgram result;
-        if (JDynAlloyConfig.getInstance().getNestedLoopUnroll() == true) {
-            // while dynalloy
-            result = new WhileProgram(condition, body, null);
-        } else {
-            // repeat 
-            Composition compo = Composition.buildComposition(entryCondition, body);
-            Closure closure = new Closure(compo, null);
-            TestPredicate exitCondition = new TestPredicate(formulaWrapper.wrapCondition(new NotFormula(n.getCondition())));
-            result = Composition.buildComposition(closure, exitCondition);
-        }
-
-        return result;
-    }
-
-    @Override
-    public Object visit(JLoopInvariant n) {
-        JLoopInvariant module = (JLoopInvariant) super.visit(n);
-
-        JAssert jAssert = new JAssert(module.getFormula());
-
-        return jAssert.accept(this);
-    }
-
-    public Object visit(JSkip n) {
-        return new Skip();
-    }
-
-    @Override
-    public Object visit(JVariableDeclaration n) {
-        if (programParameters.contains(n.getVariable()))
-            parameterVariables.put(n.getVariable(), n.getType());
-        else
-            localVariables.put(n.getVariable(), n.getType());
-        return new Skip();
-    }
-
-    @Override
-    public Object visit(JDynAlloyModule node) {
-        this.currentModule.push(node);
-
-        this.invariants = new Vector<AlloyFormula>();
-        this.constraints = new Vector<AlloyFormula>();
-        this.represents = new Vector<AlloyFormula>();
-
-        this.formulaWrapper = new FormulaWrapper(node.getSignature().getSignatureId(), context.allFields(),
-                this.varsToPrefix);
-
-        JDynAlloyModuleVisitResult children = (JDynAlloyModuleVisitResult) super.visit(node);
-
-
-
-        //      String origSig = (String) children.signature_result;
-        String signature = (String) children.signature_result;
-        //      String signature = origSig.replaceFirst("\\{\\}", "{\n" + nodeFields + "}");
-
-
-        String classSingleton;
-        String classHierarchyFact;
-
-        if (JDynAlloyConfig.getInstance().getClassExtendsObject() == false && node.getSignature().getSignatureId().equals("Class")) {
-            classSingleton = "";
-            classHierarchyFact = "";
-        } else {
-            if (JDynAlloyConfig.getInstance().getUseClassSingletons() == true) {
-                classSingleton = (String) children.class_singleton_result;
-                String signatureId = node.getSignature().getSignatureId();
-
-                if (JDynAlloyConfig.getInstance().getTypeSafety() == true)
-                    classHierarchyFact = DynalloyFactory.declareFactClassHierarchy(signatureId, signatureId + "Class", context.descendantsOf(signatureId));
-                else
-                    classHierarchyFact = "";
-            } else {
-                classSingleton = "";
-                classHierarchyFact = "";
-            }
-        }
-
-        String literalSingleton;
-        if (node.getLiteralSingleton() != null) {
-            literalSingleton = (String) children.literal_singleton_result;
-        } else
-            literalSingleton = "";
-
-        Set<ProgramDeclaration> programs = new HashSet<ProgramDeclaration>();
-        Set<AssertionDeclaration> assertions = new HashSet<AssertionDeclaration>();
-
-        Vector<ProgramTranslationResult> childPrograms = (Vector<ProgramTranslationResult>) children.programs_result;
-        for (ProgramTranslationResult programResult : childPrograms) {
-            ProgramDeclaration programWithPrefixedFormulas = new ProgramDeclaration(
-                    programResult.program.getProgramId(), 
-                    programResult.program.getParameters(), 
-                    programResult.program.getLocalVariables(), 
-                    programResult.program.getBody(), 
-                    programResult.program.getParameterTyping(), 
-                    programResult.predsFromArithmeticInContracts, 
-                    programResult.program.getVarsFromArithInContracts());
-            programs.add(programWithPrefixedFormulas);
-
-            if (programResult.simProgram != null)
-                programs.add(programResult.simProgram);
-
-            if (programResult.assertion != null)
-                assertions.add(programResult.assertion);
-        }
-
-        List<AlloyFormula> formsFromArith = new ArrayList<AlloyFormula>();
-        QFtransformer qfprefixer = new QFtransformer(varsToPrefix);
-        FormulaMutator fm = new FormulaMutator(qfprefixer);
-        if (node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() != null){
-            for (AlloyFormula af : node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants()){
-                af = (AlloyFormula)af.accept(fm);
-                formsFromArith.add(af);
-            }
-            node.setPredsEncodingValueOfArithmeticOperationsInObjectInvariants(formsFromArith);
-        }
-
-        StringBuffer sb = new StringBuffer();
-        sb.append(signature + "\n");
-        sb.append(classSingleton + "\n");
-        sb.append(classHierarchyFact + "\n");
-
-        sb.append(literalSingleton + "\n");
-
-        for (PredicateDeclaration predicateDeclaration : this.getPredicateDeclarations()) {
-
-            boolean prettyPrint = true;
-            sb.append(predicateDeclaration.toString(prettyPrint) + "\n");
-        }
-
-
-        while (!escapedDynalloy.isEmpty())
-            sb.append(escapedDynalloy.pop() + "\n");
-
-        this.currentModule.pop();
-
-        return new DynalloyModule(node.getModuleId(), null, sb.toString(), 
-                Collections.<ActionDeclaration> emptySet(), programs, 
-                assertions, node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
-                node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
-    }
-
-    @Override
-    public Object visit(JSignature node) {
-        JDynAlloyPrinter printer = new JDynAlloyPrinter();
-        String str = (String) node.accept(printer);
-        return str;
-    }
-
-    private Set<AlloyVariable> programParameters = new HashSet<AlloyVariable>();
-
-    private static class ProgramTranslationResult {
-        public ProgramTranslationResult(ProgramDeclaration program, AssertionDeclaration assertion, 
-                ProgramDeclaration simProgram, List<AlloyFormula> preds) {
-            super();
-            this.assertion = assertion;
-            this.program = program;
-            this.simProgram = simProgram;
-            this.predsFromArithmeticInContracts = preds;
-        }
-
-        private final ProgramDeclaration program;
-
-        private final AssertionDeclaration assertion;
-
-        private final ProgramDeclaration simProgram;
-
-        private final List<AlloyFormula> predsFromArithmeticInContracts;
-    }
-
-    @Override
-    public Object visit(JProgramDeclaration node) {
-
-        localVariables = new JDynAlloyTyping();
-        parameterVariables = new JDynAlloyTyping();
-        formulaWrapper.bindLocalVariables(localVariables);
-        formulaWrapper.bindParameterVariables(parameterVariables);
-
-        programParameters = new HashSet<AlloyVariable>();
-        List<VariableId> argList = new LinkedList<VariableId>();
-        for (JVariableDeclaration parameterDeclaration : node.getParameters()) {
-            programParameters.add(parameterDeclaration.getVariable());
-            argList.add(parameterDeclaration.getVariable().getVariableId());
-        }
-
-        for (AlloyVariable field : context.fieldList()) {
-            argList.add(field.getVariableId());
-        }
-        argList.add(new VariableId("usedObjects"));
-
-        Vector<Object> children = (Vector<Object>) super.visit(node);
-
-        JDynAlloyTyping typing = new JDynAlloyTyping();
-        for (AlloyVariable v : parameterVariables) {
-            typing.put(v, parameterVariables.getJAlloyType(v));
-        }
-        for (AlloyVariable field : context.allFields().varSet()) {
-            typing.put(field, context.allFields().getJAlloyType(field));
-        }
-
-        List<VariableId> localIds = new LinkedList<VariableId>();
-        for (AlloyVariable v : localVariables.varSet()) {
-            localIds.add(v.getVariableId());
-            typing.put(v, localVariables.getJAlloyType(v));
-        }
-        final JType type = JType.parse("set (" + javaLangPackage() + "Object)");
-        typing.put(new AlloyVariable("usedObjects"), type);
-
-        //      Object varResult = children.get(0);
-
-        Vector<Object> specResults = (Vector<Object>) children.get(1);
-
-        DynalloyProgram body = (DynalloyProgram) children.get(2);
-
-        String programId = node.getProgramId();
-        ProgramDeclaration programDeclaration = new ProgramDeclaration(programId, argList, localIds, body, typing, node.
-                getPredsEncodingValueOfArithmeticOperationsInContracts(), node.getVarsResultOfArithmeticOperationsInContracts());
-
-        JDynAlloyModule module = currentModule.peek();
-
-        String classToCheck = JDynAlloyConfig.getInstance().getClassToCheck();
-        
-        String[] splitClassToCheck = classToCheck.split("_");
-        classToCheck = "";
-        for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
-            classToCheck += splitClassToCheck[idx] + "_";
-        }
-        if (splitClassToCheck.length > 1){
-            classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented_";
-        }
-        classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
-        
-        
-        String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
-        String[] splitMethodToCheck = methodToCheck.split("_");
-        methodToCheck = "";
-        for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
-            methodToCheck += splitMethodToCheck[idx] + "_";
-        }
-        if (splitMethodToCheck.length >= 4){
-            methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
-        }
-        methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
-        methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
-        methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 1];
-
-
-        //prefix QF where required in those predicates that come from arithmetic operations.
-
-        QFtransformer qftransform = new QFtransformer(this.varsToPrefix);
-        FormulaMutator fm = new FormulaMutator(qftransform);
-        List<AlloyFormula> newPreds = new ArrayList<AlloyFormula>();
-        if (node.getPredsEncodingValueOfArithmeticOperationsInContracts() != null){
-            for (AlloyFormula af : node.getPredsEncodingValueOfArithmeticOperationsInContracts()){
-                newPreds.add((AlloyFormula)af.accept(fm));
-            }
-            node.setPredsEncodingValueOfArithmeticOperationsInContracts(newPreds);
-        }
-
-        if (module.getSignature().getSignatureId().equals(classToCheck) && programId.equals(methodToCheck)) {
-
-            if (specResults.isEmpty())
-                return new ProgramTranslationResult(programDeclaration, null, null, newPreds);
-            else {
-
-                Vector<AlloyFormula> requires;
-                Vector<AlloyFormula> ensures;
-
-                if (specResults.size() == 1) {
-                    Vector<Object> specVec = (Vector<Object>) specResults.get(0);
-                    requires = (Vector<AlloyFormula>) specVec.get(0);
-                    ensures = (Vector<AlloyFormula>) specVec.get(1);
-                } else {
-                    requires = new Vector<AlloyFormula>();
-                    ensures = new Vector<AlloyFormula>();
-
-                    if (specResults.size() == 1) {
-                        Vector<Object> specCase = (Vector<Object>) specResults.get(0);
-
-                        Vector<AlloyFormula> specCaseRequires = (Vector<AlloyFormula>) specCase.get(0);
-                        Vector<AlloyFormula> specCaseEnsures = (Vector<AlloyFormula>) specCase.get(1);
-
-                        requires.addAll(specCaseRequires);
-                        ensures.addAll(specCaseEnsures);
+		TestPredicate elseCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()), false);
+
+		Assigment updateVariable = DynalloyFactory.updateVariable(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION);
+		Composition elseProgram = new Composition(elseCondition, updateVariable);
+
+		return new Choice(ifProgram, elseProgram);
+	}
+
+	public Object visit(JCreateObject n) {
+
+		ExprVariable exprLValue = new ExprVariable(n.getLvalue());
+		String signatureId = n.getSignatureId();
+
+		PredicateFormula typeCondition;
+		if (JDynAlloyConfig.getInstance().getUseClassSingletons() == true) {
+			AlloyExpression classOf = JExpressionFactory.classOf(exprLValue);
+			ExprConstant classConstant = new ExprConstant(null, signatureId);
+			typeCondition = JPredicateFactory.eq(classOf, classConstant);
+		} else {
+			typeCondition = JPredicateFactory.instanceOf(exprLValue, signatureId);
+		}
+
+		return buildComposition(DynalloyFactory.getUnusedObject(n.getLvalue()), new TestPredicate(typeCondition));
+	}
+
+	public Object visit(JIfThenElse n) {
+		Vector<DynalloyProgram> r = (Vector<DynalloyProgram>) super.visit(n);
+
+		// ifProgram
+		TestPredicate ifCondition = new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
+		Composition ifProgram = new Composition(ifCondition, r.get(0));
+		// elseProgram
+		TestPredicate elseCondition = new TestPredicate(formulaWrapper.wrapCondition(new NotFormula(n.getCondition())));
+		Composition elseProgram = new Composition(elseCondition, r.get(1));
+
+		// add labels
+		if (n.getBranchId() != null) {
+			TestPredicateLabel lblpos = new TestPredicateLabel(true, n.getBranchId());
+			TestPredicateLabel lblneg = new TestPredicateLabel(false, n.getBranchId());
+			ifCondition.setLabel(lblpos);
+			elseCondition.setLabel(lblneg);
+		}
+
+		// if+else
+		return new Choice(ifProgram, elseProgram);
+	}
+
+	public Object visit(JBlock n) {
+		Vector<DynalloyProgram> ss = (Vector<DynalloyProgram>) super.visit(n);
+		if (ss.size() == 1) {
+			return ss.get(0);
+		} else if (ss.size() > 1) {
+			Composition result = new Composition(ss.get(0), ss.get(1));
+			for (int i = 2; i < ss.size(); i++) {
+				result.add(ss.get(i));
+			}
+			return result;
+		} else
+			throw new IllegalArgumentException();
+	}
+
+	public Object visit(JWhile n) {
+		Vector<DynalloyProgram> r = (Vector<DynalloyProgram>) super.visit(n);
+
+		// closure part
+		PredicateFormula condition = formulaWrapper.wrapCondition(n.getCondition());
+		TestPredicate entryCondition = new TestPredicate(condition);
+
+		// body
+		DynalloyProgram body = r.get(1);
+
+		DynalloyProgram result;
+		if (JDynAlloyConfig.getInstance().getNestedLoopUnroll() == true) {
+			// while dynalloy
+			result = new WhileProgram(condition, body, null);
+		} else {
+			// repeat 
+			Composition compo = Composition.buildComposition(entryCondition, body);
+			Closure closure = new Closure(compo, null);
+			TestPredicate exitCondition = new TestPredicate(formulaWrapper.wrapCondition(new NotFormula(n.getCondition())));
+			result = Composition.buildComposition(closure, exitCondition);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Object visit(JLoopInvariant n) {
+		JLoopInvariant module = (JLoopInvariant) super.visit(n);
+
+		JAssert jAssert = new JAssert(module.getFormula());
+
+		return jAssert.accept(this);
+	}
+
+	public Object visit(JSkip n) {
+		return new Skip();
+	}
+
+	@Override
+	public Object visit(JVariableDeclaration n) {
+		if (programParameters.contains(n.getVariable()))
+			parameterVariables.put(n.getVariable(), n.getType());
+		else
+			localVariables.put(n.getVariable(), n.getType());
+		return new Skip();
+	}
+
+	@Override
+	public Object visit(JDynAlloyModule node) {
+		this.currentModule.push(node);
+
+		this.invariants = new Vector<AlloyFormula>();
+		this.constraints = new Vector<AlloyFormula>();
+		this.represents = new Vector<AlloyFormula>();
+
+		this.formulaWrapper = new FormulaWrapper(node.getSignature().getSignatureId(), context.allFields(),
+				this.varsToPrefix);
+
+		JDynAlloyModuleVisitResult children = (JDynAlloyModuleVisitResult) super.visit(node);
+
+
+
+		//		String origSig = (String) children.signature_result;
+		String signature = (String) children.signature_result;
+		//		String signature = origSig.replaceFirst("\\{\\}", "{\n" + nodeFields + "}");
+
+
+		String classSingleton;
+		String classHierarchyFact;
+
+		if (JDynAlloyConfig.getInstance().getClassExtendsObject() == false && node.getSignature().getSignatureId().equals("Class")) {
+			classSingleton = "";
+			classHierarchyFact = "";
+		} else {
+			if (JDynAlloyConfig.getInstance().getUseClassSingletons() == true) {
+				classSingleton = (String) children.class_singleton_result;
+				String signatureId = node.getSignature().getSignatureId();
+
+				if (JDynAlloyConfig.getInstance().getTypeSafety() == true)
+					classHierarchyFact = DynalloyFactory.declareFactClassHierarchy(signatureId, signatureId + "Class", context.descendantsOf(signatureId));
+				else
+					classHierarchyFact = "";
+			} else {
+				classSingleton = "";
+				classHierarchyFact = "";
+			}
+		}
+
+		String literalSingleton;
+		if (node.getLiteralSingleton() != null) {
+			literalSingleton = (String) children.literal_singleton_result;
+		} else
+			literalSingleton = "";
+
+		Set<ProgramDeclaration> programs = new HashSet<ProgramDeclaration>();
+		Set<AssertionDeclaration> assertions = new HashSet<AssertionDeclaration>();
+
+		Vector<ProgramTranslationResult> childPrograms = (Vector<ProgramTranslationResult>) children.programs_result;
+		for (ProgramTranslationResult programResult : childPrograms) {
+			ProgramDeclaration programWithPrefixedFormulas = new ProgramDeclaration(
+					programResult.program.getProgramId(), 
+					programResult.program.getParameters(), 
+					programResult.program.getLocalVariables(), 
+					programResult.program.getBody(), 
+					programResult.program.getParameterTyping(), 
+					programResult.predsFromArithmeticInContracts, 
+					programResult.program.getVarsFromArithInContracts());
+			programs.add(programWithPrefixedFormulas);
+
+			if (programResult.simProgram != null)
+				programs.add(programResult.simProgram);
+
+			if (programResult.assertion != null)
+				assertions.add(programResult.assertion);
+		}
+
+		List<AlloyFormula> formsFromArith = new ArrayList<AlloyFormula>();
+		QFtransformer qfprefixer = new QFtransformer(varsToPrefix);
+		FormulaMutator fm = new FormulaMutator(qfprefixer);
+		if (node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants() != null){
+			for (AlloyFormula af : node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants()){
+				af = (AlloyFormula)af.accept(fm);
+				formsFromArith.add(af);
+			}
+			node.setPredsEncodingValueOfArithmeticOperationsInObjectInvariants(formsFromArith);
+		}
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(signature + "\n");
+		sb.append(classSingleton + "\n");
+		sb.append(classHierarchyFact + "\n");
+
+		sb.append(literalSingleton + "\n");
+
+		for (PredicateDeclaration predicateDeclaration : this.getPredicateDeclarations()) {
+
+			boolean prettyPrint = true;
+			sb.append(predicateDeclaration.toString(prettyPrint) + "\n");
+		}
+
+
+		while (!escapedDynalloy.isEmpty())
+			sb.append(escapedDynalloy.pop() + "\n");
+
+		this.currentModule.pop();
+
+		return new DynalloyModule(node.getModuleId(), null, sb.toString(), 
+				Collections.<ActionDeclaration> emptySet(), programs, 
+				assertions, node.getVarsEncodingValueOfArithmeticOperationsInObjectInvariants(), 
+				node.getPredsEncodingValueOfArithmeticOperationsInObjectInvariants());
+	}
+
+	@Override
+	public Object visit(JSignature node) {
+		JDynAlloyPrinter printer = new JDynAlloyPrinter();
+		String str = (String) node.accept(printer);
+		return str;
+	}
+
+	private Set<AlloyVariable> programParameters = new HashSet<AlloyVariable>();
+
+	private static class ProgramTranslationResult {
+		public ProgramTranslationResult(ProgramDeclaration program, AssertionDeclaration assertion, 
+				ProgramDeclaration simProgram, List<AlloyFormula> preds) {
+			super();
+			this.assertion = assertion;
+			this.program = program;
+			this.simProgram = simProgram;
+			this.predsFromArithmeticInContracts = preds;
+		}
+
+		private final ProgramDeclaration program;
+
+		private final AssertionDeclaration assertion;
+
+		private final ProgramDeclaration simProgram;
+
+		private final List<AlloyFormula> predsFromArithmeticInContracts;
+	}
+
+	@Override
+	public Object visit(JProgramDeclaration node) {
+
+		localVariables = new JDynAlloyTyping();
+		parameterVariables = new JDynAlloyTyping();
+		formulaWrapper.bindLocalVariables(localVariables);
+		formulaWrapper.bindParameterVariables(parameterVariables);
+
+		programParameters = new HashSet<AlloyVariable>();
+		List<VariableId> argList = new LinkedList<VariableId>();
+		for (JVariableDeclaration parameterDeclaration : node.getParameters()) {
+			programParameters.add(parameterDeclaration.getVariable());
+			argList.add(parameterDeclaration.getVariable().getVariableId());
+		}
+
+		for (AlloyVariable field : context.fieldList()) {
+			argList.add(field.getVariableId());
+		}
+		argList.add(new VariableId("usedObjects"));
+
+		Vector<Object> children = (Vector<Object>) super.visit(node);
+
+		JDynAlloyTyping typing = new JDynAlloyTyping();
+		for (AlloyVariable v : parameterVariables) {
+			typing.put(v, parameterVariables.getJAlloyType(v));
+		}
+		for (AlloyVariable field : context.allFields().varSet()) {
+			typing.put(field, context.allFields().getJAlloyType(field));
+		}
+
+		List<VariableId> localIds = new LinkedList<VariableId>();
+		for (AlloyVariable v : localVariables.varSet()) {
+			localIds.add(v.getVariableId());
+			typing.put(v, localVariables.getJAlloyType(v));
+		}
+		final JType type = JType.parse("set (" + javaLangPackage() + "Object)");
+		typing.put(new AlloyVariable("usedObjects"), type);
+
+		//		Object varResult = children.get(0);
+
+		Vector<Object> specResults = (Vector<Object>) children.get(1);
+
+		DynalloyProgram body = (DynalloyProgram) children.get(2);
+
+		String programId = node.getProgramId();
+		ProgramDeclaration programDeclaration = new ProgramDeclaration(programId, argList, localIds, body, typing, node.
+				getPredsEncodingValueOfArithmeticOperationsInContracts(), node.getVarsResultOfArithmeticOperationsInContracts());
+
+		JDynAlloyModule module = currentModule.peek();
+
+		String classToCheck = JDynAlloyConfig.getInstance().getClassToCheck();
+		
+		String[] splitClassToCheck = classToCheck.split("_");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+			classToCheck += splitClassToCheck[idx] + "_";
+		}
+		if (splitClassToCheck.length > 1){
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented_";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+		
+		
+		String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
+		String[] splitMethodToCheck = methodToCheck.split("_");
+		methodToCheck = "";
+		for (int idx = 0; idx < splitMethodToCheck.length - 5; idx++){
+			methodToCheck += splitMethodToCheck[idx] + "_";
+		}
+		if (splitMethodToCheck.length >= 4){
+			methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+		}
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+		methodToCheck += splitMethodToCheck[splitMethodToCheck.length - 1];
+
+
+		//prefix QF where required in those predicates that come from arithmetic operations.
+
+		QFtransformer qftransform = new QFtransformer(this.varsToPrefix);
+		FormulaMutator fm = new FormulaMutator(qftransform);
+		List<AlloyFormula> newPreds = new ArrayList<AlloyFormula>();
+		if (node.getPredsEncodingValueOfArithmeticOperationsInContracts() != null){
+			for (AlloyFormula af : node.getPredsEncodingValueOfArithmeticOperationsInContracts()){
+				newPreds.add((AlloyFormula)af.accept(fm));
+			}
+			node.setPredsEncodingValueOfArithmeticOperationsInContracts(newPreds);
+		}
+
+		if (module.getSignature().getSignatureId().equals(classToCheck) && programId.equals(methodToCheck)) {
+
+			if (specResults.isEmpty())
+				return new ProgramTranslationResult(programDeclaration, null, null, newPreds);
+			else {
+
+				Vector<AlloyFormula> requires;
+				Vector<AlloyFormula> ensures;
+
+				if (specResults.size() == 1) {
+					Vector<Object> specVec = (Vector<Object>) specResults.get(0);
+					requires = (Vector<AlloyFormula>) specVec.get(0);
+					ensures = (Vector<AlloyFormula>) specVec.get(1);
+				} else {
+					requires = new Vector<AlloyFormula>();
+					ensures = new Vector<AlloyFormula>();
+
+					if (specResults.size() == 1) {
+						Vector<Object> specCase = (Vector<Object>) specResults.get(0);
+
+						Vector<AlloyFormula> specCaseRequires = (Vector<AlloyFormula>) specCase.get(0);
+						Vector<AlloyFormula> specCaseEnsures = (Vector<AlloyFormula>) specCase.get(1);
+
+						requires.addAll(specCaseRequires);
+						ensures.addAll(specCaseEnsures);
 
-                    } else {
+					} else {
 
-                        List<AlloyFormula> spec_case_preconditions = new LinkedList<AlloyFormula>();
+						List<AlloyFormula> spec_case_preconditions = new LinkedList<AlloyFormula>();
 
-                        for (int i = 0; i < specResults.size(); i++) {
-                            Vector<Object> specCase = (Vector<Object>) specResults.get(i);
+						for (int i = 0; i < specResults.size(); i++) {
+							Vector<Object> specCase = (Vector<Object>) specResults.get(i);
 
-                            Vector<AlloyFormula> specCaseRequires = (Vector<AlloyFormula>) specCase.get(0);
-                            Vector<AlloyFormula> specCaseEnsures = (Vector<AlloyFormula>) specCase.get(1);
+							Vector<AlloyFormula> specCaseRequires = (Vector<AlloyFormula>) specCase.get(0);
+							Vector<AlloyFormula> specCaseEnsures = (Vector<AlloyFormula>) specCase.get(1);
 
-                            AlloyFormula requiresAndFormula = AndFormula.buildAndFormula(specCaseRequires.toArray(new AlloyFormula[] {}));
+							AlloyFormula requiresAndFormula = AndFormula.buildAndFormula(specCaseRequires.toArray(new AlloyFormula[] {}));
 
-                            AlloyFormula ensuresAndFormula = AndFormula.buildAndFormula(specCaseEnsures.toArray(new AlloyFormula[] {}));
+							AlloyFormula ensuresAndFormula = AndFormula.buildAndFormula(specCaseEnsures.toArray(new AlloyFormula[] {}));
 
-                            ImpliesFormula specCaseFormula = new ImpliesFormula(requiresAndFormula, ensuresAndFormula);
+							ImpliesFormula specCaseFormula = new ImpliesFormula(requiresAndFormula, ensuresAndFormula);
 
-                            spec_case_preconditions.add(requiresAndFormula);
-                            ensures.add(specCaseFormula);
+							spec_case_preconditions.add(requiresAndFormula);
+							ensures.add(specCaseFormula);
 
-                        }
+						}
 
-                        requires.add(OrFormula.buildOrFormula(spec_case_preconditions.toArray(new AlloyFormula[] {})));
-                    }
-                }
+						requires.add(OrFormula.buildOrFormula(spec_case_preconditions.toArray(new AlloyFormula[] {})));
+					}
+				}
 
-                return visitProgramToCheck(programDeclaration, requires, ensures, newPreds);
-            }
-        } else
-            return new ProgramTranslationResult(programDeclaration, null, null, newPreds);
-    }
+				return visitProgramToCheck(programDeclaration, requires, ensures, newPreds);
+			}
+		} else
+			return new ProgramTranslationResult(programDeclaration, null, null, newPreds);
+	}
 
 
 
-    private ProgramTranslationResult visitProgramToCheck(ProgramDeclaration programDeclaration, Vector<AlloyFormula> preFormulas,
-            Vector<AlloyFormula> postFormulas, List<AlloyFormula> predsFormArith) {
+	private ProgramTranslationResult visitProgramToCheck(ProgramDeclaration programDeclaration, Vector<AlloyFormula> preFormulas,
+			Vector<AlloyFormula> postFormulas, List<AlloyFormula> predsFormArith) {
 
-        final String signatureToCheckId = currentModule.peek().getSignature().getSignatureId();
+		final String signatureToCheckId = currentModule.peek().getSignature().getSignatureId();
 
-        JDynAlloyTyping typing = (JDynAlloyTyping) programDeclaration.getParameterTyping();
-        String programId = programDeclaration.getProgramId();
+		JDynAlloyTyping typing = (JDynAlloyTyping) programDeclaration.getParameterTyping();
+		String programId = programDeclaration.getProgramId();
 
-        List<VariableId> argList = programDeclaration.getParameters();
+		List<VariableId> argList = programDeclaration.getParameters();
 
-        // typing
-        JDynAlloyTyping assertionTyping = new JDynAlloyTyping();
-        for (AlloyVariable v : typing) {
-            assertionTyping.put(v, typing.getJAlloyType(v));
-        }
+		// typing
+		JDynAlloyTyping assertionTyping = new JDynAlloyTyping();
+		for (AlloyVariable v : typing) {
+			assertionTyping.put(v, typing.getJAlloyType(v));
+		}
 
-        // precondition
-        fillPredicateTables();
+		// precondition
+		fillPredicateTables();
 
-        Set<AlloyFormula> preconditions = new HashSet<AlloyFormula>();
-        List<AlloyFormula> preconditionFormulas = buildPreconditionFormulas(signatureToCheckId);
-        preconditions.addAll(preconditionFormulas);
+		Set<AlloyFormula> preconditions = new HashSet<AlloyFormula>();
+		List<AlloyFormula> preconditionFormulas = buildPreconditionFormulas(signatureToCheckId);
+		preconditions.addAll(preconditionFormulas);
 
-        if (!preFormulas.isEmpty()) {
-            String requiresId = String.format("%s_requires", signatureToCheckId);
-            AlloyFormula requires = AndFormula.buildAndFormula(preFormulas.toArray(new AlloyFormula[] {}));
+		if (!preFormulas.isEmpty()) {
+			String requiresId = String.format("%s_requires", signatureToCheckId);
+			AlloyFormula requires = AndFormula.buildAndFormula(preFormulas.toArray(new AlloyFormula[] {}));
 
-            AlloyFormula requiresPred = formulaWrapper.wrapFormula(requiresId, requires);
-            preconditions.add(requiresPred);
-        }
+			AlloyFormula requiresPred = formulaWrapper.wrapFormula(requiresId, requires);
+			preconditions.add(requiresPred);
+		}
 
-        PredicateFormula throw_is_null = JPredicateFactory.eq(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.NULL_EXPRESSION);
-        preconditions.add(throw_is_null);
+		PredicateFormula throw_is_null = JPredicateFactory.eq(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.NULL_EXPRESSION);
+		preconditions.add(throw_is_null);
 
-        AlloyFormula precondition = AndFormula.buildAndFormula(new Vector<AlloyFormula>(preconditions).toArray(new AlloyFormula[] {}));
+		AlloyFormula precondition = AndFormula.buildAndFormula(new Vector<AlloyFormula>(preconditions).toArray(new AlloyFormula[] {}));
 
-        // program to check
-        AlloyExpression[] args = AlloyExpression.asAlloyExpression(AlloyVariable.asAlloyVariable(argList)).toArray(new AlloyExpression[] {});
+		// program to check
+		AlloyExpression[] args = AlloyExpression.asAlloyExpression(AlloyVariable.asAlloyVariable(argList)).toArray(new AlloyExpression[] {});
 
-        InvokeProgram invokeProgram = InvokeProgram.buildInvokeProgram(programId, args);
+		InvokeProgram invokeProgram = InvokeProgram.buildInvokeProgram(programId, args);
 
-        Vector<JStatement> repVec = new Vector<JStatement>();
+		Vector<JStatement> repVec = new Vector<JStatement>();
 
-        for (JDynAlloyModule relevantModule : this.context.getRelevantModules()) {
+		for (JDynAlloyModule relevantModule : this.context.getRelevantModules()) {
 
-            final String relevantSignatureId = relevantModule.getSignature().getSignatureId();
+			final String relevantSignatureId = relevantModule.getSignature().getSignatureId();
 
-            for (JRepresents represent : relevantModule.getRepresents()) {
+			for (JRepresents represent : relevantModule.getRepresents()) {
 
-                if (isModifiable(programId, represent)) {
+				if (isModifiable(programId, represent)) {
 
-                    AlloyVariable fieldVar = getFieldVar(represent);
+					AlloyVariable fieldVar = getFieldVar(represent);
 
-                    final String fieldId = fieldVar.getVariableId().getString();
+					final String fieldId = fieldVar.getVariableId().getString();
 
-                    PredicateFormula abstractionPred = abstractionPredicates.get(relevantSignatureId).get(fieldId);
+					PredicateFormula abstractionPred = abstractionPredicates.get(relevantSignatureId).get(fieldId);
 
-                    final boolean skolemizeInstanceAbstracion = JDynAlloyConfig.getInstance().getSkolemizeInstanceAbstraction() == true;
+					final boolean skolemizeInstanceAbstracion = JDynAlloyConfig.getInstance().getSkolemizeInstanceAbstraction() == true;
 
-                    AlloyFormula abstractionFormula;
-                    if (relevantSignatureId.equals(signatureToCheckId) && skolemizeInstanceAbstracion) {
+					AlloyFormula abstractionFormula;
+					if (relevantSignatureId.equals(signatureToCheckId) && skolemizeInstanceAbstracion) {
 
-                        abstractionFormula = (AlloyFormula) abstractionPred.accept(new FormulaCloner());
+						abstractionFormula = (AlloyFormula) abstractionPred.accept(new FormulaCloner());
 
-                    } else {
+					} else {
 
-                        JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
+						JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
 
-                        AlloyFormula mutant = (AlloyFormula) abstractionPred.accept(mutator);
+						AlloyFormula mutant = (AlloyFormula) abstractionPred.accept(mutator);
 
-                        List<String> names = Collections.<String> singletonList("objx");
-                        List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(relevantSignatureId));
+						List<String> names = Collections.<String> singletonList("objx");
+						List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(relevantSignatureId));
 
-                        abstractionFormula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, mutant);
-                    }
+						abstractionFormula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, mutant);
+					}
 
-                    JAssume assume = new JAssume(abstractionFormula);
+					JAssume assume = new JAssume(abstractionFormula);
 
-                    JHavoc havoc = new JHavoc(new ExprVariable(fieldVar));
-                    repVec.add(havoc); // clear field
-                    repVec.add(assume); // assume new value
-                }
-            }
+					JHavoc havoc = new JHavoc(new ExprVariable(fieldVar));
+					repVec.add(havoc); // clear field
+					repVec.add(assume); // assume new value
+				}
+			}
 
-        }
+		}
 
-        DynalloyProgram programToCheck;
-        if (!repVec.isEmpty()) {
+		DynalloyProgram programToCheck;
+		if (!repVec.isEmpty()) {
 
-            JStatement repTail = JDynAlloyFactory.block(repVec.toArray(new JStatement[] {}));
+			JStatement repTail = JDynAlloyFactory.block(repVec.toArray(new JStatement[] {}));
 
-            DynalloyProgram tail = (DynalloyProgram) repTail.accept(this);
+			DynalloyProgram tail = (DynalloyProgram) repTail.accept(this);
 
-            programToCheck = Composition.buildComposition(invokeProgram, tail);
+			programToCheck = Composition.buildComposition(invokeProgram, tail);
 
-        } else {
-            programToCheck = invokeProgram;
-        }
+		} else {
+			programToCheck = invokeProgram;
+		}
 
-        // postcondition
-        Vector<AlloyFormula> postconditions = new Vector<AlloyFormula>();
-        if (!postFormulas.isEmpty()) {
+		// postcondition
+		Vector<AlloyFormula> postconditions = new Vector<AlloyFormula>();
+		if (!postFormulas.isEmpty()) {
 
-            String ensuresId = String.format("%s_ensures", signatureToCheckId);
-            AlloyFormula ensures = AndFormula.buildAndFormula(postFormulas.toArray(new AlloyFormula[] {}));
+			String ensuresId = String.format("%s_ensures", signatureToCheckId);
+			AlloyFormula ensures = AndFormula.buildAndFormula(postFormulas.toArray(new AlloyFormula[] {}));
 
-            AlloyFormula ensuresPred = formulaWrapper.wrapFormula(ensuresId, ensures);
-            postconditions.add(ensuresPred);
+			AlloyFormula ensuresPred = formulaWrapper.wrapFormula(ensuresId, ensures);
+			postconditions.add(ensuresPred);
 
-        }
+		}
 
-        // We need to make an special treatment when throw expression is equal to AssertionFailure 
-        postconditions.add(new NotFormula(new EqualsFormula(JExpressionFactory.PRIMED_THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION)));
+		// We need to make an special treatment when throw expression is equal to AssertionFailure 
+		postconditions.add(new NotFormula(new EqualsFormula(JExpressionFactory.PRIMED_THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION)));
 
-        List<AlloyFormula> postconditionFormulas = buildPostconditionFormulas(signatureToCheckId, programId);
-        postconditions.addAll(postconditionFormulas);
+		List<AlloyFormula> postconditionFormulas = buildPostconditionFormulas(signatureToCheckId, programId);
+		postconditions.addAll(postconditionFormulas);
 
-        final IJDynAlloyConfig config = JDynAlloyConfig.getInstance();
+		final IJDynAlloyConfig config = JDynAlloyConfig.getInstance();
 
-        AlloyFormula postcondition = AndFormula.buildAndFormula(postconditions.toArray(new AlloyFormula[] {}));
+		AlloyFormula postcondition = AndFormula.buildAndFormula(postconditions.toArray(new AlloyFormula[] {}));
 
-        PredicateFormula preconditionPredicate = formulaWrapper.wrapFormula("precondition_" + programId, precondition);
+		PredicateFormula preconditionPredicate = formulaWrapper.wrapFormula("precondition_" + programId, precondition);
 
-        PredicateFormula postconditionPredicate = formulaWrapper.wrapFormula("postcondition_" + programId, postcondition);
+		PredicateFormula postconditionPredicate = formulaWrapper.wrapFormula("postcondition_" + programId, postcondition);
 
-        AssertionDeclaration assertionDeclaration = new AssertionDeclaration("check_" + programId, assertionTyping, preconditionPredicate, programToCheck,
-                postconditionPredicate);
+		AssertionDeclaration assertionDeclaration = new AssertionDeclaration("check_" + programId, assertionTyping, preconditionPredicate, programToCheck,
+				postconditionPredicate);
 
-        ProgramDeclaration simDeclaration = null;
-        if (JDynAlloyConfig.getInstance().getIncludeSimulationProgramDeclaration() == true) {
-            ExpressionCloner exprCloner = new ExpressionCloner();
-            FormulaCloner formCloner = new FormulaCloner();
-            exprCloner.setFormulaVisitor(formCloner);
-            formCloner.setExpressionVisitor(exprCloner);
+		ProgramDeclaration simDeclaration = null;
+		if (JDynAlloyConfig.getInstance().getIncludeSimulationProgramDeclaration() == true) {
+			ExpressionCloner exprCloner = new ExpressionCloner();
+			FormulaCloner formCloner = new FormulaCloner();
+			exprCloner.setFormulaVisitor(formCloner);
+			formCloner.setExpressionVisitor(exprCloner);
 
-            PredicateFormula fresh_precondition = (PredicateFormula) preconditionPredicate.accept(formCloner);
+			PredicateFormula fresh_precondition = (PredicateFormula) preconditionPredicate.accept(formCloner);
 
-            ProgramCloner programCloner = new ProgramCloner();
-            DynalloyProgram fresh_program = (DynalloyProgram) programToCheck.accept(programCloner);
+			ProgramCloner programCloner = new ProgramCloner();
+			DynalloyProgram fresh_program = (DynalloyProgram) programToCheck.accept(programCloner);
 
-            TestPredicate assume_precondition = new TestPredicate(fresh_precondition);
+			TestPredicate assume_precondition = new TestPredicate(fresh_precondition);
 
-            ExpressionMutator exprMutator = new PreStateExprMutator();
-            JFormulaMutator formMutator = new JFormulaMutator(exprMutator);
-            exprMutator.setFormulaVisitor(formMutator);
+			ExpressionMutator exprMutator = new PreStateExprMutator();
+			JFormulaMutator formMutator = new JFormulaMutator(exprMutator);
+			exprMutator.setFormulaVisitor(formMutator);
 
-            PredicateFormula fresh_postcondition = (PredicateFormula) postconditionPredicate.accept(formMutator);
+			PredicateFormula fresh_postcondition = (PredicateFormula) postconditionPredicate.accept(formMutator);
 
-            TestPredicate assume_postcondition = new TestPredicate(fresh_postcondition);
+			TestPredicate assume_postcondition = new TestPredicate(fresh_postcondition);
 
-            Composition program_to_simulate = Composition.buildComposition(assume_precondition, fresh_program, assume_postcondition);
+			Composition program_to_simulate = Composition.buildComposition(assume_precondition, fresh_program, assume_postcondition);
 
-            List<VariableId> simulation_formal_parameters = new LinkedList<VariableId>();
-            for (AlloyVariable v : assertionTyping) {
-                simulation_formal_parameters.add(v.getVariableId());
-            }
+			List<VariableId> simulation_formal_parameters = new LinkedList<VariableId>();
+			for (AlloyVariable v : assertionTyping) {
+				simulation_formal_parameters.add(v.getVariableId());
+			}
 
-            simDeclaration = new ProgramDeclaration("simulate_" + programId, simulation_formal_parameters, Collections.<VariableId> emptyList(),
-                    program_to_simulate, assertionTyping, programDeclaration.getPredsFromArithInContracts(), programDeclaration.getVarsFromArithInContracts());
-        }
+			simDeclaration = new ProgramDeclaration("simulate_" + programId, simulation_formal_parameters, Collections.<VariableId> emptyList(),
+					program_to_simulate, assertionTyping, programDeclaration.getPredsFromArithInContracts(), programDeclaration.getVarsFromArithInContracts());
+		}
 
 
 
-        return new ProgramTranslationResult(programDeclaration, assertionDeclaration, simDeclaration, predsFormArith);
+		return new ProgramTranslationResult(programDeclaration, assertionDeclaration, simDeclaration, predsFormArith);
 
-    }
+	}
 
-    private boolean containsVariable(AlloyVariable variable, AlloyFormula formula) {
-        VarCollector varCollector = new VarCollector();
-        formula.accept(new FormulaVisitor(varCollector));
-        Set<AlloyVariable> vars = varCollector.getVariables();
-        return vars.contains(variable);
-    }
+	private boolean containsVariable(AlloyVariable variable, AlloyFormula formula) {
+		VarCollector varCollector = new VarCollector();
+		formula.accept(new FormulaVisitor(varCollector));
+		Set<AlloyVariable> vars = varCollector.getVariables();
+		return vars.contains(variable);
+	}
 
-    private List<AlloyFormula> buildPreconditionFormulas(String signatureToCheckId) {
+	private List<AlloyFormula> buildPreconditionFormulas(String signatureToCheckId) {
 
-        AlloyVariable objx = new AlloyVariable("objx");
-        List<AlloyFormula> formulas = new LinkedList<AlloyFormula>();
+		AlloyVariable objx = new AlloyVariable("objx");
+		List<AlloyFormula> formulas = new LinkedList<AlloyFormula>();
 
-        for (JDynAlloyModule relevantModule : context.getRelevantModules()) {
+		for (JDynAlloyModule relevantModule : context.getRelevantModules()) {
 
-            String signatureId = relevantModule.getSignature().getSignatureId();
+			String signatureId = relevantModule.getSignature().getSignatureId();
 
-            Vector<PredicateFormula> quantify = new Vector<PredicateFormula>();
-            Vector<PredicateFormula> notQuantify = new Vector<PredicateFormula>();
+			Vector<PredicateFormula> quantify = new Vector<PredicateFormula>();
+			Vector<PredicateFormula> notQuantify = new Vector<PredicateFormula>();
 
-            PredicateFormula class_invariant_pred = class_invariant_predicates.get(signatureId);
-            if (class_invariant_pred != null) {
-                notQuantify.add(class_invariant_pred);
-            }
+			PredicateFormula class_invariant_pred = class_invariant_predicates.get(signatureId);
+			if (class_invariant_pred != null) {
+				notQuantify.add(class_invariant_pred);
+			}
 
-            PredicateFormula object_invariant_pred = object_invariant_predicates.get(signatureId);
-            if (object_invariant_pred != null) {
+			PredicateFormula object_invariant_pred = object_invariant_predicates.get(signatureId);
+			if (object_invariant_pred != null) {
 
-                final boolean skolemizeInstanceInvariant = JDynAlloyConfig.getInstance().getSkolemizeInstanceInvariant() == true;
+				final boolean skolemizeInstanceInvariant = JDynAlloyConfig.getInstance().getSkolemizeInstanceInvariant() == true;
 
-                if ((signatureId.equals(signatureToCheckId)) && skolemizeInstanceInvariant) {
+				if ((signatureId.equals(signatureToCheckId)) && skolemizeInstanceInvariant) {
 
-                    object_invariant_pred = (PredicateFormula) object_invariant_pred.accept(new FormulaCloner());
-                    notQuantify.add(object_invariant_pred);
+					object_invariant_pred = (PredicateFormula) object_invariant_pred.accept(new FormulaCloner());
+					notQuantify.add(object_invariant_pred);
 
-                } else {
+				} else {
 
-                    JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
+					JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
 
-                    object_invariant_pred = (PredicateFormula) object_invariant_pred.accept(mutator);
+					object_invariant_pred = (PredicateFormula) object_invariant_pred.accept(mutator);
 
-                    if (containsVariable(objx, object_invariant_pred)) {
-                        quantify.add(object_invariant_pred);
-                    } else
-                        notQuantify.add(object_invariant_pred);
-                }
-            }
+					if (containsVariable(objx, object_invariant_pred)) {
+						quantify.add(object_invariant_pred);
+					} else
+						notQuantify.add(object_invariant_pred);
+				}
+			}
 
-            Map<String, PredicateFormula> abstractionPreds = abstractionPredicates.get(signatureId);
+			Map<String, PredicateFormula> abstractionPreds = abstractionPredicates.get(signatureId);
 
-            if (abstractionPreds != null) {
-                for (String abstractionPredicateId : abstractionPreds.keySet()) {
+			if (abstractionPreds != null) {
+				for (String abstractionPredicateId : abstractionPreds.keySet()) {
 
-                    PredicateFormula abstractionPred = abstractionPreds.get(abstractionPredicateId);
+					PredicateFormula abstractionPred = abstractionPreds.get(abstractionPredicateId);
 
-                    final boolean skolemizeInstanceAbstraction = JDynAlloyConfig.getInstance().getSkolemizeInstanceAbstraction() == true;
+					final boolean skolemizeInstanceAbstraction = JDynAlloyConfig.getInstance().getSkolemizeInstanceAbstraction() == true;
 
-                    if ((signatureId.equals(signatureToCheckId)) && skolemizeInstanceAbstraction) {
+					if ((signatureId.equals(signatureToCheckId)) && skolemizeInstanceAbstraction) {
 
-                        abstractionPred = (PredicateFormula) abstractionPred.accept(new FormulaCloner());
+						abstractionPred = (PredicateFormula) abstractionPred.accept(new FormulaCloner());
 
-                    } else {
+					} else {
 
-                        JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
+						JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
 
-                        abstractionPred = (PredicateFormula) abstractionPred.accept(mutator);
-                    }
+						abstractionPred = (PredicateFormula) abstractionPred.accept(mutator);
+					}
 
-                    if (containsVariable(objx, abstractionPred)) {
-                        quantify.add(abstractionPred);
-                    } else
-                        notQuantify.add(abstractionPred);
+					if (containsVariable(objx, abstractionPred)) {
+						quantify.add(abstractionPred);
+					} else
+						notQuantify.add(abstractionPred);
 
-                }
-            }
+				}
+			}
 
-            if (!quantify.isEmpty()) {
+			if (!quantify.isEmpty()) {
 
-                List<String> names = Collections.<String> singletonList(objx.toString());
-                List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(relevantModule.getSignature()
-                        .getSignatureId()));
+				List<String> names = Collections.<String> singletonList(objx.toString());
+				List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(relevantModule.getSignature()
+						.getSignatureId()));
 
-                AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, AndFormula.buildAndFormula(quantify.toArray(new AlloyFormula[] {})));
+				AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, AndFormula.buildAndFormula(quantify.toArray(new AlloyFormula[] {})));
 
-                formulas.add(formula);
+				formulas.add(formula);
 
-            }
+			}
 
-            formulas.addAll(notQuantify);
-        }
-        return formulas;
-    }
+			formulas.addAll(notQuantify);
+		}
+		return formulas;
+	}
 
-    /**
-     * SignatureId -> PredicateFormula
-     */
-    private Map<String, PredicateFormula> object_invariant_predicates = null;
+	/**
+	 * SignatureId -> PredicateFormula
+	 */
+	private Map<String, PredicateFormula> object_invariant_predicates = null;
 
-    /**
-     * SignatureId -> PredicateFormula
-     */
-    private Map<String, PredicateFormula> class_invariant_predicates = null;
+	/**
+	 * SignatureId -> PredicateFormula
+	 */
+	private Map<String, PredicateFormula> class_invariant_predicates = null;
 
-    /***
-     * SignatureId -> FieldId -> PredicateFormula
-     */
-    private Map<String, Map<String, PredicateFormula>> abstractionPredicates = null;
+	/***
+	 * SignatureId -> FieldId -> PredicateFormula
+	 */
+	private Map<String, Map<String, PredicateFormula>> abstractionPredicates = null;
 
-    private HashMap<String, PredicateFormula> class_constraint_predicates = null;
+	private HashMap<String, PredicateFormula> class_constraint_predicates = null;
 
-    private HashMap<String, PredicateFormula> object_constraint_predicates = null;
+	private HashMap<String, PredicateFormula> object_constraint_predicates = null;
 
-    private void fillPredicateTables() {
+	private void fillPredicateTables() {
 
-        class_invariant_predicates = new HashMap<String, PredicateFormula>();
-        class_constraint_predicates = new HashMap<String, PredicateFormula>();
+		class_invariant_predicates = new HashMap<String, PredicateFormula>();
+		class_constraint_predicates = new HashMap<String, PredicateFormula>();
 
-        object_invariant_predicates = new HashMap<String, PredicateFormula>();
-        object_constraint_predicates = new HashMap<String, PredicateFormula>();
+		object_invariant_predicates = new HashMap<String, PredicateFormula>();
+		object_constraint_predicates = new HashMap<String, PredicateFormula>();
 
-        abstractionPredicates = new HashMap<String, Map<String, PredicateFormula>>();
+		abstractionPredicates = new HashMap<String, Map<String, PredicateFormula>>();
 
-        Vector<JDynAlloyModule> allModules = new Vector<JDynAlloyModule>();
+		Vector<JDynAlloyModule> allModules = new Vector<JDynAlloyModule>();
 
-        allModules.addAll(context.getRelevantModules());
-        allModules.add(this.currentModule.peek());
+		allModules.addAll(context.getRelevantModules());
+		allModules.add(this.currentModule.peek());
 
-        for (JDynAlloyModule relevantModule : allModules) {
+		for (JDynAlloyModule relevantModule : allModules) {
 
-            fill_class_invariant_predicates(relevantModule);
+			fill_class_invariant_predicates(relevantModule);
 
-            fill_object_invariant_predicates(relevantModule);
+			fill_object_invariant_predicates(relevantModule);
 
-            fill_object_constraint_predicates(relevantModule);
+			fill_object_constraint_predicates(relevantModule);
 
-            fill_abstraction_function_predicates(relevantModule);
+			fill_abstraction_function_predicates(relevantModule);
 
-        }
-    }
+		}
+	}
 
-    private void fill_abstraction_function_predicates(JDynAlloyModule module) {
-        String signatureId = module.getSignature().getSignatureId();
-        for (JRepresents relevantRepresents : module.getRepresents()) {
+	private void fill_abstraction_function_predicates(JDynAlloyModule module) {
+		String signatureId = module.getSignature().getSignatureId();
+		for (JRepresents relevantRepresents : module.getRepresents()) {
 
-            AlloyVariable fieldVariable = getFieldVar(relevantRepresents);
+			AlloyVariable fieldVariable = getFieldVar(relevantRepresents);
 
-            final String fieldId = fieldVariable.getVariableId().getString();
+			final String fieldId = fieldVariable.getVariableId().getString();
 
-//          QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
-//          FormulaMutator fv = new FormulaMutator(qft);
+//			QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
+//			FormulaMutator fv = new FormulaMutator(qft);
 
-            AlloyFormula abstractionFormula = relevantRepresents.getFormula();
-//          abstractionFormula = (AlloyFormula)abstractionFormula.accept(fv);
+			AlloyFormula abstractionFormula = relevantRepresents.getFormula();
+//			abstractionFormula = (AlloyFormula)abstractionFormula.accept(fv);
 
 
 
-            String abstractionPredicateId = String.format("%s_%s_abstraction", signatureId, fieldId);
+			String abstractionPredicateId = String.format("%s_%s_abstraction", signatureId, fieldId);
 
-            PredicateFormula abstractionPred = formulaWrapper.wrapFormula(abstractionPredicateId, abstractionFormula);
-            if (!abstractionPredicates.containsKey(signatureId))
-                abstractionPredicates.put(signatureId, new HashMap<String, PredicateFormula>());
+			PredicateFormula abstractionPred = formulaWrapper.wrapFormula(abstractionPredicateId, abstractionFormula);
+			if (!abstractionPredicates.containsKey(signatureId))
+				abstractionPredicates.put(signatureId, new HashMap<String, PredicateFormula>());
 
-            abstractionPredicates.get(signatureId).put(fieldId, abstractionPred);
-        }
-    }
+			abstractionPredicates.get(signatureId).put(fieldId, abstractionPred);
+		}
+	}
 
-    private void fill_object_invariant_predicates(JDynAlloyModule module) {
-        String signatureId = module.getSignature().getSignatureId();
-        List<AlloyFormula> object_invariants = new LinkedList<AlloyFormula>();
-        for (JObjectInvariant relevant_object_invariant : module.getObjectInvariants()) {
+	private void fill_object_invariant_predicates(JDynAlloyModule module) {
+		String signatureId = module.getSignature().getSignatureId();
+		List<AlloyFormula> object_invariants = new LinkedList<AlloyFormula>();
+		for (JObjectInvariant relevant_object_invariant : module.getObjectInvariants()) {
 
-//          QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
-//          FormulaMutator fv = new FormulaMutator(qft);
+//			QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
+//			FormulaMutator fv = new FormulaMutator(qft);
 
-            AlloyFormula invariantFormula = relevant_object_invariant.getFormula();
-//          invariantFormula = (AlloyFormula)invariantFormula.accept(fv);
+			AlloyFormula invariantFormula = relevant_object_invariant.getFormula();
+//			invariantFormula = (AlloyFormula)invariantFormula.accept(fv);
 
-            object_invariants.add(invariantFormula);
-        }
-        if (!object_invariants.isEmpty()) {
-            AlloyFormula moduleInvariant = AndFormula.buildAndFormula(object_invariants.<AlloyFormula> toArray(new AlloyFormula[] {}));
+			object_invariants.add(invariantFormula);
+		}
+		if (!object_invariants.isEmpty()) {
+			AlloyFormula moduleInvariant = AndFormula.buildAndFormula(object_invariants.<AlloyFormula> toArray(new AlloyFormula[] {}));
 
-            String invariantId = String.format("%s_object_invariant", signatureId);
+			String invariantId = String.format("%s_object_invariant", signatureId);
 
-            PredicateFormula invariantPred = formulaWrapper.wrapFormula(invariantId, moduleInvariant);
+			PredicateFormula invariantPred = formulaWrapper.wrapFormula(invariantId, moduleInvariant);
 
-            object_invariant_predicates.put(signatureId, invariantPred);
+			object_invariant_predicates.put(signatureId, invariantPred);
 
-        }
-    }
+		}
+	}
 
-    private void fill_class_invariant_predicates(JDynAlloyModule module) {
-        String signatureId = module.getSignature().getSignatureId();
-        List<AlloyFormula> class_invariants = new LinkedList<AlloyFormula>();
-        for (JClassInvariant relevant_class_invariant : module.getClassInvariants()) {
+	private void fill_class_invariant_predicates(JDynAlloyModule module) {
+		String signatureId = module.getSignature().getSignatureId();
+		List<AlloyFormula> class_invariants = new LinkedList<AlloyFormula>();
+		for (JClassInvariant relevant_class_invariant : module.getClassInvariants()) {
 
-            QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
-            FormulaMutator fv = new FormulaMutator(qft);
+			QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
+			FormulaMutator fv = new FormulaMutator(qft);
 
-            AlloyFormula invariant_formula = relevant_class_invariant.getFormula();
-            invariant_formula = (AlloyFormula)invariant_formula.accept(fv);
+			AlloyFormula invariant_formula = relevant_class_invariant.getFormula();
+			invariant_formula = (AlloyFormula)invariant_formula.accept(fv);
 
-            class_invariants.add(invariant_formula);
-        }
-        if (!class_invariants.isEmpty()) {
-            AlloyFormula class_invariant = AndFormula.buildAndFormula(class_invariants.<AlloyFormula> toArray(new AlloyFormula[] {}));
+			class_invariants.add(invariant_formula);
+		}
+		if (!class_invariants.isEmpty()) {
+			AlloyFormula class_invariant = AndFormula.buildAndFormula(class_invariants.<AlloyFormula> toArray(new AlloyFormula[] {}));
 
-            String invariantId = String.format("%s_class_invariant", signatureId);
-            PredicateFormula invariantPred = formulaWrapper.wrapFormula(invariantId, class_invariant);
+			String invariantId = String.format("%s_class_invariant", signatureId);
+			PredicateFormula invariantPred = formulaWrapper.wrapFormula(invariantId, class_invariant);
 
-            class_invariant_predicates.put(signatureId, invariantPred);
-        }
-    }
+			class_invariant_predicates.put(signatureId, invariantPred);
+		}
+	}
 
-    private AlloyVariable getFieldVar(JRepresents represent) {
+	private AlloyVariable getFieldVar(JRepresents represent) {
 
-        // expected (thiz.fieldName)
-        AlloyExpression expression = represent.getExpression();
-        if (!(expression instanceof ExprJoin)) {
-            throw new IllegalArgumentException("cannot process represent expression " + expression.toString());
-        }
-        ExprJoin join = (ExprJoin) expression;
+		// expected (thiz.fieldName)
+		AlloyExpression expression = represent.getExpression();
+		if (!(expression instanceof ExprJoin)) {
+			throw new IllegalArgumentException("cannot process represent expression " + expression.toString());
+		}
+		ExprJoin join = (ExprJoin) expression;
 
-        if (!(join.getRight() instanceof ExprVariable)) {
-            throw new IllegalArgumentException("cannot process represent expression " + expression.toString());
-        }
-        ExprVariable exprVar = (ExprVariable) join.getRight();
-        return exprVar.getVariable();
-    }
+		if (!(join.getRight() instanceof ExprVariable)) {
+			throw new IllegalArgumentException("cannot process represent expression " + expression.toString());
+		}
+		ExprVariable exprVar = (ExprVariable) join.getRight();
+		return exprVar.getVariable();
+	}
 
-    private boolean isModifiable(String programId, JRepresents represent) {
+	private boolean isModifiable(String programId, JRepresents represent) {
 
-        AlloyFormula formula = represent.getFormula();
-        AlloyVariable fieldVar = getFieldVar(represent);
+		AlloyFormula formula = represent.getFormula();
+		AlloyVariable fieldVar = getFieldVar(represent);
 
-        VarCollector varCollector = new VarCollector();
+		VarCollector varCollector = new VarCollector();
 
-        formula.accept(new JFormulaVisitor(varCollector));
+		formula.accept(new JFormulaVisitor(varCollector));
 
-        Set<AlloyVariable> variables = varCollector.getVariables();
+		Set<AlloyVariable> variables = varCollector.getVariables();
 
-        Set<AlloyVariable> fieldsInRepresentsFormula = new HashSet<AlloyVariable>();
-        for (AlloyVariable v : variables) {
-            if (context.allFields().contains(v) && !fieldVar.equals(v))
-                fieldsInRepresentsFormula.add(v);
-        }
+		Set<AlloyVariable> fieldsInRepresentsFormula = new HashSet<AlloyVariable>();
+		for (AlloyVariable v : variables) {
+			if (context.allFields().contains(v) && !fieldVar.equals(v))
+				fieldsInRepresentsFormula.add(v);
+		}
 
-        Set<AlloyVariable> modifiableFields = context.getModifiesTable().get(programId);
+		Set<AlloyVariable> modifiableFields = context.getModifiesTable().get(programId);
 
-        for (AlloyVariable field : fieldsInRepresentsFormula) {
-            if (modifiableFields.contains(field))
-                return true;
-        }
-        return false;
-    }
+		for (AlloyVariable field : fieldsInRepresentsFormula) {
+			if (modifiableFields.contains(field))
+				return true;
+		}
+		return false;
+	}
 
-    private DynalloyProgram buildAssertHeader() {
-        return new Assigment(JExpressionFactory.ASSERTION_FAILURE_EXPR, JExpressionFactory.FALSE_EXPRESSION);
-    }
+	private DynalloyProgram buildAssertHeader() {
+		return new Assigment(JExpressionFactory.ASSERTION_FAILURE_EXPR, JExpressionFactory.FALSE_EXPRESSION);
+	}
 
-    private DynalloyProgram buildAssertTail() {
-        PredicateFormula condition = JPredicateFactory.eq(JExpressionFactory.ASSERTION_FAILURE_EXPR, JExpressionFactory.TRUE_EXPRESSION);
+	private DynalloyProgram buildAssertTail() {
+		PredicateFormula condition = JPredicateFactory.eq(JExpressionFactory.ASSERTION_FAILURE_EXPR, JExpressionFactory.TRUE_EXPRESSION);
 
-        TestPredicate ifCondition = new TestPredicate(condition);
-        Composition ifProgram = new Composition(ifCondition,
-                new Assigment(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION));
+		TestPredicate ifCondition = new TestPredicate(condition);
+		Composition ifProgram = new Composition(ifCondition,
+				new Assigment(JExpressionFactory.THROW_EXPRESSION, JExpressionFactory.ASSERTION_FAILURE_EXPRESSION));
 
-        TestPredicate elseCondition = new TestPredicate(condition, false);
+		TestPredicate elseCondition = new TestPredicate(condition, false);
 
-        Composition elseProgram = new Composition(elseCondition, new Skip());
+		Composition elseProgram = new Composition(elseCondition, new Skip());
 
-        return new Choice(ifProgram, elseProgram);
-    }
+		return new Choice(ifProgram, elseProgram);
+	}
 
-    @Override
-    public Object visit(JProgramCall n) {
-        String programId = n.getProgramId();
-        Vector<AlloyExpression> args = new Vector<AlloyExpression>();
-        args.addAll(n.getArguments());
-        args.addAll(AlloyExpression.asAlloyExpression(context.fieldList()));
-        args.add(new ExprVariable(new AlloyVariable("usedObjects")));
-        return InvokeProgram.buildInvokeProgram(programId, args.toArray(new AlloyExpression[] {}));
-    }
+	@Override
+	public Object visit(JProgramCall n) {
+		String programId = n.getProgramId();
+		Vector<AlloyExpression> args = new Vector<AlloyExpression>();
+		args.addAll(n.getArguments());
+		args.addAll(AlloyExpression.asAlloyExpression(context.fieldList()));
+		args.add(new ExprVariable(new AlloyVariable("usedObjects")));
+		return InvokeProgram.buildInvokeProgram(programId, args.toArray(new AlloyExpression[] {}));
+	}
 
-    @Override
-    public Object visit(JAssume n) {
-        return new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
-    }
+	@Override
+	public Object visit(JAssume n) {
+		return new TestPredicate(formulaWrapper.wrapCondition(n.getCondition()));
+	}
 
-    @Override
-    public Object visit(JObjectInvariant node) {
-        QFtransformer qfmutator = new QFtransformer(varsToPrefix);
-        AlloyFormula af = node.getFormula();
-        FormulaMutator fm = new FormulaMutator(qfmutator);
-        af = (AlloyFormula) af.accept(fm);
-        invariants.add(af);
-        return af;
-    }
+	@Override
+	public Object visit(JObjectInvariant node) {
+		QFtransformer qfmutator = new QFtransformer(varsToPrefix);
+		AlloyFormula af = node.getFormula();
+		FormulaMutator fm = new FormulaMutator(qfmutator);
+		af = (AlloyFormula) af.accept(fm);
+		invariants.add(af);
+		return af;
+	}
 
-    @Override
-    public Object visit(JRepresents node) {
-        represents.add(node.getFormula());
-        return null;
-    }
+	@Override
+	public Object visit(JRepresents node) {
+		represents.add(node.getFormula());
+		return null;
+	}
 
-    @Override
-    public Object visit(JPrecondition node) {
-        return node.getFormula();
-    }
+	@Override
+	public Object visit(JPrecondition node) {
+		return node.getFormula();
+	}
 
-    @Override
-    public Object visit(JPostcondition node) {
-        return node.getFormula();
-    }
+	@Override
+	public Object visit(JPostcondition node) {
+		return node.getFormula();
+	}
 
-    @Override
-    public Object visit(JHavoc n) {
-        AlloyExpression expresssion = n.getExpression();
+	@Override
+	public Object visit(JHavoc n) {
+		AlloyExpression expresssion = n.getExpression();
 
-        if (expresssion.getClass().equals(ExprVariable.class)) {
-            ExprVariable exprVariable = (ExprVariable) expresssion;
-            if (context.fieldList().contains(exprVariable.getVariable())) {
+		if (expresssion.getClass().equals(ExprVariable.class)) {
+			ExprVariable exprVariable = (ExprVariable) expresssion;
+			if (context.fieldList().contains(exprVariable.getVariable())) {
 
-                JType fieldType = context.allFields().getJAlloyType(exprVariable.getVariable());
+				JType fieldType = context.allFields().getJAlloyType(exprVariable.getVariable());
 
-                if (fieldType.isBinRelWithSeq())
-                    return DynalloyFactory.havocVariable3(exprVariable);
-                else
-                    return DynalloyFactory.havocVariable2(exprVariable);
-            } else
-                return DynalloyFactory.havocVariable(exprVariable);
-        } else if (isArrayAccess(expresssion)) {
+				if (fieldType.isBinRelWithSeq())
+					return DynalloyFactory.havocVariable3(exprVariable);
+				else
+					return DynalloyFactory.havocVariable2(exprVariable);
+			} else
+				return DynalloyFactory.havocVariable(exprVariable);
+		} else if (isArrayAccess(expresssion)) {
 
-            AlloyExpression array = AlloyIntArrayFactory.getArrayContents(expresssion);
-            return DynalloyFactory.havocArrayContents(array);
-        } else if (ListAccess.isListAsSeqAccess(expresssion)) {
-            ExprJoin join = (ExprJoin) expresssion;
-            AlloyExpression left = join.getLeft();
-            ExprVariable right = (ExprVariable) join.getRight();
-            return DynalloyFactory.havocListSeq(join);
-        } else if (MapAccess.isMapAccess(expresssion)) {
-            throw new UnsupportedOperationException("map access havoc translation not yet supported");
-        } else if (ListAccess.isListAccess(expresssion)) {
-            throw new UnsupportedOperationException("list access havoc translation not yet supported");
-        } else if (expresssion.getClass().equals(ExprJoin.class)) {
-            ExprJoin join = (ExprJoin) expresssion;
-            AlloyExpression left = join.getLeft();
-            ExprVariable right = (ExprVariable) join.getRight();
-            return DynalloyFactory.havocFieldContents(left, right);
+			AlloyExpression array = AlloyIntArrayFactory.getArrayContents(expresssion);
+			return DynalloyFactory.havocArrayContents(array);
+		} else if (ListAccess.isListAsSeqAccess(expresssion)) {
+			ExprJoin join = (ExprJoin) expresssion;
+			AlloyExpression left = join.getLeft();
+			ExprVariable right = (ExprVariable) join.getRight();
+			return DynalloyFactory.havocListSeq(join);
+		} else if (MapAccess.isMapAccess(expresssion)) {
+			throw new UnsupportedOperationException("map access havoc translation not yet supported");
+		} else if (ListAccess.isListAccess(expresssion)) {
+			throw new UnsupportedOperationException("list access havoc translation not yet supported");
+		} else if (expresssion.getClass().equals(ExprJoin.class)) {
+			ExprJoin join = (ExprJoin) expresssion;
+			AlloyExpression left = join.getLeft();
+			ExprVariable right = (ExprVariable) join.getRight();
+			return DynalloyFactory.havocFieldContents(left, right);
 
-        } else
-            throw new IllegalArgumentException();
+		} else
+			throw new IllegalArgumentException();
 
-        // TODO Finish havocing translation
-    }
+		// TODO Finish havocing translation
+	}
 
-    private List<AlloyFormula> buildPostconditionFormulas(String signatureToCheckId, String programId) {
+	private List<AlloyFormula> buildPostconditionFormulas(String signatureToCheckId, String programId) {
 
-        List<AlloyFormula> formulas = new LinkedList<AlloyFormula>();
+		List<AlloyFormula> formulas = new LinkedList<AlloyFormula>();
 
-        for (JDynAlloyModule relevantModule : context.getRelevantModules()) {
+		for (JDynAlloyModule relevantModule : context.getRelevantModules()) {
 
-            Set<AlloyFormula> class_invariant_formulas = extract_class_invariant_formulas(programId, relevantModule);
-            formulas.addAll(class_invariant_formulas);
+			Set<AlloyFormula> class_invariant_formulas = extract_class_invariant_formulas(programId, relevantModule);
+			formulas.addAll(class_invariant_formulas);
 
-            Set<AlloyFormula> object_invariant_formulas = extract_object_invariant_formulas(signatureToCheckId, programId, relevantModule);
-            formulas.addAll(object_invariant_formulas);
+			Set<AlloyFormula> object_invariant_formulas = extract_object_invariant_formulas(signatureToCheckId, programId, relevantModule);
+			formulas.addAll(object_invariant_formulas);
 
-            Set<AlloyFormula> object_constraint_formulas = extract_object_constraint_formulas(relevantModule);
-            formulas.addAll(object_constraint_formulas);
+			Set<AlloyFormula> object_constraint_formulas = extract_object_constraint_formulas(relevantModule);
+			formulas.addAll(object_constraint_formulas);
 
-        }
-        return formulas;
-    }
+		}
+		return formulas;
+	}
 
-    private Set<AlloyFormula> extract_object_invariant_formulas(String signatureToCheckId, String programId, JDynAlloyModule module) {
-        Set<AlloyFormula> object_invariant_formulas = new HashSet<AlloyFormula>();
+	private Set<AlloyFormula> extract_object_invariant_formulas(String signatureToCheckId, String programId, JDynAlloyModule module) {
+		Set<AlloyFormula> object_invariant_formulas = new HashSet<AlloyFormula>();
 
-        if (isModifiable_object_invariants(programId, module.getObjectInvariants())) {
+		if (isModifiable_object_invariants(programId, module.getObjectInvariants())) {
 
-            String signatureId = module.getSignature().getSignatureId();
+			String signatureId = module.getSignature().getSignatureId();
 
-            PredicateFormula invariantPred = object_invariant_predicates.get(signatureId);
+			PredicateFormula invariantPred = object_invariant_predicates.get(signatureId);
 
-            if (invariantPred != null) {
+			if (invariantPred != null) {
 
-                final boolean skolemizeInstanceInvariant = JDynAlloyConfig.getInstance().getSkolemizeInstanceInvariant() == true;
+				final boolean skolemizeInstanceInvariant = JDynAlloyConfig.getInstance().getSkolemizeInstanceInvariant() == true;
 
-                if (signatureId.equals(signatureToCheckId) && skolemizeInstanceInvariant) {
+				if (signatureId.equals(signatureToCheckId) && skolemizeInstanceInvariant) {
 
-                    invariantPred = (PredicateFormula) invariantPred.accept(new FormulaCloner());
+					invariantPred = (PredicateFormula) invariantPred.accept(new FormulaCloner());
 
-                } else {
+				} else {
 
-                    JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
+					JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
 
-                    invariantPred = (PredicateFormula) invariantPred.accept(mutator);
-                }
+					invariantPred = (PredicateFormula) invariantPred.accept(mutator);
+				}
 
-                PostconditionExprMutator postconditionExprMutator = new PostconditionExprMutator();
-                JFormulaMutator postconditionMutator = new JFormulaMutator(postconditionExprMutator);
-                postconditionExprMutator.setFormulaVisitor(postconditionMutator);
+				PostconditionExprMutator postconditionExprMutator = new PostconditionExprMutator();
+				JFormulaMutator postconditionMutator = new JFormulaMutator(postconditionExprMutator);
+				postconditionExprMutator.setFormulaVisitor(postconditionMutator);
 
-                invariantPred = (PredicateFormula) invariantPred.accept(postconditionMutator);
+				invariantPred = (PredicateFormula) invariantPred.accept(postconditionMutator);
 
-                AlloyVariable objx = new AlloyVariable("objx", true);
+				AlloyVariable objx = new AlloyVariable("objx", true);
 
-                if (containsVariable(objx, invariantPred)) {
+				if (containsVariable(objx, invariantPred)) {
 
-                    List<String> names = Collections.<String> singletonList(objx.toString());
-                    List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(module.getSignature()
-                            .getSignatureId()));
+					List<String> names = Collections.<String> singletonList(objx.toString());
+					List<AlloyExpression> sets = Collections.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(module.getSignature()
+							.getSignatureId()));
 
-                    AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, invariantPred);
+					AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, invariantPred);
 
-                    object_invariant_formulas.add(formula);
-                } else
-                    object_invariant_formulas.add(invariantPred);
-            }
+					object_invariant_formulas.add(formula);
+				} else
+					object_invariant_formulas.add(invariantPred);
+			}
 
-        }
-        return object_invariant_formulas;
-    }
+		}
+		return object_invariant_formulas;
+	}
 
-    private Set<AlloyFormula> extract_class_invariant_formulas(String programId, JDynAlloyModule module) {
-        Set<AlloyFormula> class_invariant_formulas = new HashSet<AlloyFormula>();
-        if (isModifiable_class_invariants(programId, module.getClassInvariants())) {
+	private Set<AlloyFormula> extract_class_invariant_formulas(String programId, JDynAlloyModule module) {
+		Set<AlloyFormula> class_invariant_formulas = new HashSet<AlloyFormula>();
+		if (isModifiable_class_invariants(programId, module.getClassInvariants())) {
 
-            String signatureId = module.getSignature().getSignatureId();
+			String signatureId = module.getSignature().getSignatureId();
 
-            PredicateFormula invariantPred = class_invariant_predicates.get(signatureId);
+			PredicateFormula invariantPred = class_invariant_predicates.get(signatureId);
 
-            if (invariantPred != null) {
+			if (invariantPred != null) {
 
-                invariantPred = (PredicateFormula) invariantPred.accept(new FormulaCloner());
+				invariantPred = (PredicateFormula) invariantPred.accept(new FormulaCloner());
 
-                JFormulaMutator postconditionMutator = new JFormulaMutator(new PostconditionExprMutator());
+				JFormulaMutator postconditionMutator = new JFormulaMutator(new PostconditionExprMutator());
 
-                invariantPred = (PredicateFormula) invariantPred.accept(postconditionMutator);
+				invariantPred = (PredicateFormula) invariantPred.accept(postconditionMutator);
 
-                class_invariant_formulas.add(invariantPred);
+				class_invariant_formulas.add(invariantPred);
 
-            }
+			}
 
-        }
-        return class_invariant_formulas;
-    }
+		}
+		return class_invariant_formulas;
+	}
 
-    private boolean isModifiable_class_invariants(String programId, Set<JClassInvariant> class_invariants) {
+	private boolean isModifiable_class_invariants(String programId, Set<JClassInvariant> class_invariants) {
 
-        Vector<AlloyFormula> formulas = new Vector<AlloyFormula>();
-        for (JClassInvariant invariant : class_invariants)
-            formulas.add(invariant.getFormula());
-        AlloyFormula class_invariant_formula = AndFormula.buildAndFormula(formulas.toArray(new AlloyFormula[] {}));
+		Vector<AlloyFormula> formulas = new Vector<AlloyFormula>();
+		for (JClassInvariant invariant : class_invariants)
+			formulas.add(invariant.getFormula());
+		AlloyFormula class_invariant_formula = AndFormula.buildAndFormula(formulas.toArray(new AlloyFormula[] {}));
 
-        Set<AlloyVariable> fields_in_formula = collect_fields_in_formula(class_invariant_formula);
+		Set<AlloyVariable> fields_in_formula = collect_fields_in_formula(class_invariant_formula);
 
-        Set<AlloyVariable> may_update_fields = context.getModifiesTable().get(programId);
+		Set<AlloyVariable> may_update_fields = context.getModifiesTable().get(programId);
 
-        for (AlloyVariable field : fields_in_formula) {
-            if (may_update_fields.contains(field))
-                return true;
-        }
-        return false;
+		for (AlloyVariable field : fields_in_formula) {
+			if (may_update_fields.contains(field))
+				return true;
+		}
+		return false;
 
-    }
+	}
 
-    private boolean isModifiable_object_invariants(String programId, Set<JObjectInvariant> object_invariants) {
+	private boolean isModifiable_object_invariants(String programId, Set<JObjectInvariant> object_invariants) {
 
-        Vector<AlloyFormula> formulas = new Vector<AlloyFormula>();
-        for (JObjectInvariant invariant : object_invariants)
-            formulas.add(invariant.getFormula());
+		Vector<AlloyFormula> formulas = new Vector<AlloyFormula>();
+		for (JObjectInvariant invariant : object_invariants)
+			formulas.add(invariant.getFormula());
 
 
-        for (AlloyFormula af : this.currentModule.peek().getPredsEncodingValueOfArithmeticOperationsInObjectInvariants()){
-            formulas.add(af);
-        }
+		for (AlloyFormula af : this.currentModule.peek().getPredsEncodingValueOfArithmeticOperationsInObjectInvariants()){
+			formulas.add(af);
+		}
 
-        AlloyFormula object_invariant_formula = AndFormula.buildAndFormula(formulas.toArray(new AlloyFormula[] {}));
+		AlloyFormula object_invariant_formula = AndFormula.buildAndFormula(formulas.toArray(new AlloyFormula[] {}));
 
-        Set<AlloyVariable> fields_in_invariant_formula = collect_fields_in_formula(object_invariant_formula);
+		Set<AlloyVariable> fields_in_invariant_formula = collect_fields_in_formula(object_invariant_formula);
 
-        Set<AlloyVariable> modifiableFields = context.getModifiesTable().get(programId);
+		Set<AlloyVariable> modifiableFields = context.getModifiesTable().get(programId);
 
-        for (AlloyVariable field : fields_in_invariant_formula) {
-            if (modifiableFields.contains(field))
-                return true;
-        }
-        return false;
-    }
+		for (AlloyVariable field : fields_in_invariant_formula) {
+			if (modifiableFields.contains(field))
+				return true;
+		}
+		return false;
+	}
 
-    private Set<AlloyVariable> collect_fields_in_formula(AlloyFormula formula) {
-        VarCollector varCollector = new VarCollector();
-        formula.accept(new JFormulaVisitor(varCollector));
+	private Set<AlloyVariable> collect_fields_in_formula(AlloyFormula formula) {
+		VarCollector varCollector = new VarCollector();
+		formula.accept(new JFormulaVisitor(varCollector));
 
-        Set<AlloyVariable> variables = varCollector.getVariables();
+		Set<AlloyVariable> variables = varCollector.getVariables();
 
-        Set<AlloyVariable> fields_in_invariant_formula = new HashSet<AlloyVariable>();
-        for (AlloyVariable v : variables) {
-            if (context.allFields().contains(v))
-                fields_in_invariant_formula.add(v);
-        }
-        return fields_in_invariant_formula;
-    }
+		Set<AlloyVariable> fields_in_invariant_formula = new HashSet<AlloyVariable>();
+		for (AlloyVariable v : variables) {
+			if (context.allFields().contains(v))
+				fields_in_invariant_formula.add(v);
+		}
+		return fields_in_invariant_formula;
+	}
 
-    private void fill_object_constraint_predicates(JDynAlloyModule module) {
-        String signatureId = module.getSignature().getSignatureId();
+	private void fill_object_constraint_predicates(JDynAlloyModule module) {
+		String signatureId = module.getSignature().getSignatureId();
 
-        List<AlloyFormula> object_constraints = new LinkedList<AlloyFormula>();
-        for (JObjectConstraint relevant_object_invariant : module.getObjectConstraints()) {
+		List<AlloyFormula> object_constraints = new LinkedList<AlloyFormula>();
+		for (JObjectConstraint relevant_object_invariant : module.getObjectConstraints()) {
 
-            QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
-            FormulaMutator fv = new FormulaMutator(qft);
+			QFtransformer qft = new QFtransformer(this.getVarsToPrefix());
+			FormulaMutator fv = new FormulaMutator(qft);
 
-            AlloyFormula invariantFormula = relevant_object_invariant.getFormula();
-            invariantFormula = (AlloyFormula)invariantFormula.accept(fv);
+			AlloyFormula invariantFormula = relevant_object_invariant.getFormula();
+			invariantFormula = (AlloyFormula)invariantFormula.accept(fv);
 
-            object_constraints.add(invariantFormula);
-        }
-        if (!object_constraints.isEmpty()) {
-            AlloyFormula object_constraint_formula = AndFormula.buildAndFormula(object_constraints.<AlloyFormula> toArray(new AlloyFormula[] {}));
+			object_constraints.add(invariantFormula);
+		}
+		if (!object_constraints.isEmpty()) {
+			AlloyFormula object_constraint_formula = AndFormula.buildAndFormula(object_constraints.<AlloyFormula> toArray(new AlloyFormula[] {}));
 
-            String objectConstraintId = String.format("%s_object_constraint", signatureId);
+			String objectConstraintId = String.format("%s_object_constraint", signatureId);
 
-            PredicateFormula invariantPred = formulaWrapper.wrapFormula(objectConstraintId, object_constraint_formula);
+			PredicateFormula invariantPred = formulaWrapper.wrapFormula(objectConstraintId, object_constraint_formula);
 
-            object_constraint_predicates.put(signatureId, invariantPred);
+			object_constraint_predicates.put(signatureId, invariantPred);
 
-        }
-    }
+		}
+	}
 
-    private Set<AlloyFormula> extract_object_constraint_formulas(JDynAlloyModule module) {
-        Set<AlloyFormula> object_constraint_formulas = new HashSet<AlloyFormula>();
+	private Set<AlloyFormula> extract_object_constraint_formulas(JDynAlloyModule module) {
+		Set<AlloyFormula> object_constraint_formulas = new HashSet<AlloyFormula>();
 
-        String signatureId = module.getSignature().getSignatureId();
+		String signatureId = module.getSignature().getSignatureId();
 
-        PredicateFormula object_constraint_pred = object_constraint_predicates.get(signatureId);
+		PredicateFormula object_constraint_pred = object_constraint_predicates.get(signatureId);
 
-        if (object_constraint_pred != null) {
+		if (object_constraint_pred != null) {
 
-            JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
+			JFormulaMutator mutator = new JFormulaMutator(new ThizToObjXExprMutator());
 
-            object_constraint_pred = (PredicateFormula) object_constraint_pred.accept(mutator);
+			object_constraint_pred = (PredicateFormula) object_constraint_pred.accept(mutator);
 
-            AlloyVariable objx = new AlloyVariable("objx", false);
+			AlloyVariable objx = new AlloyVariable("objx", false);
 
-            if (containsVariable(objx, object_constraint_pred)) {
+			if (containsVariable(objx, object_constraint_pred)) {
 
-                List<String> names = Collections.<String> singletonList(objx.toString());
-                List<AlloyExpression> sets = Collections
-                        .<AlloyExpression> singletonList(ExprConstant.buildExprConstant(module.getSignature().getSignatureId()));
+				List<String> names = Collections.<String> singletonList(objx.toString());
+				List<AlloyExpression> sets = Collections
+						.<AlloyExpression> singletonList(ExprConstant.buildExprConstant(module.getSignature().getSignatureId()));
 
-                AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, object_constraint_pred);
+				AlloyFormula formula = new QuantifiedFormula(Operator.FOR_ALL, names, sets, object_constraint_pred);
 
-                object_constraint_formulas.add(formula);
-            } else
-                object_constraint_formulas.add(object_constraint_pred);
-        }
+				object_constraint_formulas.add(formula);
+			} else
+				object_constraint_formulas.add(object_constraint_pred);
+		}
 
-        return object_constraint_formulas;
-    }
+		return object_constraint_formulas;
+	}
 
-    private static String javaLangPackage() {
-        if (JDynAlloyConfig.getInstance().getUseQualifiedNamesForJTypes()) {
-            return "java_lang_";
-        } else {
-            return "";
-        }
-    }
+	private static String javaLangPackage() {
+		if (JDynAlloyConfig.getInstance().getUseQualifiedNamesForJTypes()) {
+			return "java_lang_";
+		} else {
+			return "";
+		}
+	}
 }

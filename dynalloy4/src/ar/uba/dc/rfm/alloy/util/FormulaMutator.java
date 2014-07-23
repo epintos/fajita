@@ -32,6 +32,7 @@ import ar.uba.dc.rfm.alloy.ast.formulas.ImpliesFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.PredicateFormula;
+import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula;
 import ar.uba.dc.rfm.dynalloy.parser.splitter.Position;
 import ar.uba.dc.rfm.dynalloy.visualization.DynAlloyAlloyMapping;
 
@@ -129,6 +130,13 @@ public class FormulaMutator extends FormulaVisitor {
 		}
 
 		return newFormula;
+	}
+
+	public Object visit(QuantifiedFormula qf) {
+		AlloyFormula af = qf.getFormula();
+		AlloyFormula result = (AlloyFormula) af.accept(this);
+		return new QuantifiedFormula(qf.getOperator(), qf.getNames(),
+				qf.getSets(), result);
 	}
 
 	public ExpressionMutator getExpressionMutator() {
