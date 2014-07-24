@@ -72,582 +72,680 @@ import ar.uba.dc.rfm.fajita.FajitaConfiguration;
  */
 public class AllUsesTransformation extends FajitaSourceTransformation {
 
-    /**
-     * Constructor for a <code>BranchTransformation</code>.
-     * 
-     * @param configuration
-     *            a <code>FajitaConfiguration</code> with the necessary data to
-     *            transform the input code.
-     * 
-     * @param recoder
-     *            a class from the recoder project that acts as starting point
-     *            of the library and has different possible configurations.
-     * 
-     * @param compilationUnit
-     *            the compilation unit parsed as an AST to be transformed upon
-     *            execution.
-     * 
-     */
-    public AllUsesTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
-            CompilationUnit compilationUnit) {
-        super(configuration, recoder, compilationUnit);
-    }
+	/**
+	 * Constructor for a <code>BranchTransformation</code>.
+	 * 
+	 * @param configuration
+	 *            a <code>FajitaConfiguration</code> with the necessary data to
+	 *            transform the input code.
+	 * 
+	 * @param recoder
+	 *            a class from the recoder project that acts as starting point
+	 *            of the library and has different possible configurations.
+	 * 
+	 * @param compilationUnit
+	 *            the compilation unit parsed as an AST to be transformed upon
+	 *            execution.
+	 * 
+	 */
+	public AllUsesTransformation(FajitaConfiguration configuration,
+			CrossReferenceServiceConfiguration recoder,
+			CompilationUnit compilationUnit) {
+		super(configuration, recoder, compilationUnit);
+	}
 
-    /**
-     * This method actually performs the transformation of the input code.
-     * 
-     * @return a <code>ProblemrReport</code> that fulfills the interface
-     *         required by the <code>recoder.Transformation</code> base class.
-     * 
-     */
-    @Override
-    public ProblemReport execute() {
-        FajitaBranchDiscoveryVisitor eraserVisitor = new FajitaBranchDiscoveryVisitor(configuration, this, getReachableMethods());
+	/**
+	 * This method actually performs the transformation of the input code.
+	 * 
+	 * @return a <code>ProblemrReport</code> that fulfills the interface
+	 *         required by the <code>recoder.Transformation</code> base class.
+	 * 
+	 */
+	@Override
+	public ProblemReport execute() {
+		FajitaBranchDiscoveryVisitor eraserVisitor = new FajitaBranchDiscoveryVisitor(
+				configuration, this, getReachableMethods());
 
-        TreeWalker treeWalker = new TreeWalker(compilationUnit);
-        while (treeWalker.next())
-            treeWalker.getProgramElement().accept(eraserVisitor);
+		TreeWalker treeWalker = new TreeWalker(compilationUnit);
+		while (treeWalker.next())
+			treeWalker.getProgramElement().accept(eraserVisitor);
 
-        return execute(new FajitaSourceTransformVisitor<AllUsesTransformation>(configuration, this));
-    }
+		return execute(new FajitaSourceTransformVisitor<AllUsesTransformation>(
+				configuration, this));
+	}
 
-    /** Returns a set with the names of the methods in the class to check. */
-    private Set<String> getClassMethods() {
-        Set<String> classMethods = new HashSet<String>();
+	/** Returns a set with the names of the methods in the class to check. */
+	private Set<String> getClassMethods() {
+		Set<String> classMethods = new HashSet<String>();
 
-        FajitaClassMethodDiscoveryVisitor methodDiscoveryVisitor = new FajitaClassMethodDiscoveryVisitor(configuration.getClassToCheck(),
-                classMethods);
-        TreeWalker treeWalker = new TreeWalker(compilationUnit);
-        while (treeWalker.next())
-            treeWalker.getProgramElement().accept(methodDiscoveryVisitor);
+		String classToCheck = configuration.getClassToCheck();
+		String[] splitClassToCheck = classToCheck.split("\\.");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++) {
+			classToCheck += splitClassToCheck[idx] + ".";
+		}
+		if (splitClassToCheck.length > 1) {
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2]
+					+ "Instrumented.";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
 
-        return classMethods;
-    }
+		FajitaClassMethodDiscoveryVisitor methodDiscoveryVisitor = new FajitaClassMethodDiscoveryVisitor(
+				classToCheck, classMethods);
+		TreeWalker treeWalker = new TreeWalker(compilationUnit);
+		while (treeWalker.next())
+			treeWalker.getProgramElement().accept(methodDiscoveryVisitor);
 
-    /** Returns the set of reachable methods from the method under test. */
-    private Set<String> getReachableMethods() {
-        Set<String> reachableMethods = new HashSet<String>();
+		return classMethods;
+	}
 
-        Map<String, Set<String>> referencedMethods = new HashMap<String, Set<String>>();
-        FajitaReachableMethodDiscoveryVisitor reachableMethodDiscoveryVisitor = new FajitaReachableMethodDiscoveryVisitor(
-                getClassMethods(), referencedMethods);
-        TreeWalker treeWalker = new TreeWalker(compilationUnit);
-        while (treeWalker.next())
-            treeWalker.getProgramElement().accept(reachableMethodDiscoveryVisitor);
+	/** Returns the set of reachable methods from the method under test. */
+	private Set<String> getReachableMethods() {
+		Set<String> reachableMethods = new HashSet<String>();
 
-        Set<String> remainingMethods = new HashSet<String>();
-        remainingMethods.add(configuration.getMethodToCheck());
+		Map<String, Set<String>> referencedMethods = new HashMap<String, Set<String>>();
+		FajitaReachableMethodDiscoveryVisitor reachableMethodDiscoveryVisitor = new FajitaReachableMethodDiscoveryVisitor(
+				getClassMethods(), referencedMethods);
+		TreeWalker treeWalker = new TreeWalker(compilationUnit);
+		while (treeWalker.next())
+			treeWalker.getProgramElement().accept(
+					reachableMethodDiscoveryVisitor);
 
-        while (!remainingMethods.isEmpty()) {
-            String method = remainingMethods.iterator().next();
-            remainingMethods.remove(method);
-            if (reachableMethods.add(method) && referencedMethods.containsKey(method))
-                remainingMethods.addAll(referencedMethods.get(method));
-        }
+		Set<String> remainingMethods = new HashSet<String>();
+		remainingMethods.add(configuration.getMethodToCheck());
 
-        return reachableMethods;
-    }
+		while (!remainingMethods.isEmpty()) {
+			String method = remainingMethods.iterator().next();
+			remainingMethods.remove(method);
+			if (reachableMethods.add(method)
+					&& referencedMethods.containsKey(method))
+				remainingMethods.addAll(referencedMethods.get(method));
+		}
 
-    /**
-     * This private class holds the logic to discover the amount of methods the
-     * class to check has defined.
-     */
-    private static class FajitaClassMethodDiscoveryVisitor extends SourceVisitor {
+		return reachableMethods;
+	}
 
-        /** The name of the class being analyzed. */
-        private final String className;
+	/**
+	 * This private class holds the logic to discover the amount of methods the
+	 * class to check has defined.
+	 */
+	private static class FajitaClassMethodDiscoveryVisitor extends
+			SourceVisitor {
 
-        /** A set with the discovered methods. */
-        private final Set<String> classMethods;
+		/** The name of the class being analyzed. */
+		private final String className;
 
-        /** The file package name if any. */
-        private String packagePrefix = "";
+		/** A set with the discovered methods. */
+		private final Set<String> classMethods;
 
-        /**
-         * Constructor for a <code>FajitaClassMethodDiscoveryVisitor</code>
-         * 
-         * @param configuration
-         *            a <code>FajitaConfiguration</code> with the necessary data
-         *            to discover the target goals.
-         */
-        FajitaClassMethodDiscoveryVisitor(String className, Set<String> classMethods) {
-            this.className = className;
-            this.classMethods = classMethods;
-        }
+		/** The file package name if any. */
+		private String packagePrefix = "";
 
-        /**
-         * This method is executed for each package specification in the
-         * analyzed compilation unit. The package name is stored in order to be
-         * able to determine the full name of the classes declared inside the
-         * compilation unit.
-         */
-        @Override
-        public void visitPackageSpecification(PackageSpecification x) {
-            packagePrefix = x.getPackageReference().toSource().trim() + ".";
-        }
+		/**
+		 * Constructor for a <code>FajitaClassMethodDiscoveryVisitor</code>
+		 * 
+		 * @param configuration
+		 *            a <code>FajitaConfiguration</code> with the necessary data
+		 *            to discover the target goals.
+		 */
+		FajitaClassMethodDiscoveryVisitor(String className,
+				Set<String> classMethods) {
+			this.className = className;
+			this.classMethods = classMethods;
+		}
 
-        /**
-         * This method is executed for each method declaration in the analyzed
-         * compilation unit. If the declaration belongs to the class under test
-         * it's stored in the discovered methods set.
-         */
-        @Override
-        public void visitMethodDeclaration(MethodDeclaration x) {
-            if (className.equals(packagePrefix + getContainingClass(x)) && !x.getName().startsWith(KIASAN_REPOK_METHOD)) {
-                classMethods.add(x.getName());
-            }
-        }
+		/**
+		 * This method is executed for each package specification in the
+		 * analyzed compilation unit. The package name is stored in order to be
+		 * able to determine the full name of the classes declared inside the
+		 * compilation unit.
+		 */
+		@Override
+		public void visitPackageSpecification(PackageSpecification x) {
+			packagePrefix = x.getPackageReference().toSource().trim() + ".";
+		}
 
-    }
+		/**
+		 * This method is executed for each method declaration in the analyzed
+		 * compilation unit. If the declaration belongs to the class under test
+		 * it's stored in the discovered methods set.
+		 */
+		@Override
+		public void visitMethodDeclaration(MethodDeclaration x) {
+			if (className.equals(packagePrefix + getContainingClass(x))
+					&& !x.getName().startsWith(KIASAN_REPOK_METHOD)) {
+				classMethods.add(x.getName());
+			}
+		}
 
-    /**
-     * This private class holds the logic to discover the reachable methods from
-     * the method under test.
-     */
-    private static class FajitaReachableMethodDiscoveryVisitor extends SourceVisitor {
+	}
 
-        /** The set of methods of the class under test. */
-        private final Set<String> classMethods;
+	/**
+	 * This private class holds the logic to discover the reachable methods from
+	 * the method under test.
+	 */
+	private static class FajitaReachableMethodDiscoveryVisitor extends
+			SourceVisitor {
 
-        /** A mapping of which methods are called from other methods. */
-        private final Map<String, Set<String>> referencedMethods;
+		/** The set of methods of the class under test. */
+		private final Set<String> classMethods;
 
-        /**
-         * Constructor for a <code>FajitaReachableMethodDiscoveryVisitor</code>.
-         * 
-         * @param classMethods
-         *            the methods declared for the class under test.
-         * 
-         * @param referencedMethods
-         *            a mapping where to store the invocation schema.
-         * 
-         */
-        public FajitaReachableMethodDiscoveryVisitor(Set<String> classMethods, Map<String, Set<String>> referencedMethods) {
-            this.classMethods = classMethods;
-            this.referencedMethods = referencedMethods;
-        }
+		/** A mapping of which methods are called from other methods. */
+		private final Map<String, Set<String>> referencedMethods;
 
-        /**
-         * This method is call for each method reference made in the analyzed
-         * code. If the method belongs to the class under test and is being
-         * invoked from inside the class it's added to the invocation mapping.
-         */
-        @Override
-        public void visitMethodReference(MethodReference x) {
-            String containigMethod = getContainingMethod(x);
-            if (containigMethod != null && classMethods.contains(containigMethod) && classMethods.contains(x.getName())) {
-                Set<String> methods = referencedMethods.get(containigMethod);
-                if (methods == null) {
-                    methods = new HashSet<String>();
-                    referencedMethods.put(containigMethod, methods);
-                }
-                methods.add(x.getName());
-            }
-        }
+		/**
+		 * Constructor for a <code>FajitaReachableMethodDiscoveryVisitor</code>.
+		 * 
+		 * @param classMethods
+		 *            the methods declared for the class under test.
+		 * 
+		 * @param referencedMethods
+		 *            a mapping where to store the invocation schema.
+		 * 
+		 */
+		public FajitaReachableMethodDiscoveryVisitor(Set<String> classMethods,
+				Map<String, Set<String>> referencedMethods) {
+			this.classMethods = classMethods;
+			this.referencedMethods = referencedMethods;
+		}
 
-    }
+		/**
+		 * This method is call for each method reference made in the analyzed
+		 * code. If the method belongs to the class under test and is being
+		 * invoked from inside the class it's added to the invocation mapping.
+		 */
+		@Override
+		public void visitMethodReference(MethodReference x) {
+			String containigMethod = getContainingMethod(x);
+			if (containigMethod != null
+					&& classMethods.contains(containigMethod)
+					&& classMethods.contains(x.getName())) {
+				Set<String> methods = referencedMethods.get(containigMethod);
+				if (methods == null) {
+					methods = new HashSet<String>();
+					referencedMethods.put(containigMethod, methods);
+				}
+				methods.add(x.getName());
+			}
+		}
 
-    /**
-     * This private class holds the logic to discover all the branches in the
-     * code under test.
-     */
-    private static class FajitaBranchDiscoveryVisitor extends SourceVisitor {
+	}
 
-        /** Fajita runtime configuration. */
-        private final FajitaConfiguration configuration;
+	/**
+	 * This private class holds the logic to discover all the branches in the
+	 * code under test.
+	 */
+	private static class FajitaBranchDiscoveryVisitor extends SourceVisitor {
 
-        /** The transformation class invoking this source visitor. */
-        private final AllUsesTransformation transformation;
+		/** Fajita runtime configuration. */
+		private final FajitaConfiguration configuration;
 
-        /** The set of methods reachable from the method under test. */
-        private final Set<String> reachableMethods;
+		/** The transformation class invoking this source visitor. */
+		private final AllUsesTransformation transformation;
 
-        /** Flag that indicates AST transversal through a reachable method. */
-        private boolean visitingReachableMethod = false;
+		/** The set of methods reachable from the method under test. */
+		private final Set<String> reachableMethods;
 
-        /** The file package name if any. */
-        private String packagePrefix = "";
+		/** Flag that indicates AST transversal through a reachable method. */
+		private boolean visitingReachableMethod = false;
 
-        private int myVariableIndex = 0;
+		/** The file package name if any. */
+		private String packagePrefix = "";
 
-        private Map<String, List<UncollatedReferenceQualifier>> definitions = new HashMap<>();
+		private int myVariableIndex = 0;
 
-        /**
-         * Constructor for a <code>FajitaBranchDiscoveryVisitor</code>.
-         * 
-         * @param configuration
-         *            a <code>FajitaConfiguration</code> with the necessary data
-         *            to discover the target goals.
-         * 
-         * @param transformation
-         *            a <code>Transformation</code> with the necessary logic to
-         *            apply the recoder transformations to the visited code.
-         * 
-         * @param reachableMethods
-         *            the set with the names of reachable methods from the
-         *            method under test.
-         * 
-         */
-        public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration, AllUsesTransformation transformation,
-                Set<String> reachableMethods) {
-            this.configuration = configuration;
-            this.transformation = transformation;
-            this.reachableMethods = reachableMethods;
-        }
+		private Map<String, List<UncollatedReferenceQualifier>> definitions = new HashMap<>();
 
-        /**
-         * This method is executed for each package specification in the
-         * analyzed compilation unit. The package name is stored in order to be
-         * able to determine the full name of the classes declared inside the
-         * compilation unit.
-         */
-        @Override
-        public void visitPackageSpecification(PackageSpecification x) {
-            packagePrefix = x.getPackageReference().toSource().trim() + ".";
-        }
+		/**
+		 * Constructor for a <code>FajitaBranchDiscoveryVisitor</code>.
+		 * 
+		 * @param configuration
+		 *            a <code>FajitaConfiguration</code> with the necessary data
+		 *            to discover the target goals.
+		 * 
+		 * @param transformation
+		 *            a <code>Transformation</code> with the necessary logic to
+		 *            apply the recoder transformations to the visited code.
+		 * 
+		 * @param reachableMethods
+		 *            the set with the names of reachable methods from the
+		 *            method under test.
+		 * 
+		 */
+		public FajitaBranchDiscoveryVisitor(FajitaConfiguration configuration,
+				AllUsesTransformation transformation,
+				Set<String> reachableMethods) {
+			this.configuration = configuration;
+			this.transformation = transformation;
+			this.reachableMethods = reachableMethods;
+		}
 
-        /**
-         * This method is called for each method declaration and it's used to
-         * determine if we are analyzing a reachable method.
-         */
-        @Override
-        public void visitMethodDeclaration(MethodDeclaration x) {
-            visitingReachableMethod = reachableMethods.contains(x.getName())
-                    && configuration.getClassToCheck().equals(packagePrefix + getContainingClass(x));
-            definitions.clear();
-            StatementBlock block = (StatementBlock) x.getBody();
-            StatementBlock replacement = analyzeStamentBlock(block, x);
-            transformation.replace(block, replacement);
-        }
+		/**
+		 * This method is executed for each package specification in the
+		 * analyzed compilation unit. The package name is stored in order to be
+		 * able to determine the full name of the classes declared inside the
+		 * compilation unit.
+		 */
+		@Override
+		public void visitPackageSpecification(PackageSpecification x) {
+			packagePrefix = x.getPackageReference().toSource().trim() + ".";
+		}
 
-        private StatementBlock analyzeStamentBlock(StatementBlock block, MethodDeclaration x) {
-            ASTList<Statement> list = block.getBody();
-            ASTList<Statement> backup = analyzeList(list, false, x);
-            return new StatementBlock(backup);
-        }
+		/**
+		 * This method is called for each method declaration and it's used to
+		 * determine if we are analyzing a reachable method.
+		 */
+		@Override
+		public void visitMethodDeclaration(MethodDeclaration x) {
+			String classToCheck = configuration.getClassToCheck();
+			String[] splitClassToCheck = classToCheck.split("\\.");
+			classToCheck = "";
+			for (int idx = 0; idx < splitClassToCheck.length - 2; idx++) {
+				classToCheck += splitClassToCheck[idx] + ".";
+			}
+			if (splitClassToCheck.length > 1) {
+				classToCheck += splitClassToCheck[splitClassToCheck.length - 2]
+						+ "Instrumented.";
+			}
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
 
-        private ASTList<Statement> analyzeList(ASTList<Statement> list, boolean isInsideBlock, MethodDeclaration x) {
-            if (visitingReachableMethod) {
-                ASTList<Statement> backup = new ASTArrayList<>(list);
-                int i = 1;
+			visitingReachableMethod = reachableMethods.contains(x.getName())
+					&& classToCheck.equals(packagePrefix
+							+ getContainingClass(x));
+			definitions.clear();
+			StatementBlock block = (StatementBlock) x.getBody();
+			StatementBlock replacement = analyzeStamentBlock(block, x);
+			transformation.replace(block, replacement);
+		}
 
-                // if there are parameters statements should be placed before
-                // the first code line
-                if (x != null && x.getParameterDeclarationCount() > 0) {
-                    int paramsIndex = 0;
-                    i = 0;
-                    for (VariableDeclaration vc : x.getParameters()) {
-                        i = handleVariableDeclaration(vc, backup, i++, isInsideBlock);
-                        paramsIndex++;
-                        if (x.getParameterDeclarationCount() == paramsIndex) {
-                            i++;
-                        }
-                    }
-                }
+		private StatementBlock analyzeStamentBlock(StatementBlock block,
+				MethodDeclaration x) {
+			ASTList<Statement> list = block.getBody();
+			ASTList<Statement> backup = analyzeList(list, false, x);
+			return new StatementBlock(backup);
+		}
 
-                for (Statement st : list) {
-                    if (isAssignment(st)) {
-                        i = handleAssignment((Assignment) st, backup, i, isInsideBlock);
-                    } else if (st instanceof If) {
-                        If iff = (If) st;
-                        ASTList<Statement> expressions = new ASTArrayList<>();
-                        recursiveExpressionExplorer(iff.getExpression(), expressions, 0, isInsideBlock);
-                        backup.addAll(i - 1, expressions);
-                        i += expressions.size();
-                        handleIf(iff, null);
-                    } else if (st instanceof While) {
-                        While whilee = (While) st;
-                        ASTList<Statement> expressions = new ASTArrayList<>();
-                        recursiveExpressionExplorer(whilee.getExpressionAt(0), expressions, 0, isInsideBlock);
-                        backup.addAll(i - 1, expressions);
-                        i += expressions.size();
-                        handleWhile(whilee, null);
-                    } else if (st instanceof For) {
-                        For forr = (For) st;
-                        ASTList<Statement> expressions = new ASTArrayList<>();
-                        recursiveExpressionExplorer(forr.getGuard(), expressions, 0, isInsideBlock);
-                        backup.addAll(i - 1, expressions);
-                        i += expressions.size();
-                        handleFor(forr, null);
-                    } else if (st instanceof VariableDeclaration) {
-                        VariableDeclaration vd = (VariableDeclaration) st;
-                        i = handleVariableDeclaration(vd, backup, i++, isInsideBlock);
-                    } else if (st instanceof MethodReference) {
-                        MethodReference mr = (MethodReference)st;
-                        i = handleMethodReference(mr, backup, i);
-                    } else if (isIncrOrDecr(st)) {
-                        Assignment ass = (Assignment) st;
-                        UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass.getExpressionAt(0);
-                        HashSet<String> set = new HashSet<>();
-                        set.add(urq.getName());
-                        i = handleAllUses(set, backup, i);
-                    } else if (st instanceof Return) {
-                        ASTList<Statement> expressions = new ASTArrayList<>();
-                        recursiveExpressionExplorer(((Return) st).getExpression(), expressions, 0, isInsideBlock);
-                        backup.addAll(i - 1, expressions);
-                    }
-                    i++;
-                }
-                return backup;
-            }
-            return list;
-        }
-        
-        private int handleMethodReference(MethodReference mr, ASTList<Statement> backup, int i) {
-            HashSet<String> set = new HashSet<>();
-            ASTList<Expression> arguments = mr.getArguments();
-            if (arguments != null) {
-                for(Expression ex: arguments) {
-                    recursiveHandler(ex, set);
-                }
-            }
-            while (mr.getReferencePrefix() instanceof MethodReference) {
-                mr = (MethodReference) mr.getReferencePrefix();
-                arguments = mr.getArguments();
-                if (arguments != null) {
-                    for(Expression ex: arguments) {
-                        recursiveHandler(ex, set);
-                    }
-                }
-            }
-            i = handleAllUses(set, backup, i);
-            set.clear();
-            UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) mr.getReferencePrefix();
-            if (urq != null) {
-                set.add(urq.getName());
-                i = handleAllUses(set, backup, i);
-            }
-            return i;
-        }
+		private ASTList<Statement> analyzeList(ASTList<Statement> list,
+				boolean isInsideBlock, MethodDeclaration x) {
+			if (visitingReachableMethod) {
+				ASTList<Statement> backup = new ASTArrayList<>(list);
+				int i = 1;
 
-        private boolean isIncrOrDecr(Statement st) {
-            return (st instanceof PostIncrement) || (st instanceof PostDecrement) || (st instanceof PreDecrement) || (st instanceof PreIncrement);
-        }
+				// if there are parameters statements should be placed before
+				// the first code line
+				if (x != null && x.getParameterDeclarationCount() > 0) {
+					int paramsIndex = 0;
+					i = 0;
+					for (VariableDeclaration vc : x.getParameters()) {
+						i = handleVariableDeclaration(vc, backup, i++,
+								isInsideBlock);
+						paramsIndex++;
+						if (x.getParameterDeclarationCount() == paramsIndex) {
+							i++;
+						}
+					}
+				}
 
-        private int handleVariableDeclaration(VariableDeclaration vd, ASTList<Statement> backup, int i, boolean isInsideBlock) {
-            HashSet<String> uses = new HashSet<>();
-            List<UncollatedReferenceQualifier> lhs = getLeftHandSide(vd);
-            List<? extends VariableSpecification> decSp = vd.getVariables();
-            for (VariableSpecification each : decSp) {
-                if (each.getInitializer() != null) {
-                    recursiveHandler(each.getInitializer(), uses);
-                }
-            }
-            i = handleAllUses(uses, backup, i);
-            for (UncollatedReferenceQualifier each : lhs) {
-                if (!isInsideBlock) {
-                    clearDefinitionsFor(each.getName());
-                }
-                i = addNewDefinition(each, backup, i);
-            }
-            return i;
-        }
+				for (Statement st : list) {
+					if (isAssignment(st)) {
+						i = handleAssignment((Assignment) st, backup, i,
+								isInsideBlock);
+					} else if (st instanceof If) {
+						If iff = (If) st;
+						ASTList<Statement> expressions = new ASTArrayList<>();
+						recursiveExpressionExplorer(iff.getExpression(),
+								expressions, 0, isInsideBlock);
+						backup.addAll(i - 1, expressions);
+						i += expressions.size();
+						handleIf(iff, null);
+					} else if (st instanceof While) {
+						While whilee = (While) st;
+						ASTList<Statement> expressions = new ASTArrayList<>();
+						recursiveExpressionExplorer(whilee.getExpressionAt(0),
+								expressions, 0, isInsideBlock);
+						backup.addAll(i - 1, expressions);
+						i += expressions.size();
+						handleWhile(whilee, null);
+					} else if (st instanceof For) {
+						For forr = (For) st;
+						ASTList<Statement> expressions = new ASTArrayList<>();
+						recursiveExpressionExplorer(forr.getGuard(),
+								expressions, 0, isInsideBlock);
+						backup.addAll(i - 1, expressions);
+						i += expressions.size();
+						handleFor(forr, null);
+					} else if (st instanceof VariableDeclaration) {
+						VariableDeclaration vd = (VariableDeclaration) st;
+						i = handleVariableDeclaration(vd, backup, i++,
+								isInsideBlock);
+					} else if (st instanceof MethodReference) {
+						MethodReference mr = (MethodReference) st;
+						i = handleMethodReference(mr, backup, i);
+					} else if (isIncrOrDecr(st)) {
+						Assignment ass = (Assignment) st;
+						UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass
+								.getExpressionAt(0);
+						HashSet<String> set = new HashSet<>();
+						set.add(urq.getName());
+						i = handleAllUses(set, backup, i);
+					} else if (st instanceof Return) {
+						ASTList<Statement> expressions = new ASTArrayList<>();
+						recursiveExpressionExplorer(
+								((Return) st).getExpression(), expressions, 0,
+								isInsideBlock);
+						backup.addAll(i - 1, expressions);
+					}
+					i++;
+				}
+				return backup;
+			}
+			return list;
+		}
 
-        private void handleFor(For forr, MethodDeclaration x) {
-            StatementBlock stb = (StatementBlock) forr.getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
-            transformation.replace(stb, new StatementBlock(toAdd));
-        }
+		private int handleMethodReference(MethodReference mr,
+				ASTList<Statement> backup, int i) {
+			HashSet<String> set = new HashSet<>();
+			ASTList<Expression> arguments = mr.getArguments();
+			if (arguments != null) {
+				for (Expression ex : arguments) {
+					recursiveHandler(ex, set);
+				}
+			}
+			while (mr.getReferencePrefix() instanceof MethodReference) {
+				mr = (MethodReference) mr.getReferencePrefix();
+				arguments = mr.getArguments();
+				if (arguments != null) {
+					for (Expression ex : arguments) {
+						recursiveHandler(ex, set);
+					}
+				}
+			}
+			i = handleAllUses(set, backup, i);
+			set.clear();
+			UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) mr
+					.getReferencePrefix();
+			if (urq != null) {
+				set.add(urq.getName());
+				i = handleAllUses(set, backup, i);
+			}
+			return i;
+		}
 
-        private void handleWhile(While whilee, MethodDeclaration x) {
-            StatementBlock stb = (StatementBlock) whilee.getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
-            transformation.replace(stb, new StatementBlock(toAdd));
-        }
+		private boolean isIncrOrDecr(Statement st) {
+			return (st instanceof PostIncrement)
+					|| (st instanceof PostDecrement)
+					|| (st instanceof PreDecrement)
+					|| (st instanceof PreIncrement);
+		}
 
-        private void handleIf(If iff, MethodDeclaration x) {
-            StatementBlock stb = (StatementBlock) iff.getThen().getBody();
-            ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
-            transformation.replace(stb, new StatementBlock(toAdd));
-            if (iff.getElse() != null) {
-                if (iff.getElse().getBody() instanceof If) {
-                    handleIf((If) iff.getElse().getBody(), x);
-                } else {
-                    stb = (StatementBlock) iff.getElse().getBody();
-                    toAdd = analyzeList(stb.getBody(), true, x);
-                    transformation.replace(stb, new StatementBlock(toAdd));
-                }
-            }
-        }
+		private int handleVariableDeclaration(VariableDeclaration vd,
+				ASTList<Statement> backup, int i, boolean isInsideBlock) {
+			HashSet<String> uses = new HashSet<>();
+			List<UncollatedReferenceQualifier> lhs = getLeftHandSide(vd);
+			List<? extends VariableSpecification> decSp = vd.getVariables();
+			for (VariableSpecification each : decSp) {
+				if (each.getInitializer() != null) {
+					recursiveHandler(each.getInitializer(), uses);
+				}
+			}
+			i = handleAllUses(uses, backup, i);
+			for (UncollatedReferenceQualifier each : lhs) {
+				if (!isInsideBlock) {
+					clearDefinitionsFor(each.getName());
+				}
+				i = addNewDefinition(each, backup, i);
+			}
+			return i;
+		}
 
-        private int recursiveExpressionExplorer(Expression ex, ASTList<Statement> expressions, int index, boolean isInsideBlock) {
-            if (ex instanceof LogicalAnd) {
-                LogicalAnd and = (LogicalAnd) ex;
-                index = recursiveExpressionExplorer(and.getExpressionAt(0), expressions, index, isInsideBlock);
-                index = recursiveExpressionExplorer(and.getExpressionAt(1), expressions, index, isInsideBlock);
-            } else if (ex instanceof LogicalOr) {
-                LogicalOr or = (LogicalOr) ex;
-                index = recursiveExpressionExplorer(or.getExpressionAt(0), expressions, index, isInsideBlock);
-                index = recursiveExpressionExplorer(or.getExpressionAt(1), expressions, index, isInsideBlock);
-            } else if (ex instanceof ParenthesizedExpression) {
-                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
-                index = recursiveExpressionExplorer(pe.getExpressionAt(0), expressions, index, isInsideBlock);
-            } else if (ex instanceof Equals) {
-                Equals equals = (Equals) ex;
-                index = recursiveExpressionExplorer(equals.getExpressionAt(0), expressions, index, isInsideBlock);
-                index = recursiveExpressionExplorer(equals.getExpressionAt(1), expressions, index, isInsideBlock);
-            } else if (ex instanceof NotEquals) {
-                NotEquals equals = (NotEquals) ex;
-                index = recursiveExpressionExplorer(equals.getExpressionAt(0), expressions, index, isInsideBlock);
-                index = recursiveExpressionExplorer(equals.getExpressionAt(1), expressions, index, isInsideBlock);
-            } else if (ex instanceof UncollatedReferenceQualifier) {
-                HashSet<String> uses = new HashSet<>();
-                UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ex;
-                urq = getLeftmostURQ(urq);
-                uses.add(urq.getName());
-                index = handleAllUses(uses, expressions, index);
-            } else if (ex instanceof MethodReference) {
-                ASTList<Statement> list = new ASTArrayList<>();
-                int i = handleMethodReference((MethodReference)ex, list, 0);
-                index += i;
-                expressions.addAll(list);
-            }
-            return index;
-        }
-        
-        private UncollatedReferenceQualifier getLeftmostURQ(UncollatedReferenceQualifier urq) {
-            boolean done = false;
-            while(!done && urq.getReferencePrefix() != null) {
-                if (urq.getReferencePrefix() instanceof ThisReference) {
-                    done = true;
-                } else {
-                    urq = (UncollatedReferenceQualifier) urq.getReferencePrefix();
-                }
-            }
-            return urq;
-        }
+		private void handleFor(For forr, MethodDeclaration x) {
+			StatementBlock stb = (StatementBlock) forr.getBody();
+			ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
+			transformation.replace(stb, new StatementBlock(toAdd));
+		}
 
-        private int handleAssignment(Assignment ass, ASTList<Statement> body, int index, boolean isInsideBlock) {
-            HashSet<String> uses = new HashSet<>();
-            UncollatedReferenceQualifier lhs = getLeftHandSide(ass);
-            recursiveHandler(ass.getChildAt(1), uses);
-            index = handleAllUses(uses, body, index);
-            if (!isInsideBlock) {
-                clearDefinitionsFor(lhs.getName());
-            }
-            index = addNewDefinition(lhs, body, index);
-            return index;
-        }
+		private void handleWhile(While whilee, MethodDeclaration x) {
+			StatementBlock stb = (StatementBlock) whilee.getBody();
+			ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
+			transformation.replace(stb, new StatementBlock(toAdd));
+		}
 
-        private void clearDefinitionsFor(String name) {
-            definitions.put(name, new ArrayList<UncollatedReferenceQualifier>());
-        }
+		private void handleIf(If iff, MethodDeclaration x) {
+			StatementBlock stb = (StatementBlock) iff.getThen().getBody();
+			ASTList<Statement> toAdd = analyzeList(stb.getBody(), true, x);
+			transformation.replace(stb, new StatementBlock(toAdd));
+			if (iff.getElse() != null) {
+				if (iff.getElse().getBody() instanceof If) {
+					handleIf((If) iff.getElse().getBody(), x);
+				} else {
+					stb = (StatementBlock) iff.getElse().getBody();
+					toAdd = analyzeList(stb.getBody(), true, x);
+					transformation.replace(stb, new StatementBlock(toAdd));
+				}
+			}
+		}
 
-        private int handleAllUses(HashSet<String> uses, ASTList<Statement> body, int index) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            for (String use : uses) {
-                for (UncollatedReferenceQualifier urq : getFromMap(use)) {
-                    int goalId = configuration.getDiscoveredGoals();
-                    configuration.setDiscoveredGoals(goalId + 1);
+		private int recursiveExpressionExplorer(Expression ex,
+				ASTList<Statement> expressions, int index, boolean isInsideBlock) {
+			if (ex instanceof LogicalAnd) {
+				LogicalAnd and = (LogicalAnd) ex;
+				index = recursiveExpressionExplorer(and.getExpressionAt(0),
+						expressions, index, isInsideBlock);
+				index = recursiveExpressionExplorer(and.getExpressionAt(1),
+						expressions, index, isInsideBlock);
+			} else if (ex instanceof LogicalOr) {
+				LogicalOr or = (LogicalOr) ex;
+				index = recursiveExpressionExplorer(or.getExpressionAt(0),
+						expressions, index, isInsideBlock);
+				index = recursiveExpressionExplorer(or.getExpressionAt(1),
+						expressions, index, isInsideBlock);
+			} else if (ex instanceof ParenthesizedExpression) {
+				ParenthesizedExpression pe = (ParenthesizedExpression) ex;
+				index = recursiveExpressionExplorer(pe.getExpressionAt(0),
+						expressions, index, isInsideBlock);
+			} else if (ex instanceof Equals) {
+				Equals equals = (Equals) ex;
+				index = recursiveExpressionExplorer(equals.getExpressionAt(0),
+						expressions, index, isInsideBlock);
+				index = recursiveExpressionExplorer(equals.getExpressionAt(1),
+						expressions, index, isInsideBlock);
+			} else if (ex instanceof NotEquals) {
+				NotEquals equals = (NotEquals) ex;
+				index = recursiveExpressionExplorer(equals.getExpressionAt(0),
+						expressions, index, isInsideBlock);
+				index = recursiveExpressionExplorer(equals.getExpressionAt(1),
+						expressions, index, isInsideBlock);
+			} else if (ex instanceof UncollatedReferenceQualifier) {
+				HashSet<String> uses = new HashSet<>();
+				UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ex;
+				urq = getLeftmostURQ(urq);
+				uses.add(urq.getName());
+				index = handleAllUses(uses, expressions, index);
+			} else if (ex instanceof MethodReference) {
+				ASTList<Statement> list = new ASTArrayList<>();
+				int i = handleMethodReference((MethodReference) ex, list, 0);
+				index += i;
+				expressions.addAll(list);
+			}
+			return index;
+		}
 
-                    if (!configuration.getCoveredGoals().contains(goalId)) {
-                        CopyAssignment ca = createFajitaGoalWithURQ(factory, goalId, urq);
-                        body.add(index++, ca);
-                    }
-                }
-            }
-            return index;
-        }
+		private UncollatedReferenceQualifier getLeftmostURQ(
+				UncollatedReferenceQualifier urq) {
+			boolean done = false;
+			while (!done && urq.getReferencePrefix() != null) {
+				if (urq.getReferencePrefix() instanceof ThisReference) {
+					done = true;
+				} else {
+					urq = (UncollatedReferenceQualifier) urq
+							.getReferencePrefix();
+				}
+			}
+			return urq;
+		}
 
-        private int addNewDefinition(UncollatedReferenceQualifier urq, ASTList<Statement> body, int index) {
-            CopyAssignment copyAssignment = createMyVariable(true);
-            body.add(index++, copyAssignment);
-            index = setAllOtherToFalse(urq.getName(), body, index);
-            getFromMap(urq.getName()).add((UncollatedReferenceQualifier) copyAssignment.getChildAt(0));
-            return index;
-        }
+		private int handleAssignment(Assignment ass, ASTList<Statement> body,
+				int index, boolean isInsideBlock) {
+			HashSet<String> uses = new HashSet<>();
+			UncollatedReferenceQualifier lhs = getLeftHandSide(ass);
+			recursiveHandler(ass.getChildAt(1), uses);
+			index = handleAllUses(uses, body, index);
+			if (!isInsideBlock) {
+				clearDefinitionsFor(lhs.getName());
+			}
+			index = addNewDefinition(lhs, body, index);
+			return index;
+		}
 
-        private CopyAssignment createMyVariable(boolean status) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            Identifier fajitaGoalId = factory.createIdentifier("variable_definition" + "_" + myVariableIndex++);
-            UncollatedReferenceQualifier fajitaGoal = factory.createUncollatedReferenceQualifier(fajitaGoalId);
-            BooleanLiteral reachedLiteral = factory.createBooleanLiteral(status);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(fajitaGoal, reachedLiteral);
-            configuration.getAllUsesAuxVariables().add(fajitaGoal.getName());
-            return copyAssignment;
-        }
+		private void clearDefinitionsFor(String name) {
+			definitions
+					.put(name, new ArrayList<UncollatedReferenceQualifier>());
+		}
 
-        private CopyAssignment setMyVariableTo(UncollatedReferenceQualifier urq, boolean status) {
-            ProgramFactory factory = transformation.getProgramFactory();
-            BooleanLiteral reachedLiteral = factory.createBooleanLiteral(status);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(urq, reachedLiteral);
-            return copyAssignment;
-        }
+		private int handleAllUses(HashSet<String> uses,
+				ASTList<Statement> body, int index) {
+			ProgramFactory factory = transformation.getProgramFactory();
+			for (String use : uses) {
+				for (UncollatedReferenceQualifier urq : getFromMap(use)) {
+					int goalId = configuration.getDiscoveredGoals();
+					configuration.setDiscoveredGoals(goalId + 1);
 
-        private int setAllOtherToFalse(String variable, ASTList<Statement> body, int index) {
-            for (UncollatedReferenceQualifier urq : getFromMap(variable)) {
-                body.add(index++, setMyVariableTo(urq, false));
-            }
-            return index;
-        }
+					if (!configuration.getCoveredGoals().contains(goalId)) {
+						CopyAssignment ca = createFajitaGoalWithURQ(factory,
+								goalId, urq);
+						body.add(index++, ca);
+					}
+				}
+			}
+			return index;
+		}
 
-        private CopyAssignment createFajitaGoalWithURQ(ProgramFactory factory, int goalId, UncollatedReferenceQualifier urq) {
-            Identifier fajitaGoalId = factory.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG + "_" + goalId);
-            UncollatedReferenceQualifier fajitaGoal = factory.createUncollatedReferenceQualifier(fajitaGoalId);
-            CopyAssignment copyAssignment = factory.createCopyAssignment(fajitaGoal, urq);
-            return copyAssignment;
-        }
+		private int addNewDefinition(UncollatedReferenceQualifier urq,
+				ASTList<Statement> body, int index) {
+			CopyAssignment copyAssignment = createMyVariable(true);
+			body.add(index++, copyAssignment);
+			index = setAllOtherToFalse(urq.getName(), body, index);
+			getFromMap(urq.getName())
+					.add((UncollatedReferenceQualifier) copyAssignment
+							.getChildAt(0));
+			return index;
+		}
 
-        private List<UncollatedReferenceQualifier> getFromMap(String name) {
-            List<UncollatedReferenceQualifier> list = definitions.get(name);
-            if (list == null) {
-                list = new ArrayList<>();
-                definitions.put(name, list);
-            }
-            return list;
-        }
+		private CopyAssignment createMyVariable(boolean status) {
+			ProgramFactory factory = transformation.getProgramFactory();
+			Identifier fajitaGoalId = factory
+					.createIdentifier("variable_definition" + "_"
+							+ myVariableIndex++);
+			UncollatedReferenceQualifier fajitaGoal = factory
+					.createUncollatedReferenceQualifier(fajitaGoalId);
+			BooleanLiteral reachedLiteral = factory
+					.createBooleanLiteral(status);
+			CopyAssignment copyAssignment = factory.createCopyAssignment(
+					fajitaGoal, reachedLiteral);
+			configuration.getAllUsesAuxVariables().add(fajitaGoal.getName());
+			return copyAssignment;
+		}
 
-        private UncollatedReferenceQualifier getLeftHandSide(Assignment ass) {
-            UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass.getChildAt(0);
-            while (urq.getReferencePrefix() != null) {
-                if (urq.getReferencePrefix() instanceof ThisReference) {
-                    return (UncollatedReferenceQualifier) ass.getChildAt(0);
-                } else {
-                    urq = (UncollatedReferenceQualifier) urq.getReferencePrefix();
-                }
-            }
-            return urq;
-        }
+		private CopyAssignment setMyVariableTo(
+				UncollatedReferenceQualifier urq, boolean status) {
+			ProgramFactory factory = transformation.getProgramFactory();
+			BooleanLiteral reachedLiteral = factory
+					.createBooleanLiteral(status);
+			CopyAssignment copyAssignment = factory.createCopyAssignment(urq,
+					reachedLiteral);
+			return copyAssignment;
+		}
 
-        private List<UncollatedReferenceQualifier> getLeftHandSide(VariableDeclaration vd) {
-            List<UncollatedReferenceQualifier> retList = new ArrayList<>();
-            List<? extends VariableSpecification> decSp = vd.getVariables();
-            for (VariableSpecification each : decSp) {
-                Identifier id = new Identifier(each.getName());
-                retList.add(new UncollatedReferenceQualifier(id));
-            }
-            return retList;
-        }
+		private int setAllOtherToFalse(String variable,
+				ASTList<Statement> body, int index) {
+			for (UncollatedReferenceQualifier urq : getFromMap(variable)) {
+				body.add(index++, setMyVariableTo(urq, false));
+			}
+			return index;
+		}
 
-        private void recursiveHandler(ProgramElement pe, Set<String> identifiers) {
-            if (pe instanceof Modifier) {
-                // do nothing
-            } else if (pe instanceof EmptyStatement) {
-                // do nothing
-            } else if (pe instanceof Identifier) {
-                Identifier id = (Identifier) pe;
-                if (id.getParent() instanceof UncollatedReferenceQualifier) {
-                    identifiers.add(id.getText());
-                }
-            } else if (pe instanceof Literal) {
-                // do nothing, again
-            } else {
-                JavaNonTerminalProgramElement ntpe = (JavaNonTerminalProgramElement) pe;
-                int childCount = ntpe.getChildCount();
-                for (int i = 0; i < childCount; i++) {
-                    ProgramElement child = ntpe.getChildAt(i);
-                    recursiveHandler(child, identifiers);
-                }
-            }
-        }
+		private CopyAssignment createFajitaGoalWithURQ(ProgramFactory factory,
+				int goalId, UncollatedReferenceQualifier urq) {
+			Identifier fajitaGoalId = factory
+					.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG
+							+ "_" + goalId);
+			UncollatedReferenceQualifier fajitaGoal = factory
+					.createUncollatedReferenceQualifier(fajitaGoalId);
+			CopyAssignment copyAssignment = factory.createCopyAssignment(
+					fajitaGoal, urq);
+			return copyAssignment;
+		}
 
-        private boolean isAssignment(Object st) {
-            return (st instanceof BinaryAndAssignment) || (st instanceof BinaryOrAssignment) || (st instanceof BinaryXOrAssignment)
-                    || (st instanceof CopyAssignment) || (st instanceof DivideAssignment) || (st instanceof MinusAssignment)
-                    || (st instanceof ModuloAssignment) || (st instanceof PlusAssignment) || (st instanceof ShiftLeftAssignment)
-                    || (st instanceof ShiftRightAssignment) || (st instanceof TimesAssignment)
-                    || (st instanceof UnsignedShiftRightAssignment);
-        }
-    }
+		private List<UncollatedReferenceQualifier> getFromMap(String name) {
+			List<UncollatedReferenceQualifier> list = definitions.get(name);
+			if (list == null) {
+				list = new ArrayList<>();
+				definitions.put(name, list);
+			}
+			return list;
+		}
+
+		private UncollatedReferenceQualifier getLeftHandSide(Assignment ass) {
+			UncollatedReferenceQualifier urq = (UncollatedReferenceQualifier) ass
+					.getChildAt(0);
+			while (urq.getReferencePrefix() != null) {
+				if (urq.getReferencePrefix() instanceof ThisReference) {
+					return (UncollatedReferenceQualifier) ass.getChildAt(0);
+				} else {
+					urq = (UncollatedReferenceQualifier) urq
+							.getReferencePrefix();
+				}
+			}
+			return urq;
+		}
+
+		private List<UncollatedReferenceQualifier> getLeftHandSide(
+				VariableDeclaration vd) {
+			List<UncollatedReferenceQualifier> retList = new ArrayList<>();
+			List<? extends VariableSpecification> decSp = vd.getVariables();
+			for (VariableSpecification each : decSp) {
+				Identifier id = new Identifier(each.getName());
+				retList.add(new UncollatedReferenceQualifier(id));
+			}
+			return retList;
+		}
+
+		private void recursiveHandler(ProgramElement pe, Set<String> identifiers) {
+			if (pe instanceof Modifier) {
+				// do nothing
+			} else if (pe instanceof EmptyStatement) {
+				// do nothing
+			} else if (pe instanceof Identifier) {
+				Identifier id = (Identifier) pe;
+				if (id.getParent() instanceof UncollatedReferenceQualifier) {
+					identifiers.add(id.getText());
+				}
+			} else if (pe instanceof Literal) {
+				// do nothing, again
+			} else {
+				JavaNonTerminalProgramElement ntpe = (JavaNonTerminalProgramElement) pe;
+				int childCount = ntpe.getChildCount();
+				for (int i = 0; i < childCount; i++) {
+					ProgramElement child = ntpe.getChildAt(i);
+					recursiveHandler(child, identifiers);
+				}
+			}
+		}
+
+		private boolean isAssignment(Object st) {
+			return (st instanceof BinaryAndAssignment)
+					|| (st instanceof BinaryOrAssignment)
+					|| (st instanceof BinaryXOrAssignment)
+					|| (st instanceof CopyAssignment)
+					|| (st instanceof DivideAssignment)
+					|| (st instanceof MinusAssignment)
+					|| (st instanceof ModuloAssignment)
+					|| (st instanceof PlusAssignment)
+					|| (st instanceof ShiftLeftAssignment)
+					|| (st instanceof ShiftRightAssignment)
+					|| (st instanceof TimesAssignment)
+					|| (st instanceof UnsignedShiftRightAssignment);
+		}
+	}
 
 }
