@@ -39,7 +39,6 @@ import recoder.java.expression.operator.LogicalAnd;
 import recoder.java.expression.operator.LogicalOr;
 import recoder.java.expression.operator.MinusAssignment;
 import recoder.java.expression.operator.ModuloAssignment;
-import recoder.java.expression.operator.Negative;
 import recoder.java.expression.operator.NotEquals;
 import recoder.java.expression.operator.PlusAssignment;
 import recoder.java.expression.operator.ShiftLeftAssignment;
@@ -111,8 +110,20 @@ public class MultipleConditionTransformation extends FajitaSourceTransformation 
 	private Set<String> getClassMethods() {
 		Set<String> classMethods = new HashSet<String>();
 
+		String classToCheck = configuration.getClassToCheck();
+		String[] splitClassToCheck = classToCheck.split("\\.");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++) {
+			classToCheck += splitClassToCheck[idx] + ".";
+		}
+		if (splitClassToCheck.length > 1) {
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2]
+					+ "Instrumented.";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+
 		FajitaClassMethodDiscoveryVisitor methodDiscoveryVisitor = new FajitaClassMethodDiscoveryVisitor(
-				configuration.getClassToCheck(), classMethods);
+				classToCheck, classMethods);
 		TreeWalker treeWalker = new TreeWalker(compilationUnit);
 		while (treeWalker.next())
 			treeWalker.getProgramElement().accept(methodDiscoveryVisitor);
@@ -314,9 +325,21 @@ public class MultipleConditionTransformation extends FajitaSourceTransformation 
 		 */
 		@Override
 		public void visitMethodDeclaration(MethodDeclaration x) {
+			String classToCheck = configuration.getClassToCheck();
+			String[] splitClassToCheck = classToCheck.split("\\.");
+			classToCheck = "";
+			for (int idx = 0; idx < splitClassToCheck.length - 2; idx++) {
+				classToCheck += splitClassToCheck[idx] + ".";
+			}
+			if (splitClassToCheck.length > 1) {
+				classToCheck += splitClassToCheck[splitClassToCheck.length - 2]
+						+ "Instrumented.";
+			}
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+
 			visitingReachableMethod = reachableMethods.contains(x.getName())
-					&& configuration.getClassToCheck().equals(
-							packagePrefix + getContainingClass(x));
+					&& classToCheck.equals(packagePrefix
+							+ getContainingClass(x));
 			StatementBlock block = (StatementBlock) x.getBody();
 			StatementBlock replacement = analyzeStamentBlock(block);
 			transformation.replace(block, replacement);
