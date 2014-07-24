@@ -1197,9 +1197,5 @@ public class SnapshotBuilder {
 
 		return returnValue;
 	}
-	
-	public ClassLoader getLoader() {
-        return loader;
-    }
 
 }

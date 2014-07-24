@@ -96,9 +96,20 @@ public class BranchTransformation extends FajitaSourceTransformation {
 	private Set<String> getClassMethods() {
 		Set<String> classMethods = new HashSet<String>();
 		
+		String classToCheck = configuration.getClassToCheck();
+		String[] splitClassToCheck = classToCheck.split("\\.");
+		classToCheck = "";
+		for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+			classToCheck += splitClassToCheck[idx] + ".";
+		}
+		if (splitClassToCheck.length > 1){
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented.";
+		}
+		classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+		
 		FajitaClassMethodDiscoveryVisitor methodDiscoveryVisitor =
 			new FajitaClassMethodDiscoveryVisitor(
-				configuration.getClassToCheck(), classMethods);
+				classToCheck, classMethods);
 		TreeWalker treeWalker = new TreeWalker(compilationUnit);
 		while (treeWalker.next())
 			treeWalker.getProgramElement().accept(methodDiscoveryVisitor);
@@ -427,9 +438,20 @@ public class BranchTransformation extends FajitaSourceTransformation {
 		 */
 		@Override
 		public void visitMethodDeclaration(MethodDeclaration x) {
+			String classToCheck = configuration.getClassToCheck();
+			String[] splitClassToCheck = classToCheck.split("\\.");
+			classToCheck = "";
+			for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+				classToCheck += splitClassToCheck[idx] + ".";
+			}
+			if (splitClassToCheck.length > 1){
+				classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented.";
+			}
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
+			
 			visitingReachableMethod =
 				reachableMethods.contains(x.getName()) &&
-				configuration.getClassToCheck().equals(
+				classToCheck.equals(
 					packagePrefix + getContainingClass(x));
 		}
 		

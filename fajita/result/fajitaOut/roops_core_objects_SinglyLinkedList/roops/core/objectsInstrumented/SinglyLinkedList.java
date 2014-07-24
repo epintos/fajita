@@ -6,13 +6,22 @@ import roops.utilInstrumented.RoopsArray;
  * @Invariant all n: SinglyLinkedListNode | ( ( n in this.header.*next @- null ) => ( n !in n.next.*next @- null ) ) ;
  */
 public class SinglyLinkedList {
+
+    /** @Modifies_Everything
+	 * @Ensures false;
+	 */
     static public void containsTest (SinglyLinkedList list, Object value_param) {
+        fajita_roopsGoal_initialization ();
         boolean ret_val;
-        if ( list != null && list.repOK () ) {
+        if ( list != null && list.repOK () )
+        {
+            roops_goal_0 = true;
             ret_val = list.contains (value_param);
         }
         else
-        {}
+        {
+            roops_goal_1 = true;
+        }
     }
     static public void insertBackTest (SinglyLinkedList list, Object arg) {
         if ( list != null && list.repOK () ) {
@@ -37,29 +46,50 @@ public class SinglyLinkedList {
 
         current = this.header;
         result = false;
-        while ( result == false && current != null ) {
+        {
+            boolean fajita_cicle_2 = false;
+            while ( result == false && current != null )
+            { fajita_cicle_2 = true;
+                roops_goal_2 = true;
 
-            boolean equalVal;
+                boolean equalVal;
 
-            if ( value_param == null && current.value == null ) {
-                equalVal = true;
-            } else if ( value_param != null ) {
+                if ( value_param == null && current.value == null )
+                {
+                    roops_goal_4 = true;
+                    equalVal = true;
+                } else if ( value_param != null )
+                    {
+                        roops_goal_5 = true;
 
-                    if ( value_param == current.value ) {
-                        equalVal = true;
-                    } else {
+                        if ( value_param == current.value )
+                        {
+                            roops_goal_7 = true;
+                            equalVal = true;
+                        } else
+                        {
+                            roops_goal_8 = true;
+                            equalVal = false;
+                        }
+                    } else
+                    {
+                        roops_goal_6 = true;
                         equalVal = false;
                     }
-                } else {
-                    equalVal = false;
-                }
 
-            if ( equalVal == true ) {
-                result = true;
+                if ( equalVal == true )
+                {
+                    roops_goal_9 = true;
+                    result = true;
+                }
+                else
+                {
+                    roops_goal_10 = true;
+                }
+                current = current.next;
             }
-            else
-            {}
-            current = current.next;
+            if ( ! fajita_cicle_2 )
+                roops_goal_3 = true;
         }
         return result;
     }
@@ -131,6 +161,45 @@ public class SinglyLinkedList {
 
     public boolean repOK () {
         return true;
+    }
+
+    public static boolean roops_goal_0;
+
+    public static boolean roops_goal_1;
+
+    public static boolean roops_goal_2;
+
+    public static boolean roops_goal_3;
+
+    public static boolean roops_goal_4;
+
+    public static boolean roops_goal_5;
+
+    public static boolean roops_goal_6;
+
+    public static boolean roops_goal_7;
+
+    public static boolean roops_goal_8;
+
+    public static boolean roops_goal_9;
+
+    public static boolean roops_goal_10;
+
+    public static RoopsArray myRoopsArray;
+
+    public static void fajita_roopsGoal_initialization () {
+        roops_goal_0 = false;
+        roops_goal_1 = false;
+        roops_goal_2 = false;
+        roops_goal_3 = false;
+        roops_goal_4 = false;
+        roops_goal_5 = false;
+        roops_goal_6 = false;
+        roops_goal_7 = false;
+        roops_goal_8 = false;
+        roops_goal_9 = false;
+        roops_goal_10 = false;
+        myRoopsArray = null;
     }
 }
 /* end roops.core.objects */

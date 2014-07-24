@@ -15,6 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import rfm.alloy.CoverageClauseCallback;
 
 import ar.edu.taco.TacoAnalysisResult;
+import ar.edu.taco.TacoMain;
 import ar.edu.taco.engine.SnapshotStage;
 import ar.edu.taco.jml.parser.JmlParser;
 import ar.edu.taco.junit.UnitTestBuilder;
@@ -82,14 +83,27 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 			return;
 		
 		try {
-//			URL url = new URL("file://" + configuration.getCompiledClassToCheckPath());
-			URLClassLoader loader = null;
+			
+			ClassLoader cl = ClassLoader.getSystemClassLoader();
+			@SuppressWarnings("resource")			
+			ClassLoader loader = new URLClassLoader(new URL[]{new File(configuration.getCompiledClassToCheckPath()).toURI().toURL()}, cl);
+			
+			String classToCheck = configuration.getClassToCheck();
+			String[] splitClassToCheck = classToCheck.split("\\.");
+			classToCheck = "";
+			for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+				classToCheck += splitClassToCheck[idx] + ".";
+			}
+			if (splitClassToCheck.length > 1){
+				classToCheck += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented.";
+			}
+			classToCheck += splitClassToCheck[splitClassToCheck.length - 1];
 			
 			SnapshotStage snapshotStage = new SnapshotStage(
 				JmlParser.getInstance().getCompilationUnits(),
 				new TacoAnalysisResult(
 					new AlloyAnalysisResult(true, world, command, a4Solution)),
-				configuration.getClassToCheck(),
+					classToCheck,
 				configuration.getMethodToCheck() + "_0"
 			);
 			snapshotStage.setLoader(loader);
@@ -98,7 +112,7 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 
 			UnitTestBuilder unitTestBuilder = new UnitTestBuilder(
 				snapshotStage.getRecoveredInformation());
-			unitTestBuilder.setLoader(snapshotStage.getLoader());
+			unitTestBuilder.setLoader(loader);
 			unitTestBuilder.setOutputPath(configuration.getUserResultPath() + separator);
 			unitTestBuilder.setStaticFieldNameFilter(configuration.getGoalTagFilter());
 			unitTestBuilder.createUnitTest();

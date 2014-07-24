@@ -24,13 +24,9 @@ public class SnapshotStage implements ITacoStage {
 	private RecoveredInformation recoveredInformation;
 	
 	private boolean noVerify = false;
-	private ClassLoader loader = null;
+	private ClassLoader loader = Thread.currentThread().getContextClassLoader();
 	public void setLoader(ClassLoader loader) {
 		this.loader = loader;
-	}
-	
-	public ClassLoader getLoader(){
-		return loader;
 	}
 	public void setNoVerify(boolean value) {
 		this.noVerify = value;
@@ -54,8 +50,7 @@ public class SnapshotStage implements ITacoStage {
 			String methodToCheck) {
 		this.asts = asts;
 		this.classToCheck = classToCheck;
-		this.methodToCheck = methodToCheck.substring(0,
-				methodToCheck.lastIndexOf("_"));
+		this.methodToCheck = methodToCheck.substring(0, methodToCheck.lastIndexOf("_"));
 		this.tacoAnalysisResult = tacoAnalysisResult;
 	}
 
@@ -80,7 +75,7 @@ public class SnapshotStage implements ITacoStage {
 						.replace("/", ".") + aJCompilationUnitType.fileNameIdent();
 	
 				 if (unitTypeName.equals(classToCheck)) {
-				informationRecoveryManager
+					 informationRecoveryManager
 						.processTypeDeclaration(aJCompilationUnitType);
 				 }
 			}
@@ -98,8 +93,8 @@ public class SnapshotStage implements ITacoStage {
 				} else {			
 					SnapshotBuilder snapshotBuilder = new SnapshotBuilder(
 							recoveredInformation, this.tacoAnalysisResult);
-					snapshotBuilder.createSnapshot();	
-					loader = snapshotBuilder.getLoader();
+					snapshotBuilder.setLoader(loader);
+					snapshotBuilder.createSnapshot();				
 				}
 			}
 

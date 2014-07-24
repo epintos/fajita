@@ -499,7 +499,7 @@ final class JDynAlloyXlatorVisitor extends JDynAlloyVisitor {
 		String methodToCheck = JDynAlloyConfig.getInstance().getMethodToCheck();
 		String[] splitMethodToCheck = methodToCheck.split("_");
 		methodToCheck = "";
-		for (int idx = 0; idx < splitMethodToCheck.length - 5; idx++){
+		for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
 			methodToCheck += splitMethodToCheck[idx] + "_";
 		}
 		if (splitMethodToCheck.length >= 4){
