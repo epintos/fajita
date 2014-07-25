@@ -493,6 +493,7 @@ public abstract class FajitaSourceTransformation extends Transformation {
 					// ADD THE INITIALIZATION METHOD TO THE DECLARATION OF THE
 					// CLASS
 					x.getMembers().add(initializaionDeclaration);
+					configuration.getAllUsesAuxVariables().clear();
 				}
 			}
 		}

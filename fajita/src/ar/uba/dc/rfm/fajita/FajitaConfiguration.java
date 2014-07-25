@@ -110,6 +110,7 @@ public class FajitaConfiguration {
 	private int dualClassBranchIteration = 0;
 	private ASTList<Statement> dualInitializationStatements;
 	private int dualDiscoveredBranches;
+	private int allUsesUnrollCount = 0;
 	private List<String> allUsesAuxVariables = new LinkedList<>();
 
 	
@@ -341,6 +342,14 @@ public class FajitaConfiguration {
 	}
 	public List<String> getAllUsesAuxVariables() {
         return allUsesAuxVariables;
+    }
+
+    public int getAllUsesUnrollCount() {
+        return allUsesUnrollCount;
+    }
+
+    public void setAllUsesUnrollCount(int allUsesUnrollCount) {
+        this.allUsesUnrollCount = allUsesUnrollCount;
     }
 
 }
