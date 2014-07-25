@@ -68,6 +68,7 @@ public class JavaClassNameNormalizer {
 
 	public String getQualifiedClassName() {
 		String s = packageName;
+		
 		if (s.length() != 0) {
 			s += "_";
 		}

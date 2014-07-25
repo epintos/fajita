@@ -29,11 +29,11 @@ program java_lang_Integer::Constructor[
   var value:JavaPrimitiveIntegerValue] 
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[thiz'.integerHashCode',value]) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[thiz'.integerHashCode',value]) 
+		}
+	}
 }
 Implementation 
    {
@@ -49,14 +49,14 @@ program java_lang_Integer::equals[
   var obj:java_lang_Object]
 Specification 
 {  
-  SpecCase #0 {
-    requires {
-      neq[thiz, null]
-    }
-    ensures {
-          (throw'=null) and (equ[thiz.integerHashCode',obj.integerHashCode'] implies equ[return', true]) and (neq[thiz.integerHashCode',obj.integerHashCode'] implies equ[return', false])
-    }
-  }
+	SpecCase #0 {
+		requires {
+			neq[thiz, null]
+		}
+		ensures {
+      		(throw'=null) and (equ[thiz.integerHashCode',obj.integerHashCode'] implies equ[return', true]) and (neq[thiz.integerHashCode',obj.integerHashCode'] implies equ[return', false])
+		}
+	}
 }
 Implementation 
    {
@@ -80,101 +80,101 @@ Implementation
 program java_lang_Integer::hashCode[var thiz:java_lang_Integer, var throw:java_lang_Throwable+null, var return:JavaPrimitiveIntegerValue]
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[return', thiz'.integerHashCode']) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[return', thiz'.integerHashCode']) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-     return:=thiz.integerHashCode;     
+	   throw:=null;
+	   return:=thiz.integerHashCode;     
 }
    
    
 program java_lang_Integer::intValue[var thiz:java_lang_Integer, var throw:java_lang_Throwable+null, var return:JavaPrimitiveIntegerValue]
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[return', thiz'.integerHashCode']) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[return', thiz'.integerHashCode']) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-     return:=thiz.integerHashCode;     
+	   throw:=null;
+	   return:=thiz.integerHashCode;     
 }
    
 program java_lang_Integer::toString[var throw:java_lang_Throwable+null, var return:java_lang_String, var i:JavaPrimitiveIntegerValue]
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[return'.stringHashCode',i]) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[return'.stringHashCode',i]) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-       havoc return;
-     assume return.stringHashCode = i;     
+	   throw:=null;
+  	   havoc return;
+	   assume return.stringHashCode = i;     
 }
 
 
 program java_lang_Integer::valueOf[var throw:java_lang_Throwable+null, var return:java_lang_Integer, var s:java_lang_String+null]
 Specification 
 {
-  SpecCase #0 {
-    requires {
-      neq[s,null]
-    }
-    ensures {
-          (throw'=null) and (equ[return'.integerHashCode',s.stringHashCode]) 
-    }
-  }
+	SpecCase #0 {
+		requires {
+			neq[s,null]
+		}
+		ensures {
+      		(throw'=null) and (equ[return'.integerHashCode',s.stringHashCode]) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-       havoc return;
-     assume return.integerHashCode = s.stringHashCode;     
+	   throw:=null;
+  	   havoc return;
+	   assume return.integerHashCode = s.stringHashCode;     
 }
 
 
 program java_lang_Integer::valueOf[var throw:java_lang_Throwable+null, var return:java_lang_Integer, var i:JavaPrimitiveIntegerValue]
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[return'.integerHashCode',i]) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[return'.integerHashCode',i]) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-       havoc return;
-     assume return.integerHashCode = i;     
+	   throw:=null;
+  	   havoc return;
+	   assume return.integerHashCode = i;     
 }
 
 
 program java_lang_Integer::parseInt[var throw:java_lang_Throwable+null, var return:JavaPrimitiveIntegerValue, var s:java_lang_String]
 Specification 
 {
-  SpecCase #0 {
-    ensures {
-          (throw'=null) and (equ[return', s'.stringHashCode']) 
-    }
-  }
+	SpecCase #0 {
+		ensures {
+      		(throw'=null) and (equ[return', s'.stringHashCode']) 
+		}
+	}
 }
 Implementation
 {
-     throw:=null;
-       havoc return;
-     assume return = s.stringHashCode;     
+	   throw:=null;
+  	   havoc return;
+	   assume return = s.stringHashCode;     
 }
 

@@ -4,17 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import org.antlr.runtime.tree.Tree;
-
 import edu.mit.csail.sdg.annotations.parser.JForgeParser.Node;
-import edu.mit.csail.sdg.annotations.spec.JType;
 import edu.mit.csail.sdg.annotations.spec.ParserException;
 import edu.mit.csail.sdg.annotations.spec.PublicVisitor;
 
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.DECL_NONE;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.DECL_SEQ;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.DECL_SET;
-import static edu.mit.csail.sdg.annotations.parser.JForgeParser.FRAME_ALL;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_AND;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_BIT_AND_OR_INTERSECTION;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_BIT_NOT_OR_TRANSPOSE;
@@ -59,12 +55,9 @@ import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_TRANSPOSE;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_UNION;
 import static edu.mit.csail.sdg.annotations.parser.JForgeParser.OP_USHR;
 
-import ar.edu.jdynalloy.factory.JDynAlloyFactory;
-import ar.edu.jdynalloy.factory.DynalloyFactory;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.factory.JPredicateFactory;
 import ar.edu.jdynalloy.factory.JSignatureFactory;
-import ar.edu.jdynalloy.xlator.JDynAlloyTyping;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.taco.jfsl.AlloyComposite.DECL;
@@ -90,7 +83,6 @@ import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula.Operator;
-import ar.uba.dc.rfm.alloy.util.ExpressionPrinter;
 
 class JfslVisitor extends PublicVisitor<AlloyComposite, JfslToJDynAlloyEnv> {
 

@@ -1,7 +1,6 @@
 package ar.edu.taco.jfsl;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -27,9 +26,7 @@ import ar.edu.jdynalloy.ast.JPrecondition;
 import ar.edu.jdynalloy.ast.JProgramDeclaration;
 import ar.edu.jdynalloy.ast.JRepresents;
 import ar.edu.jdynalloy.ast.JSpecCase;
-import ar.edu.jdynalloy.buffer.Represents;
 import ar.edu.jdynalloy.xlator.JType;
-import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
 import ar.edu.taco.utils.jml.JmlAstTransverseStatementVisitor;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
@@ -101,6 +98,7 @@ public class JfslTranslatorJmlVisitor extends JmlAstTransverseStatementVisitor {
 		this.visitJmlTypeDeclaration(jmlInterfaceDeclaration);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void visitJmlTypeDeclaration(JmlTypeDeclaration jmlTypeDeclaration) {
 		if (!this.env.containsSimpleJmlNodeMap(jmlTypeDeclaration))
 			throw new IllegalStateException(

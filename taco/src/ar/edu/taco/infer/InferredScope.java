@@ -79,9 +79,20 @@ public class InferredScope {
 		else
 			return this.inferred_scope.getInferredScopeOf(signature_id).int_value;
 	}
-
-	public int getInferredMaxSeqLength() {
-		return (int) Math.pow(2, this.inferred_alloy_bitwidth-1)-1;
-
+	
+	public Scope getInferredScope(){
+		return inferred_scope;
+	}
+	
+	public Scope getInferredConcreteInputScope(){
+		return inferred_concrete_input_scope;
+	}
+	
+	public Scope getBoundedConcreteInputScope(){
+		return bounded_concrete_input_scope;
+	}
+	
+	public Scope getInferredConcreteProgramScope(){
+		return inferred_concrete_program_scope;
 	}
 }

@@ -125,11 +125,11 @@ final public class CTypeAdapter {
 	}
 
 	private JType translateArray(CArrayType ctype) {
-		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+//		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
 			CType base_type = ctype.getBaseType();
 			if (base_type instanceof CNumericType) {
 				switch (base_type.getTypeID()) {
-				case Constants.TID_INT:
+				case Constants.TID_INT: return JType.parse("java_lang_IntArray+null");
 				case Constants.TID_BYTE:
 				case Constants.TID_LONG:
 				case Constants.TID_CHAR:
@@ -150,9 +150,9 @@ final public class CTypeAdapter {
 			} else {
 				throw new IllegalArgumentException("base type not supported");
 			}
-		} else {
-			return JType.parse("java_lang_SystemArray+null");
-		}
+//		} else {
+//			return JType.parse("java_lang_SystemArray+null");
+//		}
 	}
 
 	private JType translateBoolean(CBooleanType ctype) {

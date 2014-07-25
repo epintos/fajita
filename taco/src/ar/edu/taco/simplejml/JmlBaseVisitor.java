@@ -19,7 +19,10 @@
  */
 package ar.edu.taco.simplejml;
 
+import java.util.List;
+
 import org.jmlspecs.checker.*;
+import org.multijava.mjc.CType;
 import org.multijava.mjc.JAddExpression;
 import org.multijava.mjc.JArrayAccessExpression;
 import org.multijava.mjc.JArrayDimsAndInits;
@@ -53,6 +56,7 @@ import org.multijava.mjc.JDoStatement;
 import org.multijava.mjc.JEmptyStatement;
 import org.multijava.mjc.JEqualityExpression;
 import org.multijava.mjc.JExplicitConstructorInvocation;
+import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JExpressionListStatement;
 import org.multijava.mjc.JExpressionStatement;
 import org.multijava.mjc.JFieldDeclaration;
@@ -84,6 +88,7 @@ import org.multijava.mjc.JRealLiteral;
 import org.multijava.mjc.JRelationalExpression;
 import org.multijava.mjc.JReturnStatement;
 import org.multijava.mjc.JShiftExpression;
+import org.multijava.mjc.JStatement;
 import org.multijava.mjc.JStringLiteral;
 import org.multijava.mjc.JSuperExpression;
 import org.multijava.mjc.JSwitchGroup;
@@ -105,15 +110,22 @@ import org.multijava.mjc.MJGenericFunctionDecl;
 import org.multijava.mjc.MJMathModeExpression;
 import org.multijava.mjc.MJTopLevelMethodDeclaration;
 import org.multijava.mjc.MJWarnExpression;
+import org.multijava.util.compiler.JavaStyleComment;
+import org.multijava.util.compiler.TokenReference;
 
 import ar.edu.taco.TacoNotImplementedYetException;
+import ar.edu.taco.jml.expression.ESExpressionVisitor;
+import ar.edu.taco.jml.utils.ASTUtils;
+import ar.edu.taco.utils.jml.JmlAstClonerExpressionVisitor;
 
-/**
- * @author elgaby
- *
- */
+
 public class JmlBaseVisitor extends JmlAbstractVisitor implements JmlVisitor {
 
+	public static int variableNameIndex;
+
+	private List<JStatement> newStatements;
+
+	
 	/* (non-Javadoc)
 	 * @see org.jmlspecs.checker.JmlVisitor#visitJmlAbruptSpecBody(org.jmlspecs.checker.JmlAbruptSpecBody)
 	 */
@@ -1514,6 +1526,9 @@ public class JmlBaseVisitor extends JmlAbstractVisitor implements JmlVisitor {
 		throw new TacoNotImplementedYetException();
 
 	}
+	
+	
+	
 
 	/* (non-Javadoc)
 	 * @see org.multijava.mjc.MjcVisitor#visitForStatement(org.multijava.mjc.JForStatement)
@@ -1605,14 +1620,14 @@ public class JmlBaseVisitor extends JmlAbstractVisitor implements JmlVisitor {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.multijava.mjc.MjcVisitor#visitMethodCallExpression(org.multijava.mjc.JMethodCallExpression)
-	 */
-	@Override
-	public void visitMethodCallExpression(JMethodCallExpression arg0) {
-		throw new TacoNotImplementedYetException();
-
-	}
+//	/* (non-Javadoc)
+//	 * @see org.multijava.mjc.MjcVisitor#visitMethodCallExpression(org.multijava.mjc.JMethodCallExpression)
+//	 */
+//	@Override
+//	public void visitMethodCallExpression(JMethodCallExpression arg0) {
+//		throw new TacoNotImplementedYetException();
+//
+//	}
 
 	/* (non-Javadoc)
 	 * @see org.multijava.mjc.MjcVisitor#visitMethodDeclaration(org.multijava.mjc.JMethodDeclaration)
@@ -1946,6 +1961,45 @@ public class JmlBaseVisitor extends JmlAbstractVisitor implements JmlVisitor {
 		throw new TacoNotImplementedYetException();
 
 	}
+	
+
+	
+//	public void visitFieldParameterExpression(JClassFieldParameterExpression self) {
+//		JExpression prefix;
+//		if (self.prefix() == null && !self.getField().isStatic()) {
+//			prefix = new JThisExpression(self.getTokenReference());
+//		} else if (self.prefix() == null && self.getField().isStatic()) {
+//			prefix = new JTypeNameExpression(self.getTokenReference(),self.getField().owner().getType(), new JNameExpression(self.getTokenReference(),self.getField().owner().ident()));
+//		} else {
+//			self.prefix().accept(this);
+//			prefix = ((JmlAstClonerExpressionVisitor)this).getArrayStack().pop();
+//		}
+//			
+////		JLocalVariableExpression createVarReference = createNewVariable(self.getTokenReference(),self.getType());
+////		JStatement assignamentStatement = ASTUtils.createAssignamentStatement(createVarReference, self);
+////		this.getNewStatements().add(new JExpressionStatement(self.getTokenReference(), self, null));
+////		this.getNewStatements().add(assignamentStatement);
+////		getArrayStack().push(createVarReference);
+//
+//		JClassFieldParameterExpression newSelf = new JClassFieldParameterExpression(self.getTokenReference(), prefix, self.ident());
+//		newSelf.setField(self.getField());
+//		newSelf.setType(self.getType());
+//
+//		((JmlAstClonerExpressionVisitor)this).getArrayStack().push(newSelf);
+//
+//	}
+	
+	
+//	public static String createNewVariableName() {
+//		JmlBaseVisitor.variableNameIndex++;
+//		String s = "t_" + variableNameIndex;
+//		return s;
+//	}
+
+	public List<JStatement> getNewStatements() {
+		return newStatements;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see org.multijava.mjc.MjcVisitor#visitWhileStatement(org.multijava.mjc.JWhileStatement)

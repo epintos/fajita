@@ -28,7 +28,10 @@ import org.multijava.mjc.JCompilationUnitType;
 
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JDynAlloyPrinter;
+import ar.edu.jdynalloy.xlator.JType;
+import ar.edu.taco.simplejml.helpers.PackedListOfJDynAlloyModule_InvariantVarsAndPreds;
 import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 
 /**

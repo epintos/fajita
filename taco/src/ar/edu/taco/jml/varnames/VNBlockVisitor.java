@@ -47,7 +47,6 @@ import org.multijava.mjc.JVariableDeclarationStatement;
 import org.multijava.mjc.JVariableDefinition;
 import org.multijava.mjc.JWhileStatement;
 
-import ar.edu.jdynalloy.ast.JLoopInvariant;
 import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 

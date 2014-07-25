@@ -69,7 +69,10 @@ public class FNExpressionVisitor extends JmlAstClonerExpressionVisitor {
 	
 		JavaClassNameNormalizer classNameNormalizer = new JavaClassNameNormalizer(visitedSelf.referenceType().toString());
 		String normalizedClassName = classNameNormalizer.getQualifiedClassName();
-		JmlStoreRefExpression jmlStoreRefExpression = FieldRenameUtil.convertJmlStoreRefExpression(visitedSelf.storeRefExpression(),normalizedClassName, true);
+//mfrias-mffrias-23-09-2012-visitedSelf.storeRefExpression() -----> visitedSelf.storeRefExpressions()
+//mfrias-mffrias-23-09-2012-JmlStoreRefExpression jmlStoreRefExpression -----> JmlStoreRefExpression jmlStoreRefExpression[]
+
+		JmlStoreRefExpression jmlStoreRefExpression[] = FieldRenameUtil.convertJmlStoreRefExpression(visitedSelf.storeRefExpressions(),normalizedClassName, true);
 		JmlReachExpression newSelf = new  JmlReachExpression( self.getTokenReference(),visitedSelf.specExpression(),visitedSelf.referenceType(),jmlStoreRefExpression);
 		this.getArrayStack().push(newSelf);
 	}

@@ -91,13 +91,13 @@ public class SinglyLinkedListTest_containsTest_0 {
     @Test
     public void testcontainsTest_0() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
+        int value_param_Integer_1 = 327697;
         // Parameter Initialization
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
+            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -107,253 +107,13 @@ public class SinglyLinkedListTest_containsTest_0 {
     @Test
     public void testcontainsTest_1() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
+        int value_param_Integer_1 = 327697;
         // Parameter Initialization
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_2() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_3() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_Throwable_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_Throwable_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_4() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_Throwable_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_Throwable_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_5() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_6() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_Throwable_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_Throwable_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_7() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_8() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_9() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_10() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_11() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_12() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_13() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_14() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_15() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_16() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        java.lang.Object value_param_RoopsArray_1 = new java.lang.Object();
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_RoopsArray_1});
+            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 

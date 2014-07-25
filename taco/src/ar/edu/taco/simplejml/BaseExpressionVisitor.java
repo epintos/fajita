@@ -27,7 +27,6 @@ import ar.edu.jdynalloy.factory.JPredicateFactory;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprIfCondition;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.IffFormula;
 
 /**
  * @author elgaby

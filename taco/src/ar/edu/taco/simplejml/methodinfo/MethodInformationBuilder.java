@@ -19,7 +19,6 @@
  */
 package ar.edu.taco.simplejml.methodinfo;
 
-import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.multijava.mjc.CStdType;
@@ -37,7 +36,7 @@ import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
 public class MethodInformationBuilder {
 	private static MethodInformationBuilder INSTANCE;
 	
-	private Map<String, MethodInformation> methods;
+//	private Map<String, MethodInformation> methods;
 	
 	private MethodInformationBuilder() {
 	}

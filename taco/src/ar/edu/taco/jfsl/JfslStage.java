@@ -2,10 +2,7 @@ package ar.edu.taco.jfsl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 
 import org.jmlspecs.checker.JmlMethodDeclaration;
@@ -13,15 +10,11 @@ import org.jmlspecs.checker.JmlTypeDeclaration;
 import org.multijava.mjc.JCompilationUnitType;
 import org.multijava.mjc.JFormalParameter;
 
-import ar.edu.jdynalloy.ast.IJDynAlloyVisitor;
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
-import ar.edu.jdynalloy.ast.JDynAlloyVisitor;
 import ar.edu.jdynalloy.ast.JProgramDeclaration;
 import ar.edu.taco.TacoConfigurator;
-import ar.edu.taco.TacoCustomScope;
 import ar.edu.taco.engine.ITacoStage;
 import ar.edu.taco.jml.JmlToSimpleJmlContext;
-import ar.edu.taco.simplejml.JDynAlloyASTVisitor;
 import ar.edu.taco.simplejml.SimpleJmlToJDynAlloyContext;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveFloatValue;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
@@ -81,6 +74,7 @@ public class JfslStage implements ITacoStage {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	private JfslToJDynAlloyEnv createJfslToJDynAlloyEnvironment(JmlToSimpleJmlContext jmlToSimpleJmlContext,
 			SimpleJmlToJDynAlloyContext simpleJmlToJDynAlloyContext) {
 
@@ -106,7 +100,7 @@ public class JfslStage implements ITacoStage {
 
 				env.putSimpleJmlToJDynAlloy(jmlTypeDeclaration, jdynalloy_module);
 
-				ArrayList<JmlMethodDeclaration> methods = jmlTypeDeclaration.methods();
+				ArrayList<JmlMethodDeclaration> methods = (ArrayList<JmlMethodDeclaration>)jmlTypeDeclaration.methods();
 
 				String signatureId = jdynalloy_module.getSignature().getSignatureId();
 

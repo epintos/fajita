@@ -36,7 +36,7 @@ import ar.uba.dc.rfm.dynalloy.visualization.VizException;
 public class RegresionTestBase extends TestCase {
 
 	public static boolean initializated = false;
-	Properties overridingProperties;
+	Properties overridingProperties = null;
 
 	/**
 	 * User can't set config key after call "checkAssertion" or "runAssertion"
@@ -64,15 +64,13 @@ public class RegresionTestBase extends TestCase {
 
 	}
 
-	// BEGIN ************************************ PUBLIC API
-	// ****************************
+	// BEGIN ************************************ PUBLIC API ***************************************
 
 	protected void runAndCheck(String configFile, String methodToCheck, boolean hasCounterExample) throws VizException {
 		AlloyAnalysisResult runAnalysisResult = runAssertionSupport(configFile, methodToCheck);
 		if (runAnalysisResult!=null) {
 		  assertTrue("The method doesn't have instance ", runAnalysisResult.isSAT());
 		}
-		
 		check(configFile, methodToCheck, hasCounterExample);
 	}
 
@@ -150,6 +148,8 @@ public class RegresionTestBase extends TestCase {
 		checkAnalizerIsCalled();
 		this.overridingProperties.put("objectScope", value);
 	}
+	
+	
 
 	protected void setConfigKeyIncludeSimulationProgramDeclaration(boolean value) {
 		checkAnalizerIsCalled();
@@ -178,6 +178,10 @@ public class RegresionTestBase extends TestCase {
 		this.overridingProperties.put("checkNullDereference", value);
 	}
 
+
+	protected void setConfigKeyCheckArithmeticException(boolean value){
+		this.overridingProperties.put("checkArithmeticException", value);
+	}
 
 
 	protected void setConfigKeyLoopUnroll(int value) {

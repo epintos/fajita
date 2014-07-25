@@ -70,6 +70,9 @@ public class AlloyAnalyzer {
 		Module world;
 		Command command = null;
 		try {
+//mffrias-mfrias-06/10/2012-set default values of optimizations.		
+			TranslateAlloyToKodkod.boundsHackEnabled = false;
+			TranslateAlloyToKodkod.removeAlloySyntaxChecksHackEnabled = true;			
 			world = CompUtil.parseEverything_fromFile(log, null, alloyFilename);
 
 			if (world.getAllCommands().isEmpty()) {
@@ -89,7 +92,7 @@ public class AlloyAnalyzer {
 						"Command not found: " + commandToRun.toString());
 				}
 			}
-
+			
 			log.alloy2kodkod(command);
 			answer = TranslateAlloyToKodkod.execute_command(
 				log, world.getAllReachableSigs(), command, alloy4Options);
@@ -116,8 +119,7 @@ public class AlloyAnalyzer {
 		A4Options alloyOptions = new A4Options();
 
 		// Default solver is MiniSatJNI if none is specified
-		alloyOptions.solver = A4Options.SatSolver.MiniSatJNI;
-
+		alloyOptions.solver = A4Options.SatSolver.MiniSat220JNI;
 		return alloyOptions;
 	}
 

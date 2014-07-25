@@ -37,7 +37,6 @@ import ar.edu.jdynalloy.binding.JBindingKey;
 import ar.edu.jdynalloy.factory.JDynAlloyFactory;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.factory.JPredicateFactory;
-import ar.edu.jdynalloy.factory.JSignatureFactory;
 import ar.edu.taco.simplejml.builtin.JNullPointerException;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprComprehension;
@@ -48,7 +47,6 @@ import ar.uba.dc.rfm.alloy.ast.expressions.ExprJoin;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprSum;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExpressionVisitor;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.JFormulaVisitor;
 import ar.uba.dc.rfm.alloy.ast.formulas.OrFormula;
 
@@ -69,7 +67,7 @@ public class NullDerefVisitor extends JDynAlloyMutator {
 			return super.visit(n);
 		}
 
-		private JFormulaVisitor formulaVisitor;
+//		private JFormulaVisitor formulaVisitor;
 
 		@Override
 		public Object visit(ExprComprehension e) {

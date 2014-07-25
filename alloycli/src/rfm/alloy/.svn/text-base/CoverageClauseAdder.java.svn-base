@@ -112,7 +112,7 @@ public class CoverageClauseAdder {
 					|| (primary_var_0_value == true && primary_var_1_value == false);
 
 			int primary_var = primary_var_0_value ? primary_var_0 : primary_var_1;
-			boolean_query_primary_variables.add(primary_var);
+			boolean_query_primary_variables.add(primary_var_0);
 			bq_valuation.put(primary_var, boolean_query_evaluation);
 			bqVariablesToPrimaryVariables.put(nameBQ(boolean_query_relation.name()), primary_var);
 

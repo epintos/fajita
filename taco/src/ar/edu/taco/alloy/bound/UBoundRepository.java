@@ -1,12 +1,7 @@
 package ar.edu.taco.alloy.bound;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +15,14 @@ import org.xml.sax.SAXException;
 
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
-import ar.edu.taco.alloy.AlloyCustomScope;
 import ar.edu.taco.alloy.AlloyScope;
 import ar.edu.taco.jdynalloy.JDynAlloyClassDiagram;
 
 class UBoundRepository {
 
 	private static class UpperBoundXML implements Serializable {
+		static final long serialVersionUID = 345678345;
+		
 		private String xmlDoc;
 
 		public UpperBoundXML(String xmlDoc) {
@@ -73,7 +69,6 @@ class UBoundRepository {
 		roops_case_studies.put("roops_core_objects_NodeCachingLinkedList", "roops_core_objects_LinkedListNode");
 		roops_case_studies.put("roops_core_objects_SinglyLinkedList", "roops_core_objects_SinglyLinkedListNode");
 		roops_case_studies.put("roops_core_objects_TreeSet", "roops_core_objects_TreeSetEntry");
-		roops_case_studies.put("roops_core_objects_IntRedBlackTreeMap", "roops_core_objects_IntRedBlackTreeMapNode");
 
 		if (roops_case_studies.containsKey(class_to_check)) {
 			return look_up_repository(class_to_check, roops_case_studies.get(class_to_check), alloy_scope);

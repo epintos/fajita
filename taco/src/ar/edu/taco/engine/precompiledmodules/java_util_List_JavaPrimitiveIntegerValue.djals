@@ -31,9 +31,9 @@ program java_util_List::Constructor[
   var throw:java_lang_Throwable+null] 
 Specification
    {
-  SpecCase #0 {
-    ensures {equ[throw',null]}
-  }
+	SpecCase #0 {
+		ensures {equ[throw',null]}
+	}
    }
 Implementation 
 
@@ -76,9 +76,9 @@ program java_util_List::remove[
   var index:JavaPrimitiveIntegerValue]
 Specification
    {
-  SpecCase #0 {
-    ensures {equ[throw',null]}
-  }
+	SpecCase #0 {
+		ensures {equ[throw',null]}
+	}
    }
 Implementation 
    {   
@@ -107,9 +107,9 @@ program java_util_List::add[
   var e:java_lang_Object+null]     
 Specification
    {
-  SpecCase #0 {
-    ensures {equ[throw',null]}
-  }
+	SpecCase #0 {
+		ensures {equ[throw',null]}
+	}
    }
 Implementation 
    {
@@ -123,9 +123,9 @@ program java_util_List::size[
   var return:JavaPrimitiveIntegerValue]
 Specification
    {
-  SpecCase #0 {
-    ensures {equ[throw',null]}
-  }
+	SpecCase #0 {
+		ensures {equ[throw',null]}
+	}
    }
 Implementation 
    {
@@ -142,9 +142,9 @@ program java_util_List::get[
   var index:JavaPrimitiveIntegerValue]
 Specification
    {
-  SpecCase #0 {
-    ensures {equ[throw',null]}
-  }
+	SpecCase #0 {
+		ensures {equ[throw',null]}
+	}
    }
 Implementation 
    {

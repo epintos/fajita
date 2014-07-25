@@ -7,6 +7,7 @@ import java.util.Set;
 
 import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.taco.TacoConfigurator;
+import ar.edu.taco.TacoCustomScope;
 import ar.edu.taco.dynalloy.ArithmeticOpCounter;
 import ar.edu.taco.dynalloy.FloatOpCounter;
 import ar.edu.taco.dynalloy.IntegerOpCounter;
@@ -20,11 +21,16 @@ import ar.edu.taco.simplejml.builtin.JavaPrimitiveLongValue;
 
 public class ScopeInference {
 
-	private static final int DEFAULT_ALLOY_BITWDITH = 6;
+	private static final int DEFAULT_ALLOY_BITWDITH = 1;
 	private List<JDynAlloyModule> src_jdynalloy_modules = null;
 	private ArithmeticOpCounter arithmetic_op_counter = null;
 	private ObjectCreationCounter object_alloc_counter = null;
 
+	/**<p>Infer all the scopes and the bitwidth to be used in the analysis.</p>
+	 * <p>If the analysis must be performed using Java arithmetics, the inferred
+	 * bitwidth will be the sum of the scopes of the signatures being analyzed.</p>
+	 * @return
+	 */
 	public InferredScope inferScope() {
 		check_state();
 
@@ -39,9 +45,9 @@ public class ScopeInference {
 		// infer program-scope
 		Scope inferred_concrete_program_scope = infer_program_scope();
 
-		// consolidate scopes using extends relation
+		// consolidate scopes using extends relation and Custom Scope
 		Graph extension_tree = ClassGraphBuilder.buildExtensionTree(this.src_jdynalloy_modules);
-		Scope inferred_scope = consolidate_scope(extension_tree, bounded_concrete_input_scope, inferred_concrete_program_scope);
+		Scope inferred_scope = consolidate_scope(extension_tree, bounded_concrete_input_scope, inferred_concrete_program_scope, TacoConfigurator.getInstance().getTacoCustomScope());//mfrias: added the custom scope.
 
 		// infer bitwidth
 		int inferred_bitwidth = infer_alloy_bitwidth(inferred_scope);
@@ -55,7 +61,7 @@ public class ScopeInference {
 		return InferredScope.getInstance();
 	}
 
-	private Scope consolidate_scope(final Graph tree, final Scope bounded_input_scope, final Scope inferred_program_scope) {
+	private Scope consolidate_scope(final Graph tree, final Scope bounded_input_scope, final Scope inferred_program_scope, final TacoCustomScope customScope) {//mfrias: added the custom scope in order to consolidate using this scope as well.
 		Scope inferred_scope = new Scope();
 		Set<String> signature_set = new HashSet<String>();
 		signature_set.addAll(bounded_input_scope.signatureSet());
@@ -64,7 +70,11 @@ public class ScopeInference {
 		for (String signature_id : signature_set) {
 			int bounded_input_scope_of = bounded_input_scope.getInferredScopeOf(signature_id).int_value;
 			int inferred_program_scope_of = inferred_program_scope.getInferredScopeOf(signature_id).int_value;
-			int concrete_scope_of = bounded_input_scope_of + inferred_program_scope_of;
+			int custom_scope_of = 0;
+			if (customScope.getCustomTypes().contains(signature_id.replace("_", "."))) {
+				custom_scope_of = customScope.getScopeForType(signature_id.replace("_", ".")); //mfrias: compute the custom scope for type signature_id.
+			}	
+			int concrete_scope_of = Math.max(custom_scope_of, bounded_input_scope_of + inferred_program_scope_of); //mfrias: consider the maximum with the custom scope.
 			inferred_scope.setInputScopeInteger(signature_id, concrete_scope_of);
 		}
 
@@ -93,26 +103,35 @@ public class ScopeInference {
 		return scope;
 	}
 
+	/**<p>If the analysis must be performed using Java arithmetics, the inferred
+	 * bitwidth will be the sum of the scopes of the signatures being analyzed.</p>
+	 * @param consolidated_scope
+	 * @return the inferred alloy bitwidth
+	 */
 	private int infer_alloy_bitwidth(Scope consolidated_scope) {
 		// look for cardinality functions
 
-//		Set<String> predicate_ids = new HashSet<String>();
-//		Set<String> function_ids = new HashSet<String>();
-//		for (JDynAlloyModule jdyn_module : src_jdynalloy_modules) {
-//			JDynAlloyFunPredCollector visitor = new JDynAlloyFunPredCollector();
-//			jdyn_module.accept(visitor);
-//			function_ids.addAll(visitor.getCollectedFunctions());
-//			predicate_ids.addAll(visitor.getCollectedPredicates());
-//		}
-//
+		Set<String> predicate_ids = new HashSet<String>();
+		Set<String> function_ids = new HashSet<String>();
+		for (JDynAlloyModule jdyn_module : src_jdynalloy_modules) {
+			JDynAlloyFunPredCollector visitor = new JDynAlloyFunPredCollector();
+			jdyn_module.accept(visitor);
+			function_ids.addAll(visitor.getCollectedFunctions());
+			predicate_ids.addAll(visitor.getCollectedPredicates());
+		}
+
+//mfrias: the condition below seems wrong. The scope is required in class CardinalSizeOfPlugin in order to build the correct (considers the scope) predicate. 
+// Therefore, in this point, neither the function nor the predicate were included. Since the "sizeOf" funcs/preds are included iff we useJavaArithmetic, I will
+// instead check this condition.		
 //		if (function_ids.contains("fun_java_primitive_integer_value_size_of") || predicate_ids.contains("pred_java_primitive_integer_value_size_of")) {
-//
-//			IntegerOrInfinity object_scope = consolidated_scope.getInferredScopeOf(JObject.getInstance().getModule().getSignature().getSignatureId());
-//			int object_scope_int = object_scope.int_value;
-//			int inferred_alloy_bitwidth = log2(object_scope_int) + 1;
-//
-//			return inferred_alloy_bitwidth;
-//		}
+		if (TacoConfigurator.getInstance().getUseJavaArithmetic() == true) {
+
+			IntegerOrInfinity object_scope = consolidated_scope.getInferredScopeOf(JObject.getInstance().getModule().getSignature().getSignatureId());
+			int object_scope_int = object_scope.int_value;
+			int inferred_alloy_bitwidth = log2(object_scope_int) + 1;
+
+			return inferred_alloy_bitwidth;
+		}
 
 		return DEFAULT_ALLOY_BITWDITH;
 	}

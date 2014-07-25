@@ -2,9 +2,6 @@ package ar.edu.taco.stryker.api.impl;
 
 public class StringsToWriteInFile {
 
-	// TODO: Sacar la / al reach, /reach --> reach
-	// TODO: Agregar el .class al segundo parametro.
-	// TODO: Poner entre comillas el tercero.
 	
 	public final static String reachMethod = "" +
 //		"    @java.lang.SuppressWarnings(\"unchecked\")" + "\n" +
@@ -30,9 +27,9 @@ public class StringsToWriteInFile {
 		"                    java.lang.reflect.Field field = currentObject.getClass().getDeclaredField(fieldAsString);" + "\n" +
 		"                    fieldsToMoveThrough.add(field);" + "\n" +
 		"                } catch (NoSuchFieldException e) {" + "\n" +
-		"                " + "\n" +
+		"                " + "e.printStackTrace();" + "\n" +
 		"                } catch (SecurityException e) {" + "\n" +
-		"                     " + "\n" +
+		"                     " + "e.printStackTrace();" + "\n" +
 		"                }" + "\n" +
 		"            }" + "\n" +
 		"            " + "\n" +
@@ -48,14 +45,13 @@ public class StringsToWriteInFile {
 		"                        }" + "\n" +
 		"                    }" + "\n" +
 		"                } catch (IllegalArgumentException e) {" + "\n" +
-		"                " + "\n" +
+		"                " + "e.printStackTrace();" + "\n" +
 		"                } catch (IllegalAccessException e) {" + "\n" +
-		"                    " + "\n" +
+		"                    " + "e.printStackTrace();" + "\n" +
 		"                }" + "\n" +
 		"            }" + "\n" +
 		"        }" + "\n" +
 		"        " + "\n" +
-//		"		System.out.println(\"hola: \"+objectSet.int_size());" + "\n" +
 		"        return objectSet;" + "\n" +
 	    "    }" + "\n";
 }

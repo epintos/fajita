@@ -29,40 +29,49 @@ public class StrykerCacheListTest extends CollectionTestBase {
 		return "roops.core.objects.NodeCachingLinkedList";
 	}
 	
-	public void test_removeOk() throws VizException {
-		setConfigKeyRelevantClasses("roops.core.objects.NodeCachingLinkedList,roops.core.objects.LinkedListNode");
+ 	public void test_removeOk() throws VizException {
+        setConfigKeyRelevantClasses("roops.core.objects.NodeCachingLinkedList,roops.core.objects.LinkedListNode");
 		setConfigKeyRelevancyAnalysis(true);
 		setConfigKeyCheckNullDereference(true);
-		setConfigKeyUseJavaArithmetic(false);// fun_set_size
-		setConfigKeyUseJavaSBP(true);
-		setConfigKeyInferScope(false);
+		setConfigKeyUseJavaArithmetic(true);// fun_set_size
+		setConfigKeyInferScope(true);
 	    setConfigKeyIntBithwidth(4);
 	    setConfigKeyLoopUnroll(6);
+	    setConfigKeyObjectScope(0);
 		setConfigKeySkolemizeInstanceInvariant(true);
 		setConfigKeySkolemizeInstanceAbstraction(true);
 		setConfigKeyGenerateUnitTestCase(true);
-		setConfigKeyAttemptToCorrectBug(true);
+		setConfigKeyAttemptToCorrectBug(false);
 		setConfigKeyRemoveQuantifiers(true);
+		setConfigKeyUseJavaSBP(true);
 		setConfigKeyUseTightUpperBounds(true);
 		setConfigKeyMaxStrykerMethodsPerFile(50);
-		setConfigKeyTypeScopes("roops.core.objects.NodeCachingLinkedList:1,roops.core.objects.LinkedListNode:7");
+//		setCondigKeyBuildJavaTrace(true);
+		setConfigKeyTypeScopes("roops.core.objects.NodeCachingLinkedList:1,roops.core.objects.LinkedListNode:6");
 		check(GENERIC_PROPERTIES,"removeOk_0",false);
 	}
 	
-	public void test_removeBuggy() throws VizException {
-		setConfigKeyRelevantClasses("roops.core.objects.NodeCachingLinkedList,roops.core.objects.LinkedListNode");
+ 	public void test_metodoPablo() throws VizException {
+        setConfigKeyRelevantClasses("roops.core.objects.NodeCachingLinkedList,roops.core.objects.LinkedListNode");
 		setConfigKeyRelevancyAnalysis(true);
 		setConfigKeyCheckNullDereference(true);
-		setConfigKeyUseJavaArithmetic(false);
-		setConfigKeyInferScope(false);
-		
-		setConfigKeyObjectScope(3);
-		setConfigKeyIntBithwidth(6);	
-		setConfigKeyLoopUnroll(1);
+		setConfigKeyUseJavaArithmetic(true);// fun_set_size
+		setConfigKeyInferScope(true);
+	    setConfigKeyIntBithwidth(2);
+	    setConfigKeyLoopUnroll(6);
+	    setConfigKeyObjectScope(0);
 		setConfigKeySkolemizeInstanceInvariant(true);
 		setConfigKeySkolemizeInstanceAbstraction(true);
 		setConfigKeyGenerateUnitTestCase(true);
-		check(GENERIC_PROPERTIES,"removeBuggy_0",false);
+		setConfigKeyAttemptToCorrectBug(false);
+		setConfigKeyRemoveQuantifiers(true);
+		setConfigKeyUseJavaSBP(true);
+		setConfigKeyUseTightUpperBounds(true);
+		setConfigKeyMaxStrykerMethodsPerFile(50);
+//		setCondigKeyBuildJavaTrace(true);
+		setConfigKeyTypeScopes("roops.core.objects.NodeCachingLinkedList:1,roops.core.objects.LinkedListNode:6");
+		check(GENERIC_PROPERTIES,"metodoPablo_0",false);
 	}
 
+	
 }

@@ -20,6 +20,7 @@ public class TacoCustomScope {
 	
 	private int alloyBitwidth = DEFAULT_ALLOY_BITWIDTH;
 	
+	@SuppressWarnings("unused")
 	private int unroll = DEFAULT_UNROLL;
 
 	private int alloyMaxSequenceLength = DEFAULT_MAX_ALLOY_SEQUENCE_LENGTH;

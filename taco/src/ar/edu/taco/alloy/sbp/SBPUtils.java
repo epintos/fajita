@@ -134,8 +134,10 @@ class SBPUtils {
 		if (to.size() > 1) {
 			// TODO: Add support for this.
 			throw new RuntimeException("Multiple images not yet supported: " + to);
-		}
-		return to.iterator().next();
+		} else if (to.size() == 0) {
+			return "null";
+		} else
+			return to.iterator().next();
 	}
 
 	static void debugPrint(String fileName, AlloyModule alloyModule) {
@@ -152,12 +154,20 @@ class SBPUtils {
 		return javaType.equals("Int");
 	}
 
+	/* javaType comes with underscores as separators */
 	static int getScope(String javaType) {
 
 		AlloyScope alloy_scope;
 		if (TacoConfigurator.getInstance().getInferScope() == true) {
-			InferredScope inferred_scope = InferredScope.getInstance();
-			alloy_scope = new AlloyScope(inferred_scope);
+			String javaTypeDots = javaType.replace("_", ".");
+			if (TacoConfigurator.getInstance().getTacoCustomScope().getCustomTypes().contains(javaTypeDots) == true){
+				TacoCustomScope taco_custom_scope = TacoConfigurator.getInstance().getTacoCustomScope();
+				AlloyCustomScope alloyScope = new AlloyCustomScope(taco_custom_scope);
+				alloy_scope = new AlloyScope(alloyScope);
+			} else {
+				InferredScope inferred_scope = InferredScope.getInstance();
+				alloy_scope = new AlloyScope(inferred_scope);
+			}
 		} else {
 			TacoCustomScope taco_custom_scope = TacoConfigurator.getInstance().getTacoCustomScope();
 			AlloyCustomScope alloyScope = new AlloyCustomScope(taco_custom_scope);

@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.jmlspecs.checker.JmlClassDeclaration;
-import org.jmlspecs.checker.JmlInterfaceDeclaration;
 import org.jmlspecs.checker.JmlMethodDeclaration;
 import org.jmlspecs.checker.JmlNode;
 import org.jmlspecs.checker.JmlTypeDeclaration;

@@ -49,6 +49,7 @@ import org.jmlspecs.checker.JmlMethodSpecification;
 import org.jmlspecs.checker.JmlNormalBehaviorSpec;
 import org.jmlspecs.checker.JmlNormalSpecBody;
 import org.jmlspecs.checker.JmlNormalSpecCase;
+import org.jmlspecs.checker.JmlPredicate;
 import org.jmlspecs.checker.JmlRefinePrefix;
 import org.jmlspecs.checker.JmlRepresentsDecl;
 import org.jmlspecs.checker.JmlRequiresClause;
@@ -59,6 +60,7 @@ import org.jmlspecs.checker.JmlSpecBodyClause;
 import org.jmlspecs.checker.JmlSpecCase;
 import org.jmlspecs.checker.JmlSpecification;
 import org.multijava.mjc.CCompilationUnit;
+import org.multijava.mjc.CType;
 import org.multijava.mjc.JAssertStatement;
 import org.multijava.mjc.JBlock;
 import org.multijava.mjc.JBreakStatement;
@@ -107,6 +109,7 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 		return stack;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void visitJmlCompilationUnit(JmlCompilationUnit self) {
 
@@ -114,6 +117,7 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 		JPackageName package_name = self.packageName();
 		CCompilationUnit export = null;
 		JPackageImportType[] imported_packages = self.importedPackages();
+		@SuppressWarnings("rawtypes")
 		ArrayList imported_units = new ArrayList();
 		Collections.addAll(imported_units, self.importedUnits());
 		JTypeDeclarationType[] typeDeclarations = self.typeDeclarations();
@@ -124,6 +128,7 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 			JTypeDeclarationType cloned_type_declaration = (JTypeDeclarationType) ret_val;
 			new_type_declarations[i] = cloned_type_declaration;
 		}
+		@SuppressWarnings("rawtypes")
 		ArrayList top_level_methods = self.tlMethods();
 		JmlRefinePrefix refinePrefix = self.refinePrefix();
 
@@ -132,6 +137,7 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 		this.getStack().push(compilationUnit);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void visitJmlClassDeclaration(JmlClassDeclaration self) {
 
@@ -153,6 +159,7 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 			}
 		}
 
+		@SuppressWarnings("rawtypes")
 		ArrayList newMethods = new ArrayList();
 		for (JmlMethodDeclaration methodDeclaration : (ArrayList<JmlMethodDeclaration>) self.methods()) {
 			methodDeclaration.accept(this);
@@ -455,6 +462,17 @@ public class JmlAstClonerStatementVisitor extends JmlBaseVisitor {
 
 	@Override
 	public void visitJmlSignalsClause(JmlSignalsClause self) {
+//		if (self.isNotSpecified()) {
+//			throw new IllegalArgumentException("Signals clause is not specified.");
+//		}
+//		
+////		self.predOrNot().accept(this);
+////		JmlPredicate pred = (JmlPredicate) this.getStack().pop();
+//		
+//		JmlPredicate newPredicate = simplifyPredicateSupport(self.predOrNot());
+//
+//		JmlSignalsClause newSelf = new JmlSignalsClause(self.getTokenReference(), self.isRedundantly(), self.type(), self.ident(), pred, false);
+////		
 		this.getStack().push(self);
 	}
 

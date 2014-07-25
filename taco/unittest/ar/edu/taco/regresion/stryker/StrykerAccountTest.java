@@ -20,7 +20,8 @@ public class StrykerAccountTest extends CollectionTestBase {
 		setConfigKeyLoopUnroll(5);
 		setConfigKeyRemoveQuantifiers(true);
 		setConfigKeyGenerateUnitTestCase(true);
-		setConfigKeyAttemptToCorrectBug(true);
-		runAndCheck(GENERIC_PROPERTIES,"withdraw_0", true);
+		setConfigKeyAttemptToCorrectBug(false);
+		setConfigKeyTypeScopes("ar.edu.taco.stryker.LightAccount:1");
+		check(GENERIC_PROPERTIES,"withdraw_0", false);
 	}
 }

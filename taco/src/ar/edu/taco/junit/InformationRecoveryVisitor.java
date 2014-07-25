@@ -58,6 +58,7 @@ public class InformationRecoveryVisitor extends JmlAstTransverseStatementVisitor
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void visitJmlClassDeclaration(JmlClassDeclaration jmlClassDeclaration) {
 		// Transverse Inner Classes

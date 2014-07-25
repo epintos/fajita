@@ -19,38 +19,11 @@
  */
 package ar.edu.taco.simplejml.helpers;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
 
-import org.multijava.mjc.CType;
-import org.multijava.mjc.JBinaryExpression;
-import org.multijava.mjc.JExpression;
-import org.multijava.mjc.JLocalVariableExpression;
-import org.multijava.mjc.JMethodCallExpression;
-import org.multijava.mjc.JNewObjectExpression;
-import org.multijava.mjc.JSuperExpression;
-import org.multijava.mjc.JUnaryExpression;
-import org.multijava.mjc.JVariableDefinition;
 
-import ar.edu.jdynalloy.factory.JExpressionFactory;
-import ar.edu.taco.TacoNotImplementedYetException;
-import ar.edu.taco.simplejml.ExpressionVisitor;
-import ar.edu.taco.simplejml.JmlExpressionVisitor;
 import ar.edu.taco.simplejml.JmlBaseExpressionVisitor.Instant;
-import ar.edu.taco.simplejml.methodinfo.MethodInformation;
-import ar.edu.taco.simplejml.methodinfo.MethodInformationBuilder;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
-import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
-import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
-import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.EqualsFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.PredicateCallAlloyFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula;
-import ar.uba.dc.rfm.alloy.ast.formulas.QuantifiedFormula.Operator;
 
 /**
  * @author elgaby

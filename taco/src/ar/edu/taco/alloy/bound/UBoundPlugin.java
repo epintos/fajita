@@ -9,15 +9,14 @@ import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoCustomScope;
 import ar.edu.taco.alloy.AlloyCustomScope;
 import ar.edu.taco.alloy.AlloyScope;
+import ar.edu.taco.infer.Scope;
 import ar.edu.taco.infer.InferredScope;
 import ar.edu.taco.jdynalloy.JDynAlloyClassDiagram;
 import ar.edu.taco.jdynalloy.JDynAlloyClassDiagramBuilder;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
-import ar.uba.dc.rfm.alloy.ast.AlloyFact;
 import ar.uba.dc.rfm.alloy.ast.AlloyModule;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
-import ar.uba.dc.rfm.alloy.ast.expressions.ExprUnion;
 import ar.uba.dc.rfm.dynalloy.plugin.AlloyASTPlugin;
 
 public class UBoundPlugin implements AlloyASTPlugin {
@@ -29,10 +28,25 @@ public class UBoundPlugin implements AlloyASTPlugin {
 
 		JDynAlloyClassDiagram class_diagram = JDynAlloyClassDiagramBuilder.buildClassDiagram(src_jdynalloy_modules);
 
+		TacoCustomScope taco_custom_scope = TacoConfigurator.getInstance().getTacoCustomScope();
+		AlloyCustomScope alloyCustomScope = new AlloyCustomScope(taco_custom_scope);
+
+		
 		AlloyScope alloy_scope ;
 		if (TacoConfigurator.getInstance().getInferScope() == true) {
-			InferredScope inferred_scope = InferredScope.getInstance();
-			alloy_scope = new AlloyScope(inferred_scope);
+			InferredScope inferredScope = InferredScope.getInstance();
+			Scope inferred = inferredScope.getInferredScope();
+			for (String signature_id : inferredScope.inferred_signature_set()){
+				int scope_of;
+				if (alloyCustomScope.getCustomAlloyTypes().contains(signature_id)) {
+					scope_of = alloyCustomScope.getScopeForAlloySig(signature_id);
+					inferred = inferredScope.getInferredScope();
+					inferred.setInputScopeInteger(signature_id, scope_of);
+				}	
+			}
+			InferredScope.initialize_inferred_scope(inferred, inferredScope.getInferredAlloyBitwidth(), inferredScope.getInferredConcreteInputScope(), inferredScope.getBoundedConcreteInputScope(), inferredScope.getInferredConcreteProgramScope());
+			inferredScope = InferredScope.getInstance();
+			alloy_scope = new AlloyScope(inferredScope);
 		} else {
 			TacoCustomScope taco_scope = TacoConfigurator.getInstance().getTacoCustomScope();
 			AlloyCustomScope alloy_custom_scope = new AlloyCustomScope(taco_scope);

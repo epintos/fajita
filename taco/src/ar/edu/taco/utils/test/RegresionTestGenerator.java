@@ -41,6 +41,7 @@ public class RegresionTestGenerator {
 
 	private Map<String, Integer> methodsCount;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public RegresionTestGenerator() {
 		this.methodsNameWithCounterexampleSet = new HashSet();
 		Collections.addAll(this.methodsNameWithCounterexampleSet, METHODS_WITH_COUNTEREXAMPLE);
@@ -52,7 +53,7 @@ public class RegresionTestGenerator {
 	}
 
 	private void doGenerate() throws ClassNotFoundException {
-		Class targetClazz = retrieveClazz();
+		Class<?> targetClazz = retrieveClazz();
 		collectMethods(targetClazz);
 		String generatedTestSource = generateTestSource();
 		System.out.println(generatedTestSource);
@@ -67,6 +68,7 @@ public class RegresionTestGenerator {
 		return buffer.toString();
 	}
 
+	@SuppressWarnings("unused")
 	private void generateHeader(StringBuffer buffer) {
 		buffer.append("package ar.edu.taco.regresion.slicing.koa;" + EOL);
 		buffer.append("" + EOL);
@@ -116,6 +118,7 @@ public class RegresionTestGenerator {
 //		}
 	}
 	
+	@SuppressWarnings("unused")
 	private void generateMethodSupport(StringBuffer buffer, String methodName, boolean hasCounterExample) {
 		buffer.append(EOL);
 		buffer.append("    public void testRunAndCheck_" + methodName + "() throws VizException {" + EOL);
@@ -124,16 +127,17 @@ public class RegresionTestGenerator {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void generateFooter(StringBuffer buffer) {
 		buffer.append("}" + EOL);
 	}
 
-	private Class retrieveClazz() throws ClassNotFoundException {
-		Class clazz = Class.forName(targetClassName);
+	private Class<?> retrieveClazz() throws ClassNotFoundException {
+		Class<?> clazz = Class.forName(targetClassName);
 		return clazz;
 	}
 
-	private void collectMethods(Class targetClazz) {
+	private void collectMethods(Class<?> targetClazz) {
 		this.methodsCount = new HashMap<String, Integer>();
 		for (Method method : targetClazz.getMethods()) {
 			// avoid inherited methods
@@ -142,7 +146,7 @@ public class RegresionTestGenerator {
 			}
 		}
 
-		for (Constructor constructor : targetClazz.getConstructors()) {
+		for (@SuppressWarnings({ "unused", "rawtypes" }) Constructor constructor : targetClazz.getConstructors()) {
 			increaseMethodCount("Constructor");
 		}
 	}

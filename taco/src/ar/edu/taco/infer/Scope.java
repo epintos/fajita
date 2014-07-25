@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-class Scope {
+public class Scope {
 	private Map<String, IntegerOrInfinity> scope = new HashMap<String, IntegerOrInfinity>();
 
 	public void setInputScopeInteger(String type_str, int input_scope) {

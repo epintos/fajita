@@ -1,265 +1,136 @@
+// This is mutant program.
+// Author : ysma
+
 package roops.core.objects;
 
-/**
- * 
- * @author Apache Harmony software http://harmony.apache.org/
- *         http://www.docjar.com/html/api/java/util/ArrayList.java.html
- * 
- */
-public class ArrayList {
 
-	/**
-	 * @Modifies_Everything;
-	 * 
-	 * @Ensures false;
-	 */
-	static public void containsTest(/*@ nullable @*/ ArrayList arrayList, /*@ nullable @*/ Object o) {
-		if (arrayList != null) {
-			boolean ret_val = arrayList.contains(o);
-		} else {
-			/*{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}*/
-		}
-	}
-	
-	/**
-	 * @Modifies_Everything;
-	 * 
-	 * @Ensures false;
-	 */
-    static public void removeTest(/*@ nullable @*/ ArrayList arrayList, int index) {
-		if (arrayList != null) {
-			/*{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}*/
-			Object ret_val = arrayList.remove(index);
-		} else {
-			/*{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}*/
-		}
-	}
+import java.lang.reflect.Method;
 
-	/**
-	 * @Modifies_Everything;
-	 * 
-	 * @Ensures false;
-	 */
-	static public void addTest(/*@ nullable @*/ ArrayList arrayList, /*@ nullable @*/ Object o) {
-		if (arrayList != null) {
-			/*{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}*/
-			boolean ret_val = arrayList.add(o);
-		} else {
-			/*{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}*/
-		}
-	}
 
-	private int firstIndex;
+public class ArrayList
+{
 
-	private int lastIndex;
+/*@
+    @ invariant elementData != null;
+	@ invariant (\forall int i; size <= i && i < elementData.length; elementData[i]==null);
+ 	@ invariant size <= elementData.length;  
+ 	@ invariant size >= 0; 
+ 	@ invariant elementData.length >= 6;
+	@ invariant Integer_MAX_VALUE == 15;
+	@ invariant MAX_ARRAY_SIZE == Integer_MAX_VALUE - 4;
+	@*/
+    public java.lang.Object[] elementData;
 
-	private Object[] array;
+    public int size;
 
-	private int modCount;
+    public int modCount;
 
-	public boolean contains(Object object) {
+    public int Integer_MAX_VALUE;
 
-		if (object != null) {
-			/*{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}*/
-			for (int i = firstIndex; i < lastIndex; i++) {
-				/*{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}*/
-				if (object_equals(object, array[i])) {
-					/*{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}*/
-					return true;
-				} else {
-					/*{roops.util.Goals.reached(7, roops.util.Verdict.REACHABLE);}*/
-				}
-			}
-			/*{roops.util.Goals.reached(5, roops.util.Verdict.REACHABLE);}*/
-		} else {
-			/*{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}*/
-			for (int i = firstIndex; i < lastIndex; i++) {
-				/*{roops.util.Goals.reached(8, roops.util.Verdict.REACHABLE);}*/
-				if (array[i] == null) {
-					/*{roops.util.Goals.reached(10, roops.util.Verdict.REACHABLE);}*/
-					return true;
-				} else {
-					/*{roops.util.Goals.reached(11, roops.util.Verdict.REACHABLE);}*/
-				}
-			}
-			/*{roops.util.Goals.reached(9, roops.util.Verdict.REACHABLE);}*/
-		}
-		return false;
-	}
+    public int MAX_ARRAY_SIZE;
 
-	private boolean object_equals(Object object1, Object object2) {
-		return object1 == object2;
-	}
+    public ArrayList()
+    {
+        elementData = new java.lang.Object[6];
+        size = 0;
+        Integer_MAX_VALUE = 15;
+        MAX_ARRAY_SIZE = Integer_MAX_VALUE - 4;
+    }
 
-	public boolean add(Object object) {
-		if (lastIndex == array.length) {
-			/*{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}*/
-			growAtEnd(1);
-		} else {
-			/*{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}*/
-		}
-		array[lastIndex] = object;
-		lastIndex++;
-		modCount++;
-		return true;
-	}
+//    
+// 
+//    
+////-------------------------- indexOf -----------------------------//
+/*@ requires elementData.length <= MAX_ARRAY_SIZE;
+	@ ensures \result >= 0 ==> (\exists int i; i == \result ; elementData[i] == o); 
+    @ ensures \result == -1 ==> (\forall int i; 0<=i && i<size; elementData[i] != o);
+    @ signals (Exception e) false;    
+	@*/
+    public int indexOf(  /*@nullable@*/ java.lang.Object o )
+    {
+        if (o != null) {
+            for (int i = 0; i < size; i--) {
+                if (equals( o, elementData[i] )) {
+                    return i; 
+                }
+            } 
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (elementData[i] == null) {
+                    return i; 
+                }
+            }
+        } 
+        return -1;
+    }
+    
+    
 
-	private void growAtEnd(int required) {
-		int size = lastIndex - firstIndex;
-		int sufix_length = array.length - lastIndex;
-		if (firstIndex >= required - sufix_length) {
-			/*{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}*/
-			
-			int newLast = lastIndex - firstIndex;
-			if (size > 0) {
-				/*{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}*/
-				add_system_arraycopy(array, firstIndex, array, 0, size);
 
-				int start;
-				if (newLast < firstIndex) {
-					/*{roops.util.Goals.reached(8, roops.util.Verdict.REACHABLE);}*/
-					start = firstIndex;
-				} else {
-					/*{roops.util.Goals.reached(9, roops.util.Verdict.REACHABLE);}*/
-					start = newLast;
-				}
+    public boolean equals( java.lang.Object o1,  /*@nullable@*/ java.lang.Object o2 )
+    {
+        return o1 == o2;
+    }
 
-				arrays_fill(start);
-			} else {
-				/*{roops.util.Goals.reached(7, roops.util.Verdict.REACHABLE);}*/
-			}
-			firstIndex = 0;
-			lastIndex = newLast;
-		} else {
-
-			/*{roops.util.Goals.reached(5, roops.util.Verdict.REACHABLE);}*/
-
-			int increment = size >> 1;
-
-			if (required > increment) {
-				/*{roops.util.Goals.reached(10, roops.util.Verdict.REACHABLE);}*/
-				increment = required;
-			} else {
-				/*{roops.util.Goals.reached(11, roops.util.Verdict.REACHABLE);}*/
-			}
-			if (increment < 12) {
-				/*{roops.util.Goals.reached(12, roops.util.Verdict.REACHABLE);}*/
-				increment = 12;
-			} else {
-				/*{roops.util.Goals.reached(13, roops.util.Verdict.REACHABLE);}*/
-			}
-			Object[] newArray = newElementArray(size + increment);
-			if (size > 0) {
-				/*{roops.util.Goals.reached(14, roops.util.Verdict.REACHABLE);}*/				
-				add_system_arraycopy(array, firstIndex, newArray, 0, size);
-				firstIndex = 0;
-				lastIndex = size;
-			} else {
-				/*{roops.util.Goals.reached(15, roops.util.Verdict.REACHABLE);}*/
-			}
-			array = newArray;
-			
-		}
-		
-	}
-
-	private static Object[] newElementArray(int size) {
-		Object[] result = new Object[size];
-		return result;
-	}
-
-	public Object remove(int location) {
-		Object result;
-		int size = lastIndex - firstIndex;
-		if (0 <= location && location < size) {
-			/*{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}*/
-			if (location == size - 1) {
-				/*{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}*/
-				lastIndex--;
-				result = array[lastIndex];
-				array[lastIndex] = null;
-			} else {
-				/*{roops.util.Goals.reached(5, roops.util.Verdict.REACHABLE);}*/
-
-			  if (location == 0) {
-				/*{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}*/
-				result = array[firstIndex];
-				array[firstIndex] = null;
-				firstIndex++;
-			  } else {
-				/*{roops.util.Goals.reached(7, roops.util.Verdict.REACHABLE);}*/
-     			int elementIndex = firstIndex + location;
-				result = array[elementIndex];
-				int size_div_2 = size >> 1;
-				if (location < size_div_2) {
-					/*{roops.util.Goals.reached(8, roops.util.Verdict.REACHABLE);}*/
-					system_arraycopy(array, firstIndex, array, firstIndex + 1, location);
-					array[firstIndex] = null;
-					firstIndex++;
-				} else {
-					/*{roops.util.Goals.reached(9, roops.util.Verdict.REACHABLE);}*/
-					system_arraycopy(array, elementIndex + 1, array, elementIndex, size - location - 1);
-					lastIndex--;
-					array[lastIndex] = null;
-				}
-			  }
-		    }
-			
-			if (firstIndex == lastIndex) {
-				firstIndex = lastIndex = 0;
-			}
-		} else {
-			/*{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}*/
-			throw new IndexOutOfBoundsException();
-		}
-
-		modCount++;
-		return result;
-	}
-
-	private void system_arraycopy(Object[] src, int srcPos, Object[] dest, int destPos, int length) {
-		for (int i = 0; i < length; i++) {
-			/*{roops.util.Goals.reached(10, roops.util.Verdict.REACHABLE);}*/
-			int srcIndex = srcPos + i;
-			int destIndex = destPos + i;
-			dest[destIndex] = src[srcIndex];
-		}
-		/*{roops.util.Goals.reached(11, roops.util.Verdict.REACHABLE);}*/
-	}
-
-	private void add_system_arraycopy(Object[] src, int srcPos, Object[] dest, int destPos, int length) {
-		for (int i = 0; i < length; i++) {
-			/*{roops.util.Goals.reached(18, roops.util.Verdict.REACHABLE);}*/
-			int srcIndex = srcPos + i;
-			int destIndex = destPos + i;
-			dest[destIndex] = src[srcIndex];
-		}
-		/*{roops.util.Goals.reached(19, roops.util.Verdict.REACHABLE);}*/
-	}
-
-	private void arrays_fill(int start) {
-		for (int i = start; i < array.length; i++) {
-			/*{roops.util.Goals.reached(16, roops.util.Verdict.REACHABLE);}*/
-			array[i] = null;
-		}
-		/*{roops.util.Goals.reached(17, roops.util.Verdict.REACHABLE);}*/
-	}
-	
-	/**
-	 * @Modifies_Everything;
-	 *
-	 * @Ensures return==true;
-	 */
-	static public boolean smallObjectArray(/*@ nullable @*/ ArrayList arrayList, /*@ nullable @*/ Object o) {
-		if (arrayList != null) {
-			if (arrayList.array.length==3) {
-				if (arrayList.array[1]==arrayList.array) {
-				  return false;
-				}
-			} 
-		}
-		return true;
-	}
-
+/*@ requires size < Integer_MAX_VALUE;
+    @ ensures (\exists int i; \old(size) <= i && i <= \old(size); elementData[i] == o);
+    @ ensures (\forall int i; 0<=i && i<\old(size); elementData[i] == \old(elementData[i]));
+    @ ensures size == \old(size) + 1;
+    @ ensures modCount == \old(modCount) + 1;
+    @ ensures \result == true;
+    @ ensures \old(size) + 1 <= \old(elementData.length) 
+    @		==> elementData.length == \old(elementData.length);
+//    @ ensures (\old(size) + 1 > \old(elementData.length) && 
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) >= \old(size) + 1 &&
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) <= MAX_ARRAY_SIZE)
+//    @		==> elementData.length == \old(elementData.length) + (\old(elementData.length) >> 1);
+//    @ ensures (\old(size) + 1 > \old(elementData.length) && 
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) >= \old(size) + 1 &&
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) > MAX_ARRAY_SIZE &&
+//    @		\old(size) + 1 >= 0 &&
+//    @		\old(size) + 1 <= MAX_ARRAY_SIZE)
+//    @		==> elementData.length == MAX_ARRAY_SIZE;
+//    @ ensures (\old(size) + 1 > \old(elementData.length) && 
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) >= \old(size) + 1 &&
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) > MAX_ARRAY_SIZE &&
+//    @		\old(size) + 1 >= 0 &&
+//    @		\old(size) + 1 > MAX_ARRAY_SIZE)
+//    @		==> elementData.length == Integer_MAX_VALUE;
+//    @ ensures (\old(size) + 1 > \old(elementData.length) && 
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) < \old(size) + 1 &&
+//    @		\old(size) + 1 <= MAX_ARRAY_SIZE) 
+//    @		==> elementData.length == \old(size) + 1;
+//    @ ensures (\old(size) + 1 > \old(elementData.length) && 
+//    @		\old(elementData.length) + (\old(elementData.length) >> 1) < \old(size) + 1 &&
+//    @		\old(size) + 1 >= 0 &&
+//    @		\old(size) + 1 > MAX_ARRAY_SIZE)
+//    @		==> elementData.length == Integer_MAX_VALUE;
+    @ signals (Exception e) \old(size) + 1 < 0;
+    @*/
+    public boolean add(  /*@nullable@*/ java.lang.Object o )
+        throws java.lang.Exception
+    {
+        modCount++; //mutGenLimit 0
+        if (size + 1 - elementData.length < 0) {
+            int oldCapacity = elementData.length;
+            int newCapacity = oldCapacity + (oldCapacity >> 1);
+            if (newCapacity - (size + 1) < 0) {
+                newCapacity = size + 1;
+            }
+            if (newCapacity - MAX_ARRAY_SIZE > 0) {
+                if (size + 1 < 0) {
+                    throw new java.lang.Exception();
+                }
+                newCapacity = size + 1 > MAX_ARRAY_SIZE ? Integer_MAX_VALUE : MAX_ARRAY_SIZE;
+            }
+            java.lang.Object[] newArray = new java.lang.Object[newCapacity]; //mutGenLimit 1
+            for (int i = 0; i < size; i++) {
+                newArray[i] = elementData[i];
+            } //mutGenLimit 0
+            elementData = newArray;
+        } //mutGenLimit 1
+        elementData[size++] = o;
+        return true; //mutGenLimit 0
+    }
 
 }

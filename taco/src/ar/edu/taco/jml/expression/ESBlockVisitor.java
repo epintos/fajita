@@ -23,11 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.jmlspecs.checker.JmlAssertStatement;
 import org.jmlspecs.checker.JmlAssignmentStatement;
-import org.jmlspecs.checker.JmlAssumeStatement;
-import org.jmlspecs.checker.JmlPredicate;
-import org.jmlspecs.checker.JmlSpecExpression;
 import org.jmlspecs.checker.JmlVariableDefinition;
 import org.jmlspecs.jmlrac.JavaAndJmlPrettyPrint2;
 import org.multijava.mjc.JBlock;

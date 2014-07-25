@@ -13,19 +13,14 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.helpers.DefaultHandler;
 
 import rfm.alloy.CoverageClauseCallback;
-
 import ar.edu.taco.TacoAnalysisResult;
-import ar.edu.taco.TacoMain;
 import ar.edu.taco.engine.SnapshotStage;
 import ar.edu.taco.jml.parser.JmlParser;
 import ar.edu.taco.junit.UnitTestBuilder;
-
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalysisResult;
-
 import ar.uba.dc.rfm.fajita.FajitaConfiguration;
 import ar.uba.dc.rfm.fajita.FajitaException;
 import ar.uba.dc.rfm.fajita.output.FajitaOutputProcessor.GoalHandler;
-
 import edu.mit.csail.sdg.alloy4compiler.ast.Command;
 import edu.mit.csail.sdg.alloy4compiler.ast.Module;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Solution;

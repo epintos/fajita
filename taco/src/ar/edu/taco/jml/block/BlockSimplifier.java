@@ -19,7 +19,6 @@
  */
 package ar.edu.taco.jml.block;
 
-import org.jmlspecs.checker.JmlLoopStatement;
 import org.multijava.mjc.JBlock;
 import org.multijava.mjc.JConstructorBlock;
 import org.multijava.mjc.JForStatement;
@@ -40,7 +39,7 @@ import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
  */
 public class BlockSimplifier extends JmlAstClonerStatementVisitor {
 	
-	private int forVariableCount = 0;
+//	private int forVariableCount = 0;
 
 	/** Visits the given while statement. */
 	public void visitWhileStatement(/* @non_null */JWhileStatement self) {

@@ -14,9 +14,9 @@ import java.util.Set;
 
 import org.multijava.mjc.JCompilationUnitType;
 
+import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JClassConstraint;
 import ar.edu.jdynalloy.ast.JClassInvariant;
-import ar.edu.jdynalloy.ast.JDynAlloyModule;
 import ar.edu.jdynalloy.ast.JField;
 import ar.edu.jdynalloy.ast.JObjectConstraint;
 import ar.edu.jdynalloy.ast.JObjectInvariant;
@@ -24,15 +24,19 @@ import ar.edu.jdynalloy.ast.JProgramDeclaration;
 import ar.edu.jdynalloy.ast.JRepresents;
 import ar.edu.jdynalloy.ast.JSignature;
 import ar.edu.jdynalloy.factory.JSignatureFactory;
+import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.simplejml.JavaToJDynAlloyManager;
 import ar.edu.taco.simplejml.SimpleJmlToJDynAlloyContext;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveFloatValue;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
 import ar.edu.taco.simplejml.builtin.JavaPrimitiveLongValue;
+import ar.edu.taco.simplejml.helpers.PackedListOfJDynAlloyModule_InvariantVarsAndPreds;
 import ar.uba.dc.rfm.alloy.AlloyTyping;
+import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprConstant;
+import ar.uba.dc.rfm.alloy.ast.expressions.ExprVariable;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.EqualsFormula;
 

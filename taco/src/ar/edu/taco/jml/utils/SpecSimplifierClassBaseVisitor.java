@@ -25,6 +25,7 @@ import org.jmlspecs.checker.JmlInvariant;
 import org.jmlspecs.checker.JmlPredicate;
 import org.jmlspecs.checker.JmlRepresentsDecl;
 import org.jmlspecs.checker.JmlRequiresClause;
+import org.jmlspecs.checker.JmlSignalsClause;
 
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 
@@ -51,6 +52,19 @@ public abstract class SpecSimplifierClassBaseVisitor extends JmlAstClonerStateme
 		this.getStack().push(newSelf);
 	}
 
+	
+	@Override
+	public void visitJmlSignalsClause(JmlSignalsClause self) {
+		if (self.isNotSpecified()) {
+			throw new IllegalArgumentException("Signals clause is not specified.");
+		}
+		JmlPredicate newPredicate = simplifyPredicateSupport(self.predOrNot());
+		JmlSignalsClause newSelf = new JmlSignalsClause(self.getTokenReference(), self.isRedundantly(), self.type(), self.ident(), newPredicate, false);
+
+		this.getStack().push(newSelf);
+	}
+
+	
 	@Override
 	public void visitJmlEnsuresClause(JmlEnsuresClause self) {
 		if (self.isNotSpecified()) {

@@ -33,6 +33,7 @@ import org.multijava.mjc.JAssignmentExpression;
 import org.multijava.mjc.JBitwiseExpression;
 import org.multijava.mjc.JBooleanLiteral;
 import org.multijava.mjc.JCastExpression;
+import org.multijava.mjc.JClassFieldExpression;
 import org.multijava.mjc.JConditionalAndExpression;
 import org.multijava.mjc.JConditionalExpression;
 import org.multijava.mjc.JConditionalOrExpression;
@@ -47,21 +48,24 @@ import org.multijava.mjc.JMethodCallExpression;
 import org.multijava.mjc.JMinusExpression;
 import org.multijava.mjc.JModuloExpression;
 import org.multijava.mjc.JMultExpression;
+import org.multijava.mjc.JNameExpression;
 import org.multijava.mjc.JNewArrayExpression;
 import org.multijava.mjc.JNewObjectExpression;
 import org.multijava.mjc.JOrdinalLiteral;
-import org.multijava.mjc.JPhylum;
 import org.multijava.mjc.JPostfixExpression;
 import org.multijava.mjc.JPrefixExpression;
 import org.multijava.mjc.JRelationalExpression;
 import org.multijava.mjc.JShiftExpression;
 import org.multijava.mjc.JStatement;
+import org.multijava.mjc.JThisExpression;
+import org.multijava.mjc.JTypeNameExpression;
 import org.multijava.mjc.JUnaryExpression;
 import org.multijava.mjc.JVariableDeclarationStatement;
 import org.multijava.mjc.JVariableDefinition;
 import org.multijava.util.compiler.JavaStyleComment;
 import org.multijava.util.compiler.TokenReference;
 
+import ar.edu.jdynalloy.ast.JBlock;
 import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.simplejml.methodinfo.MethodInformation;
 import ar.edu.taco.simplejml.methodinfo.MethodInformationBuilder;
@@ -110,7 +114,7 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 		this.declarationStatements = declarationStatements;
 	}
 
-	public String createNewVariableName() {
+	public static String createNewVariableName() {
 		ESExpressionVisitor.variableNameIndex++;
 		String s = "t_" + variableNameIndex;
 		return s;
@@ -159,10 +163,12 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 		JStatement innerIfThenStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), true));
 		JStatement innerIfElseStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), false));
 		JIfStatement innerIf = ASTUtils.createIfStatement(newRightExpression, innerIfThenStatement, innerIfElseStatement);
+		org.multijava.mjc.JBlock innerBlock = ASTUtils.createBlockStatement(this.getNewStatements().get(this.getNewStatements().size()-1), innerIf);
+		this.getNewStatements().remove(this.getNewStatements().size()-1);
 
 		JStatement outerIfThenStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), true));
 
-		JStatement outerIf = ASTUtils.createIfStatement(newLeftExpression, outerIfThenStatement, innerIf);
+		JStatement outerIf = ASTUtils.createIfStatement(newLeftExpression, outerIfThenStatement, innerBlock);
 
 		this.getNewStatements().add(outerIf);
 
@@ -191,6 +197,7 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 
 		JLocalVariableExpression condReference = new JLocalVariableExpression(self.getTokenReference(), variableDefinition);
 
+
 		self.left().accept(this);
 		JExpression newLeftExpression = this.getArrayStack().pop();
 
@@ -200,10 +207,12 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 		JStatement innerIfThenStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), true));
 		JStatement innerIfElseStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), false));
 		JIfStatement innerIf = ASTUtils.createIfStatement(newRightExpression, innerIfThenStatement, innerIfElseStatement);
+		org.multijava.mjc.JBlock innerBlock = ASTUtils.createBlockStatement(this.getNewStatements().get(this.getNewStatements().size()-1), innerIf);
+		this.getNewStatements().remove(this.getNewStatements().size()-1);
 
 		JStatement outerIfElseStatement = ASTUtils.createAssignamentStatement(condReference, new JBooleanLiteral(self.getTokenReference(), false));
 
-		JStatement outerIf = ASTUtils.createIfStatement(newLeftExpression, innerIf, outerIfElseStatement);
+		JStatement outerIf = ASTUtils.createIfStatement(newLeftExpression, innerBlock, outerIfElseStatement);
 
 		this.getNewStatements().add(outerIf);
 
@@ -442,6 +451,11 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 		expressionDeep--;
 	}
 
+	
+
+
+
+	
 	public JLocalVariableExpression createNewVariable(
 			TokenReference tokenReference, CType type) {
 		String createdVar = createNewVariableName();
@@ -467,6 +481,8 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 //		this.getArrayStack().push(newSelf);
 //	}
 
+	
+//mfrias-mffrias 12-04-2013
 //	@Override
 //	public void visitFieldExpression(JClassFieldExpression self) {
 //		JExpression prefix;
@@ -481,7 +497,7 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 //			
 //		String newName;
 //		
-//		String ident = self.variable().ident();
+//		String ident = self.ident();
 //		if (this.variableNamesReplaces.containsKey( ident )) {
 //			JLocalVariable localVariable = this.variableNamesReplaces.get(ident);
 //			JLocalVariableExpression newSelf = new JLocalVariableExpression(self.getTokenReference(), localVariable);
@@ -497,8 +513,8 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 //
 //		this.getArrayStack().push(newSelf);
 //	}
-//	
-//	
+	
+	
 	
 	/** Visits the given postfix expression. */
 	public void visitPostfixExpression(/* @non_null */JPostfixExpression self) {
@@ -902,6 +918,8 @@ public class ESExpressionVisitor extends JmlAstClonerExpressionVisitor {
 //		
 //	}
 	
+	
+
 	
 	
 	

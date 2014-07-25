@@ -106,5 +106,8 @@ public class VNExpressionVisitor extends JmlAstClonerExpressionVisitor {
 //		JAssignmentExpression newSelf = new JAssignmentExpression(self.getTokenReference(), this.getArrayStack().pop(), this.getArrayStack().pop());
 //		this.getArrayStack().push(newSelf);
 //	}
+	
+	
+	
 
 }

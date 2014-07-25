@@ -19,8 +19,6 @@
  */
 package ar.edu.taco.jml.fieldnames;
 
-import org.jmlspecs.checker.JmlExpression;
-import org.jmlspecs.checker.JmlFileFinder;
 import org.jmlspecs.checker.JmlName;
 import org.jmlspecs.checker.JmlStoreRefExpression;
 import org.multijava.mjc.CClass;
@@ -50,88 +48,101 @@ public class FieldRenameUtil {
 		return returnValue;
 	}
 
-	public static JmlStoreRefExpression convertJmlStoreRefExpression(JmlStoreRefExpression self, String lastVisitedClass) {
+
+//mfrias-mffrias-23-09-2012-JmlStoreRefExpression self ----> JmlStoreRefExpression[] self
+//mfrias-mffrias-23-09-2012-static JmlStoreRefExpression ----> static JmlStoreRefExpression[]
+	
+	public static JmlStoreRefExpression[] convertJmlStoreRefExpression(JmlStoreRefExpression[] self, String lastVisitedClass) {
 		return convertJmlStoreRefExpression(self,lastVisitedClass, new FNExpressionVisitor(lastVisitedClass),false);
 	}
 	
-	public static JmlStoreRefExpression convertJmlStoreRefExpression(JmlStoreRefExpression self, String lastVisitedClass, boolean forceIsField) {
+//mfrias-mffrias-23-09-2012-JmlStoreRefExpression self ----> JmlStoreRefExpression[] self
+//mfrias-mffrias-23-09-2012-static JmlStoreRefExpression ----> static JmlStoreRefExpression[]
+
+	public static JmlStoreRefExpression[] convertJmlStoreRefExpression(JmlStoreRefExpression[] self, String lastVisitedClass, boolean forceIsField) {
 		return convertJmlStoreRefExpression(self,lastVisitedClass, new FNExpressionVisitor(lastVisitedClass),true);
 	}
 	
-
-	public static JmlStoreRefExpression convertJmlStoreRefExpression(JmlStoreRefExpression self, String lastVisitedClass, FNExpressionVisitor visitor,boolean forceIsField) {
-    
-		boolean isField = false;
-		boolean isWildcard = false;
-		JmlName[] jmlNames = new JmlName[self.names().length];
-		//for (int i = 0; i < self.names().length; i++) {
-		JExpression expression = self.expression();
-		for (int i = self.names().length-1; i >= 0 ; i--) {
-			boolean mustBeRenamed;
-			String oldName = self.names()[i].getName();
-			if (oldName.equals("*")) {					
-				mustBeRenamed = false;
-				isWildcard = true;
-			} else if (expression instanceof JClassFieldExpression) {
-				JClassFieldExpression classFieldExpression = (JClassFieldExpression) expression;
-				if (classFieldExpression.getField().isStatic()) {
+//mfrias-mffrias-23-09-2012-JmlStoreRefExpression self ----> JmlStoreRefExpression[] selfArray
+//mfrias-mffrias-23-09-2012-static JmlStoreRefExpression ----> static JmlStoreRefExpression[]	
+	public static JmlStoreRefExpression[] convertJmlStoreRefExpression(JmlStoreRefExpression[] selfArray, String lastVisitedClass, FNExpressionVisitor visitor,boolean forceIsField) {
+		JmlStoreRefExpression[] newSelfArray = new JmlStoreRefExpression[selfArray.length]; //mfrias
+		for (int j = 0; j<selfArray.length; j++) { //mfrias
+			
+			JmlStoreRefExpression self = selfArray[j]; //mfrias
+			boolean isField = false;
+			boolean isWildcard = false;
+			JmlName[] jmlNames = new JmlName[self.names().length];
+			//for (int i = 0; i < self.names().length; i++) {
+			JExpression expression = self.expression();
+			for (int i = self.names().length-1; i >= 0 ; i--) {
+				boolean mustBeRenamed;
+				String oldName = self.names()[i].getName();
+				if (oldName.equals("*")) {					
 					mustBeRenamed = false;
-				} else { 
-					mustBeRenamed = true;
+					isWildcard = true;
+				} else if (expression instanceof JClassFieldExpression) {
+					JClassFieldExpression classFieldExpression = (JClassFieldExpression) expression;
+					if (classFieldExpression.getField().isStatic()) {
+						mustBeRenamed = false;
+					} else { 
+						mustBeRenamed = true;
+					}
+				
+					expression = classFieldExpression.prefix();
 				}
-				
-				expression = classFieldExpression.prefix();
-			}
-			else if (expression instanceof JTypeNameExpression) {
-				mustBeRenamed = false;
-			} else if (expression instanceof JThisExpression) {
-				mustBeRenamed = false;				
-			} else if (expression instanceof JLocalVariableExpression) {
+				else if (expression instanceof JTypeNameExpression) {
 					mustBeRenamed = false;
-			} else if (expression==null) {
-				mustBeRenamed = true;
-			} else {
-				throw new TacoNotImplementedYetException("Unsupported JmlStoreRefExpression expression: " + expression.getClass().getName());
-			}
-//			if (expression instanceof JFieldE|) {
+				} else if (expression instanceof JThisExpression) {
+					mustBeRenamed = false;				
+				} else if (expression instanceof JLocalVariableExpression) {
+						mustBeRenamed = false;
+				} else if (expression==null) {
+					mustBeRenamed = true;
+				} else {
+					throw new TacoNotImplementedYetException("Unsupported JmlStoreRefExpression expression: " + expression.getClass().getName());
+				}
+//				if (expression instanceof JFieldE|) {
 //				
-//			}
-			
-			//String oldName = self.names()[i].getName();
-			//if ( !mustBeRenamed && (!self.names()[i].isFields() || oldName.equals("*"))) {
-			if ( !mustBeRenamed ) {
-				//leaves old value
-				jmlNames[i] = self.names()[i];;
-				
-//				if (oldName.equals("*")) {
-//					isWildcard = true;
 //				}
-			} else {
-				String newName = FieldRenameUtil.renamedName(lastVisitedClass, self.names()[i].getName());
-				JmlName jmlName = new JmlName(self.getTokenReference(), newName);
-				jmlNames[i] = jmlName;
-				isField = true;
-			}
-		}
-		
-		JExpression myExpr;
-		if (self.expression() == null) {
-			myExpr = null;
-		} else {
-			self.expression().accept(visitor);
-			myExpr = visitor.getArrayStack().pop();
-		}
-		String newName;
-		if (isField && !isWildcard) {
-			newName = FieldRenameUtil.renamedName(lastVisitedClass, self.getName());
-		} else {
-			//leaves old value
-			newName = self.getName();
 			
-		}
+				//String oldName = self.names()[i].getName();
+				//if ( !mustBeRenamed && (!self.names()[i].isFields() || oldName.equals("*"))) {
+				if ( !mustBeRenamed ) {
+					//leaves old value
+					jmlNames[i] = self.names()[i];;
+				
+//					if (oldName.equals("*")) {
+//						isWildcard = true;
+//					}
+				} else {
+					String newName = FieldRenameUtil.renamedName(lastVisitedClass, self.names()[i].getName());
+					JmlName jmlName = new JmlName(self.getTokenReference(), newName);
+					jmlNames[i] = jmlName;
+					isField = true;
+				}
+			}
+		
+			JExpression myExpr;
+			if (self.expression() == null) {
+				myExpr = null;
+			} else {
+				self.expression().accept(visitor);
+				myExpr = visitor.getArrayStack().pop();
+			}
+			String newName;
+			if (isField && !isWildcard) {
+				newName = FieldRenameUtil.renamedName(lastVisitedClass, self.getName());
+			} else {
+				//leaves old value
+				newName = self.getName();
+			
+			}
 
-		JmlStoreRefExpression newSelf = new JmlStoreRefExpressionExtension(self, newName, jmlNames, myExpr);
-		return newSelf;
+			newSelfArray[j] = new JmlStoreRefExpressionExtension(self, newName, jmlNames, myExpr);//mfrias
+		}
+		return newSelfArray;//mfrias
+
 	}
 
 	static public String extractClassNameForFieldRenameSupport(CClass clazz) {

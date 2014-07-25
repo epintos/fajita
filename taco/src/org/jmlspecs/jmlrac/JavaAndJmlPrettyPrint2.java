@@ -24,22 +24,14 @@ import java.io.StringWriter;
 import org.apache.log4j.Logger;
 import org.jmlspecs.checker.JmlClassDeclaration;
 import org.jmlspecs.checker.JmlMethodDeclaration;
-import org.jmlspecs.checker.JmlTypeDeclaration;
 import org.jmlspecs.jmlrac.JmlModifier;
 import org.multijava.javadoc.JavadocComment;
 import org.multijava.mjc.JClassDeclaration;
 import org.multijava.mjc.JCompilationUnitType;
 import org.multijava.mjc.JFormalParameter;
-import org.multijava.mjc.JPackageName;
-import org.multijava.mjc.JPhylum;
-import org.multijava.mjc.JTypeDeclarationStatement;
-import org.multijava.mjc.JTypeDeclarationType;
-import org.multijava.mjc.MjcPrettyPrinter;
-import org.multijava.util.compiler.JavaStyleComment;
 import org.multijava.util.compiler.TabbedPrintWriter;
 
 import ar.edu.taco.TacoException;
-import ar.edu.taco.jml.parser.JmlParser;
 
 /**
  * @author elgaby
@@ -85,7 +77,7 @@ public class JavaAndJmlPrettyPrint2 extends RacPrettyPrinter2 {
 
 	@Override
 	public void visitJmlMethodDeclaration(JmlMethodDeclaration self) {
-		JFormalParameter[] parameters = self.parameters();
+//		JFormalParameter[] parameters = self.parameters();
 		JavadocComment comment = self.javadocComment();
 		if (comment != null) {
 			this.stringWriter.append(comment.toString());

@@ -1,7 +1,6 @@
 package roops.core.objects;
 
 //Authors: Marcelo Frias
-import roops.util.RoopsArray;
 
 @roops.util.BenchmarkClass
 /**
@@ -11,7 +10,7 @@ public class SinglyLinkedList {
 
     @roops.util.NrOfGoals(7)
     @roops.util.BenchmarkMethod
-    static public void containsTest(SinglyLinkedList list, Object value_param) {
+    static public void containsTest(SinglyLinkedList list, int value_param) {
         boolean ret_val;
         if (list != null && list.repOK()) {
             ret_val = list.contains(value_param);
@@ -20,7 +19,7 @@ public class SinglyLinkedList {
 
     @roops.util.NrOfGoals(4)
     @roops.util.BenchmarkMethod
-    static public void insertBackTest(SinglyLinkedList list, Object arg) {
+    static public void insertBackTest(SinglyLinkedList list, int arg) {
         if (list != null && list.repOK()) {
             list.insertBack(arg);
         }
@@ -34,38 +33,27 @@ public class SinglyLinkedList {
         }
     }
 
-    public/* @ nullable @ */SinglyLinkedListNode header;
+    public /*@ nullable @*/ SinglyLinkedListNode header;
 
-    public boolean contains(Object value_param) {
-        SinglyLinkedListNode current;
-        boolean result;
-
-        current = this.header;
-        result = false;
-        while (result == false && current != null) {
-
-            boolean equalVal;
-
-            if (value_param == null && current.value == null) {
-                equalVal = true;
-            } else if (value_param != null) {
-
-                if (value_param == current.value) {
-                    equalVal = true;
-                } else {
-                    equalVal = false;
-                }
-            } else {
-                equalVal = false;
-            }
-
-            if (equalVal == true) {
-                result = true;
-            }
-            current = current.next;
-        }
-        return result;
-    }
+    public boolean contains(int value_param) {
+		SinglyLinkedListNode current;
+		boolean result;
+		current = this.header;
+		result = false;
+		while (result == false && current != null) {
+			boolean equalVal;
+			if (value_param == current.value) { 
+				equalVal = true;
+			} else {
+				equalVal = false;
+			}
+			if (equalVal == true) {
+				result = true;
+			}
+			current = current.next;
+		}
+		return result;
+	}
 
     public void remove(int index) {
 
@@ -104,7 +92,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void insertBack(Object arg) {
+    public void insertBack(int arg) {
         SinglyLinkedListNode freshNode = new SinglyLinkedListNode();
         freshNode.value = arg;
         freshNode.next = null;

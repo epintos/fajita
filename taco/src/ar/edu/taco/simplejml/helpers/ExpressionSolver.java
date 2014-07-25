@@ -34,7 +34,6 @@ import org.multijava.mjc.JUnaryExpression;
 
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.xlator.JType;
-import ar.edu.taco.TacoException;
 import ar.edu.taco.TacoNotImplementedYetException;
 import ar.edu.taco.simplejml.ExpressionVisitor;
 import ar.edu.taco.simplejml.JmlBaseExpressionVisitor.Instant;
@@ -115,11 +114,13 @@ public class ExpressionSolver {
 		} else {
 
 			AlloyExpression leftExpression = null;
+			@SuppressWarnings("unused")
 			AlloyFormula leftFormula = null;
-			if (binaryExpression.left() instanceof JMethodCallExpression) {
+			if (binaryExpression.left() instanceof JMethodCallExpression/* && expressionVisitor instanceof JmlExpressionVisitor*/) {
 				// method call within annotation
-				((JmlExpressionVisitor) expressionVisitor).visitMethodCallExpression((JMethodCallExpression)binaryExpression.left());
+				(/*(JmlExpressionVisitor)*/ expressionVisitor).visitMethodCallExpression((JMethodCallExpression)binaryExpression.left());
 			} else {
+				
 				binaryExpression.left().accept(expressionVisitor);
 			}
 			if (expressionVisitor.isAlloyExpression()) {
@@ -129,6 +130,7 @@ public class ExpressionSolver {
 			}
 
 			AlloyExpression rightExpression = null;
+			@SuppressWarnings("unused")
 			AlloyFormula rightFormula = null;
 			if (binaryExpression.right() instanceof JMethodCallExpression) {
 				// method call within annotation
@@ -184,6 +186,7 @@ public class ExpressionSolver {
 		} else {
 
 			jUnaryExpression.expr().accept(expressionVisitor);
+			@SuppressWarnings("unused")
 			AlloyFormula alloyFormula = null;
 			if (expressionVisitor.isAlloyExpression()) {
 				AlloyExpression alloyExpression = expressionVisitor
@@ -195,14 +198,19 @@ public class ExpressionSolver {
 						operator);
 			} else {
 				alloyFormula = expressionVisitor.getAlloyFormula();
-				// This code was commented after the changes made to the JML
-				// expression simplifier.
-				// if (alloyFormula instanceof QuantifiedFormula) {
-				// alloyFormula =
-				// JmlExpressionSolver.getQuantifiedFormulaForUnaryExpression(expressionVisitor,
-				// jUnaryExpression, operator);
-				// }
-				throw new TacoNotImplementedYetException();
+				if (operator == Constants.OPE_LNOT){
+					return JavaOperatorSolver.getAlloyUnaryFormula(alloyFormula,
+							operator);
+				} else
+
+					// This code was commented after the changes made to the JML
+					// expression simplifier.
+					// if (alloyFormula instanceof QuantifiedFormula) {
+					// alloyFormula =
+					// JmlExpressionSolver.getQuantifiedFormulaForUnaryExpression(expressionVisitor,
+					// jUnaryExpression, operator);
+					// }
+					throw new TacoNotImplementedYetException("Not implemented yet at getUnaryExpression");
 
 			}
 //			return JavaOperatorSolver.getAlloyUnaryFormula(alloyFormula,

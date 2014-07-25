@@ -24,7 +24,6 @@ import org.multijava.mjc.CType;
 import org.multijava.mjc.Constants;
 import org.multijava.mjc.JDivideExpression;
 import org.multijava.mjc.JExpression;
-import org.multijava.mjc.JLiteral;
 import org.multijava.mjc.JOrdinalLiteral;
 import org.multijava.mjc.JShiftExpression;
 

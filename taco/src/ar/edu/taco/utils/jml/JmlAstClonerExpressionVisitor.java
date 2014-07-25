@@ -29,26 +29,8 @@ import org.jmlspecs.checker.JmlRelationalExpression;
 import org.jmlspecs.checker.JmlResultExpression;
 import org.jmlspecs.checker.JmlSpecExpression;
 import org.jmlspecs.checker.JmlSpecQuantifiedExpression;
-import org.multijava.mjc.CClass;
-import org.multijava.mjc.CClassContextType;
 import org.multijava.mjc.CClassType;
-import org.multijava.mjc.CCompilationUnitContextType;
-import org.multijava.mjc.CContextType;
-import org.multijava.mjc.CExpressionContextType;
-import org.multijava.mjc.CExtMethodContext;
-import org.multijava.mjc.CFieldAccessor;
-import org.multijava.mjc.CFlowControlContextType;
-import org.multijava.mjc.CGenericFunctionCollection;
-import org.multijava.mjc.CInterfaceContextType;
-import org.multijava.mjc.CMemberHost;
-import org.multijava.mjc.CMethod;
-import org.multijava.mjc.CMethodContextType;
-import org.multijava.mjc.CMethodSet;
-import org.multijava.mjc.CSourceClass;
 import org.multijava.mjc.CStdType;
-import org.multijava.mjc.CType;
-import org.multijava.mjc.CTypeVariable;
-import org.multijava.mjc.CVariableInfoTable;
 import org.multijava.mjc.JAddExpression;
 import org.multijava.mjc.JArrayAccessExpression;
 import org.multijava.mjc.JArrayAccessExpressionExtension;
@@ -72,7 +54,6 @@ import org.multijava.mjc.JDivideExpression;
 import org.multijava.mjc.JEqualityExpression;
 import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JInstanceofExpression;
-import org.multijava.mjc.JLocalVariable;
 import org.multijava.mjc.JLocalVariableExpression;
 import org.multijava.mjc.JMethodCallExpression;
 import org.multijava.mjc.JMethodCallExpressionExtension;
@@ -94,24 +75,21 @@ import org.multijava.mjc.JShiftExpression;
 import org.multijava.mjc.JStringLiteral;
 import org.multijava.mjc.JSuperExpression;
 import org.multijava.mjc.JThisExpression;
-import org.multijava.mjc.JTypeDeclarationType;
 import org.multijava.mjc.JTypeNameExpression;
 import org.multijava.mjc.JUnaryExpression;
 import org.multijava.mjc.JUnaryPromote;
-import org.multijava.mjc.MJMathMode;
 import org.multijava.mjc.MJMathModeExpression;
 import org.multijava.mjc.MJWarnExpression;
-import org.multijava.mjc.Main;
-import org.multijava.mjc.VariableDescriptor;
-import org.multijava.util.MessageDescription;
-import org.multijava.util.compiler.ModifierUtility;
 import org.multijava.util.compiler.TokenReference;
-import org.multijava.util.compiler.UnpositionedError;
 
 import ar.edu.taco.TacoException;
 import ar.edu.taco.TacoNotImplementedYetException;
+//import ar.edu.taco.simplejml.JClassFieldParameterExpression;
 import ar.edu.taco.simplejml.JmlBaseVisitor;
 import ar.edu.taco.utils.IdentitySet;
+
+import java.lang.reflect.*;
+
 
 public class JmlAstClonerExpressionVisitor extends JmlBaseVisitor {
 
@@ -411,7 +389,21 @@ public class JmlAstClonerExpressionVisitor extends JmlBaseVisitor {
 		JExpression[] newArgs = new JExpression[self.args().length];
 		for (int i = 0; i < self.args().length; i++) {
 			JExpression expression = self.args()[i];
-			expression.accept(this);
+//			if (expression instanceof JClassFieldExpression){
+//				
+//				JClassFieldParameterExpression e = new JClassFieldParameterExpression(expression.getTokenReference(), 
+//						((JClassFieldExpression) expression).prefix(), ((JClassFieldExpression) expression).ident(), 
+//						((JClassFieldExpression) expression).sourceName());
+//					
+//				e.setField(((JClassFieldExpression) expression).getField());
+//				e.setType(((JClassFieldExpression) expression).getType());
+//				e.setTypeBeforeViewpointAdaptation(((JClassFieldExpression) expression).getTypeBeforeViewpointAdaptation());
+//				e.setPrefixWasBlank(((JClassFieldExpression) expression).prefixWasBlank());
+//				
+//				e.accept(this);
+//			} else {
+				expression.accept(this);
+//			}	
 			newArgs[i] = this.getArrayStack().pop();
 		}
 
@@ -599,7 +591,8 @@ public class JmlAstClonerExpressionVisitor extends JmlBaseVisitor {
 	@Override
 	public void visitJmlReachExpression(JmlReachExpression self) {
 		self.specExpression().accept(this);
-		JmlReachExpression newSelf = new  JmlReachExpression( self.getTokenReference(),(JmlSpecExpression)this.getArrayStack().pop(),self.referenceType(),self.storeRefExpression());
+//mfrias-mffrias-23-09-2012 self.storeRefExpression() ---> self.storeRefExpressions()
+		JmlReachExpression newSelf = new  JmlReachExpression( self.getTokenReference(),(JmlSpecExpression)this.getArrayStack().pop(),self.referenceType(),self.storeRefExpressions());
 		this.getArrayStack().push(newSelf);
 	}
 

@@ -52,112 +52,155 @@ abstract class ClassGraphBuilder {
 		Graph graph = new Graph();
 
 		for (JDynAlloyModule jdynalloy_module : src_jdynalloy_modules) {
-			if (isJavaPrimitiveIntegerLiteral(jdynalloy_module)) {
-				continue;
-			}
+			
+			if (!isSpecialType(jdynalloy_module)) {
 
-			if (isJavaPrimitiveLongLiteral(jdynalloy_module)) {
-				continue;
-			}
-
-			if (isJavaPrimitiveFloatLiteral(jdynalloy_module)) {
-				continue;
-			}
-
-			if (isThrowableOrDescendant(jdynalloy_module)) {
-				continue;
-			}
-
-			// Java fields
-
-			String node_src = jdynalloy_module.getSignature().getSignatureId();
-			if (node_src.equals("ClassFields")) {
-				node_src = "$Root$";
-			}
-
-			for (JField field : jdynalloy_module.getFields()) {
-
-				JType field_type = field.getFieldType();
-				if (field_type.isBinaryRelation()) {
-
-					
-					if (field_type.isBinRelWithSeq()) {
-						
-						//throw new IllegalStateException("seq univ inference is unsupported.");
-
-
-					} else {
-
-						Set<String> target_signatures = field_type.to();
-
-						for (String node_target : target_signatures) {
-							if (node_target.equals("null")) {
-								continue;
-							}
-							if (node_target.equals("boolean")) {
-								continue;
-							}
-							String label_id = field.getFieldVariable().toString();
-
-							graph.addEge(node_src, node_target, label_id);
-						}
-					}
-				} else if (field_type.isTernaryRelation()) {
-					// assume sequence
-					String label_id = field.getFieldVariable().toString();
-					JType object_array_type = JType.parse("(java_lang_ObjectArray)->((JavaPrimitiveIntegerValue) set -> lone (java_lang_Object+null))");
-					if (field_type.equals(object_array_type)) {
-						graph.addEge("java_lang_ObjectArray", "JavaPrimitiveIntegerValue", label_id);
-						graph.addEge("JavaPrimitiveIntegerValue", "java_lang_Object", label_id);
-					}
-
-					JType int_array_type = JType.parse("(java_lang_IntArray)->((JavaPrimitiveIntegerValue) set -> lone (JavaPrimitiveIntegerValue))");
-					if (field_type.equals(int_array_type)) {
-						graph.addEge("java_lang_IntArray", "JavaPrimitiveIntegerValue", label_id);
-						graph.addEge("JavaPrimitiveIntegerValue", "JavaPrimitiveIntegerValue", label_id);
-					}
-
+				if (isJavaPrimitiveIntegerLiteral(jdynalloy_module)) {
+					continue;
 				}
-			}
-
-			// root types from arguments
-			String class_to_check = TacoConfigurator.getInstance().getClassToCheck();
-			String method_to_check = TacoConfigurator.getInstance().getMethodToCheck();
-			if (jdynalloy_module.getSignature().getSignatureId().equals(class_to_check)) {
-				for (JProgramDeclaration prog_declaration : jdynalloy_module.getPrograms()) {
-					String program_id = prog_declaration.getProgramId();
-					String qualified_program_id = class_to_check + "_" + program_id + "_";
-					if (method_to_check.startsWith(qualified_program_id)) {
-
-						for (JVariableDeclaration var_decl : prog_declaration.getParameters()) {
-							String parameter_id = var_decl.getVariable().toString();
-							if (parameter_id.equals("throw")) {
-								continue;
-							}
-							if (parameter_id.equals("return")) {
-								continue;
-							}
-
-							for (String node_target : var_decl.getType().from()) {
+	
+				if (isJavaPrimitiveLongLiteral(jdynalloy_module)) {
+					continue;
+				}
+	
+				if (isJavaPrimitiveFloatLiteral(jdynalloy_module)) {
+					continue;
+				}
+	
+				if (isThrowableOrDescendant(jdynalloy_module)) {
+					continue;
+				}
+	
+				
+				// Java fields
+	
+				String node_src = jdynalloy_module.getSignature().getSignatureId();
+				if (node_src.equals("ClassFields")) {
+					node_src = "$Root$";
+				}
+	
+				for (JField field : jdynalloy_module.getFields()) {
+	
+					JType field_type = field.getFieldType();
+					if (field_type.isBinaryRelation()) {
+						
+						if (field_type.isBinRelWithSeq()) {   // the "if" body is supposed to be dead code since isBinRelWithSeq is prevented due to being considered "special".
+							
+							throw new IllegalStateException("seq univ inference is unsupported.");	
+	
+						} else {
+	
+							Set<String> target_signatures = field_type.to();
+	
+							for (String node_target : target_signatures) {
 								if (node_target.equals("null")) {
 									continue;
 								}
 								if (node_target.equals("boolean")) {
 									continue;
 								}
-								graph.addEge("$Root$", node_target, parameter_id);
+								String label_id = field.getFieldVariable().toString();
+	
+								graph.addEge(node_src, node_target, label_id);
 							}
 						}
-
+					} else if (field_type.isTernaryRelation()) {
+						// assume sequence
+						String label_id = field.getFieldVariable().toString();
+						JType object_array_type = JType.parse("(java_lang_ObjectArray)->((JavaPrimitiveIntegerValue) set -> lone (java_lang_Object+null))");
+						if (field_type.equals(object_array_type)) {
+							graph.addEge("java_lang_ObjectArray", "JavaPrimitiveIntegerValue", label_id);
+							graph.addEge("JavaPrimitiveIntegerValue", "java_lang_Object", label_id);
+						}
+	
+						JType int_array_type = JType.parse("(java_lang_IntArray)->((JavaPrimitiveIntegerValue) set -> lone (JavaPrimitiveIntegerValue))");
+						if (field_type.equals(int_array_type)) {
+							graph.addEge("java_lang_IntArray", "JavaPrimitiveIntegerValue", label_id);
+							graph.addEge("JavaPrimitiveIntegerValue", "JavaPrimitiveIntegerValue", label_id);
+						}
+	
 					}
 				}
+	
+				// root types from arguments
+				String class_to_check = TacoConfigurator.getInstance().getClassToCheck();
+				String[] splitClassToCheck = class_to_check.split("_");
+				class_to_check = "";
+				for (int idx = 0; idx < splitClassToCheck.length - 2; idx++){
+					class_to_check += splitClassToCheck[idx] + "_";
+				}
+				if (splitClassToCheck.length > 1){
+					class_to_check += splitClassToCheck[splitClassToCheck.length - 2] + "Instrumented_";
+				}
+				class_to_check += splitClassToCheck[splitClassToCheck.length - 1];
+				
+				String method_to_check = TacoConfigurator.getInstance().getMethodToCheck();
+				String[] splitMethodToCheck = method_to_check.split("_");
+				method_to_check = "";
+				for (int idx = 0; idx < splitClassToCheck.length - 4; idx++){
+					method_to_check += splitMethodToCheck[idx]+"_";
+				}
+				if (splitMethodToCheck.length > 3){
+					method_to_check += splitMethodToCheck[splitMethodToCheck.length - 4] + "Instrumented_";
+				}
+				method_to_check += splitMethodToCheck[splitMethodToCheck.length - 3] + "_";
+				method_to_check += splitMethodToCheck[splitMethodToCheck.length - 2] + "_";
+				method_to_check += splitMethodToCheck[splitMethodToCheck.length - 1];
+				
+				if (jdynalloy_module.getSignature().getSignatureId().equals(class_to_check)) {
+					for (JProgramDeclaration prog_declaration : jdynalloy_module.getPrograms()) {
+						String program_id = prog_declaration.getProgramId();
+						String qualified_program_id = class_to_check + "_" + program_id + "_";
+						if (method_to_check.startsWith(qualified_program_id)) {
+	
+							for (JVariableDeclaration var_decl : prog_declaration.getParameters()) {
+								String parameter_id = var_decl.getVariable().toString();
+								if (parameter_id.equals("throw")) {
+									continue;
+								}
+								if (parameter_id.equals("return")) {
+									continue;
+								}
+	
+								for (String node_target : var_decl.getType().from()) {
+									if (node_target.equals("null")) {
+										continue;
+									}
+									if (node_target.equals("boolean")) {
+										continue;
+									}
+									graph.addEge("$Root$", node_target, parameter_id);
+								}
+							}
+	
+						}
+					}
+				}
+			} else {
+				continue; //no inference for special types
 			}
-
+				
 		}
 
 		return graph;
 	}
 
+	
+	//for the time being I'm only sure about considering certain special types as special.
+	private static boolean isSpecialType(JDynAlloyModule jdynalloy_module) {
+		String intArray = new String("java_lang_IntArray");
+		String objectArray = new String("java_lang_ObjectArray");
+		String sysList = new String("java_util_List");
+		String JMLSeq = new String("org_jmlspecs_models_JMLObjectSequence");
+		String JMLSet = new String("org_jmlspecs_models_JMLObjectSet");
+		String sigId = jdynalloy_module.getSignature().getSignatureId();
+		if (sigId != null && (sigId.equals(intArray) || sigId.equals(objectArray) || sigId.equals(sysList) || sigId.equals(JMLSeq) || sigId.equals(JMLSet)))
+			return true;
+		else
+			return false;
+					
+	}
+	
 	private static boolean isJavaPrimitiveIntegerLiteral(JDynAlloyModule jdynalloy_module) {
 		String java_primitive_integer_value_sig = JavaPrimitiveIntegerValue.getInstance().getModule().getSignature().getSignatureId();
 		String extSigId = jdynalloy_module.getSignature().getExtSigId();

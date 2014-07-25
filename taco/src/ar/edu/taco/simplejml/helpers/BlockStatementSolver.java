@@ -19,23 +19,12 @@
  */
 package ar.edu.taco.simplejml.helpers;
 
-import org.multijava.mjc.JBinaryExpression;
-import org.multijava.mjc.JCastExpression;
-import org.multijava.mjc.JExpression;
-import org.multijava.mjc.JNullLiteral;
-import org.multijava.mjc.JUnaryPromote;
 
-import ar.edu.jdynalloy.ast.JAlloyProgramBuffer;
-import ar.edu.jdynalloy.ast.JAssert;
 import ar.edu.jdynalloy.ast.JIfThenElse;
 import ar.edu.jdynalloy.ast.JSkip;
 import ar.edu.jdynalloy.ast.JStatement;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
-import ar.edu.jdynalloy.factory.JPredicateFactory;
-import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.jml.utils.LabelUtils;
-import ar.edu.taco.simplejml.JmlExpressionVisitor;
-import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.EqualsFormula;

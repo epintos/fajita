@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>taco-nuevo</name>
+	<name>taco</name>
 	<comment></comment>
 	<projects>
+		<project>JDynAlloy</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

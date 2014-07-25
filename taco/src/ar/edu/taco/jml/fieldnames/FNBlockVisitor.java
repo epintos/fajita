@@ -29,7 +29,6 @@ import org.jmlspecs.checker.JmlAssignmentStatement;
 import org.jmlspecs.checker.JmlAssumeStatement;
 import org.jmlspecs.checker.JmlClassDeclaration;
 import org.jmlspecs.checker.JmlFieldDeclaration;
-import org.jmlspecs.checker.JmlInvariantStatement;
 import org.jmlspecs.checker.JmlPredicate;
 import org.jmlspecs.checker.JmlRepresentsDecl;
 import org.jmlspecs.checker.JmlSpecExpression;
@@ -37,10 +36,7 @@ import org.jmlspecs.checker.JmlStoreRef;
 import org.jmlspecs.checker.JmlStoreRefExpression;
 import org.jmlspecs.checker.JmlVariableDefinition;
 import org.jmlspecs.jmlrac.JavaAndJmlPrettyPrint2;
-import org.multijava.mjc.CClass;
-import org.multijava.mjc.CField;
 import org.multijava.mjc.JBlock;
-import org.multijava.mjc.JClassFieldExpression;
 import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JExpressionStatement;
 import org.multijava.mjc.JIfStatement;
@@ -57,7 +53,6 @@ import org.multijava.mjc.JmlFieldDeclarationExtension;
 import ar.edu.taco.jml.JmlToSimpleJmlContext;
 import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.jml.utils.SpecSimplifierClassBaseVisitor;
-import ar.edu.taco.simplejml.helpers.JavaClassNameNormalizer;
 
 public class FNBlockVisitor extends SpecSimplifierClassBaseVisitor {
 
@@ -360,9 +355,14 @@ public class FNBlockVisitor extends SpecSimplifierClassBaseVisitor {
 //				boolean isStaticField =  jClassFieldExpression.getField().isFieldStatic();
 //				boolean mustBeRenamed = !isStaticField;
 //				if (mustBeRenamed) {
-					jmlStoreRef = FieldRenameUtil.convertJmlStoreRefExpression(
-							jmlStoreRefExpression ,
+				
+//mfrias-mffrias como tiene que retornar un arreglo, lo castee a un arreglo de size 1, y lo descastee despues.				
+					JmlStoreRefExpression[] jmlStoreRefExpressionToArray = new JmlStoreRefExpression[1];
+					jmlStoreRefExpressionToArray[0] = jmlStoreRefExpression;
+					JmlStoreRef[] jmlStoreRefToArray = FieldRenameUtil.convertJmlStoreRefExpression(
+							jmlStoreRefExpressionToArray ,
 							this.currentClassName, true);
+					jmlStoreRef = jmlStoreRefToArray[0];
 //				} else {
 //					jmlStoreRef = self.storeRefs()[i];
 //				}
@@ -403,8 +403,10 @@ public class FNBlockVisitor extends SpecSimplifierClassBaseVisitor {
 			String className = FieldRenameUtil
 			.extractClassNameForFieldRenameSupport(self.getField());
 	
-			jmlStoreRefExpression = FieldRenameUtil
-				.convertJmlStoreRefExpression(self.storeRef(), className, true);
+			JmlStoreRefExpression[] jmlStoreRefExpressionToArray = new JmlStoreRefExpression[1];
+			jmlStoreRefExpressionToArray = FieldRenameUtil
+				.convertJmlStoreRefExpression(new JmlStoreRefExpression[]{self.storeRef()}, className, true);
+			jmlStoreRefExpression = jmlStoreRefExpressionToArray[0];
 			
 //		} else {
 //			jmlStoreRefExpression = self.storeRef();

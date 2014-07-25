@@ -49,68 +49,68 @@ import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 public class JArithmeticException implements IBuiltInModule {
 
 
-    private static JArithmeticException instance;
+	private static JArithmeticException instance;
 
-    public static JArithmeticException getInstance() {
-        if (instance == null)
-            instance = new JArithmeticException();
-        return instance;
-    }
+	public static JArithmeticException getInstance() {
+		if (instance == null)
+			instance = new JArithmeticException();
+		return instance;
+	}
 
-    private final JDynAlloyModule module;
+	private final JDynAlloyModule module;
 
-    // private final Map<JBindingKey, JProgramDeclaration> bindings;
+	// private final Map<JBindingKey, JProgramDeclaration> bindings;
 
-    private JArithmeticException() {
-        final boolean signatureIsAbstract;
-        if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
-            signatureIsAbstract = true;
-        } else
-            signatureIsAbstract = false;
+	private JArithmeticException() {
+		final boolean signatureIsAbstract;
+		if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
+			signatureIsAbstract = true;
+		} else
+			signatureIsAbstract = false;
 
-        JSignature signature = new JSignature(true, signatureIsAbstract,
-                "java_lang_ArithmeticException", new JDynAlloyTyping(), false,
-                "java_lang_RuntimeException", null, Collections
-                        .<String> emptySet(), Collections
-                        .<AlloyFormula> emptySet() /* facts */, Collections
-                        .<String> emptyList(), Collections.<String> emptyList());
+		JSignature signature = new JSignature(true, signatureIsAbstract,
+				"java_lang_ArithmeticException", new JDynAlloyTyping(), false,
+				"java_lang_RuntimeException", null, Collections
+						.<String> emptySet(), Collections
+						.<AlloyFormula> emptySet() /* facts */, Collections
+						.<String> emptyList(), Collections.<String> emptyList());
 
-        JSignature classSignature;
-        classSignature = null;
+		JSignature classSignature;
+		classSignature = null;
 
-        JVariableDeclaration thisDeclaration = new JVariableDeclaration(
-                JExpressionFactory.THIS_VARIABLE, JType
-                        .parse("java_lang_ArithmeticException"));
+		JVariableDeclaration thisDeclaration = new JVariableDeclaration(
+				JExpressionFactory.THIS_VARIABLE, JType
+						.parse("java_lang_ArithmeticException"));
 
-        ArgEncoder encoder = new ArgEncoder(false, true, false, 0);
-        List<JVariableDeclaration> parameters = encoder.encode(thisDeclaration,
-                JDynAlloyFactory.THROW_DECLARATION, null, Collections
-                        .<JVariableDeclaration> emptyList());
-        JProgramDeclaration constructor = new JProgramDeclaration(false,
-                "java_lang_ArithmeticException", "Constructor", parameters,
-                Collections.<JSpecCase> emptyList(), new JSkip(), new AlloyTyping(), new ArrayList<AlloyFormula>());
+		ArgEncoder encoder = new ArgEncoder(false, true, false, 0);
+		List<JVariableDeclaration> parameters = encoder.encode(thisDeclaration,
+				JDynAlloyFactory.THROW_DECLARATION, null, Collections
+						.<JVariableDeclaration> emptyList());
+		JProgramDeclaration constructor = new JProgramDeclaration(false,
+				"java_lang_ArithmeticException", "Constructor", parameters,
+				Collections.<JSpecCase> emptyList(), new JSkip(), new AlloyTyping(), new ArrayList<AlloyFormula>());
 
-        this.module = new JDynAlloyModule("java_lang_ArithmeticException",
-                signature, classSignature, null, Collections
-                        .<JField> emptyList(), Collections
-                        .<JClassInvariant> emptySet(), Collections
-                        .<JClassConstraint> emptySet(), Collections
-                        .<JObjectInvariant> emptySet(), Collections
-                        .<JObjectConstraint> emptySet(), Collections
-                        .<JRepresents> emptySet(), Collections
-                        .<JProgramDeclaration> singleton(constructor), null, null);
+		this.module = new JDynAlloyModule("java_lang_ArithmeticException",
+				signature, classSignature, null, Collections
+						.<JField> emptyList(), Collections
+						.<JClassInvariant> emptySet(), Collections
+						.<JClassConstraint> emptySet(), Collections
+						.<JObjectInvariant> emptySet(), Collections
+						.<JObjectConstraint> emptySet(), Collections
+						.<JRepresents> emptySet(), Collections
+						.<JProgramDeclaration> singleton(constructor), null, null);
 
-        if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
-            JSignature literalSingleton = buildLiteralSingleton("java_lang_ArithmeticException");
-            module.setLiteralSingleton(literalSingleton);
-        }
+		if (JDynAlloyConfig.getInstance().getNewExceptionsAreLiterals() == true) {
+			JSignature literalSingleton = buildLiteralSingleton("java_lang_ArithmeticException");
+			module.setLiteralSingleton(literalSingleton);
+		}
 
-    }
+	}
 
-    @Override
-    public JDynAlloyModule getModule() {
-        return module;
-    }
+	@Override
+	public JDynAlloyModule getModule() {
+		return module;
+	}
 
 
 }

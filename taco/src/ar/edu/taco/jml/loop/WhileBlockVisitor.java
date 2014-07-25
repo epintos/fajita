@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.multijava.mjc.JBlock;
-import org.multijava.mjc.JForStatement;
 import org.multijava.mjc.JLocalVariableExpression;
 import org.multijava.mjc.JStatement;
 import org.multijava.mjc.JVariableDeclarationStatement;
@@ -31,7 +30,6 @@ import org.multijava.mjc.JVariableDefinition;
 import org.multijava.mjc.JWhileStatement;
 import org.multijava.util.compiler.JavaStyleComment;
 
-import ar.edu.taco.jml.expression.ESExpressionVisitor;
 import ar.edu.taco.jml.utils.ASTUtils;
 import ar.edu.taco.utils.jml.JmlAstClonerStatementVisitor;
 

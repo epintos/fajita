@@ -44,9 +44,6 @@ import org.multijava.mjc.JEqualityExpression;
 import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JFormalParameter;
 import org.multijava.mjc.JMethodCallExpression;
-import org.multijava.mjc.JMethodDeclaration;
-import org.multijava.mjc.JMethodDeclarationType;
-import org.multijava.mjc.JNameExpression;
 import org.multijava.mjc.JNewObjectExpression;
 import org.multijava.mjc.JOrdinalLiteral;
 import org.multijava.mjc.JPackageImportType;
@@ -150,6 +147,7 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 		JPackageImportType[] importedPackages = self.importedPackages();
 		JClassOrGFImportType[] importedClasses = self.importedClasses();
 		JClassOrGFImportType[] importedGFs = self.importedGFs();
+		@SuppressWarnings("rawtypes")
 		ArrayList tlMethods = self.tlMethods();
 
 		if (packageName.getName().length() > 0) {
@@ -188,7 +186,7 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 	public void visitJmlClassDeclaration(JmlClassDeclaration self) {
 		long modifiers = self.modifiers();
 		String ident = self.ident();
-		String orig_ident = ident;
+//		String orig_ident = ident;
 		String superName = self.superName();
 		CClassType[] interfaces = self.interfaces();
 
@@ -288,51 +286,51 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 		mayEndAnnotation(hasFlag(modifiers, ACC_MODEL));
 	}
 
-	private void visitNotRACMethod(/* @non_null@ */JMethodDeclarationType self) {
-		long modifiers = self.modifiers();
-		CType returnType = self.returnType();
-		String ident = self.ident();
-		JFormalParameter[] parameters = self.parameters();
-		CClassType[] exceptions = self.getExceptions();
-		JBlock body = self.body();
-
-		newLine();
-		print(modUtil.asString(modifiers));
-		print(returnType);
-		print(" ");
-		print(ident);
-		print("(");
-		int count = 0;
-
-		for (int i = 0; i < parameters.length; i++) {
-			if (count != 0) {
-				print(", ");
-			}
-
-			if (!parameters[i].isGenerated()) {
-				parameters[i].accept(this);
-				count++;
-			}
-		}
-		print(")");
-
-		for (int i = 0; i < exceptions.length; i++) {
-			if (i != 0) {
-				print(", ");
-			} else {
-				print(" throws ");
-			}
-			print(exceptions[i].toString());
-		}
-
-		print(" ");
-		if (body != null) {
-			body.accept(this);
-		} else {
-			print(";");
-		}
-		newLine();
-	}
+//	private void visitNotRACMethod(/* @non_null@ */JMethodDeclarationType self) {
+//		long modifiers = self.modifiers();
+//		CType returnType = self.returnType();
+//		String ident = self.ident();
+//		JFormalParameter[] parameters = self.parameters();
+//		CClassType[] exceptions = self.getExceptions();
+//		JBlock body = self.body();
+//
+//		newLine();
+//		print(modUtil.asString(modifiers));
+//		print(returnType);
+//		print(" ");
+//		print(ident);
+//		print("(");
+//		int count = 0;
+//
+//		for (int i = 0; i < parameters.length; i++) {
+//			if (count != 0) {
+//				print(", ");
+//			}
+//
+//			if (!parameters[i].isGenerated()) {
+//				parameters[i].accept(this);
+//				count++;
+//			}
+//		}
+//		print(")");
+//
+//		for (int i = 0; i < exceptions.length; i++) {
+//			if (i != 0) {
+//				print(", ");
+//			} else {
+//				print(" throws ");
+//			}
+//			print(exceptions[i].toString());
+//		}
+//
+//		print(" ");
+//		if (body != null) {
+//			body.accept(this);
+//		} else {
+//			print(";");
+//		}
+//		newLine();
+//	}
 
 	/** Prints a JML method declaration. */
 	public void visitJmlMethodDeclaration(JmlMethodDeclaration self) {
@@ -817,6 +815,7 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 		final int deltaPos = self.indent() * TAB_SIZE;
 		pos += deltaPos;
 
+		@SuppressWarnings("rawtypes")
 		final Iterator iter = self.iterator();
 		while (iter.hasNext()) {
 			Object o = iter.next();
@@ -1696,15 +1695,19 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 	/** Prints a JML reach expression. */
 	public void visitJmlReachExpression(JmlReachExpression self) {
 		CType type = self.referenceType();
-		JmlStoreRefExpression storeRef = self.storeRefExpression();
+		JmlStoreRefExpression[] storeRef = self.storeRefExpressions(); //mfrias-mffrias-24-09-2012: Recovered the array rather than a single storeRefExpression
 
 		print("\\reach(");
 		self.specExpression().accept(this);
 		if (type != null)
 			print(", " + toString(type));
-		if (storeRef != null) {
-			print(", ");
-			storeRef.accept(this);
+		for (int i=0; i<storeRef.length; i++){
+			if (i==0){
+				print(", ");
+			} else {
+				print(" + ");
+			}	
+			storeRef[i].accept(this);	
 		}
 		print(")");
 	}
@@ -2497,7 +2500,7 @@ public class RacPrettyPrinter2 extends MjcPrettyPrinter implements RacVisitor {
 		}
 
 		JExpression prefix = self.prefix();
-		JNameExpression sourceName = self.sourceName();
+//		JNameExpression sourceName = self.sourceName();
 
 		// if possible, print as it appeared in the source file.
 

@@ -14,6 +14,7 @@ public class JDynAlloyClassDiagram implements Serializable {
 	private static final long serialVersionUID = -24108282016136679L;
 
 	private class CDSignature implements Serializable{
+		static final long serialVersionUID = 998765432;
 		private final String signatureId;
 		private String extends_signature_id = null;
 		private Set<String> in_signature_ids = new HashSet<String>();
@@ -117,6 +118,7 @@ public class JDynAlloyClassDiagram implements Serializable {
 	}
 
 	private class CDField implements Serializable {
+		static final long serialVersionUID = 13243564;
 		private final String fieldId;
 		private final Set<String> targetSignatureIds;
 		private Set<String> spec_fields = new HashSet<String>();

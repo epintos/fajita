@@ -4,7 +4,6 @@ import java.util.Set;
 
 import ar.edu.jdynalloy.ast.JDynAlloyVisitor;
 import ar.edu.jdynalloy.ast.JObjectInvariant;
-import ar.uba.dc.rfm.alloy.ast.formulas.FormulaVisitor;
 
 class JDynAlloyFunPredCollector extends JDynAlloyVisitor {
 

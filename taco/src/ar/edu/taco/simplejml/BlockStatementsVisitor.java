@@ -22,6 +22,7 @@ package ar.edu.taco.simplejml;
 import static ar.uba.dc.rfm.alloy.AlloyVariable.buildAlloyVariable;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 import org.apache.log4j.Logger;
@@ -39,6 +40,7 @@ import org.multijava.mjc.JAssignmentExpression;
 import org.multijava.mjc.JCatchClause;
 import org.multijava.mjc.JCompoundAssignmentExpression;
 import org.multijava.mjc.JDivideExpression;
+import org.multijava.mjc.JExpression;
 import org.multijava.mjc.JExpressionStatement;
 import org.multijava.mjc.JIfStatement;
 import org.multijava.mjc.JMethodCallExpression;
@@ -64,6 +66,7 @@ import ar.edu.jdynalloy.ast.JSkip;
 import ar.edu.jdynalloy.ast.JStatement;
 import ar.edu.jdynalloy.ast.JVariableDeclaration;
 import ar.edu.jdynalloy.ast.JavaPrimitiveIntValueArrayFactory;
+import ar.edu.jdynalloy.ast.AlloyIntArrayFactory;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.factory.JPredicateFactory;
 import ar.edu.jdynalloy.factory.JSignatureFactory;
@@ -82,6 +85,7 @@ import ar.edu.taco.simplejml.helpers.BlockStatementSolver;
 import ar.edu.taco.simplejml.helpers.CTypeAdapter;
 import ar.edu.taco.simplejml.helpers.ExpressionSolver;
 import ar.edu.taco.simplejml.helpers.JavaOperatorSolver;
+import ar.uba.dc.rfm.alloy.AlloyTyping;
 import ar.uba.dc.rfm.alloy.AlloyVariable;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.expressions.ExprIfCondition;
@@ -96,6 +100,24 @@ import ar.uba.dc.rfm.alloy.ast.formulas.NotFormula;
 public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 
 	private Stack<AlloyExpression> expressions = new Stack<AlloyExpression>();
+
+	private AlloyTyping varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures;
+	/**
+	 * @return the varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures
+	 */
+	public AlloyTyping getVarsEncodingValueOfArithmeticOperationsInRequiresAndEnsures() {
+		return varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures;
+	}
+
+	/**
+	 * @param varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures the varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures to set
+	 */
+	public void setVarsEncodingValueOfArithmeticOperationsInRequiresAndEnsures(
+			AlloyTyping varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures) {
+		this.varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures = varsEncodingValueOfArithmeticOperationsInRequiresAndEnsures;
+	}
+
+
 
 	int ifLabelCount = 10000;
 	// int whileLabelCount = 10000;
@@ -196,6 +218,19 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 				jStatement = JavaPrimitiveIntValueArrayFactory.array_read_stmt(left_side_expr, right_side_expr);
 
 			}
+		} else if ((TacoConfigurator.getInstance().getUseJavaArithmetic() == false)
+				&& (jAssignmentExpression.left() instanceof JArrayAccessExpression || jAssignmentExpression.right() instanceof JArrayAccessExpression)){
+
+			AlloyExpression left_side_expr = (AlloyExpression) leftSide;
+			AlloyExpression right_side_expr = (AlloyExpression) rightSide;
+			if (jAssignmentExpression.left() instanceof JArrayAccessExpression) {
+
+				jStatement = AlloyIntArrayFactory.array_write_stmt(left_side_expr, right_side_expr);
+			} else {
+
+				jStatement = AlloyIntArrayFactory.array_read_stmt(left_side_expr, right_side_expr);
+			}
+
 		} else {
 
 			if (rightSide instanceof AlloyExpression) {
@@ -304,7 +339,8 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 		}
 
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
-		AlloyFormula alloyFormula = ExpressionSolver.getConditionAsAlloyFormula(expressionVisitor, jIfStatement.cond());
+		JExpression cond = jIfStatement.cond();
+		AlloyFormula alloyFormula = ExpressionSolver.getConditionAsAlloyFormula(expressionVisitor, cond);
 		programBuffer.openIf(alloyFormula);
 
 		jIfStatement.thenClause().accept(this);
@@ -398,8 +434,13 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 		log.debug("Visiting: " + jMethodCallExpression.getClass().getName());
 		log.debug("Statement: " + prettyPrint.getPrettyPrint());
 
+		//		ExpressionVisitorWithNewParamsInMethodCall expressionVisitor = 
+		//				new ExpressionVisitorWithNewParamsInMethodCall(getVarsEncodingValueOfArithmeticOperationsInRequiresAndEnsures());
+		//		jMethodCallExpression.accept(expressionVisitor);
+
 		ExpressionVisitor expressionVisitor = new ExpressionVisitor();
 		jMethodCallExpression.accept(expressionVisitor);
+
 
 		programBuffer.appendProgram(expressionVisitor.getAlloyProgram());
 	}
@@ -843,7 +884,7 @@ public class BlockStatementsVisitor extends JDynAlloyASTVisitor {
 				for (JStatement	 stmt : mulAuxiliaryConstants.statements.getBlock()) {
 					programBuffer.appendProgram(stmt);
 				}
-				
+
 				rvalue = mulAuxiliaryConstants.result_value;
 
 			} else if ((left_alloy_type.equals(JSignatureFactory.JAVA_PRIMITIVE_LONG_VALUE))

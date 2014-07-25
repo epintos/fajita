@@ -52,17 +52,19 @@ public class GraphPathCounter {
 		if (node_id.equals(destination_node_id)) {
 			return found_nodes;
 		} else {
-			for (LabeledNode labeled_node : class_graph.getLabelledEgdes(node_id)) {
-				String new_node_id = labeled_node.node_id;
-				if (path.contains(new_node_id)) {
-					int start_index = path.indexOf(new_node_id);
-					for (int i = start_index; i < path.size(); i++) {
-						found_nodes.add(path.get(i));
+			if (class_graph.getLabelledEgdes(node_id) != null){
+				for (LabeledNode labeled_node : class_graph.getLabelledEgdes(node_id)) {
+					String new_node_id = labeled_node.node_id;
+					if (path.contains(new_node_id)) {
+						int start_index = path.indexOf(new_node_id);
+						for (int i = start_index; i < path.size(); i++) {
+							found_nodes.add(path.get(i));
+						}
+					} else {
+						path.push(new_node_id);
+						found_nodes.addAll(find_cyclic_nodes(new_node_id, path, destination_node_id));
+						path.pop();
 					}
-				} else {
-					path.push(new_node_id);
-					found_nodes.addAll(find_cyclic_nodes(new_node_id, path, destination_node_id));
-					path.pop();
 				}
 			}
 		}
@@ -78,23 +80,25 @@ public class GraphPathCounter {
 				return new IntegerOrInfinity(1);
 		} else {
 			IntegerOrInfinity path_count = new IntegerOrInfinity(0);
-			for (LabeledNode labeled_node : class_graph.getLabelledEgdes(node_id)) {
+			if (class_graph.getLabelledEgdes(node_id) != null){
+				for (LabeledNode labeled_node : class_graph.getLabelledEgdes(node_id)) {
 
-				if (path_count.equals(IntegerOrInfinity.INFINITY)) {
-					break;
-				}
-
-				String new_node_id = labeled_node.node_id;
-				if (!path.contains(new_node_id)) {
-					path.push(new_node_id);
-					IntegerOrInfinity result = count_paths(new_node_id, path, destination_node_id);
-					if (result.equals(IntegerOrInfinity.INFINITY)) {
-						path_count = IntegerOrInfinity.INFINITY;
-					} else {
-						path_count = new IntegerOrInfinity(path_count.int_value + result.int_value);
+					if (path_count.equals(IntegerOrInfinity.INFINITY)) {
+						break;
 					}
 
-					path.pop();
+					String new_node_id = labeled_node.node_id;
+					if (!path.contains(new_node_id)) {
+						path.push(new_node_id);
+						IntegerOrInfinity result = count_paths(new_node_id, path, destination_node_id);
+						if (result.equals(IntegerOrInfinity.INFINITY)) {
+							path_count = IntegerOrInfinity.INFINITY;
+						} else {
+							path_count = new IntegerOrInfinity(path_count.int_value + result.int_value);
+						}
+
+						path.pop();
+					}
 				}
 			}
 			return path_count;

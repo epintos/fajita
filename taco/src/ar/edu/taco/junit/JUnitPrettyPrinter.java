@@ -28,6 +28,7 @@ public class JUnitPrettyPrinter {
 		TabbedPrintWriter printWriter = new TabbedPrintWriter(stringWriter);
 		
 		int testIndex = 0;
+		
 		File file = new File(filenamePath);
 		if (!file.exists()) {
 			printWriter.print("package " + packageName + ";");

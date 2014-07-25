@@ -52,7 +52,7 @@ public abstract class JDynAlloyClassDiagramBuilder {
 			for (JField field : fields) {
 				String field_name = field.getFieldVariable().toString();
 				JType field_type = field.getFieldType();
-				if (field_type.isBinaryRelation() && !field_type.isBinRelWithSeq()) {
+				if (field_type.isBinaryRelation() && !field_type.isSpecialType()) { //mfrias: here I am removing those fields pointing to special types.
 					Set<String> target_signatures = field_type.to();
 					class_diagram.addField(field_name, signatureId, target_signatures);
 				}

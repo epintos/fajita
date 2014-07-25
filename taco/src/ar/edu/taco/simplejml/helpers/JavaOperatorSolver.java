@@ -19,11 +19,9 @@
  */
 package ar.edu.taco.simplejml.helpers;
 
-import java.util.List;
 
 import org.jmlspecs.checker.Constants;
 
-import ar.edu.jdynalloy.ast.JStatement;
 import ar.edu.jdynalloy.factory.JExpressionFactory;
 import ar.edu.jdynalloy.factory.JPredicateFactory;
 import ar.edu.jdynalloy.factory.JSignatureFactory;
@@ -31,7 +29,6 @@ import ar.edu.jdynalloy.xlator.JType;
 import ar.edu.taco.TacoConfigurator;
 import ar.edu.taco.TacoException;
 import ar.edu.taco.TacoNotImplementedYetException;
-import ar.edu.taco.simplejml.builtin.JavaPrimitiveIntegerValue;
 import ar.uba.dc.rfm.alloy.ast.expressions.AlloyExpression;
 import ar.uba.dc.rfm.alloy.ast.formulas.AlloyFormula;
 import ar.uba.dc.rfm.alloy.ast.formulas.AndFormula;
@@ -127,8 +124,8 @@ public class JavaOperatorSolver {
 
 		@Override
 		public Object div(AlloyExpression l, AlloyExpression r) {
-			throw new TacoException(
-					"division between integers can not be applied using functions");
+			return JExpressionFactory
+					.fun_java_primitive_integer_value_div(l, r);
 		}
 
 		@Override
@@ -155,8 +152,8 @@ public class JavaOperatorSolver {
 
 		@Override
 		public Object mul(AlloyExpression l, AlloyExpression r) {
-			throw new TacoException(
-					"multiplication between integers can not be applied using functions");
+			return JExpressionFactory
+					.fun_java_primitive_integer_value_mul(l, r);
 		}
 
 		@Override
@@ -584,6 +581,9 @@ public class JavaOperatorSolver {
 					"Take a look to this operator and write down the corresponding Predicate or Formula");
 		}
 	}
+	
+	
+
 
 	public static Object getAlloyUnaryExpression(
 			AlloyExpression alloyExpression, int operator) {
@@ -622,6 +622,16 @@ public class JavaOperatorSolver {
 
 			return new AndFormula(leftToRightImplication,
 					rightToLeftImplication);
+		default:
+			throw new TacoNotImplementedYetException(
+					"Take a look to this operator and write down the corresponding Predicate or Formula");
+		}
+	}
+	
+	public static AlloyFormula getAlloyUnaryFormula(AlloyFormula af, int operator){
+		switch (operator){
+		case Constants.OPE_LNOT:
+			return new NotFormula(af);	
 		default:
 			throw new TacoNotImplementedYetException(
 					"Take a look to this operator and write down the corresponding Predicate or Formula");
