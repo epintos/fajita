@@ -10,6 +10,4 @@ field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:(ClassFields)
 field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:(ClassFields)->one(boolean) {}
 field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3:(ClassFields)->one(boolean) {}
 field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean) {}
-field java_lang_Boolean_TRUE:(ClassFields)->one(java_lang_Boolean) {}
-field java_lang_Boolean_FALSE:(ClassFields)->one(java_lang_Boolean) {}
 

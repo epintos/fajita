@@ -12,15 +12,11 @@ public class SinglyLinkedList {
     static public void containsTest (SinglyLinkedList list, int value_param) {
         fajita_roopsGoal_initialization ();
         boolean ret_val;
-        if ( list != null && list.repOK () )
-        {
-            roops_goal_0 = true;
+        if ( list != null && list.repOK () ) {
             ret_val = list.contains (value_param);
         }
         else
-        {
-            roops_goal_1 = true;
-        }
+        {}
     }
     static public void insertBackTest (SinglyLinkedList list, int arg) {
         if ( list != null && list.repOK () ) {
@@ -45,23 +41,17 @@ public class SinglyLinkedList {
         current = this.header;
         result = false;
         {
-            boolean fajita_cicle_2 = false;
             while ( result == false && current != null )
-            { fajita_cicle_2 = true;
-                roops_goal_2 = true;
+            {
                 boolean equalVal;
-                if ( value_param == current.value )
-                {
-                    roops_goal_4 = true;
+                if ( value_param == current.value ) {
                     equalVal = true;
                 } else
                 {
                     roops_goal_5 = true;
                     equalVal = false;
                 }
-                if ( equalVal == true )
-                {
-                    roops_goal_6 = true;
+                if ( equalVal == true ) {
                     result = true;
                 }
                 else
@@ -70,8 +60,6 @@ public class SinglyLinkedList {
                 }
                 current = current.next;
             }
-            if ( ! fajita_cicle_2 )
-                roops_goal_3 = true;
         }
         return result;
     }
@@ -145,30 +133,12 @@ public class SinglyLinkedList {
         return true;
     }
 
-    public static boolean roops_goal_0;
-
-    public static boolean roops_goal_1;
-
-    public static boolean roops_goal_2;
-
-    public static boolean roops_goal_3;
-
-    public static boolean roops_goal_4;
-
     public static boolean roops_goal_5;
-
-    public static boolean roops_goal_6;
 
     public static boolean roops_goal_7;
 
     public static void fajita_roopsGoal_initialization () {
-        roops_goal_0 = false;
-        roops_goal_1 = false;
-        roops_goal_2 = false;
-        roops_goal_3 = false;
-        roops_goal_4 = false;
         roops_goal_5 = false;
-        roops_goal_6 = false;
         roops_goal_7 = false;
     }
 }

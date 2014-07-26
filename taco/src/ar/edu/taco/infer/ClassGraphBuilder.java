@@ -137,7 +137,7 @@ abstract class ClassGraphBuilder {
 				String method_to_check = TacoConfigurator.getInstance().getMethodToCheck();
 				String[] splitMethodToCheck = method_to_check.split("_");
 				method_to_check = "";
-				for (int idx = 0; idx < splitClassToCheck.length - 4; idx++){
+				for (int idx = 0; idx < splitMethodToCheck.length - 4; idx++){
 					method_to_check += splitMethodToCheck[idx]+"_";
 				}
 				if (splitMethodToCheck.length > 3){
