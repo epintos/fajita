@@ -40,8 +40,8 @@ public class LoopUnrollTransformation extends Transformation {
     private static boolean runAgain = true;
 
     public static void main(String[] args) {
-        String src = "/Users/mdesanti/ITBA/pf/fajita/fajita/roops/roops/core/objects/OurTests.java";
-        String dest = "/Users/mdesanti/ITBA/pf/fajita/fajita/roops/roops/core/objects/OurTestsTransformed.java";
+        String src = "/Users/mdesanti/ITBA/pf/fajita/fajita/roops/roops/core/objects/SinglyLinkedList.java";
+        String dest = "/Users/mdesanti/ITBA/pf/fajita/fajita/roops/roops/core/objects/SinglyLinkedList.java";
         try {
             javaUnroll(2, src, dest);
         } catch (IOException e) {
@@ -62,13 +62,14 @@ public class LoopUnrollTransformation extends Transformation {
             e.printStackTrace();
         }
 
+        runAgain = true;
         transform(compilationUnit);
 
         LoopUnrollPrettyPrinter.print(destpath, compilationUnit);
 
     }
 
-    private static void transform(CompilationUnit compilationUnit) {
+    public static void transform(CompilationUnit compilationUnit) {
         while(runAgain) {
             runAgain = false;
             TreeWalker treeWalker = new TreeWalker(compilationUnit);

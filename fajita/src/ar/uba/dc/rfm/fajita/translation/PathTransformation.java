@@ -1,6 +1,7 @@
 package ar.uba.dc.rfm.fajita.translation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import recoder.CrossReferenceServiceConfiguration;
@@ -11,12 +12,12 @@ import ar.uba.dc.rfm.tools.FileSystemTools;
 
 public class PathTransformation extends FajitaSourceTransformation {
     
-    private BranchTransformation bt;
+    private CrossReferenceServiceConfiguration recoder;
     
     public PathTransformation(FajitaConfiguration configuration, CrossReferenceServiceConfiguration recoder,
             CompilationUnit compilationUnit) {
         super(configuration, recoder, compilationUnit);
-        bt = new BranchTransformation(configuration, recoder, compilationUnit);
+        this.recoder = recoder;
     }
 
     @Override
@@ -27,8 +28,8 @@ public class PathTransformation extends FajitaSourceTransformation {
     }
     
     private void decorateWithBranchTransformation() {
-        replaceNewClassToCheck();
-        bt.execute();
+//        replaceNewClassToCheck();
+        new BranchTransformation(configuration, recoder, compilationUnit).execute();
     }
 
     private void replaceNewClassToCheck() {
@@ -39,16 +40,19 @@ public class PathTransformation extends FajitaSourceTransformation {
     }
 
     private void loopUnrollCode() {
-        String separator = FileSystemTools.separator;
-        String clazz = extractClassToCheck(configuration.getRelevantClasses(), configuration.getClassToCheck());
-        String sourcePath = configuration.getClasspath() + separator + clazz.replace(".", separator) + ".java";
-        String destPath = configuration.getClasspath() + separator + clazz.replace(".", separator) + "Unrolled.java";
-        try {
-            LoopUnrollTransformation.javaUnroll(3, sourcePath, destPath);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        LoopUnrollTransformation.transform(compilationUnit);
+//        String separator = FileSystemTools.separator;
+//        List<String> classes = extractClassesToCheck(configuration.getRelevantClasses(), configuration.getClassToCheck());
+//        for(String clazz : classes) {
+//            String sourcePath = configuration.getClasspath() + separator + clazz.replace(".", separator) + ".java";
+//            String destPath = configuration.getClasspath() + separator + clazz.replace(".", separator) + ".java";
+//            try {
+//                LoopUnrollTransformation.javaUnroll(3, sourcePath, destPath);
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
     }
     
     private String buildRelevantClasses() {
@@ -69,15 +73,16 @@ public class PathTransformation extends FajitaSourceTransformation {
         return result;
     }
     
-    private String extractClassToCheck(String relevantClasses, String classToCheck) {
+    private List<String> extractClassesToCheck(String relevantClasses, String classToCheck) {
         String[] array = classToCheck.split("\\.");
         String toCheck = array[array.length - 1];
+        List<String> ret = new ArrayList<>();
         for(String clazz: relevantClasses.split(",")) {
             if (clazz.contains(toCheck)) {
-                return clazz;
+                ret.add(clazz);
             }
         }
-        return "";
+        return ret;
     }
 
 }

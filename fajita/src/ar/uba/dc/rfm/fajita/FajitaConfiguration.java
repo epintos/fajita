@@ -112,6 +112,7 @@ public class FajitaConfiguration {
 	private int dualDiscoveredBranches;
 	private int allUsesUnrollCount = 0;
 	private List<String> allUsesAuxVariables = new LinkedList<>();
+	private String inFile;
 
 	
 	/**
@@ -350,6 +351,14 @@ public class FajitaConfiguration {
 
     public void setAllUsesUnrollCount(int allUsesUnrollCount) {
         this.allUsesUnrollCount = allUsesUnrollCount;
+    }
+
+    public String getInFile() {
+        return inFile;
+    }
+
+    public void setInFile(String inFile) {
+        this.inFile = inFile;
     }
 
 }

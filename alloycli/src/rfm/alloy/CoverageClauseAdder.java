@@ -135,6 +135,7 @@ public class CoverageClauseAdder {
         sol_counter++;
 
         Map<Integer, Boolean> bq_valuation = create_boolean_query_valuation(translation, sat_solver, solution);
+        
         if (translation.existsVariableWithName("terminatesInTime")) {
             Iterator<Relation> rel_iterator = Relation.booleanQueries();
 
@@ -151,10 +152,6 @@ public class CoverageClauseAdder {
                 }
             }
             sat_solver.addClause(buildIntArray(clause));
-
-            Relation r = translation.getLastRelationWithName("terminatesInTime");
-            IntSet set = translation.primaryVariables(r);
-            sat_solver.addClause(new int[] { -set.min() });
         }
 
         if (!bq_valuation.isEmpty()) {

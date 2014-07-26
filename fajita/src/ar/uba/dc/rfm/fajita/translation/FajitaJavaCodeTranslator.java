@@ -159,6 +159,10 @@ public class FajitaJavaCodeTranslator {
 				case MCC:
 				    transformation = new MultipleConditionTransformation(configuration, recoder, compilationUnit);
 				    break;
+				case PATH:
+				    configuration.setInFile(inFile);
+                    transformation = new PathTransformation(configuration, recoder, compilationUnit);
+                    break;
 				default:
 					throw new FajitaException(
 						"Java code translation not implemented for the coverage criteria: " +

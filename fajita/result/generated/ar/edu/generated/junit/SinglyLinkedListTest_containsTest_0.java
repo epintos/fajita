@@ -91,7 +91,7 @@ public class SinglyLinkedListTest_containsTest_0 {
     @Test
     public void testcontainsTest_0() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        int value_param_Integer_1 = 327697;
+        int value_param_Integer_1 = -676822302;
         // Parameter Initialization
         
         // Method Invocation
@@ -107,13 +107,16 @@ public class SinglyLinkedListTest_containsTest_0 {
     @Test
     public void testcontainsTest_1() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        int value_param_Integer_1 = 327697;
+        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
+        int value_param_Integer_1 = -2139316094;
         // Parameter Initialization
+        // Fields Initialization for 'list_SinglyLinkedList_1'
+        updateValue(list_SinglyLinkedList_1, "header", null);
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
+            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -125,12 +128,20 @@ public class SinglyLinkedListTest_containsTest_0 {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
         roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
         roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = -1203080001;
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_2 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_3 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        int value_param_Integer_1 = 27174049;
         // Parameter Initialization
         // Fields Initialization for 'list_SinglyLinkedList_1'
         // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -1203080001);
+        // Fields Initialization for '_SinglyLinkedListNode_2'
+        // Fields Initialization for '_SinglyLinkedListNode_3'
+        updateValue(_SinglyLinkedListNode_3, "next", null);
+        updateValue(_SinglyLinkedListNode_3, "value", 27174049);
+        updateValue(_SinglyLinkedListNode_2, "next", _SinglyLinkedListNode_3);
+        updateValue(_SinglyLinkedListNode_2, "value", 2121161823);
+        updateValue(_SinglyLinkedListNode_1, "next", _SinglyLinkedListNode_2);
+        updateValue(_SinglyLinkedListNode_1, "value", 27174049);
         updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
         
         // Method Invocation
@@ -146,13 +157,24 @@ public class SinglyLinkedListTest_containsTest_0 {
     @Test
     public void testcontainsTest_3() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        int value_param_Integer_1 = -2088494114;
+        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_2 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        int value_param_Integer_1 = 53756344;
         // Parameter Initialization
+        // Fields Initialization for 'list_SinglyLinkedList_1'
+        // Fields Initialization for '_SinglyLinkedListNode_1'
+        // Fields Initialization for '_SinglyLinkedListNode_2'
+        updateValue(_SinglyLinkedListNode_2, "next", null);
+        updateValue(_SinglyLinkedListNode_2, "value", -53953337);
+        updateValue(_SinglyLinkedListNode_1, "next", _SinglyLinkedListNode_2);
+        updateValue(_SinglyLinkedListNode_1, "value", -53953337);
+        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
+            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -163,10 +185,22 @@ public class SinglyLinkedListTest_containsTest_0 {
     public void testcontainsTest_4() {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
         roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        int value_param_Integer_1 = -43801152;
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_2 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_3 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        int value_param_Integer_1 = -2079783864;
         // Parameter Initialization
         // Fields Initialization for 'list_SinglyLinkedList_1'
-        updateValue(list_SinglyLinkedList_1, "header", null);
+        // Fields Initialization for '_SinglyLinkedListNode_1'
+        // Fields Initialization for '_SinglyLinkedListNode_2'
+        // Fields Initialization for '_SinglyLinkedListNode_3'
+        updateValue(_SinglyLinkedListNode_3, "next", null);
+        updateValue(_SinglyLinkedListNode_3, "value", -2079783864);
+        updateValue(_SinglyLinkedListNode_2, "next", _SinglyLinkedListNode_3);
+        updateValue(_SinglyLinkedListNode_2, "value", -2079783864);
+        updateValue(_SinglyLinkedListNode_1, "next", _SinglyLinkedListNode_2);
+        updateValue(_SinglyLinkedListNode_1, "value", 2079259575);
+        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
         
         // Method Invocation
         Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
@@ -183,197 +217,20 @@ public class SinglyLinkedListTest_containsTest_0 {
         roops.core.objectsInstrumented.SinglyLinkedList instance = null;
         roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
         roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = 961548420;
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_2 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_3 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+        int value_param_Integer_1 = -2074212706;
         // Parameter Initialization
         // Fields Initialization for 'list_SinglyLinkedList_1'
         // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -957354117);
-        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_6() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = -1203080001;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -1203080001);
-        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_7() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        int value_param_Integer_1 = -2088494114;
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_8() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        int value_param_Integer_1 = -43801152;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        updateValue(list_SinglyLinkedList_1, "header", null);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_9() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = 961548420;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -957354117);
-        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_10() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = -1203080001;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -1203080001);
-        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_11() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = -1203080001;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -1203080001);
-        updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_12() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        int value_param_Integer_1 = -2088494114;
-        // Parameter Initialization
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{instance, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_13() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        int value_param_Integer_1 = -43801152;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        updateValue(list_SinglyLinkedList_1, "header", null);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.SinglyLinkedList", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{list_SinglyLinkedList_1, value_param_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_14() {
-        roops.core.objectsInstrumented.SinglyLinkedList instance = null;
-        roops.core.objectsInstrumented.SinglyLinkedList list_SinglyLinkedList_1 = new roops.core.objectsInstrumented.SinglyLinkedList();
-        roops.core.objectsInstrumented.SinglyLinkedListNode _SinglyLinkedListNode_1 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-        int value_param_Integer_1 = 961548420;
-        // Parameter Initialization
-        // Fields Initialization for 'list_SinglyLinkedList_1'
-        // Fields Initialization for '_SinglyLinkedListNode_1'
-        updateValue(_SinglyLinkedListNode_1, "next", null);
-        updateValue(_SinglyLinkedListNode_1, "value", -957354117);
+        // Fields Initialization for '_SinglyLinkedListNode_2'
+        // Fields Initialization for '_SinglyLinkedListNode_3'
+        updateValue(_SinglyLinkedListNode_3, "next", null);
+        updateValue(_SinglyLinkedListNode_3, "value", -2074212706);
+        updateValue(_SinglyLinkedListNode_2, "next", _SinglyLinkedListNode_3);
+        updateValue(_SinglyLinkedListNode_2, "value", 2009723278);
+        updateValue(_SinglyLinkedListNode_1, "next", _SinglyLinkedListNode_2);
+        updateValue(_SinglyLinkedListNode_1, "value", 2009723278);
         updateValue(list_SinglyLinkedList_1, "header", _SinglyLinkedListNode_1);
         
         // Method Invocation
