@@ -93,7 +93,7 @@ public class FajitaConfiguration {
 	private String solver = "minisat";
 	
 	// tool pipelining interface values
-	private int loopUnroll = maximumLoopUnroll;
+	private int loopUnroll = 1;
 	private int objectScope = maximumObjectScope;
 	private String compiledClassToCheckPath = null;
 	private String goalTagFilter = null;

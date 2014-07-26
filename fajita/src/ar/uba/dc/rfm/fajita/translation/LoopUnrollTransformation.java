@@ -73,7 +73,7 @@ public class LoopUnrollTransformation extends Transformation {
         while(runAgain) {
             runAgain = false;
             TreeWalker treeWalker = new TreeWalker(compilationUnit);
-            SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(2, new LoopUnrollTransformation());
+            SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(3, new LoopUnrollTransformation());
             while (treeWalker.next()) {
                 treeWalker.getProgramElement().accept(transformVisitor);
             }
@@ -143,7 +143,7 @@ public class LoopUnrollTransformation extends Transformation {
             for (int i = 0; i < unroll; i++) {
                 replacement.add(index++, iff.deepClone());
             }
-            replacement.add(index++, finalIf);
+//            replacement.add(index++, finalIf);
             doReplace(x, new StatementBlock(replacement));
             declaredTerminatesInTime = true;
             transformation.runAgain = true;

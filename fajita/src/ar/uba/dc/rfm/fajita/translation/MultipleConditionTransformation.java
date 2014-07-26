@@ -386,23 +386,57 @@ public class MultipleConditionTransformation extends FajitaSourceTransformation 
 		private int addNewGoals(List<Expression> expressions, int i,
 				ASTList<Statement> backup) {
 			for (Expression exp : expressions) {
-				int goalId = configuration.getDiscoveredGoals();
-				configuration.setDiscoveredGoals(goalId + 1);
-				if (!configuration.getCoveredGoals().contains(goalId)) {
-					ProgramFactory programFactory = transformation
-							.getProgramFactory();
-					Identifier fajitaGoalId = programFactory
-							.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG
-									+ "_" + goalId);
-					UncollatedReferenceQualifier fajitaGoal = programFactory
-							.createUncollatedReferenceQualifier(fajitaGoalId);
-					CopyAssignment copyAssignment = programFactory
-							.createCopyAssignment(fajitaGoal, exp);
-					backup.add(i++, copyAssignment);
+			    if (!containsRepOK(exp)) {
+    				int goalId = configuration.getDiscoveredGoals();
+    				configuration.setDiscoveredGoals(goalId + 1);
+    				if (!configuration.getCoveredGoals().contains(goalId)) {
+    					ProgramFactory programFactory = transformation
+    							.getProgramFactory();
+    					Identifier fajitaGoalId = programFactory
+    							.createIdentifier(FajitaJavaCodeTranslator.FAJITA_GOAL_TAG
+    									+ "_" + goalId);
+    					UncollatedReferenceQualifier fajitaGoal = programFactory
+    							.createUncollatedReferenceQualifier(fajitaGoalId);
+    					CopyAssignment copyAssignment = programFactory
+    							.createCopyAssignment(fajitaGoal, exp);
+    					backup.add(i++, copyAssignment);
+    				}
 				}
 			}
 			return i;
 		}
+		
+	      private boolean containsRepOK(Expression ex) {
+	            if (ex instanceof LogicalAnd) {
+	                LogicalAnd and = (LogicalAnd) ex;
+	                return  containsRepOK(and.getExpressionAt(0)) || containsRepOK(and.getExpressionAt(1));
+	            } else if (ex instanceof LogicalOr) {
+	                LogicalOr or = (LogicalOr) ex;
+	                return containsRepOK(or.getExpressionAt(0)) || containsRepOK(or.getExpressionAt(1));
+	            } else if (ex instanceof GreaterOrEquals) {
+	                return false;
+	            } else if (ex instanceof GreaterThan) {
+	                return false;
+	            } else if (ex instanceof LessOrEquals) {
+	                return false;
+	            } else if (ex instanceof LessThan) {
+	                return false;
+	            } else if (ex instanceof ParenthesizedExpression) {
+	                ParenthesizedExpression pe = (ParenthesizedExpression) ex;
+	                return containsRepOK(pe.getExpressionAt(0));
+	            } else if (ex instanceof Equals) {
+	                Equals eq = (Equals) ex;
+	                return containsRepOK(eq.getExpressionAt(0)) || containsRepOK(eq.getExpressionAt(1));
+	            } else if (ex instanceof NotEquals) {
+	                return false;
+	            } else if (ex instanceof UncollatedReferenceQualifier) {
+	                return false;
+	            } else if (ex instanceof MethodReference) {
+	                MethodReference mr = (MethodReference) ex;
+	                return mr.getName().equals("repOK");
+	            }
+	            return false;
+	        }
 
 		private void handleFor(For forr, List<Expression> expressions) {
 			// For not supported
