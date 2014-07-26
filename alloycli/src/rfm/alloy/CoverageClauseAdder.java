@@ -152,21 +152,22 @@ public class CoverageClauseAdder {
                 }
             }
             sat_solver.addClause(buildIntArray(clause));
-        }
+        } else {
 
-        if (!bq_valuation.isEmpty()) {
-
-            String s = String.format("BQ : class # %s : %s", sol_counter, bq_valuation.toString());
-
-            System.out.println(s);
-
-            int[] bq_valuation_clause = clause_builder.create_clause(bq_valuation);
-
-            if (bq_valuation_clause.length == 0) {
-                sat_solver.addClause(new int[] { 1 });
-                sat_solver.addClause(new int[] { -1 });
-            } else {
-                sat_solver.addClause(bq_valuation_clause);
+            if (!bq_valuation.isEmpty()) {
+    
+                String s = String.format("BQ : class # %s : %s", sol_counter, bq_valuation.toString());
+    
+                System.out.println(s);
+    
+                int[] bq_valuation_clause = clause_builder.create_clause(bq_valuation);
+    
+                if (bq_valuation_clause.length == 0) {
+                    sat_solver.addClause(new int[] { 1 });
+                    sat_solver.addClause(new int[] { -1 });
+                } else {
+                    sat_solver.addClause(bq_valuation_clause);
+                }
             }
         }
 
