@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import org.junit.Test;
 
-public class BinTreeTest_containsTest_0 {
+public class BinTreeTest_addTest_0 {
 
     /**
      * Auxiliar function that embed awful reflection code
@@ -89,13 +89,13 @@ public class BinTreeTest_containsTest_0 {
     }
 
     @Test
-    public void testcontainsTest_0() {
+    public void testaddTest_0() {
         roops.core.objectsInstrumented.BinTree instance = null;
-        int x_Integer_1 = 38859899;
+        int x_Integer_1 = 0;
         // Parameter Initialization
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
         try {
             method.invoke(instance, new Object[]{instance, x_Integer_1});
         } catch (Exception e) {
@@ -105,41 +105,22 @@ public class BinTreeTest_containsTest_0 {
     }
 
     @Test
-    public void testcontainsTest_1() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        int x_Integer_1 = 940208251;
-        // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        updateValue(tree_BinTree_1, "root", null);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
-        try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testcontainsTest_2() {
+    public void testaddTest_1() {
         roops.core.objectsInstrumented.BinTree instance = null;
         roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
         roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = -1421674566;
+        int x_Integer_1 = 0;
         // Parameter Initialization
         // Fields Initialization for 'tree_BinTree_1'
         // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", -725800006);
+        updateValue(_BinTreeNode_1, "key", 2142597408);
         updateValue(_BinTreeNode_1, "left", null);
         updateValue(_BinTreeNode_1, "right", null);
         updateValue(_BinTreeNode_1, "parent", null);
         updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
         try {
             method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
         } catch (Exception e) {
@@ -149,22 +130,22 @@ public class BinTreeTest_containsTest_0 {
     }
 
     @Test
-    public void testcontainsTest_3() {
+    public void testaddTest_2() {
         roops.core.objectsInstrumented.BinTree instance = null;
         roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
         roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = 1408901118;
+        int x_Integer_1 = 0;
         // Parameter Initialization
         // Fields Initialization for 'tree_BinTree_1'
         // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", 374612993);
+        updateValue(_BinTreeNode_1, "key", -812489687);
         updateValue(_BinTreeNode_1, "left", null);
         updateValue(_BinTreeNode_1, "right", null);
         updateValue(_BinTreeNode_1, "parent", null);
         updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
         try {
             method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
         } catch (Exception e) {
@@ -174,19 +155,19 @@ public class BinTreeTest_containsTest_0 {
     }
 
     @Test
-    public void testcontainsTest_4() {
+    public void testaddTest_3() {
         roops.core.objectsInstrumented.BinTree instance = null;
         roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
         roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
         roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_2 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = -661969130;
+        int x_Integer_1 = -8946168;
         // Parameter Initialization
         // Fields Initialization for 'tree_BinTree_1'
         // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", -661969130);
+        updateValue(_BinTreeNode_1, "key", -8946168);
         updateValue(_BinTreeNode_1, "left", null);
         // Fields Initialization for '_BinTreeNode_2'
-        updateValue(_BinTreeNode_2, "key", 234854592);
+        updateValue(_BinTreeNode_2, "key", 1956610568);
         updateValue(_BinTreeNode_2, "left", null);
         updateValue(_BinTreeNode_2, "right", null);
         updateValue(_BinTreeNode_2, "parent", _BinTreeNode_1);
@@ -195,7 +176,45 @@ public class BinTreeTest_containsTest_0 {
         updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
+        try {
+            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testaddTest_4() {
+        roops.core.objectsInstrumented.BinTree instance = null;
+        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
+        int x_Integer_1 = 0;
+        // Parameter Initialization
+        // Fields Initialization for 'tree_BinTree_1'
+        updateValue(tree_BinTree_1, "root", null);
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
+        try {
+            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+    }
+
+    @Test
+    public void testaddTest_5() {
+        roops.core.objectsInstrumented.BinTree instance = null;
+        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
+        int x_Integer_1 = -10986;
+        // Parameter Initialization
+        // Fields Initialization for 'tree_BinTree_1'
+        updateValue(tree_BinTree_1, "root", null);
+        
+        // Method Invocation
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "addTest", true);
         try {
             method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
         } catch (Exception e) {

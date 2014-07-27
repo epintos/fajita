@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import org.junit.Test;
 
-public class BinTreeTest_containsTest_0 {
+public class LinkedListTest_containsTest_0 {
 
     /**
      * Auxiliar function that embed awful reflection code
@@ -90,14 +90,29 @@ public class BinTreeTest_containsTest_0 {
 
     @Test
     public void testcontainsTest_0() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        int x_Integer_1 = 38859899;
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        roops.core.objectsInstrumented.LinkedList list_LinkedList_1 = new roops.core.objectsInstrumented.LinkedList();
+        roops.core.objectsInstrumented.LinkedListNode arg_LinkedListNode_1 = new roops.core.objectsInstrumented.LinkedListNode();
+        roops.core.objectsInstrumented.LinkedListNode _LinkedListNode_2 = new roops.core.objectsInstrumented.LinkedListNode();
+        java.lang.NullPointerException _NullPointerException_1 = new java.lang.NullPointerException();
         // Parameter Initialization
+        // Fields Initialization for 'list_LinkedList_1'
+        // Fields Initialization for 'arg_LinkedListNode_1'
+        // Fields Initialization for '_LinkedListNode_2'
+        updateValue(_LinkedListNode_2, "previous", arg_LinkedListNode_1);
+        updateValue(_LinkedListNode_2, "next", arg_LinkedListNode_1);
+        updateValue(_LinkedListNode_2, "object_value", _NullPointerException_1);
+        updateValue(arg_LinkedListNode_1, "previous", _LinkedListNode_2);
+        updateValue(arg_LinkedListNode_1, "next", _LinkedListNode_2);
+        updateValue(arg_LinkedListNode_1, "object_value", null);
+        updateValue(list_LinkedList_1, "header", arg_LinkedListNode_1);
+        updateValue(list_LinkedList_1, "size", 1);
+        updateValue(list_LinkedList_1, "modCount", 0);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{instance, x_Integer_1});
+            method.invoke(instance, new Object[]{list_LinkedList_1, arg_LinkedListNode_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -106,17 +121,14 @@ public class BinTreeTest_containsTest_0 {
 
     @Test
     public void testcontainsTest_1() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        int x_Integer_1 = 940208251;
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        java.lang.Object arg_LinkedListNode_1 = new java.lang.Object();
         // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        updateValue(tree_BinTree_1, "root", null);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+            method.invoke(instance, new Object[]{instance, arg_LinkedListNode_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -125,23 +137,14 @@ public class BinTreeTest_containsTest_0 {
 
     @Test
     public void testcontainsTest_2() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = -1421674566;
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        java.lang.Object arg_LinkedListNode_1 = new java.lang.Object();
         // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", -725800006);
-        updateValue(_BinTreeNode_1, "left", null);
-        updateValue(_BinTreeNode_1, "right", null);
-        updateValue(_BinTreeNode_1, "parent", null);
-        updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+            method.invoke(instance, new Object[]{instance, arg_LinkedListNode_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -150,23 +153,14 @@ public class BinTreeTest_containsTest_0 {
 
     @Test
     public void testcontainsTest_3() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = 1408901118;
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        java.lang.Object arg_LinkedListNode_1 = new java.lang.Object();
         // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", 374612993);
-        updateValue(_BinTreeNode_1, "left", null);
-        updateValue(_BinTreeNode_1, "right", null);
-        updateValue(_BinTreeNode_1, "parent", null);
-        updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+            method.invoke(instance, new Object[]{instance, arg_LinkedListNode_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
@@ -175,29 +169,34 @@ public class BinTreeTest_containsTest_0 {
 
     @Test
     public void testcontainsTest_4() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_2 = new roops.core.objectsInstrumented.BinTreeNode();
-        int x_Integer_1 = -661969130;
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        roops.core.objectsInstrumented.LinkedList list_LinkedList_1 = new roops.core.objectsInstrumented.LinkedList();
+        roops.core.objectsInstrumented.LinkedListNode _LinkedListNode_1 = new roops.core.objectsInstrumented.LinkedListNode();
+        roops.core.objectsInstrumented.LinkedListNode _LinkedListNode_2 = new roops.core.objectsInstrumented.LinkedListNode();
+        roops.core.objectsInstrumented.LinkedListNode _LinkedListNode_3 = new roops.core.objectsInstrumented.LinkedListNode();
+        java.lang.Exception arg_Exception_1 = new java.lang.Exception();
         // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", -661969130);
-        updateValue(_BinTreeNode_1, "left", null);
-        // Fields Initialization for '_BinTreeNode_2'
-        updateValue(_BinTreeNode_2, "key", 234854592);
-        updateValue(_BinTreeNode_2, "left", null);
-        updateValue(_BinTreeNode_2, "right", null);
-        updateValue(_BinTreeNode_2, "parent", _BinTreeNode_1);
-        updateValue(_BinTreeNode_1, "right", _BinTreeNode_2);
-        updateValue(_BinTreeNode_1, "parent", null);
-        updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
+        // Fields Initialization for 'list_LinkedList_1'
+        // Fields Initialization for '_LinkedListNode_1'
+        // Fields Initialization for '_LinkedListNode_2'
+        // Fields Initialization for '_LinkedListNode_3'
+        updateValue(_LinkedListNode_3, "previous", _LinkedListNode_1);
+        updateValue(_LinkedListNode_3, "next", _LinkedListNode_2);
+        updateValue(_LinkedListNode_3, "object_value", arg_Exception_1);
+        updateValue(_LinkedListNode_2, "previous", _LinkedListNode_3);
+        updateValue(_LinkedListNode_2, "next", _LinkedListNode_1);
+        updateValue(_LinkedListNode_2, "object_value", null);
+        updateValue(_LinkedListNode_1, "previous", _LinkedListNode_2);
+        updateValue(_LinkedListNode_1, "next", _LinkedListNode_3);
+        updateValue(_LinkedListNode_1, "object_value", arg_Exception_1);
+        updateValue(list_LinkedList_1, "header", _LinkedListNode_1);
+        updateValue(list_LinkedList_1, "size", 2);
+        updateValue(list_LinkedList_1, "modCount", 0);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "containsTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "containsTest", true);
         try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, x_Integer_1});
+            method.invoke(instance, new Object[]{list_LinkedList_1, arg_Exception_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 
