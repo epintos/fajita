@@ -6,3 +6,6 @@ taco/bin/ar/edu/taco/engine/*
 taco/bin/.gitignore
 alloycli/bin/.gitignore
 dynalloy4/bin/.gitignore
+fajita/bin/.gitignore	
+JDynAlloy/bin/.gitignore
+.gitignore.swp
