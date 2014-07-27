@@ -1,0 +1,799 @@
+sig roops_core_objectsInstrumented_BinTree extends java_lang_Object {}
+{}
+
+
+
+
+pred roops_core_objectsInstrumented_BinTreeCondition1[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition3[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   not (
+     (
+       throw=null)
+     and 
+     (
+       exit_stmt_reached=false)
+   )
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition0[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition2[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition11[
+  t_45:univ
+]{
+   not (
+     t_45=true)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition10[
+  t_45:univ
+]{
+   t_45=true
+
+}
+
+pred roops_core_objectsInstrumented_BinTree_ensures[
+  throw':univ
+]{
+   liftExpression[false]
+   and 
+   equ[throw',
+      null]
+
+}
+
+pred precondition_roops_core_objectsInstrumented_BinTree_containsTest_0[
+  roops_core_objectsInstrumented_BinTreeNode_key:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_left:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_parent:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_right:univ->univ,
+  roops_core_objectsInstrumented_BinTree_root:univ->univ,
+  throw:univ
+]{
+   equ[throw,
+      null]
+   and 
+   (
+     all objx:roops_core_objectsInstrumented_BinTree | {
+       roops_core_objectsInstrumented_BinTree_object_invariant[roops_core_objectsInstrumented_BinTreeNode_key,
+                                                              roops_core_objectsInstrumented_BinTreeNode_left,
+                                                              roops_core_objectsInstrumented_BinTreeNode_parent,
+                                                              roops_core_objectsInstrumented_BinTreeNode_right,
+                                                              roops_core_objectsInstrumented_BinTree_root,
+                                                              objx]
+     
+     }
+   )
+
+}
+
+pred postcondition_roops_core_objectsInstrumented_BinTree_containsTest_0[
+  throw':univ
+]{
+   roops_core_objectsInstrumented_BinTree_ensures[throw']
+   and 
+   (
+     not (
+       throw'=AssertionFailureLit)
+   )
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition9[
+  t_46:univ
+]{
+   not (
+     t_46=true)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition6[
+  t_47:univ
+]{
+   t_47=true
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition7[
+  t_47:univ
+]{
+   not (
+     t_47=true)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition14[
+  t_61:univ
+]{
+   t_61=true
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition8[
+  t_46:univ
+]{
+   t_46=true
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition17[
+  var_20_current:univ
+]{
+   not (
+     isEmptyOrNull[var_20_current])
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition16[
+  var_20_current:univ
+]{
+   isEmptyOrNull[var_20_current]
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition4[
+  tree:univ
+]{
+   isEmptyOrNull[tree]
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition5[
+  tree:univ
+]{
+   not (
+     isEmptyOrNull[tree])
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition12[
+  thiz:univ
+]{
+   isEmptyOrNull[thiz]
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition13[
+  thiz:univ
+]{
+   not (
+     isEmptyOrNull[thiz])
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition18[
+  t_62:univ
+]{
+   t_62=true
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition20[
+  exit_stmt_reached:univ,
+  throw:univ,
+  var_21_ws_6:univ
+]{
+   liftExpression[var_21_ws_6]
+   and 
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition19[
+  t_62:univ
+]{
+   not (
+     t_62=true)
+
+}
+
+pred roops_core_objectsInstrumented_BinTreeCondition15[
+  t_61:univ
+]{
+   not (
+     t_61=true)
+
+}
+
+pred roops_core_objectsInstrumented_BinTree_object_invariant[
+  roops_core_objectsInstrumented_BinTreeNode_key:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_left:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_parent:univ->univ,
+  roops_core_objectsInstrumented_BinTreeNode_right:univ->univ,
+  roops_core_objectsInstrumented_BinTree_root:univ->univ,
+  thiz:univ
+]{
+   all n:roops_core_objectsInstrumented_BinTreeNode | {
+     isSubset[n,
+             (thiz.roops_core_objectsInstrumented_BinTree_root).(fun_reflexive_closure[roops_core_objectsInstrumented_BinTreeNode_left+roops_core_objectsInstrumented_BinTreeNode_right])]
+     implies 
+             (
+               isNotSubset[n,
+                          n.(fun_closure[roops_core_objectsInstrumented_BinTreeNode_left+roops_core_objectsInstrumented_BinTreeNode_right])]
+               and 
+               (
+                 all m:roops_core_objectsInstrumented_BinTreeNode | {
+                   isSubset[m,
+                           (n.roops_core_objectsInstrumented_BinTreeNode_left).(fun_reflexive_closure[roops_core_objectsInstrumented_BinTreeNode_left+roops_core_objectsInstrumented_BinTreeNode_right])]
+                   implies 
+                           pred_java_primitive_integer_value_lt[m.roops_core_objectsInstrumented_BinTreeNode_key,
+                                                               n.roops_core_objectsInstrumented_BinTreeNode_key]
+                 
+                 }
+               )
+               and 
+               (
+                 all m:roops_core_objectsInstrumented_BinTreeNode | {
+                   isSubset[m,
+                           (n.roops_core_objectsInstrumented_BinTreeNode_right).(fun_reflexive_closure[roops_core_objectsInstrumented_BinTreeNode_left+roops_core_objectsInstrumented_BinTreeNode_right])]
+                   implies 
+                           pred_java_primitive_integer_value_lt[n.roops_core_objectsInstrumented_BinTreeNode_key,
+                                                               m.roops_core_objectsInstrumented_BinTreeNode_key]
+                 
+                 }
+               )
+               and 
+               (
+                 neq[n.roops_core_objectsInstrumented_BinTreeNode_left,
+                    null]
+                 implies 
+                         equ[(n.roops_core_objectsInstrumented_BinTreeNode_left).roops_core_objectsInstrumented_BinTreeNode_parent,
+                            n]
+               )
+               and 
+               (
+                 neq[n.roops_core_objectsInstrumented_BinTreeNode_right,
+                    null]
+                 implies 
+                         equ[(n.roops_core_objectsInstrumented_BinTreeNode_right).roops_core_objectsInstrumented_BinTreeNode_parent,
+                            n]
+               )
+               and 
+               (
+                 equ[n,
+                    thiz.roops_core_objectsInstrumented_BinTree_root]
+                 implies 
+                         equ[n.roops_core_objectsInstrumented_BinTreeNode_parent,
+                            null]
+               )
+             )
+   
+   }
+
+}
+
+program roops_core_objectsInstrumented_BinTree_containsTest_0[
+  throw:java_lang_Throwable+null,
+  tree:null+roops_core_objectsInstrumented_BinTree,
+  x:JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_BinTreeNode_parent:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_left:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_key:(roops_core_objectsInstrumented_BinTreeNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray),
+  roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_root:(roops_core_objectsInstrumented_BinTree)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTreeNode_right:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  t_47:boolean,
+  exit_stmt_reached:boolean,
+  t_46:boolean,
+  t_45:boolean,
+  t_44:boolean,
+  var_16_ret_val:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   skip;
+   skip;
+   skip;
+   call roops_core_objectsInstrumented_BinTree_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_BinTreeNode_parent,roops_core_objectsInstrumented_BinTreeNode_left,roops_core_objectsInstrumented_BinTreeNode_key,roops_core_objectsInstrumented_BinTree_roops_goal_5,roops_core_objectsInstrumented_BinTree_roops_goal_4,roops_core_objectsInstrumented_BinTree_roops_goal_3,roops_core_objectsInstrumented_BinTree_myRoopsArray,roops_core_objectsInstrumented_BinTree_roops_goal_2,roops_core_objectsInstrumented_BinTree_roops_goal_1,roops_core_objectsInstrumented_BinTree_roops_goal_0,roops_core_objectsInstrumented_BinTree_root,roops_core_objectsInstrumented_BinTree_roops_goal_7,roops_core_objectsInstrumented_BinTreeNode_right,roops_core_objectsInstrumented_BinTree_roops_goal_6,usedObjects];
+   skip;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      t_46:=(neq[tree,null]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition8[t_46]  {
+         if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_BinTreeCondition4[tree]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               call roops_core_objectsInstrumented_BinTree_repOK_0[tree,throw,t_47,roops_core_objectsInstrumented_BinTreeNode_parent,roops_core_objectsInstrumented_BinTreeNode_left,roops_core_objectsInstrumented_BinTreeNode_key,roops_core_objectsInstrumented_BinTree_roops_goal_5,roops_core_objectsInstrumented_BinTree_roops_goal_4,roops_core_objectsInstrumented_BinTree_roops_goal_3,roops_core_objectsInstrumented_BinTree_myRoopsArray,roops_core_objectsInstrumented_BinTree_roops_goal_2,roops_core_objectsInstrumented_BinTree_roops_goal_1,roops_core_objectsInstrumented_BinTree_roops_goal_0,roops_core_objectsInstrumented_BinTree_root,roops_core_objectsInstrumented_BinTree_roops_goal_7,roops_core_objectsInstrumented_BinTreeNode_right,roops_core_objectsInstrumented_BinTree_roops_goal_6,usedObjects]
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_BinTreeCondition6[t_47]  {
+               if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+                  t_45:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+                  t_45:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+            t_45:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition10[t_45]  {
+         skip;
+         if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_BinTreeCondition4[tree]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               call roops_core_objectsInstrumented_BinTree_contains_0[tree,throw,t_44,x,roops_core_objectsInstrumented_BinTreeNode_parent,roops_core_objectsInstrumented_BinTreeNode_left,roops_core_objectsInstrumented_BinTreeNode_key,roops_core_objectsInstrumented_BinTree_roops_goal_5,roops_core_objectsInstrumented_BinTree_roops_goal_4,roops_core_objectsInstrumented_BinTree_roops_goal_3,roops_core_objectsInstrumented_BinTree_myRoopsArray,roops_core_objectsInstrumented_BinTree_roops_goal_2,roops_core_objectsInstrumented_BinTree_roops_goal_1,roops_core_objectsInstrumented_BinTree_roops_goal_0,roops_core_objectsInstrumented_BinTree_root,roops_core_objectsInstrumented_BinTree_roops_goal_7,roops_core_objectsInstrumented_BinTreeNode_right,roops_core_objectsInstrumented_BinTree_roops_goal_6,usedObjects]
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+            var_16_ret_val:=t_44
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_BinTree_fajita_roopsGoal_initialization_0[
+  throw:java_lang_Throwable+null,
+  roops_core_objectsInstrumented_BinTreeNode_parent:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_left:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_key:(roops_core_objectsInstrumented_BinTreeNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray),
+  roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_root:(roops_core_objectsInstrumented_BinTree)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTreeNode_right:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_BinTree_roops_goal_5:=(roops_core_objectsInstrumented_BinTree_roops_goal_5)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_BinTree_roops_goal_6:=(roops_core_objectsInstrumented_BinTree_roops_goal_6)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_BinTree_roops_goal_7:=(roops_core_objectsInstrumented_BinTree_roops_goal_7)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_BinTree_myRoopsArray:=(roops_core_objectsInstrumented_BinTree_myRoopsArray)++((ClassFields)->(((null+roops_utilInstrumented_RoopsArray) & (null))))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_BinTree_contains_0[
+  thiz:roops_core_objectsInstrumented_BinTree,
+  throw:java_lang_Throwable+null,
+  return:boolean,
+  x:JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_BinTreeNode_parent:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_left:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_key:(roops_core_objectsInstrumented_BinTreeNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray),
+  roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_root:(roops_core_objectsInstrumented_BinTree)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTreeNode_right:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  var_20_current:null+roops_core_objectsInstrumented_BinTreeNode,
+  exit_stmt_reached:boolean,
+  var_21_ws_6:boolean,
+  t_62:boolean,
+  t_61:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   skip;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_BinTreeCondition12[thiz]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         var_20_current:=thiz.roops_core_objectsInstrumented_BinTree_root
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      var_21_ws_6:=(neq[var_20_current,null]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   while roops_core_objectsInstrumented_BinTreeCondition20[exit_stmt_reached,throw,var_21_ws_6]do {
+      skip;
+      skip;
+      if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+         t_61:=(equ[var_20_current.roops_core_objectsInstrumented_BinTreeNode_key,x]=>(true)else(false))
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+         if roops_core_objectsInstrumented_BinTreeCondition14[t_61]  {
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               return:=true;
+               exit_stmt_reached:=true
+            
+            } else {
+               skip
+            
+            }
+         
+         } else {
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_BinTree_roops_goal_5:=(roops_core_objectsInstrumented_BinTree_roops_goal_5)++((ClassFields)->(true))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+         t_62:=(pred_java_primitive_integer_value_lt[x,var_20_current.roops_core_objectsInstrumented_BinTreeNode_key]=>(true)else(false))
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+         if roops_core_objectsInstrumented_BinTreeCondition18[t_62]  {
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_BinTree_roops_goal_6:=(roops_core_objectsInstrumented_BinTree_roops_goal_6)++((ClassFields)->(true))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_BinTreeCondition16[var_20_current]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  var_20_current:=var_20_current.roops_core_objectsInstrumented_BinTreeNode_left
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+         
+         } else {
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_BinTreeCondition0[]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  roops_core_objectsInstrumented_BinTree_roops_goal_7:=(roops_core_objectsInstrumented_BinTree_roops_goal_7)++((ClassFields)->(true))
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+            ;
+            if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+               if roops_core_objectsInstrumented_BinTreeCondition16[var_20_current]  {
+                  throw:=java_lang_NullPointerExceptionLit
+               
+               } else {
+                  var_20_current:=var_20_current.roops_core_objectsInstrumented_BinTreeNode_right
+               
+               }
+            
+            } else {
+               skip
+            
+            }
+         
+         }
+      
+      } else {
+         skip
+      
+      }
+      ;
+      if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+         var_21_ws_6:=(neq[var_20_current,null]=>(true)else(false))
+      
+      } else {
+         skip
+      
+      }
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      return:=false;
+      exit_stmt_reached:=true
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_BinTree_repOK_0[
+  thiz:roops_core_objectsInstrumented_BinTree,
+  throw:java_lang_Throwable+null,
+  return:boolean,
+  roops_core_objectsInstrumented_BinTreeNode_parent:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_left:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_key:(roops_core_objectsInstrumented_BinTreeNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray),
+  roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_root:(roops_core_objectsInstrumented_BinTree)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTreeNode_right:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   if roops_core_objectsInstrumented_BinTreeCondition2[exit_stmt_reached,throw]  {
+      return:=true;
+      exit_stmt_reached:=true
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+assertCorrectness check_roops_core_objectsInstrumented_BinTree_containsTest_0[
+  exit_stmt_reached:boolean,
+  roops_core_objectsInstrumented_BinTreeNode_key:(roops_core_objectsInstrumented_BinTreeNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_BinTreeNode_left:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_parent:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTreeNode_right:(roops_core_objectsInstrumented_BinTreeNode)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray),
+  roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_BinTree_root:(roops_core_objectsInstrumented_BinTree)->one(null+roops_core_objectsInstrumented_BinTreeNode),
+  t_44:boolean,
+  t_45:boolean,
+  t_46:boolean,
+  t_47:boolean,
+  throw:java_lang_Throwable+null,
+  tree:null+roops_core_objectsInstrumented_BinTree,
+  usedObjects:set (java_lang_Object),
+  var_16_ret_val:boolean,
+  x:JavaPrimitiveIntegerValue
+]{
+pre={
+   precondition_roops_core_objectsInstrumented_BinTree_containsTest_0[roops_core_objectsInstrumented_BinTreeNode_key,
+                                                                     roops_core_objectsInstrumented_BinTreeNode_left,
+                                                                     roops_core_objectsInstrumented_BinTreeNode_parent,
+                                                                     roops_core_objectsInstrumented_BinTreeNode_right,
+                                                                     roops_core_objectsInstrumented_BinTree_root,
+                                                                     throw]
+
+}
+program={
+   call roops_core_objectsInstrumented_BinTree_containsTest_0[throw,tree,x,roops_core_objectsInstrumented_BinTreeNode_parent,roops_core_objectsInstrumented_BinTreeNode_left,roops_core_objectsInstrumented_BinTreeNode_key,roops_core_objectsInstrumented_BinTree_roops_goal_5,roops_core_objectsInstrumented_BinTree_roops_goal_4,roops_core_objectsInstrumented_BinTree_roops_goal_3,roops_core_objectsInstrumented_BinTree_myRoopsArray,roops_core_objectsInstrumented_BinTree_roops_goal_2,roops_core_objectsInstrumented_BinTree_roops_goal_1,roops_core_objectsInstrumented_BinTree_roops_goal_0,roops_core_objectsInstrumented_BinTree_root,roops_core_objectsInstrumented_BinTree_roops_goal_7,roops_core_objectsInstrumented_BinTreeNode_right,roops_core_objectsInstrumented_BinTree_roops_goal_6,usedObjects]
+
+}
+post={
+   postcondition_roops_core_objectsInstrumented_BinTree_containsTest_0[throw']
+
+}
+}
+

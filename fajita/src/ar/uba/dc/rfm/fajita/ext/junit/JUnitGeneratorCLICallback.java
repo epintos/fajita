@@ -19,6 +19,7 @@ import ar.edu.taco.jml.parser.JmlParser;
 import ar.edu.taco.junit.UnitTestBuilder;
 import ar.uba.dc.rfm.dynalloy.analyzer.AlloyAnalysisResult;
 import ar.uba.dc.rfm.fajita.FajitaConfiguration;
+import ar.uba.dc.rfm.fajita.FajitaConfiguration.CoverageCriteria;
 import ar.uba.dc.rfm.fajita.FajitaException;
 import ar.uba.dc.rfm.fajita.output.FajitaOutputProcessor.GoalHandler;
 import edu.mit.csail.sdg.alloy4compiler.ast.Command;
@@ -78,6 +79,8 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 			return;
 		
 		try {
+		    
+		    configuration.setDiscoveredPaths(configuration.getDiscoveredPaths() + 1);
 			
 			ClassLoader cl = ClassLoader.getSystemClassLoader();
 			@SuppressWarnings("resource")			

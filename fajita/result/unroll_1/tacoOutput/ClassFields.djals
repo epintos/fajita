@@ -1,0 +1,14 @@
+//-------------- ClassFields --------------//
+module ClassFields
+one sig ClassFields {}
+{}
+field roops_core_objectsInstrumented_BinTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_1:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_2:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_0:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_6:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_5:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_4:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_3:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_BinTree_roops_goal_7:(ClassFields)->one(boolean) {}
+

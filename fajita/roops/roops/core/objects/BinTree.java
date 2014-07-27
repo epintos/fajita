@@ -25,10 +25,10 @@ public class BinTree {
 
 	@roops.util.NrOfGoals(5)
 	@roops.util.BenchmarkMethod static
-	public void findTest(BinTree tree, int x) {
+	public void containsTest(BinTree tree, int x) {
 		boolean ret_val;
 		if (tree!=null && tree.repOK()) {
-		  ret_val = tree.find(x);
+		  ret_val = tree.contains(x);
 		}
 	}
 
@@ -95,7 +95,7 @@ public class BinTree {
 		node.right = null;
 	}
 
-	public boolean find(int x) {
+	public boolean contains(int x) {
 		BinTreeNode current = root;
 
 		while (current != null) {

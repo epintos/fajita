@@ -73,7 +73,7 @@ public class LoopUnrollTransformation extends Transformation {
         while(runAgain) {
             runAgain = false;
             TreeWalker treeWalker = new TreeWalker(compilationUnit);
-            SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(3, new LoopUnrollTransformation());
+            SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(1, new LoopUnrollTransformation());
             while (treeWalker.next()) {
                 treeWalker.getProgramElement().accept(transformVisitor);
             }

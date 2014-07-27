@@ -72,7 +72,6 @@ public class AllUsesOutputProcessor extends FajitaOutputProcessor {
 		} catch (Exception e) {
 			throw new FajitaException(e.getMessage(), e);
 		}
-		configuration.setAllUsesUnrollCount(configuration.getAllUsesUnrollCount() + 1);
 	}
 	
 }
