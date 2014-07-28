@@ -15,11 +15,21 @@ public class SinglyLinkedList extends java.lang.Object {
   public static boolean roops_goal_5;
   public static boolean roops_goal_6;
   public static boolean roops_goal_7;
+  public static boolean roops_goal_8;
+  public static boolean roops_goal_9;
+  public static boolean roops_goal_10;
+  public static boolean roops_goal_11;
+  public static boolean roops_goal_12;
+  public static boolean roops_goal_13;/** @Modifies_Everything
+ @Ensures false;
+*/
 
   public static void containsTest(roops.core.objectsInstrumented.SinglyLinkedList list, int value_param) {
     boolean t_2;
     boolean t_3;
     boolean t_4;
+
+    fajita_roopsGoal_initialization();
     boolean var_1_ret_val;
 
     t_3 = list  !=  null;
@@ -52,6 +62,7 @@ public class SinglyLinkedList extends java.lang.Object {
               {
                 boolean t_1;
 
+                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_0 = true;
                 t_1 = list.contains(value_param);
                 var_1_ret_val = t_1;
               }
@@ -65,6 +76,7 @@ public class SinglyLinkedList extends java.lang.Object {
           {
             {
               {
+                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_1 = true;
               }
             }
           }
@@ -72,16 +84,13 @@ public class SinglyLinkedList extends java.lang.Object {
       }
     }
   }
-/** @Modifies_Everything
- @Ensures false;
-*/
+
 
   public static void insertBackTest(roops.core.objectsInstrumented.SinglyLinkedList list, int arg) {
     boolean t_5;
     boolean t_6;
     boolean t_7;
 
-    fajita_roopsGoal_initialization();
     t_6 = list  !=  null;
 
     if (t_6) {
@@ -110,7 +119,6 @@ public class SinglyLinkedList extends java.lang.Object {
           {
             {
               {
-                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_0 = true;
                 list.insertBack(arg);
               }
             }
@@ -123,7 +131,6 @@ public class SinglyLinkedList extends java.lang.Object {
           {
             {
               {
-                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_1 = true;
               }
             }
           }
@@ -233,6 +240,8 @@ public class SinglyLinkedList extends java.lang.Object {
                 {
                   boolean t_11;
                   boolean t_12;
+
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_2 = true;
                   boolean var_5_equalVal;
 
                   t_11 = value_param  ==  var_2_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value;
@@ -243,6 +252,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_4 = true;
                               var_5_equalVal = true;
                             }
                           }
@@ -255,6 +265,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = true;
                               var_5_equalVal = false;
                             }
                           }
@@ -270,6 +281,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = true;
                               var_3_result = true;
                             }
                           }
@@ -282,6 +294,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = true;
                             }
                           }
                         }
@@ -300,6 +313,7 @@ public class SinglyLinkedList extends java.lang.Object {
             {
               {
                 {
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_3 = true;
                 }
               }
             }
@@ -336,6 +350,8 @@ public class SinglyLinkedList extends java.lang.Object {
                 {
                   boolean t_16;
                   boolean t_17;
+
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_8 = true;
                   boolean var_6_equalVal;
 
                   t_16 = value_param  ==  var_2_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value;
@@ -346,6 +362,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_10 = true;
                               var_6_equalVal = true;
                             }
                           }
@@ -358,6 +375,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_11 = true;
                               var_6_equalVal = false;
                             }
                           }
@@ -373,6 +391,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_12 = true;
                               var_3_result = true;
                             }
                           }
@@ -385,6 +404,7 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_13 = true;
                             }
                           }
                         }
@@ -403,6 +423,7 @@ public class SinglyLinkedList extends java.lang.Object {
             {
               {
                 {
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_9 = true;
                 }
               }
             }
@@ -695,7 +716,6 @@ public class SinglyLinkedList extends java.lang.Object {
           {
             {
               {
-                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_2 = true;
                 this.roops_core_objectsInstrumented_SinglyLinkedList_header = var_12_freshNode;
               }
             }
@@ -708,7 +728,6 @@ public class SinglyLinkedList extends java.lang.Object {
           {
             {
               {
-                roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_3 = true;
                 roops.core.objectsInstrumented.SinglyLinkedListNode var_13_current;
 
                 var_13_current = this.roops_core_objectsInstrumented_SinglyLinkedList_header;
@@ -725,7 +744,6 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
-                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_4 = true;
                               var_13_current = var_13_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
                             }
                           }
@@ -738,7 +756,6 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
-                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = true;
                             }
                           }
                         }
@@ -752,7 +769,6 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
-                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = true;
                               var_13_current = var_13_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
                             }
                           }
@@ -765,7 +781,6 @@ public class SinglyLinkedList extends java.lang.Object {
                         {
                           {
                             {
-                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = true;
                             }
                           }
                         }
@@ -804,6 +819,12 @@ public class SinglyLinkedList extends java.lang.Object {
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = false;
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = false;
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_8 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_9 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_10 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_11 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_12 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_13 = false;
   }
 
 }

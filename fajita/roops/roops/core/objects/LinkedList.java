@@ -59,13 +59,15 @@ public class LinkedList {
 	//-----------------------------------------------------------------------
 	private int indexOf(Object new_value) {
 		int i = 0;
-		for (LinkedListNode node = header.next; node != header; node = node.next) {
-			{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
-			if (isEqualValue(node.object_value, new_value)) {
-				{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
-				return i;
-			}
-			i++;
+		LinkedListNode node = header.next;
+		while (node != header) {
+		    {roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
+            if (isEqualValue(node.object_value, new_value)) {
+                {roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
+                return i;
+            }
+            i++;
+            node = node.next;
 		}
 		{roops.util.Goals.reached(2, roops.util.Verdict.REACHABLE);}
 		return -1;
