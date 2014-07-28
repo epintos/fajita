@@ -188,11 +188,11 @@ public class LinkedList {
 			{roops.util.Goals.reached(3, roops.util.Verdict.REACHABLE);}
 			// Search forwards
 			node = header.next;
-			int currentIndex = 0
+			int currentIndex = 0;
 			while(currentIndex < index){
 				{roops.util.Goals.reached(4, roops.util.Verdict.REACHABLE);}
 				node = node.next;
-				currentIndex++
+				currentIndex++;
 			}
 		} else {
 			
@@ -200,11 +200,11 @@ public class LinkedList {
 			
 			// Search backwards
 			node = header;
-			int currentIndex = size
+			int currentIndex = size;
 			while(currentIndex > index){
 				{roops.util.Goals.reached(6, roops.util.Verdict.REACHABLE);}
 				node = node.previous;
-				currentIndex--
+				currentIndex--;
 			}
 		}
 		{roops.util.Goals.reached(7, roops.util.Verdict.REACHABLE);}
