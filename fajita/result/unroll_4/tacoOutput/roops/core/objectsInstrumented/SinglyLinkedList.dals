@@ -4,14 +4,6 @@ sig roops_core_objectsInstrumented_SinglyLinkedList extends java_lang_Object {}
 
 
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition25[
-  t_198:univ
-]{
-   not (
-     t_198=true)
-
-}
-
 pred roops_core_objectsInstrumented_SinglyLinkedList_ensures[
   throw':univ
 ]{
@@ -22,25 +14,63 @@ pred roops_core_objectsInstrumented_SinglyLinkedList_ensures[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition21[
-  t_197:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition14[
+  t_237:univ
+]{
+   t_237=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition30[
+  t_238:univ
+]{
+   t_238=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition15[
+  t_237:univ
 ]{
    not (
-     t_197=true)
+     t_237=true)
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition20[
-  t_197:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition31[
+  t_238:univ
 ]{
-   t_197=true
+   not (
+     t_238=true)
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition24[
-  t_198:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition32[
+  t_239:univ
 ]{
-   t_198=true
+   t_239=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition33[
+  t_239:univ
+]{
+   not (
+     t_239=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition28[
+  t_241:univ
+]{
+   t_241=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition29[
+  t_241:univ
+]{
+   not (
+     t_241=true)
 
 }
 
@@ -56,6 +86,44 @@ pred postcondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_
 
 }
 
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition8[
+  t_225:univ
+]{
+   t_225=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition26[
+  t_242:univ
+]{
+   t_242=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition9[
+  t_225:univ
+]{
+   not (
+     t_225=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition27[
+  t_242:univ
+]{
+   not (
+     t_242=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition7[
+  t_226:univ
+]{
+   not (
+     t_226=true)
+
+}
+
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition1[
 ]{
    not (
@@ -63,40 +131,25 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition1[
 
 }
 
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition6[
+  t_226:univ
+]{
+   t_226=true
+
+}
+
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition19[
-  t_196:univ
+  t_233:univ
 ]{
    not (
-     t_196=true)
+     t_233=true)
 
 }
 
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition18[
-  t_196:univ
+  t_233:univ
 ]{
-   t_196=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition14[
-  t_200:univ
-]{
-   t_200=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition6[
-  t_189:univ
-]{
-   t_189=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition15[
-  t_200:univ
-]{
-   not (
-     t_200=true)
+   t_233=true
 
 }
 
@@ -104,22 +157,6 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition12[
   thiz:univ
 ]{
    isEmptyOrNull[thiz]
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition7[
-  t_189:univ
-]{
-   not (
-     t_189=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition17[
-  t_199:univ
-]{
-   not (
-     t_199=true)
 
 }
 
@@ -131,98 +168,39 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition13[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition16[
-  t_199:univ
-]{
-   t_199=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition9[
-  t_188:univ
-]{
-   not (
-     t_188=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition8[
-  t_188:univ
-]{
-   t_188=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition35[
-  t_203:univ
-]{
-   not (
-     t_203=true)
-
-}
-
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition0[
 ]{
    isEmptyOrNull[ClassFields]
 
 }
 
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition25[
+  t_235:univ
+]{
+   not (
+     t_235=true)
+
+}
+
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition23[
-  var_72_current:univ
+  var_86_current:univ
 ]{
    not (
-     isEmptyOrNull[var_72_current])
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition10[
-  t_187:univ
-]{
-   t_187=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition34[
-  t_203:univ
-]{
-   t_203=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
-  t_187:univ
-]{
-   not (
-     t_187=true)
+     isEmptyOrNull[var_86_current])
 
 }
 
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition22[
-  var_72_current:univ
+  var_86_current:univ
 ]{
-   isEmptyOrNull[var_72_current]
+   isEmptyOrNull[var_86_current]
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition32[
-  t_202:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition24[
+  t_235:univ
 ]{
-   t_202=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition33[
-  t_202:univ
-]{
-   not (
-     t_202=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition30[
-  t_201:univ
-]{
-   t_201=true
+   t_235=true
 
 }
 
@@ -245,33 +223,26 @@ pred precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition27[
-  t_205:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
+  t_224:univ
 ]{
    not (
-     t_205=true)
+     t_224=true)
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition26[
-  t_205:univ
-]{
-   t_205=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition29[
-  t_204:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition17[
+  t_236:univ
 ]{
    not (
-     t_204=true)
+     t_236=true)
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition28[
-  t_204:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition10[
+  t_224:univ
 ]{
-   t_204=true
+   t_224=true
 
 }
 
@@ -284,6 +255,13 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition2[
    and 
    (
      exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition16[
+  t_236:univ
+]{
+   t_236=true
 
 }
 
@@ -316,6 +294,13 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition5[
 
 }
 
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition34[
+  t_240:univ
+]{
+   t_240=true
+
+}
+
 pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
   roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
   roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
@@ -332,11 +317,26 @@ pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition31[
-  t_201:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition35[
+  t_240:univ
 ]{
    not (
-     t_201=true)
+     t_240=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition21[
+  t_234:univ
+]{
+   not (
+     t_234=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition20[
+  t_234:univ
+]{
+   t_234=true
 
 }
 
@@ -591,11 +591,11 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
   usedObjects:set (java_lang_Object)
 ] var [
   exit_stmt_reached:boolean,
-  t_186:boolean,
-  var_71_ret_val:boolean,
-  t_189:boolean,
-  t_188:boolean,
-  t_187:boolean
+  t_225:boolean,
+  t_224:boolean,
+  t_226:boolean,
+  t_223:boolean,
+  var_85_ret_val:boolean
 ]{
    skip;
    throw:=null;
@@ -607,7 +607,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
    call roops_core_objectsInstrumented_SinglyLinkedList_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects];
    skip;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_188:=(neq[list,null]=>(true)else(false))
+      t_225:=(neq[list,null]=>(true)else(false))
    
    } else {
       skip
@@ -615,13 +615,13 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition8[t_188]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition8[t_225]  {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
             if roops_core_objectsInstrumented_SinglyLinkedListCondition4[list]  {
                throw:=java_lang_NullPointerExceptionLit
             
             } else {
-               call roops_core_objectsInstrumented_SinglyLinkedList_repOK_0[list,throw,t_189,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
+               call roops_core_objectsInstrumented_SinglyLinkedList_repOK_0[list,throw,t_226,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
             
             }
          
@@ -631,9 +631,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition6[t_189]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition6[t_226]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_187:=true
+                  t_224:=true
                
                } else {
                   skip
@@ -642,7 +642,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
             
             } else {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_187:=false
+                  t_224:=false
                
                } else {
                   skip
@@ -658,7 +658,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
       
       } else {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_187:=false
+            t_224:=false
          
          } else {
             skip
@@ -673,7 +673,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition10[t_187]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition10[t_224]  {
          skip;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
             if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
@@ -694,7 +694,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
                throw:=java_lang_NullPointerExceptionLit
             
             } else {
-               call roops_core_objectsInstrumented_SinglyLinkedList_contains_0[list,throw,t_186,value_param,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
+               call roops_core_objectsInstrumented_SinglyLinkedList_contains_0[list,throw,t_223,value_param,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
             
             }
          
@@ -704,7 +704,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            var_71_ret_val:=t_186
+            var_85_ret_val:=t_223
          
          } else {
             skip
@@ -761,22 +761,22 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:(ClassFields)->one(boolean),
   usedObjects:set (java_lang_Object)
 ] var [
-  var_72_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode,
-  var_73_result:boolean,
-  t_200:boolean,
-  t_201:boolean,
-  t_202:boolean,
-  t_203:boolean,
-  t_204:boolean,
-  t_205:boolean,
+  t_238:boolean,
+  t_237:boolean,
+  t_236:boolean,
+  t_235:boolean,
+  var_87_result:boolean,
+  t_239:boolean,
+  t_241:boolean,
+  t_240:boolean,
+  t_234:boolean,
+  t_242:boolean,
+  t_233:boolean,
+  var_90_equalVal:boolean,
+  var_86_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode,
+  var_88_terminatesInTime:boolean,
   exit_stmt_reached:boolean,
-  var_74_terminatesInTime:boolean,
-  var_75_equalVal:boolean,
-  t_199:boolean,
-  t_198:boolean,
-  var_76_equalVal:boolean,
-  t_197:boolean,
-  t_196:boolean
+  var_89_equalVal:boolean
 ]{
    skip;
    throw:=null;
@@ -789,7 +789,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          throw:=java_lang_NullPointerExceptionLit
       
       } else {
-         var_72_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header
+         var_86_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header
       
       }
    
@@ -799,7 +799,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      var_73_result:=false
+      var_87_result:=false
    
    } else {
       skip
@@ -814,7 +814,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    skip;
    skip;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      var_74_terminatesInTime:=true
+      var_88_terminatesInTime:=true
    
    } else {
       skip
@@ -822,7 +822,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_199:=(equ[var_73_result,false]=>(true)else(false))
+      t_236:=(equ[var_87_result,false]=>(true)else(false))
    
    } else {
       skip
@@ -830,9 +830,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition16[t_199]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition16[t_236]  {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_200:=(neq[var_72_current,null]=>(true)else(false))
+            t_237:=(neq[var_86_current,null]=>(true)else(false))
          
          } else {
             skip
@@ -840,9 +840,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition14[t_200]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition14[t_237]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_198:=true
+                  t_235:=true
                
                } else {
                   skip
@@ -851,7 +851,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
             
             } else {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_198:=false
+                  t_235:=false
                
                } else {
                   skip
@@ -867,7 +867,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
       
       } else {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_198:=false
+            t_235:=false
          
          } else {
             skip
@@ -882,7 +882,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition24[t_198]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition24[t_235]  {
          skip;
          skip;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
@@ -901,7 +901,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          ;
          skip;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_196:=(equ[value_param,var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
+            t_233:=(equ[value_param,var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
          
          } else {
             skip
@@ -909,7 +909,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition18[t_196]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition18[t_233]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
                   if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
                      throw:=java_lang_NullPointerExceptionLit
@@ -925,7 +925,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_75_equalVal:=true
+                  var_89_equalVal:=true
                
                } else {
                   skip
@@ -948,7 +948,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_75_equalVal:=false
+                  var_89_equalVal:=false
                
                } else {
                   skip
@@ -963,7 +963,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_197:=(equ[var_75_equalVal,true]=>(true)else(false))
+            t_234:=(equ[var_89_equalVal,true]=>(true)else(false))
          
          } else {
             skip
@@ -971,7 +971,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition20[t_197]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition20[t_234]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
                   if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
                      throw:=java_lang_NullPointerExceptionLit
@@ -987,7 +987,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_73_result:=true
+                  var_87_result:=true
                
                } else {
                   skip
@@ -1017,11 +1017,11 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_72_current]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_86_current]  {
                throw:=java_lang_NullPointerExceptionLit
             
             } else {
-               var_72_current:=var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
+               var_86_current:=var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
             
             }
          
@@ -1053,7 +1053,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_204:=(equ[var_73_result,false]=>(true)else(false))
+      t_241:=(equ[var_87_result,false]=>(true)else(false))
    
    } else {
       skip
@@ -1061,9 +1061,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition28[t_204]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition28[t_241]  {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_205:=(neq[var_72_current,null]=>(true)else(false))
+            t_242:=(neq[var_86_current,null]=>(true)else(false))
          
          } else {
             skip
@@ -1071,9 +1071,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition26[t_205]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition26[t_242]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_203:=true
+                  t_240:=true
                
                } else {
                   skip
@@ -1082,7 +1082,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
             
             } else {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_203:=false
+                  t_240:=false
                
                } else {
                   skip
@@ -1098,7 +1098,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
       
       } else {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_203:=false
+            t_240:=false
          
          } else {
             skip
@@ -1113,7 +1113,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition34[t_203]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition34[t_240]  {
          skip;
          skip;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
@@ -1132,7 +1132,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          ;
          skip;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_201:=(equ[value_param,var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
+            t_238:=(equ[value_param,var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
          
          } else {
             skip
@@ -1140,7 +1140,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition30[t_201]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition30[t_238]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
                   if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
                      throw:=java_lang_NullPointerExceptionLit
@@ -1156,7 +1156,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_76_equalVal:=true
+                  var_90_equalVal:=true
                
                } else {
                   skip
@@ -1179,7 +1179,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_76_equalVal:=false
+                  var_90_equalVal:=false
                
                } else {
                   skip
@@ -1194,7 +1194,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_202:=(equ[var_76_equalVal,true]=>(true)else(false))
+            t_239:=(equ[var_90_equalVal,true]=>(true)else(false))
          
          } else {
             skip
@@ -1202,7 +1202,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition32[t_202]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition32[t_239]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
                   if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
                      throw:=java_lang_NullPointerExceptionLit
@@ -1218,7 +1218,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
                }
                ;
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  var_73_result:=true
+                  var_87_result:=true
                
                } else {
                   skip
@@ -1248,11 +1248,11 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_72_current]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_86_current]  {
                throw:=java_lang_NullPointerExceptionLit
             
             } else {
-               var_72_current:=var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
+               var_86_current:=var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
             
             }
          
@@ -1284,7 +1284,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      return:=var_73_result;
+      return:=var_87_result;
       exit_stmt_reached:=true
    
    } else {
@@ -1358,14 +1358,14 @@ assertCorrectness check_roops_core_objectsInstrumented_SinglyLinkedList_contains
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:(ClassFields)->one(boolean),
-  t_186:boolean,
-  t_187:boolean,
-  t_188:boolean,
-  t_189:boolean,
+  t_223:boolean,
+  t_224:boolean,
+  t_225:boolean,
+  t_226:boolean,
   throw:java_lang_Throwable+null,
   usedObjects:set (java_lang_Object),
   value_param:JavaPrimitiveIntegerValue,
-  var_71_ret_val:boolean
+  var_85_ret_val:boolean
 ]{
 pre={
    precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[roops_core_objectsInstrumented_SinglyLinkedListNode_next,

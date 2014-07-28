@@ -3254,7 +3254,7 @@ pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
    }
 
 }
-check check_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0  for 0 but  exactly 4 java_lang_Object, exactly 3 roops_core_objectsInstrumented_SinglyLinkedListNode, exactly 3 JavaPrimitiveIntegerValue, exactly 1 roops_core_objectsInstrumented_SinglyLinkedList,4 int
+check check_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0  for 0 but  exactly 4 java_lang_Object, exactly 3 roops_core_objectsInstrumented_SinglyLinkedListNode, exactly 1 roops_core_objectsInstrumented_SinglyLinkedList, exactly 3 JavaPrimitiveIntegerValue,4 int
 
 
 
