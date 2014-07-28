@@ -45,7 +45,7 @@ public abstract class FajitaOutputProcessor {
 			case CLASS_COVERAGE: processor = new ClassOutputProcessor(configuration); break;
 			case MCC: processor = new AllUsesOutputProcessor(configuration); break;
 			case ALL_DEF_USES: processor = new AllUsesOutputProcessor(configuration); break;
-			case PATH: processor = new PathOutputProcessor(configuration); break;
+			case PATH: processor = new BranchOutputProcessor(configuration); break;
 			case BRANCH_COVERAGE: processor = new BranchOutputProcessor(configuration); break;
 			case DUAL_CLASS_BRANCH_COVERAGE: processor = new DualClassBranchOutputPorcessor(configuration); break;
 		}
