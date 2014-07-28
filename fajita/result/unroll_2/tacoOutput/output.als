@@ -1,3 +1,755 @@
+/* 
+ * DynAlloy translator options 
+ * --------------------------- 
+ * assertionId= check_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0
+ * loopUnroll= 2
+ * removeQuantifiers= true
+ * strictUnrolling= false
+ * build_dynalloy_trace= false
+ */ 
+
+//-------------- prelude--------------//
+module moduleId
+open util/integer
+open util/sequniv as sequniv
+one sig null {}
+fun fun_reach[h: univ, 
+              type: set univ, 
+              field: univ -> univ
+]: set univ { 
+  h.*(field & type->(type+null)) & type 
+}
+
+one
+sig AssertionFailureLit extends java_lang_Throwable {}
+abstract sig boolean {}
+one sig true extends boolean {}
+one sig false extends boolean {}
+abstract sig char {}
+pred TruePred[] {} 
+pred FalsePred[] { not TruePred[] } 
+pred equ[l,r:univ] {l=r} 
+pred neq[l,r:univ] {l!=r} 
+
+fun shl[l,r: Int]: Int { l << r } 
+fun sshr[l,r: Int]: Int { l >> r } 
+fun ushr[l,r: Int]: Int { l >>> r } 
+
+fun fun_univ_equals[
+  l:univ, 
+  r: univ 
+]: boolean { 
+  (equ[l,r]) => true else false 
+} 
+
+fun fun_set_add[
+  l: set univ,
+  e: univ
+]: set univ { 
+  l+e 
+} 
+
+fun fun_set_remove[
+  l: set univ,
+  e: univ
+]: set univ {
+  l-e
+}
+fun fun_set_contains[
+  l: set univ,
+  e: univ
+]: boolean {
+  (e in l) => true else false 
+} 
+pred isSubset[
+  l: set univ,
+  r: set univ
+] {
+  (l in r) 
+} 
+pred isNotSubset[
+  l: set univ,
+  r: set univ
+] {
+  (l !in r) 
+} 
+fun fun_set_size[s: set univ]: Int { #s } 
+
+fun fun_not_empty_set[s: set univ]: boolean { (no s) => false else true } 
+
+fun fun_set_is_empty[s: set univ]: boolean { (no s) => true else false } 
+
+pred pred_empty_set[l: set univ] { (no l) } 
+
+pred pred_set_some[l: set univ] { some l } 
+
+pred pred_set_one[l: set univ] { one l } 
+
+pred pred_set_lone[l: set univ] { lone l } 
+
+pred pred_Object_subset[
+  s: set univ
+] {
+  s in java_lang_Object+null
+}
+
+fun fun_set_intersection[
+  l: set univ,
+  r: set univ
+]: set univ {
+  l & r 
+} 
+fun fun_set_difference[
+  l: set univ,
+  r: set univ
+]: set univ {
+  l - r 
+} 
+fun fun_rel_difference[ 
+  rel: univ -> univ, 
+  l: univ,
+  r: univ
+]: univ->univ {
+ rel - (l->r) 
+}
+fun fun_rel_add[ 
+  rel: univ -> univ, 
+  l: univ,
+  r: univ
+]: univ->univ {
+ rel + (l->r) 
+}
+fun fun_set_sum[
+  s: set Int
+]: Int {
+  sum s 
+} 
+pred pred_empty_list[l: Int -> univ] { (no l) } 
+
+fun fun_list_add[
+  l: Int -> univ,
+  e: univ
+]: Int -> univ {
+  l + (Int[#(l.univ)]->e)
+} 
+
+fun fun_list_get[
+  l: Int -> univ, 
+  index: Int
+]: univ { 
+  index.l 
+} 
+
+fun fun_list_contains[
+  l: Int -> univ, 
+  e: univ
+]: boolean { 
+  (e in Int.l) => true else false 
+} 
+
+fun fun_list_remove[
+  l: Int -> univ, 
+  index: Int
+]: Int -> univ { 
+  prevs[index]<:(l-(index->univ)) + next.(nexts[index]<:(l-(index->univ))) 
+} 
+
+fun fun_list_size[s: Int -> univ]: Int { #s } 
+
+fun fun_list_equals[
+  s1:Int -> univ, 
+  s2: Int -> univ
+]: boolean { 
+  (s1=s2) => true else false 
+} 
+
+fun fun_list_empty[s: Int -> univ]: boolean { (#s = 0) => true else false } 
+
+pred pred_empty_map[map: univ -> univ] { (no map) } 
+
+fun fun_map_put[
+  map: univ->univ, 
+  k: univ, 
+  v: univ
+]: univ-> univ { 
+  map ++ (k->v) 
+}
+
+fun fun_map_contains_key[
+  map: univ -> univ, 
+  k: univ
+]: boolean { 
+  (some k.map) => true else false 
+}
+
+fun fun_map_remove[
+  map: univ -> univ, 
+  k: univ
+]: univ->univ {
+  map - (k->univ) 
+} 
+
+fun fun_map_get[
+  map: univ -> univ, 
+  k: univ
+]: univ { 
+  (some k.map) => k.map else null 
+} 
+
+fun fun_map_is_empty[
+  map: univ -> univ, 
+]: boolean { 
+  (some map) => false else true 
+}
+
+fun fun_map_clear[
+  mapEntries1: univ -> univ -> univ, 
+  map: univ
+]: univ -> univ -> univ { 
+  mapEntries1 - (map -> univ -> univ)
+}
+
+fun fun_map_size[
+  map: univ -> univ, 
+]: univ {
+  #map 
+} 
+
+pred isEmptyOrNull[u: univ] { u in null } 
+fun fun_closure[
+  rel: univ -> univ 
+]: univ -> univ {
+  ^rel 
+} 
+
+fun fun_reflexive_closure[
+  rel: univ -> univ 
+]: univ -> univ {
+  *rel 
+} 
+
+fun fun_transpose[
+  rel: univ -> univ 
+]: univ -> univ {
+  ~rel 
+} 
+
+pred liftExpression[
+  expr: univ 
+] {
+  expr=true 
+} 
+
+fun rel_override[
+  r:univ->univ,
+  k:univ, 
+  v:univ
+]: univ->univ { 
+  r - (k->univ) + (k->v) 
+} 
+
+fun Not[a: boolean]: boolean {
+    (a=true) => false else true 
+}
+fun Or[a: boolean, b: boolean]: boolean {
+    (a=true or b=true) => true else false
+}
+fun And[a: boolean, b: boolean]: boolean {
+    (a=true and b=true) => true else false
+}
+fun Xor[a: boolean, b: boolean]: boolean {
+    ((a==true and b==false) or (a==false and b==true)) => true else false
+}
+fun AdderCarry[a: boolean, b: boolean, cin: boolean]: boolean {
+    Or[ And[a,b], And[cin, Xor[a,b]]] 
+}
+fun AdderSum[a: boolean, b: boolean, cin: boolean]: boolean {
+    Xor[Xor[a, b], cin]
+}
+pred updateFieldPost[
+  f1:univ->univ,
+  f0:univ->univ,
+  l:univ,
+  r:univ
+]{ 
+  (r=none) => f1=f0-(l->univ) else f1 = f0 ++ (l->r) 
+} 
+
+pred havocVarPost[u:univ]{} 
+pred havocVariable2Post[u:univ->univ]{}
+pred havocVariable3Post[u:univ->(seq univ)]{}
+pred havocFieldPost[f0,f1: univ->univ, u:univ]{ 
+  u<:f0 = u<:f1 
+  some u.f1  
+} 
+
+pred havocFieldContentsPost[target: univ, 
+                            field_0: univ -> univ, 
+                            field_1: univ -> univ] { 
+  field_1 - (target->univ) = field_0 - (target->univ) 
+}
+pred havocListSeqPost[target: univ,
+                            field_0: univ -> Int -> univ, 
+                            field_1: univ -> Int -> univ] { 
+  field_1 - (target->Int->univ) = field_0 - (target->Int->univ) 
+}
+pred pred_in[n: univ, t: set univ] { n in t } 
+
+pred instanceOf[n: univ, t: set univ] { n in t } 
+
+pred isCasteableTo[n: univ, t: set univ] { (n in t) or (n = null) } 
+
+pred getUnusedObjectPost[
+  usedObjects1:set java_lang_Object, 
+  usedObjects0:set java_lang_Object,
+  n1: java_lang_Object+null
+]{ 
+  n1 !in usedObjects0 
+  usedObjects1 = usedObjects0 + (n1)
+}
+//-------------- ClassFields--------------//
+one
+sig ClassFields {}
+{}
+
+
+
+
+//-------------- java_lang_RuntimeException--------------//
+abstract sig java_lang_RuntimeException extends java_lang_Exception {}
+{}
+
+
+
+one
+sig java_lang_RuntimeExceptionLit extends java_lang_RuntimeException {}
+{}
+
+//-------------- java_lang_Exception--------------//
+abstract sig java_lang_Exception extends java_lang_Throwable {}
+{}
+
+
+
+one
+sig java_lang_ExceptionLit extends java_lang_Exception {}
+{}
+
+//-------------- java_lang_Throwable--------------//
+abstract sig java_lang_Throwable extends java_lang_Object {}
+{}
+
+
+
+one
+sig java_lang_ThrowableLit extends java_lang_Throwable {}
+{}
+
+//-------------- java_lang_Object--------------//
+sig java_lang_Object {}
+{}
+
+
+
+
+//-------------- roops_core_objectsInstrumented_AvlNode--------------//
+sig roops_core_objectsInstrumented_AvlNode extends java_lang_Object {}
+{}
+
+
+
+
+//-------------- roops_utilInstrumented_RoopsArray--------------//
+sig roops_utilInstrumented_RoopsArray extends java_lang_Object {}
+{}
+
+
+
+
+//-------------- roops_core_objectsInstrumented_AvlTree--------------//
+sig roops_core_objectsInstrumented_AvlTree extends java_lang_Object {}
+{}
+
+
+
+
+pred roops_core_objectsInstrumented_AvlTreeCondition10[
+  t_39:univ
+]{
+   t_39=true
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition11[
+  t_39:univ
+]{
+   not (
+     t_39=true)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition12[
+  exit_stmt_reached:univ,
+  throw:univ,
+  var_14_ws_4:univ
+]{
+   liftExpression[var_14_ws_4]
+   and 
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition17[
+  t_26:univ
+]{
+   t_26=true
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition15[
+  t_27:univ
+]{
+   t_27=true
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition18[
+  t_26:univ
+]{
+   not (
+     t_26=true)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition16[
+  t_27:univ
+]{
+   not (
+     t_27=true)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition19[
+  t_25:univ
+]{
+   t_25=true
+
+}
+
+pred postcondition_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[
+  throw':univ
+]{
+   roops_core_objectsInstrumented_AvlTree_ensures[throw']
+   and 
+   (
+     not (
+       throw'=AssertionFailureLit)
+   )
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition7[
+  var_13_t:univ
+]{
+   not (
+     isEmptyOrNull[var_13_t])
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition6[
+  var_13_t:univ
+]{
+   isEmptyOrNull[var_13_t]
+
+}
+
+pred roops_core_objectsInstrumented_AvlTree_ensures[
+  throw':univ
+]{
+   liftExpression[false]
+   and 
+   equ[throw',
+      null]
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition20[
+  t_25:univ
+]{
+   not (
+     t_25=true)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition8[
+  t_38:univ
+]{
+   t_38=true
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition9[
+  t_38:univ
+]{
+   not (
+     t_38=true)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition3[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   not (
+     (
+       throw=null)
+     and 
+     (
+       exit_stmt_reached=false)
+   )
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition2[
+  exit_stmt_reached:univ,
+  throw:univ
+]{
+   (
+     throw=null)
+   and 
+   (
+     exit_stmt_reached=false)
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition13[
+  tree:univ
+]{
+   isEmptyOrNull[tree]
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition14[
+  tree:univ
+]{
+   not (
+     isEmptyOrNull[tree])
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition5[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition1[
+  thiz:univ
+]{
+   not (
+     isEmptyOrNull[thiz]
+     or 
+     isEmptyOrNull[thiz]
+   )
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition4[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_AvlTreeCondition0[
+  thiz:univ
+]{
+   isEmptyOrNull[thiz]
+   or 
+   isEmptyOrNull[thiz]
+
+}
+
+pred roops_core_objectsInstrumented_AvlTree_object_invariant[
+  roops_core_objectsInstrumented_AvlNode_element:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_height:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_left:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_right:univ->univ,
+  roops_core_objectsInstrumented_AvlTree_root:univ->univ,
+  thiz:univ,
+  x:univ
+]{
+   (
+     all x:roops_core_objectsInstrumented_AvlNode | {
+       isSubset[x,
+               fun_set_difference[(thiz.roops_core_objectsInstrumented_AvlTree_root).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+       implies 
+               (
+                 isNotSubset[x,
+                            x.(fun_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right])]
+                 and 
+                 (
+                   all y:roops_core_objectsInstrumented_AvlNode | {
+                     isSubset[y,
+                             fun_set_difference[(x.roops_core_objectsInstrumented_AvlNode_left).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+                     implies 
+                             pred_java_primitive_integer_value_lt[y.roops_core_objectsInstrumented_AvlNode_element,
+                                                                 x.roops_core_objectsInstrumented_AvlNode_element]
+                   
+                   }
+                 )
+                 and 
+                 (
+                   all y:roops_core_objectsInstrumented_AvlNode | {
+                     isSubset[y,
+                             fun_set_difference[(x.roops_core_objectsInstrumented_AvlNode_right).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+                     implies 
+                             pred_java_primitive_integer_value_lt[x.roops_core_objectsInstrumented_AvlNode_element,
+                                                                 y.roops_core_objectsInstrumented_AvlNode_element]
+                   
+                   }
+                 )
+                 and 
+                 (
+                   (
+                     equ[x.roops_core_objectsInstrumented_AvlNode_left,
+                        null]
+                     and 
+                     equ[x.roops_core_objectsInstrumented_AvlNode_right,
+                        null]
+                   )
+                   implies 
+                           equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                              JavaPrimitiveIntegerLiteral0]
+                 )
+                 and 
+                 (
+                   (
+                     equ[x.roops_core_objectsInstrumented_AvlNode_left,
+                        null]
+                     and 
+                     neq[x.roops_core_objectsInstrumented_AvlNode_right,
+                        null]
+                   )
+                   implies 
+                           (
+                             equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                                JavaPrimitiveIntegerLiteral1]
+                             and 
+                             equ[(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height,
+                                JavaPrimitiveIntegerLiteral0]
+                           )
+                 )
+                 and 
+                 (
+                   (
+                     neq[x.roops_core_objectsInstrumented_AvlNode_left,
+                        null]
+                     and 
+                     equ[x.roops_core_objectsInstrumented_AvlNode_right,
+                        null]
+                   )
+                   implies 
+                           (
+                             equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                                JavaPrimitiveIntegerLiteral1]
+                             and 
+                             equ[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                                JavaPrimitiveIntegerLiteral0]
+                           )
+                 )
+                 and 
+                 (
+                   (
+                     neq[x.roops_core_objectsInstrumented_AvlNode_left,
+                        null]
+                     and 
+                     neq[x.roops_core_objectsInstrumented_AvlNode_right,
+                        null]
+                   )
+                   implies 
+                           (
+                             equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                                fun_java_primitive_integer_value_add[(pred_java_primitive_integer_value_gt[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                                                                    (x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height]=>((x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height)else((x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height)),JavaPrimitiveIntegerLiteral1]
+                             ]
+                             and 
+                             pred_java_primitive_integer_value_lte[(pred_java_primitive_integer_value_gt[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                                                                 (x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height]=>(fun_java_primitive_integer_value_sub[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height])else(fun_java_primitive_integer_value_sub[(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height,(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height])),
+                                                                  JavaPrimitiveIntegerLiteral1]
+                           )
+                 )
+               )
+     
+     }
+   )
+   and 
+   (
+     not (
+       thiz.roops_core_objectsInstrumented_AvlTree_root=null)
+   )
+
+}
+
+pred precondition_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[
+  roops_core_objectsInstrumented_AvlNode_element:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_height:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_left:univ->univ,
+  roops_core_objectsInstrumented_AvlNode_right:univ->univ,
+  roops_core_objectsInstrumented_AvlTree_root:univ->univ,
+  throw:univ,
+  x:univ
+]{
+   equ[throw,
+      null]
+   and 
+   (
+     all objx:roops_core_objectsInstrumented_AvlTree | {
+       roops_core_objectsInstrumented_AvlTree_object_invariant[roops_core_objectsInstrumented_AvlNode_element,
+                                                              roops_core_objectsInstrumented_AvlNode_height,
+                                                              roops_core_objectsInstrumented_AvlNode_left,
+                                                              roops_core_objectsInstrumented_AvlNode_right,
+                                                              roops_core_objectsInstrumented_AvlTree_root,
+                                                              objx,
+                                                              x]
+     
+     }
+   )
+
+}
+//-------------- java_lang_NullPointerException--------------//
+abstract one sig java_lang_NullPointerException extends java_lang_RuntimeException {}
+{}
+
+
+
+one
+sig java_lang_NullPointerExceptionLit extends java_lang_NullPointerException {}
+{}
+
+//-------------- JavaPrimitiveIntegerLiteral1--------------//
+one
+sig JavaPrimitiveIntegerLiteral1 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_1[JavaPrimitiveIntegerLiteral1]
+}
+
+
+
+
+//-------------- JavaPrimitiveIntegerLiteral0--------------//
+one
+sig JavaPrimitiveIntegerLiteral0 extends JavaPrimitiveIntegerValue {}
+{pred_java_primitive_integer_value_literal_0[JavaPrimitiveIntegerLiteral0]
+}
+
+
+
+
+//-------------- JavaPrimitiveIntegerValue--------------//
 sig JavaPrimitiveIntegerValue {b00:boolean,
 b01:boolean,
 b02:boolean,
@@ -2535,8 +3287,2448 @@ pred pred_java_primitive_integer_value_literal_1[ret: JavaPrimitiveIntegerValue]
 fun fun_java_primitive_integer_value_literal_minus_1[]: one JavaPrimitiveIntegerValue {
  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_minus_1[ret] }
 }
+check check_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0  for 0 but  exactly 6 java_lang_Object, exactly 4 roops_core_objectsInstrumented_AvlNode, exactly 1 roops_core_objectsInstrumented_AvlTree, exactly 1 roops_utilInstrumented_RoopsArray, exactly 6 JavaPrimitiveIntegerValue,4 int
 
 
 
+pred updateVariable[
+  l_1: univ,
+  r_0: univ
+]{
+  TruePred[]
+  and 
+  equ[l_1,
+     r_0]
+}
 
 
+pred getUnusedObject[
+  n_1: java_lang_Object + null,
+  usedObjects_0: set java_lang_Object,
+  usedObjects_1: set java_lang_Object
+]{
+  TruePred[]
+  and 
+  getUnusedObjectPost[usedObjects_1,
+                     usedObjects_0,
+                     n_1]
+}
+
+
+pred havocVariable[
+  v_1: univ
+]{
+  TruePred[]
+  and 
+  havocVarPost[v_1]
+}
+
+
+pred havocFieldContents[
+  target_0: univ,
+  field_0: univ -> univ,
+  field_1: univ -> univ
+]{
+  TruePred[]
+  and 
+  havocFieldContentsPost[target_0,
+                        field_0,
+                        field_1]
+}
+
+
+pred havocVariable3[
+  u_1: univ -> ( seq univ )
+]{
+  TruePred[]
+  and 
+  havocVariable3Post[u_1]
+}
+
+
+pred havocVariable2[
+  u_1: univ -> univ
+]{
+  TruePred[]
+  and 
+  havocVariable2Post[u_1]
+}
+
+
+pred havocField[
+  f_0: univ -> univ,
+  f_1: univ -> univ,
+  u_0: univ
+]{
+  TruePred[]
+  and 
+  havocFieldPost[f_0,
+                f_1,
+                u_0]
+}
+
+
+pred havocListSeq[
+  target_0: univ,
+  field_0: univ -> Int -> univ,
+  field_1: univ -> Int -> univ
+]{
+  TruePred[]
+  and 
+  havocListSeqPost[target_0,
+                  field_0,
+                  field_1]
+}
+
+
+pred updateField[
+  l_0: univ,
+  f_0: univ -> univ,
+  f_1: univ -> univ,
+  r_0: univ
+]{
+  TruePred[]
+  and 
+  updateFieldPost[f_1,
+                 f_0,
+                 l_0,
+                 r_0]
+}
+
+
+pred roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  throw_6: java_lang_Throwable + null,
+  throw_7: java_lang_Throwable + null,
+  throw_8: java_lang_Throwable + null,
+  throw_9: java_lang_Throwable + null,
+  throw_10: java_lang_Throwable + null,
+  tree_0: null + roops_core_objectsInstrumented_AvlTree,
+  x_0: JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_AvlNode_element_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( JavaPrimitiveIntegerValue ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_2: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_root_0: ( roops_core_objectsInstrumented_AvlTree ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_0: ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_1: ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  roops_core_objectsInstrumented_AvlNode_left_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlNode_right_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  exit_stmt_reached_1: boolean,
+  t_24_0: null + roops_core_objectsInstrumented_AvlNode,
+  t_24_1: null + roops_core_objectsInstrumented_AvlNode,
+  t_25_0: boolean,
+  t_25_1: boolean,
+  t_26_0: boolean,
+  t_26_1: boolean,
+  t_27_0: boolean,
+  t_27_1: boolean,
+  var_10_ret_val_0: null + roops_core_objectsInstrumented_AvlNode,
+  var_10_ret_val_1: null + roops_core_objectsInstrumented_AvlNode,
+  l3_l2_var_14_ws_4_0: boolean,
+  l3_l2_var_14_ws_4_1: boolean,
+  l3_l2_var_14_ws_4_2: boolean,
+  l3_l2_var_14_ws_4_3: boolean,
+  l3_l2_var_13_t_0: null + roops_core_objectsInstrumented_AvlNode,
+  l3_l2_var_13_t_1: null + roops_core_objectsInstrumented_AvlNode,
+  l3_l2_var_13_t_2: null + roops_core_objectsInstrumented_AvlNode,
+  l3_l2_var_13_t_3: null + roops_core_objectsInstrumented_AvlNode,
+  l0_exit_stmt_reached_1: boolean,
+  l1_exit_stmt_reached_0: boolean,
+  l1_exit_stmt_reached_1: boolean,
+  l1_exit_stmt_reached_2: boolean,
+  l3_exit_stmt_reached_0: boolean,
+  l3_exit_stmt_reached_1: boolean,
+  l3_exit_stmt_reached_2: boolean,
+  l3_l2_exit_stmt_reached_0: boolean,
+  l3_l2_exit_stmt_reached_1: boolean,
+  l3_l2_exit_stmt_reached_2: boolean,
+  l3_l2_exit_stmt_reached_3: boolean,
+  l3_l2_exit_stmt_reached_4: boolean,
+  l3_l2_t_37_0: boolean,
+  l3_l2_t_37_1: boolean,
+  l3_t_36_0: null + roops_core_objectsInstrumented_AvlNode,
+  l3_t_36_1: null + roops_core_objectsInstrumented_AvlNode,
+  l3_t_36_2: null + roops_core_objectsInstrumented_AvlNode,
+  l3_t_36_3: null + roops_core_objectsInstrumented_AvlNode,
+  l3_l2_t_38_0: boolean,
+  l3_l2_t_38_1: boolean,
+  l3_l2_t_38_2: boolean,
+  l3_l2_t_39_0: boolean,
+  l3_l2_t_39_1: boolean,
+  l3_l2_t_39_2: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  roops_core_objectsInstrumented_AvlTree_fajita_roopsGoal_initialization_0[throw_2,
+                                                                          throw_3,
+                                                                          throw_4,
+                                                                          roops_core_objectsInstrumented_AvlTree_roops_goal_6_0,
+                                                                          roops_core_objectsInstrumented_AvlTree_roops_goal_6_1,
+                                                                          roops_core_objectsInstrumented_AvlTree_myRoopsArray_0,
+                                                                          roops_core_objectsInstrumented_AvlTree_myRoopsArray_1,
+                                                                          l0_exit_stmt_reached_1]
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_4]
+      and 
+      (
+        t_26_1=(neq[tree_0,
+           null]=>(true)else(false))
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_26_0=t_26_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_4]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition17[t_26_1]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_4]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition13[tree_0]
+                  and 
+                  (
+                    throw_5=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    t_27_0=t_27_1)
+                  and 
+                  (
+                    l1_exit_stmt_reached_0=l1_exit_stmt_reached_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition13[tree_0])
+                  )
+                  and 
+                  roops_core_objectsInstrumented_AvlTree_repOK_0[throw_5,
+                                                                t_27_0,
+                                                                t_27_1,
+                                                                l1_exit_stmt_reached_1,
+                                                                l1_exit_stmt_reached_2]
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_4]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_27_0=t_27_1)
+              and 
+              (
+                l1_exit_stmt_reached_0=l1_exit_stmt_reached_2)
+              and 
+              (
+                throw_4=throw_5)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_5]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition15[t_27_1]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                      throw_5]
+                      and 
+                      (
+                        t_25_1=true)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                          throw_5]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_25_0=t_25_1)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition15[t_27_1])
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                      throw_5]
+                      and 
+                      (
+                        t_25_1=false)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                          throw_5]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_25_0=t_25_1)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_5]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_25_0=t_25_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition17[t_26_1])
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_4]
+              and 
+              (
+                t_25_1=false)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_4]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_25_0=t_25_1)
+            )
+          )
+          and 
+          (
+            t_27_0=t_27_1)
+          and 
+          (
+            l1_exit_stmt_reached_0=l1_exit_stmt_reached_2)
+          and 
+          (
+            throw_4=throw_5)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_27_0=t_27_1)
+      and 
+      (
+        l1_exit_stmt_reached_0=l1_exit_stmt_reached_2)
+      and 
+      (
+        t_25_0=t_25_1)
+      and 
+      (
+        throw_4=throw_5)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_5]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition19[t_25_1]
+          and 
+          TruePred[]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_5]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition13[tree_0]
+                  and 
+                  (
+                    throw_10=java_lang_NullPointerExceptionLit)
+                  and 
+                  (
+                    l3_l2_var_14_ws_4_0=l3_l2_var_14_ws_4_3)
+                  and 
+                  (
+                    l3_l2_var_13_t_0=l3_l2_var_13_t_3)
+                  and 
+                  (
+                    roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=roops_core_objectsInstrumented_AvlTree_roops_goal_6_2)
+                  and 
+                  (
+                    t_24_0=t_24_1)
+                  and 
+                  (
+                    l3_exit_stmt_reached_0=l3_exit_stmt_reached_2)
+                  and 
+                  (
+                    l3_l2_exit_stmt_reached_0=l3_l2_exit_stmt_reached_4)
+                  and 
+                  (
+                    l3_l2_t_37_0=l3_l2_t_37_1)
+                  and 
+                  (
+                    l3_t_36_0=l3_t_36_3)
+                  and 
+                  (
+                    l3_l2_t_38_0=l3_l2_t_38_2)
+                  and 
+                  (
+                    l3_l2_t_39_0=l3_l2_t_39_2)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition13[tree_0])
+                  )
+                  and 
+                  roops_core_objectsInstrumented_AvlTree_searchNode_0[tree_0,
+                                                                     throw_6,
+                                                                     throw_7,
+                                                                     throw_8,
+                                                                     throw_9,
+                                                                     throw_10,
+                                                                     t_24_0,
+                                                                     t_24_1,
+                                                                     x_0,
+                                                                     roops_core_objectsInstrumented_AvlNode_element_0,
+                                                                     roops_core_objectsInstrumented_AvlTree_roops_goal_6_1,
+                                                                     roops_core_objectsInstrumented_AvlTree_roops_goal_6_2,
+                                                                     roops_core_objectsInstrumented_AvlTree_root_0,
+                                                                     roops_core_objectsInstrumented_AvlNode_left_0,
+                                                                     roops_core_objectsInstrumented_AvlNode_right_0,
+                                                                     l3_t_36_0,
+                                                                     l3_t_36_1,
+                                                                     l3_t_36_2,
+                                                                     l3_t_36_3,
+                                                                     l3_exit_stmt_reached_1,
+                                                                     l3_exit_stmt_reached_2,
+                                                                     l3_l2_var_14_ws_4_0,
+                                                                     l3_l2_var_14_ws_4_1,
+                                                                     l3_l2_var_14_ws_4_2,
+                                                                     l3_l2_var_14_ws_4_3,
+                                                                     l3_l2_exit_stmt_reached_0,
+                                                                     l3_l2_exit_stmt_reached_1,
+                                                                     l3_l2_exit_stmt_reached_2,
+                                                                     l3_l2_exit_stmt_reached_3,
+                                                                     l3_l2_exit_stmt_reached_4,
+                                                                     l3_l2_var_13_t_0,
+                                                                     l3_l2_var_13_t_1,
+                                                                     l3_l2_var_13_t_2,
+                                                                     l3_l2_var_13_t_3,
+                                                                     l3_l2_t_39_0,
+                                                                     l3_l2_t_39_1,
+                                                                     l3_l2_t_39_2,
+                                                                     l3_l2_t_37_0,
+                                                                     l3_l2_t_37_1,
+                                                                     l3_l2_t_38_0,
+                                                                     l3_l2_t_38_1,
+                                                                     l3_l2_t_38_2]
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_5]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                l3_l2_var_14_ws_4_0=l3_l2_var_14_ws_4_3)
+              and 
+              (
+                l3_l2_var_13_t_0=l3_l2_var_13_t_3)
+              and 
+              (
+                roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=roops_core_objectsInstrumented_AvlTree_roops_goal_6_2)
+              and 
+              (
+                t_24_0=t_24_1)
+              and 
+              (
+                l3_exit_stmt_reached_0=l3_exit_stmt_reached_2)
+              and 
+              (
+                l3_l2_exit_stmt_reached_0=l3_l2_exit_stmt_reached_4)
+              and 
+              (
+                l3_l2_t_37_0=l3_l2_t_37_1)
+              and 
+              (
+                l3_t_36_0=l3_t_36_3)
+              and 
+              (
+                l3_l2_t_38_0=l3_l2_t_38_2)
+              and 
+              (
+                l3_l2_t_39_0=l3_l2_t_39_2)
+              and 
+              (
+                throw_5=throw_10)
+            )
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_10]
+              and 
+              (
+                var_10_ret_val_1=t_24_1)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_10]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                var_10_ret_val_0=var_10_ret_val_1)
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition19[t_25_1])
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            l3_l2_var_14_ws_4_0=l3_l2_var_14_ws_4_3)
+          and 
+          (
+            l3_l2_var_13_t_0=l3_l2_var_13_t_3)
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=roops_core_objectsInstrumented_AvlTree_roops_goal_6_2)
+          and 
+          (
+            t_24_0=t_24_1)
+          and 
+          (
+            l3_exit_stmt_reached_0=l3_exit_stmt_reached_2)
+          and 
+          (
+            var_10_ret_val_0=var_10_ret_val_1)
+          and 
+          (
+            l3_l2_exit_stmt_reached_0=l3_l2_exit_stmt_reached_4)
+          and 
+          (
+            l3_l2_t_37_0=l3_l2_t_37_1)
+          and 
+          (
+            throw_5=throw_10)
+          and 
+          (
+            l3_t_36_0=l3_t_36_3)
+          and 
+          (
+            l3_l2_t_38_0=l3_l2_t_38_2)
+          and 
+          (
+            l3_l2_t_39_0=l3_l2_t_39_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_5]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        l3_l2_var_14_ws_4_0=l3_l2_var_14_ws_4_3)
+      and 
+      (
+        l3_l2_var_13_t_0=l3_l2_var_13_t_3)
+      and 
+      (
+        roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=roops_core_objectsInstrumented_AvlTree_roops_goal_6_2)
+      and 
+      (
+        t_24_0=t_24_1)
+      and 
+      (
+        l3_exit_stmt_reached_0=l3_exit_stmt_reached_2)
+      and 
+      (
+        var_10_ret_val_0=var_10_ret_val_1)
+      and 
+      (
+        l3_l2_exit_stmt_reached_0=l3_l2_exit_stmt_reached_4)
+      and 
+      (
+        l3_l2_t_37_0=l3_l2_t_37_1)
+      and 
+      (
+        l3_t_36_0=l3_t_36_3)
+      and 
+      (
+        l3_l2_t_38_0=l3_l2_t_38_2)
+      and 
+      (
+        l3_l2_t_39_0=l3_l2_t_39_2)
+      and 
+      (
+        throw_5=throw_10)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
+pred roops_core_objectsInstrumented_AvlTree_repOK_0[
+  throw_1: java_lang_Throwable + null,
+  return_0: boolean,
+  return_1: boolean,
+  exit_stmt_reached_1: boolean,
+  exit_stmt_reached_2: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        return_1=true)
+      and 
+      (
+        exit_stmt_reached_2=true)
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        return_0=return_1)
+      and 
+      (
+        exit_stmt_reached_1=exit_stmt_reached_2)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
+pred roops_core_objectsInstrumented_AvlTree_fajita_roopsGoal_initialization_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_0: ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_1: ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  exit_stmt_reached_1: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition4[]
+          and 
+          (
+            throw_2=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition4[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=(roops_core_objectsInstrumented_AvlTree_roops_goal_6_0)++((ClassFields)->(false)))
+          and 
+          (
+            throw_1=throw_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+      and 
+      (
+        throw_1=throw_2)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_2]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition4[]
+          and 
+          (
+            throw_3=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_myRoopsArray_0=roops_core_objectsInstrumented_AvlTree_myRoopsArray_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition4[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_myRoopsArray_1=(roops_core_objectsInstrumented_AvlTree_myRoopsArray_0)++((ClassFields)->(((null+roops_utilInstrumented_RoopsArray) & (null)))))
+          and 
+          (
+            throw_2=throw_3)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_2]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_AvlTree_myRoopsArray_0=roops_core_objectsInstrumented_AvlTree_myRoopsArray_1)
+      and 
+      (
+        throw_2=throw_3)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
+pred roops_core_objectsInstrumented_AvlTree_searchNode_0[
+  thiz_0: roops_core_objectsInstrumented_AvlTree,
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  throw_5: java_lang_Throwable + null,
+  return_0: null + roops_core_objectsInstrumented_AvlNode,
+  return_1: null + roops_core_objectsInstrumented_AvlNode,
+  x_0: JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_AvlNode_element_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( JavaPrimitiveIntegerValue ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_root_0: ( roops_core_objectsInstrumented_AvlTree ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlNode_left_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlNode_right_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  t_36_0: null + roops_core_objectsInstrumented_AvlNode,
+  t_36_1: null + roops_core_objectsInstrumented_AvlNode,
+  t_36_2: null + roops_core_objectsInstrumented_AvlNode,
+  t_36_3: null + roops_core_objectsInstrumented_AvlNode,
+  exit_stmt_reached_1: boolean,
+  exit_stmt_reached_2: boolean,
+  l2_var_14_ws_4_0: boolean,
+  l2_var_14_ws_4_1: boolean,
+  l2_var_14_ws_4_2: boolean,
+  l2_var_14_ws_4_3: boolean,
+  l2_exit_stmt_reached_0: boolean,
+  l2_exit_stmt_reached_1: boolean,
+  l2_exit_stmt_reached_2: boolean,
+  l2_exit_stmt_reached_3: boolean,
+  l2_exit_stmt_reached_4: boolean,
+  l2_var_13_t_0: null + roops_core_objectsInstrumented_AvlNode,
+  l2_var_13_t_1: null + roops_core_objectsInstrumented_AvlNode,
+  l2_var_13_t_2: null + roops_core_objectsInstrumented_AvlNode,
+  l2_var_13_t_3: null + roops_core_objectsInstrumented_AvlNode,
+  l2_t_39_0: boolean,
+  l2_t_39_1: boolean,
+  l2_t_39_2: boolean,
+  l2_t_37_0: boolean,
+  l2_t_37_1: boolean,
+  l2_t_38_0: boolean,
+  l2_t_38_1: boolean,
+  l2_t_38_2: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  TruePred[]
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition0[thiz_0]
+          and 
+          (
+            throw_5=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            l2_var_14_ws_4_0=l2_var_14_ws_4_3)
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+          and 
+          (
+            l2_exit_stmt_reached_0=l2_exit_stmt_reached_4)
+          and 
+          (
+            l2_var_13_t_0=l2_var_13_t_3)
+          and 
+          (
+            t_36_0=t_36_3)
+          and 
+          (
+            l2_t_39_0=l2_t_39_2)
+          and 
+          (
+            l2_t_37_0=l2_t_37_1)
+          and 
+          (
+            l2_t_38_0=l2_t_38_2)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition0[thiz_0])
+          )
+          and 
+          roops_core_objectsInstrumented_AvlTree_search_0[throw_2,
+                                                         throw_3,
+                                                         throw_4,
+                                                         throw_5,
+                                                         t_36_0,
+                                                         t_36_1,
+                                                         t_36_2,
+                                                         t_36_3,
+                                                         x_0,
+                                                         thiz_0.roops_core_objectsInstrumented_AvlTree_root_0,
+                                                         roops_core_objectsInstrumented_AvlNode_element_0,
+                                                         roops_core_objectsInstrumented_AvlTree_roops_goal_6_0,
+                                                         roops_core_objectsInstrumented_AvlTree_roops_goal_6_1,
+                                                         roops_core_objectsInstrumented_AvlNode_left_0,
+                                                         roops_core_objectsInstrumented_AvlNode_right_0,
+                                                         l2_t_38_0,
+                                                         l2_t_38_1,
+                                                         l2_t_38_2,
+                                                         l2_exit_stmt_reached_1,
+                                                         l2_exit_stmt_reached_2,
+                                                         l2_exit_stmt_reached_3,
+                                                         l2_exit_stmt_reached_4,
+                                                         l2_t_37_0,
+                                                         l2_t_37_1,
+                                                         l2_var_13_t_0,
+                                                         l2_var_13_t_1,
+                                                         l2_var_13_t_2,
+                                                         l2_var_13_t_3,
+                                                         l2_var_14_ws_4_0,
+                                                         l2_var_14_ws_4_1,
+                                                         l2_var_14_ws_4_2,
+                                                         l2_var_14_ws_4_3,
+                                                         l2_t_39_0,
+                                                         l2_t_39_1,
+                                                         l2_t_39_2]
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        l2_var_14_ws_4_0=l2_var_14_ws_4_3)
+      and 
+      (
+        roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+      and 
+      (
+        l2_exit_stmt_reached_0=l2_exit_stmt_reached_4)
+      and 
+      (
+        l2_var_13_t_0=l2_var_13_t_3)
+      and 
+      (
+        t_36_0=t_36_3)
+      and 
+      (
+        l2_t_39_0=l2_t_39_2)
+      and 
+      (
+        l2_t_37_0=l2_t_37_1)
+      and 
+      (
+        l2_t_38_0=l2_t_38_2)
+      and 
+      (
+        throw_1=throw_5)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_5]
+      and 
+      (
+        return_1=t_36_3)
+      and 
+      (
+        exit_stmt_reached_2=true)
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_5]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        return_0=return_1)
+      and 
+      (
+        exit_stmt_reached_1=exit_stmt_reached_2)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+
+
+pred roops_core_objectsInstrumented_AvlTree_search_0[
+  throw_1: java_lang_Throwable + null,
+  throw_2: java_lang_Throwable + null,
+  throw_3: java_lang_Throwable + null,
+  throw_4: java_lang_Throwable + null,
+  return_0: null + roops_core_objectsInstrumented_AvlNode,
+  return_1: null + roops_core_objectsInstrumented_AvlNode,
+  return_2: null + roops_core_objectsInstrumented_AvlNode,
+  return_3: null + roops_core_objectsInstrumented_AvlNode,
+  x_0: JavaPrimitiveIntegerValue,
+  arg_0: null + roops_core_objectsInstrumented_AvlNode,
+  roops_core_objectsInstrumented_AvlNode_element_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( JavaPrimitiveIntegerValue ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_0: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_1: ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlNode_left_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlNode_right_0: ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  t_38_0: boolean,
+  t_38_1: boolean,
+  t_38_2: boolean,
+  exit_stmt_reached_1: boolean,
+  exit_stmt_reached_2: boolean,
+  exit_stmt_reached_3: boolean,
+  exit_stmt_reached_4: boolean,
+  t_37_0: boolean,
+  t_37_1: boolean,
+  var_13_t_0: null + roops_core_objectsInstrumented_AvlNode,
+  var_13_t_1: null + roops_core_objectsInstrumented_AvlNode,
+  var_13_t_2: null + roops_core_objectsInstrumented_AvlNode,
+  var_13_t_3: null + roops_core_objectsInstrumented_AvlNode,
+  var_14_ws_4_0: boolean,
+  var_14_ws_4_1: boolean,
+  var_14_ws_4_2: boolean,
+  var_14_ws_4_3: boolean,
+  t_39_0: boolean,
+  t_39_1: boolean,
+  t_39_2: boolean
+]{
+  TruePred[]
+  and 
+  (
+    throw_1=null)
+  and 
+  TruePred[]
+  and 
+  (
+    exit_stmt_reached_1=false)
+  and 
+  TruePred[]
+  and 
+  TruePred[]
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        var_13_t_1=arg_0)
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        var_13_t_0=var_13_t_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        t_37_1=(neq[var_13_t_1,
+           null]=>(true)else(false))
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        t_37_0=t_37_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_1]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition4[]
+          and 
+          (
+            throw_2=java_lang_NullPointerExceptionLit)
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition4[])
+          )
+          and 
+          (
+            roops_core_objectsInstrumented_AvlTree_roops_goal_6_1=(roops_core_objectsInstrumented_AvlTree_roops_goal_6_0)++((ClassFields)->((equ[t_37_1,
+               false]=>(true)else(false))))
+          )
+          and 
+          (
+            throw_1=throw_2)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        roops_core_objectsInstrumented_AvlTree_roops_goal_6_0=roops_core_objectsInstrumented_AvlTree_roops_goal_6_1)
+      and 
+      (
+        throw_1=throw_2)
+    )
+  )
+  and 
+  TruePred[]
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                      throw_2]
+      and 
+      (
+        var_14_ws_4_1=(neq[var_13_t_1,
+           null]=>(true)else(false))
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_2]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        var_14_ws_4_0=var_14_ws_4_1)
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition12[exit_stmt_reached_1,
+                                                       throw_2,
+                                                       var_14_ws_4_1]
+      and 
+      TruePred[]
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_2]
+          and 
+          (
+            t_39_1=(pred_java_primitive_integer_value_lt[x_0,
+                                                var_13_t_1.roops_core_objectsInstrumented_AvlNode_element_0]=>(true)else(false))
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_2]
+            )
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            t_39_0=t_39_1)
+        )
+      )
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                          throw_2]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition10[t_39_1]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_2]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_1]
+                      and 
+                      (
+                        throw_3=java_lang_NullPointerExceptionLit)
+                      and 
+                      (
+                        var_13_t_1=var_13_t_2)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_1])
+                      )
+                      and 
+                      (
+                        var_13_t_2=var_13_t_1.roops_core_objectsInstrumented_AvlNode_left_0)
+                      and 
+                      (
+                        throw_2=throw_3)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                      throw_2]
+                    )
+                  )
+                  and 
+                  TruePred[]
+                  and 
+                  (
+                    var_13_t_1=var_13_t_2)
+                  and 
+                  (
+                    throw_2=throw_3)
+                )
+              )
+              and 
+              (
+                return_0=return_1)
+              and 
+              (
+                t_38_0=t_38_1)
+              and 
+              (
+                exit_stmt_reached_1=exit_stmt_reached_2)
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition10[t_39_1])
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_2]
+                  and 
+                  (
+                    t_38_1=(pred_java_primitive_integer_value_gt[x_0,
+                                                        var_13_t_1.roops_core_objectsInstrumented_AvlNode_element_0]=>(true)else(false))
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                      throw_2]
+                    )
+                  )
+                  and 
+                  TruePred[]
+                  and 
+                  (
+                    t_38_0=t_38_1)
+                )
+              )
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                  throw_2]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition8[t_38_1]
+                      and 
+                      (
+                        (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                          throw_2]
+                          and 
+                          (
+                            (
+                              roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_1]
+                              and 
+                              (
+                                throw_3=java_lang_NullPointerExceptionLit)
+                              and 
+                              (
+                                var_13_t_1=var_13_t_2)
+                            )
+                            or 
+                            (
+                              (
+                                not (
+                                  roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_1])
+                              )
+                              and 
+                              (
+                                var_13_t_2=var_13_t_1.roops_core_objectsInstrumented_AvlNode_right_0)
+                              and 
+                              (
+                                throw_2=throw_3)
+                            )
+                          )
+                        )
+                        or 
+                        (
+                          (
+                            not (
+                              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                              throw_2]
+                            )
+                          )
+                          and 
+                          TruePred[]
+                          and 
+                          (
+                            var_13_t_1=var_13_t_2)
+                          and 
+                          (
+                            throw_2=throw_3)
+                        )
+                      )
+                      and 
+                      (
+                        return_0=return_1)
+                      and 
+                      (
+                        exit_stmt_reached_1=exit_stmt_reached_2)
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition8[t_38_1])
+                      )
+                      and 
+                      (
+                        (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                          throw_2]
+                          and 
+                          (
+                            return_1=var_13_t_1)
+                          and 
+                          (
+                            exit_stmt_reached_2=true)
+                        )
+                        or 
+                        (
+                          (
+                            not (
+                              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                              throw_2]
+                            )
+                          )
+                          and 
+                          TruePred[]
+                          and 
+                          (
+                            return_0=return_1)
+                          and 
+                          (
+                            exit_stmt_reached_1=exit_stmt_reached_2)
+                        )
+                      )
+                      and 
+                      (
+                        throw_2=throw_3)
+                      and 
+                      (
+                        var_13_t_1=var_13_t_2)
+                    )
+                  )
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                                      throw_2]
+                    )
+                  )
+                  and 
+                  TruePred[]
+                  and 
+                  (
+                    var_13_t_1=var_13_t_2)
+                  and 
+                  (
+                    return_0=return_1)
+                  and 
+                  (
+                    throw_2=throw_3)
+                  and 
+                  (
+                    exit_stmt_reached_1=exit_stmt_reached_2)
+                )
+              )
+            )
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_1,
+                                                              throw_2]
+            )
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            var_13_t_1=var_13_t_2)
+          and 
+          (
+            return_0=return_1)
+          and 
+          (
+            t_38_0=t_38_1)
+          and 
+          (
+            throw_2=throw_3)
+          and 
+          (
+            exit_stmt_reached_1=exit_stmt_reached_2)
+        )
+      )
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                          throw_3]
+          and 
+          (
+            var_14_ws_4_2=(neq[var_13_t_2,
+               null]=>(true)else(false))
+          )
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                              throw_3]
+            )
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            var_14_ws_4_1=var_14_ws_4_2)
+        )
+      )
+      and 
+      (
+        (
+          roops_core_objectsInstrumented_AvlTreeCondition12[exit_stmt_reached_2,
+                                                           throw_3,
+                                                           var_14_ws_4_2]
+          and 
+          TruePred[]
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                              throw_3]
+              and 
+              (
+                t_39_2=(pred_java_primitive_integer_value_lt[x_0,
+                                                    var_13_t_2.roops_core_objectsInstrumented_AvlNode_element_0]=>(true)else(false))
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                  throw_3]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                t_39_1=t_39_2)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                              throw_3]
+              and 
+              (
+                (
+                  roops_core_objectsInstrumented_AvlTreeCondition10[t_39_2]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                      throw_3]
+                      and 
+                      (
+                        (
+                          roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_2]
+                          and 
+                          (
+                            throw_4=java_lang_NullPointerExceptionLit)
+                          and 
+                          (
+                            var_13_t_2=var_13_t_3)
+                        )
+                        or 
+                        (
+                          (
+                            not (
+                              roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_2])
+                          )
+                          and 
+                          (
+                            var_13_t_3=var_13_t_2.roops_core_objectsInstrumented_AvlNode_left_0)
+                          and 
+                          (
+                            throw_3=throw_4)
+                        )
+                      )
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                          throw_3]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        var_13_t_2=var_13_t_3)
+                      and 
+                      (
+                        throw_3=throw_4)
+                    )
+                  )
+                  and 
+                  (
+                    return_1=return_2)
+                  and 
+                  (
+                    t_38_1=t_38_2)
+                  and 
+                  (
+                    exit_stmt_reached_2=exit_stmt_reached_3)
+                )
+                or 
+                (
+                  (
+                    not (
+                      roops_core_objectsInstrumented_AvlTreeCondition10[t_39_2])
+                  )
+                  and 
+                  TruePred[]
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                      throw_3]
+                      and 
+                      (
+                        t_38_2=(pred_java_primitive_integer_value_gt[x_0,
+                                                            var_13_t_2.roops_core_objectsInstrumented_AvlNode_element_0]=>(true)else(false))
+                      )
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                          throw_3]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        t_38_1=t_38_2)
+                    )
+                  )
+                  and 
+                  (
+                    (
+                      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                      throw_3]
+                      and 
+                      (
+                        (
+                          roops_core_objectsInstrumented_AvlTreeCondition8[t_38_2]
+                          and 
+                          (
+                            (
+                              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                              throw_3]
+                              and 
+                              (
+                                (
+                                  roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_2]
+                                  and 
+                                  (
+                                    throw_4=java_lang_NullPointerExceptionLit)
+                                  and 
+                                  (
+                                    var_13_t_2=var_13_t_3)
+                                )
+                                or 
+                                (
+                                  (
+                                    not (
+                                      roops_core_objectsInstrumented_AvlTreeCondition6[var_13_t_2])
+                                  )
+                                  and 
+                                  (
+                                    var_13_t_3=var_13_t_2.roops_core_objectsInstrumented_AvlNode_right_0)
+                                  and 
+                                  (
+                                    throw_3=throw_4)
+                                )
+                              )
+                            )
+                            or 
+                            (
+                              (
+                                not (
+                                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                                  throw_3]
+                                )
+                              )
+                              and 
+                              TruePred[]
+                              and 
+                              (
+                                var_13_t_2=var_13_t_3)
+                              and 
+                              (
+                                throw_3=throw_4)
+                            )
+                          )
+                          and 
+                          (
+                            return_1=return_2)
+                          and 
+                          (
+                            exit_stmt_reached_2=exit_stmt_reached_3)
+                        )
+                        or 
+                        (
+                          (
+                            not (
+                              roops_core_objectsInstrumented_AvlTreeCondition8[t_38_2])
+                          )
+                          and 
+                          (
+                            (
+                              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                              throw_3]
+                              and 
+                              (
+                                return_2=var_13_t_2)
+                              and 
+                              (
+                                exit_stmt_reached_3=true)
+                            )
+                            or 
+                            (
+                              (
+                                not (
+                                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                                  throw_3]
+                                )
+                              )
+                              and 
+                              TruePred[]
+                              and 
+                              (
+                                return_1=return_2)
+                              and 
+                              (
+                                exit_stmt_reached_2=exit_stmt_reached_3)
+                            )
+                          )
+                          and 
+                          (
+                            throw_3=throw_4)
+                          and 
+                          (
+                            var_13_t_2=var_13_t_3)
+                        )
+                      )
+                    )
+                    or 
+                    (
+                      (
+                        not (
+                          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                          throw_3]
+                        )
+                      )
+                      and 
+                      TruePred[]
+                      and 
+                      (
+                        var_13_t_2=var_13_t_3)
+                      and 
+                      (
+                        return_1=return_2)
+                      and 
+                      (
+                        throw_3=throw_4)
+                      and 
+                      (
+                        exit_stmt_reached_2=exit_stmt_reached_3)
+                    )
+                  )
+                )
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_2,
+                                                                  throw_3]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                var_13_t_2=var_13_t_3)
+              and 
+              (
+                return_1=return_2)
+              and 
+              (
+                t_38_1=t_38_2)
+              and 
+              (
+                throw_3=throw_4)
+              and 
+              (
+                exit_stmt_reached_2=exit_stmt_reached_3)
+            )
+          )
+          and 
+          (
+            (
+              roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_3,
+                                                              throw_4]
+              and 
+              (
+                var_14_ws_4_3=(neq[var_13_t_3,
+                   null]=>(true)else(false))
+              )
+            )
+            or 
+            (
+              (
+                not (
+                  roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_3,
+                                                                  throw_4]
+                )
+              )
+              and 
+              TruePred[]
+              and 
+              (
+                var_14_ws_4_2=var_14_ws_4_3)
+            )
+          )
+          and 
+          TruePred[]
+        )
+        or 
+        (
+          (
+            not (
+              roops_core_objectsInstrumented_AvlTreeCondition12[exit_stmt_reached_2,
+                                                               throw_3,
+                                                               var_14_ws_4_2]
+            )
+          )
+          and 
+          TruePred[]
+          and 
+          (
+            var_13_t_2=var_13_t_3)
+          and 
+          (
+            return_1=return_2)
+          and 
+          (
+            t_38_1=t_38_2)
+          and 
+          (
+            t_39_1=t_39_2)
+          and 
+          (
+            throw_3=throw_4)
+          and 
+          (
+            var_14_ws_4_2=var_14_ws_4_3)
+          and 
+          (
+            exit_stmt_reached_2=exit_stmt_reached_3)
+        )
+      )
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition12[exit_stmt_reached_1,
+                                                           throw_2,
+                                                           var_14_ws_4_1]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        var_13_t_1=var_13_t_3)
+      and 
+      (
+        return_0=return_2)
+      and 
+      (
+        t_38_0=t_38_2)
+      and 
+      (
+        t_39_0=t_39_2)
+      and 
+      (
+        throw_2=throw_4)
+      and 
+      (
+        var_14_ws_4_1=var_14_ws_4_3)
+      and 
+      (
+        exit_stmt_reached_1=exit_stmt_reached_3)
+    )
+  )
+  and 
+  (
+    not (
+      roops_core_objectsInstrumented_AvlTreeCondition12[exit_stmt_reached_3,
+                                                       throw_4,
+                                                       var_14_ws_4_3]
+    )
+  )
+  and 
+  (
+    (
+      roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_3,
+                                                      throw_4]
+      and 
+      (
+        return_3=((null+roops_core_objectsInstrumented_AvlNode) & (null)))
+      and 
+      (
+        exit_stmt_reached_4=true)
+    )
+    or 
+    (
+      (
+        not (
+          roops_core_objectsInstrumented_AvlTreeCondition2[exit_stmt_reached_3,
+                                                          throw_4]
+        )
+      )
+      and 
+      TruePred[]
+      and 
+      (
+        return_2=return_3)
+      and 
+      (
+        exit_stmt_reached_3=exit_stmt_reached_4)
+    )
+  )
+  and 
+  TruePred[]
+
+}
+
+one sig QF {
+  BQ__6: boolean,
+  l4_exit_stmt_reached_1:  boolean,
+  l4_l0_exit_stmt_reached_1:  boolean,
+  l4_l1_exit_stmt_reached_0:  boolean,
+  l4_l1_exit_stmt_reached_1:  boolean,
+  l4_l1_exit_stmt_reached_2:  boolean,
+  l4_l3_exit_stmt_reached_0:  boolean,
+  l4_l3_exit_stmt_reached_1:  boolean,
+  l4_l3_exit_stmt_reached_2:  boolean,
+  l4_l3_l2_exit_stmt_reached_0:  boolean,
+  l4_l3_l2_exit_stmt_reached_1:  boolean,
+  l4_l3_l2_exit_stmt_reached_2:  boolean,
+  l4_l3_l2_exit_stmt_reached_3:  boolean,
+  l4_l3_l2_exit_stmt_reached_4:  boolean,
+  l4_l3_l2_t_37_0:  boolean,
+  l4_l3_l2_t_37_1:  boolean,
+  l4_l3_l2_t_38_0:  boolean,
+  l4_l3_l2_t_38_1:  boolean,
+  l4_l3_l2_t_38_2:  boolean,
+  l4_l3_l2_t_39_0:  boolean,
+  l4_l3_l2_t_39_1:  boolean,
+  l4_l3_l2_t_39_2:  boolean,
+  l4_l3_l2_var_13_t_0:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_l2_var_13_t_1:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_l2_var_13_t_2:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_l2_var_13_t_3:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_l2_var_14_ws_4_0:  boolean,
+  l4_l3_l2_var_14_ws_4_1:  boolean,
+  l4_l3_l2_var_14_ws_4_2:  boolean,
+  l4_l3_l2_var_14_ws_4_3:  boolean,
+  l4_l3_t_36_0:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_t_36_1:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_t_36_2:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_l3_t_36_3:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_t_24_0:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_t_24_1:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_t_25_0:  boolean,
+  l4_t_25_1:  boolean,
+  l4_t_26_0:  boolean,
+  l4_t_26_1:  boolean,
+  l4_t_27_0:  boolean,
+  l4_t_27_1:  boolean,
+  l4_var_10_ret_val_0:  null + roops_core_objectsInstrumented_AvlNode,
+  l4_var_10_ret_val_1:  null + roops_core_objectsInstrumented_AvlNode,
+  roops_core_objectsInstrumented_AvlNode_element_0:  ( roops_core_objectsInstrumented_AvlNode ) -> one ( JavaPrimitiveIntegerValue ),
+  roops_core_objectsInstrumented_AvlNode_height_0:  ( roops_core_objectsInstrumented_AvlNode ) -> one ( JavaPrimitiveIntegerValue ),
+  roops_core_objectsInstrumented_AvlNode_left_0:  ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlNode_right_0:  ( roops_core_objectsInstrumented_AvlNode ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_0:  ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  roops_core_objectsInstrumented_AvlTree_myRoopsArray_1:  ( ClassFields ) -> one ( null + roops_utilInstrumented_RoopsArray ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_0:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_1:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_roops_goal_6_2:  ( ClassFields ) -> one ( boolean ),
+  roops_core_objectsInstrumented_AvlTree_root_0:  ( roops_core_objectsInstrumented_AvlTree ) -> one ( null + roops_core_objectsInstrumented_AvlNode ),
+  throw_0:  java_lang_Throwable + null,
+  throw_1:  java_lang_Throwable + null,
+  throw_10:  java_lang_Throwable + null,
+  throw_2:  java_lang_Throwable + null,
+  throw_3:  java_lang_Throwable + null,
+  throw_4:  java_lang_Throwable + null,
+  throw_5:  java_lang_Throwable + null,
+  throw_6:  java_lang_Throwable + null,
+  throw_7:  java_lang_Throwable + null,
+  throw_8:  java_lang_Throwable + null,
+  throw_9:  java_lang_Throwable + null,
+  tree_0:  null + roops_core_objectsInstrumented_AvlTree,
+  x_0:  JavaPrimitiveIntegerValue
+}
+
+
+fact {
+  precondition_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[QF.roops_core_objectsInstrumented_AvlNode_element_0,
+                                                                      QF.roops_core_objectsInstrumented_AvlNode_height_0,
+                                                                      QF.roops_core_objectsInstrumented_AvlNode_left_0,
+                                                                      QF.roops_core_objectsInstrumented_AvlNode_right_0,
+                                                                      QF.roops_core_objectsInstrumented_AvlTree_root_0,
+                                                                      QF.throw_0,
+                                                                      QF.x_0]
+
+}
+
+fact {
+  roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[QF.throw_1,
+                                                         QF.throw_2,
+                                                         QF.throw_3,
+                                                         QF.throw_4,
+                                                         QF.throw_5,
+                                                         QF.throw_6,
+                                                         QF.throw_7,
+                                                         QF.throw_8,
+                                                         QF.throw_9,
+                                                         QF.throw_10,
+                                                         QF.tree_0,
+                                                         QF.x_0,
+                                                         QF.roops_core_objectsInstrumented_AvlNode_element_0,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_roops_goal_6_0,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_roops_goal_6_1,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_roops_goal_6_2,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_root_0,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_myRoopsArray_0,
+                                                         QF.roops_core_objectsInstrumented_AvlTree_myRoopsArray_1,
+                                                         QF.roops_core_objectsInstrumented_AvlNode_left_0,
+                                                         QF.roops_core_objectsInstrumented_AvlNode_right_0,
+                                                         QF.l4_exit_stmt_reached_1,
+                                                         QF.l4_t_24_0,
+                                                         QF.l4_t_24_1,
+                                                         QF.l4_t_25_0,
+                                                         QF.l4_t_25_1,
+                                                         QF.l4_t_26_0,
+                                                         QF.l4_t_26_1,
+                                                         QF.l4_t_27_0,
+                                                         QF.l4_t_27_1,
+                                                         QF.l4_var_10_ret_val_0,
+                                                         QF.l4_var_10_ret_val_1,
+                                                         QF.l4_l3_l2_var_14_ws_4_0,
+                                                         QF.l4_l3_l2_var_14_ws_4_1,
+                                                         QF.l4_l3_l2_var_14_ws_4_2,
+                                                         QF.l4_l3_l2_var_14_ws_4_3,
+                                                         QF.l4_l3_l2_var_13_t_0,
+                                                         QF.l4_l3_l2_var_13_t_1,
+                                                         QF.l4_l3_l2_var_13_t_2,
+                                                         QF.l4_l3_l2_var_13_t_3,
+                                                         QF.l4_l0_exit_stmt_reached_1,
+                                                         QF.l4_l1_exit_stmt_reached_0,
+                                                         QF.l4_l1_exit_stmt_reached_1,
+                                                         QF.l4_l1_exit_stmt_reached_2,
+                                                         QF.l4_l3_exit_stmt_reached_0,
+                                                         QF.l4_l3_exit_stmt_reached_1,
+                                                         QF.l4_l3_exit_stmt_reached_2,
+                                                         QF.l4_l3_l2_exit_stmt_reached_0,
+                                                         QF.l4_l3_l2_exit_stmt_reached_1,
+                                                         QF.l4_l3_l2_exit_stmt_reached_2,
+                                                         QF.l4_l3_l2_exit_stmt_reached_3,
+                                                         QF.l4_l3_l2_exit_stmt_reached_4,
+                                                         QF.l4_l3_l2_t_37_0,
+                                                         QF.l4_l3_l2_t_37_1,
+                                                         QF.l4_l3_t_36_0,
+                                                         QF.l4_l3_t_36_1,
+                                                         QF.l4_l3_t_36_2,
+                                                         QF.l4_l3_t_36_3,
+                                                         QF.l4_l3_l2_t_38_0,
+                                                         QF.l4_l3_l2_t_38_1,
+                                                         QF.l4_l3_l2_t_38_2,
+                                                         QF.l4_l3_l2_t_39_0,
+                                                         QF.l4_l3_l2_t_39_1,
+                                                         QF.l4_l3_l2_t_39_2]
+
+}
+
+assert check_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0{
+  postcondition_roops_core_objectsInstrumented_AvlTree_searchNodeTest_0[QF.throw_10]}
+fun fun_java_primitive_integer_value_literal_2[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_2[ret] }
+}
+fun fun_java_primitive_integer_value_literal_3[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_3[ret] }
+}
+fun fun_java_primitive_integer_value_literal_4[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_4[ret] }
+}
+fun fun_java_primitive_integer_value_literal_5[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_5[ret] }
+}
+fun fun_java_primitive_integer_value_literal_6[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_6[ret] }
+}
+fun fun_java_primitive_integer_value_literal_7[]: one JavaPrimitiveIntegerValue {
+ { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_literal_7[ret] }
+}
+fun fun_java_primitive_integer_value_size_of[s: set univ]: one JavaPrimitiveIntegerValue {
+  { ret: JavaPrimitiveIntegerValue | pred_java_primitive_integer_value_size_of[s,ret]} 
+}
+pred pred_java_primitive_integer_value_literal_2[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=true 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_literal_3[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=true 
+ ret.b02=false 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_literal_4[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=false 
+ ret.b02=true 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_literal_5[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=false 
+ ret.b02=true 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_literal_6[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=false 
+ ret.b01=true 
+ ret.b02=true 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_literal_7[ret: JavaPrimitiveIntegerValue] {
+ ret.b00=true 
+ ret.b01=true 
+ ret.b02=true 
+ ret.b03=false 
+ ret.b04=false 
+ ret.b05=false 
+ ret.b06=false 
+ ret.b07=false 
+ ret.b08=false 
+ ret.b09=false 
+ ret.b10=false 
+ ret.b11=false 
+ ret.b12=false 
+ ret.b13=false 
+ ret.b14=false 
+ ret.b15=false 
+ ret.b16=false 
+ ret.b17=false 
+ ret.b18=false 
+ ret.b19=false 
+ ret.b20=false 
+ ret.b21=false 
+ ret.b22=false 
+ ret.b23=false 
+ ret.b24=false 
+ ret.b25=false 
+ ret.b26=false 
+ ret.b27=false 
+ ret.b28=false 
+ ret.b29=false 
+ ret.b30=false 
+ ret.b31=false 
+}
+pred pred_java_primitive_integer_value_size_of[s: set univ, ret: JavaPrimitiveIntegerValue] {
+  (#(s)=0) => pred_java_primitive_integer_value_literal_0[ret] 
+  else (#(s)=1) => pred_java_primitive_integer_value_literal_1[ret] 
+  else (#(s)=2) => pred_java_primitive_integer_value_literal_2[ret] 
+  else (#(s)=3) => pred_java_primitive_integer_value_literal_3[ret] 
+  else (#(s)=4) => pred_java_primitive_integer_value_literal_4[ret] 
+  else (#(s)=5) => pred_java_primitive_integer_value_literal_5[ret] 
+  else (#(s)=6) => pred_java_primitive_integer_value_literal_6[ret] 
+  else (#(s)=7) => pred_java_primitive_integer_value_literal_7[ret] 
+  else pred_java_primitive_integer_value_literal_minus_1[ret] 
+}
+fact {
+  QF.BQ__6=true iff ClassFields.(QF.roops_core_objectsInstrumented_AvlTree_roops_goal_6_2)=true
+}

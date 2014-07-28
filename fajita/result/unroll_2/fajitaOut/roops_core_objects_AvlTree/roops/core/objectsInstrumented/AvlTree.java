@@ -22,8 +22,6 @@ public class AvlTree {
 	 */
     static public void searchNodeTest (AvlTree tree, int x) {
         fajita_roopsGoal_initialization ();
-        roops_goal_0 = (tree != null) == false;
-        roops_goal_1 = tree != null;
 
         if ( tree != null && tree.repOK () )
         {
@@ -52,17 +50,12 @@ public class AvlTree {
     public AvlNode search (final int x, final AvlNode arg) {
         AvlNode t = arg;
         roops_goal_6 = (t != null) == false;
-        roops_goal_7 = t != null;
-        while (  t != null )
+        while ( t != null )
         {
 
             {
 
     }
-            roops_goal_2 = (x < t.element) == false;
-            roops_goal_3 = x < t.element;
-            roops_goal_4 = (x > t.element) == false;
-            roops_goal_5 = x > t.element;
             if ( x < t.element )
             {
 
@@ -155,33 +148,12 @@ public class AvlTree {
         return true;
     }
 
-    public static boolean roops_goal_0;
-
-    public static boolean roops_goal_1;
-
-    public static boolean roops_goal_2;
-
-    public static boolean roops_goal_3;
-
-    public static boolean roops_goal_4;
-
-    public static boolean roops_goal_5;
-
     public static boolean roops_goal_6;
-
-    public static boolean roops_goal_7;
 
     public static RoopsArray myRoopsArray;
 
     public static void fajita_roopsGoal_initialization () {
-        roops_goal_0 = false;
-        roops_goal_1 = false;
-        roops_goal_2 = false;
-        roops_goal_3 = false;
-        roops_goal_4 = false;
-        roops_goal_5 = false;
         roops_goal_6 = false;
-        roops_goal_7 = false;
         myRoopsArray = null;
     }
 }
