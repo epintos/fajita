@@ -7,6 +7,8 @@ import java.io.FilenameFilter;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.parsers.SAXParser;
@@ -84,8 +86,6 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 
         try {
 
-            configuration.setDiscoveredPaths(configuration.getDiscoveredPaths() + 1);
-
             ClassLoader cl = ClassLoader.getSystemClassLoader();
             @SuppressWarnings("resource")
             ClassLoader loader = new URLClassLoader(new URL[] { new File(configuration.getCompiledClassToCheckPath()).toURI().toURL() }, cl);
@@ -121,9 +121,9 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
 
     /** This method indicates whether a new goal was covered or not. */
     public boolean newGoalCovered() {
-//        if (configuration.getCoverageCriteria() == CoverageCriteria.PATH) {
-//            return newPathCovered();
-//        }
+        if (configuration.getCoverageCriteria() == CoverageCriteria.PATH) {
+            return newPathCovered();
+        }
         try {
 
             SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
@@ -154,6 +154,69 @@ public class JUnitGeneratorCLICallback implements CoverageClauseCallback {
     }
 
     private boolean newPathCovered() {
+        try {
+
+            SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
+            String xmlDir = configuration.getTacoOutputDirectory() + separator;
+            File dir = new File(xmlDir);
+            String[] list = dir.list(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.endsWith(".xml");
+                }
+            });
+
+            GoalHandler handler = new GoalHandler();
+            String file = getLatestSol(list);
+            
+            List<Integer> path = new ArrayList<>();
+            
+            saxParser.parse(xmlDir + file, (DefaultHandler) handler);
+
+            for (String goal : handler.bq_coverage.keySet()) {
+                Integer goalIndex = Integer.parseInt(goal.replace("BQ__", "").trim());
+                if (handler.bq_coverage.get(goal)) {
+                    path.add(goalIndex);
+                }
+            }
+            
+            Collections.sort(path);
+            return !containsPath(configuration.getDiscoveredPaths(), path);
+            
+        } catch (Exception e) {
+            throw new FajitaException(e.getMessage(), e);
+        }
+    }
+    
+    private String getLatestSol(String[] listFiles) {
+        String[] splitted = listFiles[0].split("\\.");
+        String baseName = splitted[0];
+        int biggest = 0;
+        for (String file: listFiles) {
+            String[] split = file.split("\\.");
+            int num = Integer.parseInt(split[1].substring(3, split[1].length()));
+            biggest = num > biggest ? num : biggest;
+        }
+        return baseName + "." + "sol" + biggest + ".xml";
+    }
+    
+    private boolean containsPath(List<List<Integer>> allPaths, List<Integer> newPath) {
+        for(List<Integer> path: allPaths) {
+            if (pathIsTheSame(path, newPath)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean pathIsTheSame(List<Integer> path, List<Integer> newPath) {
+        if (path.size() != newPath.size()) {
+            return false;
+        }
+        for (int i = 0; i < path.size() - 1; i++) {
+            if (path.get(i) != newPath.get(i)) {
+                return false;
+            }
+        }
         return true;
     }
 

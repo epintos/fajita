@@ -70,14 +70,14 @@ public class LoopUnrollTransformation extends Transformation {
     }
 
     public static void transform(CompilationUnit compilationUnit) {
-        while(runAgain) {
-            runAgain = false;
-            TreeWalker treeWalker = new TreeWalker(compilationUnit);
-            SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(2, new LoopUnrollTransformation());
-            while (treeWalker.next()) {
-                treeWalker.getProgramElement().accept(transformVisitor);
-            }
+//        while(runAgain) {
+        runAgain = false;
+        TreeWalker treeWalker = new TreeWalker(compilationUnit);
+        SourceVisitor transformVisitor = new LoopUnrollTransformationVisitor(2, new LoopUnrollTransformation());
+        while (treeWalker.next()) {
+            treeWalker.getProgramElement().accept(transformVisitor);
         }
+//        }
 
     }
 

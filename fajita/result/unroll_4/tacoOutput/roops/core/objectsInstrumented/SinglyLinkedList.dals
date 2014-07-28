@@ -5,17 +5,10 @@ sig roops_core_objectsInstrumented_SinglyLinkedList extends java_lang_Object {}
 
 
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition25[
-  t_220:univ
+  t_198:univ
 ]{
    not (
-     t_220=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition29[
-  t_221:univ
-]{
-   t_221=true
+     t_198=true)
 
 }
 
@@ -29,56 +22,25 @@ pred roops_core_objectsInstrumented_SinglyLinkedList_ensures[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition27[
-  t_219:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition21[
+  t_197:univ
 ]{
    not (
-     t_219=true)
+     t_197=true)
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition28[
-  exit_stmt_reached:univ,
-  throw:univ,
-  var_89_ws_16:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition20[
+  t_197:univ
 ]{
-   liftExpression[var_89_ws_16]
-   and 
-   (
-     throw=null)
-   and 
-   (
-     exit_stmt_reached=false)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition26[
-  t_219:univ
-]{
-   t_219=true
+   t_197=true
 
 }
 
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition24[
-  t_220:univ
+  t_198:univ
 ]{
-   t_220=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
-  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
-  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
-  thiz:univ
-]{
-   all n:roops_core_objectsInstrumented_SinglyLinkedListNode | {
-     isSubset[n,
-             fun_set_difference[(thiz.roops_core_objectsInstrumented_SinglyLinkedList_header).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
-     implies 
-             isNotSubset[n,
-                        fun_set_difference[(n.roops_core_objectsInstrumented_SinglyLinkedListNode_next).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
-   
-   }
+   t_198=true
 
 }
 
@@ -91,6 +53,176 @@ pred postcondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_
      not (
        throw'=AssertionFailureLit)
    )
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition1[
+]{
+   not (
+     isEmptyOrNull[ClassFields])
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition19[
+  t_196:univ
+]{
+   not (
+     t_196=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition18[
+  t_196:univ
+]{
+   t_196=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition14[
+  t_200:univ
+]{
+   t_200=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition6[
+  t_189:univ
+]{
+   t_189=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition15[
+  t_200:univ
+]{
+   not (
+     t_200=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition12[
+  thiz:univ
+]{
+   isEmptyOrNull[thiz]
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition7[
+  t_189:univ
+]{
+   not (
+     t_189=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition17[
+  t_199:univ
+]{
+   not (
+     t_199=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition13[
+  thiz:univ
+]{
+   not (
+     isEmptyOrNull[thiz])
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition16[
+  t_199:univ
+]{
+   t_199=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition9[
+  t_188:univ
+]{
+   not (
+     t_188=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition8[
+  t_188:univ
+]{
+   t_188=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition35[
+  t_203:univ
+]{
+   not (
+     t_203=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition0[
+]{
+   isEmptyOrNull[ClassFields]
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition23[
+  var_72_current:univ
+]{
+   not (
+     isEmptyOrNull[var_72_current])
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition10[
+  t_187:univ
+]{
+   t_187=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition34[
+  t_203:univ
+]{
+   t_203=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
+  t_187:univ
+]{
+   not (
+     t_187=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition22[
+  var_72_current:univ
+]{
+   isEmptyOrNull[var_72_current]
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition32[
+  t_202:univ
+]{
+   t_202=true
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition33[
+  t_202:univ
+]{
+   not (
+     t_202=true)
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition30[
+  t_201:univ
+]{
+   t_201=true
 
 }
 
@@ -113,36 +245,7 @@ pred precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition1[
-]{
-   not (
-     isEmptyOrNull[ClassFields])
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition14[
-  t_215:univ
-]{
-   t_215=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition15[
-  t_215:univ
-]{
-   not (
-     t_215=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition16[
-  t_214:univ
-]{
-   t_214=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition9[
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition27[
   t_205:univ
 ]{
    not (
@@ -150,96 +253,14 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition9[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition8[
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition26[
   t_205:univ
 ]{
    t_205=true
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition17[
-  t_214:univ
-]{
-   not (
-     t_214=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition6[
-  t_206:univ
-]{
-   t_206=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition18[
-  t_216:univ
-]{
-   t_216=true
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition12[
-  thiz:univ
-]{
-   isEmptyOrNull[thiz]
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition13[
-  thiz:univ
-]{
-   not (
-     isEmptyOrNull[thiz])
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition7[
-  t_206:univ
-]{
-   not (
-     t_206=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition19[
-  t_216:univ
-]{
-   not (
-     t_216=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition0[
-]{
-   isEmptyOrNull[ClassFields]
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition23[
-  var_86_current:univ
-]{
-   not (
-     isEmptyOrNull[var_86_current])
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition22[
-  var_86_current:univ
-]{
-   isEmptyOrNull[var_86_current]
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition30[
-  t_221:univ
-]{
-   not (
-     t_221=true)
-
-}
-
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition29[
   t_204:univ
 ]{
    not (
@@ -247,7 +268,7 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition10[
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition28[
   t_204:univ
 ]{
    t_204=true
@@ -295,188 +316,27 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition5[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition20[
-  t_217:univ
+pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
+  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
+  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
+  thiz:univ
 ]{
-   t_217=true
+   all n:roops_core_objectsInstrumented_SinglyLinkedListNode | {
+     isSubset[n,
+             fun_set_difference[(thiz.roops_core_objectsInstrumented_SinglyLinkedList_header).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+     implies 
+             isNotSubset[n,
+                        fun_set_difference[(n.roops_core_objectsInstrumented_SinglyLinkedListNode_next).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+   
+   }
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedListCondition21[
-  t_217:univ
+pred roops_core_objectsInstrumented_SinglyLinkedListCondition31[
+  t_201:univ
 ]{
    not (
-     t_217=true)
-
-}
-
-program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
-  throw:java_lang_Throwable+null,
-  list:null+roops_core_objectsInstrumented_SinglyLinkedList,
-  value_param:JavaPrimitiveIntegerValue,
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedListNode_value:(roops_core_objectsInstrumented_SinglyLinkedListNode)->one(JavaPrimitiveIntegerValue),
-  roops_core_objectsInstrumented_SinglyLinkedList_header:(roops_core_objectsInstrumented_SinglyLinkedList)->one(null+roops_core_objectsInstrumented_SinglyLinkedListNode),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedListNode_next:(roops_core_objectsInstrumented_SinglyLinkedListNode)->one(null+roops_core_objectsInstrumented_SinglyLinkedListNode),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11:(ClassFields)->one(boolean),
-  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:(ClassFields)->one(boolean),
-  usedObjects:set (java_lang_Object)
-] var [
-  exit_stmt_reached:boolean,
-  t_203:boolean,
-  t_204:boolean,
-  t_205:boolean,
-  t_206:boolean,
-  var_85_ret_val:boolean
-]{
-   skip;
-   throw:=null;
-   skip;
-   exit_stmt_reached:=false;
-   skip;
-   skip;
-   skip;
-   call roops_core_objectsInstrumented_SinglyLinkedList_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects];
-   skip;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_205:=(neq[list,null]=>(true)else(false))
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition8[t_205]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition4[list]  {
-               throw:=java_lang_NullPointerExceptionLit
-            
-            } else {
-               call roops_core_objectsInstrumented_SinglyLinkedList_repOK_0[list,throw,t_206,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-         ;
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition6[t_206]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_204:=true
-               
-               } else {
-                  skip
-               
-               }
-            
-            } else {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_204:=false
-               
-               } else {
-                  skip
-               
-               }
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_204:=false
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition10[t_204]  {
-         skip;
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-               throw:=java_lang_NullPointerExceptionLit
-            
-            } else {
-               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0)++((ClassFields)->(true))
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-         ;
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition4[list]  {
-               throw:=java_lang_NullPointerExceptionLit
-            
-            } else {
-               call roops_core_objectsInstrumented_SinglyLinkedList_contains_0[list,throw,t_203,value_param,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-         ;
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            var_85_ret_val:=t_203
-         
-         } else {
-            skip
-         
-         }
-      
-      } else {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-               throw:=java_lang_NullPointerExceptionLit
-            
-            } else {
-               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1)++((ClassFields)->(true))
-            
-            }
-         
-         } else {
-            skip
-         
-         }
-      
-      }
-   
-   } else {
-      skip
-   
-   }
-   ;
-   skip
+     t_201=true)
 
 }
 
@@ -619,6 +479,260 @@ program roops_core_objectsInstrumented_SinglyLinkedList_fajita_roopsGoal_initial
    
    }
    ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+         throw:=java_lang_NullPointerExceptionLit
+      
+      } else {
+         roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13)++((ClassFields)->(false))
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   skip
+
+}
+
+program roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
+  throw:java_lang_Throwable+null,
+  list:null+roops_core_objectsInstrumented_SinglyLinkedList,
+  value_param:JavaPrimitiveIntegerValue,
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedListNode_value:(roops_core_objectsInstrumented_SinglyLinkedListNode)->one(JavaPrimitiveIntegerValue),
+  roops_core_objectsInstrumented_SinglyLinkedList_header:(roops_core_objectsInstrumented_SinglyLinkedList)->one(null+roops_core_objectsInstrumented_SinglyLinkedListNode),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedListNode_next:(roops_core_objectsInstrumented_SinglyLinkedListNode)->one(null+roops_core_objectsInstrumented_SinglyLinkedListNode),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11:(ClassFields)->one(boolean),
+  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:(ClassFields)->one(boolean),
+  usedObjects:set (java_lang_Object)
+] var [
+  exit_stmt_reached:boolean,
+  t_186:boolean,
+  var_71_ret_val:boolean,
+  t_189:boolean,
+  t_188:boolean,
+  t_187:boolean
+]{
+   skip;
+   throw:=null;
+   skip;
+   exit_stmt_reached:=false;
+   skip;
+   skip;
+   skip;
+   call roops_core_objectsInstrumented_SinglyLinkedList_fajita_roopsGoal_initialization_0[throw,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects];
+   skip;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      t_188:=(neq[list,null]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition8[t_188]  {
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition4[list]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               call roops_core_objectsInstrumented_SinglyLinkedList_repOK_0[list,throw,t_189,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition6[t_189]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  t_187:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  t_187:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_187:=false
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition10[t_187]  {
+         skip;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0)++((ClassFields)->(true))
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition4[list]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               call roops_core_objectsInstrumented_SinglyLinkedList_contains_0[list,throw,t_186,value_param,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4,roops_core_objectsInstrumented_SinglyLinkedListNode_value,roops_core_objectsInstrumented_SinglyLinkedList_header,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10,roops_core_objectsInstrumented_SinglyLinkedListNode_next,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11,roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12,usedObjects]
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            var_71_ret_val:=t_186
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1)++((ClassFields)->(true))
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
    skip
 
 }
@@ -647,21 +761,22 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:(ClassFields)->one(boolean),
   usedObjects:set (java_lang_Object)
 ] var [
-  t_219:boolean,
-  t_218:boolean,
-  var_89_ws_16:boolean,
+  var_72_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode,
+  var_73_result:boolean,
+  t_200:boolean,
+  t_201:boolean,
+  t_202:boolean,
+  t_203:boolean,
+  t_204:boolean,
+  t_205:boolean,
   exit_stmt_reached:boolean,
-  t_217:boolean,
-  t_216:boolean,
-  t_215:boolean,
-  var_87_result:boolean,
-  t_214:boolean,
-  t_213:boolean,
-  var_88_fajita_cicle_2:boolean,
-  t_221:boolean,
-  t_220:boolean,
-  var_90_equalVal:boolean,
-  var_86_current:null+roops_core_objectsInstrumented_SinglyLinkedListNode
+  var_74_terminatesInTime:boolean,
+  var_75_equalVal:boolean,
+  t_199:boolean,
+  t_198:boolean,
+  var_76_equalVal:boolean,
+  t_197:boolean,
+  t_196:boolean
 ]{
    skip;
    throw:=null;
@@ -674,7 +789,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          throw:=java_lang_NullPointerExceptionLit
       
       } else {
-         var_86_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header
+         var_72_current:=thiz.roops_core_objectsInstrumented_SinglyLinkedList_header
       
       }
    
@@ -684,7 +799,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      var_87_result:=false
+      var_73_result:=false
    
    } else {
       skip
@@ -696,17 +811,10 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    skip;
    skip;
    skip;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      var_88_fajita_cicle_2:=false
-   
-   } else {
-      skip
-   
-   }
-   ;
+   skip;
    skip;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_214:=(equ[var_87_result,false]=>(true)else(false))
+      var_74_terminatesInTime:=true
    
    } else {
       skip
@@ -714,9 +822,17 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition16[t_214]  {
+      t_199:=(equ[var_73_result,false]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition16[t_199]  {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_215:=(neq[var_86_current,null]=>(true)else(false))
+            t_200:=(neq[var_72_current,null]=>(true)else(false))
          
          } else {
             skip
@@ -724,9 +840,9 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          }
          ;
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition14[t_215]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition14[t_200]  {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_213:=true
+                  t_198:=true
                
                } else {
                   skip
@@ -735,7 +851,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
             
             } else {
                if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                  t_213:=false
+                  t_198:=false
                
                } else {
                   skip
@@ -751,7 +867,7 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
       
       } else {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-            t_213:=false
+            t_198:=false
          
          } else {
             skip
@@ -766,252 +882,155 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      var_89_ws_16:=t_213
-   
-   } else {
-      skip
-   
-   }
-   ;
-   while roops_core_objectsInstrumented_SinglyLinkedListCondition28[exit_stmt_reached,throw,var_89_ws_16]do {
-      skip;
-      skip;
-      skip;
-      skip;
-      skip;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         var_88_fajita_cicle_2:=true
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-            throw:=java_lang_NullPointerExceptionLit
-         
-         } else {
-            roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2)++((ClassFields)->(true))
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      skip;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         t_216:=(equ[value_param,var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition18[t_216]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-                  throw:=java_lang_NullPointerExceptionLit
-               
-               } else {
-                  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4)++((ClassFields)->(true))
-               
-               }
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition24[t_198]  {
+         skip;
+         skip;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+               throw:=java_lang_NullPointerExceptionLit
             
             } else {
-               skip
-            
-            }
-            ;
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               var_90_equalVal:=true
-            
-            } else {
-               skip
+               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2)++((ClassFields)->(true))
             
             }
          
          } else {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-                  throw:=java_lang_NullPointerExceptionLit
-               
-               } else {
-                  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5)++((ClassFields)->(true))
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-            ;
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               var_90_equalVal:=false
-            
-            } else {
-               skip
-            
-            }
+            skip
          
          }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         t_217:=(equ[var_90_equalVal,true]=>(true)else(false))
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition20[t_217]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-                  throw:=java_lang_NullPointerExceptionLit
-               
-               } else {
-                  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6)++((ClassFields)->(true))
-               
-               }
-            
-            } else {
-               skip
-            
-            }
-            ;
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               var_87_result:=true
-            
-            } else {
-               skip
-            
-            }
+         ;
+         skip;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_196:=(equ[value_param,var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
          
          } else {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
-                  throw:=java_lang_NullPointerExceptionLit
-               
-               } else {
-                  roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7)++((ClassFields)->(true))
-               
-               }
-            
-            } else {
-               skip
-            
-            }
+            skip
          
          }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_86_current]  {
-            throw:=java_lang_NullPointerExceptionLit
-         
-         } else {
-            var_86_current:=var_86_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
-         
-         }
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         t_219:=(equ[var_87_result,false]=>(true)else(false))
-      
-      } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         if roops_core_objectsInstrumented_SinglyLinkedListCondition26[t_219]  {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               t_220:=(neq[var_86_current,null]=>(true)else(false))
-            
-            } else {
-               skip
-            
-            }
-            ;
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               if roops_core_objectsInstrumented_SinglyLinkedListCondition24[t_220]  {
-                  if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                     t_218:=true
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition18[t_196]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
                   
                   } else {
-                     skip
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4)++((ClassFields)->(true))
                   
                   }
                
                } else {
-                  if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-                     t_218:=false
-                  
-                  } else {
-                     skip
-                  
-                  }
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_75_equalVal:=true
+               
+               } else {
+                  skip
                
                }
             
             } else {
-               skip
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_75_equalVal:=false
+               
+               } else {
+                  skip
+               
+               }
             
             }
          
          } else {
-            if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-               t_218:=false
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_197:=(equ[var_75_equalVal,true]=>(true)else(false))
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition20[t_197]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_73_result:=true
+               
+               } else {
+                  skip
+               
+               }
             
             } else {
-               skip
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
             
             }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_72_current]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               var_72_current:=var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
+            
+            }
+         
+         } else {
+            skip
          
          }
       
       } else {
-         skip
-      
-      }
-      ;
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-         var_89_ws_16:=t_218
-      
-      } else {
-         skip
-      
-      }
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      t_221:=Not[var_88_fajita_cicle_2]
-   
-   } else {
-      skip
-   
-   }
-   ;
-   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      if roops_core_objectsInstrumented_SinglyLinkedListCondition29[t_221]  {
          if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
             if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
                throw:=java_lang_NullPointerExceptionLit
@@ -1026,8 +1045,65 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
          
          }
       
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      t_204:=(equ[var_73_result,false]=>(true)else(false))
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition28[t_204]  {
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_205:=(neq[var_72_current,null]=>(true)else(false))
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition26[t_205]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  t_203:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  t_203:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
       } else {
-         skip
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_203:=false
+         
+         } else {
+            skip
+         
+         }
       
       }
    
@@ -1037,7 +1113,178 @@ program roops_core_objectsInstrumented_SinglyLinkedList_contains_0[
    }
    ;
    if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
-      return:=var_87_result;
+      if roops_core_objectsInstrumented_SinglyLinkedListCondition34[t_203]  {
+         skip;
+         skip;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8)++((ClassFields)->(true))
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         skip;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_201:=(equ[value_param,var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value]=>(true)else(false))
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition30[t_201]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_10)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_76_equalVal:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_11)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_76_equalVal:=false
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            t_202:=(equ[var_76_equalVal,true]=>(true)else(false))
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition32[t_202]  {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_12)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+               ;
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  var_73_result:=true
+               
+               } else {
+                  skip
+               
+               }
+            
+            } else {
+               if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+                  if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+                     throw:=java_lang_NullPointerExceptionLit
+                  
+                  } else {
+                     roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_13)++((ClassFields)->(true))
+                  
+                  }
+               
+               } else {
+                  skip
+               
+               }
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+         ;
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition22[var_72_current]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               var_72_current:=var_72_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      } else {
+         if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+            if roops_core_objectsInstrumented_SinglyLinkedListCondition0[]  {
+               throw:=java_lang_NullPointerExceptionLit
+            
+            } else {
+               roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:=(roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9)++((ClassFields)->(true))
+            
+            }
+         
+         } else {
+            skip
+         
+         }
+      
+      }
+   
+   } else {
+      skip
+   
+   }
+   ;
+   if roops_core_objectsInstrumented_SinglyLinkedListCondition2[exit_stmt_reached,throw]  {
+      return:=var_73_result;
       exit_stmt_reached:=true
    
    } else {
@@ -1111,14 +1358,14 @@ assertCorrectness check_roops_core_objectsInstrumented_SinglyLinkedList_contains
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:(ClassFields)->one(boolean),
   roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:(ClassFields)->one(boolean),
-  t_203:boolean,
-  t_204:boolean,
-  t_205:boolean,
-  t_206:boolean,
+  t_186:boolean,
+  t_187:boolean,
+  t_188:boolean,
+  t_189:boolean,
   throw:java_lang_Throwable+null,
   usedObjects:set (java_lang_Object),
   value_param:JavaPrimitiveIntegerValue,
-  var_85_ret_val:boolean
+  var_71_ret_val:boolean
 ]{
 pre={
    precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[roops_core_objectsInstrumented_SinglyLinkedListNode_next,

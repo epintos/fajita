@@ -2996,22 +2996,6 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition24[
 
 }
 
-pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
-  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
-  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
-  thiz:univ
-]{
-   all n:roops_core_objectsInstrumented_SinglyLinkedListNode | {
-     isSubset[n,
-             fun_set_difference[(thiz.roops_core_objectsInstrumented_SinglyLinkedList_header).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
-     implies 
-             isNotSubset[n,
-                        fun_set_difference[(n.roops_core_objectsInstrumented_SinglyLinkedListNode_next).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
-   
-   }
-
-}
-
 pred postcondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
   throw':univ
 ]{
@@ -3043,25 +3027,6 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition11[
 ]{
    not (
      t_2=true)
-
-}
-
-pred precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
-  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
-  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
-  throw:univ
-]{
-   (
-     all objx:roops_core_objectsInstrumented_SinglyLinkedList | {
-       roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[roops_core_objectsInstrumented_SinglyLinkedListNode_next,
-                                                                       roops_core_objectsInstrumented_SinglyLinkedList_header,
-                                                                       objx]
-     
-     }
-   )
-   and 
-   equ[throw,
-      null]
 
 }
 
@@ -3206,6 +3171,25 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition28[
 
 }
 
+pred precondition_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0[
+  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
+  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
+  throw:univ
+]{
+   (
+     all objx:roops_core_objectsInstrumented_SinglyLinkedList | {
+       roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[roops_core_objectsInstrumented_SinglyLinkedListNode_next,
+                                                                       roops_core_objectsInstrumented_SinglyLinkedList_header,
+                                                                       objx]
+     
+     }
+   )
+   and 
+   equ[throw,
+      null]
+
+}
+
 pred roops_core_objectsInstrumented_SinglyLinkedListCondition25[
   t_13:univ
 ]{
@@ -3252,6 +3236,22 @@ pred roops_core_objectsInstrumented_SinglyLinkedListCondition5[
 ]{
    not (
      isEmptyOrNull[list])
+
+}
+
+pred roops_core_objectsInstrumented_SinglyLinkedList_object_invariant[
+  roops_core_objectsInstrumented_SinglyLinkedListNode_next:univ->univ,
+  roops_core_objectsInstrumented_SinglyLinkedList_header:univ->univ,
+  thiz:univ
+]{
+   all n:roops_core_objectsInstrumented_SinglyLinkedListNode | {
+     isSubset[n,
+             fun_set_difference[(thiz.roops_core_objectsInstrumented_SinglyLinkedList_header).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+     implies 
+             isNotSubset[n,
+                        fun_set_difference[(n.roops_core_objectsInstrumented_SinglyLinkedListNode_next).(fun_reflexive_closure[roops_core_objectsInstrumented_SinglyLinkedListNode_next]),null]]
+   
+   }
 
 }
 check check_roops_core_objectsInstrumented_SinglyLinkedList_containsTest_0  for 0 but  exactly 4 java_lang_Object, exactly 3 roops_core_objectsInstrumented_SinglyLinkedListNode, exactly 3 JavaPrimitiveIntegerValue, exactly 1 roops_core_objectsInstrumented_SinglyLinkedList,4 int

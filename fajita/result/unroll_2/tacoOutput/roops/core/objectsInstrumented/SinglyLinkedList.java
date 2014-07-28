@@ -14,51 +14,57 @@ public class SinglyLinkedList extends java.lang.Object {
   public static boolean roops_goal_4;
   public static boolean roops_goal_5;
   public static boolean roops_goal_6;
-  public static boolean roops_goal_7;/** @Modifies_Everything
+  public static boolean roops_goal_7;
+  public static boolean roops_goal_8;
+  public static boolean roops_goal_9;
+  public static boolean roops_goal_10;
+  public static boolean roops_goal_11;
+  public static boolean roops_goal_12;
+  public static boolean roops_goal_13;/** @Modifies_Everything
  @Ensures false;
 */
 
   public static void containsTest(roops.core.objectsInstrumented.SinglyLinkedList list, int value_param) {
-    boolean t_72;
-    boolean t_73;
-    boolean t_74;
+    boolean t_76;
+    boolean t_77;
+    boolean t_78;
 
     fajita_roopsGoal_initialization();
     boolean var_29_ret_val;
 
-    t_73 = list  !=  null;
+    t_77 = list  !=  null;
 
-    if (t_73) {
+    if (t_77) {
       {
         {
-          t_74 = list.repOK();
-          if (t_74) {
+          t_78 = list.repOK();
+          if (t_78) {
             {
-              t_72 = true;
+              t_76 = true;
             }
           } else {
             {
-              t_72 = false;
+              t_76 = false;
             }
           }
         }
       }
     } else {
       {
-        t_72 = false;
+        t_76 = false;
       }
     }
-    if (t_72) {
+    if (t_76) {
       {
         {
           {
             {
               {
-                boolean t_71;
+                boolean t_75;
 
                 roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_0 = true;
-                t_71 = list.contains(value_param);
-                var_29_ret_val = t_71;
+                t_75 = list.contains(value_param);
+                var_29_ret_val = t_75;
               }
             }
           }
@@ -81,33 +87,33 @@ public class SinglyLinkedList extends java.lang.Object {
 
 
   public static void insertBackTest(roops.core.objectsInstrumented.SinglyLinkedList list, int arg) {
-    boolean t_75;
-    boolean t_76;
-    boolean t_77;
+    boolean t_79;
+    boolean t_80;
+    boolean t_81;
 
-    t_76 = list  !=  null;
+    t_80 = list  !=  null;
 
-    if (t_76) {
+    if (t_80) {
       {
         {
-          t_77 = list.repOK();
-          if (t_77) {
+          t_81 = list.repOK();
+          if (t_81) {
             {
-              t_75 = true;
+              t_79 = true;
             }
           } else {
             {
-              t_75 = false;
+              t_79 = false;
             }
           }
         }
       }
     } else {
       {
-        t_75 = false;
+        t_79 = false;
       }
     }
-    if (t_75) {
+    if (t_79) {
       {
         {
           {
@@ -135,33 +141,33 @@ public class SinglyLinkedList extends java.lang.Object {
 
 
   public static void removeTest(roops.core.objectsInstrumented.SinglyLinkedList list, int index) {
-    boolean t_78;
-    boolean t_79;
-    boolean t_80;
+    boolean t_82;
+    boolean t_83;
+    boolean t_84;
 
-    t_79 = list  !=  null;
+    t_83 = list  !=  null;
 
-    if (t_79) {
+    if (t_83) {
       {
         {
-          t_80 = list.repOK();
-          if (t_80) {
+          t_84 = list.repOK();
+          if (t_84) {
             {
-              t_78 = true;
+              t_82 = true;
             }
           } else {
             {
-              t_78 = false;
+              t_82 = false;
             }
           }
         }
       }
     } else {
       {
-        t_78 = false;
+        t_82 = false;
       }
     }
-    if (t_78) {
+    if (t_82) {
       {
         {
           {
@@ -195,137 +201,229 @@ public class SinglyLinkedList extends java.lang.Object {
     var_30_current = this.roops_core_objectsInstrumented_SinglyLinkedList_header;
     var_31_result = false;
     {
-      boolean t_81;
-      boolean t_82;
-      boolean t_83;
+      boolean t_87;
+      boolean t_88;
       boolean t_89;
-      boolean var_32_fajita_cicle_2 = false;
-      boolean var_33_ws_4;
+      boolean t_92;
+      boolean t_93;
+      boolean t_94;
+      boolean var_32_terminatesInTime = true;
 
-      t_82 = var_31_result  ==  false;
+      t_88 = var_31_result  ==  false;
 
-      if (t_82) {
+      if (t_88) {
         {
           {
-            t_83 = var_30_current  !=  null;
-            if (t_83) {
+            t_89 = var_30_current  !=  null;
+            if (t_89) {
               {
-                t_81 = true;
+                t_87 = true;
               }
             } else {
               {
-                t_81 = false;
+                t_87 = false;
               }
             }
           }
         }
       } else {
         {
-          t_81 = false;
+          t_87 = false;
         }
       }
-      var_33_ws_4 = t_81;
-      while (var_33_ws_4) {
-        boolean t_84;
-        boolean t_85;
-        boolean t_86;
-        boolean t_87;
-        boolean t_88;
 
-        var_32_fajita_cicle_2 = true;
-        roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_2 = true;
-        boolean var_34_equalVal;
-
-        t_84 = value_param  ==  var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value;
-
-        if (t_84) {
+      if (t_87) {
+        {
           {
             {
               {
                 {
-                  {
-                    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_4 = true;
-                    var_34_equalVal = true;
+                  boolean t_85;
+                  boolean t_86;
+
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_2 = true;
+                  boolean var_33_equalVal;
+
+                  t_85 = value_param  ==  var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value;
+
+                  if (t_85) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_4 = true;
+                              var_33_equalVal = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = true;
+                              var_33_equalVal = false;
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
-                }
-              }
-            }
-          }
-        } else {
-          {
-            {
-              {
-                {
-                  {
-                    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = true;
-                    var_34_equalVal = false;
+                  t_86 = var_33_equalVal  ==  true;
+
+                  if (t_86) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = true;
+                              var_31_result = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = true;
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
+                  var_30_current = var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
                 }
               }
             }
           }
         }
-        t_85 = var_34_equalVal  ==  true;
-
-        if (t_85) {
-          {
-            {
-              {
-                {
-                  {
-                    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = true;
-                    var_31_result = true;
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          {
-            {
-              {
-                {
-                  {
-                    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = true;
-                  }
-                }
-              }
-            }
-          }
-        }
-        var_30_current = var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
-        t_87 = var_31_result  ==  false;
-
-        if (t_87) {
-          {
-            {
-              t_88 = var_30_current  !=  null;
-              if (t_88) {
-                {
-                  t_86 = true;
-                }
-              } else {
-                {
-                  t_86 = false;
-                }
-              }
-            }
-          }
-        } else {
-          {
-            t_86 = false;
-          }
-        }
-        var_33_ws_4 = t_86;
-      }
-      t_89 = ! var_32_fajita_cicle_2;
-      if (t_89) {
+      } else {
         {
           {
             {
               {
                 {
                   roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_3 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+      t_93 = var_31_result  ==  false;
+
+      if (t_93) {
+        {
+          {
+            t_94 = var_30_current  !=  null;
+            if (t_94) {
+              {
+                t_92 = true;
+              }
+            } else {
+              {
+                t_92 = false;
+              }
+            }
+          }
+        }
+      } else {
+        {
+          t_92 = false;
+        }
+      }
+      if (t_92) {
+        {
+          {
+            {
+              {
+                {
+                  boolean t_90;
+                  boolean t_91;
+
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_8 = true;
+                  boolean var_34_equalVal;
+
+                  t_90 = value_param  ==  var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_value;
+
+                  if (t_90) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_10 = true;
+                              var_34_equalVal = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_11 = true;
+                              var_34_equalVal = false;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  t_91 = var_34_equalVal  ==  true;
+
+                  if (t_91) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_12 = true;
+                              var_31_result = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_13 = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  var_30_current = var_30_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                }
+              }
+            }
+          }
+        }
+      } else {
+        {
+          {
+            {
+              {
+                {
+                  roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_9 = true;
                 }
               }
             }
@@ -339,25 +437,22 @@ public class SinglyLinkedList extends java.lang.Object {
 
 
   public void remove(int index) {
-    boolean t_91;
-    boolean t_92;
-    boolean t_93;
-    boolean t_94;
-    boolean t_100;
-    boolean t_101;
+    boolean t_96;
+    boolean t_106;
+    boolean t_107;
 
-    t_91 = index  <  0;
+    t_96 = index  <  0;
 
-    if (t_91) {
+    if (t_96) {
       {
         {
           {
             {
               {
-                java.lang.RuntimeException t_90;
+                java.lang.RuntimeException t_95;
 
-                t_90 = new java.lang.RuntimeException();
-                throw t_90;
+                t_95 = new java.lang.RuntimeException();
+                throw t_95;
               }
             }
           }
@@ -385,102 +480,180 @@ public class SinglyLinkedList extends java.lang.Object {
 
     var_37_current_index = 0;
     boolean var_38_found = false;
-    boolean var_39_ws_5;
 
-    t_93 = var_38_found  ==  false;
-
-    if (t_93) {
-      {
-        {
-          t_94 = var_35_current  !=  null;
-          if (t_94) {
-            {
-              t_92 = true;
-            }
-          } else {
-            {
-              t_92 = false;
-            }
-          }
-        }
-      }
-    } else {
-      {
-        t_92 = false;
-      }
-    }
-    var_39_ws_5 = t_92;
-    while (var_39_ws_5) {
-      boolean t_95;
-      boolean t_96;
-      boolean t_97;
+    {
       boolean t_98;
+      boolean t_99;
+      boolean t_100;
+      boolean t_102;
+      boolean t_103;
+      boolean t_104;
+      boolean var_39_terminatesInTime = true;
 
-      t_95 = index  ==  var_37_current_index;
+      t_99 = var_38_found  ==  false;
 
-      if (t_95) {
+      if (t_99) {
         {
           {
-            {
+            t_100 = var_35_current  !=  null;
+            if (t_100) {
               {
-                {
-                  var_38_found = true;
-                }
-              }
-            }
-          }
-        }
-      } else {
-        {
-          {
-            {
-              {
-                {
-                  var_37_current_index = var_37_current_index + 1;
-                  var_36_previous = var_35_current;
-                  var_35_current = var_35_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
-                }
-              }
-            }
-          }
-        }
-      }
-      t_97 = var_38_found  ==  false;
-
-      if (t_97) {
-        {
-          {
-            t_98 = var_35_current  !=  null;
-            if (t_98) {
-              {
-                t_96 = true;
+                t_98 = true;
               }
             } else {
               {
-                t_96 = false;
+                t_98 = false;
               }
             }
           }
         }
       } else {
         {
-          t_96 = false;
+          t_98 = false;
         }
       }
-      var_39_ws_5 = t_96;
-    }
-    t_100 = var_38_found  ==  false;
 
-    if (t_100) {
+      if (t_98) {
+        {
+          {
+            {
+              {
+                {
+                  boolean t_97;
+
+                  t_97 = index  ==  var_37_current_index;
+                  if (t_97) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_38_found = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_37_current_index = var_37_current_index + 1;
+                              var_36_previous = var_35_current;
+                              var_35_current = var_35_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } else {
+        {
+          {
+            {
+              {
+                {
+                }
+              }
+            }
+          }
+        }
+      }
+      t_103 = var_38_found  ==  false;
+
+      if (t_103) {
+        {
+          {
+            t_104 = var_35_current  !=  null;
+            if (t_104) {
+              {
+                t_102 = true;
+              }
+            } else {
+              {
+                t_102 = false;
+              }
+            }
+          }
+        }
+      } else {
+        {
+          t_102 = false;
+        }
+      }
+      if (t_102) {
+        {
+          {
+            {
+              {
+                {
+                  boolean t_101;
+
+                  t_101 = index  ==  var_37_current_index;
+                  if (t_101) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_38_found = true;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_37_current_index = var_37_current_index + 1;
+                              var_36_previous = var_35_current;
+                              var_35_current = var_35_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } else {
+        {
+          {
+            {
+              {
+                {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    t_106 = var_38_found  ==  false;
+
+    if (t_106) {
       {
         {
           {
             {
               {
-                java.lang.RuntimeException t_99;
+                java.lang.RuntimeException t_105;
 
-                t_99 = new java.lang.RuntimeException();
-                throw t_99;
+                t_105 = new java.lang.RuntimeException();
+                throw t_105;
               }
             }
           }
@@ -498,8 +671,8 @@ public class SinglyLinkedList extends java.lang.Object {
         }
       }
     }
-    t_101 = var_36_previous  ==  null;
-    if (t_101) {
+    t_107 = var_36_previous  ==  null;
+    if (t_107) {
       {
         {
           {
@@ -528,16 +701,16 @@ public class SinglyLinkedList extends java.lang.Object {
 
 
   public void insertBack(int arg) {
-    roops.core.objectsInstrumented.SinglyLinkedListNode t_102;
-    boolean t_103;
+    roops.core.objectsInstrumented.SinglyLinkedListNode t_108;
+    boolean t_111;
 
-    t_102 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
-    roops.core.objectsInstrumented.SinglyLinkedListNode var_40_freshNode = t_102;
+    t_108 = new roops.core.objectsInstrumented.SinglyLinkedListNode();
+    roops.core.objectsInstrumented.SinglyLinkedListNode var_40_freshNode = t_108;
 
     var_40_freshNode.roops_core_objectsInstrumented_SinglyLinkedListNode_value = arg;
     var_40_freshNode.roops_core_objectsInstrumented_SinglyLinkedListNode_next = ((roops.core.objectsInstrumented.SinglyLinkedListNode)(null));
-    t_103 = this.roops_core_objectsInstrumented_SinglyLinkedList_header  ==  null;
-    if (t_103) {
+    t_111 = this.roops_core_objectsInstrumented_SinglyLinkedList_header  ==  null;
+    if (t_111) {
       {
         {
           {
@@ -558,12 +731,62 @@ public class SinglyLinkedList extends java.lang.Object {
                 roops.core.objectsInstrumented.SinglyLinkedListNode var_41_current;
 
                 var_41_current = this.roops_core_objectsInstrumented_SinglyLinkedList_header;
-                boolean var_42_ws_6;
+                {
+                  boolean t_109;
+                  boolean t_110;
+                  boolean var_42_terminatesInTime = true;
 
-                var_42_ws_6 = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next  !=  null;
-                while (var_42_ws_6) {
-                  var_41_current = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
-                  var_42_ws_6 = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next  !=  null;
+                  t_109 = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next  !=  null;
+
+                  if (t_109) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_41_current = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  t_110 = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next  !=  null;
+                  if (t_110) {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              var_41_current = var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    {
+                      {
+                        {
+                          {
+                            {
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
                 var_41_current.roops_core_objectsInstrumented_SinglyLinkedListNode_next = var_40_freshNode;
               }
@@ -596,6 +819,12 @@ public class SinglyLinkedList extends java.lang.Object {
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_5 = false;
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_6 = false;
     roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_7 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_8 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_9 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_10 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_11 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_12 = false;
+    roops.core.objectsInstrumented.SinglyLinkedList.roops_goal_13 = false;
   }
 
 }

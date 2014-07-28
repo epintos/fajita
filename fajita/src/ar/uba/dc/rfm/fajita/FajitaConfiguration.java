@@ -110,7 +110,7 @@ public class FajitaConfiguration {
 	private int dualClassBranchIteration = 0;
 	private ASTList<Statement> dualInitializationStatements;
 	private int dualDiscoveredBranches;
-	private int discoveredPaths = 0;
+	private List<List<Integer>> discoveredPaths = new ArrayList<>();
 	private List<String> allUsesAuxVariables = new LinkedList<>();
 	private String inFile;
 
@@ -353,11 +353,11 @@ public class FajitaConfiguration {
         this.inFile = inFile;
     }
 
-    public int getDiscoveredPaths() {
+    public List<List<Integer>> getDiscoveredPaths() {
         return discoveredPaths;
     }
 
-    public void setDiscoveredPaths(int discoveredPaths) {
+    public void setDiscoveredPaths(List<List<Integer>> discoveredPaths) {
         this.discoveredPaths = discoveredPaths;
     }
 

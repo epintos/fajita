@@ -45,9 +45,9 @@ public class SinglyLinkedList {
         current = this.header;
         result = false;
         {
-            boolean fajita_cicle_2 = false;
-            while ( result == false && current != null )
-            { fajita_cicle_2 = true;
+            boolean terminatesInTime = true;
+            if ( result == false && current != null )
+            {
                 roops_goal_2 = true;
                 boolean equalVal;
                 if ( value_param == current.value )
@@ -70,8 +70,38 @@ public class SinglyLinkedList {
                 }
                 current = current.next;
             }
-            if ( ! fajita_cicle_2 )
+            else
+            {
                 roops_goal_3 = true;
+            }
+            if ( result == false && current != null )
+            {
+                roops_goal_8 = true;
+                boolean equalVal;
+                if ( value_param == current.value )
+                {
+                    roops_goal_10 = true;
+                    equalVal = true;
+                } else
+                {
+                    roops_goal_11 = true;
+                    equalVal = false;
+                }
+                if ( equalVal == true )
+                {
+                    roops_goal_12 = true;
+                    result = true;
+                }
+                else
+                {
+                    roops_goal_13 = true;
+                }
+                current = current.next;
+            }
+            else
+            {
+                roops_goal_9 = true;
+            }
         }
         return result;
     }
@@ -92,16 +122,32 @@ public class SinglyLinkedList {
         current_index = 0;
 
         boolean found = false;
+        {
+            boolean terminatesInTime = true;
+            if ( found == false && current != null ) {
 
-        while ( found == false && current != null ) {
-
-            if ( index == current_index ) {
-                found = true;
-            } else {
-                current_index = current_index + 1;
-                previous = current;
-                current = current.next;
+                if ( index == current_index ) {
+                    found = true;
+                } else {
+                    current_index = current_index + 1;
+                    previous = current;
+                    current = current.next;
+                }
             }
+            else
+            {}
+            if ( found == false && current != null ) {
+
+                if ( index == current_index ) {
+                    found = true;
+                } else {
+                    current_index = current_index + 1;
+                    previous = current;
+                    current = current.next;
+                }
+            }
+            else
+            {}
         }
 
         if ( found == false ) {
@@ -127,8 +173,18 @@ public class SinglyLinkedList {
         } else {
             SinglyLinkedListNode current;
             current = this.header;
-            while ( current.next != null ) {
-                current = current.next;
+            {
+                boolean terminatesInTime = true;
+                if ( current.next != null ) {
+                    current = current.next;
+                }
+                else
+                {}
+                if ( current.next != null ) {
+                    current = current.next;
+                }
+                else
+                {}
             }
             current.next = freshNode;
         }
@@ -161,6 +217,18 @@ public class SinglyLinkedList {
 
     public static boolean roops_goal_7;
 
+    public static boolean roops_goal_8;
+
+    public static boolean roops_goal_9;
+
+    public static boolean roops_goal_10;
+
+    public static boolean roops_goal_11;
+
+    public static boolean roops_goal_12;
+
+    public static boolean roops_goal_13;
+
     public static void fajita_roopsGoal_initialization () {
         roops_goal_0 = false;
         roops_goal_1 = false;
@@ -170,6 +238,12 @@ public class SinglyLinkedList {
         roops_goal_5 = false;
         roops_goal_6 = false;
         roops_goal_7 = false;
+        roops_goal_8 = false;
+        roops_goal_9 = false;
+        roops_goal_10 = false;
+        roops_goal_11 = false;
+        roops_goal_12 = false;
+        roops_goal_13 = false;
     }
 }
 /* end roops.core.objects */

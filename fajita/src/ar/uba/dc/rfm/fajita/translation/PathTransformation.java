@@ -22,7 +22,6 @@ public class PathTransformation extends FajitaSourceTransformation {
 
     @Override
     public ProblemReport execute() {
-        configuration.setDiscoveredPaths(0);
         loopUnrollCode();
         decorateWithBranchTransformation();
         return null;
