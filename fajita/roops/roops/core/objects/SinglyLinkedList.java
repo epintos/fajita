@@ -11,9 +11,8 @@ public class SinglyLinkedList {
     @roops.util.NrOfGoals(7)
     @roops.util.BenchmarkMethod
     static public void containsTest(SinglyLinkedList list, int value_param) {
-        boolean ret_val;
         if (list != null && list.repOK()) {
-            ret_val = list.contains(value_param);
+            list.contains(value_param);
         }
     }
 

@@ -22,27 +22,24 @@ public class AvlTree {
 	@roops.util.NrOfGoals(5)
 	@roops.util.BenchmarkMethod
 	static public void searchNodeTest(AvlTree tree, int x) {
-
 		if (tree != null && tree.repOK()) {
-			AvlNode ret_val = tree.searchNode(x);
+			tree.searchNode(x);
 		}
 	}
 
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod
 	static public void searchMaxTest(AvlTree tree) {
-
 		if (tree != null && tree.repOK()) {
-			AvlNode ret_val = tree.searchMax();
+			tree.searchMax();
 		}
 	}
 
 	@roops.util.NrOfGoals(3)
 	@roops.util.BenchmarkMethod
 	static public void searchMinTest(AvlTree tree) {
-
 		if (tree != null && tree.repOK()) {
-			AvlNode ret_val = tree.searchMin();
+			tree.searchMin();
 		}
 	}
 
@@ -245,7 +242,6 @@ public class AvlTree {
 		}
 		return curr.element;
 	}
-
 }
 /* end roops.core.objects */
 

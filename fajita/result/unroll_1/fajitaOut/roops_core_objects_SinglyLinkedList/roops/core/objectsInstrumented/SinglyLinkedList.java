@@ -5,36 +5,28 @@ package roops.core.objectsInstrumented;
  * @Invariant all n: SinglyLinkedListNode | ( ( n in this.header.*next @- null ) => ( n !in n.next.*next @- null ) ) ;
  */
 public class SinglyLinkedList {
+    static public void containsTest (SinglyLinkedList list, int value_param) {
+        if ( list != null && list.repOK () ) {
+            list.contains (value_param);
+        }
+    }
 
     /** @Modifies_Everything
 	 * @Ensures false;
 	 */
-    static public void containsTest (SinglyLinkedList list, int value_param) {
+    static public void insertBackTest (SinglyLinkedList list, int arg) {
         fajita_roopsGoal_initialization ();
-        boolean ret_val;
+        roops_goal_0 = (list != null) == false;
+        roops_goal_1 = list != null;
         if ( list != null && list.repOK () )
         {
-            roops_goal_0 = true;
-            ret_val = list.contains (value_param);
-        }
-        else
-        {
-            roops_goal_1 = true;
-        }
-    }
-    static public void insertBackTest (SinglyLinkedList list, int arg) {
-        if ( list != null && list.repOK () ) {
             list.insertBack (arg);
         }
-        else
-        {}
     }
     static public void removeTest (SinglyLinkedList list, int index) {
         if ( list != null && list.repOK () ) {
             list.remove (index);
         }
-        else
-        {}
     }
 
     public /*@ nullable @*/ SinglyLinkedListNode header;
@@ -44,64 +36,17 @@ public class SinglyLinkedList {
         boolean result;
         current = this.header;
         result = false;
-        {
-            boolean terminatesInTime = true;
-            if ( result == false && current != null )
-            {
-                roops_goal_2 = true;
-                boolean equalVal;
-                if ( value_param == current.value )
-                {
-                    roops_goal_4 = true;
-                    equalVal = true;
-                } else
-                {
-                    roops_goal_5 = true;
-                    equalVal = false;
-                }
-                if ( equalVal == true )
-                {
-                    roops_goal_6 = true;
-                    result = true;
-                }
-                else
-                {
-                    roops_goal_7 = true;
-                }
-                current = current.next;
+        while ( result == false && current != null ) {
+            boolean equalVal;
+            if ( value_param == current.value ) {
+                equalVal = true;
+            } else {
+                equalVal = false;
             }
-            else
-            {
-                roops_goal_3 = true;
+            if ( equalVal == true ) {
+                result = true;
             }
-            if ( result == false && current != null )
-            {
-                roops_goal_8 = true;
-                boolean equalVal;
-                if ( value_param == current.value )
-                {
-                    roops_goal_10 = true;
-                    equalVal = true;
-                } else
-                {
-                    roops_goal_11 = true;
-                    equalVal = false;
-                }
-                if ( equalVal == true )
-                {
-                    roops_goal_12 = true;
-                    result = true;
-                }
-                else
-                {
-                    roops_goal_13 = true;
-                }
-                current = current.next;
-            }
-            else
-            {
-                roops_goal_9 = true;
-            }
+            current = current.next;
         }
         return result;
     }
@@ -111,8 +56,6 @@ public class SinglyLinkedList {
         if ( index < 0 ) {
             throw new RuntimeException ();
         }
-        else
-        {}
 
         SinglyLinkedListNode current;
         current = this.header;
@@ -122,39 +65,21 @@ public class SinglyLinkedList {
         current_index = 0;
 
         boolean found = false;
-        {
-            boolean terminatesInTime = true;
-            if ( found == false && current != null ) {
 
-                if ( index == current_index ) {
-                    found = true;
-                } else {
-                    current_index = current_index + 1;
-                    previous = current;
-                    current = current.next;
-                }
-            }
-            else
-            {}
-            if ( found == false && current != null ) {
+        while ( found == false && current != null ) {
 
-                if ( index == current_index ) {
-                    found = true;
-                } else {
-                    current_index = current_index + 1;
-                    previous = current;
-                    current = current.next;
-                }
+            if ( index == current_index ) {
+                found = true;
+            } else {
+                current_index = current_index + 1;
+                previous = current;
+                current = current.next;
             }
-            else
-            {}
         }
 
         if ( found == false ) {
             throw new RuntimeException ();
         }
-        else
-        {}
 
         if ( previous == null ) {
             this.header = current.next;
@@ -167,31 +92,27 @@ public class SinglyLinkedList {
         SinglyLinkedListNode freshNode = new SinglyLinkedListNode ();
         freshNode.value = arg;
         freshNode.next = null;
+        roops_goal_4 = (this.header == null) == false;
+        roops_goal_5 = this.header == null;
 
-        if ( this.header == null ) {
+        if ( this.header == null )
+        {
             this.header = freshNode;
-        } else {
+        } else
+        {
             SinglyLinkedListNode current;
             current = this.header;
+            roops_goal_2 = (current.next != null) == false;
+            roops_goal_3 = current.next != null;
+            while (  current.next != null )
             {
-                boolean terminatesInTime = true;
-                if ( current.next != null ) {
-                    current = current.next;
-                }
-                else
-                {}
-                if ( current.next != null ) {
-                    current = current.next;
-                }
-                else
-                {}
+                current = current.next;
             }
             current.next = freshNode;
         }
     }
 
-    public SinglyLinkedList () {
-    }
+    public SinglyLinkedList () {}
 
     // *************************************************************************
     // ************** From now on repOK() *************************************
@@ -213,22 +134,6 @@ public class SinglyLinkedList {
 
     public static boolean roops_goal_5;
 
-    public static boolean roops_goal_6;
-
-    public static boolean roops_goal_7;
-
-    public static boolean roops_goal_8;
-
-    public static boolean roops_goal_9;
-
-    public static boolean roops_goal_10;
-
-    public static boolean roops_goal_11;
-
-    public static boolean roops_goal_12;
-
-    public static boolean roops_goal_13;
-
     public static void fajita_roopsGoal_initialization () {
         roops_goal_0 = false;
         roops_goal_1 = false;
@@ -236,14 +141,6 @@ public class SinglyLinkedList {
         roops_goal_3 = false;
         roops_goal_4 = false;
         roops_goal_5 = false;
-        roops_goal_6 = false;
-        roops_goal_7 = false;
-        roops_goal_8 = false;
-        roops_goal_9 = false;
-        roops_goal_10 = false;
-        roops_goal_11 = false;
-        roops_goal_12 = false;
-        roops_goal_13 = false;
     }
 }
 /* end roops.core.objects */

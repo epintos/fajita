@@ -13,14 +13,12 @@ public class SinglyLinkedListContains {
 	 */
     static public void containsTest (SinglyLinkedListContains list, int value_param) {
         fajita_roopsGoal_initialization ();
-        boolean ret_val;
         roops_goal_0 = (list != null) == false;
         roops_goal_1 = list != null;
         if ( list != null && list.repOK () )
         {
-            ret_val = list.contains (value_param);
+            list.contains (value_param);
         }
-        System.out.println("Termina");
     }
     static public void insertBackTest (SinglyLinkedListContains list, int arg) {
         if ( list != null && list.repOK () ) {
