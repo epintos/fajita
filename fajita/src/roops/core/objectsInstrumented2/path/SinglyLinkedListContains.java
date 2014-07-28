@@ -13,11 +13,10 @@ public class SinglyLinkedListContains {
 	 */
     static public void containsTest (SinglyLinkedListContains list, int value_param) {
         fajita_roopsGoal_initialization ();
-        boolean ret_val;
         if ( list != null && list.repOK () )
         {
             roops_goal_0 = true;
-            ret_val = list.contains (value_param);
+            list.contains (value_param);
         }
         else
         {

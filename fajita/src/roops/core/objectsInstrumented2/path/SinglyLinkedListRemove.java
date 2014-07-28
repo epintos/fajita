@@ -8,9 +8,8 @@ import roops.core.objectsInstrumented2.base.SinglyLinkedListNode;
  */
 public class SinglyLinkedListRemove {
     static public void containsTest (SinglyLinkedListRemove list, int value_param) {
-        boolean ret_val;
         if ( list != null && list.repOK () ) {
-            ret_val = list.contains (value_param);
+            list.contains (value_param);
         }
         else
         {}
