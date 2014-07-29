@@ -113,7 +113,18 @@ public class SinglyLinkedList {
     }
 
     public SinglyLinkedList() {
+    	init();
     }
+    
+    private void init() {
+		this.header = createHeaderNode();
+	}
+    
+    private SinglyLinkedListNode createHeaderNode() {
+    	SinglyLinkedListNode singlyLinkedListNode = new SinglyLinkedListNode();
+    	singlyLinkedListNode.next = singlyLinkedListNode;
+		return singlyLinkedListNode;
+	}
 
     // *************************************************************************
     // ************** From now on repOK() *************************************

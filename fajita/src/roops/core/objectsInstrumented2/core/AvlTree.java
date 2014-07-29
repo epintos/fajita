@@ -1,5 +1,6 @@
 package roops.core.objectsInstrumented2.core;
 
+import randoop.CheckRep;
 import roops.core.objectsInstrumented2.base.AvlNode;
 import roops.core.objectsInstrumented2.core.roops.RoopsIntList;
 import roops.core.objectsInstrumented2.core.roops.RoopsSet;
@@ -146,6 +147,7 @@ public class AvlTree {
 	// ************** From now on repOk() *************************************
 	// *************************************************************************
 
+	@CheckRep
 	public boolean repOK() {
 		RoopsSet allNodes = new RoopsSet();
 		RoopsIntList allData = new RoopsIntList();

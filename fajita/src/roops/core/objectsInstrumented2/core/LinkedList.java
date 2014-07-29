@@ -1,5 +1,6 @@
 package roops.core.objectsInstrumented2.core;
 
+import randoop.CheckRep;
 import roops.core.objectsInstrumented2.base.LinkedListNode;
 import roops.core.objectsInstrumented2.core.roops.RoopsSet;
 
@@ -220,6 +221,7 @@ public class LinkedList {
 	// ************** From now on repOK() *************************************
 	// *************************************************************************
 
+	@CheckRep
 	public boolean repOK() {
 		if (header == null) {
 			return false;

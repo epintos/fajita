@@ -1,5 +1,6 @@
 package roops.core.objectsInstrumented2.core;
 
+import randoop.CheckRep;
 import roops.core.objectsInstrumented2.base.BinTreeNode;
 import roops.core.objectsInstrumented2.core.roops.RoopsList;
 
@@ -270,6 +271,7 @@ public class BinTree {
 	// ************** From now on repOK() *************************************
 	// *************************************************************************
 
+	@CheckRep
 	public boolean repOK() {
 
 		if (root != null) {

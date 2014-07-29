@@ -1,0 +1,2 @@
+cons : roops.core.objectsInstrumented2.core.LinkedList.<init>()
+method : roops.core.objectsInstrumented2.core.LinkedList.containsTest(roops.core.objectsInstrumented2.core.LinkedList, java.lang.Object)
