@@ -7,32 +7,31 @@ import roops.core.objectsInstrumented2.base.SinglyLinkedListNode;
  * @Invariant all n: SinglyLinkedListNode | ( ( n in this.header.*next @- null )
  *            => ( n !in n.next.*next @- null ) ) ;
  */
-public class SinglyLinkedListContains {
+public class SinglyLinkedListInsertBack {
+    static public void containsTest(SinglyLinkedListInsertBack list, int value_param) {
+        if (list != null && list.repOK()) {
+            list.contains(value_param);
+        }
+    }
 
     /**
      * @Modifies_Everything
      * @Ensures false;
      */
-    static public void containsTest(SinglyLinkedListContains list, int value_param) {
+    static public void insertBackTest(SinglyLinkedListInsertBack list, int arg) {
         fajita_roopsGoal_initialization();
         variable_definition_0 = true;
         variable_definition_1 = true;
         roops_goal_0 = variable_definition_0;
         roops_goal_1 = variable_definition_0;
         if (list != null && list.repOK()) {
-            list.contains(value_param);
+            list.insertBack(arg);
             roops_goal_2 = variable_definition_1;
             roops_goal_3 = variable_definition_0;
         }
     }
 
-    static public void insertBackTest(SinglyLinkedListContains list, int arg) {
-        if (list != null && list.repOK()) {
-            list.insertBack(arg);
-        }
-    }
-
-    static public void removeTest(SinglyLinkedListContains list, int index) {
+    static public void removeTest(SinglyLinkedListInsertBack list, int index) {
         if (list != null && list.repOK()) {
             list.remove(index);
         }
@@ -41,47 +40,22 @@ public class SinglyLinkedListContains {
     public/* @ nullable @ */SinglyLinkedListNode header;
 
     public boolean contains(int value_param) {
-        variable_definition_2 = true;
         SinglyLinkedListNode current;
-        variable_definition_3 = true;
         boolean result;
-        variable_definition_4 = true;
         current = this.header;
-        variable_definition_5 = true;
         result = false;
-        variable_definition_6 = true;
-        roops_goal_4 = variable_definition_6;
-        roops_goal_5 = variable_definition_5;
         while (result == false && current != null) {
             boolean equalVal;
-            variable_definition_7 = true;
-            roops_goal_6 = variable_definition_2;
-            roops_goal_7 = variable_definition_5;
             if (value_param == current.value) {
                 equalVal = true;
-                variable_definition_8 = true;
-                variable_definition_7 = false;
             } else {
                 equalVal = false;
-                variable_definition_9 = true;
-                variable_definition_7 = false;
-                variable_definition_8 = false;
             }
-            roops_goal_8 = variable_definition_7;
-            roops_goal_9 = variable_definition_8;
-            roops_goal_10 = variable_definition_9;
             if (equalVal == true) {
                 result = true;
-                variable_definition_10 = true;
-                variable_definition_6 = false;
             }
             current = current.next;
-            roops_goal_11 = variable_definition_5;
-            variable_definition_11 = true;
-            variable_definition_5 = false;
         }
-        roops_goal_12 = variable_definition_6;
-        roops_goal_13 = variable_definition_10;
         return result;
     }
 
@@ -123,23 +97,46 @@ public class SinglyLinkedListContains {
     }
 
     public void insertBack(int arg) {
+        variable_definition_2 = true;
         SinglyLinkedListNode freshNode = new SinglyLinkedListNode();
+        variable_definition_3 = true;
         freshNode.value = arg;
+        roops_goal_4 = variable_definition_2;
+        variable_definition_4 = true;
         freshNode.next = null;
+        variable_definition_5 = true;
 
         if (this.header == null) {
             this.header = freshNode;
+            roops_goal_5 = variable_definition_5;
+            variable_definition_6 = true;
         } else {
             SinglyLinkedListNode current;
+            variable_definition_7 = true;
             current = this.header;
+            roops_goal_6 = variable_definition_6;
+            variable_definition_8 = true;
+            variable_definition_7 = false;
+            roops_goal_7 = variable_definition_7;
+            roops_goal_8 = variable_definition_8;
             while (current.next != null) {
                 current = current.next;
+                roops_goal_9 = variable_definition_7;
+                roops_goal_10 = variable_definition_8;
+                variable_definition_9 = true;
+                variable_definition_7 = false;
+                variable_definition_8 = false;
             }
             current.next = freshNode;
+            roops_goal_11 = variable_definition_5;
+            variable_definition_10 = true;
+            variable_definition_7 = false;
+            variable_definition_8 = false;
+            variable_definition_9 = false;
         }
     }
 
-    public SinglyLinkedListContains() {
+    public SinglyLinkedListInsertBack() {
     }
 
     // *************************************************************************
@@ -174,10 +171,6 @@ public class SinglyLinkedListContains {
 
     public static boolean roops_goal_11;
 
-    public static boolean roops_goal_12;
-
-    public static boolean roops_goal_13;
-
     public static boolean variable_definition_0;
 
     public static boolean variable_definition_1;
@@ -200,8 +193,6 @@ public class SinglyLinkedListContains {
 
     public static boolean variable_definition_10;
 
-    public static boolean variable_definition_11;
-
     public static void fajita_roopsGoal_initialization() {
         roops_goal_0 = false;
         roops_goal_1 = false;
@@ -215,8 +206,6 @@ public class SinglyLinkedListContains {
         roops_goal_9 = false;
         roops_goal_10 = false;
         roops_goal_11 = false;
-        roops_goal_12 = false;
-        roops_goal_13 = false;
         variable_definition_0 = false;
         variable_definition_1 = false;
         variable_definition_2 = false;
@@ -228,7 +217,6 @@ public class SinglyLinkedListContains {
         variable_definition_8 = false;
         variable_definition_9 = false;
         variable_definition_10 = false;
-        variable_definition_11 = false;
     }
 }
 /* end roops.core.objects */

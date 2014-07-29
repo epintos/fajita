@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 import org.junit.Test;
 
-public class BinTreeTest_removeTest_0 {
+public class LinkedListTest_addLastTest_0 {
 
     /**
      * Auxiliar function that embed awful reflection code
@@ -89,65 +89,24 @@ public class BinTreeTest_removeTest_0 {
     }
 
     @Test
-    public void testremoveTest_0() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        roops.core.objectsInstrumented.BinTreeNode z_BinTreeNode_2 = new roops.core.objectsInstrumented.BinTreeNode();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_3 = new roops.core.objectsInstrumented.BinTreeNode();
+    public void testaddLastTest_0() {
+        roops.core.objectsInstrumented.LinkedList instance = null;
+        roops.core.objectsInstrumented.LinkedList list_LinkedList_1 = new roops.core.objectsInstrumented.LinkedList();
+        roops.core.objectsInstrumented.LinkedListNode o_LinkedListNode_1 = new roops.core.objectsInstrumented.LinkedListNode();
         // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", 182340553);
-        updateValue(_BinTreeNode_1, "left", null);
-        updateValue(_BinTreeNode_1, "right", null);
-        updateValue(_BinTreeNode_1, "parent", null);
-        updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
-        // Fields Initialization for 'z_BinTreeNode_2'
-        updateValue(z_BinTreeNode_2, "key", -1143983245);
-        updateValue(z_BinTreeNode_2, "left", null);
-        updateValue(z_BinTreeNode_2, "right", null);
-        // Fields Initialization for '_BinTreeNode_3'
-        updateValue(_BinTreeNode_3, "key", -986842066);
-        updateValue(_BinTreeNode_3, "left", z_BinTreeNode_2);
-        updateValue(_BinTreeNode_3, "right", _BinTreeNode_3);
-        updateValue(_BinTreeNode_3, "parent", _BinTreeNode_1);
-        updateValue(z_BinTreeNode_2, "parent", _BinTreeNode_3);
+        // Fields Initialization for 'list_LinkedList_1'
+        // Fields Initialization for 'o_LinkedListNode_1'
+        updateValue(o_LinkedListNode_1, "previous", o_LinkedListNode_1);
+        updateValue(o_LinkedListNode_1, "next", o_LinkedListNode_1);
+        updateValue(o_LinkedListNode_1, "object_value", o_LinkedListNode_1);
+        updateValue(list_LinkedList_1, "header", o_LinkedListNode_1);
+        updateValue(list_LinkedList_1, "size", 0);
+        updateValue(list_LinkedList_1, "modCount", -1073692671);
         
         // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "removeTest", true);
+        Method method = getAccessibleMethod("roops.core.objectsInstrumented.LinkedList", "addLastTest", true);
         try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, z_BinTreeNode_2});
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-
-    }
-
-    @Test
-    public void testremoveTest_1() {
-        roops.core.objectsInstrumented.BinTree instance = null;
-        roops.core.objectsInstrumented.BinTree tree_BinTree_1 = new roops.core.objectsInstrumented.BinTree();
-        roops.core.objectsInstrumented.BinTreeNode _BinTreeNode_1 = new roops.core.objectsInstrumented.BinTreeNode();
-        roops.core.objectsInstrumented.BinTreeNode z_BinTreeNode_2 = new roops.core.objectsInstrumented.BinTreeNode();
-        // Parameter Initialization
-        // Fields Initialization for 'tree_BinTree_1'
-        // Fields Initialization for '_BinTreeNode_1'
-        updateValue(_BinTreeNode_1, "key", 729989028);
-        updateValue(_BinTreeNode_1, "left", null);
-        updateValue(_BinTreeNode_1, "right", null);
-        updateValue(_BinTreeNode_1, "parent", null);
-        updateValue(tree_BinTree_1, "root", _BinTreeNode_1);
-        // Fields Initialization for 'z_BinTreeNode_2'
-        updateValue(z_BinTreeNode_2, "key", -260221606);
-        updateValue(z_BinTreeNode_2, "left", null);
-        updateValue(z_BinTreeNode_2, "right", z_BinTreeNode_2);
-        updateValue(z_BinTreeNode_2, "parent", null);
-        
-        // Method Invocation
-        Method method = getAccessibleMethod("roops.core.objectsInstrumented.BinTree", "removeTest", true);
-        try {
-            method.invoke(instance, new Object[]{tree_BinTree_1, z_BinTreeNode_2});
+            method.invoke(instance, new Object[]{list_LinkedList_1, o_LinkedListNode_1});
         } catch (Exception e) {
             e.printStackTrace();
         } 

@@ -1,0 +1,1795 @@
+//-------------- roops_core_objectsInstrumented_AvlTree --------------//
+module roops_core_objectsInstrumented_AvlTree
+sig roops_core_objectsInstrumented_AvlTree extends java_lang_Object {}
+{}
+field roops_core_objectsInstrumented_AvlTree_root:(roops_core_objectsInstrumented_AvlTree)->one(null+roops_core_objectsInstrumented_AvlNode) {}
+
+object_invariant
+   all x:roops_core_objectsInstrumented_AvlNode | {
+     isSubset[x,
+             fun_set_difference[(thiz.roops_core_objectsInstrumented_AvlTree_root).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+     implies 
+             (
+               isNotSubset[x,
+                          x.(fun_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right])]
+               and 
+               (
+                 all y:roops_core_objectsInstrumented_AvlNode | {
+                   isSubset[y,
+                           fun_set_difference[(x.roops_core_objectsInstrumented_AvlNode_left).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+                   implies 
+                           pred_java_primitive_integer_value_lt[y.roops_core_objectsInstrumented_AvlNode_element,
+                                                               x.roops_core_objectsInstrumented_AvlNode_element]
+                 
+                 }
+               )
+               and 
+               (
+                 all y:roops_core_objectsInstrumented_AvlNode | {
+                   isSubset[y,
+                           fun_set_difference[(x.roops_core_objectsInstrumented_AvlNode_right).(fun_reflexive_closure[roops_core_objectsInstrumented_AvlNode_left+roops_core_objectsInstrumented_AvlNode_right]),null]]
+                   implies 
+                           pred_java_primitive_integer_value_lt[x.roops_core_objectsInstrumented_AvlNode_element,
+                                                               y.roops_core_objectsInstrumented_AvlNode_element]
+                 
+                 }
+               )
+               and 
+               (
+                 (
+                   equ[x.roops_core_objectsInstrumented_AvlNode_left,
+                      null]
+                   and 
+                   equ[x.roops_core_objectsInstrumented_AvlNode_right,
+                      null]
+                 )
+                 implies 
+                         equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                            JavaPrimitiveIntegerLiteral0]
+               )
+               and 
+               (
+                 (
+                   equ[x.roops_core_objectsInstrumented_AvlNode_left,
+                      null]
+                   and 
+                   neq[x.roops_core_objectsInstrumented_AvlNode_right,
+                      null]
+                 )
+                 implies 
+                         (
+                           equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                              JavaPrimitiveIntegerLiteral1]
+                           and 
+                           equ[(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height,
+                              JavaPrimitiveIntegerLiteral0]
+                         )
+               )
+               and 
+               (
+                 (
+                   neq[x.roops_core_objectsInstrumented_AvlNode_left,
+                      null]
+                   and 
+                   equ[x.roops_core_objectsInstrumented_AvlNode_right,
+                      null]
+                 )
+                 implies 
+                         (
+                           equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                              JavaPrimitiveIntegerLiteral1]
+                           and 
+                           equ[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                              JavaPrimitiveIntegerLiteral0]
+                         )
+               )
+               and 
+               (
+                 (
+                   neq[x.roops_core_objectsInstrumented_AvlNode_left,
+                      null]
+                   and 
+                   neq[x.roops_core_objectsInstrumented_AvlNode_right,
+                      null]
+                 )
+                 implies 
+                         (
+                           equ[x.roops_core_objectsInstrumented_AvlNode_height,
+                              fun_java_primitive_integer_value_add[(pred_java_primitive_integer_value_gt[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                                                                  (x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height]=>((x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height)else((x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height)),JavaPrimitiveIntegerLiteral1]
+                           ]
+                           and 
+                           pred_java_primitive_integer_value_lte[(pred_java_primitive_integer_value_gt[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,
+                                                               (x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height]=>(fun_java_primitive_integer_value_sub[(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height,(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height])else(fun_java_primitive_integer_value_sub[(x.roops_core_objectsInstrumented_AvlNode_right).roops_core_objectsInstrumented_AvlNode_height,(x.roops_core_objectsInstrumented_AvlNode_left).roops_core_objectsInstrumented_AvlNode_height])),
+                                                                JavaPrimitiveIntegerLiteral1]
+                         )
+               )
+             )
+   
+   }
+
+object_invariant
+   not (
+     thiz.roops_core_objectsInstrumented_AvlTree_root=null)
+
+
+
+program roops_core_objectsInstrumented_AvlTree::searchNodeTest[
+  var throw:java_lang_Throwable+null,
+  var tree:null+roops_core_objectsInstrumented_AvlTree,
+  var x:JavaPrimitiveIntegerValue] 
+Specification 
+{
+  SpecCase #0 {
+   ensures {
+      liftExpression[false]
+   }
+   
+   ensures {
+      equ[throw',
+         null]
+   }
+   
+   modifies {
+   EVERYTHING}
+  }
+}
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_2:boolean;
+            var t_3:boolean;
+            var t_4:boolean;
+            call roops_core_objectsInstrumented_AvlTree_fajita_roopsGoal_initialization[throw];
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_0:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_1:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_0:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_0;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_1:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_0;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_3:=(neq[tree,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_3=true   {
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call repOK[tree,throw,t_4];
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if t_4=true{
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_2:=true;
+                           } else {
+                              skip;
+                           };
+                        } else {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_2:=false;
+                           } else {
+                              skip;
+                           };
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_2:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_2=true   {
+                     var t_1:null+roops_core_objectsInstrumented_AvlNode;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call searchNode[tree,throw,t_1,x];
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_2:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_1;
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[ClassFields]
+                        or 
+                        isEmptyOrNull[ClassFields]
+                        {
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_3:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_0;
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::Constructor[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         skip;
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMin[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode,
+  var arg:null+roops_core_objectsInstrumented_AvlNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_19:boolean;
+            var var_5_t:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_5_t:=arg;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_19:=(equ[var_5_t,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_19=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false)   {
+                        return:=var_5_t;
+                        exit_stmt_reached:=true;
+                     
+                     }
+                   else {
+                     skip;
+                  };
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+            var var_6_ws_3:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_6_ws_3:=(neq[var_5_t.roops_core_objectsInstrumented_AvlNode_left,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_6_ws_3]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[var_5_t]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        var_5_t:=var_5_t.roops_core_objectsInstrumented_AvlNode_left;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_6_ws_3:=(neq[var_5_t.roops_core_objectsInstrumented_AvlNode_left,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=var_5_t;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMaxTest[
+  var throw:java_lang_Throwable+null,
+  var tree:null+roops_core_objectsInstrumented_AvlTree] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_6:boolean;
+            var t_7:boolean;
+            var t_8:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_7:=(neq[tree,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_7=true   {
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call repOK[tree,throw,t_8];
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if t_8=true{
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_6:=true;
+                           } else {
+                              skip;
+                           };
+                        } else {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_6:=false;
+                           } else {
+                              skip;
+                           };
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_6:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_6=true   {
+                     var t_5:null+roops_core_objectsInstrumented_AvlNode;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call searchMax[tree,throw,t_5];
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMax[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode,
+  var arg:null+roops_core_objectsInstrumented_AvlNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_17:boolean;
+            var var_3_t:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_3_t:=arg;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_17:=(equ[var_3_t,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_17=true{
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false)   {
+                        return:=var_3_t;
+                        exit_stmt_reached:=true;
+                     
+                     }
+                   else {
+                     skip;
+                  };
+               } else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+            var var_4_ws_2:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_4_ws_2:=(neq[var_3_t.roops_core_objectsInstrumented_AvlNode_right,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_4_ws_2]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if isEmptyOrNull[var_3_t]{
+                        throw:=java_lang_NullPointerExceptionLit;
+                     } else {
+                        var_3_t:=var_3_t.roops_core_objectsInstrumented_AvlNode_right;
+                     };
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_4_ws_2:=(neq[var_3_t.roops_core_objectsInstrumented_AvlNode_right,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=var_3_t;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::repOK[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:boolean] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         if (
+           throw=null)
+         and 
+         (
+           exit_stmt_reached=false)   {
+               return:=true;
+               exit_stmt_reached:=true;
+            
+            }
+          else {
+            skip;
+         };
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMax[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_16:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]
+               or 
+               isEmptyOrNull[thiz]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call searchMax[thiz,throw,t_16,thiz.roops_core_objectsInstrumented_AvlTree_root];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=t_16;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchNode[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode,
+  var x:JavaPrimitiveIntegerValue] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_13:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_2:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_4:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_2;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]
+               or 
+               isEmptyOrNull[thiz]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call search[thiz,throw,t_13,x,thiz.roops_core_objectsInstrumented_AvlTree_root];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=t_13;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::fajita_roopsGoal_initialization[
+  var throw:java_lang_Throwable+null] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_0:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_1:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_2:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_3:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_4:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_5:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_6:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_7:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_8:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_9:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_10:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_11:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_12:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_0:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_1:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_2:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_3:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_4:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_6:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_7:=false;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_myRoopsArray:=((null+roops_utilInstrumented_RoopsArray) & (null));
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::search[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode,
+  var x:JavaPrimitiveIntegerValue,
+  var arg:null+roops_core_objectsInstrumented_AvlNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_3:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_4:=true;
+               };
+            } else {
+               skip;
+            };
+            var var_1_t:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_1_t:=arg;
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_5:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_4;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]{
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5:=true;
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[ClassFields]
+               or 
+               isEmptyOrNull[ClassFields]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_6:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5;
+               };
+            } else {
+               skip;
+            };
+            var var_2_ws_1:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               var_2_ws_1:=(neq[var_1_t,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            while liftExpression[var_2_ws_1]
+            and 
+            (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)
+            
+               {
+                  var t_15:boolean;
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_15:=(pred_java_primitive_integer_value_lt[x,
+                                                         var_1_t.roops_core_objectsInstrumented_AvlNode_element]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     if t_15=true   {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[var_1_t]{
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 var_1_t:=var_1_t.roops_core_objectsInstrumented_AvlNode_left;
+                              };
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[ClassFields]
+                              or 
+                              isEmptyOrNull[ClassFields]
+                              {
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_7:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5;
+                              };
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[ClassFields]{
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_6:=true;
+                              };
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if isEmptyOrNull[ClassFields]{
+                                 throw:=java_lang_NullPointerExceptionLit;
+                              } else {
+                                 ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5:=false;
+                              };
+                           } else {
+                              skip;
+                           };
+                        
+                        }
+                      else    {
+                           var t_14:boolean;
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_14:=(pred_java_primitive_integer_value_gt[x,
+                                                                  var_1_t.roops_core_objectsInstrumented_AvlNode_element]=>(true)else(false));
+                           } else {
+                              skip;
+                           };
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              if t_14=true   {
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[var_1_t]{
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          var_1_t:=var_1_t.roops_core_objectsInstrumented_AvlNode_right;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]
+                                       or 
+                                       isEmptyOrNull[ClassFields]
+                                       {
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_8:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]
+                                       or 
+                                       isEmptyOrNull[ClassFields]
+                                       {
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_9:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_6;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]{
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_7:=true;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]{
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5:=false;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]{
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_6:=false;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                 
+                                 }
+                               else    {
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]
+                                       or 
+                                       isEmptyOrNull[ClassFields]
+                                       {
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_10:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_5;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]
+                                       or 
+                                       isEmptyOrNull[ClassFields]
+                                       {
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_11:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_6;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false){
+                                       if isEmptyOrNull[ClassFields]
+                                       or 
+                                       isEmptyOrNull[ClassFields]
+                                       {
+                                          throw:=java_lang_NullPointerExceptionLit;
+                                       } else {
+                                          ClassFields.roops_core_objectsInstrumented_AvlTree_roops_goal_12:=ClassFields.roops_core_objectsInstrumented_AvlTree_variable_definition_7;
+                                       };
+                                    } else {
+                                       skip;
+                                    };
+                                    if (
+                                      throw=null)
+                                    and 
+                                    (
+                                      exit_stmt_reached=false)   {
+                                          return:=var_1_t;
+                                          exit_stmt_reached:=true;
+                                       
+                                       }
+                                     else {
+                                       skip;
+                                    };
+                                 
+                                 }
+                              ;
+                           } else {
+                              skip;
+                           };
+                        
+                        }
+                     ;
+                  } else {
+                     skip;
+                  };
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     var_2_ws_1:=(neq[var_1_t,
+                        null]=>(true)else(false));
+                  } else {
+                     skip;
+                  };
+               
+               }
+            ;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=((null+roops_core_objectsInstrumented_AvlNode) & (null));
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMin[
+  var thiz:roops_core_objectsInstrumented_AvlTree,
+  var throw:java_lang_Throwable+null,
+  var return:null+roops_core_objectsInstrumented_AvlNode] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_18:null+roops_core_objectsInstrumented_AvlNode;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if isEmptyOrNull[thiz]
+               or 
+               isEmptyOrNull[thiz]
+               {
+                  throw:=java_lang_NullPointerExceptionLit;
+               } else {
+                  call searchMin[thiz,throw,t_18,thiz.roops_core_objectsInstrumented_AvlTree_root];
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false)   {
+                  return:=t_18;
+                  exit_stmt_reached:=true;
+               
+               }
+             else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+program roops_core_objectsInstrumented_AvlTree::searchMinTest[
+  var throw:java_lang_Throwable+null,
+  var tree:null+roops_core_objectsInstrumented_AvlTree] 
+Implementation 
+
+   {
+      skip;
+      {
+         throw:=null;
+         var exit_stmt_reached:boolean;
+         exit_stmt_reached:=false;
+         {
+            var t_10:boolean;
+            var t_11:boolean;
+            var t_12:boolean;
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               t_11:=(neq[tree,
+                  null]=>(true)else(false));
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_11=true   {
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call repOK[tree,throw,t_12];
+                        };
+                     } else {
+                        skip;
+                     };
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if t_12=true{
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_10:=true;
+                           } else {
+                              skip;
+                           };
+                        } else {
+                           if (
+                             throw=null)
+                           and 
+                           (
+                             exit_stmt_reached=false){
+                              t_10:=false;
+                           } else {
+                              skip;
+                           };
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  if (
+                    throw=null)
+                  and 
+                  (
+                    exit_stmt_reached=false){
+                     t_10:=false;
+                  } else {
+                     skip;
+                  };
+               };
+            } else {
+               skip;
+            };
+            if (
+              throw=null)
+            and 
+            (
+              exit_stmt_reached=false){
+               if t_10=true   {
+                     var t_9:null+roops_core_objectsInstrumented_AvlNode;
+                     if (
+                       throw=null)
+                     and 
+                     (
+                       exit_stmt_reached=false){
+                        if isEmptyOrNull[tree]{
+                           throw:=java_lang_NullPointerExceptionLit;
+                        } else {
+                           call searchMin[tree,throw,t_9];
+                        };
+                     } else {
+                        skip;
+                     };
+                  
+                  }
+                else {
+                  skip;
+               };
+            } else {
+               skip;
+            };
+         
+         }
+      
+      }
+      skip;
+   
+   }
+
+
+
