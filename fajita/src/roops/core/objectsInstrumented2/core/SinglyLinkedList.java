@@ -1,5 +1,6 @@
 package roops.core.objectsInstrumented2.core;
 
+import randoop.CheckRep;
 import roops.core.objectsInstrumented2.base.SinglyLinkedListNode;
 import roops.core.objectsInstrumented2.core.roops.RoopsSet;
 
@@ -118,6 +119,7 @@ public class SinglyLinkedList {
     // ************** From now on repOK() *************************************
     // *************************************************************************
 
+    @CheckRep
     public boolean repOK() {
 
         RoopsSet visited = new RoopsSet();
