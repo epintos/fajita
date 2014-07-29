@@ -1,7 +1,7 @@
 package roops.core.objectsInstrumented2.uses;
 
 //Authors: Marcelo Frias
-import roops.core.objects.avltree.base.AvlNode;
+import roops.core.objectsInstrumented2.base.AvlNode;
 import roops.util.RoopsArray;
 
 /**
