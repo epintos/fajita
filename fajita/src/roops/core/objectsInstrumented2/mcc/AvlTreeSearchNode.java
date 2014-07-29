@@ -25,22 +25,19 @@ public class AvlTreeSearchNode {
         fajita_roopsGoal_initialization ();
         roops_goal_0 = (tree != null) == false;
         roops_goal_1 = tree != null;
-
         if ( tree != null && tree.repOK () )
         {
-            AvlNode ret_val = tree.searchNode (x);
+            tree.searchNode (x);
         }
     }
     static public void searchMaxTest (AvlTreeSearchNode tree) {
-
         if ( tree != null && tree.repOK () ) {
-            AvlNode ret_val = tree.searchMax ();
+            tree.searchMax ();
         }
     }
     static public void searchMinTest (AvlTreeSearchNode tree) {
-
         if ( tree != null && tree.repOK () ) {
-            AvlNode ret_val = tree.searchMin ();
+            tree.searchMin ();
         }
     }
 

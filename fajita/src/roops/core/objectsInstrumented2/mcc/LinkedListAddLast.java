@@ -1,6 +1,7 @@
 package roops.core.objectsInstrumented2.mcc;
 
 import roops.core.objectsInstrumented2.base.LinkedListNode;
+
 //Authors: Marcelo Frias
 /**
  * @Invariant 
@@ -21,8 +22,8 @@ public class LinkedListAddLast {
 
     /** @Modifies_Everything
 	 * @Ensures false;
-	 */ static
-     public void addLastTest (LinkedListAddLast list, Object o) {
+	 */
+    static public void addLastTest (LinkedListAddLast list, Object o) {
         fajita_roopsGoal_initialization ();
         roops_goal_0 = (list != null) == false;
         roops_goal_1 = list != null;
@@ -30,20 +31,19 @@ public class LinkedListAddLast {
         {
             list.addLast (o);
         }
-    } static
-     public void containsTest (LinkedListAddLast list, Object arg) {
+    }
+    static public void containsTest (LinkedListAddLast list, Object arg) {
         if ( list != null && list.repOK () ) {
-            boolean ret_val = list.contains (arg);
+            list.contains (arg);
         }
-    } static
-     public void removeIndexTest (LinkedListAddLast list, int index) {
+    }
+    static public void removeIndexTest (LinkedListAddLast list, int index) {
         if ( list != null && list.repOK () ) {
-            Object ret_val = list.removeIndex (index);
+            list.removeIndex (index);
         }
     }
 
-
-    public /*@ nullable @*/LinkedListNode header;
+    public /* @ nullable @ */LinkedListNode header;
 
     public int size;
 
@@ -53,37 +53,44 @@ public class LinkedListAddLast {
         header = createHeaderNode ();
     }
 
-
-    //-----------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     public int indexOf (Object new_value) {
         int i = 0;
-        for ( LinkedListNode node = header.next; node != header; node = node.next ) {
-            {}
-            if ( isEqualValue (node.object_value, new_value) ) {
-                {}
+        LinkedListNode node = header.next;
+        while ( node != header ) {
+            {
+
+    }
+            boolean equal = isEqualValue (node.object_value, new_value);
+            if ( equal ) {
+                {
+
+    }
                 return i;
             }
             i ++;
+            node = node.next;
         }
-        {}
+        {
+
+    }
         return (0 - 1);
     }
-
 
     public boolean contains (Object arg) {
         return indexOf (arg) != (0 - 1);
     }
-
 
     public Object removeIndex (int index) {
         LinkedListNode node = getNode (index, false);
         Object oldValue = node.object_value;
         removeNode (node);
 
-        {}
+        {
+
+    }
         return oldValue;
     }
-
 
     public boolean addLast (Object o) {
         addNodeBefore (header, o);
@@ -112,7 +119,9 @@ public class LinkedListAddLast {
     }
 
     public LinkedListNode createNode (Object new_object_value) {
-        {}
+        {
+
+    }
         LinkedListNode node = new LinkedListNode ();
         node.previous = node;
         node.next = node;
@@ -122,7 +131,9 @@ public class LinkedListAddLast {
 
     public void addNodeBefore (LinkedListNode node, Object new_object_value) {
         LinkedListNode newNode = createNode (new_object_value);
-        {}
+        {
+
+    }
 
         addNode (newNode, node);
     }
@@ -136,7 +147,9 @@ public class LinkedListAddLast {
         size ++;
         modCount ++;
 
-        {}
+        {
+
+    }
     }
 
     public void removeNode (LinkedListNode node) {
@@ -144,7 +157,9 @@ public class LinkedListAddLast {
         node.next.previous = node.previous;
         size --;
         modCount ++;
-        {}
+        {
+
+    }
     }
 
     public LinkedListNode getNode (int index, boolean endMarkerAllowed) {
@@ -170,9 +185,12 @@ public class LinkedListAddLast {
             // Search forwards
             node
              = header.next;
-            for ( int currentIndex = 0; currentIndex < index; currentIndex ++ ) {
+            int currentIndex = 0;
+            while ( currentIndex < index )
+            {
                 {}
                 node = node.next;
+                currentIndex ++;
             }
         } else {
 
@@ -180,24 +198,27 @@ public class LinkedListAddLast {
 
             // Search backwards
             node = header;
-            for ( int currentIndex = size; currentIndex > index; currentIndex -- ) {
+            int currentIndex = size;
+            while ( currentIndex > index )
+            {
                 {}
                 node = node.previous;
+                currentIndex --;
             }
         }
         {}
         return node;
     }
 
-        public LinkedListAddLast () {
-           init ();
+    public LinkedListAddLast () {
+        init ();
     }
 
-    //*************************************************************************
-    //************** From now on repOK()  *************************************
-    //*************************************************************************
+    // *************************************************************************
+    // ************** From now on repOK() *************************************
+    // *************************************************************************
 
-        public boolean repOK () {
+    public boolean repOK () {
         return true;
     }
 

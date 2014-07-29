@@ -1,8 +1,8 @@
 package roops.core.objectsInstrumented2.mcc;
 
+//Authors: Marcelo Frias
 import roops.core.objectsInstrumented2.base.BinTreeNode;
 import roops.util.RoopsArray;
-//Authors: Marcelo Frias
 /**
  * 
  * @Invariant all n : BinTreeNode | n in this.root.*(left @+ right ) => ( 
@@ -18,8 +18,8 @@ public class BinTreeAdd {
 
     /** @Modifies_Everything
 	 * @Ensures false;
-	 */ static
-     public void addTest (BinTreeAdd tree, int x) {
+	 */
+    static public void addTest (BinTreeAdd tree, int x) {
         fajita_roopsGoal_initialization ();
         roops_goal_0 = (tree != null) == false;
         roops_goal_1 = tree != null;
@@ -27,17 +27,19 @@ public class BinTreeAdd {
         {
             tree.add (x);
         }
-    } static
-     public void removeTest (BinTreeAdd tree, BinTreeNode z) {
-        BinTreeNode ret_val;
+    }
+    static public void containsTest (BinTreeAdd tree, int x) {
+        if ( tree != null && tree.repOK () ) {
+            tree.contains (x);
+        }
+    }
+    static public void removeTest (BinTreeAdd tree, BinTreeNode z) {
         if ( tree != null && z != null && tree.repOK () ) {
-            ret_val = tree.remove (z);
+            tree.remove (z);
         }
     }
 
-
-    public /*@ nullable @*/ BinTreeNode root;
-
+    public /* @ nullable @ */BinTreeNode root;
 
     public void add (int x) {
         BinTreeNode current = root;
@@ -46,7 +48,9 @@ public class BinTreeAdd {
 
         if ( root == null )
         {
-            {}
+            {
+
+    }
             root = new BinTreeNode ();
             initNode (root, x);
             return;
@@ -57,47 +61,67 @@ public class BinTreeAdd {
         while (  current.key != x )
         {
 
-            {}
+            {
+
+    }
             roops_goal_8 = (x < current.key) == false;
             roops_goal_9 = x < current.key;
 
             if ( x < current.key )
             {
 
-                {}
+                {
+
+    }
                 roops_goal_4 = (current.left == null) == false;
                 roops_goal_5 = current.left == null;
 
                 if ( current.left == null )
                 {
-                    {}
+                    {
+
+
+    }
                     current.left = new BinTreeNode ();
                     initNode (current.left, x);
                 } else
                 {
-                    {}
+                    {
+
+
+    }
                     current = current.left;
                 }
             } else
             {
-                {}
+                {
+
+    }
                 roops_goal_6 = (current.right == null) == false;
                 roops_goal_7 = current.right == null;
 
                 if ( current.right == null )
                 {
-                    {}
+                    {
+
+
+    }
                     current.right = new BinTreeNode ();
                     initNode (current.right, x);
                 } else
                 {
-                    {}
+                    {
+
+
+    }
                     current = current.right;
                 }
             }
         }
 
-        {}
+        {
+
+    }
     }
 
     public void initNode (BinTreeNode node, int x) {
@@ -106,13 +130,51 @@ public class BinTreeAdd {
         node.right = null;
     }
 
+    public boolean contains (int x) {
+        BinTreeNode current = root;
+
+        while ( current != null ) {
+            {
+
+    }
+
+            if ( current.key == x ) {
+                {
+
+    }
+                return true;
+            }
+
+            if ( x < current.key ) {
+                {
+
+    }
+                current = current.left;
+            } else {
+                {
+
+    }
+                current = current.right;
+            }
+        }
+
+        {
+
+    }
+        return false;
+    }
+
     public BinTreeNode treeMinimum (final BinTreeNode x_param) {
         BinTreeNode x = x_param;
         while ( x.left != null ) {
-            {}
+            {
+
+    }
             x = x.left;
         }
-        {}
+        {
+
+    }
         return x;
     }
 
@@ -120,80 +182,106 @@ public class BinTreeAdd {
         BinTreeNode x = x_param;
         BinTreeNode result;
         if ( x.right != null ) {
-            {}
+            {
+
+    }
             result = treeMinimum (x.right);
         } else {
-            {}
+            {
+
+    }
             BinTreeNode y = x.parent;
             while ( y != null && x == y.right ) {
-                {}
+                {
+
+
+    }
                 x = y;
                 y = y.parent;
             }
 
             result = y;
         }
-        {}
+        {
+
+    }
         return result;
     }
-
 
     public BinTreeNode remove (final BinTreeNode z) {
         BinTreeNode y = null;
         if ( z.left == null || z.right == null ) {
-            {}
+            {
+
+    }
             y = z;
         } else {
-            {}
+            {
+
+    }
             y = treeSuccessor (z);
         }
 
         BinTreeNode x = null;
         if ( y.left != null ) {
-            {}
+            {
+
+    }
             x = y.left;
         } else {
-            {}
+            {
+
+    }
             x = y.right;
         }
 
         if ( x != null ) {
-            {}
+            {
+
+    }
             x.parent = y.parent;
         }
 
         if ( y.parent == null ) {
-            {}
+            {
+
+    }
             this.root = x;
         } else {
-            {}
-            if ( y == y.parent.left )
             {
-                {}
+
+    }
+            if ( y == y.parent.left ) {
+                {
+
+    }
                 y.parent.left = x;
-            }
-            else
-            {
-                {}
+            } else {
+                {
+
+    }
                 y.parent.right = x;
             }
         }
 
         if ( y != z ) {
-            {}
+            {
+
+    }
             z.key = y.key;
         }
 
-        {}
+        {
+
+    }
         return y;
     }
 
-
     public BinTreeAdd () {}
 
-    //*************************************************************************
-    //************** From now on repOK()  *************************************
-    //*************************************************************************
+    // *************************************************************************
+    // ************** From now on repOK() *************************************
+    // *************************************************************************
 
     public boolean repOK () {
         return true;

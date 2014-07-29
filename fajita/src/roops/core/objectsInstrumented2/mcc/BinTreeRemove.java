@@ -14,38 +14,42 @@ import roops.util.RoopsArray;
  *            ( n=this.root => n.parent=null ) ) ;
  * 
  */
-public class BinTreeRemove { static
-     public void addTest (BinTreeRemove tree, int x) {
+public class BinTreeRemove {
+    static public void addTest (BinTreeRemove tree, int x) {
         if ( tree != null && tree.repOK () ) {
             tree.add (x);
+        }
+    }
+    static public void containsTest (BinTreeRemove tree, int x) {
+        if ( tree != null && tree.repOK () ) {
+            tree.contains (x);
         }
     }
 
     /** @Modifies_Everything
 	 * @Ensures false;
-	 */ static
-     public void removeTest (BinTreeRemove tree, BinTreeNode z) {
+	 */
+    static public void removeTest (BinTreeRemove tree, BinTreeNode z) {
         fajita_roopsGoal_initialization ();
-        BinTreeNode ret_val;
         roops_goal_0 = (tree != null) == false;
         roops_goal_1 = tree != null;
         roops_goal_2 = ( z != null) == false;
         roops_goal_3 = z != null;
         if ( tree != null && z != null && tree.repOK () )
         {
-            ret_val = tree.remove (z);
+            tree.remove (z);
         }
     }
 
-
-    public /*@ nullable @*/ BinTreeNode root;
-
+    public /* @ nullable @ */BinTreeNode root;
 
     public void add (int x) {
         BinTreeNode current = root;
 
         if ( root == null ) {
-            {}
+            {
+
+    }
             root = new BinTreeNode ();
             initNode (root, x);
             return;
@@ -53,35 +57,55 @@ public class BinTreeRemove { static
 
         while ( current.key != x ) {
 
-            {}
+            {
+
+    }
 
             if ( x < current.key ) {
 
-                {}
+                {
+
+    }
 
                 if ( current.left == null ) {
-                    {}
+                    {
+
+
+    }
                     current.left = new BinTreeNode ();
                     initNode (current.left, x);
                 } else {
-                    {}
+                    {
+
+
+    }
                     current = current.left;
                 }
             } else {
-                {}
+                {
+
+    }
 
                 if ( current.right == null ) {
-                    {}
+                    {
+
+
+    }
                     current.right = new BinTreeNode ();
                     initNode (current.right, x);
                 } else {
-                    {}
+                    {
+
+
+    }
                     current = current.right;
                 }
             }
         }
 
-        {}
+        {
+
+    }
     }
 
     public void initNode (BinTreeNode node, int x) {
@@ -90,16 +114,54 @@ public class BinTreeRemove { static
         node.right = null;
     }
 
+    public boolean contains (int x) {
+        BinTreeNode current = root;
+
+        while ( current != null ) {
+            {
+
+    }
+
+            if ( current.key == x ) {
+                {
+
+    }
+                return true;
+            }
+
+            if ( x < current.key ) {
+                {
+
+    }
+                current = current.left;
+            } else {
+                {
+
+    }
+                current = current.right;
+            }
+        }
+
+        {
+
+    }
+        return false;
+    }
+
     public BinTreeNode treeMinimum (final BinTreeNode x_param) {
         BinTreeNode x = x_param;
         roops_goal_4 = (x.left != null) == false;
         roops_goal_5 = x.left != null;
         while (  x.left != null )
         {
-            {}
+            {
+
+    }
             x = x.left;
         }
-        {}
+        {
+
+    }
         return x;
     }
 
@@ -110,11 +172,15 @@ public class BinTreeRemove { static
         roops_goal_11 = x.right != null;
         if ( x.right != null )
         {
-            {}
+            {
+
+    }
             result = treeMinimum (x.right);
         } else
         {
-            {}
+            {
+
+    }
             BinTreeNode y = x.parent;
             roops_goal_6 = (y != null) == false;
             roops_goal_7 = y != null;
@@ -122,17 +188,21 @@ public class BinTreeRemove { static
             roops_goal_9 = x == y.right;
             while (  y != null && x == y.right )
             {
-                {}
+                {
+
+
+    }
                 x = y;
                 y = y.parent;
             }
 
             result = y;
         }
-        {}
+        {
+
+    }
         return result;
     }
-
 
     public BinTreeNode remove (final BinTreeNode z) {
         BinTreeNode y = null;
@@ -142,11 +212,15 @@ public class BinTreeRemove { static
         roops_goal_15 = z.right == null;
         if ( z.left == null || z.right == null )
         {
-            {}
+            {
+
+    }
             y = z;
         } else
         {
-            {}
+            {
+
+    }
             y = treeSuccessor (z);
         }
 
@@ -155,11 +229,15 @@ public class BinTreeRemove { static
         roops_goal_17 = y.left != null;
         if ( y.left != null )
         {
-            {}
+            {
+
+    }
             x = y.left;
         } else
         {
-            {}
+            {
+
+    }
             x = y.right;
         }
         roops_goal_18 = (x != null) == false;
@@ -167,7 +245,9 @@ public class BinTreeRemove { static
 
         if ( x != null )
         {
-            {}
+            {
+
+    }
             x.parent = y.parent;
         }
         roops_goal_22 = (y.parent == null) == false;
@@ -175,21 +255,28 @@ public class BinTreeRemove { static
 
         if ( y.parent == null )
         {
-            {}
+            {
+
+    }
             this.root = x;
         } else
         {
-            {}
+            {
+
+    }
             roops_goal_20 = (y == y.parent.left) == false;
             roops_goal_21 = y == y.parent.left;
             if ( y == y.parent.left )
             {
-                {}
+                {
+
+    }
                 y.parent.left = x;
-            }
-            else
+            } else
             {
-                {}
+                {
+
+    }
                 y.parent.right = x;
             }
         }
@@ -198,20 +285,23 @@ public class BinTreeRemove { static
 
         if ( y != z )
         {
-            {}
+            {
+
+    }
             z.key = y.key;
         }
 
-        {}
+        {
+
+    }
         return y;
     }
 
-
     public BinTreeRemove () {}
 
-    //*************************************************************************
-    //************** From now on repOK()  *************************************
-    //*************************************************************************
+    // *************************************************************************
+    // ************** From now on repOK() *************************************
+    // *************************************************************************
 
     public boolean repOK () {
         return true;

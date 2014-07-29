@@ -8,9 +8,8 @@ import roops.core.objectsInstrumented2.base.SinglyLinkedListNode;
  */
 public class SinglyLinkedListInsertBack {
     static public void containsTest (SinglyLinkedListInsertBack list, int value_param) {
-        boolean ret_val;
         if ( list != null && list.repOK () ) {
-            ret_val = list.contains (value_param);
+            list.contains (value_param);
         }
     }
 
@@ -25,7 +24,6 @@ public class SinglyLinkedListInsertBack {
         {
             list.insertBack (arg);
         }
-        System.out.println("Termina");
     }
     static public void removeTest (SinglyLinkedListInsertBack list, int index) {
         if ( list != null && list.repOK () ) {
