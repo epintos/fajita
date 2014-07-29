@@ -80,8 +80,7 @@ public class LinkedList {
 	}
 
 	public boolean contains(Object arg) {
-		boolean exists = indexOf(arg) != -1;
-		return exists;
+		return indexOf(arg) != -1;
 	}
 
 	public Object removeIndex(int index) {
@@ -172,7 +171,7 @@ public class LinkedList {
 			{roops.util.Goals.reached(0, roops.util.Verdict.REACHABLE);}
 			throw new RuntimeException();
 		}
-		if (!endMarkerAllowed && index == size) {
+		if (endMarkerAllowed == false && index == size) {
 			{roops.util.Goals.reached(1, roops.util.Verdict.REACHABLE);}
 			throw new RuntimeException();
 		}
