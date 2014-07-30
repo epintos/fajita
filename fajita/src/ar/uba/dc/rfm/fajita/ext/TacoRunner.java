@@ -100,6 +100,18 @@ public class TacoRunner implements Runnable {
 			
 			String tacoProperties =
 				FileTools.readFile(configuration.getTacoPropertiesTemplate());
+			String typeScopes = "";
+			String[] relevantClasses = configuration.getRelevantClasses().split(",");
+			for (int i = 0; i < relevantClasses.length; i++) {
+			    typeScopes += relevantClasses[i];
+			    if (i < relevantClasses.length - 1) {
+			        typeScopes += ":1,";
+			    } else {
+			        typeScopes += ":1";
+			    }
+			}
+//			tacoProperties = tacoProperties.concat("type_scopes=" + typeScopes + "\n");
+//			tacoProperties = tacoProperties.concat("inferScope=true\n");
 			
 			tacoProperties = tacoProperties.replaceAll(
 				"\\$\\{JFAJITA_DIR\\}", configuration.getCompiledClassToCheckPath());

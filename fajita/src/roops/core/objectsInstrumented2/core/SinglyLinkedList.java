@@ -122,7 +122,7 @@ public class SinglyLinkedList {
     
     private SinglyLinkedListNode createHeaderNode() {
     	SinglyLinkedListNode singlyLinkedListNode = new SinglyLinkedListNode();
-    	singlyLinkedListNode.next = singlyLinkedListNode;
+    	singlyLinkedListNode.next = null;
 		return singlyLinkedListNode;
 	}
 

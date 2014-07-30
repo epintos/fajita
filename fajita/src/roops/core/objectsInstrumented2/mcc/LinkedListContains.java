@@ -23,6 +23,7 @@ public class LinkedListContains {
         if ( list != null && list.repOK () ) {
             list.addLast (o);
         }
+        System.out.println("Finsihed");
     }
 
     /** @Modifies_Everything

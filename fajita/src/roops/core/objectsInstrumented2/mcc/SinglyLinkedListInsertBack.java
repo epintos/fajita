@@ -24,6 +24,7 @@ public class SinglyLinkedListInsertBack {
         {
             list.insertBack (arg);
         }
+        System.out.println("Finished");
     }
     static public void removeTest (SinglyLinkedListInsertBack list, int index) {
         if ( list != null && list.repOK () ) {
@@ -113,8 +114,20 @@ public class SinglyLinkedListInsertBack {
             current.next = freshNode;
         }
     }
-
-    public SinglyLinkedListInsertBack () {}
+    
+    public SinglyLinkedListInsertBack() {
+        init();
+    }
+    
+    private void init() {
+        this.header = createHeaderNode();
+    }
+    
+    private SinglyLinkedListNode createHeaderNode() {
+        SinglyLinkedListNode singlyLinkedListNode = new SinglyLinkedListNode();
+        singlyLinkedListNode.next = null;
+        return singlyLinkedListNode;
+    }
 
     // *************************************************************************
     // ************** From now on repOK() *************************************

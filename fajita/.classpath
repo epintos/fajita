@@ -11,6 +11,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jdynalloy"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/taco"/>
 	<classpathentry excluding="ar/|roops/" kind="src" path="test"/>
-	<classpathentry kind="lib" path="/Users/egpintos17/Documents/ITBA/workspace/fajita/fajita/lib/randoop.1.3.4.jar"/>
+	<classpathentry kind="lib" path="/Users/mdesanti/ITBA/pf/fajita/fajita/lib/randoop.1.3.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
