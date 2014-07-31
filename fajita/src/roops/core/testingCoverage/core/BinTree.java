@@ -1,6 +1,5 @@
 package roops.core.testingCoverage.core;
 
-import randoop.CheckRep;
 import roops.core.testingCoverage.base.BinTreeNode;
 import roops.core.testingCoverage.core.roops.RoopsList;
 
@@ -273,19 +272,19 @@ public class BinTree {
 
 	public boolean repOK() {
 
-//		if (root != null) {
-//			// checks that the input is a tree
-//			if (!repOK_isAcyclic())
-//				return false;
-//
-//			// checks that data is ordered
-//			if (!repOK_isOrdered(root))
-//				return false;
-//
-//			// checks parents
-//			if (!repOK_parentsAllRight())
-//				return false;
-//		}
+		if (root != null) {
+			// checks that the input is a tree
+			if (!repOK_isAcyclic())
+				return false;
+
+			// checks that data is ordered
+			if (!repOK_isOrdered(root))
+				return false;
+
+			// checks parents
+			if (!repOK_parentsAllRight())
+				return false;
+		}
 		return true;
 	}
 

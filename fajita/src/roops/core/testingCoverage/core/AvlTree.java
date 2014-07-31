@@ -1,6 +1,5 @@
 package roops.core.testingCoverage.core;
 
-import randoop.CheckRep;
 import roops.core.testingCoverage.base.AvlNode;
 import roops.core.testingCoverage.core.roops.RoopsIntList;
 import roops.core.testingCoverage.core.roops.RoopsSet;
@@ -148,60 +147,60 @@ public class AvlTree {
 	// *************************************************************************
 
 	public boolean repOK() {
-//		RoopsSet allNodes = new RoopsSet();
-//		RoopsIntList allData = new RoopsIntList();
-//		RoopsStack stack = new RoopsStack();
-//		if (root != null) {
-//			stack.push(root);
-//		}
-//
-//		while (stack.getSize() > 0) {
-//
-//			AvlNode node = (AvlNode) stack.pop();
-//
-//			if (!allNodes.add(node))
-//				return false; // Not acyclic.
-//
-//			if (!allData.add(node.element))
-//				return false; // Repeated data.
-//
-//			// check balance
-//			int l_Height;
-//			if (node.left == null)
-//				l_Height = 0;
-//			else
-//				l_Height = node.left.height;
-//
-//			int r_Height;
-//			if (node.right == null)
-//				r_Height = 0;
-//			else
-//				r_Height = node.right.height;
-//
-//			int difference = l_Height - r_Height;
-//			if (difference < -1 || difference > 1)
-//				return false; // Not balanced.
-//
-//			int max;
-//			if (l_Height > r_Height)
-//				max = l_Height;
-//			else
-//				max = r_Height;
-//
-//			if (node.height != 1 + max)
-//				return false; // Wrong height.
-//
-//			// visit descendants
-//			if (node.left != null)
-//				stack.push(node.left);
-//
-//			if (node.right != null)
-//				stack.push(node.right);
-//
-//		}
-//
-//		if (!repOK_isOrdered(root))
-//			return false;
+		RoopsSet allNodes = new RoopsSet();
+		RoopsIntList allData = new RoopsIntList();
+		RoopsStack stack = new RoopsStack();
+		if (root != null) {
+			stack.push(root);
+		}
+
+		while (stack.getSize() > 0) {
+
+			AvlNode node = (AvlNode) stack.pop();
+
+			if (!allNodes.add(node))
+				return false; // Not acyclic.
+
+			if (!allData.add(node.element))
+				return false; // Repeated data.
+
+			// check balance
+			int l_Height;
+			if (node.left == null)
+				l_Height = 0;
+			else
+				l_Height = node.left.height;
+
+			int r_Height;
+			if (node.right == null)
+				r_Height = 0;
+			else
+				r_Height = node.right.height;
+
+			int difference = l_Height - r_Height;
+			if (difference < -1 || difference > 1)
+				return false; // Not balanced.
+
+			int max;
+			if (l_Height > r_Height)
+				max = l_Height;
+			else
+				max = r_Height;
+
+			if (node.height != 1 + max)
+				return false; // Wrong height.
+
+			// visit descendants
+			if (node.left != null)
+				stack.push(node.left);
+
+			if (node.right != null)
+				stack.push(node.right);
+
+		}
+
+		if (!repOK_isOrdered(root))
+			return false;
 
 		return true;
 	}

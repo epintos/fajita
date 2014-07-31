@@ -1,6 +1,7 @@
 package roops.core.testingCoverage.core;
 
 import roops.core.testingCoverage.base.LinkedListNode;
+import roops.core.testingCoverage.core.roops.RoopsSet;
 
 
 //Authors: Marcelo Frias
@@ -209,37 +210,37 @@ public class LinkedList {
 	// *************************************************************************
 
 	public boolean repOK() {
-//		if (header == null) {
-//			return false;
-//		}
-//		if (header.object_value != null) {
-//			return false;
-//		}
-//
-//		RoopsSet visited = new RoopsSet();
-//		visited.add(header);
-//		LinkedListNode current = header;
-//
-//		while (true) {
-//			LinkedListNode next = current.next;
-//			if (next == null) {
-//				return false;
-//			}
-//			if (next.previous != current) {
-//				return false;
-//			}
-//			current = next;
-//			if (!visited.add(next)) {
-//				break;
-//			}
-//		}
-//		if (current != header) {
-//			return false;
-//		}
-//
-//		if (visited.getSize() - 1 != size) {
-//			return false;
-//		}
+		if (header == null) {
+			return false;
+		}
+		if (header.object_value != null) {
+			return false;
+		}
+
+		RoopsSet visited = new RoopsSet();
+		visited.add(header);
+		LinkedListNode current = header;
+
+		while (true) {
+			LinkedListNode next = current.next;
+			if (next == null) {
+				return false;
+			}
+			if (next.previous != current) {
+				return false;
+			}
+			current = next;
+			if (!visited.add(next)) {
+				break;
+			}
+		}
+		if (current != header) {
+			return false;
+		}
+
+		if (visited.getSize() - 1 != size) {
+			return false;
+		}
 
 		return true;
 	}

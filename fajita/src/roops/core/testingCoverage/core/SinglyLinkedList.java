@@ -1,6 +1,5 @@
 package roops.core.testingCoverage.core;
 
-import randoop.CheckRep;
 import roops.core.testingCoverage.base.SinglyLinkedListNode;
 import roops.core.testingCoverage.core.roops.RoopsSet;
 
@@ -121,20 +120,20 @@ public class SinglyLinkedList {
 
     private boolean repOK() {
 
-//        RoopsSet visited = new RoopsSet();
-//
-//        SinglyLinkedListNode current = header;
-//
-//        while (true) {
-//            SinglyLinkedListNode next = current;
-//            if (next == null)
-//                break;
-//
-//            if (!visited.add(next))
-//                return false;
-//
-//            current = current.next;
-//        }
+        RoopsSet visited = new RoopsSet();
+
+        SinglyLinkedListNode current = header;
+
+        while (true) {
+            SinglyLinkedListNode next = current;
+            if (next == null)
+                break;
+
+            if (!visited.add(next))
+                return false;
+
+            current = current.next;
+        }
 
         return true;
     }
