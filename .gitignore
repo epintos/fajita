@@ -9,3 +9,4 @@ dynalloy4/bin/.gitignore
 fajita/bin/.gitignore	
 JDynAlloy/bin/.gitignore
 .gitignore.swp
+fajita/result/unroll_*/

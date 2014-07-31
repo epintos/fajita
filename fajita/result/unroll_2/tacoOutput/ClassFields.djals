@@ -2,26 +2,14 @@
 module ClassFields
 one sig ClassFields {}
 {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_12:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_10:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_11:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_1:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_0:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_myRoopsArray:(ClassFields)->one(null+roops_utilInstrumented_RoopsArray) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_7:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_6:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_6:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_5:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_4:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_3:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_3:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_2:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_9:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_5:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_8:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_variable_definition_4:(ClassFields)->one(boolean) {}
-field roops_core_objectsInstrumented_AvlTree_roops_goal_7:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_1:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_2:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_0:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_6:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_5:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_4:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_3:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_9:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_8:(ClassFields)->one(boolean) {}
+field roops_core_objectsInstrumented_SinglyLinkedList_roops_goal_7:(ClassFields)->one(boolean) {}
 
