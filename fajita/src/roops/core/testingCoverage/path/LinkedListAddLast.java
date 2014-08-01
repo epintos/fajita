@@ -56,10 +56,6 @@ public class LinkedListAddLast {
 
     public int modCount;
 
-    public void init () {
-        header = createHeaderNode ();
-    }
-
     // -----------------------------------------------------------------------
     public int indexOf (Object new_value) {
         int i = 0;
@@ -142,13 +138,6 @@ public class LinkedListAddLast {
             }
         }
         return ret_val;
-    }
-
-    public LinkedListNode createHeaderNode () {
-        LinkedListNode linkedListNode = new LinkedListNode ();
-        linkedListNode.next = linkedListNode;
-        linkedListNode.previous = linkedListNode;
-        return linkedListNode;
     }
 
     public LinkedListNode createNode (Object new_object_value) {
@@ -276,7 +265,6 @@ public class LinkedListAddLast {
     }
 
     public LinkedListAddLast () {
-        init ();
     }
 
     // *************************************************************************

@@ -49,7 +49,7 @@ public class AvlTree {
 
 	public/* @ nullable @ */AvlNode root;
 
-	public/* @ nullable @ */AvlNode searchNode(final int x) {
+	private/* @ nullable @ */AvlNode searchNode(final int x) {
 		return search(x, this.root);
 	}
 
@@ -87,7 +87,7 @@ public class AvlTree {
 		return null; // No match
 	}
 
-	public AvlNode searchMax() {
+	private AvlNode searchMax() {
 		return searchMax(this.root);
 	}
 
@@ -113,7 +113,7 @@ public class AvlTree {
 		return t;
 	}
 
-	public AvlNode searchMin() {
+	private AvlNode searchMin() {
 		return searchMin(this.root);
 	}
 
@@ -146,7 +146,7 @@ public class AvlTree {
 	// ************** From now on repOk() *************************************
 	// *************************************************************************
 
-	public boolean repOK() {
+	private boolean repOK() {
 		RoopsSet allNodes = new RoopsSet();
 		RoopsIntList allData = new RoopsIntList();
 		RoopsStack stack = new RoopsStack();

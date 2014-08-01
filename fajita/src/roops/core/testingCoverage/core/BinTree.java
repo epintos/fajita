@@ -45,7 +45,7 @@ public class BinTree {
 
 	public/* @ nullable @ */BinTreeNode root;
 
-	public void add(int x) {
+	private void add(int x) {
 		BinTreeNode current = root;
 
 		if (root == null) {
@@ -116,7 +116,7 @@ public class BinTree {
 		node.right = null;
 	}
 
-	public boolean contains(int x) {
+	private boolean contains(int x) {
 		BinTreeNode current = root;
 
 		while (current != null) {
@@ -194,7 +194,7 @@ public class BinTree {
 		return result;
 	}
 
-	public BinTreeNode remove(final BinTreeNode z) {
+	private BinTreeNode remove(final BinTreeNode z) {
 		BinTreeNode y = null;
 		if (z.left == null || z.right == null) {
 			{
@@ -270,7 +270,7 @@ public class BinTree {
 	// ************** From now on repOK() *************************************
 	// *************************************************************************
 
-	public boolean repOK() {
+	private boolean repOK() {
 
 		if (root != null) {
 			// checks that the input is a tree

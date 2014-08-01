@@ -37,7 +37,7 @@ public class SinglyLinkedList {
 
     public /*@ nullable @*/ SinglyLinkedListNode header;
 
-    public boolean contains(int value_param) {
+    private boolean contains(int value_param) {
 		SinglyLinkedListNode current;
 		boolean result;
 		current = this.header;
@@ -57,7 +57,7 @@ public class SinglyLinkedList {
 		return result;
 	}
 
-    public void remove(int index) {
+    private void remove(int index) {
 
         if (index < 0) {
             throw new RuntimeException();
@@ -94,7 +94,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void insertBack(int arg) {
+    private void insertBack(int arg) {
         SinglyLinkedListNode freshNode = new SinglyLinkedListNode();
         freshNode.value = arg;
         freshNode.next = null;

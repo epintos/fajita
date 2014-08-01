@@ -36,7 +36,6 @@ public class LinkedListContains {
         {
             list.contains (arg);
         }
-        System.out.println("Finished");
     }
     static public void removeIndexTest (LinkedListContains list, int index) {
         if ( list != null && list.repOK () ) {

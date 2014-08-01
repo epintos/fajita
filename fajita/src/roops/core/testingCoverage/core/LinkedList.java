@@ -77,11 +77,11 @@ public class LinkedList {
 		return -1;
 	}
 
-	public boolean contains(Object arg) {
+	private boolean contains(Object arg) {
 		return indexOf(arg) != -1;
 	}
 
-	public Object removeIndex(int index) {
+	private Object removeIndex(int index) {
 		LinkedListNode node = getNode(index, false);
 		Object oldValue = node.object_value;
 		removeNode(node);
@@ -92,7 +92,7 @@ public class LinkedList {
 		return oldValue;
 	}
 
-	public boolean addLast(Object o) {
+	private boolean addLast(Object o) {
 		addNodeBefore(header, o);
 		return true;
 	}
@@ -209,7 +209,7 @@ public class LinkedList {
 	// ************** From now on repOK() *************************************
 	// *************************************************************************
 
-	public boolean repOK() {
+	private boolean repOK() {
 		if (header == null) {
 			return false;
 		}

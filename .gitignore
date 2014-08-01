@@ -10,3 +10,4 @@ fajita/bin/.gitignore
 JDynAlloy/bin/.gitignore
 .gitignore.swp
 fajita/result/unroll_*/
+fajita/result/*

@@ -14,17 +14,17 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test1");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test2() throws Throwable {
@@ -34,7 +34,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test2");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
@@ -44,7 +44,7 @@ public class LinkedListTests extends TestCase {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test3() throws Throwable {
@@ -54,18 +54,18 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test3");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test4() throws Throwable {
@@ -75,17 +75,17 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test4");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test5() throws Throwable {
@@ -95,7 +95,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test5");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
@@ -109,7 +109,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test6() throws Throwable {
@@ -119,12 +119,12 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test6");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -134,7 +134,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test7() throws Throwable {
@@ -144,7 +144,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test7");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -166,7 +166,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test8() throws Throwable {
@@ -176,13 +176,13 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test8");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -194,7 +194,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test9() throws Throwable {
@@ -204,14 +204,14 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test9");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -226,7 +226,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test10() throws Throwable {
@@ -236,7 +236,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test10");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -262,7 +262,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test11() throws Throwable {
@@ -272,12 +272,12 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test11");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -287,7 +287,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test12() throws Throwable {
@@ -297,12 +297,12 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test12");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -311,7 +311,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test13() throws Throwable {
@@ -321,7 +321,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test13");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -343,7 +343,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test14() throws Throwable {
@@ -353,7 +353,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test14");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -361,7 +361,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -380,7 +380,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test15() throws Throwable {
@@ -390,7 +390,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test15");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
@@ -400,7 +400,7 @@ public class LinkedListTests extends TestCase {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test16() throws Throwable {
@@ -428,7 +428,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var12 + "' != '" + (short) 0 + "'",
 				var12.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test17() throws Throwable {
@@ -518,7 +518,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var54);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test18() throws Throwable {
@@ -528,13 +528,13 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test18");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -547,7 +547,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test19() throws Throwable {
@@ -557,7 +557,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test19");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -587,7 +587,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test20() throws Throwable {
@@ -597,7 +597,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test20");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
@@ -611,7 +611,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test21() throws Throwable {
@@ -682,7 +682,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var47);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test22() throws Throwable {
@@ -716,7 +716,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var10);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test23() throws Throwable {
@@ -726,18 +726,18 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test23");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test24() throws Throwable {
@@ -747,13 +747,13 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test24");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -765,7 +765,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test25() throws Throwable {
@@ -775,7 +775,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test25");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -784,7 +784,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -806,7 +806,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test26() throws Throwable {
@@ -816,7 +816,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test26");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -842,7 +842,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test27() throws Throwable {
@@ -852,7 +852,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test27");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -874,7 +874,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test28() throws Throwable {
@@ -884,7 +884,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test28");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -914,7 +914,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test29() throws Throwable {
@@ -924,7 +924,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test29");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -950,7 +950,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test30() throws Throwable {
@@ -970,7 +970,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var5 + "' != '" + (short) 0 + "'",
 				var5.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test31() throws Throwable {
@@ -980,14 +980,14 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test31");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -1003,7 +1003,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test32() throws Throwable {
@@ -1013,7 +1013,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test32");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
@@ -1027,7 +1027,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test33() throws Throwable {
@@ -1176,7 +1176,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var96);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test34() throws Throwable {
@@ -1186,14 +1186,14 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test34");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -1209,7 +1209,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test35() throws Throwable {
@@ -1219,7 +1219,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test35");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
@@ -1229,7 +1229,7 @@ public class LinkedListTests extends TestCase {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test36() throws Throwable {
@@ -1239,7 +1239,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test36");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1247,7 +1247,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -1266,7 +1266,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test37() throws Throwable {
@@ -1276,7 +1276,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test37");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1287,7 +1287,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -1314,7 +1314,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test38() throws Throwable {
@@ -1324,7 +1324,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test38");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1336,7 +1336,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -1366,7 +1366,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test39() throws Throwable {
@@ -1451,7 +1451,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var50);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test40() throws Throwable {
@@ -1461,7 +1461,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test40");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1499,7 +1499,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test41() throws Throwable {
@@ -1509,7 +1509,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test41");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1555,7 +1555,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test42() throws Throwable {
@@ -1565,7 +1565,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test42");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1578,7 +1578,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -1612,7 +1612,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test43() throws Throwable {
@@ -1622,7 +1622,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test43");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1635,7 +1635,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -1669,7 +1669,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test44() throws Throwable {
@@ -1718,7 +1718,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var25);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test45() throws Throwable {
@@ -1728,7 +1728,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test45");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1770,7 +1770,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test46() throws Throwable {
@@ -1801,7 +1801,7 @@ public class LinkedListTests extends TestCase {
 		var21.setValue((java.lang.Object) false);
 		var21.setValue((java.lang.Object) 0L);
 		var3.setPreviousNode(var21);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var30 = var29.repOK();
 		boolean var31 = var29.repOK();
 		boolean var32 = var29.repOK();
@@ -1925,7 +1925,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var97);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test47() throws Throwable {
@@ -1935,7 +1935,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test47");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -1949,7 +1949,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -1985,7 +1985,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test48() throws Throwable {
@@ -1995,7 +1995,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test48");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2004,7 +2004,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -2025,7 +2025,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test49() throws Throwable {
@@ -2045,7 +2045,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var7);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test50() throws Throwable {
@@ -2055,7 +2055,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test50");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2105,7 +2105,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test51() throws Throwable {
@@ -2115,7 +2115,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test51");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2127,7 +2127,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -2157,7 +2157,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test52() throws Throwable {
@@ -2302,7 +2302,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var98);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test53() throws Throwable {
@@ -2392,7 +2392,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var57);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test54() throws Throwable {
@@ -2423,7 +2423,7 @@ public class LinkedListTests extends TestCase {
 		var21.setValue((java.lang.Object) false);
 		var21.setValue((java.lang.Object) 0L);
 		var3.setPreviousNode(var21);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var30 = var29.repOK();
 		boolean var31 = var29.repOK();
 		boolean var32 = var29.repOK();
@@ -2450,7 +2450,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var34 + "' != '" + true + "'", var34.equals(true));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test55() throws Throwable {
@@ -2590,7 +2590,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var90);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test56() throws Throwable {
@@ -2600,7 +2600,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test56");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2646,7 +2646,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test57() throws Throwable {
@@ -2656,7 +2656,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test57");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2665,7 +2665,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -2687,7 +2687,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test58() throws Throwable {
@@ -2697,7 +2697,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test58");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2727,7 +2727,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test59() throws Throwable {
@@ -2737,7 +2737,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test59");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2787,7 +2787,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test60() throws Throwable {
@@ -2797,7 +2797,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test60");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -2807,7 +2807,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -2832,7 +2832,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var6 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test61() throws Throwable {
@@ -2865,7 +2865,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var13);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test62() throws Throwable {
@@ -2898,7 +2898,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var18);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test63() throws Throwable {
@@ -3005,7 +3005,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var76 + "' != '" + (byte) 100 + "'",
 				var76.equals((byte) 100));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test64() throws Throwable {
@@ -3015,7 +3015,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test64");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3026,7 +3026,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -3054,7 +3054,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test65() throws Throwable {
@@ -3064,7 +3064,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test65");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3076,7 +3076,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -3107,7 +3107,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test66() throws Throwable {
@@ -3117,7 +3117,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test66");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
@@ -3135,7 +3135,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test67() throws Throwable {
@@ -3145,7 +3145,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test67");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
@@ -3163,7 +3163,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test68() throws Throwable {
@@ -3292,7 +3292,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var90 + "' != '" + (byte) 100 + "'",
 				var90.equals((byte) 100));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test69() throws Throwable {
@@ -3313,7 +3313,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var9 + "' != '" + false + "'", var9.equals(false));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test70() throws Throwable {
@@ -3323,7 +3323,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test70");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3331,7 +3331,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -3349,7 +3349,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var4 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test71() throws Throwable {
@@ -3359,7 +3359,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test71");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
@@ -3373,7 +3373,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var1 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test72() throws Throwable {
@@ -3427,7 +3427,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var26);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test73() throws Throwable {
@@ -3577,7 +3577,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var84);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test74() throws Throwable {
@@ -3587,7 +3587,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test74");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3629,7 +3629,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test75() throws Throwable {
@@ -3639,7 +3639,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test75");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3677,7 +3677,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test76() throws Throwable {
@@ -3810,7 +3810,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var87);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test77() throws Throwable {
@@ -3820,7 +3820,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test77");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3831,7 +3831,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -3858,7 +3858,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test78() throws Throwable {
@@ -3868,7 +3868,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test78");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -3884,7 +3884,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -3926,7 +3926,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var12 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test79() throws Throwable {
@@ -4058,7 +4058,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var74);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test80() throws Throwable {
@@ -4068,7 +4068,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test80");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
@@ -4078,7 +4078,7 @@ public class LinkedListTests extends TestCase {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test81() throws Throwable {
@@ -4122,7 +4122,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var29);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test82() throws Throwable {
@@ -4132,7 +4132,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test82");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -4162,7 +4162,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var5 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test83() throws Throwable {
@@ -4254,7 +4254,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var60 + "' != '" + 0L + "'", var60.equals(0L));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test84() throws Throwable {
@@ -4342,7 +4342,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var47);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test85() throws Throwable {
@@ -4352,7 +4352,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test85");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -4365,7 +4365,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -4398,7 +4398,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test86() throws Throwable {
@@ -4437,7 +4437,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var21);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test87() throws Throwable {
@@ -4580,7 +4580,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var96);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test88() throws Throwable {
@@ -4607,7 +4607,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var12);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test89() throws Throwable {
@@ -4674,7 +4674,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var29);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test90() throws Throwable {
@@ -4845,7 +4845,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var92);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test91() throws Throwable {
@@ -4855,7 +4855,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test91");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -4869,7 +4869,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -4906,7 +4906,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test92() throws Throwable {
@@ -4916,7 +4916,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test92");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -4962,7 +4962,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var9 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test93() throws Throwable {
@@ -4987,7 +4987,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var8 + "' != '" + 'a' + "'", var8.equals('a'));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test94() throws Throwable {
@@ -5007,7 +5007,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var5);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test95() throws Throwable {
@@ -5110,7 +5110,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var67);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test96() throws Throwable {
@@ -5120,7 +5120,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test96");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -5132,7 +5132,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -5163,7 +5163,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test97() throws Throwable {
@@ -5278,7 +5278,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var68);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test98() throws Throwable {
@@ -5288,7 +5288,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test98");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -5303,7 +5303,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -5343,7 +5343,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var11 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test99() throws Throwable {
@@ -5353,7 +5353,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test99");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
@@ -5363,7 +5363,7 @@ public class LinkedListTests extends TestCase {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test100() throws Throwable {
@@ -5408,7 +5408,7 @@ public class LinkedListTests extends TestCase {
 		var39.setValue((java.lang.Object) false);
 		var39.setValue((java.lang.Object) 0L);
 		var21.setPreviousNode(var39);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var48 = var47.repOK();
 		boolean var49 = var47.repOK();
 		boolean var50 = var47.repOK();
@@ -5494,7 +5494,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var94);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test101() throws Throwable {
@@ -5623,7 +5623,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var76);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test102() throws Throwable {
@@ -5672,7 +5672,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var23 + "' != '" + (short) 0 + "'",
 				var23.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test103() throws Throwable {
@@ -5701,7 +5701,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var7);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test104() throws Throwable {
@@ -5833,7 +5833,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var68);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test105() throws Throwable {
@@ -5843,7 +5843,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test105");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -5865,7 +5865,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test106() throws Throwable {
@@ -5984,7 +5984,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var77);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test107() throws Throwable {
@@ -6136,7 +6136,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var98);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test108() throws Throwable {
@@ -6181,7 +6181,7 @@ public class LinkedListTests extends TestCase {
 		var39.setValue((java.lang.Object) false);
 		var39.setValue((java.lang.Object) 0L);
 		var21.setPreviousNode(var39);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var48 = var47.repOK();
 		boolean var49 = var47.repOK();
 		boolean var50 = var47.repOK();
@@ -6267,7 +6267,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var94);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test109() throws Throwable {
@@ -6354,7 +6354,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var50);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test110() throws Throwable {
@@ -6364,7 +6364,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test110");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -6414,7 +6414,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test111() throws Throwable {
@@ -6424,7 +6424,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test111");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -6442,7 +6442,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -6491,7 +6491,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var14 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test112() throws Throwable {
@@ -6522,7 +6522,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var15);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test113() throws Throwable {
@@ -6632,7 +6632,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var63 + "' != '" + (short) 0 + "'",
 				var63.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test114() throws Throwable {
@@ -6740,7 +6740,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var67);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test115() throws Throwable {
@@ -6808,7 +6808,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var51);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test116() throws Throwable {
@@ -6849,7 +6849,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var18 + "' != '" + (short) 0 + "'",
 				var18.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test117() throws Throwable {
@@ -6859,7 +6859,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test117");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -6925,7 +6925,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var14 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test118() throws Throwable {
@@ -6969,7 +6969,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var22);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test119() throws Throwable {
@@ -7102,7 +7102,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var81);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test120() throws Throwable {
@@ -7112,7 +7112,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test120");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -7154,7 +7154,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var8 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test121() throws Throwable {
@@ -7306,7 +7306,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var99);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test122() throws Throwable {
@@ -7316,7 +7316,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test122");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -7354,7 +7354,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test123() throws Throwable {
@@ -7395,7 +7395,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var13);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test124() throws Throwable {
@@ -7426,7 +7426,7 @@ public class LinkedListTests extends TestCase {
 		var21.setValue((java.lang.Object) false);
 		var21.setValue((java.lang.Object) 0L);
 		var3.setPreviousNode(var21);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var29 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var30 = var29.repOK();
 		boolean var31 = var29.repOK();
 		boolean var32 = var29.repOK();
@@ -7456,7 +7456,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var35 + "' != '" + true + "'", var35.equals(true));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test125() throws Throwable {
@@ -7466,18 +7466,18 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test125");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
 		}
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test126() throws Throwable {
@@ -7559,7 +7559,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var49);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test127() throws Throwable {
@@ -7569,7 +7569,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test127");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -7579,7 +7579,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -7603,7 +7603,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var6 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test128() throws Throwable {
@@ -7729,7 +7729,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var77);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test129() throws Throwable {
@@ -7739,7 +7739,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test129");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -7750,7 +7750,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -7778,7 +7778,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test130() throws Throwable {
@@ -7823,7 +7823,7 @@ public class LinkedListTests extends TestCase {
 		var39.setValue((java.lang.Object) false);
 		var39.setValue((java.lang.Object) 0L);
 		var21.setPreviousNode(var39);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var47 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var48 = var47.repOK();
 		boolean var49 = var47.repOK();
 		boolean var50 = var47.repOK();
@@ -7896,7 +7896,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var80);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test131() throws Throwable {
@@ -7988,7 +7988,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var56);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test132() throws Throwable {
@@ -8033,7 +8033,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var24);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test133() throws Throwable {
@@ -8121,7 +8121,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var52);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test134() throws Throwable {
@@ -8196,7 +8196,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var34);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test135() throws Throwable {
@@ -8206,7 +8206,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test135");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -8225,7 +8225,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 0);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 0);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -8276,7 +8276,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var15 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test136() throws Throwable {
@@ -8390,7 +8390,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var71);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test137() throws Throwable {
@@ -8400,7 +8400,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test137");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -8434,7 +8434,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var6 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test138() throws Throwable {
@@ -8535,7 +8535,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var58 + "' != '" + (short) 0 + "'",
 				var58.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test139() throws Throwable {
@@ -8645,7 +8645,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var72);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test140() throws Throwable {
@@ -8778,7 +8778,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var73 + "' != '" + (short) 0 + "'",
 				var73.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test141() throws Throwable {
@@ -8788,7 +8788,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test141");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -8858,7 +8858,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var15 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test142() throws Throwable {
@@ -8984,7 +8984,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var73 + "' != '" + (byte) 100 + "'",
 				var73.equals((byte) 100));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test143() throws Throwable {
@@ -9084,7 +9084,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var68 + "' != '" + (byte) 100 + "'",
 				var68.equals((byte) 100));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test144() throws Throwable {
@@ -9094,7 +9094,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test144");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -9144,7 +9144,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var10 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test145() throws Throwable {
@@ -9213,7 +9213,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var36);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test146() throws Throwable {
@@ -9223,13 +9223,13 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test146");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -9242,7 +9242,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var2 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test147() throws Throwable {
@@ -9252,7 +9252,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test147");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -9310,7 +9310,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var12 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test148() throws Throwable {
@@ -9320,7 +9320,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test148");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -9336,7 +9336,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -9378,7 +9378,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var12 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test149() throws Throwable {
@@ -9388,7 +9388,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test149");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -9446,7 +9446,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var12 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test150() throws Throwable {
@@ -9498,7 +9498,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var27);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test151() throws Throwable {
@@ -9652,7 +9652,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var92 + "' != '" + (short) 0 + "'",
 				var92.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test152() throws Throwable {
@@ -9760,7 +9760,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var47);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test153() throws Throwable {
@@ -9807,7 +9807,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var23 + "' != '" + false + "'", var23.equals(false));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test154() throws Throwable {
@@ -9835,7 +9835,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var5 + "' != '" + (short) 0 + "'",
 				var5.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test155() throws Throwable {
@@ -9991,7 +9991,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var96);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test156() throws Throwable {
@@ -10163,7 +10163,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var95);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test157() throws Throwable {
@@ -10277,7 +10277,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var64);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test158() throws Throwable {
@@ -10345,7 +10345,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var29);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test159() throws Throwable {
@@ -10469,7 +10469,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var70 + "' != '" + false + "'", var70.equals(false));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test160() throws Throwable {
@@ -10479,7 +10479,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test160");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -10499,7 +10499,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0, 1);
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0, 1);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
 			// Expected exception.
@@ -10553,7 +10553,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var16 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test161() throws Throwable {
@@ -10563,7 +10563,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test161");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -10581,7 +10581,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					(-1));
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -10630,7 +10630,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var14 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test162() throws Throwable {
@@ -10740,7 +10740,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var63);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test163() throws Throwable {
@@ -10854,7 +10854,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var71 + "' != '" + (short) 0 + "'",
 				var71.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test164() throws Throwable {
@@ -10962,7 +10962,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var75);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test165() throws Throwable {
@@ -11031,7 +11031,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var40);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test166() throws Throwable {
@@ -11130,7 +11130,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var44);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test167() throws Throwable {
@@ -11241,7 +11241,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var76 + "' != '" + (byte) 100 + "'",
 				var76.equals((byte) 100));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test168() throws Throwable {
@@ -11366,7 +11366,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var70);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test169() throws Throwable {
@@ -11376,7 +11376,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test169");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -11414,7 +11414,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var7 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test170() throws Throwable {
@@ -11468,7 +11468,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var22);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test171() throws Throwable {
@@ -11531,7 +11531,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var28);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test172() throws Throwable {
@@ -11557,7 +11557,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var10 + "' != '" + false + "'", var10.equals(false));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test173() throws Throwable {
@@ -11625,7 +11625,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var29);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test174() throws Throwable {
@@ -11635,7 +11635,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test174");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -11713,7 +11713,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var17 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test175() throws Throwable {
@@ -11838,7 +11838,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var91);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test176() throws Throwable {
@@ -11903,7 +11903,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue("'" + var39 + "' != '" + false + "'", var39.equals(false));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test177() throws Throwable {
@@ -11983,7 +11983,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var35);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test178() throws Throwable {
@@ -11993,7 +11993,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test178");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -12055,7 +12055,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var13 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test179() throws Throwable {
@@ -12133,7 +12133,7 @@ public class LinkedListTests extends TestCase {
 		roops.core.testingCoverage.base.LinkedListNode var71 = var70
 				.getPreviousNode();
 		var4.setNextNode(var70);
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var73 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var73 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var74 = var73.repOK();
 		boolean var75 = var73.repOK();
 		boolean var76 = var73.repOK();
@@ -12235,7 +12235,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var82 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test180() throws Throwable {
@@ -12397,7 +12397,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var91);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test181() throws Throwable {
@@ -12439,7 +12439,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var18);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test182() throws Throwable {
@@ -12515,7 +12515,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var51 + "' != '" + (short) 0 + "'",
 				var51.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test183() throws Throwable {
@@ -12525,7 +12525,7 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test183");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
@@ -12543,7 +12543,7 @@ public class LinkedListTests extends TestCase {
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex.removeIndexTest(var0,
+			roops.core.testingCoverage.path.LinkedListRemoveIndex.removeIndexTest(var0,
 					100);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -12592,7 +12592,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var14 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test184() throws Throwable {
@@ -12716,7 +12716,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var65);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test185() throws Throwable {
@@ -12738,7 +12738,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var2);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test186() throws Throwable {
@@ -12868,7 +12868,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var90);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test187() throws Throwable {
@@ -12970,7 +12970,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var55);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test188() throws Throwable {
@@ -13056,7 +13056,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var55 + "' != '" + (short) 0 + "'",
 				var55.equals((short) 0));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test189() throws Throwable {
@@ -13136,7 +13136,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var35);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test190() throws Throwable {
@@ -13238,7 +13238,7 @@ public class LinkedListTests extends TestCase {
 		assertTrue("'" + var60 + "' != '" + (short) (-1) + "'",
 				var60.equals((short) (-1)));
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test191() throws Throwable {
@@ -13366,7 +13366,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var90);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test192() throws Throwable {
@@ -13516,7 +13516,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var92);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test193() throws Throwable {
@@ -13526,14 +13526,14 @@ public class LinkedListTests extends TestCase {
 			System.out.print("RandoopTest0.test193");
 		}
 
-		roops.core.testingCoverage.mcc.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.mcc.LinkedListRemoveIndex();
+		roops.core.testingCoverage.path.LinkedListRemoveIndex var0 = new roops.core.testingCoverage.path.LinkedListRemoveIndex();
 		boolean var1 = var0.repOK();
 		boolean var2 = var0.repOK();
 		boolean var3 = var0.repOK();
 		// The following exception was thrown during execution.
 		// This behavior will recorded for regression testing.
 		try {
-			roops.core.testingCoverage.mcc.LinkedListRemoveIndex
+			roops.core.testingCoverage.path.LinkedListRemoveIndex
 					.removeIndexTest(var0, 10);
 			fail("Expected exception of type java.lang.RuntimeException");
 		} catch (java.lang.RuntimeException e) {
@@ -13549,7 +13549,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertTrue(var3 == true);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test194() throws Throwable {
@@ -13630,7 +13630,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNull(var42);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test195() throws Throwable {
@@ -13680,7 +13680,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var25);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 	public void test196() throws Throwable {
@@ -13792,7 +13792,7 @@ public class LinkedListTests extends TestCase {
 		// Regression assertion (captures the current behavior of the code)
 		assertNotNull(var63);
 
-		TestCoverageTool.report(var0);
+		TestCoverageTool.pathReport(var0);
 	}
 
 }
